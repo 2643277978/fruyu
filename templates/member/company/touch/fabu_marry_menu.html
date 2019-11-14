@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{#$langData['marry'][2][59]#}</title>{#*婚宴菜单*#}
+    <meta name="wap-font-scale" content="no">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+    <!--<link rel="stylesheet" type="text/css" href="{#$cfg_basehost#}/templates/member/touch/css/gz-fabu.css?v={#$cfg_staticVersion#}">-->
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fabu_marry_menu.css?v={#$cfg_staticVersion#}">
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript"  src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.deferred.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+</head>
+<body>
+{#$pageTitle = "{#$langData['marry'][2][59]#}"#}{#*婚宴菜单*#}
+{#include file="top.html"#}
+
+<div class="container">
+    <ul class="info">
+        <li class="fn-clear comname">
+            <input type="text" id="comname" placeholder="{#$langData['marry'][2][60]#}">{#*输入套餐名称*#}
+        </li>
+
+    </ul>
+    <div class="add-box fn-clear">
+        <input type="text" class="menu-name fn-left" id="menu-name" placeholder="{#$langData['marry'][2][61]#}">{#*菜品名称*#}
+        <span class="btn_add">{#$langData['marry'][2][62]#}</span>{#*添加*#}
+    </div>
+
+    <div class="fabu_btn"> <span class="btn">{#$langData['marry'][2][58]#}</span> </div>{#*发布*#}
+
+</div>
+
+
+
+<script type="text/javascript" src="{#$templets_skin#}js/fabu_marry_menu.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

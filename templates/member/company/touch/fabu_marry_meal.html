@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{#$langData['marry'][3][13]#}</title>{#*套餐添加*#}
+    <meta name="wap-font-scale" content="no">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$cfg_basehost#}/templates/member/touch/css/gz-fabu.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fabu_marry_meal.css?v={#$cfg_staticVersion#}">
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript"  src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.deferred.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+    <script type="text/javascript">
+        var masterDomain = '{#$cfg_basehost#}', staticPath = cfg_staticPath = '{#$cfg_staticPath#}';
+        var modelType = 'house';
+        var thumbSize = {#$thumbSize#}, thumbType = '{#$thumbType#}', atlasSize = {#$atlasSize*1024*1024#}, atlasType = '{#$atlasType#}', atlasMax = 20;
+    </script>
+</head>
+<body>
+{#$pageTitle = "{#$langData['marry'][3][13]#}"#}{#*套餐添加*#}
+{#include file="top.html"#}
+
+<div class="container">
+    <ul class="info">
+        <li class="fn-clear">
+            <span class="name">{#$langData['marry'][3][12]#}</span>{#*套餐名称*#}
+            <input type="text" id="comname" placeholder="{#$langData['marry'][3][2]#}">{#*请输入*#}
+        </li>
+        <li class="fn-clear">
+            <span class="name">{#$langData['marry'][3][3]#}</span>{#*价格*#}
+            <span class="fn-right un">{#echoCurrency type='short'#} </span>
+            <input type="text" id="price"  placeholder="0">
+        </li>
+    </ul>
+
+    <!--选择标签-->
+    <div class="tab-box">
+        <div class="tit">{#$langData['marry'][3][14]#}</div>{#*选择标签*#}
+        <div class="tab">
+            <span data-id="0">{#$langData['marry'][3][15]#}</span>{#*本季热卖*#}
+            <span data-id="1">{#$langData['marry'][3][16]#}</span>{#*超值特价*#}
+            <span data-id="2">{#$langData['marry'][3][17]#}</span>{#*人气推荐*#}
+            <input type="hidden" id="tabbox" value=""/>
+        </div>
+    </div>
+
+    <!--上传图片-->
+    <div class="store-imgs img_box">
+        <div class="tit">{#$langData['marry'][2][26]#}</div>{#*店铺图片*#}
+        <ul class="uploader-list fn-clear" id="fileList">
+            <li class="upload_btn" id="uploadbtn">
+                <div id="filePicker" class="webuploader-container">
+                    <img src="{#$templets_skin#}images/add.png" />
+                    <p>{#$langData['marry'][2][27]#}</p>{#*上传图片*#}
+                </div>
+
+            </li>
+
+            <div class="kong"></div>
+        </ul>
+    </div>
+
+    <div class="fabu_btn"> <span class="btn">{#$langData['marry'][3][8]#}</span> </div>{#*发布*#}
+
+</div>
+
+
+
+
+<script src="{#$templets_skin#}js/gz-info.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/webuploader/webuploader.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/upload.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/upload-img.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/fabu_marry_meal.js?v={#$cfg_staticVersion#}"></script>
+
+</body>
+</html>

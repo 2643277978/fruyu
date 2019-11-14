@@ -1,0 +1,32 @@
+<style>
+	.list {padding: 0 15px;}
+</style>
+<div class="nav-tabs fn-clear">
+	<ul class="fn-clear">
+		<li data-id="1"><a href="javascript:;">待发货 (<span id="unused">0</span>)</a></li>
+		<li data-id="6"><a href="javascript:;">已发货 (<span id="recei">0</span>)</a></li>
+		<li data-id="3"><a href="javascript:;">成功订单 (<span id="used">0</span>)</a></li>
+		<li data-id="4"><a href="javascript:;">等待退款 (<span id="refund">0</span>)</a></li>
+		<li data-id="7"><a href="javascript:;">退款成功 (<span id="closed">0</span>)</a></li>
+	</ul>
+</div>
+<table class="oh">
+	<colgroup>
+		<col style="width:38%;">
+		<col style="width:10%;">
+		<col style="width:7%;">
+		<col style="width:17%;">
+		<col style="width:16%;">
+		<col style="width:12%;">
+	</colgroup>
+	<tbody>
+		<tr>
+			<td>商品</td>
+			<td>单价({#echoCurrency type='short'#})</td>
+			<td>数量</td>
+			<td>实付款({#echoCurrency type='short'#})</td>
+			<td>状态</td>
+			<td>操作</td>
+		</tr>
+	</tbody>
+</table>

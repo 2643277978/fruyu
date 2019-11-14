@@ -1,0 +1,87 @@
+
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/write-comment-waimai.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$templets_skin#}js/jquery.raty.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, id = {#$id#};
+	var modelType = '{#$module#}', tpldir = '{#$templets_skin#}';
+	var returnUrl = '{#getUrlPath service="member" type="user" template="orderdetail-$ordertype" id=$id#}';
+	var star = {#$common.star#}, starps = {#$common.starps#};
+
+	var modelType = 'waimai', state = '', type = '', typeid = 0;
+	var thumbSize = {#$thumbSize#}, thumbType = '{#$thumbType#}', atlasSize = {#$atlasSize*1024*1024#}, atlasType = '{#$atlasType#}', atlasMax = 5;
+
+	var ordertype = '{#$ordertype#}';
+</script>
+
+<div class="rank_lead">
+	<ul>
+		<li{#if $common.isanony == 0#} class="rank_bc"{#/if#}>{#$langData['siteConfig'][16][133]#}</li>
+		<li{#if $common.isanony == 1#} class="rank_bc"{#/if#}>{#$langData['siteConfig'][16][134]#}</li>
+	</ul>
+</div>
+<div class="com">
+{#if $ordertype == "waimai"#}
+	<div class="com_lead"><em>{#$langData['siteConfig'][16][135]#}</em>
+		<div id="star" class="star"></div>
+	</div>
+	<div class="liuyan">
+		<textarea placeholder="{#$langData['siteConfig'][20][394]#}" id="content">{#$common.content#}</textarea>
+	</div>
+	<div class="com_lead"><em>{#$langData['siteConfig'][16][136]#}</em>
+		<div id="starps" class="star"></div>
+	</div>
+	<div class="liuyan">
+		<textarea placeholder="{#$langData['siteConfig'][20][394]#}" id="contentps">{#$common.contentps#}</textarea>
+	</div>
+	<div class="img-box">
+      	<ul class="uploader-list fn-clear" id="fileList">
+        	<li class="uploadbtn">
+          		<div id="filePicker" class="webuploader-container">
+            		<div class="webuploader-pick">+</div>
+          		</div>
+	    		</li>
+    		{#if $common.pics#}
+			{#foreach from=$common.pics key=k item=i#}
+			<li class="thumbnail" id="item_{#$k+1#}"><img src="{#changeFileSize url="{#getFilePath($i)#}" type="small"#}" data-val="{#$i#}" data-url="{#getFilePath($i)#}" alt=""><div class="file-panel"><span class="cancel"></span></div></li>
+			{#/foreach#}
+			{#/if#}
+      	</ul>
+		{#if $common.pics == ''#}
+	    <p class="imgtip">&nbsp;&nbsp;{#$langData['siteConfig'][19][867]|replace:'1':'5'#}</p>
+		{#/if#}
+    </div>
+	<input type="hidden" name="commonid" id="commonid" value="{#$common.id#}">
+{#else#}
+	<div class="com_lead"><em>{#$langData['siteConfig'][16][136]#}</em>
+		<div id="starps" class="star"></div>
+	</div>
+	<div class="liuyan">
+		<textarea placeholder="{#$langData['siteConfig'][20][394]#}" id="contentps">{#$common.contentps#}</textarea>
+	</div>
+	<div class="img-box">
+      	<ul class="uploader-list fn-clear" id="fileList">
+        	<li class="uploadbtn">
+          		<div id="filePicker" class="webuploader-container">
+            		<div class="webuploader-pick">+</div>
+          		</div>
+    		</li>
+    		{#if $common.pics#}
+			{#foreach from=$common.pics key=k item=i#}
+			<li class="thumbnail" id="item_{#$k+1#}"><img src="{#changeFileSize url="{#getFilePath($i)#}" type="small"#}" data-val="{#$i#}" data-url="{#getFilePath($i)#}" alt=""><div class="file-panel"><span class="cancel"></span></div></li>
+			{#/foreach#}
+			{#/if#}
+      	</ul>
+		{#if $common.pics == ''#}
+	    <p class="imgtip">&nbsp;&nbsp;{#$langData['siteConfig'][19][867]|replace:'1':'5'#}</p>
+		{#/if#}
+    </div>
+	<input type="hidden" name="commonid" id="commonid" value="{#$common.id#}">
+{#/if#}
+</div>
+<div class="refresh">
+	<button class="submitBtn">{#$langData['siteConfig'][6][151]#}</button>
+</div>
+
+
+<script src="{#$templets_skin#}js/common.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>

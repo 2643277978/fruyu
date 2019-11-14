@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>{#if $do == "edit"#}{#$langData['siteConfig'][6][142]#} - {#$detail_title#}{#else#}{#$langData['siteConfig'][6][143]#}{#/if#} </title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+		<link rel="stylesheet" type="text/css" href="{#$cfg_basehost#}/templates/member/touch/css/gz-fabu.css?v={#$cfg_staticVersion#}">
+		<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fabu-pay.css?v={#$cfg_staticVersion#}" />
+		<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fabu-house-sale.css?v={#$cfg_staticVersion#}" />
+		<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fabu-house-zu.css?v={#$cfg_staticVersion#}" />
+		<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/mobileSelect.css?v={#$cfg_staticVersion#}" />
+		<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+		<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+		<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.deferred.js" type="text/javascript"></script>
+		<script src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+		<script type="text/javascript">
+		  var masterDomain = '{#$cfg_basehost#}', staticPath = cfg_staticPath = '{#$cfg_staticPath#}';
+		  var modelType = 'house';
+		  var thumbSize = {#$thumbSize#}, thumbType = '{#$thumbType#}', atlasSize = {#$atlasSize*1024*1024#}, atlasType = '{#$atlasType#}', atlasMax = {#$atlasMax#};
+		  var hideFileUrl = {#$cfg_hideUrl#};
+		  var id = {#$detail_id|default:0#}, lng = "{#$detail_longitude#}", lat = "{#$detail_latitude#}";
+		  var hideFileUrl = {#$cfg_hideUrl#}, site_map = "{#$site_map#}";
+		  var geetest = {#$cfg_geetest#};
+		  var userinfo = {
+		  	phone: '{#$userinfo.phone#}',
+		  	phoneCheck: {#$userinfo.phoneCheck#}
+		  };
+		  var detail = {
+		  	contact: '{#$detail_contact#}'
+		  }
+		</script>
+	</head>
+	<body>
+		<div class="page input_info">
+			<div>
+				<!--顶部标题s-->
+				<div class="header top">
+					<!--返回按钮-->
+					<a href="javascript:;" onclick="history.go(-1)" class="go_back goBack"><i></i></a>
+					<div class="page_title">{#if $do == "edit"#}{#$langData['siteConfig'][6][142]#} - {#$detail_title#}{#else#}{#$langData['siteConfig'][6][143]#}{#/if#}</div>
+				</div>
+				<!--顶部标题e-->
+				<!--表单部分s-->
+				<div class="content-box">
+					<form name="fabuForm" id="fabuForm" method="post" action="/include/ajax.php?service=house&type={#$type#}&action={#if $do == "edit"#}edit&id={#$id#}{#else#}put{#/if#}" data-url="{#getUrlPath service='member' type='user' template='house'#}">
+
+						<!--房源图片-->
+						<div class="img_box">
+							<h3>房源图片<span>（至少选择1张图片，尽量选择高清图片）</span></h3>
+							<ul class="uploader-list" id="fileList">
+								{#if $detail_litpicSource#}
+								<li id="WU_FILE_0_0" class="thumbnail imgshow_box litpic">
+									<div class="img_show">
+										<img src="{#$detail_litpic#}" data-val="{#$detail_litpicSource#}" data-url="{#$detail_litpic#}">
+									</div>
+									<i class="del_btn">+</i>
+								</li>
+								{#/if#}
+								{#foreach from=$detail_imglist key=k item="pic"#}
+								<li id="WU_FILE_0_1_{#$k#}" class="thumbnail imgshow_box litpic">
+									<div class="img_show">
+										<img src="{#$pic.path#}" data-val="{#$pic.pathSource#}" data-url="{#$pic.path#}" data-des="{#$pic.info#}">
+									</div>
+									<i class="del_btn">+</i>
+								</li>
+								{#/foreach#}
+								<li class="upload_btn" id="uploadbtn">
+									<div id="filePicker" class="webuploader-container">
+										<img src="{#$templets_skin#}images/add.png" />
+										<p>上传照片</p>
+										<p>最多{#$atlasMax+1#}张</p>
+									</div>
+								</li>
+
+								<div class="kong"></div>
+							</ul>
+						</div>
+
+						<!--房源详情-->
+						<dl class="detail_house">
+							<dt>房源详情</dt>
+							<dd class="posi_house">
+								<div class="left_label">
+									<label>小区：</label>
+								</div>
+								<div class="right_value ">
+									<p class="tip"><input name="house_chosed" id="house_chosed" placeholder="请选择房源所在小区" value="{#$detail_community#}" data-cityid="{#$detail_cityid#}"/><i class="posi_icon"></i></p>
+								</div>
+								<input type="hidden" id="houseid" name="houseid" value="{#$detail_communityid#}" />
+							</dd>
+							<dd class="house_address"{#if $detail_communityid == 0 && $detail_address#} style="display:block;"{#/if#}>
+								<input id="detail_addr" type="text" placeholder="请输入详细地址" value="{#$detail_address#}" />
+								<input id="addr_lnglat" type="hidden" value="{#if $detail_longitude && $detail_latitude#}{#$detail_longitude#},{#$detail_latitude#}{#/if#}"/>
+							</dd>
+							<dd class="huxin">
+								<div class="left_label">
+									<label>{#$langData['siteConfig'][19][107]#}：</label>
+								</div>
+								<div class="right_value">
+									<p class="tip">{#if $detail_room || $detail_hall || $detail_guard#}{#$detail_room#}室 {#$detail_hall#}厅 {#$detail_guard#}卫{#else#}室/厅/卫{#/if#}</p>
+									<input type="hidden" name="room" id="room" value="{#$detail_room#}" />
+									<input type="hidden" name="hall" id="hall" value="{#$detail_hall#}" />
+									<input type="hidden" name="guard" id="guard" value="{#$detail_guard#}" />
+								</div>
+							</dd>
+							<dd>
+								<div class="left_label">
+									<label>楼栋：</label>
+								</div>
+								<div class="right_value detail_addr">
+									<input type="text" id="dong" value="{#$detail_buildposArr[0]#}"/>栋 <input type="text" id="danyuan" value="{#$detail_buildposArr[1]#}" />单元<input id="shi" type="text" value="{#$detail_buildposArr[2]#}" />室
+								</div>
+								<p class="attention_tip">(选填，地址保密，仅用于信息核验)</p>
+							</dd>
+							<dd class="loucen_chose">
+								<div class="left_label">
+									<label>楼层：</label>
+								</div>
+								<div class="right_value">
+									<div class="radio radioBox">
+										<div class="active sig-build{#if !$detail_floortype#} chose_btn{#/if#}">
+											<div class="check_left">
+												<input type="radio" name="floortype" value="0"{#if !$detail_floortype#} checked=""{#/if#} />
+												<span class="check_icon_round"></span>
+											</div>
+											<a href="javascript:;" data-id = "0">单层</a>
+										</div>
+										<div class="active mul-build{#if $detail_floortype == 1#} chose_btn{#/if#}">
+											<div class="check_left">
+												<input type="radio" name="floortype" value="1"{#if $detail_floortype == 1#} checked=""{#/if#} />
+												<span class="check_icon_round"></span>
+											</div>
+											<a href="javascript:;" data-id = "1">跃层</a>
+										</div>
+										<input type="hidden" name="bno" value="{#$detail_bno#}" id="bno" />
+										<input type="hidden" name="floor" value="{#$detail_floor#}" id="floor" />
+										<input type="hidden" name="floorspr" value="{#$detail_floorspr#}" id="floorspr" />
+									</div>
+									<!--隐藏-->
+									<p class="result_val">{#if $detail_floortype == 1#}{#$detail_bno#}-{#$detail_floorspr#}层/共{#$detail_floor#}层{#else#}{#$detail_bno#}层/共{#$detail_floor#}层{#/if#}</p>
+								</div>
+							</dd>
+							<dd>
+								<div class="left_label">
+									<label for="space">面积：</label>
+								</div>
+								<div class="right_value detail_area">
+									<input type="text" class="space" id="space" value="{#$detail_area#}"/>m<sup>2</sup>
+								</div>
+							</dd>
+							<dd>
+								<div class="left_label">
+									<label for="price">售价：</label>
+								</div>
+								<div class="right_value detail_area">
+									<input placeholder="（面议则填写“0”）" id="price" value="{#$detail_price#}" /><span>万元</span>
+								</div>
+							</dd>
+							<dd class="paytax_way">
+								<div class="left_label">
+									<label>付税方式：</label>
+								</div>
+								<div class="right_value">
+									<div class="radio radioBox">
+										<div class="active{#if $detail_paytax == 2#} chose_btn{#/if#}">
+											<div class="check_left">
+												<input type="radio" name="paytax" value=""{#if $detail_paytax == 2#} checked=""{#/if#} />
+												<span class="check_icon_round"></span>
+											</div>
+											<a href="javascript:;" data-id = "2">房主净得价</a>
+										</div>
+										<div class="active{#if $detail_paytax == 1#} chose_btn{#/if#}">
+											<div class="check_left">
+												<input type="radio" name="paytax" value=""{#if $detail_paytax == 1#} checked=""{#/if#} />
+												<span class="check_icon_round"></span>
+											</div>
+											<a href="javascript:;" data-id = "1">双方各自付税</a>
+										</div>
+										<input type="hidden" name="paytax" id="paytax" value="{#$detail_paytax#}" />
+									</div>
+								</div>
+							</dd>
+							<dd class="rights">
+								<div class="left_label">
+									<label>产权：</label>
+								</div>
+								<div class="right_value">
+									<div class="radio radioBox">
+										<div class="active{#if $detail_rights_to == 2#} chose_btn{#/if#}">
+											<div class="check_left">
+												<input type="radio" name="rights_to" value=""{#if $detail_rights_to == 2#} checked=""{#/if#} />
+												<span class="check_icon_round"></span>
+											</div>
+											<a href="javascript:;" data-id = "2">产权房</a>
+										</div>
+										<div class="active{#if $detail_rights_to == 1#} chose_btn{#/if#}">
+											<div class="check_left">
+												<input type="radio"name="rights_to" value=""{#if $detail_rights_to == 1#} checked=""{#/if#} />
+												<span class="check_icon_round"></span>
+											</div>
+											<a href="javascript:;" data-id = "1">使用权房</a>
+										</div>
+										<input type="hidden" name="rights_to" value="{#$detail_rights_to#}" id="rights_to" />
+									</div>
+
+								</div>
+							</dd>
+							<dd class="about_house">
+								<div class="my_select">
+									<label>装修情况：</label>
+									<div class="inpubox"><input id="zxiu" type="text"  placeholder="请选择" readonly="readonly" value="{#if $detail_zhuangxiu != ""#}{#$detail_zhuangxiu#}{#/if#}" data-id="{#$detail_zhuangxiuid#}" /></div>
+									<select id="zhuangxiu" class="demo-test-select" data-role="none" name="zhuangxiu">
+							    		{#house action="item" return="item" type="2"#}
+								    	<option value="{#$item.id#}"{#if $detail_zhuangxiu == $item.typename#} selected="selected"{#/if#}>{#$item.typename#}</option>
+								    	{#/house#}
+							  		</select>
+								</div>
+
+								<div class="my_select">
+									<label>楼层朝向：</label>
+									<div class="inpubox"><input id='floor_to' type="text" readonly="readonly" placeholder="请选择" value="{#if $detail_direction != ""#}{#$detail_direction#}{#/if#}" data-id="{#$detail_directionid#}" /></div>
+									<select id="direction" class="demo-test-select" data-role="none" name="direction">
+							    		{#house action="item" return="item" type="4"#}
+								    	<option value="{#$item.id#}"{#if $detail_direction == $item.typename#} selected="selected"{#/if#}>{#$item.typename#}</option>
+								    	{#/house#}
+							  		</select>
+								</div>
+							</dd>
+							<dd class="about_build">
+								<div class="my_select">
+									<label>物业类型：</label>
+									<div class="inpubox"><input id="wuyetype" type="text"  placeholder="请选择" value="{#if $detail_protype != ""#}{#$detail_protype#}{#/if#}" data-id="{#$detail_protypeid#}" /></div>
+									<select id="protype" class="demo-test-select" data-role="none" name="protype">
+							    		{#house action="item" return="item" type="1"#}
+								    	<option value="{#$item.id#}"{#if $detail_protype == $item.typename#} selected="selected"{#/if#}>{#$item.typename#}</option>
+								    	{#/house#}
+								 	</select>
+								</div>
+								<div class="my_select">
+									<label>建筑年代：</label>
+									<div class="inpubox"><input type="text" readonly="readonly" id="build_years" placeholder="请选择" value="{#if $detail_buildage#}{#$detail_buildage#}{#/if#}" data-id="{#$detail_buildageid#}" /></div>
+
+								</div>
+								<div class="my_select">
+									<label>电梯：</label>
+									<div class="inpubox"><input id="lift" type="text" readonly="readonly" placeholder="请选择" value="{#if $detail_elevator == 2#}无电梯{#elseif $detail_elevator == 1#}有电梯{#/if#}" data-id="{#$detail_elevator#}" /></div>
+								</div>
+							</dd>
+						</dl>
+
+						<dl class="house_title">
+							<dt>信息标题</dt>
+							<dd><input id="house_title" type="text" placeholder="请输入标题，2-50个字" maxlength="50" value="{#$detail_title#}" /></dd>
+						</dl>
+						<dl class="ways_contact">
+							<dt>联系方式</dt>
+							<dd>
+								<p class="username"><input placeholder="请输入您的称呼" id="person" value="{#if $detail_username != ""#}{#$detail_username#}{#else#}{#$userinfo.nickname#}{#/if#}"/></p>
+								<div class="radio radioBox user_sex">
+									<div class="active {#if $detail_sex == 2 || (!$detail_sex && $userinfo.sex == 0) #}chose_btn{#/if#}">
+										<div class="check_left">
+											<input type="radio" name="sex" value="" />
+											<span class="check_icon_round"></span>
+										</div>
+										<a href="javascript:;" data-id = "2">女士</a>
+									</div>
+									<div class="active {#if $detail_sex == 1 || (!$detail_sex && $userinfo.sex == 1) #}chose_btn{#/if#}">
+										<div class="check_left">
+											<input type="radio" name="sex" value="" />
+											<span class="check_icon_round"></span>
+										</div>
+										<a href="javascript:;" data-id = "1">先生</a>
+									</div>
+									<input type="hidden" name="sex" value="{#if $detail_sex#}{#$detail_sex#}{#else#}{#if $userinfo.sex == 0#}2{#else#}1{#/if#}{#/if#}" id="usersex" />
+								</div>
+							</dd>
+							<dd>
+								<p class="userphone"><input placeholder="请输入您的联系方式" id="contact" value="{#if $detail_contact != ""#}{#$detail_contact#}{#else#}{#$userinfo.phone#}{#/if#}"/></p>
+								<div class="radio radioBox  wx_phone">
+
+									<div class="active {#if $detail_wx_tel#}chose_btn{#/if#}">
+										<div class="check_left">
+											<input type="radio" name="wx_tel" id="wx_tel"{#if $detail_wx_tel#} checked="checked" value="1"{#else#} value="0"{#/if#} />
+											<span class="check_icon_round"></span>
+										</div>
+										<a href="javascript:;">手机即微信</a>
+									</div>
+								</div>
+								<div class="yanzheng">
+									<div class="test_code">
+										<p class="tip"><i></i>更换联系方式需重新验证</p>
+										<div class="get_code">
+											<p class="code_input"><input type="text" placeholder="请输入验证码" id="vercode"/></p>
+											<p class="test_btn"><button type="button">发送验证码</button></p>
+										</div>
+									</div>
+									{#*
+									{#if !$cfg_geetest#}
+					        <div class="inpbox">
+					          <dl class="fn-clear">
+					            <dt class="fn-left"><i class="icon icon-psw"></i></dt>
+					            <dd class="fn-left"><input type="vdimgck" name="" value="" placeholder="{#$langData['siteConfig'][20][176]#}" id="vdimgck"><img src="{#$cfg_basehost#}/include/vdimgck.php" alt="" class="vdimgck"></dd>
+					          </dl>
+					        </div>
+					        {#/if#}
+					        *#}
+								</div>
+							</dd>
+
+						</dl>
+						<div class="more_btn">
+							<a href="javascript:;">
+								<h3>继续补充更多信息 ></h3>
+								<p>丰富的房源信息更能吸引找房者哦</p>
+							</a>
+						</div>
+						<div class="more_info ">
+							<div class="fayuanid">
+								<div class="left_label">
+									<label>房源编号：</label>
+								</div>
+								<div class="right_value">
+									<input name="sourceid" id="sourceid" type="text" placeholder="请输入房源编号" value="{#$detail_sourceid#}" />
+								</div>
+							</div>
+							<dl class="feature_box checkbox sale_feature">
+								<dt>房源特色</dt>
+								<dd data-id="0"{#if strstr($detail_flag, "0")#} class="on"{#/if#}>急售</dd>
+								<dd data-id="1"{#if strstr($detail_flag, "1")#} class="on"{#/if#}>免税</dd>
+								<dd data-id="2"{#if strstr($detail_flag, "2")#} class="on"{#/if#}>近地铁</dd>
+								<dd data-id="3"{#if strstr($detail_flag, "3")#} class="on"{#/if#}>校区房</dd>
+								<dd data-id="4"{#if strstr($detail_flag, "4")#} class="on"{#/if#}>满五年</dd>
+								<input type="hidden" id="housefeature" value="{#$detail_flag#}"/>
+							</dl>
+
+
+							<div class=" allarea_box">
+								<div class="img_box video_box">
+									<h3>视频展示</h3>
+									<div class="drapdown-box" id="videoShow_choose" style="display: block;">
+								      <div class="upload-file videoshow video">
+								        <ul class="fn-clear">
+
+								          {#if $detail_videoSource#}
+								          <li class="video_li" id="WU_FILE_video_0"><div class="img_show"><video src="{#$detail_video#}" data-url="{#$detail_videoSource#}"></video></div><i class="del_btn">+</i></li>
+								          {#/if#}
+								          <li class="addbtn" id="up_videoShow" data-extensions="mp4,mov" data-mimetypes="video/*"{#if $detail_videoSource#} style="display:none;"{#/if#}>
+								          	<div id="up_videoShow" >
+												<img src="{#$templets_skin#}images/add.png" />
+												<p>上传视频</p>
+												<p>更有吸引力</p>
+											</div>
+								          </li>
+
+								        </ul>
+								        <input type="hidden" name="video" id="video" value="{#$detail_videoSource#}">
+								      </div>
+								      {#*
+								      <div class="upload-file videoshow pic">
+								        <ul class="fn-clear">
+
+								          {#if $video_pic#}
+								          <li id="WU_FILE_video_pic_{#$k#}"><div class="img_show"><img src="{#$video_pic#}" data-url="{#$video_picSource#}" /></div><i class="del_btn">+</i></li>
+								          {#/if#}
+								          <li class="addbtn" id="up_videoPicShow" data-extensions="jpg,jpeg,bmp,png,gif" data-mimetypes="image/*">
+								          	  <div id="up_videoShow" >
+												<img src="{#$templets_skin#}images/add.png" />
+												<p>上传视频</p>
+												<p>最多3个</p>
+											  </div>
+								           </li>
+								        </ul>
+								      </div>
+								      *#}
+								</div>
+								</div>
+								<div class="qjimg_box">
+									<div class="qj_title">
+										<span>全景展示</span>
+										<div class="radio radioBox">
+											<div class="active {#if !$detail_qj_type#}chose_btn{#/if#}">
+												<div class="check_left">
+
+													<span class="check_icon_round"></span>
+												</div>
+												<a href="javascript:;" data-id = "0">图片</a>
+											</div>
+											<div class="active {#if $detail_qj_type#}chose_btn{#/if#}">
+												<div class="check_left">
+													<span class="check_icon_round"></span>
+												</div>
+												<a href="javascript:;" data-id = "1">url</a>
+											</div>
+											<input type="hidden" name="qj_type" value="{#$detail_qj_type|default:0#}" id="qj_type" />
+										</div>
+									</div>
+									 <ul class="fn-clear" id="qjshow_box"{#if $detail_qj_type#} style="display:none;"{#/if#}>
+							              <li>
+							                <div class="addbtn img_show" id="up_qj" data-extensions="jpg,jpeg,bmp,png" data-mimetypes="image/jpg,image/jpeg,image/png"></div>
+							                {#if $detail_qj_type == 0 && $detail_qj_fileArr[0].source#}<div class="img" id="WU_FILE_has_0"><img src="{#$detail_qj_fileArr[0].path#}" data-url="{#$detail_qj_fileArr[0].source#}"><i class="del_btn">+</i></div>{#/if#}
+							                <p class="txt">前</p>
+							              </li>
+							              <li>
+							                <div class="addbtn img_show addbtn_more" id="up_qj2" data-extensions="jpg,jpeg,bmp,png" data-mimetypes="image/jpg,image/jpeg,image/png"></div>
+							                {#if $detail_qj_type == 0 && $detail_qj_fileArr[1].source#}<div class="img" id="WU_FILE_has_1"><img src="{#$detail_qj_fileArr[1].path#}" data-url="{#$detail_qj_fileArr[1].source#}"><i class="del_btn">+</i></div>{#/if#}
+							                <p class="txt">右</p>
+							              </li>
+							              <li>
+							                <div class="addbtn img_show addbtn_more" data-extensions="jpg,jpeg,bmp,png" data-mimetypes="image/jpg,image/jpeg,image/png"></div>
+							                {#if $detail_qj_type == 0 && $detail_qj_fileArr[2].source#}<div class="img" id="WU_FILE_has_2"><img src="{#$detail_qj_fileArr[2].path#}" data-url="{#$detail_qj_fileArr[2].source#}"><i class="del_btn">+</i></div>{#/if#}
+							                <p class="txt">后</p>
+							              </li>
+							              <li>
+							                <div class="addbtn img_show addbtn_more" data-extensions="jpg,jpeg,bmp,png" data-mimetypes="image/jpg,image/jpeg,image/png"></div>
+							                {#if $detail_qj_type == 0 && $detail_qj_fileArr[3].source#}<div class="img" id="WU_FILE_has_3"><img src="{#$detail_qj_fileArr[3].path#}" data-url="{#$detail_qj_fileArr[3].source#}"><i class="del_btn">+</i></div>{#/if#}
+							                <p class="txt">左</p>
+							              </li>
+							              <li>
+							                <div class="addbtn img_show addbtn_more" data-extensions="jpg,jpeg,bmp,png" data-mimetypes="image/jpg,image/jpeg,image/png"></div>
+							                {#if $detail_qj_type == 0 && $detail_qj_fileArr[4].source#}<div class="img" id="WU_FILE_has_4"><img src="{#$detail_qj_fileArr[4].path#}" data-url="{#$detail_qj_fileArr[4].source#}"><i class="del_btn">+</i></div>{#/if#}
+							                <p class="txt">顶</p>
+							              </li>
+							              <li>
+							                <div class="addbtn img_show addbtn_more" data-extensions="jpg,jpeg,bmp,png" data-mimetypes="image/jpg,image/jpeg,image/png"></div>
+							                {#if $detail_qj_type == 0 && $detail_qj_fileArr[5].source#}<div class="img" id="WU_FILE_has_5"><img src="{#$detail_qj_fileArr[5].path#}" data-url="{#$detail_qj_fileArr[5].source#}"><i class="del_btn">+</i></div>{#/if#}
+							                <p class="txt">底</p>
+							              </li>
+							            </ul>
+									<input type="hidden" name="qj_pics" value="{#if $detail_qj_type == 0#}{#$detail_qj_file#}{#/if#}" id="qj_pics" class="qj_pics">
+									<div class="url_box"{#if $detail_qj_type#} style="display:block;"{#/if#}>
+										<input type="text" name="qj_url" value="{#if $detail_qj_type == 1#}{#$detail_qj_file#}{#/if#}" id="qj_url" class="qj_url" placeholder="请输入全景地址">
+									</div>
+
+								</div>
+							</div>
+							<dl class="desc_box">
+								<dt>其他描述</dt>
+								<dd>
+									<textarea id="note" placeholder="详细的房源资料描述更能吸引找房者">{#$detail_note#}</textarea>
+								</dd>
+							</dl>
+						</div>
+						<div class="sub_btn">立即发布</div>
+					</form>
+				</div>
+				<!--表单部分e-->
+			</div>
+
+		</div>
+		{#include file="_locate.html"#}
+		{#include file="_mapchose.html"#}
+		{#include file="fabu-pay.html"#}
+
+
+		<script type="text/javascript">
+			var wxconfig = {
+				"appId": '{#$wxjssdk_appId#}',
+				"timestamp": '{#$wxjssdk_timestamp#}',
+				"nonceStr": '{#$wxjssdk_nonceStr#}',
+				"signature": '{#$wxjssdk_signature#}'
+			};
+		</script>
+		<div class="error_box"><div class="error"></div></div>
+		{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
+		<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+		{#if $cfg_geetest#}<script type="text/javascript" src="{#$cfg_secureAccess#}static.geetest.com/static/tools/gt.js"></script>{#/if#}
+		<script type="text/javascript" src="{#$templets_skin#}js/codetest.js?v={#$cfg_staticVersion#}"></script>
+		<script type="text/javascript" src="{#$templets_skin#}js/map_chose.js?v={#$cfg_staticVersion#}"></script>
+		<script src="{#$cfg_staticPath#}js/webuploader/webuploader.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+		<script src="{#$templets_skin#}js/fabu-pay.js?v={#$cfg_staticVersion#}"></script>
+		<script type="text/javascript" src="{#$templets_skin#}js/fabu-house-sale.js?v={#$cfg_staticVersion#}" ></script>
+		<script type="text/javascript" src="{#$templets_skin#}js/pubjs.js?v={#$cfg_staticVersion#}" ></script>
+		<script type="text/javascript" src="{#$templets_skin#}js/mobileSelect.js?v={#$cfg_staticVersion#}" ></script>
+		<script type="text/javascript" src="{#$templets_skin#}js/upload.js?v={#$cfg_staticVersion#}"></script>
+		<script type="text/javascript" src="{#$templets_skin#}js/upload-img.js?v={#$cfg_staticVersion#}"></script>
+		<script type="text/javascript" src="{#$templets_skin#}js/upload-video.js?v={#$cfg_staticVersion#}"></script>
+		<script type="text/javascript" src="{#$templets_skin#}js/house-loacte.js?v={#$cfg_staticVersion#}"></script>
+		<script src="//res.wx.qq.com/open/js/jweixin-1.3.2.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+
+		<!--选择地址-->
+		<script src="{#$templets_skin#}js/gz-info.js?v={#$cfg_staticVersion#}"></script>
+		<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+
+	</body>
+</html>

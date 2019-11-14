@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>【{#$uinfo['nickname']#}】{#$uinfo['nickname']#}个人资料_{#$uinfo['nickname']#}照片-{#$dating_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" href="{#$templets_skin#}css/default-skin.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/photoswipe.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/swiper.min.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/search-de.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+  var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+  var userId = {#$id#}, username = '{#$uinfo['nickname']#}';
+  var	JubaoConfig = {
+		"module" : 'dating',
+		"action" : 'u',
+		"id" : '{#$id#}'
+	};
+</script>
+</head>
+
+<body>
+{#include file="../../../siteConfig/touch_top.html" headTheme="transparent absolute" pageTitle={#$uinfo['nickname']#}#}
+
+	<div class="de-head">
+		<p class="de-p">
+			{#dating action="albumList" userid=$uinfo['userid']#}
+			{#if $_bindex.row == 1#}
+			<img src="{#changeFileSize url="{#$row.path#}" type="large"#}">
+			{#/if#}
+			{#/dating#}
+      {#if !$pageInfo.totalCount#}
+      <img src="{#$uinfo['photo']#}">
+      {#/if#}
+		</p>
+		{#* <div class="zan"><em></em>142</div> *#}
+	</div>
+	<div class="sea-infor">
+		<h1>{#$uinfo['nickname']#}<em>{#$uinfo['age']#}岁</em></h1>
+		<ul>
+			<li class="in-1">身高：{#$detail_height#}CM</li>
+			<li class="in-1"><span>体型：{#$detail_bodytypeName#}</span><span>类别：{#$detail_typeName#}</span><span>学历：{#$detail_educationName#}</span><span>婚况：{#$detail_marriageName#}</span></li>
+			<li class="in-1"><span>交友目的：{#$detail_purposeName#}</span><span>地区：{#$detail_addre#}</span><span>月收入：{#$detail_incomeName#}</span></li>
+		</ul>
+		<span class="btn">帮我约TA ></span>
+	</div>
+	<div class="my-gallery comment-pic-slide photo fn-clear" itemscope itemtype="">
+		<h1>照片</h1>
+		<div class="swiper-wrapper  pic">
+			{#dating action="albumList" userid=$uinfo['userid']#}
+			<figure itemprop="associatedMedia" itemscope itemtype="" class="swiper-slide">
+				<a href="{#$row.path#}" itemprop="contentUrl" data-size="964x1024">
+				<img src="{#changeFileSize url="{#$row.path#}" type="small"#}" itemprop="thumbnail" alt="Image description" />
+				</a>
+			</figure>
+			{#/dating#}
+			{#if $pageInfo.totalCount == 0#}
+			<div class="empty">他/她 还没有上传照片哦~</div>
+			{#/if#}
+		</div>
+	</div>
+	<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+	    <div class="pswp__bg"></div>
+	    <div class="pswp__scroll-wrap">
+	        <div class="pswp__container">
+	            <div class="pswp__item">
+	            	<div class="pswp__zoom-wrap">
+	            	</div>
+	            </div>
+	            <div class="pswp__item"></div>
+	            <div class="pswp__item"></div>
+	        </div>
+	        <div class="pswp__ui pswp__ui--hidden">
+	            <div class="pswp__top-bar">
+	                <div class="pswp__counter"></div>
+	                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+	                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+	                <div class="pswp__preloader">
+	                    <div class="pswp__preloader__icn">
+	                      <div class="pswp__preloader__cut">
+	                        <div class="pswp__preloader__donut"></div>
+	                      </div>
+	                    </div>
+	                </div>
+	            </div>
+	          <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+	                <div class="pswp__share-tooltip"></div>
+	            </div>
+	            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+	            </button>
+	            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+	            </button>
+	            <div class="pswp__caption">
+	                <div class="pswp__caption__center"></div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<div class="introduce fn-clear">
+		<p>自我介绍</p>
+		<div class="introduce-txt">
+			<div class="ii">{#if $detail_note#}{#$detail_note#}{#else#}这家伙很懒，什么都没写~{#/if#}</div>
+		</div>
+		<span>全文</span>
+	</div>
+	<div class="minute fn-clear">
+		<div class="minute-1">
+			<p>基本资料</p>
+			<ul class="fn-clear">
+				<li>{#if $uinfo['sex'] == 1#}男{#else#}女{#/if#}</li>
+				<li>工作状态：{#$detail_workstatusName#}</li>
+				<li>是否吸烟：{#$detail_smokeName#}</li>
+				<li>作息时间：{#$detail_workandrestName#}</li>
+				<li>制造浪漫：{#$detail_romanceName#}</li>
+				<li>居住情况：{#$detail_housetagName#}</li>
+				<li>购车情况：{#$detail_cartagName#}</li>
+				<li>是否饮酒：{#$detail_drinkName#}</li>
+				<li>最大消费：{#$detail_maxconsumeName#}</li>
+			</ul>
+		</div>
+		<div class="minute-1">
+			<p>择偶条件</p>
+			<ul class="mm fn-clear">
+				<li>{#$detail_dfage#} - {#$detail_dtage#}岁</li>
+				<li>收入：{#$detail_dincomeName#}</li>
+				<li>区域：{#$detail_addrName#}</li>
+				<li>身高：{#$detail_dfheight#} - {#$detail_dtheight#}cm</li>
+				<li>婚姻状况：{#$detail_dmarriageName#}</li>
+				<li>居住情况：{#$detail_dhousetagName#}</li>
+			</ul>
+		</div>
+	</div>
+	<div class="label-lead">TA的标签</div>
+	<div class="label fn-clear">
+		<p></p>
+		<ul>
+			{#foreach from=$detail_tagsName item=tag#}
+			<li>{#$tag#}</li>
+			{#/foreach#}
+		</ul>
+	</div>
+	<div class="nic fn-clear">
+		<ul >
+			<li class="first-nic">
+				<a href="javascript:;"><em></em>发私信</a>
+			</li>
+			<li class="second-nic">
+				{#if $detail_visit#}
+				<a href="javascript:;" class="do"><i></i>已打招呼</a>
+				{#else#}
+				<a href="javascript:;" class="op"><em></em>打招呼</a>
+				{#/if#}
+			</li>
+			{#if $detail_follow#}
+			<li class="last-nic guanzhu">
+				<a href="javascript:;"><em></em>已关注</a>
+			</li>
+			{#else#}
+			<li class="last-nic">
+				<a href="javascript:;"><em></em>加关注</a>
+			</li>
+			{#/if#}
+		</ul>
+	</div>
+	<div class="disk"></div>
+	<div class="txt">
+		<h1>发私信</h1>
+		<textarea rows="10" class="shuru" style="display:block;	 "></textarea>
+		<a href="javascript:;" class="sendmsgbtn">发送</a>
+		<p></p>
+	</div>
+	<div class="zhaohu">已打招呼</div>
+
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$detail_note#}',
+		"title": '{#$uinfo['nickname']#}',
+		"imgUrl": '{#$uinfo['photo']#}',
+		"link": '{#getUrlPath service='dating' template='u' id={#$detail_id#}#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script src="{#$templets_skin#}js/slider.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/photoswipe.min.js"></script>
+<script src="{#$templets_skin#}js/photoswipe-ui-default.min.js"></script>
+<script src="{#$templets_skin#}js/search-de.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

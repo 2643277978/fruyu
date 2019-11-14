@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<title>养老服务</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fabu.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/pension.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+	var module = 'pension';
+</script>
+</head>
+<body>
+{#$pageTitle = '养老服务'#}
+{#$pageRight = '<a href="javascript:;" class="notMenu"> </a>'#}
+{#include file="top.html"#}
+<ul class="link">
+  <li><a href="{#getUrlPath service='member'  template='config-pension'#}"><i class="icon-config-house"></i>{#$langData['homemaking'][0][28]#}</a></li>
+  <li><a href="{#getUrlPath service='member' template='pension-albums'#}"><i class="icon-house_yuyue"></i>相册管理</a></li>
+  <li><a href="{#getUrlPath service='member' template='booking' action='pension'#}"><i class="icon-house_entrust"></i>预约管理</a></li>
+  <li><a href="{#getUrlPath service='member' template='pension-award'#}"><i class="icon-house_meallist"></i>入驻申请</a></li>
+  <li><a href="{#getUrlPath service='member' template='pension-invitation'#}"><i class="icon-house_manage"></i>我的邀请</a></li>
+</ul>
+</body>
+</html>

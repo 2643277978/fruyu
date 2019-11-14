@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>爱情搜索-{#$dating_title#}</title>
+<meta name="keywords" content="{#$dating_keywords#}" />
+<meta name="description" content="{#$dating_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/search.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	window.onload = function(){
+		$(window).resize(function(){
+			var cl = ''
+			var w = $(window).width();
+			if(w >= 1936) {cl = 'root1936';}
+			if(w >= 1692 && w < 1936) {cl = 'root1692';}
+			if(w >= 1448 && w < 1692) {cl = 'root1448';}
+			if(w >= 1204 && w < 1448) {cl = 'root1204';}
+			if(w < 1204) {cl = 'root960';}
+			$('body').css('min-height',$(window).height() + 50 + 'px').removeClass().addClass(cl).fadeIn();
+		}).trigger('resize');
+	};
+
+	var bage = {#$bage#}, eage = {#$eage#}, bhei = {#$bhei#}, ehei = {#$ehei#}, addr1 = {#$addr1#}, addr2 = {#$addr2#};
+	var data = '{#getUrlParam url={#$pageUrl#} data={#$pageParam#}#}';
+</script>
+</head>
+
+<body class="root1448 fn-hide">
+{#$pageCurr = "search"#}
+{#include file="top.html"#}
+
+{#$pageUrl = {#getUrlPath service='dating' template='search'#}#}
+
+<div class="con">
+
+	<!-- 搜索 s -->
+	<div class="frameW wrap">
+		<div class="filter_area fn-clear">
+			<div class="filter_conditions">
+
+				<div class="selected_conditions fn-clear">
+					<div class="cond_txt">筛选条件：</div>
+					<div class="cond_wrap fn-clear">
+
+						<div class="cond_item">
+							<a href="javascript:;" class="cond_main_txt"><em>{#$sexname#}</em><i></i></a>
+							<dl class="cond_item_con">
+								<dt>请选择性别：</dt>
+								<dd class="moreSle">
+									<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} sex=1#}" data-id="1">男士</a>
+									<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} sex=0#}" data-id="0">女士</a>
+								</dd>
+							</dl>
+						</div>
+
+						<div class="cond_item">
+							<a href="javascript:;" class="cond_main_txt"><em>{#$agename#}</em><i></i>
+							</a>
+							<dl class="cond_item_con">
+								<dt>请选择年龄：</dt>
+								<dd class="j-age-dd">
+									<div id="j-age1" class="selectBox">
+										<select id="agebegin" name="agebegin"></select>
+									</div>
+									<span class="conectSel">-</span>
+									<div id="j-age2" class="selectBox">
+										<select id="ageend" name="ageend"></select>
+									</div>
+								</dd>
+								<dd><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} age='%age'#}" class="btn_gray cage">确定</a></dd>
+							</dl>
+						</div>
+
+						<div class="cond_item">
+							<a href="javascript:;" class="cond_main_txt"><em>{#$heiname#}</em><i></i></a>
+							<dl class="cond_item_con">
+								<dt>请选择身高：</dt>
+								<dd class="j-height-dd">
+									<div id="j-height1" class="selectBox">
+										<select id="h1" name="h1"></select>
+									</div>
+									<span class="conectSel">-</span>
+									<div id="j-height2" class="selectBox">
+										<select id="h2" name="h2">
+											<option value="" selected="selected">不限</option>
+										</select>
+									</div>
+								</dd>
+								<dd><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} height='%height'#}" class="btn_gray cheight">确定</a></dd>
+							</dl>
+						</div>
+
+						<div class="cond_item">
+							<a href="javascript:;" class="cond_main_txt cond_main_addres"><em>{#$addrname#}</em><i></i></a>
+							<dl class="cond_item_con">
+								<dt>请选择地区：</dt>
+								<dd id="addrlist">
+									<select id="addrid" name="addrid[]">
+										<option value="">请选择区域</option>
+										{#dating action='addr' return='addr'#}
+										{#$sel = ""#}
+										{#if $addr.id == $addr1#}
+										{#$sel = " selected"#}
+										{#/if#}
+										<option value="{#$addr.id#}"{#$sel#}>{#$addr.typename#}</option>
+										{#/dating#}
+									</select>
+								</dd>
+								<dd><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} addr='%addr'#}" class="btn_gray caddr">确定</a></dd>
+							</dl>
+						</div>
+
+						<div class="cond_item">
+							<a href="javascript:;" class="cond_main_txt"><em>{#$educationname#}</em><i></i></a>
+							<dl class="cond_item_con">
+								<dt>请选择学历：</dt>
+								<dd class="moreSle">
+									<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} education=''#}" data-id=''>不限</a>
+									{#dating action='item' return='item' type='7'#}
+									<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} education={#$item.id#}#}" data-id="{#$item.id#}">{#$item.typename#}</a>
+									{#/dating#}
+									</li>
+								</dd>
+							</dl>
+						</div>
+
+						<div class="cond_item">
+							<a href="javascript:;" class="cond_main_txt"><em>{#$incomename#}</em><i></i></a>
+							<dl class="cond_item_con">
+								<dt>请选择收入：</dt>
+								<dd class="moreSle">
+									<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} income=''#}" data-id=''>不限</a>
+									{#dating action='item' return='item' type='6'#}
+									<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} income={#$item.id#}#}" data-id="{#$item.id#}">{#$item.typename#}</a>
+									{#/dating#}
+									</li>
+								</dd>
+							</dl>
+						</div>
+
+						<span class="more_txt{#if $more#} active{#/if#}">展开更多条件</span>
+					</div>
+				</div>
+
+				<div class="more_conditions fn-clear"{#if $more#} style="display: block;"{#/if#}>
+					<div class="cond_txt">更多条件：</div>
+					<div class="cond_wrap fn-clear">
+
+						<div class="cond_item">
+							<a href="javascript:;" class="cond_main_txt"><em>{#$typename#}</em><i></i></a>
+							<dl class="cond_item_con">
+								<dt>请选择类型：</dt>
+								<dd class="moreSle setWidm">
+									<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} typeid=''#}" data-id=''>不限</a>
+									{#dating action='item' return='item' type='143'#}
+									<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} typeid={#$item.id#}#}" data-id="{#$item.id#}">{#$item.typename#}</a>
+									{#/dating#}
+								</dd>
+							</dl>
+						</div>
+
+						<div class="cond_item">
+							<a href="javascript:;" class="cond_main_txt"><em>{#$purposename#}</em><i></i></a>
+							<dl class="cond_item_con">
+								<dt>请选择交友目的：</dt>
+								<dd class="moreSle setWidm">
+									<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} purpose=''#}" data-id=''>不限</a>
+									{#dating action='item' return='item' type='1'#}
+									<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} purpose={#$item.id#}#}" data-id="{#$item.id#}">{#$item.typename#}</a>
+									{#/dating#}
+								</dd>
+							</dl>
+						</div>
+
+						<div class="cond_item">
+							<a href="javascript:;" class="cond_main_txt"><em>{#$marriagename#}</em><i></i></a>
+							<dl class="cond_item_con">
+								<dt>请选择婚姻情况：</dt>
+								<dd class="moreSle">
+									<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} marriage=''#}">不限</a>
+									{#dating action='item' return='item' type='2'#}
+									<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} marriage={#$item.id#}#}" data-id="{#$item.id#}">{#$item.typename#}</a>
+									{#/dating#}
+								</dd>
+							</dl>
+						</div>
+
+						<div class="cond_item">
+							<a href="javascript:;" class="cond_main_txt"><em>{#$housetagname#}</em><i></i></a>
+							<dl class="cond_item_con">
+								<dt>请选择住房情况：</dt>
+								<dd class="moreSle setWidm">
+									<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} housetag=''#}" data-id=''>不限</a>
+									{#dating action='item' return='item' type='4'#}
+									<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} housetag={#$item.id#}#}" data-id="{#$item.id#}">{#$item.typename#}</a>
+									{#/dating#}
+								</dd>
+							</dl>
+						</div>
+
+						<div class="cond_item">
+							<a href="javascript:;" class="cond_main_txt"><em>{#$bodytypename#}</em><i></i></a>
+							<dl class="cond_item_con">
+								<dt>请选择体形：</dt>
+								<dd class="moreSle">
+									<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} bodytype=''#}" data-id=''>不限</a>
+									{#dating action='item' return='item' type='3'#}
+									<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} bodytype={#$item.id#}#}" data-id="{#$item.id#}">{#$item.typename#}</a>
+									{#/dating#}
+								</dd>
+							</dl>
+						</div>
+
+						<div class="cond_item">
+							<a href="javascript:;" class="cond_main_txt"><em>{#$workstatusname#}</em><i></i></a>
+							<dl class="cond_item_con">
+								<dt>请选择工作情况：</dt>
+								<dd class="moreSle">
+									<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} workstatus=''#}" data-id=''>不限</a>
+									{#dating action='item' return='item' type='5'#}
+									<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} workstatus={#$item.id#}#}" data-id="{#$item.id#}">{#$item.typename#}</a>
+									{#/dating#}
+								</dd>
+							</dl>
+						</div>
+
+						<div class="cond_item">
+							<a href="javascript:;" class="cond_main_txt"><em>{#$smokename#}</em><i></i></a>
+							<dl class="cond_item_con">
+								<dt>请选择吸烟：</dt>
+								<dd class="moreSle">
+									<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} smoke=''#}" data-id=''>不限</a>
+									{#dating action='item' return='item' type='8'#}
+									<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} smoke={#$item.id#}#}" data-id="{#$item.id#}">{#$item.typename#}</a>
+									{#/dating#}
+								</dd>
+							</dl>
+						</div>
+
+						<div class="cond_item">
+							<a href="javascript:;" class="cond_main_txt"><em>{#$drinkname#}</em><i></i></a>
+							<dl class="cond_item_con">
+								<dt>请选择饮酒：</dt>
+								<dd class="moreSle">
+									<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} drink=''#}" data-id=''>不限</a>
+									{#dating action='item' return='item' type='9'#}
+									<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} drink={#$item.id#}#}" data-id="{#$item.id#}">{#$item.typename#}</a>
+									{#/dating#}
+								</dd>
+							</dl>
+						</div>
+
+						<div class="cond_item">
+							<a href="javascript:;" class="cond_main_txt"><em>{#$workandrestname#}</em><i></i></a>
+							<dl class="cond_item_con">
+								<dt>请选择作息时间：</dt>
+								<dd class="moreSle">
+									<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} workandrest=''#}" data-id=''>不限</a>
+									{#dating action='item' return='item' type='10'#}
+									<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} workandrest={#$item.id#}#}" data-id="{#$item.id#}">{#$item.typename#}</a>
+									{#/dating#}
+								</dd>
+							</dl>
+						</div>
+
+						<div class="cond_item">
+							<a href="javascript:;" class="cond_main_txt"><em>{#$cartagname#}</em><i></i></a>
+							<dl class="cond_item_con">
+								<dt>请选择购车情况：</dt>
+								<dd class="moreSle">
+									<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} cartag=''#}" data-id=''>不限</a>
+									{#dating action='item' return='item' type='11'#}
+									<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} cartag={#$item.id#}#}" data-id="{#$item.id#}">{#$item.typename#}</a>
+									{#/dating#}
+								</dd>
+							</dl>
+						</div>
+
+						<div class="cond_item">
+							<a href="javascript:;" class="cond_main_txt"><em>{#$romancename#}</em><i></i></a>
+							<dl class="cond_item_con">
+								<dt>请选择制造浪漫：</dt>
+								<dd class="moreSle">
+									<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} romance=''#}" data-id=''>不限</a>
+									{#dating action='item' return='item' type='13'#}
+									<a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} romance={#$item.id#}#}" data-id="{#$item.id#}">{#$item.typename#}</a>
+									{#/dating#}
+								</dd>
+							</dl>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="search_sort frameW">
+		<div class="search_sort_l">
+			<ul id="jaSearchRankList" class="fn-clear">
+				<li class="first{#if $orderby == 0 || $orderby == ""#} active{#/if#}"><a href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby=''#}" data-val="">默认排序</a></li>
+				<li{#if $orderby == 1 || $orderby == 2#} class="active"{#/if#}><a class="{#if $orderby == 2#} up{#/if#}" href="{#if $orderby == 1#}{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby='2'#}{#else#}{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby='1'#}{#/if#}" data-val="{#if $orderby == 1#}2{#else#}1{#/if#}">年龄</a></li>
+				<li{#if $orderby == 3#} class="active"{#/if#}><a class="down" href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby='3'#}" data-val="3">注册时间</a></li>
+				<li{#if $orderby == 4#} class="active"{#/if#}><a class="down" href="{#getUrlParam url={#$pageUrl#} data={#$pageParam#} orderby='4'#}" data-val="4">收入</a></li>
+			</ul>
+			<label class="onlineuser"><input type="checkbox" value="1"{#if $online#} checked{#/if#} onclick="window.location.href='{#if $online#}{#getUrlParam url={#$pageUrl#} data={#$pageParam#} online=''#}{#else#}{#getUrlParam url={#$pageUrl#} data={#$pageParam#} online='1'#}{#/if#}'">在线用户</label>
+		</div>
+	</div>
+
+	<div class="content frameW">
+		<div id="device" class="gridalicious oh"></div>
+		<div class="search_null fn-hide">
+			<h3>非常抱歉，找不到你要求的结果。</h3>
+			<p>这可能跟你设置的搜索条件太多有关，<br>建议您放宽搜索条件，再试一次…</p>
+		</div>
+	</div>
+	<div class="loading ldimg first" id="imgLoading">正在加载</div>
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.masonry.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/search.js"></script>
+</body>
+</html>

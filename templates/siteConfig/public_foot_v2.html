@@ -1,0 +1,17 @@
+<div class="foot">
+  <div class="footer1 wrap">
+    <div class="about fn-clear">
+      <ul>
+        {#siteConfig action="singel"#}
+        <li><a href="{#getUrlPath service='siteConfig' template='about' id={#$row.id#}#}">{#$row.title#}</a></li>
+        <em></em>
+    	{#/siteConfig#}
+        <li><a href="{#getUrlPath service='siteConfig' template='help'#}">帮助中心</a></li><em></em>
+        <li><a href="{#getUrlPath service='siteConfig' template='feedback'#}">意见反馈</a></li>
+      </ul>
+    </div>
+    <div class="power">
+      <p>{#$cfg_powerby#}</p>
+    </div>
+  </div>
+</div>

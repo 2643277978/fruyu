@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>我的交友-{#$dating_title#}</title>
+<meta name="keywords" content="{#$dating_keywords#}" />
+<meta name="description" content="{#$dating_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/myjy.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+{#$pageCurr = "my"#}
+{#include file="top.html"#}
+
+{#$sex = 0#}
+{#if $userinfo.sex == 0#}
+{#$sex = 1#}
+{#/if#}
+
+<!-- 热门用户 s -->
+<div class="wrap hot-user">
+	<a href="{#getUrlPath service='dating' template='my'#}" class="hot_u"></a>
+	<ul class="hotu-list fn-clear">
+		{#dating action="memberList" return="member" sex=$sex property='r' page='1' pageSize='11'#}
+		<li>
+			<a href="{#$member.url#}" target="_blank" title="{#$member.nickname#}">
+				<img src="{#changeFileSize url="{#$member.photo#}" type="middle"#}" alt="{#$member.nickname#}">
+				<span class="info">
+					{#$member.nickname#}<br>{#$member.addr[1]#} {#$member.age#}岁</span>
+			</a>
+		</li>
+		{#/dating#}
+	</ul>
+	<a class="hotu-more" title="查看更多" href="{#getUrlPath service='dating' template='search'#}"></a>
+</div>
+<!-- 热门用户 e -->
+
+<!-- 主体 s -->
+<div class="wrap myjy-main fn-clear">
+	<!-- 左侧 s -->
+	<div class="frame-left">
+		<div class="day-love">
+			<div id="jcPositionBar" class="top-bar">
+				<div class="now-pos clearfix">
+					<strong>为您推荐</strong>
+				</div>
+			</div>
+			<div id="jcDayLovePub" class="pub-user">
+				<div class="user-list">
+					<div class="clearfix" id="qingYuanRecommend">
+						<ul>
+							{#dating action="memberList" return="member" sex=$sex addr=$u_addr age=$u_dfage|cat:"-"|cat:$u_dtage page='1' pageSize='20'#}
+							<li data-uid="{#$member.id#}">
+								<div class="user-item front clearfix">
+									<div class="photo">
+										<a href="{#$member.url#}" target="_blank" title="{#$member.nickname#}"><img data-url="{#$member.photo#}" src="{#$cfg_staticPath#}images/blank.gif" alt="{#$member.nickname#}"></a>
+										{#if $member.online#}<span class="online" title="在线">在线</span>{#/if#}
+									</div>
+									<div class="user-info">
+										<h3>
+											<a class="name" href="{#$member.url#}" target="_blank">{#$member.nickname#}</a>
+											{#if $member.certifyState#}<a class="flag-iden" href="{#$member.url#}" target="_blank" title="已通过实名认证"></a>{#else#}<a class="flag-iden-n" href="{#$member.url#}" target="_blank" title="未通过实名认证"></a>{#/if#}
+											{#if $member.phoneCheck#}<a class="flag-mobile" href="{#$member.url#}" target="_blank" title="已验证手机号"></a>{#else#}<a class="flag-mobile-n" href="{#$member.url#}" target="_blank" title="还未验证手机号"></a>{#/if#}
+											{#if $member.emailCheck#}<a class="flag-mail" href="{#$member.url#}" target="_blank" title="已通过邮箱验证"></a>{#else#}<a class="flag-mail-n" href="{#$member.url#}" target="_blank" title="还未通过邮箱验证"></a>{#/if#}
+										</h3>
+										<p class="base">{#if $member.age#}{#$member.age#}岁，{#/if#}{#if $member.addr#}{#$member.addr[1]#}，{#/if#}{#if $member.height#}{#$member.height#}cm，{#/if#}{#$member.incomeName#}</p>
+										{#if $member.sign#}<p class="heart-word">个性签名：{#$member.sign#}</p>{#/if#}
+									</div>
+									<a class="btn-love{#if $member.visit#} hadLove{#/if#}" href="javascript:;"><em>打招呼</em>
+									</a>
+								</div>
+							</li>
+							{#/dating#}
+						</ul>
+					</div>
+				</div>
+			</div>
+			{#if $pageInfo.totalCount == 0#}
+			<div class="empty">根据您的择偶条件，暂时没有匹配到与您相符的会员<br />您可以尝试使用下面的搜索功能，或者修改您的择偶条件</div>
+			{#/if#}
+			<div id="jcSearchBar" class="search-bar showFlag fadeFromBottom" data-url="{#getUrlPath service='dating' template='search' param="sex=$sex"#}">
+				{#if $pageInfo.totalCount > 0#}<p>想查看更多符合你条件的用户？尝试一下搜索吧</p>{#/if#}
+				<div class="dsear fn-clear">
+					<h2>搜索意中人</h2>
+					<div class="sel saddr">
+						<span data-val="">不限</span>
+						<s></s>
+						<div class="popup-sel"></div>
+					</div>
+					<div class="sel bage">
+						<span data-val="18">18</span>
+						<s></s>
+						<div class="popup-sel"><ul></ul></div>
+					</div>
+					<label>-</label>
+					<div class="sel eage">
+						<span data-val="28">28</span>
+						<s></s>
+						<div class="popup-sel"><ul></ul></div>
+					</div>
+					<label>岁</label>
+					<div class="sel bhei">
+						<span data-val="140">140</span>
+						<s></s>
+						<div class="popup-sel"><ul></ul></div>
+					</div>
+					<label>-</label>
+					<div class="sel ehei">
+						<span data-val="">不限</span>
+						<s></s>
+						<div class="popup-sel"><ul></ul></div>
+					</div>
+					<label>cm</label>
+					<a href="javascript:;" class="sbtn">搜索</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 左侧 e -->
+
+	<!-- 右侧 s -->
+	<div class="frame-right fadeFromBottom">
+		<div class="mod-block-3 exp-preson-info showFlag">
+			<!-- <a target="_blank" href="detail.shtml?skinEdit=1" class="want-skin" title="我要装扮"></a> -->
+			<div class="exp-p-info">
+				<div class="user-100"><a target="_blank" href="{#getUrlPath service='dating' template='u' id=$uid#}"><img onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_100.jpg';" src="{#if $userinfo.photo == ""#}{#$cfg_staticPath#}images/noPhoto_100.jpg{#else#}{#changeFileSize url="{#$userinfo.photo#}" type="large"#}{#/if#}" /></a></div>
+				<dl>
+					<dt><a class="myname" href="{#getUrlPath service='dating' template='u' id=$uid#}" target="_blank">{#if $userinfo.userType == 2#}{#$userinfo.person#}{#else#}{#$userinfo.nickname#}{#/if#}</a></dt>
+					<dd class="ico_panel">
+						{#if $userinfo.certifyState#}<a href="{#getUrlPath service='member' type='user' template='security-shCertify'#}" class="flag-iden" title="已通过完整身份认证"></a>{#else#}<a href="{#getUrlPath service='member' type='user' template='security-shCertify'#}" class="flag-iden-n" title="未通过完整身份认证"></a>{#/if#}
+						{#if $userinfo.phoneCheck#}<a href="{#getUrlPath service='member' type='user' template='security-chphone'#}" class="flag-mobile" title="已验证手机号"></a>{#else#}<a href="{#getUrlPath service='member' type='user' template='security-chphone'#}" class="flag-mobile-n" title="还未验证手机号"></a>{#/if#}
+						{#if $userinfo.emailCheck#}<a href="{#getUrlPath service='member' type='user' template='security-chemail'#}" class="flag-mail" title="已通过邮箱认证"></a>{#else#}<a href="{#getUrlPath service='member' type='user' template='security-chemail'#}" class="flag-mail-n" title="未通过邮箱认证"></a>{#/if#}
+					</dd>
+					<dd>
+						<div class="prefect-data">
+							<a target="_blank" href="{#getUrlPath service='member' type='user' template='dating' action='profile'#}">完善资料</a>
+							<a target="_blank" href="{#getUrlPath service='member' type='user' template='dating' action='review'#}">私信{#if $u_review > 0#}<font color="#ff0000">({#$u_review#})</font>{#/if#}</a>
+						</div>
+					</dd>
+				</dl>
+			</div>
+		</div>
+		<!-- 谁看过我 -->
+		<div class="mod-block-1 view-me showFlag">
+			<h2 class="title clearfix">
+				<span>看看我的人气</span>
+			</h2>
+			<ul class="exp-visitor-list clearfix">
+				<li><a href="{#getUrlPath service='member' type='user' template='dating' action='visit'#}" target="_blank">谁看过我<em>+{#$vout#}</em></a></li>
+				<li><a href="{#getUrlPath service='member' type='user' template='dating' action='visit' param='oper=visit&do=out'#}" target="_blank">我看过谁<em>+{#$vin#}</em></a></li>
+				<li><a href="{#getUrlPath service='member' type='user' template='dating' action='visit' param='oper=follow'#}" target="_blank">谁关注了我<em>+{#$fout#}</em></a></li>
+				<li><a href="{#getUrlPath service='member' type='user' template='dating' action='visit' param='oper=follow&do=out'#}" target="_blank">我关注了谁<em>+{#$fin#}</em></a></li>
+				<li><a href="{#getUrlPath service='member' type='user' template='dating' action='visit' param='oper=meet'#}" target="_blank">谁约了我<em>+{#$mout#}</em></a></li>
+				<li><a href="{#getUrlPath service='member' type='user' template='dating' action='visit' param='oper=meet&do=out'#}" target="_blank">我约了谁<em>+{#$min#}</em></a></li>
+			</ul>
+		</div>
+		<div class="ad">
+			<script src="/include/json.php?action=adjs&id=147" language="javascript"></script>
+		</div>
+		<div class="mod-block-1 showFlag">
+			<div class="ck-slide">
+				<div class="ck-slide-dir">
+					<ul class="ck-slide-wrapper">
+						<li class="gameBarBox">
+							<h2 class="title clearfix">
+								<span>精彩活动</span>
+								<a href="{#getUrlPath service='dating' template='activity'#}" target="_blank">更多<b class="simsun">&gt;&gt;</b>
+								</a>
+							</h2>
+							{#dating action="activity" return="activity" pageSize="3"#}
+							<p class="hdtitle">{#$activity.title#}</p>
+							<a href="{#$activity.url#}" class="gameEntry2" target="_blank"><img class="gameBarBox-1" src="{#changeFileSize url="{#$activity.litpic#}" type="o_large"#}" alt="{#$activity.title#}"></a>
+							<div>
+								<p class="hddetai">
+									<span><i>{#$activity.btime#}</i></span>
+									<a href="{#$activity.url#}" target="_blank">查看详情</a>
+								</p>
+							</div>
+							{#/dating#}
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="ad">
+			<script src="/include/json.php?action=adjs&id=148" language="javascript"></script>
+		</div>
+	</div>
+	<!-- 右侧 e -->
+</div>
+<!-- 主体 e -->
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/myjy.js"></script>
+</body>
+</html>

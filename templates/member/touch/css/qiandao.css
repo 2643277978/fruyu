@@ -1,0 +1,426 @@
+a:hover {text-decoration: none;}
+
+.huoniao_iOS .SignLead {display: none;}
+.Top{
+	height: 4.2rem;
+	background: url(../images/topbc.png) no-repeat center;
+	background-size: cover;
+}
+.SignLead{
+    height: .9rem;
+    font-size: .32rem;
+    line-height: .9rem;
+    max-width: 1080px;
+    z-index: 100000;
+    overflow: hidden;
+}
+.SignLead .back{
+	float: left;
+}
+.SignLead .back a{
+    display: table-cell;
+    height: .9rem;
+    width: 1rem;
+    vertical-align: middle;
+    background: url(../images/header_back_index.png) center center no-repeat;
+    background-size: auto .48rem;
+}
+.SignLead .SignTitle{
+    text-align: center;
+    font-size: .36rem;
+    line-height: .9rem;
+    margin: 0;
+    font-weight: 400;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #fff;
+    position: absolute;
+    left: 2rem;
+    right: 2rem;
+}
+.SignBox{
+	position: relative;
+}
+.SignBox ul li{
+	float: left;
+	width: 33.333%;
+	text-align: center;
+	color: #fff;
+}
+.SignBox ul li p{
+	font-size: .24rem;
+	margin-top: .7rem;
+}
+.SignBox ul li span{
+	font-size: .28rem;
+}
+.SignBox ul li span em{
+	font-size: .32rem;
+	margin-right: .05rem;
+}
+.SignBox ul li.mid_box p{
+	margin-top: .2rem;
+}
+.SignBox ul li.mid_box .Personal{
+	width: 1.4rem;
+	height: 1.4rem;
+	border-radius: 100%;
+	overflow: hidden;
+	margin: 0 auto;
+	margin-top: .35rem;
+}
+.SignBox ul li.mid_box .Personal img{
+	width: 100%;
+	height: 100%;
+}
+.Rules {
+	position: absolute;
+	left: .3rem;
+	bottom: -.15rem;
+}
+.Rules a {
+	color: #fff;
+}
+.ClickSign{
+	position: absolute;
+    right: 0.1rem;
+    bottom: -0.3rem;
+    width: 1.9rem;
+    height: 0.7rem;
+    line-height: 0.7rem;
+    text-align: center;
+    color: #fff;
+    background: #f6c709;
+    font-size: .32rem;
+    border-radius: 0.6rem;
+}
+.ClickSign.disabled {
+	background: #c5c5c5;
+}
+
+
+/*日历签到列表*/
+#calendar {
+	height: 7.7rem;
+	-webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0)
+}
+.sign_main {
+	margin: 0 .25rem;
+	margin-top: .3rem;
+	box-shadow:1px 2px 27px #ececec;
+}
+.sign_succ_calendar_title {
+	text-align:center;
+	width:100%;
+	background:#fff;
+    height: .9rem;
+    line-height: .9rem;
+}
+.sign table {
+	border-collapse:collapse;
+	border-spacing:0;
+	width:100%;
+}
+.sign th,.sign td {
+	width:.6rem;
+	height:.4rem;
+	text-align:center;
+	line-height: .7rem;
+	border:0.02rem solid #e3e3e3;
+}
+.sign th {
+	font-size:100%;
+}
+.sign td {
+	color:#404040;
+	vertical-align:middle;
+}
+.sign .WeekDay td{
+    width: .6rem;
+    height: 1rem;
+    text-align: left;
+    font-size: .28rem;
+    text-indent: 0.13rem;
+    vertical-align: top;
+    line-height: 0.65rem;
+    position: relative;
+    cursor: pointer;
+}
+.sign .WeekDay td i{
+    position: absolute;
+    right: .1rem;
+    top: 0.17rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 8px;
+    background: #f25b11;
+	display: none;
+}
+.sign .WeekDay td span{
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0px;
+	color: #adadad;
+	font-size: .24rem;
+	width: 1rem;
+    height: 0.4rem;
+    line-height: 0.4rem;
+	text-align: center;
+	text-indent: 0;
+	display: none;
+}
+.sign .WeekDay td p{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+    color: #adadad;
+    font-size: .24rem;
+    /*width: 1rem;*/
+    text-align: center;
+    text-indent: 0;
+    display: none;
+    background: #f5b00c;
+    color: #fff;
+    height: 0.4rem;
+    line-height: 0.4rem;
+}
+.sign .WeekDay td .TodayTips{
+    position: absolute;
+    left: .1rem;
+    top: .08rem;
+    width: .4rem;
+    height: 0.4rem;
+    line-height: .4rem;
+    border-radius: 100%;
+    border: .04rem solid #f26e17;
+    text-align: center;
+    text-indent: 0;
+}
+.sign .WeekDay td.on i{
+	display: block;
+}
+.sign .WeekDay td.bu span{
+	display: block;
+}
+.sign .WeekDay td.special p{
+	display: block;
+}
+.calendar_month_span {
+	display:inline;
+	line-height:40px;
+	font-size:16px;
+	color:#656565;
+	letter-spacing:2px;
+	font-weight:bold;
+}
+.calendar_month_next {
+	width: .5rem;
+	height:.9rem;
+	float:right;
+	background: url(../images/dataRight.png) no-repeat center;
+	cursor: pointer;
+}
+.calendar_month_prev {
+	width: .5rem;
+	height:.9rem;
+	float:left;
+	background: url(../images/dataLeft.png) no-repeat center;
+	cursor: pointer;
+}
+.disk{
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 1;
+	display: none;
+}
+.SuccessBox{
+	position: fixed;
+	left: 50%;
+	top: 3.7rem;
+	margin-left: -3.3rem;
+	background: #fff;
+	width: 6.6rem;
+	height: 5.9rem;
+	z-index: 2;
+	background: url(../images/SuccessBac.png) no-repeat top;
+	background-size: 100%;
+	display: none;
+}
+.SuccessBox .SuccessLead{
+	font-size: .36rem;
+	color: #fff;
+	text-align: center;
+	margin-top: 0.3rem;
+}
+.SuccessBox .SuccessDay{
+    font-size: .3rem;
+    color: #f26d13;
+    text-align: center;
+    height: .4rem;
+    line-height: .4rem;
+    background: url(../images/line.png) no-repeat center;
+    background-size: 100%;
+    margin-top: 0.68rem;
+}
+.SuccessBox .SuccessIcon{
+	width: 1.4rem;
+	height: 1.4rem;
+	line-height: 1.4rem;
+	font-size: 32px;
+	color: #fff;
+	background: url(../images/successicon.png) no-repeat center;
+	background-size: 100%;
+	text-align: center;
+	border-radius: 1.4rem;
+	margin: 0 auto;
+	margin-top: .35rem;
+}
+.SuccessBox.LianBox .SuccessIcon{
+    width: 150px;
+    height: 103px;
+	line-height: 92px;
+	font-size: 32px;
+	color: #fff;
+	background: url(../images/lian.png) no-repeat center;
+	text-align: center;
+	border-radius: 0px;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+.SuccessBox p{
+	font-size: .33rem;
+	color: #f26b11;
+	text-align: center;
+	margin-top: .38rem;
+}
+.SuccessBox span{
+	color: #adadad;
+	font-size: .28rem;
+	text-align: center;
+	display: block;
+	margin-top: .1rem;
+}
+.SuccessBox .close{
+    width: 0.7rem;
+    height: 0.94rem;
+    position: absolute;
+    top: -.95rem;
+    right: 0;
+    background: url(../images/close1.png) no-repeat center;
+		background-size: contain;
+    cursor: pointer;
+}
+.flower{
+    position: fixed;
+    top: 2.3rem;
+    left: 50%;
+    margin-left: -3.7rem;
+    width: 7.4rem;
+    height: 9rem;
+    background: url(../images/flower.png) no-repeat center;
+    background-size: 100%;
+    z-index: 3;
+    display: none;
+}
+.SureBox{
+	position: fixed;
+	top: 3.7rem;
+	left: 50%;
+	margin-left: -3.3rem;
+	width: 6.6rem;
+	height: 5.9rem;
+	z-index: 2;
+	background: url(../images/warring.png) no-repeat center;
+	background-size: 100%;
+	text-align: center;
+	display: none;
+}
+.SureBox .Surelead{
+	font-size: .36rem;
+	color: #fff;
+	text-align: center;
+	margin-top: .38rem;
+}
+.SureBox p{
+	font-size: .32rem;
+	margin-top: 3.2rem;
+	text-indent: .13rem;
+}
+.SureBox ul{
+	width: 4.4rem;
+	margin: 0 auto;
+}
+.SureBox ul li{
+	width: 1.9rem;
+	height: .7rem;
+	line-height: .7rem;
+	font-size: .3rem;
+	margin-top: .27rem;
+}
+.SureBox ul li.cancle{
+	float: left;
+	border: 0.02rem solid #f26b11;
+	color: #f26b11;
+	cursor: pointer;
+	border-radius: .1rem;
+	height: .67rem;
+	line-height: .67rem;
+}
+.SureBox ul li.sure{
+	float: right;
+	background: #f26b11;
+	color: #fff;
+	cursor: pointer;
+	border-radius: .1rem;
+}
+.RulesBox{
+    position: fixed;
+    top: 3.7rem;
+    left: 50%;
+    margin-left: -3.3rem;
+    width: 6.6rem;
+    height: 5.9rem;
+    z-index: 2;
+    background: #fff;
+    border-radius: .1rem;
+	display: none;
+}
+.RulesBox .RuleLead{
+	height: .9rem;
+	line-height: .9rem;
+	font-size: .36rem;
+	color: #fff;
+	text-align: center;
+	background: #f26b11;
+	border-top-left-radius:.1rem;
+	border-top-right-radius:.1rem;
+}
+.RulesBox .RuleNote{
+	padding: .2rem;
+	font-size: .28rem;
+	height: 4.5rem;
+	overflow-y: auto;
+	-webkit-overflow-scrolling : touch;
+}
+.RulesBox .close{
+    width: 0.7rem;
+    height: 0.94rem;
+    position: absolute;
+    top: -.95rem;
+    right: 0;
+    background: url(../images/close1.png) no-repeat center;
+		background-size: contain;
+    cursor: pointer;
+}
+.wraning{
+	margin: 0 .3rem .5rem;
+	margin-top: .3rem;
+	font-size: .24rem;
+}

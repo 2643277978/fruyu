@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+	<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+	<title>{#$langData['siteConfig'][11][12]#} - {#$cfg_webname#}</title>{#* 管理我发布的信息  *#}
+	<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css?v={#$cfg_staticVersion#}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/manage.css?v={#$cfg_staticVersion#}" media="all" />
+	<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript">
+		var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+
+		var criticalPoint = 1240, criticalClass = "w1200";
+		$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+		var hideFileUrl = {#$cfg_hideUrl#};
+
+		var module = '{#$module#}', atpage = 1, totalCount = 0, pageSize = 10, state = '{#$state#}', type = '{#$type#}';
+
+		var id="{#$id#}",editUrl = '{#getUrlPath service="member" type="user" template="fabu" action="$module"#}';
+		var pulltype = {#$pulltype#};
+	</script>
+</head>
+<body>
+<!--{#$pageTitle = $langData['siteConfig'][11][12]#}-->
+{#include file="top.html"#}
+<div class="wrap">
+	<div class="container fn-clear">
+		{#include file="sidebar.html"#}
+		<div class="main">
+			<div class="list_banner"><p>{#$langData['siteConfig'][32][9]#}</p></div>{#* 直播详情  *#}
+			<div class="list_main">
+					<div class="list_box">
+						<label class="list_upload">{#$langData['siteConfig'][32][10]#}</label>{#* 直播封面  *#}
+						<div class="live_cover"><img style="min-height:169px;width:300px;" src="{#$litpic#}" ></div>
+						{#if $arcrank == 1#}
+						<label class="list_upload"><a href="{#getUrlPath service='live' template='detail' id="{#$id#}"#}" style="color:#ff0000;" target="_blank">{#$langData['siteConfig'][32][20]#}</a></label>{#* 进入直播  *#}
+						{#elseif $arcrank == 0#}
+						<label class="list_upload"><span style="color:#ccc;">信息审核中</span></label>
+						{#else#}
+						<label class="list_upload"><span style="color:#f60;">信息审核失败</span></label>
+						{#/if#}
+					</div>
+					<div class="list_box">
+						<label for="live_fl">{#$langData['siteConfig'][31][49]#}</label>{#* 直播标题  *#}
+						<input readonly type="text" id="live_title" value="{#$title#}">
+					</div>
+					<div class="list_box">
+						<label for="live_fl">{#$langData['siteConfig'][31][47]#}</label>{#* 直播分类  *#}
+						<input readonly type="text" id="live_fl" value="{#$typename#}">
+					</div>
+					<div class="list_box">
+						<label for="start_time">{#$langData['siteConfig'][17][34]#}</label>{#* 开始时间  *#}
+						<input readonly type="text" id="start_time" value="{#$ftime#}">
+					</div>
+					<div class="list_box">
+						<label for="liulan">{#$langData['siteConfig'][32][19]#}</label>{#* 浏览人数  *#}
+						<input readonly type="text" id="liulan" value="{#$click#}">
+					</div>
+					<div class="list_box">
+						<label for="like_count">{#$langData['siteConfig'][32][18]#}</label>{#* 点赞量  *#}
+						<input readonly type="text" id="like_count" value="{#if $up>=10000#}{#round($up,2)#}{#$langData['siteConfig'][13][27]#}{#else#}{#$up#}{#/if#}">{#* 万 *#}
+					</div>
+					<div class="list_box">
+						<label for="screen">{#$langData['siteConfig'][32][17]#}</label>{#* 横竖屏  *#}
+						<input readonly type="text" id="screen" value="{#$wayname#}">
+					</div>
+					<div class="list_box">
+						<label for="live_style">{#$langData['siteConfig'][19][84]#}</label><!-- 类型 -->
+						<input readonly type="text" id="live_style" value="{#$catidtype#}">
+					</div>
+					<div class="list_box {#if $catid==1#}{#else#}li_pass{#/if#}">
+						<label for="pass">{#$langData['siteConfig'][5][0]#}</label><!-- 密码 -->
+						<input readonly type="text" id="pass" readonly value="{#$password#}">
+					</div>
+					<div class="list_box {#if $catid==2#}{#else#}li_collect{#/if#}">
+						<label for="start_money">{#$langData['siteConfig'][31][58]#}</label><!-- 开始收费 -->
+						<input readonly type="text" name="startmoney" id="start_money" readonly value="{#$startmoney#}元">
+					</div>
+					<div class="list_box {#if $catid==2#}{#else#}li_collect{#/if#}">
+						<label for="end_money">{#$langData['siteConfig'][31][59]#}</label><!-- 结束收费 -->
+						<input readonly type="text" name="endmoney" id="end_money" readonly value="{#$endmoney#}元">
+					</div>
+					<div class="list_box">
+						<label for="qingxi">{#$langData['siteConfig'][32][16]#}</label>{#* 清晰度  *#}
+						<input readonly type="text" id="qingxi" value="{#$flowname#}">
+					</div>
+					{#if $state!=2#}
+					{#if $pulltype == 1#}
+					<div class="list_box">
+						<label for="address">拉流地址(电脑端)</label>{#* 拉流地址  *#}
+						<input readonly type="text" id="address0" value="{#$pullurl_pc#}">
+					</div>
+					<div class="list_box">
+						<label for="address">拉流地址(移动端)</label>{#* 拉流地址  *#}
+						<input readonly type="text" id="address1" value="{#$pullurl_touch#}">
+					</div>
+					{#else#}
+					<div class="list_box">
+						<label for="address">{#$langData['siteConfig'][32][15]#}</label>{#* 推流地址  *#}
+						<input readonly type="text" id="address" value="{#$pushurl#}">
+					</div>
+					{#/if#}
+					<div class="button-live">
+						<button data-id="{#$id#}" class="btn-edit">{#$langData['siteConfig'][32][14]#}</button>{#* 编辑信息  *#}
+						{#if $arcrank == 1#}
+						<button class="btn-start">{#$langData['siteConfig'][32][13]#}</button>{#* 开始直播  *#}
+						{#/if#}
+						{#if $state == 1#}
+						<button class="btn-end">{#$langData['siteConfig'][32][12]#}</button>{#* 结束直播  *#}
+						{#/if#}
+					</div>
+					{#/if#}
+			</div>
+			<div class="down_modal" style="display: none;">
+				<div class="modal_box">
+					<div class="m-close"><img  src="{#$templets_skin#}images/m_close.png"></div>
+					<p>{#$langData['siteConfig'][32][11]#}</p>{#* 您需下载移动端APP后方可使用  *#}
+					<div class="hn_logo"><img  src="{#$cfg_app_logo#}"></div>
+					<h5>{#$cfg_appname#}</h5>
+					<div class="btn-down"><a href="{#getUrlPath service='siteConfig' template='mobile'#}" target="_blank">{#$langData['siteConfig'][26][193]#}</a></div>{#* 点击下载  *#}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/manage-{#$module#}.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+/* loading */
+.list .loading {padding: 200px 0; text-align: center; font-size: 14px;}
+.list .loading img {margin-right: 5px; display: inline-block; vertical-align: middle;}
+
+.list .item {float: left; width: 200px; height: 300px; margin: 20px; text-align: center;}
+.list .item .photo a, .list .item .photo img {display: block; margin: 0 auto;}
+.list .item .photo a {height: 200px;}
+.list .item .photo i {display: inline-block; height: 100%; vertical-align: middle;}
+.list .item .photo img {max-width: 200px; max-height: 200px; display: inline; z-index: 0; vertical-align: middle; -ms-interpolation-mode: bicubic;}
+.list .item .name {height: 35px; line-height: 35px; font-size: 14px;}
+.item .o a.load {font-size: 0; text-indent: -999em;}

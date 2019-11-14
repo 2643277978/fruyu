@@ -1,0 +1,64 @@
+@charset "utf-8";
+
+/*	BTN 
+-------------------------------------------------------------- */
+.input{ width:283px; height:28px; border:1px solid #dbdbdb;line-height:28px; color:#999; padding-left:5px; vertical-align:middle}
+.input01{ width:100px!important;}
+.input02{ width:175px!important;}
+.input03{width:129px!important; }
+.input04{width:59px; height:28px; border:1px solid #dbdbdb;line-height:28px; color:#999; margin:0 10px 0 0;padding:0 0 0 5px; }
+.inpt_mar{ margin:0 5px 0 0 }
+.btn01{ width:100px; height:38px; line-height:38px; background:url(../images/btn.gif) left top no-repeat;cursor:pointer; border:none; color:#fff; font-weight:bold; font-size:14px; vertical-align:middle;}
+
+/*CONTENT
+-------------------------------------------------------------- */
+
+.qq{ width:379px; height:75px; padding:0 10px; background:url(../images/qq_bg.png) center no-repeat; overflow:hidden; position:absolute; bottom:0px; left:0px;_left:3px}
+/*.qq_nonbg{ width:378px;_width:375px; height:75px; padding:0 10px; background:#eee; overflow:hidden; position:absolute; bottom:0px; left:0px;_left:3px; border-top:1px solid #cccccc}*/
+.qq01{ width:379px; height:30px; line-height:30px; padding:0 10px;  overflow:hidden; position:relative; margin:74px 0 0 -36px}
+.qq02{ margin:34px 0 0 -36px!important}
+.qq01 .txt01{ display:block; float:left; width:150px; text-align:right}
+.qq_nonbg ul,.qq ul{ width:264px; height:30px; line-height:30px; float:left;}
+.qq_nonbg ul li,.qq ul li{ width:60px; height:30px; display:inline; float:left; margin:0 5px 0 5px; cursor:pointer; color:#fff;}
+.qq01 label{ width:60px!important; height:30px !important; display:inline !important; float:left !important; margin:0 5px 0 5px !important; cursor:pointer !important; color:#fff !important;color:#757575!important} 
+.qq_nonbg ul li{ color:#000!important}
+.qq_nonbg span,.qq span{ display:inline-block; width:100%; height:30px; color:#fff; text-align:left; line-height:30px; }
+.qq_nonbg span{ color:#000!important}
+
+ .warn{background:url(../images/ico01.gif) no-repeat scroll 5px -15px #FFFFD0; text-align:left; line-height: 14px; margin: 0px 0 10px 57px; margin: 0px 0 10px -28px\9;margin: 0px 0 10px 57px\0;_margin: 0px 0 10px -28px; position:relative; padding: 5px 5px 5px 24px;width: 192px; overflow:hidden; border:1px solid #ccc; clear:both}
+ .warn01{margin: 0px 0 10px 57px; margin: 0px 0 10px -28px\9;margin: 0px 0 10px 57px\0;_margin: 0px 0 10px -56px;}
+ /*POP
+ .login_con{ width:100%; height:494px; background:url(../images/bg_login.jpg) center top no-repeat; margin:0 auto; padding:0; clear:both;}
+.login{ width:370px; height:auto;background:url(../images/login_bg.png) center top no-repeat; padding:6px 14px 90px;_padding:6px 14px 86px; margin:60px 0 0; float:right; position:relative }
+.login h3{ width:362px; height:36px; line-height:36px; font-size:14px; color:#fff; text-align:left; padding:0 0 0 2px; margin:0 0 24px 0; border-bottom:1px solid #fff;}
+.login dl{ width:378px; height:30px; line-height:30px; float:left; margin:0 0 14px 0;}
+
+.login dl dt{ width:58px; text-align:right;font-size:12px; color:#fff; float:left}
+.login dl dd{ float:left}
+.login dl.verify input{ width:100px!important; margin:0 8px 0 0!important; float:left }
+.login dl.verify img{ float:left; margin:1px 8px 0 0}
+.login i{ font-style:normal; color:#0048b3; text-decoration:underline; cursor:pointer}
+.login p{ color:#fff; height:36px; overflow:hidden; line-height:18px; text-align:left; padding:0 0 0 60px; position:relative}
+.login p input{ margin:0 5px 0 0; vertical-align:middle; position:relative}
+.login p a{color:#fff; text-decoration:none}
+.login p a.register{ position:absolute; right:36px; font-size:14px; color:#f6ab00; font-weight:bold}
+.login p a:hover{ text-decoration:underline}
+
+-------------------------------------------------------------- */
+
+.pop{ width:398px; height:auto; padding:0 0 96px 0; border:8px solid #595959; background:#fff; position:absolute; top:50%; left:50%; margin:-190px 0 0 -180px}
+.pop h4{ width:378px; height:40px; line-height:40px; color:#fff; background:#ff6600; font-size:12px; padding:0 0 0 20px; font-size:14px; text-align:left; font-weight:bold; margin:0 0 20px 0}
+.pop h4 img{ width:13px; height:15px; float:right; margin:15px 27px 0 0; cursor:pointer}
+.pop dl{ width:378px; height:30px; line-height:30px; float:left; margin:0 0 14px 0}
+.pop dl dt{ width:58px; text-align:right;font-size:12px; color:#757575; float:left; line-height:30px;}
+.pop dl dd{ float:left}
+.pop dl.verify img{ float:left; margin:1px 8px 0 4px}
+.pop i{ font-style:normal; color:#0033cc; text-decoration:underline; cursor:pointer}
+.pop p{ color:#757575; height:36px; overflow:hidden; line-height:18px; text-align:left; padding:0 0 0 58px; position:relative}
+.pop p input{ margin:0 5px 0 0; vertical-align:middle; position:relative}
+.pop p a{color:#757575; text-decoration:none}
+.pop p a.register{ position:absolute; right:48px;}
+.pop p a:hover{ text-decoration:underline}
+.pop table{ width:300px; margin:0 auto; padding:0; text-align:left}
+.pop table td input{ margin:20px 0 0 60px; }
+.pop table td{ line-height:24px;}

@@ -1,0 +1,21 @@
+<div class="copyright">
+	<div class="wrap">
+	  <p>
+			{#siteConfig action="singel"#}
+			<a href="{#getUrlPath service='siteConfig' template='about' id={#$row.id#}#}" target="_blank">{#$row.title#}</a> |
+			{#/siteConfig#}
+			<a href="{#getUrlPath service='siteConfig' template='help'#}" target="_blank">帮助中心</a>
+		</p>
+		{#$cfg_powerby#}
+	</div>
+</div>
+
+<div class="btntop">
+  <a href="javascript:;" class="top" title="返回顶部">返回顶部</a>
+  <a href="javascript:;" class="close" title="关闭">关闭</a>
+</div>
+
+{#$cfg_statisticscode#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.cycle.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js"></script>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$siteCityInfo['name']#}{#$broker_seotitle#}房地产中介信息网，{#$siteCityInfo['name']#}{#$broker_seotitle#}经纪人排行榜精英置业顾问-{#$house_title#}</title>
+<meta name="keywords" content="{#$siteCityInfo['name']#}{#$broker_seotitle#}房地产中介，{#$siteCityInfo['name']#}{#$broker_seotitle#}房地产经纪人排行榜" />
+<meta name="description" content="{#$cfg_shortname#}{#$siteCityInfo['name']#}{#$broker_seotitle#}房地产经纪人频道提供{#$siteCityInfo['name']#}{#$broker_seotitle#}房地产经纪人排行榜，根据经纪人服务档案，经纪人行业经验，发布房源数量质量，为您优先展示精英置业顾问。找房产经纪人就上{#$cfg_shortname#}。" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v=1" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/broker.css?v=1" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}',templets_skin = '{#$templets_skin#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+
+	var addrid=0, atpage = 1, pageSize = 15, totalCount = 0, comid = '{#$comid#}';
+</script>
+</head>
+
+<body class="w1200">
+{#include file="../../siteConfig/top1.html"#}
+
+{#$pageCurr = "broker"#}
+{#include file="top.html"#}
+
+<div class="wrap">
+	<div class="crumb">
+		<div class="location">
+			<a href="{#$house_channelDomain#}">首页</a> > <a href="{#getUrlPath service='house' template='broker'#}">经纪人</a>
+		</div>
+	</div>
+	<div class="filter">
+		<dl class="t-fi fn-clear">
+			<dt>位置</dt>
+			<dd class="fn-clear">
+				<div class="pos-item fn-clear">
+					<a href="javascript:;" data-id="0" {#if $addrid == 0#} class="curr"{#/if#}>不限</a>
+					{#house action="addr" return='addr'#}
+					<a href="javascript:;"data-id="{#$addr.id#}" {#if $addrid == $addr.id#} class="curr"{#/if#}>{#$addr.typename#}<s></s></a>
+					{#/house#}
+				</div>
+			</dd>
+			<div class="area">
+				<div class="pos-sub-item  fn-clear">
+				</div>
+			</div>
+		</dl>
+		<dl class="fi-state fn-clear">
+			<dt>已选条件</dt>
+			<dd class="fn-clear"></dd>
+			<span class="btn_clear">清空条件</span>
+		</dl>
+	</div>
+</div>
+
+<div class="wrap totalCount">
+	共找到 <b>0</b> 个符合条件的经纪人
+</div>
+
+<div class="wrap brokerbox fn-clear">
+	<div class="m-t fn-clear">
+		<ul>
+			<li class="curr"><a href="javascript:;">默认排序</a></li>
+			<li data-type="time" data-id="1" class="ob"><a href="javascript:;">入驻时间<s></s></a></li>
+			<li data-type="nums" data-id="3" class="ob"><a href="javascript:;">房源数量<s></s></a></li>
+		</ul>
+	</div>
+	<div class="lplist">
+	</div>
+
+	<div class="pagination fn-clear"></div>
+</div>
+
+
+
+{#include file="footer.html"#}
+<script>$(function(){$("#totalCount").html({#$pageInfo.totalCount#})});</script>
+<script type="text/javascript" src="{#$templets_skin#}js/broker.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

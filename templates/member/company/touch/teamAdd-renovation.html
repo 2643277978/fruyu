@@ -1,0 +1,133 @@
+<form name="fabuForm" id="fabuForm" method="post" action="/include/ajax.php?service=renovation&action={#if $id != ""#}editTeam&id={#$id#}{#else#}addTeam{#/if#}" data-url="{#getUrlPath service='member' template='team' action='renovation'#}">
+    <div class="personal_bac">
+        <div class="mask_box">
+            <!-- 头部 s -->
+            {#$pageTitle = $tit#}
+            {#$pageRight = '<a href="javascript:;" class="notMenu"></a>'#}
+            {#include file="../../../siteConfig/touch_top.html"#}
+
+            <!-- 图集 s-->
+            <div class="img-box">
+              <ul class="uploader-list fn-clear" id="fileList1" >
+                <li class="uploadbtn">
+                  <div id="filePicker1" class="filePicker" data-type="atlas" data-amount="1"><p>+</p></div>
+                </li>
+                {#if $detail_photoSource#}
+                <li class="thumbnail" id="WU_FILE_1_0"><img src="{#$detail_photo#}" data-val="{#$detail_photoSource#}" data-url="{#$detail_photoSource#}" /><div class="file-panel"><span class="cancel"></span></div></li>
+                {#/if#}
+              </ul>
+              <input type="hidden" name="photo" id="photo" value="{#$detail_photoSource#}" class="imglist-hidden">
+            </div>
+            <!-- 图集 e-->
+
+            <!-- 公司名称 s -->
+            <div class="f-item">
+                <em>{#$langData['siteConfig'][19][547]#}</em><input type="text" name="name" id="name" value="{#$detail_name#}" max-length="60" placeholder="{#$langData['siteConfig'][27][49]#}...">
+            </div>
+            <!-- 公司名称 e -->
+            <!-- 经验 s -->
+            <div class="f-item">
+                <em>{#$langData['siteConfig'][19][605]#}</em><input type="number" name="works" id="works" value="{#$detail_works#}" max="99" min="0" placeholder="{#$langData['siteConfig'][7][0]#}...">
+            </div>
+            <!-- 经验 e -->
+            <!-- 职位 s -->
+            <div class="f-item">
+                <em>{#$langData['siteConfig'][16][27]#}</em><input type="text" name="post" id="post" value="{#$detail_post#}" placeholder="{#$langData['siteConfig'][27][73]#}...">
+            </div>
+            <!-- 职位 e -->
+
+            <!-- 设计专长 s -->
+            <div class="f-item mgb0">
+                <em>{#$langData['siteConfig'][19][606]#}</em>
+            </div>
+            <div class="checkbox fn-clear">
+                {#renovation action="type" return="type" type="5"#}
+                <label><input type="checkbox" name="special[]" value="{#$type.id#}"{#if strstr($detail_specialids, $type.id)#} checked="checked"{#/if#}>{#$type.typename#}</label>
+                {#/renovation#}
+            </div>
+            <!-- 设计专长 e -->
+            <!-- 设计风格 s -->
+            <div class="f-item mgb0">
+                <em>{#$langData['siteConfig'][19][607]#}</em>
+            </div>
+            <div class="checkbox fn-clear">
+                {#renovation action="type" return="type" type="4"#}
+                <label><input type="checkbox" name="style[]" value="{#$type.id#}"{#if strstr($detail_styleids, $type.id)#} checked="checked"{#/if#}>{#$type.typename#}</label>
+                {#/renovation#}
+            </div>
+            <!-- 设计风格 e -->
+
+            <!-- 设计理念 s -->
+            <div class="f-item">
+                <em>{#$langData['siteConfig'][19][608]#}</em><input type="text" name="idea" id="idea" value="{#$detail_idea#}" max-length="60" placeholder="{#$langData['siteConfig'][7][0]#}...">
+            </div>
+            <!-- 设计理念 e -->
+
+            <!-- 简介 s -->
+            <div class="introduce">
+                <p>{#$langData['siteConfig'][19][609]#}</p>
+                <textarea name="note" id="note" cols="30" rows="10">{#$detail_note#}</textarea>
+            </div>
+            <!-- 简介 e -->
+
+
+            <div class="tjBtn"><a href='javascript:;'>{#$langData['siteConfig'][6][27]#}</a></div>
+
+        </div>
+        <div class="gz-sel-addr gz-sel-addr-hide"id="gzSelAddr" >
+          <div class="gz-sel-addr-header">
+            <h3>{#$langData['siteConfig'][6][73]#}</h3>
+            <p class="gz-sel-addr-close"id="gzSelAddrCloseBtn"></p>
+          </div>
+          <ul class="gz-sel-addr-nav"></ul>
+          <div class="gz-sel-addr-list"></div>
+        </div>
+        <div class="gz-sel-addr-mask"></div>
+        <div class="QuanBox QuanBox_hide">
+            <div class="QuanTitle">
+                <h3>{#$langData['siteConfig'][6][156]#}</h3>
+                <p class="QuanTitle_close"></p>
+            </div>
+            <div class="QuanList" id="QuanList">
+                <ul>
+                    {#if $detail_addrid#}
+          {#tuan action="circle" type="{#$detail_addrid#}"#}
+                    <li><label><em>{#$row.name#}</em><div class="checkbox"><input type="checkbox" {#if $detail_circleid && $row.id|in_array:$detail_circleid#} checked{#/if#} name="circle[]" data-name="{#$row.name#}" value="{#$row.id#}"><i class="checkBtn"></i></div></label></li>
+          {#/tuan#}
+          {#/if#}
+                </ul>
+            </div>
+            <div class="Quan_SureBtn">{#$langData['siteConfig'][6][1]#}</div>
+        </div>
+        <div class="SubwayBox Subway_hide">
+            <div class="SubwayTitle">
+                <h3>{#$langData['siteConfig'][19][516]#}</h3>
+                <p class="Subway_close"></p>
+            </div>
+            <div class="SubwayList">
+                <div class="SubwayNav">
+                  {#if $detail_city#}
+                  {#siteConfig action="subway" city=$detail_city return='city'#}
+                  {#if is_array($city)#}
+                  <em {#if $_bindex.city == 1#}class="subBC"{#/if#}>{#$city.title#}</em>
+                  {#/if#}
+                  {#/siteConfig#}
+                  {#/if#}
+                </div>
+                <div class="SubChoice_box fn-clear">
+                  {#if $detail_city#}
+                  {#siteConfig action="subway" return="subway1" city=$detail_city#}
+                  <div class="sub  {#if $_bindex.subway1 > 1#}fn-hide{#/if#} fn-clear">
+                    {#siteConfig action="subwayStation" type="{#$subway1.id#}" return="subway"#}
+                      <label><input type="checkbox" name="subway[]" {#if $detail_subwayid && $subway.id|in_array:$detail_subwayid#} checked{#/if#} data-name="{#$subway.title#}" value="{#$subway.id#}"><i class="SubCheckbtn"></i>{#$subway.title#}</label>
+                    {#/siteConfig#}
+                  </div>
+                  {#/siteConfig#}
+                  {#/if#}
+                </div>
+            </div>
+            <div class="Subway_SureBtn">{#$langData['siteConfig'][6][1]#}</div>
+        </div>
+    </div>
+    <input type="submit" class="fn-hide">
+</form>

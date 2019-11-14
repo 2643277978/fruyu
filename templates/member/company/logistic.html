@@ -1,0 +1,145 @@
+{#if $do == "add" || $id != 0#}
+{#if $do == "add"#}
+{#$pageTitle = $langData['siteConfig'][26][106]|cat:" - "|cat:$cfg_webname#}
+{#else#}
+{#$pageTitle = $langData['siteConfig'][26][107]|cat:" - "|cat:$cfg_webname#}
+{#/if#}
+{#include file="head.html"#}
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fabu.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript">
+	var id = {#$id#};
+	var manageUrl = '{#getUrlPath service="member" template="logistic" action="$module"#}';
+</script>
+</head>
+
+{#$pageCurr = "logistic_{#$module#}"#}
+
+<body>
+{#include file="headSidebar.html"#}
+
+<div class="main">
+	<div class="container fn-clear">
+		<div class="w-form">
+			<form name="fabuForm" id="fabuForm" method="post" action="/include/ajax.php?service={#$module#}&action={#if $id != 0#}logisticEdit&id={#$id#}{#else#}logisticAdd{#/if#}">
+				<dl class="fn-clear fn-hide">
+					<dt><span>*</span>{#$langData['siteConfig'][19][892]#}：</dt>
+					<dd>
+						<select class="chosen-select" id="cityid" name="cityid" style="width: auto; min-width: 150px;" data-title="{#$langData['siteConfig'][20][585]#}">
+							<option selected="" value="0">请选择</option>
+							{#siteConfig action="addr" return="city"#}
+							<option value="{#$city.id#}" {#if $cityid == $city.id#} selected{#/if#}>{#$city.typename#}</option>
+							{#/siteConfig#}
+						</select>
+						<span class="tip-inline"></span>
+					</dd>
+				</dl>
+				<dl class="fn-clear" data-required="1">
+					<dt>{#$langData['siteConfig'][19][547]#}：</dt>
+					<dd><input type="text" name="title" class="inp" id="title" size="39" maxlength="50" value="{#$title#}" /></dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt>{#$langData['siteConfig'][26][108]#}：</dt>
+					<dd>
+						<div class="radio bearFreight">
+							<span data-id="0"{#if $bearFreight == "" || $bearFreight == 0#} class="curr"{#/if#}>{#$langData['siteConfig'][26][109]#}</span>
+							<span data-id="1"{#if $bearFreight == 1#} class="curr"{#/if#}>{#$langData['siteConfig'][21][16]#}</span>
+							<input type="hidden" name="bearFreight" id="bearFreight" value="{#if $bearFreight == ""#}0{#else#}{#$bearFreight#}{#/if#}">
+						</div>
+					</dd>
+				</dl>
+				<div id="freight"{#if $bearFreight == 1#} style="display:none;"{#/if#}>
+					<dl class="fn-clear">
+						<dt>{#$langData['siteConfig'][26][110]#}：</dt>
+						<dd>
+							<div class="radio valuation">
+								<span data-id="0"{#if $valuation == "" || $valuation == 0#} class="curr"{#/if#}>{#$langData['siteConfig'][26][111]#}</span>
+								<span data-id="1"{#if $valuation == 1#} class="curr"{#/if#}>{#$langData['siteConfig'][26][112]#}</span>
+								<span data-id="2"{#if $valuation == 2#} class="curr"{#/if#}>{#$langData['siteConfig'][26][113]#}</span>
+								<input type="hidden" name="valuation" id="valuation" value="{#if $valuation == ""#}0{#else#}{#$valuation#}{#/if#}">
+							</div>
+						</dd>
+					</dl>
+					<dl class="fn-clear">
+						<dt>{#$langData['siteConfig'][26][114]#}：</dt>
+						<dd>
+							<div class="input-append">
+								<input id="express_start" name="express_start" type="text" size="8" value="{#$express_start#}">
+								<span class="add-center"><i class="param" style="font-style:normal;">{#if $valuationTxt#}{#$valuationTxt#}{#else#}{#$langData['shop'][3][1]#}{#/if#}</i>{#$langData['siteConfig'][26][115]#}</span>
+								<input id="express_postage" name="express_postage" class="add-right" type="text" size="8" value="{#$express_postage#}">
+								<span class="add-aft">{#echoCurrency type="short"#}</span>
+							</div>
+						</dd>
+					</dl>
+					<dl class="fn-clear">
+						<dt>{#$langData['siteConfig'][21][12]#}：</dt>
+						<dd>
+							<div class="input-append">
+								<input id="express_plus" name="express_plus" type="text" size="8" value="{#$express_plus#}">
+								<span class="add-center"><i class="param" style="font-style:normal;">{#if $valuationTxt#}{#$valuationTxt#}{#else#}{#$langData['shop'][3][1]#}{#/if#}</i>，{#$langData['siteConfig'][26][116]#}</span>
+								<input id="express_postageplus" name="express_postageplus" class="add-right" type="text" size="8" value="{#$express_postageplus#}">
+								<span class="add-aft">{#echoCurrency type="short"#}</span>
+							</div>
+						</dd>
+					</dl>
+					<dl class="fn-clear">
+						<dt>{#$langData['siteConfig'][26][117]#}：</dt>
+						<dd>
+							<div class="input-append">
+								<span class="add-bef">{#$langData['siteConfig'][21][14]#}</span>
+								<input id="preferentialStandard" name="preferentialStandard" class="add-right" type="text" size="8" value="{#$preferentialStandard#}">
+								<span class="add-center"><i class="param" style="font-style:normal;">{#if $valuationTxt#}{#$valuationTxt#}{#else#}{#$langData['shop'][3][1]#}{#/if#}</i>，</span>
+								<input id="preferentialMoney" name="preferentialMoney" class="add-right" type="text" size="8" value="{#$preferentialMoney#}">
+								<span class="add-aft">{#echoCurrency type="short"#}{#$langData['siteConfig'][26][118]#}</span>
+							</div>
+						</dd>
+					</dl>
+				</div>
+				<dl class="fn-clear">
+					<dt>&nbsp;</dt>
+					<dd><button class="submit" id="submit">{#if $id == 0#}{#$langData['shop'][1][7]#}{#else#}{#$langData['siteConfig'][6][122]#}{#/if#}</button></dd>
+				</dl>
+			</form>
+		</div>
+	</div>
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/fabu.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/logisticAdd.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>
+
+{#else#}
+{#$pageTitle = $langData['siteConfig'][19][452]|cat:" - "|cat:$cfg_webname#}
+{#include file="head.html"#}
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/logistic.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript">
+	var module = '{#$module#}';
+	var editUrl = '{#getUrlPath service="member" template="logistic" action="$module" id="%id%"#}';
+</script>
+</head>
+
+{#$pageCurr = "logistic_{#$module#}"#}
+
+<body>
+{#include file="headSidebar.html"#}
+
+<div class="main">
+	<div class="nav-tabs fn-clear">
+		<ul class="fn-clear">
+			<li class="active"><a href="javascript:;">{#$langData['siteConfig'][19][452]#}</a></li>
+		</ul>
+		<a href="{#getUrlPath service='member' template='logistic' action='shop' param='do=add'#}" class="btn add">{#$langData['siteConfig'][26][106]#}</a>
+	</div>
+	<div class="container fn-clear">
+		<div class="list">
+			{#include file="logistic-$module.html"#}
+		</div>
+	</div>
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/logistic.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>
+{#/if#}

@@ -1,0 +1,160 @@
+<div class="w-form">
+	<form name="fabuForm" id="fabuForm" method="post" action="/include/ajax.php?service=home&action={#if $do == "edit"#}edit&id={#$id#}{#else#}put{#/if#}" data-url="{#getUrlPath service='member' template='manage' action='home' param='state=0'#}">
+    <input type="hidden" name="id" id="id" value="{#$id#}" />
+		<dl class="fn-clear" data-required="1">
+			<dt><span>*</span>分类：</dt>
+			<dd id="selType">
+				<div class="sel-group">
+					<button type="button" class="sel">{#if $do == "edit"#}{#$detail_typename[1]#}{#else#}请选择{#/if#}<span class="caret"></span></button>
+					<ul class="sel-menu">
+						{#home action="type" type={#$parentTypeid#}#}
+						<li><a href="javascript:;" data-id="{#$row.id#}">{#$row.typename#}</a></li>
+						{#/home#}
+					</ul>
+				</div>
+				<input type="hidden" name="typeid" id="typeid" value="{#$detail_type#}" data-title="请选择所属分类" />
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear" data-required="1">
+			<dt><span>*</span>品牌：</dt>
+			<dd id="selBrand">
+				<div class="sel-group">
+					<button type="button" class="sel">{#if $do == "edit"#}{#$detail_brandName#}{#else#}请选择{#/if#}<span class="caret"></span></button>
+					<ul class="sel-menu">
+						{#home action="getBrandByType" typeid={#$parentTypeid#}#}
+						<li><a href="javascript:;" data-id="{#$row.id#}">{#$row.title#}</a></li>
+						{#/home#}
+					</ul>
+				</div>
+				<input type="hidden" name="brand" id="brand" value="{#$detail_brand#}" data-title="请选择所属品牌" />
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear" data-required="1">
+			<dt><span>*</span>名称：</dt>
+			<dd>
+				<input type="text" name="title" class="inp" id="title" size="60" maxlength="50" data-title="请输入商品名称，5-50个字" value="{#$detail_title#}" />
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+    <dl class="fn-clear" data-required="1">
+			<dt><span>*</span>市场价：</dt>
+			<dd>
+        <div class="input-append">
+					<input id="mprice" name="mprice" type="text" size="8" maxlength="6" data-title="数字类型，最多支持两位小数" value="{#$detail_mprice#}">
+					<span class="add-aft">{#echoCurrency type='short'#}</span>
+				</div>
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+    <dl class="fn-clear" data-required="1">
+			<dt><span>*</span>一口价：</dt>
+			<dd>
+        <div class="input-append">
+					<input id="price" name="price" type="text" size="8" maxlength="6" data-title="数字类型，最多支持两位小数" value="{#$detail_price#}">
+					<span class="add-aft">{#echoCurrency type='short'#}</span>
+				</div>
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+    <dl class="fn-clear" data-required="1">
+			<dt><span>*</span>物流费：</dt>
+			<dd>
+        <div class="input-append">
+					<input id="logistic" name="logistic" type="text" size="8" maxlength="6" data-title="请输入物流费" value="{#$detail_logistic#}">
+					<span class="add-aft">{#echoCurrency type='short'#}</span>
+				</div>
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+    <dl class="fn-clear" data-required="1">
+			<dt><span>*</span>库存量：</dt>
+			<dd>
+        <div class="input-append">
+					<input id="inventory" name="inventory" type="text" size="8" maxlength="6" data-title="请输入库存量" value="{#$detail_inventory#}">
+					<span class="add-aft">件</span>
+				</div>
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>型号：</dt>
+			<dd><input type="text" name="model" class="inp" id="model" size="30" maxlength="50" value="{#$detail_model#}" /></dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>规格：</dt>
+			<dd><input type="text" name="specifi" class="inp" id="specifi" size="30" maxlength="50" value="{#$detail_specifi#}" /></dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt><span>*</span>缩略图：</dt>
+			<dd class="thumb fn-clear listImgBox">
+				<div class="uploadinp filePicker thumbtn{#if $detail_litpic != ""#} fn-hide{#/if#}" id="filePicker1" data-type="thumb"  data-count="1" data-size="{#$thumbSize#}" data-imglist=""><div></div><span></span></div>
+				{#if $detail_litpic != ""#}
+				<ul id="listSection1" class="listSection thumblist fn-clear" style="display:inline-block;">
+					<li id="WU_FILE_0_1">
+						<a href='{#$detail_litpic#}' target="_blank" title=""><img alt="" src="{#changeFileSize url="$detail_litpic" type="small"#}" data-val="{#$detail_litpicSource#}"/></a>
+						<a class="reupload li-rm" href="javascript:;">删除图片</a>
+					</li>
+				</ul>
+				{#else#}
+				<ul id="listSection1" class="listSection thumblist fn-clear"></ul>
+				{#/if#}
+				<input type="hidden" name="litpic" value="{#$detail_litpicSource#}" class="imglist-hidden" id="litpic">
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt><span>*</span>图集：</dt>
+			<dd class="listImgBox fn-hide">
+				<div class="list-holder">
+					<ul id="listSection2" class="fn-clear listSection fn-hide"{#if $detail_pics#} style="display: block;"{#/if#}>
+						{#foreach from=$detail_pics key=k item=i#}
+						<li class="fn-clear" id="WU_FILE_1_{#$k#}">
+							<span class="li-move" title="拖动调整图片顺序">↕</span>
+							<a class="li-rm" href="javascript:;">×</a>
+							<div class="li-thumb" style="display: block;">
+								<div class="r-progress"><s></s></div>
+								<span class="ibtn">
+									<a href="javascript:;" class="Lrotate" title="逆时针旋转90度"></a>
+									<a href="javascript:;" class="Rrotate" title="顺时针旋转90度"></a>
+									<a href="{#$i.path#}" target="_blank" class="enlarge" title="放大"></a>
+								</span>
+								<span class="ibg"></span>
+								<img data-val="{#$i.pathSource#}" data-url="{#changeFileSize url="{#$i.path#}" type="small"#}" src="{#changeFileSize url="{#$i.path#}" type="small"#}" />
+							</div>
+						</li>
+						{#/foreach#}
+					</ul>
+					<input type="hidden" name="imglist" value="" class="imglist-hidden">
+				</div>
+        <div class="btn-section fn-clear">
+					<div class="uploadinp filePicker" id="filePicker2" data-type="album" data-count="{#$atlasMax#}" data-size="{#$atlasSize#}" data-imglist=""><div id="flasHolder"></div><span>添加图片</span></div>
+					<div class="upload-tip">
+						<p><a href="javascript:;" class="fn-hide deleteAllAtlas"{#if $detail_pics#} style="display: inline-block;"{#/if#}>删除所有</a>&nbsp;&nbsp;单张最大{#$atlasSize/1024#}M，最多{#$atlasMax#}张 <span class="fileerror"></span></p>
+					</div>
+				</div>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt><span>*</span>描述：</dt>
+			<dd>
+				<script id="body" name="body" type="text/plain" style="width:90%;height:500px">{#$detail_body#}</script>
+			</dd>
+		</dl>
+		<dl class="fn-clear" data-required="1">
+			<dt><span>*</span>验证码：</dt>
+			<dd>
+				<input type="text" class="inp" maxlength="4" size="6" name="vdimgck" id="vdimgck" autocomplete="off" data-title="请输入验证码" />
+				<img src="/include/vdimgck.php" title="看不清？点击换一张" id="verifycode" />
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>&nbsp;</dt>
+			<dd><button class="submit" id="submit">{#if $id == 0#}立即发布{#else#}提交修改{#/if#}</button></dd>
+		</dl>
+	</form>
+</div>
+<script type="text/javascript">
+  var atlasMax = 5;
+</script>

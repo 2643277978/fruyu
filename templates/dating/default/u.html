@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={#$cfg_soft_lang#}" />
+<title>【{#$uinfo['nickname']#}】{#$uinfo['nickname']#}个人资料_{#$uinfo['nickname']#}照片-{#$dating_title#}</title>
+<meta name="keywords" content="{#$dating_keywords#}" />
+<meta name="description" content="{#$dating_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/userinfo.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+  var criticalPoint = 1240, criticalClass = "w1200";
+  $("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+  var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+  var userId = {#$id#}, username = '{#$uinfo['nickname']#}';
+</script>
+</head>
+
+<body class="bgf2 skinWrap">
+{#include file="top.html"#}
+
+<!-- 主体 s -->
+<!-- 装扮外框 s -->
+<div class="skin-content">
+  <!-- 装扮外框 主体 s -->
+  <div class="skin-body">
+    <div class="wrap user-info-main">
+      <div class="mod-top-ceiling bord ceiling-js">
+        <div class="ceiling-box clearfix">
+          <div class="ceiling-photo fl"><a href="javascript:;"><img src="{#changeFileSize url="{#$uinfo['photo']#}" type="middle"#}" alt="{#$uinfo['nickname']#}"></a></div>
+          <dl class="ceiling-dl">
+            <dt class="ceiling-dt lh20">
+              <h1 class="ceiling-name ib fl fs24 lh32 blue">{#$uinfo['nickname']#}</h1>
+              <p class="ceiling-age fs14 lh22 c5e">{#if $uinfo['age']#}{#$uinfo['age']#}岁，{#/if#}{#if $detail_addre#}{#$detail_addre#}，{#/if#}{#if $detail_height#}{#$detail_height#}cm，{#/if#}{#if $detail_income#}{#$detail_incomeName#}{#/if#}</p>
+            </dt>
+            <dd class="ceiling-dd">
+              <a class="mr10 sendgift" href="javascript:;"><span>发私信</span></a>
+              <a class="mr10 greet{#if $detail_visit#} disabled{#/if#}" href="javascript:;"><span>{#if $detail_visit#}已打招呼{#else#}打招呼{#/if#}</span></a>
+              <a class="mr10 attention{#if $detail_follow#} disabled{#/if#}" href="javascript:;"><span>{#if $detail_follow#}已加关注{#else#}加关注{#/if#}</span></a>
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <div class="bordinner">
+        <div class="u-main-pt01">
+          <div class="u-pic-box">
+            <div class="picFocus">
+              <div class="picfocus-play">
+                <div class="picbd">
+                  <a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" class="bigpic" /></a>
+                  <div class="pictemp"><img src="{#$cfg_staticPath#}images/blank.gif" id="tempImg" /></div>
+                </div>
+                <img src="{#$cfg_staticPath#}images/ajax-loader.gif" alt="加载中 , 请稍后" class="loading" />
+              </div>
+              <div class="hd">
+                <div class="btnbox" id="upicbtn">
+                  <a href="javascript:;" class="pre disable"><span>上一页</span></a>
+                  <a href="javascript:;" class="next"><span>下一页</span></a>
+                </div>
+                <div class="picsmallbox">
+                  <ul class="picsmall">
+                    {#dating action="albumList" userid=$uinfo['userid']#}
+                    <li{#if $_bindex.row == 1#} class="selected"{#/if#} data-bigpic="{#$row.path#}"><p><img src="{#changeFileSize url="{#$row.path#}" type="small"#}"></p></li>
+                    {#/dating#}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="u-baseinfo">
+            <div class="base-1">
+              <!-- <div class="dobtn fc-blue1"><i></i><span>拉黑/举报</span></div> -->
+              <p class="p1 l32">
+                <span class="u-name fc-blue1">{#$uinfo['nickname']#}</span>
+                {#if $uinfo['online']#}<span class="brief-item"><span class="online-tip green-tip">在线</span></span>{#/if#}
+              </p>
+              <p class="p2 fs14 l32 c9f">
+                {#if $uinfo['certifyState']#}<a class="flag flag-2 past" href="{#getUrlPath service='member' type='user' template='security-shCertify'#}" target="_blank" title="已通过实名认证"></a>{#else#}<a class="flag flag-2" href="{#getUrlPath service='member' type='user' template='security-shCertify'#}" target="_blank" title="未通过实名认证"></a>{#/if#}
+                {#if $uinfo['phoneCheck']#}<a class="flag flag-1 past" href="{#getUrlPath service='member' type='user' template='security-chphone'#}" target="_blank" title="已验证手机号"></a>{#else#}<a class="flag flag-1" href="{#getUrlPath service='member' type='user' template='security-chphone'#}" target="_blank" title="还未验证手机号"></a>{#/if#}
+                {#if $uinfo['emailCheck']#}<a class="flag flag-3 past" href="{#getUrlPath service='member' type='user' template='security-chemail'#}" target="_blank" title="已通过邮箱验证"></a>{#else#}<a class="flag flag-3" href="{#getUrlPath service='member' type='user' template='security-chemail'#}" target="_blank" title="还未通过邮箱验证"></a>{#/if#}
+              </p>
+              <p>{#$detail_sign#}</p>
+            </div>
+            <div class="base-2">
+              <table class="uinfotb">
+                <tbody>
+                  <tr>
+                    <td><span class="label">年龄：</span>{#$uinfo['age']#}岁</td>
+                    <td><span class="label">身高：</span>{#$detail_height#}CM</td>
+                    <td><span class="label">月收入：</span>{#$detail_incomeName#}</td>
+                  </tr>
+                  <tr>
+                    <td><span class="label">婚况：</span>{#$detail_marriageName#}</td>
+                    <td><span class="label">学历：</span>{#$detail_educationName#}</td>
+                    <td><span class="label">地区：</span>{#$detail_addre#}</td>
+                  </tr>
+                  <tr>
+                    <td><span class="label">类别：</span>{#$detail_typeName#}</td>
+                    <td><span class="label">交友目的：</span>{#$detail_purposeName#}</td>
+                    <td><span class="label">体型：</span>{#$detail_bodytypeName#}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="base-3">
+              <a href="javascript:;" class="sendgift"><i></i><span>发私信</span></a>
+              <a href="javascript:;" class="greet{#if $detail_visit#} disabled{#/if#}"><span>{#if $detail_visit#}已打招呼{#else#}打招呼{#/if#}</span></a>
+              <a href="javascript:;" class="attention{#if $detail_follow#} disabled{#/if#}"><span>{#if $detail_follow#}已加关注{#else#}加关注{#/if#}</span></a>
+            </div>
+            <div class="base-4">
+              <span class="label">分享到：</span>
+              <!-- Baidu Button BEGIN -->
+              <div class="bdsharebuttonbox" id="bdsharebuttonbox">
+                <a class="bds_qzone" data-cmd="qzone" href="#" title="分享到qq空间"></a>
+                <a class="bds_tsina" data-cmd="tsina" title="分享新浪微博"></a>
+                <a class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+                <a class="bds_weixin" data-cmd="tqq" title="分享微信朋友圈"></a>
+                <a class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+                <a class="bds_more" data-cmd="more" title="更多"></a>
+              </div>
+              <!-- Baidu Button END -->
+            </div>
+          </div>
+        </div>
+        <div class="u-main-pt02">
+          <div class="title">
+            <p class="p1"><span>自我介绍</span></p>
+            <div class="info-text">
+              <p class="p2">
+                {#$detail_note#}
+                <i class="after"></i>
+              </p>
+            </div>
+          </div>
+            <div class="title">
+              <p class="p1"><span>交友标签</span></p>
+              <div class="bq fn-clear">
+                {#foreach from=$detail_tagsName item=tag#}
+                <span class="bi">{#$tag#}</span>
+                {#/foreach#}
+              </div>
+            </div>
+          <div class="user-info-main2">
+            <div class="u-info-list">
+              <div class="label"><i class="floor-icon floor-icon-data"></i><p>详细资料</p></div>
+              <div class="detail">
+                <table class="floor-table">
+                  <tbody>
+                    <tr>
+                      <td><span class="label">性别：</span>{#if $uinfo['sex'] == 1#}男{#else#}女{#/if#}</td>
+                      <td><span class="label">居住情况：</span>{#$detail_housetagName#}</td>
+                    </tr>
+                    <tr>
+                      <td><span class="label">工作状态：</span>{#$detail_workstatusName#}</td>
+                      <td><span class="label">购车情况：</span>{#$detail_cartagName#}</td>
+                    </tr>
+                    <tr>
+                      <td><span class="label">是否吸烟：</span>{#$detail_smokeName#}</td>
+                      <td><span class="label">是否饮酒：</span>{#$detail_drinkName#}</td>
+                    </tr>
+                    <tr>
+                      <td><span class="label">作息时间：</span>{#$detail_workandrestName#}</td>
+                      <td><span class="label">最大消费：</span>{#$detail_maxconsumeName#}</td>
+                    </tr>
+                    <tr>
+                      <td><span class="label">制造浪漫：</span>{#$detail_romanceName#}</td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="u-info-list">
+              <div class="label"><i class="floor-icon floor-icon-term"></i><p>择偶条件</p></div>
+              <div class="detail nobdm">
+                <table class="floor-table">
+                  <tbody>
+                    <tr>
+                      <td><span class="label">年龄：</span>{#$detail_dfage#} - {#$detail_dtage#}岁</td>
+                      <td><span class="label">身高：</span>{#$detail_dfheight#} - {#$detail_dtheight#}厘米</td>
+                    </tr>
+                    <tr>
+                      <td><span class="label">收入：</span>{#$detail_dincomeName#}</td>
+                      <td><span class="label">婚姻情况：</span>{#$detail_dmarriageName#}</td>
+                    </tr>
+                    <tr>
+                      <td><span class="label">居住情况：</span>{#$detail_dhousetagName#}</td>
+                      <td><span class="label">学历：</span>{#$detail_deducationName#}</td>
+                    </tr>
+                    <tr>
+                      <td><span class="label">区域：</span>{#$detail_addrName#}</td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          {#if $userinfo#}<div class="complete-data"><a href="{#getUrlPath service='member' type='user' template='dating' action='profile'#}" target="_blank" rel="nofollow">完善我的交友资料</a></div>{#/if#}
+        </div>
+      </div>
+    </div>
+    <!-- 装扮外框 主体 e -->
+  </div>
+  <!-- 装扮外框 e -->
+</div>
+<!-- 主体 e -->
+
+{#include file="footer.html"#}
+
+<script>var staticPath = (u=window.staticPath||window.cfg_staticPath)?u:((window.masterDomain?window.masterDomain:document.location.origin)+'/static/');
+var shareApiUrl = staticPath.indexOf('https://')>-1?staticPath+'api/baidu_share/js/share.js':'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5);
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"4","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"12"},"share":{"bdSize":0}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src=shareApiUrl];</script>
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dialog-4.2.0.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/udetail.js"></script>
+</body>
+</html>

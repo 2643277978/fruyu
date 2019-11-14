@@ -1,0 +1,91 @@
+
+.tui{
+	text-align: center;
+	background: #fff;
+	color: #ff6400;
+}
+.tui p{
+    padding: 0.1rem 0.3rem 0;
+    height: 0.64rem;
+    font-size: 0.25rem;
+}
+.tui a img{
+	width: 100%
+}
+.openo{
+	    padding-left: 0.3rem;
+	    background:#fff;
+			padding-bottom: 1.2rem;
+}
+.openo ul li{
+	padding: 0.14rem 0.24rem 0.14rem 0;
+    border-bottom: 1px solid #e6e6e8;
+    clear: both;
+    overflow: hidden;
+}
+.openo ul li div i{
+    position: absolute;
+    width: 0.8rem;
+    height: 0.8rem;
+    left: 0;
+    top: 0;
+    background: url(../images/myAccount.png) no-repeat;
+    background-size: 100% auto;
+}
+.openo ul li div{
+	    position: relative;
+    float: left;
+    padding: 0 0 0 1rem;
+    color: #999;
+}
+.openo ul li .op-1 i{
+    background-position: 0 -3.2rem;
+}
+.openo ul li .op-2 i{
+    background-position: 0 -2.4rem;;
+}
+.openo ul li .op-3 i{
+    background-position: 0 0;
+}
+.openo ul li .op-4 i{
+    background-position: 0 -4rem;
+}
+.openo ul li .op-5 i{
+    background-position: 0 -4.8rem;
+}
+.openo ul li .op-6 i{
+    background-position: 0 -12.4rem;
+}
+.openo ul li .op-7 i{
+    background-position: 0 -5.6rem;
+}
+.openo ul li div p{
+	    color: #ff6400;
+    font: 15px/26px microsoft yahei;
+    vertical-align: middle;
+}
+.openo ul li a{
+	    display: block;
+    float: right;
+    width: 1.3rem;
+    height: 0.6rem;
+    margin: 0.14rem 0 0;
+    font: 400 16px/30px microsoft yahei;
+    color: #ff6400;
+    text-align: center;
+    border: 0.02rem solid #ff6400;
+    -moz-border-radius: 0.06rem;
+    -webkit-border-radius: 0.06rem;
+    border-radius: 0.06rem;
+}
+
+.fixFooter{position: fixed; bottom: 0; left: 0; right: 0; height: .9rem; background: #fff; border-top: 1px solid #e4e4e3; font-size: .24rem; -webkit-animation: FadeIn .15s ease-out; -moz-animation: FadeIn .15s ease-out; animation: FadeIn .15s ease-out;}
+.fixFooter ul{display: -webkit-box;}
+.fixFooter ul li{-webkit-box-flex: 1; text-align: center;}
+.fixFooter ul li a{display: block;}
+.fixFooter ul li i{display: block; width: .5rem; height: .5rem; margin: .05rem auto 0;}
+.fixFooter ul li.ficon1 i{background: url(../images/aficon1.png) center center no-repeat; background-size: .4rem auto;}
+.fixFooter ul li.ficon2 i{background: url(../images/aficon2.png) center center no-repeat; background-size: .4rem auto;}
+.fixFooter ul li.ficon3 i{background: url(../images/aficon3.png) center center no-repeat; background-size: .5rem auto;}
+.fixFooter ul li.ficon4 i{background: url(../images/aficon4.png) center center no-repeat; background-size: .4rem auto;}
+.fixFooter ul li.ficon5 i{background: url(../images/aficon5.png) center center no-repeat; background-size: .4rem auto;}

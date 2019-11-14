@@ -1,0 +1,23 @@
+<style media="screen">
+html,body {font-size: .24rem;}
+/*.list {margin-top: 1rem;}*/
+.food {color: #333; border-bottom: 1px solid #f4f4f4; padding: 0 0 .1rem; margin-bottom: .1rem;}
+.item .state{color: #ff6800;}
+.item .opbtn{padding: .15rem 0; text-align: right;}
+.item .opbtn a.gray {border: 1px solid #aaa; border-radius: .08rem; margin-right: .2rem;}
+  .item .opbtn a {padding: .1rem .2rem; display: inline-block;}
+</style>
+<script type="text/javascript">
+  var userid = {#$userid#}, detailUrl = '{#getUrlPath service='member' type='user' template='orderdetail' module='waimai' userid="%id%"#}';
+  var templets_skin = '{#$templets_skin#}';
+</script>
+
+<div class="tab">
+  <ul data-url="{#getUrlPath service='member' type='user' template='orderdetail' module='waimai' userid="%id%"#}" class="paotui-tab" >
+    <li data-id="" class="curr"><a href="javascript:;">{#$langData['siteConfig'][9][0]#} (<span id="total">0</span>)</a><p class="curr-line"><i></i></p></li>
+  	<li data-id="0"><a href="javascript:;">{#$langData['siteConfig'][9][23]#} (<span id="unpaid">0</span>)</a><p class="curr-line"><i></i></p></li>
+  	<li data-id="6"><a href="javascript:;">{#$langData['siteConfig'][9][36]#} (<span id="over">0</span>)</a><p class="curr-line"><i ></i></p></li>
+  	<li data-id="1"><a href="javascript:;">{#$langData['siteConfig'][17][3]#}{#$langData['siteConfig'][6][3]#} (<span id="rates">0</span>)</a><p class="curr-line"><i ></i></p></li>
+  </ul>
+</div>
+

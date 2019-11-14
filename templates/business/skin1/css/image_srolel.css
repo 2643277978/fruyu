@@ -1,0 +1,23 @@
+ .product-box_all{overflow:hidden;}
+ .simply-scroll-container {position: relative;}
+/* Clip DIV - automatically generated */
+.simply-scroll-clip {position: relative;overflow: hidden;}
+/* UL/OL/DIV - the element that simplyScroll is inited on
+Class name automatically added to element */
+.simply-scroll-list {overflow: hidden;margin: 0;padding: 0;list-style: none;}
+.simply-scroll-list li {padding: 0;margin: 0;list-style: none;margin-left: 2px;}
+.simply-scroll-list li img {border: none;}
+/* Custom class modifications - adds to / overrides above
+.simply-scroll is default base class */
+/* Container DIV */
+.simply-scroll {width: 992px;height: 100%/*;margin-bottom: 1em;*/}
+/* Clip DIV */
+.simply-scroll .simply-scroll-clip {width: 992px;/*height: 255px;*/}
+/* Explicitly set height/width of each list item */	
+.simply-scroll .simply-scroll-list li {float: left; /* Horizontal scroll only */width: 222px;text-align:left;/*height: 250px;line-height: 250px;*/}
+.simply-scroll-clip .product-box .line-height{height:18px;line-height:18px;}
+.simply-scroll .product-box {width:232px;}
+.simply-scroll .product-box .imgbox{ width:210px; height:210px;text-align:center;}
+.simply-scroll .product-box .imgbox span{height:210px;width:210px;overflow:hidden;display: table-cell; vertical-align:middle;text-align:center;*display:block;*font-size:230px;}
+.simply-scroll .product-box .imgbox span a{display:block;width:210px;}
+.simply-scroll .product-box .imgbox span a img{width: expression(this.width < 210 && this.width < this.height ? 210 : true);;height:160px;}

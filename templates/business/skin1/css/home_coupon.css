@@ -1,0 +1,25 @@
+/*coupon_div_i*/
+.d_coupon_div_i { margin: 20px auto; height: 130px; background:url(../images/coupon/coupon_i_bg.png) no-repeat center top; }
+.d_coupon_two { width: 680px; padding-left: 340px; }
+.d_coupon_one { width: 340px; padding-left: 680px; }
+.d_coupon_third { width: 1020px; }
+.d_coupon_cont { width: 320px; height: 110px; margin: 10px; float: left; color: #fff9af; position: relative}
+.d_coupon_cont.d_blue { background:url(../images/coupon/coupon_bg_l.png) no-repeat center top; }
+.d_coupon_cont.d_orange { background:url(../images/coupon/coupon_bg_o.png) no-repeat center top; }
+.d_coupon_cont.d_red { background:url(../images/coupon/coupon_bg_r.png) no-repeat center top; }
+.d_coupon_cont .state{position:absolute;top:17px;right:10px;width:76px;height:76px;display:none}
+.d_coupon_cont.c_receive .state{background:url(../images/coupon/c_receiveh.png) no-repeat center top;display:block}
+.d_coupon_cont.c_receive_w{background:url(../images/coupon/c_receive_w_bg.png) no-repeat center top;color: #fff;}
+.d_coupon_cont.c_receive_w .d_coupon_s > span.d_irmb { background:url(../images/coupon_i_rmb_h.png) no-repeat center 1px;}
+.d_coupon_cont.c_receive_w .state{background:url(../images/coupon/c_receive_w.png) no-repeat center top;display: block}
+.d_coupon_cont.c_receive .d_coupon_r p a,.d_coupon_cont.c_receive_w .d_coupon_r p a{ display:none}
+.d_coupon_t { margin: 18px 20px 0 15px; height: 55px }
+.d_coupon_cont > p { font-size: 14px; text-align: center; margin-top: 3px; }
+.d_coupon_s { float: left; height: 55px; width: 148px; font-size: 60px; font-weight: bold; line-height: 55px; text-align: center; font-family: Arial; }
+.d_coupon_s > span.d_irmb { display: inline-block; height: 55px; line-height: 55px; *display:inline;*zoom:1;vertical-align: middle; +vertical-align: auto;margin-right: -3px; width: 12px; background:url(../images/coupon/coupon_i_rmb.png) no-repeat center 1px; }
+.d_coupon_s > span { display: inline-block; *display:inline;*zoom:1;+vertical-align:auto;height: 55px; line-height: 55px; }
+.d_coupon_r { float: left; height: 55px; width: 137px; font-size: 14px; font-family: "Microsoft Yahei", 'Hiragino Sans GB'; }
+.d_coupon_r p { margin-top: 3px; margin-bottom: 4px }
+.d_coupon_r p a { display:block; float:right; width: 70px; height: 20px; line-height: 20px; background-color: #ffff00; color: #d12516; text-align: center; margin-left: 7px; text-decoration: none }
+.d_coupon_r p a:hover { background-color: #ffff99; text-decoration: none }
+	

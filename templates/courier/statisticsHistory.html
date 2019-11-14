@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$langData['siteConfig'][17][37]#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="/templates/courier/css/leMai.css?v={#$cfg_staticVersion#}">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+</head>
+<body>
+<!-- 头部 外卖订单详细头部 -->
+<div class="tongJi jk22">
+	<a href="javascript:;" onclick="history.go(-1);"><i></i></a>
+	<p><span>{#$langData['siteConfig'][17][37]#}-{#if $ordertype == "waimai"#}{#$langData['siteConfig'][16][48]#}{#else#}{#$langData['siteConfig'][16][49]#}{#/if#}</span></p>
+</div>
+
+<!-- 今日外卖战绩 -->
+<div class="todayWai">
+	<div class="zhanJi fn-clear">
+		<span>{#$stime#} {#$langData['siteConfig'][13][7]#} {#$etime#}</span>
+	</div>
+	{#if ordertype == "waimai"#}
+	<div class="yiuLan fn-clear" style="margin-top: .2rem;">
+		<div class="yiuLan01">
+			<p>{#$langData['waimai'][4][13]|replace:'1':$totalSuccess#}</p>
+			<span>{#$langData['siteConfig'][17][38]#}</span>
+		</div>
+		<div class="yiuLan01 yiuLan02">
+			<p>{#$langData['waimai'][4][13]|replace:'1':$totalFailed#}</p>
+			<span>{#$langData['siteConfig'][17][39]#}</span>
+		</div>
+	</div>
+	<div class="yiuLan fn-clear" style="margin-top: .6rem;">
+		<div class="yiuLan01">
+			<p>{#$langData['waimai'][4][14]|replace:'1':$peisong#}</p>
+			<span>{#$langData['siteConfig'][17][40]#}</span>
+		</div>
+		<div class="yiuLan01 yiuLan02">
+			<p>{#$langData['waimai'][4][14]|replace:'1':$fuwu#}</p>
+			<span>{#$langData['waimai'][4][18]#}</span>
+		</div>
+	</div>
+	<div class="yiuLan fn-clear" style="margin-top: .6rem;">
+		<div class="yiuLan01">
+			<p>{#$langData['waimai'][4][14]|replace:'1':$success#}</p>
+			<span>{#$langData['siteConfig'][17][41]#}</span>
+		</div>
+		<div class="yiuLan01 yiuLan02">
+			<p>{#$langData['waimai'][4][14]|replace:'1':$delivery#}</p>
+			<span>{#$langData['waimai'][4][19]#}</span>
+		</div>
+	</div>
+	<div class="yiuLan fn-clear" style="margin-top: .6rem;">
+		<div class="yiuLan01">
+			<p>{#$langData['waimai'][4][14]|replace:'1':$money#}</p>
+			<span>{#$langData['waimai'][4][20]#}</span>
+		</div>
+		<div class="yiuLan01 yiuLan02">
+			<p>{#$langData['waimai'][4][14]|replace:'1':$online#}</p>
+			<span>{#$langData['waimai'][4][21]#}</span>
+		</div>
+	</div>
+	{#else#}
+	<div class="yiuLan fn-clear" style="margin-top: .2rem;">
+		<div class="yiuLan01">
+			<p>{#$langData['waimai'][4][13]|replace:'1':$totalSuccess#}</p>
+			<span>{#$langData['siteConfig'][17][38]#}</span>
+		</div>
+		<div class="yiuLan01 yiuLan02">
+			<p>{#$langData['waimai'][4][13]|replace:'1':$totalFailed#}</p>
+			<span>{#$langData['siteConfig'][17][39]#}</span>
+		</div>
+	</div>
+	<div class="yiuLan fn-clear" style="margin-top: .6rem;">
+		<div class="yiuLan01">
+			<p>{#$langData['waimai'][4][14]|replace:'1':$peisong#}</p>
+			<span>{#$langData['siteConfig'][17][40]#}</span>
+		</div>
+		<div class="yiuLan01 yiuLan02">
+			<p>{#$langData['waimai'][4][14]|replace:'1':$success#}</p>
+			<span>{#$langData['siteConfig'][17][41]#}</span>
+		</div>
+	</div>
+	{#/if#}
+</div>
+
+<div class="bottomFix">
+	<ul class="fn-clear bottomFix01">
+		<li class="maiWai"><a href="/?service=waimai&do=courier&state=3"><i></i><p>{#$langData['waimai'][2][54]#}</p></a></li>
+		<li class="maiWai"><a href="/?service=waimai&do=courier&ordertype=paotui&state=3"><i></i><p>{#$langData['siteConfig'][16][49]#}</p></a></li>
+		<li class="paoTui"><a href="/?service=waimai&do=courier&template=comment"><i></i><p>{#$langData['siteConfig'][19][365]#}</p></a></li>
+		<li class="woDe woDe01"><a href="/?service=waimai&do=courier&template=statistics"><i></i><p>{#$langData['siteConfig'][17][11]#}</p></a></li>
+	</ul>
+</div>
+
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script type="text/javascript" src="/templates/courier/js/drag-loading.js"></script>
+</body>
+</html>

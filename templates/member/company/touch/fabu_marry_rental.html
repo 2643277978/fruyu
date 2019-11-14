@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{#$langData['marry'][3][18]#}</title>{#*婚车添加*#}
+    <meta name="wap-font-scale" content="no">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+    <!--<link rel="stylesheet" type="text/css" href="{#$cfg_basehost#}/templates/member/touch/css/gz-fabu.css?v={#$cfg_staticVersion#}">-->
+    <!--<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/mobileSelect.css?v={#$cfg_staticVersion#}" />-->
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fabu_marry_rental.css?v={#$cfg_staticVersion#}">
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript"  src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.deferred.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+    <script type="text/javascript">
+        var masterDomain = '{#$cfg_basehost#}', staticPath = cfg_staticPath = '{#$cfg_staticPath#}';
+        var modelType = 'house';
+        var thumbSize = {#$thumbSize#}, thumbType = '{#$thumbType#}', atlasSize = {#$atlasSize*1024*1024#}, atlasType = '{#$atlasType#}', atlasMax = 20;
+    </script>
+</head>
+<body>
+{#$pageTitle = "{#$langData['marry'][3][18]#}"#}{#*婚车添加*#}
+{#include file="top.html"#}
+<div class="container">
+
+
+
+
+    <ul class="info">
+        <li class="fn-clear">
+            <span class="name">{#$langData['marry'][3][24]#}</span>{#*名称*#}
+            <input type="text" id="comname" placeholder="{#$langData['marry'][3][2]#}">{#*请输入*#}
+        </li>
+
+        <li class="fn-clear">
+            <span class="name">{#$langData['marry'][3][19]#}</span>{#*价格*#}
+            <span class="fn-right un">{#echoCurrency type='short'#} </span>
+            <input type="text" id="price"  placeholder="{#$langData['marry'][3][2]#}">{#*请输入*#}
+        </li>
+        <li class="fn-clear tim-box">
+            <span class="name">{#$langData['marry'][3][20]#}</span>{#*时长*#}
+            <span class="fn-right un">{#$langData['marry'][3][21]#}</span>{#*公里*#}
+            <input class="fn-right" type="text" id="long"  placeholder="">
+            <span class="fn-right un">{#$langData['marry'][3][22]#}</span>{#*小时*#}
+            <input class="fn-right" type="text" id="time"  placeholder="">
+        </li>
+
+
+    </ul>
+
+    <!--图片上传 s-->
+    <div class="store-imgs img_box">
+        <div class="tit">{#$langData['marry'][3][23]#}</div>{#*汽车图片*#}
+        <ul class="uploader-list fn-clear" id="fileList">
+            <li class="upload_btn" id="uploadbtn">
+                <div id="filePicker" class="webuploader-container">
+                    <img src="{#$templets_skin#}images/add.png" />
+                    <p>{#$langData['marry'][2][27]#}</p>{#*上传图片*#}
+                </div>
+
+            </li>
+
+            <div class="kong"></div>
+        </ul>
+    </div>
+    <!--图片上传 e-->
+
+
+
+
+
+
+    <div class="fabu_btn"><span class="btn" id="btn-keep">{#$langData['marry'][3][8]#}</span></div>{#*发布*#}
+</div>
+
+
+
+
+
+
+
+<!--<script src="{#$templets_skin#}js/common_2.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>-->
+
+<script src="{#$cfg_staticPath#}js/webuploader/webuploader.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/upload.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/upload-img.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/fabu_marry_rental.js?v={#$cfg_staticVersion#}"></script>
+
+</body>
+</html>

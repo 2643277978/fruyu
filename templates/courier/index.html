@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$langData['siteConfig'][17][1]#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="/templates/courier/css/leMai.css?v={#$cfg_staticVersion#}">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script>
+var ordertype = '{#$ordertype#}';
+var pageUrl = '{#$cfg_basehost#}/?service=waimai&do=courier&ordertype={#$ordertype#}&state=';
+var state = '{#$state#}';
+</script>
+</head>
+
+<body>
+<div class="mode01">
+	<!-- 外卖订单 -->
+	<div class="waiMai">
+		<a href="javascript:;" class="kaiGuan xiaoXue{#if $courier_state == 1#} kaiGuan01{#/if#}"><i></i></a>
+		<p>{#if $ordertype != "paotui"#}{#$langData['siteConfig'][17][1]#}{#else#}{#$langData['waimai'][4][0]#}{#/if#}</p>
+		<a href="/?service=waimai&do=courier&template=logout" class="logout"></a>
+	</div>
+	<!-- 待抢、配送、成功、失败 -->
+	<div class="stateNow stateNow01" data-type="1">
+		<a data-page="1" data-totalPage="1" data-state="3" data-action="robbed" href="javascript:;"{#if $state == "3" || $state == ""#} class="daiQiang"{#/if#}>{#$langData['siteConfig'][17][2]#}</a>
+		<a data-page="1" data-totalPage="1" data-state="4,5" data-action="distribution" href="javascript:;" {#if $state == "4,5"#} class="daiQiang"{#/if#}>{#$langData['siteConfig'][17][3]#}</a>
+		<a data-page="1" data-totalPage="1" data-state="1" data-action="succeed" href="javascript:;" {#if $state == "1"#} class="daiQiang"{#/if#}>{#$langData['siteConfig'][17][4]#}</a>
+		<a data-page="1" data-totalPage="1" data-state="7" data-action="Failure" href="javascript:;" {#if $state == "7"#} class="daiQiang"{#/if#}>{#$langData['siteConfig'][17][5]#}</a>
+	</div>
+	<div class="xuanXiang">
+		<!-- 待抢 -->
+
+		{#if $courier_state == 0 && $state == 3#}
+		<div class="empty">{#$langData['waimai'][4][1]#}</div>
+		{#else#}
+		<div class="show01 dingDan show02">
+		    <div class="loading" data-loading="false" style="border-bottom: 0px solid transparent; height: 0px;">{#$langData['siteConfig'][7][7]#}...</div>
+			<div class="reTry swiper-container" id="tabs-container" >
+				<div class="swiper-wrapper">
+					<div class="swiper-slide robbed"></div>
+					<div class="swiper-slide distribution"></div>
+					<div class="swiper-slide succeed"></div>
+					<div class="swiper-slide Failure"></div>
+				</div>
+			</div>
+			<div class="load">{#$langData['siteConfig'][20][184]#}...</div>
+		</div>
+		{#/if#}
+
+	</div>
+</div>
+
+<div class="mapPath">
+	<div id="mapPath"></div>
+	<div class="mapBtn">
+		<button id="closeMap"></button>
+	</div>
+</div>
+
+<div class="bottomFix">
+	<ul class="fn-clear bottomFix01">
+		<li class="maiWai{#if $ordertype != "paotui"#} maiWai01{#/if#}"><a href="/?service=waimai&do=courier&state={#$state#}" data-url="/?service=waimai&do=courier&state="><i></i><p>{#$langData['waimai'][2][54]#}</p></a></li>
+		<li class="maiWai{#if $ordertype == "paotui"#} maiWai01{#/if#}"><a href="/?service=waimai&do=courier&ordertype=paotui&state={#$state#}" data-url="/?service=waimai&do=courier&ordertype=paotui&state="><i></i><p>{#$langData['waimai'][2][53]#}</p></a></li>
+		<li class="paoTui"><a href="/?service=waimai&do=courier&template=comment"><i></i><p>{#$langData['siteConfig'][19][365]#}</p></a></li>
+		<li class="woDe"><a href="/?service=waimai&do=courier&template=statistics"><i></i><p>{#$langData['siteConfig'][17][11]#}</p></a></li>
+	</ul>
+</div>
+
+<!-- 友情提醒 -->
+<div class="youqingTixing"></div>
+
+<script type="text/javascript">
+    var state = '{#$state#}', userid = '{#$userid#}', courier_state = {#$courier_state#};
+</script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script src="{#$cfg_staticPath#}js/ui/swiper.min.js"></script>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type="text/javascript" src="/templates/courier/js/drag-loading.js"></script>
+<script type="text/javascript" src="/templates/courier/js/leMai.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

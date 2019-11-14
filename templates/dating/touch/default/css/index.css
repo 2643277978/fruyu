@@ -1,0 +1,83 @@
+body{ background: rgb(238, 238, 238); font-size: .24rem;padding-top: 0!important;}
+
+/*头部*/
+.header .header-l a{background-image: url(../images/header_back.png) !important;}
+.header .header-r a{background-image: url(../images/header_la.png) !important;}
+
+.foot{ position: fixed; left: 0; bottom: 0; width: 100%; z-index: 100; background: #fff;}
+.foot ul{ width: 100%}
+.foot ul li{ width: 25%; border-top: 1px solid #f8f8f8; float: left; text-align: center; height: 1rem;}
+.foot ul li a{ width: 100%; float: left; text-align: center; height: 0.82rem; padding-top: 0.1rem;}
+.foot ul li a i{  width: 0.5rem; height: 0.36rem; display: block; margin: 0 auto;}
+.foot ul .curr a{ color: #ff5e00;}
+.foot ul .jh a i{ background: url(../images/footer1.png) center center no-repeat; background-size: contain;}
+.foot ul .jh.curr a i{ background: url(../images/afooter1.png) center center no-repeat; background-size: contain;}
+.foot ul .ss a i{ background: url(../images/footer2.png) center center no-repeat; background-size: contain;}
+.foot ul .ss.curr a i{ background: url(../images/afooter2.png) center center no-repeat; background-size: contain;}
+.foot ul .vip a i{ background: url(../images/footer3.png) center center no-repeat; background-size: contain;}
+.foot ul .vip.curr a i{ background: url(../images/afooter3.png) center center no-repeat; background-size: contain;}
+.foot ul .wd a i{ background: url(../images/footer4.png) center center no-repeat; background-size: contain;}
+.netbox { position: absolute; left: 0; top: 0; right: 0; bottom: 0; background: rgb(238, 238, 238);}
+.netbox .btn { width: 1.06rem; height: 1.06rem; margin: 0 25px; text-indent: -999em; background: url(../images/aPic.png) no-repeat; background-size: 100% auto; border: none;}
+.netbox .not{ position:absolute; left: 1.5rem; bottom: 2rem; background-position: 0 -1.06rem;}
+.netbox .yes{ position:absolute; left: 4rem; bottom: 2rem; border: none; background-position: 0 0;}
+.yy{  background-position: 0 -2.12rem!important;}
+.index-pic a{ position: absolute; left: 50%; top: 1.5rem; background: url(../images/photoBg.gif)no-repeat; background-size: 5rem; width: 5rem; height: 6.3rem; margin-left: -2.5rem;}
+.index-pic .loading { text-align: center; line-height: 6.3rem; overflow: hidden;}
+.index-pic .loading div { display: block; width: 100%; height: 100%;}
+.index-pic .loading div { background-color: #d68686; width: 4px; height: 35px; border-radius: 2px; margin: 2px; -webkit-animation-fill-mode: both; animation-fill-mode: both; display: inline-block; -webkit-animation: line-scale-pulse-out 0.9s 0s infinite cubic-bezier(.85, .25, .37, .85); animation: line-scale-pulse-out 0.9s 0s infinite cubic-bezier(.85, .25, .37, .85);}
+.index-pic .loading div:nth-child(1), .index-pic .loading div:nth-child(5) { -webkit-animation-delay: 0.4s !important; animation-delay: 0.4s !important;}
+.index-pic .loading div:nth-child(2), .index-pic .loading div:nth-child(4) { -webkit-animation-delay: 0.2s !important; animation-delay: 0.2s !important;}
+
+@-webkit-keyframes line-scale-pulse-out { 0% { -webkit-transform: scaley(1);     transform: scaley(1); }
+ 50% { -webkit-transform: scaley(0.4);     transform: scaley(0.4); }
+ 100% { -webkit-transform: scaley(1);     transform: scaley(1); } }
+
+@keyframes line-scale-pulse-out { 0% { -webkit-transform: scaley(1);     transform: scaley(1); }
+ 50% { -webkit-transform: scaley(0.4);     transform: scaley(0.4); }
+ 100% { -webkit-transform: scaley(1);     transform: scaley(1); } }
+
+
+.index-pic a .pp{ width: 4.3rem; height: 4.3rem; margin: 0 auto; display: block; padding-top: 0.5rem;}
+.index-pic a span{ text-align: center; width: 100%; display: block; font-size: 0.35rem; margin-top: 0.2rem;}
+.index-pic a span strong{ padding-right: .5rem; background: url(../images/userIcon2.png) right center no-repeat; background-size: .35rem auto;}
+.index-pic a span img{ width: 0.3rem; height: 0.3rem; vertical-align: text-center;}
+.index-pic a p{ text-align: center; width: 100%; display: block; font-size: 0.3rem; height: .5rem; line-height: .5rem; overflow: hidden;}
+.index-pic a p i{ font-style: normal; margin-right: 0.2rem}
+.index-pic a p i:last-child{ margin-right: 0;}
+.index-pic .toleft{ -webkit-animation: moveToLeft .60s ease both; z-index: 10; -moz-animation: moveToLeft .60s ease both; z-index: 10; -o-animation: moveToLeft .60s ease both; z-index: 10; -ms-animation: moveToLeft .60s ease both; z-index: 10; animation: moveToLeft .60s ease both; z-index: 10;}
+.index-pic .toright{ -webkit-animation: moveToRight .60s ease both; z-index: 10; -moz-animation: moveToRight .60s ease both; z-index: 10; -o-animation: moveToRight .60s ease both; z-index: 10; -ms-animation: moveToRight .60s ease both; z-index: 10; animation: moveToRight .60s ease both; z-index: 10;}
+.index-pic .toleft b{ background: url(../images/xinsui.png) no-repeat center; background-size: 3rem; width: 3rem; height: 3rem; position: absolute; left: 50%; top: 2.5rem; margin-left: -1.5rem; opacity: 0.7}
+.index-pic .toright b{ background: url(../images/heart2.png) no-repeat center; background-size: 2.5rem; width: 2.5rem; height: 2.5rem; position: absolute; left: 50%; top: 2.5rem; margin-left: -1.5rem; opacity: 0.5}
+
+
+
+/*底部*/
+.fixFooter{position: fixed; bottom: 0; left: 0; right: 0; height: .9rem; background: #fff; border-top: 1px solid #e4e4e3; font-size: .24rem; -webkit-animation: FadeIn .15s ease-out; -moz-animation: FadeIn .15s ease-out; animation: FadeIn .15s ease-out;}
+.fixFooter ul{display: -webkit-box;}
+.fixFooter ul li{-webkit-box-flex: 1; text-align: center;}
+.fixFooter ul li a{display: block;}
+.fixFooter ul li i{display: block; width: .5rem; height: .5rem; margin: .05rem auto 0;}
+.fixFooter ul li.ficon1 i{background: url(../images/aficon1.png) center center no-repeat; background-size: .4rem auto;}
+.fixFooter ul li.ficon2 i{background: url(../images/aficon2.png) center center no-repeat; background-size: .4rem auto;}
+.fixFooter ul li.ficon3 i{background: url(../images/aficon3.png) center center no-repeat; background-size: .5rem auto;}
+.fixFooter ul li.ficon4 i{background: url(../images/aficon4.png) center center no-repeat; background-size: .4rem auto;}
+.fixFooter ul li.ficon5 i{background: url(../images/aficon5.png) center center no-repeat; background-size: .4rem auto;}
+
+
+
+@-webkit-keyframes moveToLeft { form { -webkit-transform: rotate(0); } to { -webkit-transform-origin:50% 0%; -webkit-transform: rotate(90deg); filter:alpha(opacity=50); opacity:0.5; }}
+
+@-webkit-keyframes moveToRight { form { -webkit-transform: rotate(0); } to { -webkit-transform-origin:50% 0%; -webkit-transform: rotate(-90deg); filter:alpha(opacity=50); opacity:0.5; }}
+
+@-moz-keyframes moveToLeft { form { -moz-transform: rotate(0); } to { -moz-transform-origin:50% 0%; -moz-transform: rotate(90deg); filter:alpha(opacity=50); opacity:0.5; }}
+@-moz-keyframes moveToRight { form { -moz-transform: rotate(0); } to { -moz-transform-origin:50% 0%; -moz-transform: rotate(-90deg); filter:alpha(opacity=50); opacity:0.5; }}
+
+@-o-keyframes moveToLeft { form { -o-transform: rotate(0); } to { -o-transform-origin:50% 0%; -o-transform: rotate(90deg); filter:alpha(opacity=50); opacity:0.5; }}
+@-o-keyframes moveToRight { form { -o-transform: rotate(0); } to { -o-transform-origin:50% 0%; -o-transform: rotate(-90deg); filter:alpha(opacity=50); opacity:0.5; }}
+
+@-ms-keyframes moveToLeft { form { -ms-transform: rotate(0); } to { -ms-transform-origin:50% 0%; -ms-transform: rotate(90deg); filter:alpha(opacity=50); opacity:0.5; }}
+@-ms-keyframes moveToRight { form { -ms-transform: rotate(0); } to { -ms-transform-origin:50% 0%; -ms-transform: rotate(-90deg); filter:alpha(opacity=50); opacity:0.5; }}
+
+@keyframes moveToLeft { form { transform: rotate(0); } to { transform-origin:50% 0%; transform: rotate(90deg); filter:alpha(opacity=50); opacity:0.5; }}
+@keyframes moveToRight { form { transform: rotate(0); } to { transform-origin:50% 0%; transform: rotate(-90deg); filter:alpha(opacity=50); opacity:0.5; }}

@@ -1,0 +1,25 @@
+body {font-family: 'microsoft yahei';}
+a:hover {color: #fd5115;}
+
+.head .logo {float:left;width:247px;height:81px;margin-left:5px;}
+h1.logo a,h1.logo img {max-width:247px;max-height:81px;}
+.search {float:left;width:385px;height:40px;line-height:40px;border:1px solid #f0f0f0;overflow:hidden;border-radius:5px;margin:0;margin-top:20px;margin-left:110px;}
+.search .txt_search {outline:none;font-size:14px;float:left;width:342px;border:none;text-indent:15px;padding:9.3px 0;}
+.search #search_button {width:43px;height:40px;position:relative;background:#1da9ff url(../images/InfoIcon.png) no-repeat center;background-position:6px 5px;border:none;float:left;}
+.edit {float:left;margin-top:21.3px;margin-left:149px;}
+.edit a {float:left;width:136px;height:39px;line-height:39px;border-radius:3px;text-align:center;font-size:14px;margin-left:15px;color:#fff;}
+.edit a.btn-post {background:#aa8dff;}
+.edit a.btn-post:hover {background:#9570ff;}
+.edit a.btn-edit {background:#ff84a4;}
+.edit a.btn-edit:hover {background:#ff5b86;}
+
+
+/* 右侧固定导航 */
+.tnav {float: left; width: 740px; height: 38px; padding-left: 20px; border-bottom: 2px solid #000;}
+.w1200 .tnav {width: 940px;}
+.tnav li {float: left;}
+.tnav li a {position: relative; display: block; padding: 0 18px; color: #333; font-size: 18px; height: 38px; line-height: 38px;}
+.tnav li a:hover {background: #a8d300; color: #fff;}
+.tnav li a i {position: absolute; top: -1px; right: 5px; width: 23px; height: 15px; background: url('../images/sprite.png') no-repeat;}
+.tnav li a i.hot {background-position: -1px -24px;}
+.tnav li a i.new {background-position: -26px -24px;}

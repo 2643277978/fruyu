@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>{#$detail_title#}-{#$siteCityInfo['name']#}写字楼{#if $detail_type == 0#}出租{#else#}出售{#/if#}网-{#$house_title#}</title>
+<meta name="keywords" content="{#$siteCityInfo['name']#}写字楼{#if $detail_type == 0#}出租{#else#}出售{#/if#},{#$detail_loupan#}写字楼{#if $detail_type == 0#}出租{#else#}出售{#/if#}" />
+<meta name="description" content="{#$detail_loupan#}写字楼{#if $detail_type == 0#}出租{#else#}出售{#/if#}信息，{#$siteCityInfo['name']#}{#$detail_addr[1]#}{#$detail_addr[2]#}{#$detail_address#}，{#$detail_loupan#}写字楼{#if $detail_type == 0#}出租{#else#}出售{#/if#}，找更多{#$siteCityInfo['name']#}{#$detail_loupan#}写字楼信息就到{#$siteCityInfo['name']#}{#$cfg_shortname#}。" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/xzl-detail.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/swiper.min.css">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+
+	var pageData = {
+		id: {#$detail_id#},
+		title: '{#$detail_community#}',
+		address: '{#$detail_address#}',
+		lat: '{#$detail_latitude#}',
+		lng: '{#$detail_longitude#}',
+		mapType: '{#$site_map#}',
+		cityName: '{#$siteCityInfo['name']#}',
+		mapKey: '{#$site_map_key#}',
+    title: '{#$detail_title#}'
+	};
+	var page_type = 'xzl';
+
+	var JubaoConfig = {
+		"module" : 'house',
+		"action" : 'xzl',
+		"id" : '{#$detail_id#}'
+	};
+</script>
+</head>
+
+<body>
+
+{#include file="../../../siteConfig/touch_top.html" pageTitle="{#$detail_title#}"#}
+<div class="container zf">
+<!-- 视频图片轮播 s-->
+	<div class="topSwiper">
+		<div class="swiper-container">
+	          <div class="swiper-wrapper">
+	          	  {#if $detail_qj_file#}
+                <div class="swiper-slide panorama-box">
+                    <img src="{#$detail_litpic#}" width="100%" height="100%">
+                    <div class="imgplay">
+                        <img src="{#$templets_skin#}images/vr.gif" alt="">
+                    </div>
+                </div>
+                {#/if#}
+                {#if $detail_video#}
+                <div class="swiper-slide video-box">
+                    <img src="{#$detail_litpic#}" width="100%" height="100%">
+                    <div class="imgplay">
+                        <img src="{#$templets_skin#}images/viplay.png" alt="">
+                    </div>
+                </div>
+                {#/if#}
+                {#foreach from=$detail_imglist item=img#}
+                <div class="swiper-slide">
+                    <img src="{#$img.path#}" width="100%" height="100%">
+                </div>
+                {#/foreach#}
+	          </div>
+	          <div class="swiper-pagination"></div>
+	    </div>
+	    <div class="markBox">
+	    	{#if $detail_qj_file#}<a href="javascript:;" class="pmark panorama">全景</a>{#/if#}
+        {#if $detail_video#}<a href="javascript:;" class="pmark video">视频</a>{#/if#}
+				{#if $detail_imglist#}<a href="javascript:;" class="pmark picture">图片</a>{#/if#}
+		</div>
+	</div>
+	<!-- 视频图片轮播 e-->
+
+<!-- 视频图片弹出层 s-->
+	<div class="videoModal">
+		<div class="swiper-container">
+			  <i class="vClose"></i>
+        <div class="swiper-wrapper">
+        	{#if $detail_qj_file#}
+        	<div class="swiper-slide">
+        		{#* h5 *#}
+						{#if $detail_qj_type == 0#}
+							<iframe src="{#$cfg_basehost#}/include/360panorama.php?f={#$detail_qj_file#}"></iframe>
+						{#* iframe *#}
+						{#elseif $detail_qj_type == 1#}
+							<iframe src="{#$detail_qj_file#}"></iframe>
+						{#/if#}
+      		</div>
+					{#/if#}
+          {#if $detail_video#}
+        	<div class="swiper-slide"><video width="100%" height="100%" controls preload="meta" x5-video-player-type="h5" x5-playsinline playsinline webkit-playsinline  x5-video-player-fullscreen="true" id="video" src="{#$detail_video#}"  poster="{#$detail_litpic#}"></video></div>
+        	{#/if#}
+        	{#foreach from=$detail_imglist item=img#}
+					<div class="swiper-slide"><img src="{#$img.path#}" / ></div>
+					{#/foreach#}
+        </div>
+        <div class="swiper-pagination"></div>
+	    </div>
+	</div>
+	<!-- 视频图片弹出层 e-->
+
+
+	<div class="basic">
+		<div class="zf_title">
+			<div class="title">{#$detail_title#}</div>
+			<div class="price">
+				{#if $detail_price > 0#}
+					{#if $detail_type == 0#}
+					{#$detail_price#}{#echoCurrency type='short'#}/平米•月<span>{#$detail_price * $detail_area#}{#echoCurrency type='short'#}</span>
+					{#else#}
+						{#$detail_price#}万
+					{#/if#}
+				{#else#}面议
+				{#/if#}
+			</div>
+			<div class="txt"><span>{#$detail_pubdate|date_format:"%Y.%m.%d"#}</span><span>{#$detail_click#}浏览</span><span>{#if $detail_usertype == 0#}个人{#else#}中介{#/if#}</span><span class="jubao HN_Jubao">举报</span>
+                </div>
+			<div class="classification">
+				<div><p>{#$detail_area#}㎡</p><p>面积</p></div><div><p>{#$detail_bno#}/{#$detail_floor#}层</p><p>楼层</p></div><div><p>{#$detail_zhuangxiu#}</p><p>装修</p></div><div><p>不含</p><p>物业费</p></div>
+			</div>
+			 <a href="https://api.map.baidu.com/marker?location={#$detail_latitude#},{#$detail_longitude#}&title={#$detail_title#}&content={#foreach from=$detail_latitude item=addr#}{#$addr#}{#/foreach#}{#$detail_address#}&output=html" target="_blank" class="zf_address appMapBtn">{#foreach from=$detail_addr item=addr#}{#$addr#}{#/foreach#}{#$detail_address#}</a>
+		</div>
+		<div class="information usertype{#$detail_usertype#} fn-clear">
+        {#if $detail_usertype == 1#}
+        <div class="im_img">
+            <img src="{#$detail_user['photo']#}" alt="{#$detail_username#}">
+        </div>
+        <div class="im_name">
+            <p>
+            	<span>{#$detail_username#}</span>
+            	{#if $detail_user['certify'] == 1#}<i class="rz_01"></i>{#/if#}
+            	{#if $detail_user['flag'] == 1#}<i class="rz_02"></i>{#/if#}
+            </p>
+            <p>{#if $detail_user.zjcomId#}{#$detail_user.zjcomName#}{#else#}独立经纪人{#/if#}</p>
+        </div>
+        <div class="im_icon">
+        	{#if $detail_user.qq#}<span class="im_qq"></span>{#/if#}
+            {#if $detail_user.wxQr#}<span class="im_wx"></span>{#/if#}
+            <span class="im_iphone"></span>
+        </div>
+        {#else#}
+        <div class="im_name">
+            <p>
+                <span>{#$detail_username#}</span>
+            </p>
+			<!--<p>{#$detail_contact#}</p> -->
+        </div>
+        <div class="im_icon">
+            <span data-item="{#$detail_id#}" data-type="zu" data-id="{#$detail_userid#}" class="im_iphone"></span>
+        </div>
+        {#/if#}
+    </div>
+	</div>
+
+	<!-- 房源信息 -->
+	<div class="housing">
+		<p class="classify_title">房源信息</p>
+		<div class="facilities">
+			<ul class="fn-clear">
+				{#foreach from=$detail_peitao item=pt#}
+				<li><p class="fa_icon {#$pt.type#}"></p><p>{#$pt.name#}</p></li>
+				{#/foreach#}
+			</ul>
+		</div>
+		<div class="mode fn-clear">
+			<div><span>物&nbsp;&nbsp;业&nbsp;&nbsp;费：</span><span>{#$detail_proprice#}元/m²/月</span></div>
+			<div><span>类&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型：</span><span>{#$detail_protype#}</span></div>
+			<div><span>楼&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;盘：</span><span>{#$detail_loupan#}</span></div>
+			<div><span>等&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级：</span><span>{#$detail_levelName#}</span></div>
+		</div>
+		<div class="housing_txt">
+			{#$detail_note#}
+		</div>
+	</div>
+
+	{#if $detail_loupanid#}
+	<!-- 楼盘详情 -->
+	<div class="recommend">
+		<div class="recommend_title fn-clear"><span>{#$detail_loupan#}</span><a href="{#getUrlPath service=house template='loupan-detail' id=$detail_loupanid#}">楼盘详情&gt;</a></div>
+		<div class="recommend_txt fn-clear">
+			<div class="txt_left">
+				<p><span>建筑面积</span><span>{#$detail_loupanDetail.buildarea#}m²</span></p>
+				<p><span>楼层状况</span><span>{#$detail_loupanDetail.floor#}</span></p>
+				<p><span>车位数量</span><span>{#$detail_loupanDetail.parknum#}</span></p>
+				<p><span>开&nbsp;&nbsp;发&nbsp;&nbsp;商</span><span>{#$detail_loupanDetail.investor#}</span></p>
+				<p><span>物业公司</span><span>{#$detail_loupanDetail.property#}</span></p>
+			</div>
+			<div class="txt-right">
+				<a href="{#getUrlPath service=house template='community-detail' id=$detail_communityid#}"><img src="{#$detail_loupanDetail.litpic#}">	{#*<span>共57张</span>*#}</a>
+			</div>
+		</div>
+	</div>
+	{#/if#}
+	<!-- 位置周边 -->
+	<div class="zhoubian">
+		<div class="classify_title">位置周边</div>
+		<div class="periphery">
+		    <ul class="nav-wrapper"></ul>
+		    <div class="map-container">
+		        <div class="map-wrapper" id="map-wrapper" data-lng="{#$detail_longitude#}" data-lat="{#$detail_latitude#}"></div>
+		    </div>
+		</div>
+		<a href="javascript:;" class="btn-all appMapBtn" target="_blank">查看全部配套 > </a>
+	</div>
+
+	<!-- 周边推荐 -->
+	<div class="periphery">
+		<div class="periphery_title">周边推荐</div>
+		<ul class="fn-clear">
+		    {#house action=xzlList addrid=$detail_addrid pageSize=4#}
+        <li class="fn-clear">
+        	<a href="{#$row.url#}" title="{#$row.title#}">
+              <div class="rleft">
+                  <img src="{#$row.litpic|replace:"large":"small"#}" alt="{#$row.title#}">
+              </div>
+              <div class="rright">
+                  <div class="rtitle fn-clear">
+                      {#if $detail_isbid#}<i></i>{#/if#}<p>{#$row.title#}</p>{#if $row.qj#}<em class="quanjing">全景</em>{#/if#}
+                  </div>
+                  <div class="comment fn-clear"><span>{#$row.protype#}</span><span class="area">{#$row.area#}平米</span><em>{#if $row.price > 0#}{#$row.price#}{#if $row.type == 0#}元/平米•月{#else#}万{#/if#}{#else#}面议{#/if#}</em>
+                  </div>
+                  <p class="addr">{#$row.loupan#}{#if $row.loupanid && $row.loupan_price#}<span class="addr_right">{#$row.loupan_price#}{#if $row.loupan_ptype == 1#}元/㎡{#else#}万元/套{#/if#}起</span>{#/if#}
+                  </p>
+              </div>
+          </a>
+        </li>
+        {#/house#}
+		  </ul>
+	</div>
+
+	<!-- 底部 -->
+	<div class="bottom-fixed-container">
+		<div class="follow-wrapper">
+			<ul>
+				{#if $detail_collect#}
+				<li class="Collection"><i class="follow-icon active"></i><div class="text-follow">已收藏</div></li>
+				{#else#}
+				<li class="Collection"><i class="follow-icon"></i><div class="text-follow">收藏</div></li>
+				<!--<a href="{#getUrlPath service=house template=yuyue param="type=zu&id={#$detail_id#}"#}" >-->
+				{#/if#}
+				<li class="yuyue-house"><a href="{#getUrlPath service=house template=yuyue param="type=zu&id={#$detail_id#}"#}" ><i class="post_ulog"></i><div class="order-house">预约看房</div></li>
+			</ul>
+		</div>
+		<div class="big-wrapper">
+			<!--<a href="{#getUrlPath service=house template=yuyue param="type=zu&id={#$detail_id#}"#}" class="button post_ulog"><i></i>预约看房</a> <a href="tel:{#if $detail_usertype == 1#}{#$detail_user.phone#}{#else#}{#$detail_contact#}{#/if#}" class="button call_phone"><i></i>电话咨询</a> -->
+			<a href="{#$member_userDomain#}/message.html" class="button post_news"><i></i>微聊</a>
+			<a href="javascript;" class="button call_phone"><i></i>电话咨询</a>
+		</div>
+	</div>
+
+</div>
+
+<div class="desk"></div>
+{#if $detail_user.wxQr#}
+<!-- 微信弹框 -->
+<div class="wx_frame">
+    <p class="ewm_title">微信中长按识别二维码</p>
+    <div class="ewm">
+        <img src="{#$detail_user.wxQr#}">
+    </div>
+    <p class="ewm_txt">扫一扫上面的二维码图案，加微信客服</p>
+    <i class="wx_cuo"></i>
+</div>
+{#/if#}
+{#if $detail_user.qq#}
+<!-- qq -->
+<div class="qq_frame">
+	<i class="qq_icon"></i>
+    <p>{#$detail_user.qq#}</p>
+    <i class="qq_cuo"></i>
+</div>
+{#/if#}
+<!-- 电话 -->
+<div class="phone_frame">
+	<i class="phone_icon"></i>
+    {#if $detail_usertype == 1#}
+    <p class="phoneNum_show"></p><a href="javascript;">立即拨打</a>
+    {#else#}
+    <p class="phoneNum_show"></p><a href="javascript;">立即拨打</a>
+    {#/if#}
+    <i class="phone_cuo"></i>
+</div>
+
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$mbody#}',
+		"title": '{#$detail_title#}',
+		"imgUrl": '{#$detail_litpic#}',
+		"link": '{#getUrlPath service='house'  template='xzl-detail' id={#$detail_id#}#}',
+	};
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script src="{#$templets_skin#}js/swiper.min.js"></script>
+<script src="{#$cfg_staticPath#}js/publicOpenMap.js?v={#$cfg_staticVersion#}"></script>
+	{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
+<script src="{#$templets_skin#}js/xzl-detail.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

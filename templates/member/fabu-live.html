@@ -1,0 +1,259 @@
+<script>
+    var userDomain='{#getUrlPath service='member' type='user' template='manage-live'#}', detailUrl = '{#$url#}',staticPath = '{#$cfg_staticPath#}', templatePath = '{#$templets_skin#}';
+    var modelType = 'house';
+	var map_city = '{#$cfg_mapCity#}', site_map = "{#$site_map#}";
+</script>
+<style>
+.list_box .menu {position: relative;width:70%;float: left;}
+.list_box .menu li {margin-bottom: 10px;overflow: hidden;}
+.list_box .menu input {font-size: 14px;}
+.list_box .menu input:focus {position: relative;z-index: 1;}
+.list_box .menu input.name {width:100px;}
+.list_box .menu input.url {width:200px;margin-left: -1px;}
+.list_box .menu span {font-weight: bold;margin:0 5px;cursor: pointer;font-size: 14px;color: #666;}
+.list_box .menu span.sort {margin-right: 10px;cursor: move;}
+.list_box .menu span.dn {margin-left: 45px;color: #ccc;}
+.list_box .menu span.dn.active {color: #666;}
+.list_box .menu .placeholder {height: 82px;width:394px;margin-bottom: 10px;border:1px solid #ccc;border: 1px dashed #c8c8c8;}
+.w1200 .list_box .menu .placeholder {height: 40px;}
+.w1200 .list_box .menu span.dn {margin-left: 10px;}
+.notebox {overflow: hidden;}
+</style>
+{#include file="sidebar.html"#}
+<div class="main">
+    <div class="list_banner"><p>{#$langData['siteConfig'][31][43]#}</p></div>{#* 发直播 *#}
+    <div class="list_main">
+        <form id="fbForm" action="/include/ajax.php?service=live&action={#if !empty($id)#}edit&id={#$id#}{#else#}getPushSteam{#/if#}">
+            <div class="list_box listImgBox">
+                <label for="up-banner" class="list_upload">{#$langData['siteConfig'][31][44]#}</label>{#* 上传直播封面 *#}
+                <div id="up-banner" {#if $litpic != ""#}style="display:none;"{#/if#}></div>
+                {#if $litpic != ""#}
+                <ul id="listSection1" class="listSection thumblist fn-clear" style="display:inline-block;"><li id="WU_FILE_0_1"><a href='javascript:;'><img alt="" src="{#$litpic#}" data-val="{#$litpicS#}"/></a></li></ul>
+                {#else#}
+                <ul id="listSection1" class="listSection thumblist fn-clear"></ul>
+                {#/if#}
+                <input type="hidden" name="litpic" value="{#$litpicS#}" class="imglist-hidden">
+                <span style="margin-left: 20px;">
+                    <p>({#$langData['siteConfig'][31][45]#})</p>{#* 图片尺寸建议为640*360 图片小于4M *#}
+                    <button class="btn_sel">{#$langData['siteConfig'][31][46]#}</button>{#* 选择封面图片 *#}
+                </span>
+            </div>
+            <div class="list_box">
+                <label for="live_fl">{#$langData['siteConfig'][31][47]#}</label>{#* 直播分类 *#}
+                <select name="typeid" id="live_fl">
+                    <option value="0">{#$langData['siteConfig'][7][2]#}</option>{#* 请选择 *#}
+                    {#live action="type" return="typenav" type="0"#}
+                    <option value="{#$typenav.id#}" {#if $typeid == $typenav.id#} selected{#/if#}>{#$typenav.typename#}</option>
+                    {#/live#}
+                </select>
+                <span class="tip-inline">{#$langData['siteConfig'][31][48]#}</span>{#* 请选择直播分类 *#}
+            </div>
+            <div class="list_box">
+                <label for="live_title">{#$langData['siteConfig'][31][49]#}</label>{#* 直播标题 *#}
+                <input type="text" id="live_title" name="title" value="{#$title#}" placeholder="{#$langData['siteConfig'][31][50]#}">{#* 请输入直播标题 *#}
+            </div>
+
+            <div class="list_box">
+                <label for="start_time">{#$langData['siteConfig'][17][34]#}</label>{#* 开始时间 *#}
+                <input type="text" id="start_time" name="valid" value="{#$ftime#}" readonly placeholder="{#$langData['siteConfig'][31][51]#}">{#* 请选择开始时间 *#}
+            </div>
+            <div class="list_box fn-hide">
+                <label>{#$langData['siteConfig'][31][52]#}</label>{#* 横竖屏直播 *#}
+                <div class="live_sel">
+                    <div class="h_live">
+                        <div class="h_screen {#if $way==0#}active{#/if#}" data-id="0" id="h_screen"></div>
+                        <label for="h_screen">{#$langData['siteConfig'][31][53]#}</label>{#* 横屏 *#}
+                    </div>
+                    <div class="v_live">
+                        <div class="h_screen {#if $way==1#}active{#/if#}" data-id="1" id="v_screen"></div>
+                        <label for="v_screen">{#$langData['siteConfig'][31][54]#}</label>{#* 竖屏 *#}
+                    </div>
+                </div>
+                <input type="hidden" value="{#$way#}" name="way" id="show">
+            </div>
+            <div class="list_box">
+                <label for="live_lx">{#$langData['siteConfig'][31][55]#}</label>{#* 直播类型 *#}
+                <select name="catid" id="live_lx">
+                    <option value="0" {#if $catid == 0#} selected{#/if#}>{#$langData['siteConfig'][31][56]#}</option>{#* 公开 *#}
+                    <option value="1" {#if $catid == 1#} selected{#/if#}>{#$langData['siteConfig'][31][57]#}</option>{#* 加密 *#}
+                    <option value="2" {#if $catid == 2#} selected{#/if#}>{#$langData['siteConfig'][19][889]#}</option>{#* 收费 *#}
+                </select>
+            </div>
+            <div class="list_box li_pass" style="{#if $catid == 1#}display:block;{#/if#}">
+                <label></label>
+                <input type="password" value="{#$password#}" name="password" placeholder="{#$langData['siteConfig'][20][164]#}">{#* 请输入密码 *#}
+            </div>
+            <div class="list_box li_collect" style="{#if $catid == 2#}display:block;{#else#}display:none;{#/if#}">
+                <label for="start_collect">{#$langData['siteConfig'][31][58]#}</label>{#* 开始收费 *#}
+                <span class="money_collect">
+                    <span class="symbol cReduce">-</span>
+                    <input type="text" value="{#if !empty($startmoney)#}{#$startmoney#}{#else#}0{#/if#}" name="startmoney" id="start_collect">
+                    <span class="symbol cAdd">+</span>
+                    <span> {#echoCurrency type='short'#}</span>
+                </span>
+            </div>
+            <div class="list_box li_collect" style="{#if $catid == 2#}display:block;{#else#}display:none;{#/if#}">
+                <label for="end_collect">{#$langData['siteConfig'][31][59]#}</label>{#* 结束收费 *#}
+                    <span class="money_collect">
+                        <span class="symbol cReduce">-</span>
+                        <input type="text" value="{#if !empty($endmoney)#}{#$endmoney#}{#else#}0{#/if#}" name="endmoney" id="end_collect">
+                        <span class="symbol cAdd">+</span>
+                        <span>{#echoCurrency type='short'#}</span>
+                    </span>
+            </div>
+            <div class="list_box">
+                <label for="pulltype">拉流地址</label>
+                <select name="pulltype" id="pulltype">
+                    <option value="0" {#if !$pulltype#} selected{#/if#}>系统生成</option>{#* 系统生成 *#}
+                    <option value="1" {#if $pulltype == 1#} selected{#/if#}>手动输入</option>{#* 手动输入 *#}
+                </select>
+            </div>
+            <div class="list_box pullurlBox{#if !$pulltype#} fn-hide{#/if#}">
+                <label for="pullurl_pc">拉流地址(电脑端)</label>{#* 拉流地址 *#}
+                <input type="text" id="pullurl_pc" name="pullurl_pc" value="{#$pullurl_pc#}" placeholder="请输入第三方拉流地址">{#* 请输入第三方拉流地址 *#}
+            </div>
+            <div class="list_box pullurlBox{#if !$pulltype#} fn-hide{#/if#}">
+                <label for="pullurl_touch">拉流地址(移动端)</label>{#* 拉流地址 *#}
+                <input type="text" id="pullurl_touch" name="pullurl_touch" value="{#$pullurl_touch#}" placeholder="请输入第三方拉流地址">{#* 请输入第三方拉流地址 *#}
+            </div>
+            <div class="list_box">
+                <label for="live_lc">{#$langData['siteConfig'][31][60]#}</label>{#* 直播流畅度 *#}
+                <select name="flow" id="live_lc">
+                    <option value="1" {#if $flow == 1#} selected{#/if#}>{#$langData['siteConfig'][31][61]#}</option>{#* 流畅 *#}
+                    <option value="2" {#if $flow == 2#} selected{#/if#}>{#$langData['siteConfig'][31][62]#}</option>{#* 普清 *#}
+                    <option value="3" {#if $flow == 3 || $flow == ''#} selected{#/if#}>{#$langData['siteConfig'][31][63]#}</option>{#* 高清 *#}
+                </select>
+            </div>
+            <div class="list_box" style="display: none;">
+                <label for="lnglat">坐标信息</label>
+                <input type="text" id="lnglat" name="lnglat" value="{#$lnglat#}" readonly placeholder="{#$langData['siteConfig'][19][882]#}">
+                <img src="/static/images/admin/markditu.jpg" id="mark" style="cursor: pointer;margin-left: 10px;vertical-align: middle;" title="{#$langData['siteConfig'][6][92]#}">
+            </div>
+            <div class="list_box fn-clear">
+                <label for="menu">直播菜单</label>
+                <ul class="menu">
+                    {#if $menuArr#}
+                    {#foreach from=$menuArr item='cfg' key='k'#}
+                    <li data-idx="{#$k#}">
+                      <div class="input-prepend input-append">
+                        <span class="add-on sort">排序</span>
+                        <input class="input-small name" type="text" name="menu[{#$k#}][name]" placeholder="菜单名称" value="{#$cfg.name#}">
+                        <input class="input-middle url" type="text" name="menu[{#$k#}][url]" placeholder="菜单链接" value="{#$cfg.url#}"{#if $cfg.sys#}readonly="" title="此项不需要填写"{#/if#}>
+                        <input type="hidden" name="menu[{#$k#}][show]" class="show" value="{#$cfg.show#}">
+                        <input type="hidden" name="menu[{#$k#}][sys]" class="sys" value="{#$cfg.sys#}">
+                        {#if $cfg.show == '1'#}
+                        <span class="add-on btn dn active">显示</span>
+                        {#else#}
+                        <span class="add-on btn dn">隐藏</span>
+                        {#/if#}
+                        <span class="add-on btn del">删除</span>
+                        <span class="add-on btn add">新增</span>
+                      </div>
+                    </li>
+                    {#/foreach#}
+                    {#else#}
+                    <li data-idx="0">
+                      <div class="input-prepend input-append">
+                        <span class="add-on sort">排序</span>
+                        <input class="input-small name" type="text" name="menu[0][name]" placeholder="菜单名称" value="图文">
+                        <input class="input-middle url" type="text" name="menu[0][url]" placeholder="菜单链接" value="" readonly="" title="此项不需要填写">
+                        <input type="hidden" name="menu[0][show]" class="show" value="1">
+                        <input type="hidden" name="menu[0][sys]" class="sys" value="1">
+                        <span class="add-on btn dn active">显示</span>
+                        <span class="add-on btn del">删除</span>
+                        <span class="add-on btn add">新增</span>
+                      </div>
+                    </li>
+                    <li class="sys" data-idx="1">
+                      <div class="input-prepend input-append">
+                        <span class="add-on sort">排序</span>
+                        <input class="input-small name" type="text" name="menu[1][name]" placeholder="菜单名称" value="互动">
+                        <input class="input-middle url" type="text" name="menu[1][url]" placeholder="菜单链接" value="" readonly="" title="此项不需要填写">
+                        <input type="hidden" name="menu[1][show]" class="show" value="1">
+                        <input type="hidden" name="menu[1][sys]" class="sys" value="2">
+                        <span class="add-on btn dn active">显示</span>
+                        <span class="add-on btn del">删除</span>
+                        <span class="add-on btn add">新增</span>
+                      </div>
+                    </li>
+                    <li class="sys" data-idx="2">
+                      <div class="input-prepend input-append">
+                        <span class="add-on sort">排序</span>
+                        <input class="input-small name" type="text" name="menu[2][name]" placeholder="菜单名称" value="榜单">
+                        <input class="input-middle url" type="text" name="menu[2][url]" placeholder="菜单链接" value="" readonly="" title="此项不需要填写">
+                        <input type="hidden" name="menu[2][show]" class="show" value="1">
+                        <input type="hidden" name="menu[2][sys]" class="sys" value="3">
+                        <span class="add-on btn dn active">显示</span>
+                        <span class="add-on btn del">删除</span>
+                        <span class="add-on btn add">新增</span>
+                      </div>
+                    </li>
+                    {#/if#}
+                </ul>
+            </div>
+            <div class="list_box fn-clear">
+                <label for="note">直播简介</label>
+                <div class="notebox">
+                    <script id="note" name="note" type="text/plain" style="width:600px;height:300px">{#$note#}</script>
+                </div>
+            </div>
+            <div class="create-live">
+                <button class="btn-create" type="submit">{#if !empty($id)#}{#$langData['siteConfig'][6][151]#}{#else#}{#$langData['siteConfig'][31][64]#}{#/if#}</button>
+                {#if $arcrank == 1#}<p>提交后需要重新审核</p>{#/if#}
+                {#* 提交 - 创建直播  *#}
+            </div>
+        </form>
+    </div>
+    <div class="sel_modal" style="display: none;">
+        <div class="modal_box">
+            <div class="modal_upload">
+                <!--<input type="file" class="file_up">-->
+                <div class="btn_sel uploadinp filePicker thumbtn{#if $litpic != ""#} fn-hide{#/if#}" id="filePicker1" data-type="thumb"  data-count="1" data-size="{#$thumbSize#}" data-imglist=""><div></div><span></span></div>
+                <div class="modal_tip">
+                    <h5>{#$langData['siteConfig'][31][65]#}</h5>{#* 请从电脑上传图片 *#}
+                    <p>{#$langData['siteConfig'][31][45]#}</p>{#* 图片尺寸建议为640*360 图片小于4M *#}
+                </div>
+            </div>
+            <div class="modal_main">
+                <ul>
+                    <li value="0"><img src="/templates/member/images/live/a_banner01.png"></li>
+                    <li value="1"><img src="/templates/member/images/live/a_banner02.png"></li>
+                    <li value="2"><img src="/templates/member/images/live/a_banner03.png"></li>
+                    <li value="3"><img src="/templates/member/images/live/a_banner04.png"></li>
+                    <li value="4"><img src="/templates/member/images/live/a_banner05.png"></li>
+                    <li value="5"><img src="/templates/member/images/live/a_banner06.png"></li>
+                    <li value="6"><img src="/templates/member/images/live/a_banner07.png"></li>
+                    <li value="7"><img src="/templates/member/images/live/a_banner08.png"></li>
+                    <li value="8"><img src="/templates/member/images/live/a_banner09.png"></li>
+                    <li value="9"><img src="/templates/member/images/live/a_banner10.png"></li>
+                    <li value="10"><img src="/templates/member/images/live/a_banner11.png"></li>
+                    <li value="11"><img src="/templates/member/images/live/a_banner12.png"></li>
+                    <li value="12"><img src="/templates/member/images/live/a_banner13.png"></li>
+                    <li value="13"><img src="/templates/member/images/live/a_banner14.png"></li>
+                    <li value="14"><img src="/templates/member/images/live/a_banner15.png"></li>
+                </ul>
+            </div>
+            <div class="btn_con fn-hide">
+                <button class="btn_confirm">{#$langData['siteConfig'][6][0]#}</button>{#* 确认 *#}
+                <button class="btn_cancel">{#$langData['siteConfig'][6][12]#}</button>{#* 取消 *#}
+            </div>
+        </div>
+    </div>
+</div>
+<script id="menuTpl" type="text/html">
+  <li data-idx="100">
+    <div class="input-prepend input-append">
+      <span class="add-on sort">排序</span>
+      <input class="input-small name" type="text" name="menu[100][name]" placeholder="菜单名称" value="">
+      <input class="input-middle url" type="text" name="menu[100][url]" placeholder="菜单链接" value="">
+      <input type="hidden" name="menu[100][show]" class="show" value="1">
+      <input type="hidden" name="menu[100][sys]" class="sys" value="0">
+      <span class="add-on btn dn active">显示</span>
+      <span class="add-on btn del">删除</span>
+      <span class="add-on btn add">新增</span>
+    </div>
+  </li>
+</script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dragsort-0.5.1.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery-ui-sortable.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/calendar/WdatePicker.js?v={#$cfg_staticVersion#}"></script>

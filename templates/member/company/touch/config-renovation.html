@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>{#$langData['siteConfig'][19][453]#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}../../touch/css/gz-fabu.css?v={#$cfg_staticVersion#}">
+<link href="{#$templets_skin#}css/mobiscroll.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/config-renovation.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.deferred.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/mobiscroll.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/mobiscroll.datetime.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/mobiscroll.select.js" type="text/javascript"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+	var thumbSize = {#$thumbSize#}, thumbType = '{#$thumbType#}', atlasSize = {#$atlasSize*1024*1024#}, atlasType = '{#$atlasType#}', atlasMax = 9;
+    var modelType = '{#$module#}';
+</script>
+</head>
+<body>
+<form name="fabuForm" id="fabuForm" method="post" action="/include/ajax.php?service=renovation&action=storeConfig">
+    <div class="personal_bac">
+        <div class="mask_box">
+            <!-- 头部 s -->
+            {#$pageTitle = $langData['siteConfig'][19][453]#}
+            {#$pageRight = '<a href="javascript:;" class="notMenu"></a>'#}
+            {#include file="../../../siteConfig/touch_top.html"#}
+
+            <!-- 选择区域 s-->
+            <div class="selAddr ChoiceBox">
+                <span>{#$langData['siteConfig'][19][27]#}</span><div class="addr ChoiceBox_input"{#if $detail_addrid#} data-ids="{#getPublicParentInfo tab='site_area' id=$detail_addrid split=' '#}" data-id="{#$detail_addrid#}"{#/if#}>
+										{#if $detail_addr#}
+											{#getPublicParentInfo tab='site_area' id=$detail_addrid type='typename' split=' '#}
+										{#else#}
+                                            <em>{#$langData['siteConfig'][7][2]#}</em>
+										{#/if#}</div>
+                <input type="hidden" name="addrid" id="addrid" value="{#$detail_addrid#}">
+                <input type="hidden" id="addrname1" value="{#$detail_addr[1]#}">
+                <input type="hidden" name="cityid" id="cityid" value="{#$detail_cityid#}">
+            </div>
+            <!-- 选择区域 e-->
+            <!-- 公司地址 s -->
+            <div class="location">
+                <div class="LoTitle fn-clear"><em>{#$langData['siteConfig'][19][35]#}</em><span><i></i>{#$langData['siteConfig'][19][882]#}</span></div>
+                <textarea name="address" rows="8"  cols="80" id="location_con">{#$detail_address#}</textarea>
+                <input type="hidden" id="lnglat" name="lnglat" value="{#$detail_lnglat[0]#},{#$detail_lnglat[1]#}">
+            </div>
+            <!-- 公司地址 e -->
+            <!-- 图集 s-->
+            <div class="f-item mgb0">
+                <em>{#$langData['siteConfig'][26][31]#} - {#$langData['siteConfig'][19][569]#}</em>
+            </div>
+            <div class="img-box">
+              <ul class="uploader-list fn-clear" id="fileList1" >
+                <li class="uploadbtn">
+                  <div id="filePicker1" class="filePicker" data-type="atlas" data-amount="1"><p>+</p></div>
+                </li>
+                {#if $detail_logoSource#}
+                <li class="thumbnail" id="WU_FILE_1_0"><img src="{#$detail_logo#}" data-val="{#$detail_logoSource#}" data-url="{#$detail_logoSource#}" /><div class="file-panel"><span class="cancel"></span></div><div class="face on">LOGO</div></li>
+                {#/if#}
+                {#foreach from=$detail_certs key=k item=i#}
+                <li class="thumbnail" id="WU_FILE_2_{#$k#}"><img data-val="{#$i.picSource#}" data-url="{#changeFileSize url="{#$i.pic#}" type="small"#}" src="{#changeFileSize url="{#$i.pic#}" type="small"#}" data-des="{#$i.title#}" /><div class="file-panel"><span class="cancel"></span></div></li>
+                {#/foreach#}
+              </ul>
+              <input type="hidden" name="logo" id="logo" value="{#$detail_logoSource#}" class="imglist-hidden">
+              <input type="hidden" name="certs" id="certs" value="" class="imglist-hidden">
+            </div>
+            <!-- 图集 e-->
+
+            <!-- 公司名称 s -->
+            <div class="f-item">
+                <em>{#$langData['siteConfig'][19][354]#}</em><input type="text" name="company" id="company" value="{#$detail_company#}" max-length="60" placeholder="{#$langData['shop'][4][42]#}...">
+            </div>
+            <!-- 公司名称 e -->
+            <!-- 联系人 s -->
+            <div class="f-item">
+                <em>{#$langData['siteConfig'][19][642]#}</em><input type="text" name="people" id="people" value="{#$detail_people#}" max-length="20" placeholder="{#$langData['shop'][4][46]#}...">
+            </div>
+            <!-- 联系人 e -->
+            <!-- 联系电话 s -->
+            <div class="f-item">
+                <em>{#$langData['siteConfig'][19][56]#}</em><input type="text" name="contact" id="contact" value="{#$detail_contact#}" max-length="20" placeholder="{#$langData['siteConfig'][20][433]#}...">
+            </div>
+            <!-- 联系电话 e -->
+            <!-- 联系QQ s -->
+            <div class="f-item">
+                <em>{#$langData['siteConfig'][26][30]#}</em><input type="text" name="qq" id="qq" value="{#$detail_qq#}" max-length="20" placeholder="{#$langData['siteConfig'][27][11]#}...">
+            </div>
+            <!-- 联系QQ e -->
+            <!-- 服务区域 s -->
+            <div class="f-item mgb0">
+                <em>{#$langData['siteConfig'][19][81]#}</em>
+            </div>
+            <div class="checkbox fn-clear">
+                {#renovation action="addr" return="addr"#}
+                <label><input type="checkbox" name="range[]" value="{#$addr.id#}"{#if strstr($detail_range, $addr.id)#} checked="checked"{#/if#}>{#$addr.typename#}</label>
+                {#/renovation#}
+            </div>
+            <!-- 服务区域 e -->
+            <!-- 家装专长 s -->
+            <div class="f-item mgb0">
+                <em>{#$langData['siteConfig'][19][573]#}</em>
+            </div>
+            <div class="checkbox fn-clear">
+                {#renovation action="type" return="type" type="2"#}
+                <label><input type="checkbox" name="jiastyle[]" value="{#$type.id#}"{#if strstr($detail_jiastyle, $type.id)#} checked="checked"{#/if#}>{#$type.typename#}</label>
+                {#/renovation#}
+            </div>
+            <!-- 家装专长 e -->
+            <!-- 公装专长 s -->
+            <div class="f-item mgb0">
+                <em>{#$langData['siteConfig'][19][574]#}</em>
+            </div>
+            <div class="checkbox fn-clear">
+                {#renovation action="type" return="type" type="3"#}
+                <label><input type="checkbox" name="jiastyle[]" value="{#$type.id#}"{#if strstr($detail_jiastyle, $type.id)#} checked="checked"{#/if#}>{#$type.typename#}</label>
+                {#/renovation#}
+            </div>
+            <!-- 公装专长 e -->
+            <!-- 专长风格 s -->
+            <div class="f-item mgb0">
+                <em>{#$langData['siteConfig'][19][575]#}</em>
+            </div>
+            <div class="checkbox fn-clear">
+                {#renovation action="type" return="type" type="4"#}
+                <label><input type="checkbox" name="jiastyle[]" value="{#$type.id#}"{#if strstr($detail_jiastyle, $type.id)#} checked="checked"{#/if#}>{#$type.typename#}</label>
+                {#/renovation#}
+            </div>
+            <!-- 专长风格 e -->
+            <!-- 简介 s -->
+            <div class="introduce">
+                <p>{#$langData['siteConfig'][19][494]#}</p>
+                <textarea name="body" placeholder="{#$langData['siteConfig'][20][410]#}..." id="body" cols="30" rows="10">{#$detail_body#}</textarea>
+            </div>
+            <!-- 简介 e -->
+
+            <!-- 详细信息 -->
+
+            <!-- 简介 s -->
+            <div class="introduce">
+                <p>{#$langData['siteConfig'][19][578]#}</p>
+                <textarea name="scale" id="scale" cols="30" rows="10">{#$detail_scale#}</textarea>
+            </div>
+            <!-- 简介 e -->
+            <!-- 装后服务 s -->
+            <div class="introduce">
+                <p>{#$langData['siteConfig'][19][579]#}</p>
+                <textarea name="afterService" id="afterService" cols="30" rows="10">{#$detail_afterService#}</textarea>
+            </div>
+            <!-- 装后服务 e -->
+            <!-- 初期设计/量房 s -->
+            <div class="introduce">
+                <p>{#$langData['siteConfig'][19][580]#}</p>
+                <textarea name="initDesign" id="initDesign" cols="30" rows="10">{#$detail_initDesign#}</textarea>
+            </div>
+            <!-- 初期设计/量房 e -->
+            <!-- 初期预算/洽谈方式 s -->
+            <div class="introduce">
+                <p>{#$langData['siteConfig'][19][581]#}</p>
+                <textarea name="initBudget" id="initBudget" cols="30" rows="10">{#$detail_initBudget#}</textarea>
+            </div>
+            <!-- 初期预算/洽谈方式 e -->
+            <!-- 深化设计 s -->
+            <div class="introduce">
+                <p>{#$langData['siteConfig'][19][582]#}</p>
+                <textarea name="detaDesign" id="detaDesign" cols="30" rows="10">{#$detail_detaDesign#}</textarea>
+            </div>
+            <!-- 深化设计 e -->
+            <!-- 深化预算 s -->
+            <div class="introduce">
+                <p>{#$langData['siteConfig'][19][583]#}</p>
+                <textarea name="detaBudget" id="detaBudget" cols="30" rows="10">{#$detail_detaBudget#}</textarea>
+            </div>
+            <!-- 深化预算 e -->
+            <!-- 材料质量 s -->
+            <div class="introduce">
+                <p>{#$langData['siteConfig'][19][584]#}</p>
+                <textarea name="material" id="material" cols="30" rows="10">{#$detail_material#}</textarea>
+            </div>
+            <!-- 材料质量 e -->
+            <!-- 合同规范性 s -->
+            <div class="introduce">
+                <p>{#$langData['siteConfig'][19][585]#}</p>
+                <textarea name="normative" id="normative" cols="30" rows="10">{#$detail_normative#}</textarea>
+            </div>
+            <!-- 合同规范性 e -->
+            <!-- 材料质量 s -->
+            <div class="introduce">
+                <p>{#$langData['siteConfig'][19][584]#}</p>
+                <textarea name="material" id="material" cols="30" rows="10">{#$detail_material#}</textarea>
+            </div>
+            <!-- 材料质量 e -->
+            <!-- 特色服务 s -->
+            <div class="introduce">
+                <p>{#$langData['siteConfig'][19][586]#}</p>
+                <textarea name="speService" id="speService" cols="30" rows="10">{#$detail_speService#}</textarea>
+            </div>
+            <!-- 特色服务 e -->
+
+            <!-- 企业类型 s -->
+            <div class="f-item sel">
+                <em>{#$langData['siteConfig'][19][587]#}</em>
+                <div class="sel" style="text-align: right;">
+                    <select class="area1 w30 sel-scroll" name="comType" id="comType">
+                        <option value="">{#$langData['siteConfig'][7][2]#}</option>
+                        <option value="{#$langData['siteConfig'][19][588]#}"{#if $detail_comType == $langData['siteConfig'][19][588]#} selected="selected"{#/if#}>{#$langData['siteConfig'][19][588]#}</option>
+                        <option value="{#$langData['siteConfig'][19][590]#}"{#if $detail_comType == $langData['siteConfig'][19][590]#} selected="selected"{#/if#}>{#$langData['siteConfig'][19][590]#}</option>
+                        <option value="{#$langData['siteConfig'][19][591]#}"{#if $detail_comType == $langData['siteConfig'][19][591]#} selected="selected"{#/if#}>{#$langData['siteConfig'][19][591]#}</option>
+                        <option value="{#$langData['siteConfig'][19][591]#}"{#if $detail_comType == $langData['siteConfig'][19][591]#} selected="selected"{#/if#}>{#$langData['siteConfig'][19][591]#}</option>
+                        <option value="{#$langData['siteConfig'][19][592]#}"{#if $detail_comType == $langData['siteConfig'][19][592]#} selected="selected"{#/if#}>{#$langData['siteConfig'][19][592]#}</option>
+                        <option value="{#$langData['siteConfig'][19][593]#}"{#if $detail_comType == $langData['siteConfig'][19][593]#} selected="selected"{#/if#}>{#$langData['siteConfig'][19][593]#}</option>
+                        <option value="{#$langData['siteConfig'][19][594]#}"{#if $detail_comType == $langData['siteConfig'][19][594]#} selected="selected"{#/if#}>{#$langData['siteConfig'][19][594]#}</option>
+                        <option value="{#$langData['siteConfig'][19][595]#}"{#if $detail_comType == $langData['siteConfig'][19][595]#} selected="selected"{#/if#}>{#$langData['siteConfig'][19][595]#}</option>
+                        <option value="{#$langData['siteConfig'][19][596]#}"{#if $detail_comType == $langData['siteConfig'][19][596]#} selected="selected"{#/if#}>{#$langData['siteConfig'][19][596]#}</option>
+                    </select>
+                </div>
+            </div>
+            <!-- 企业类型 e -->
+            <!-- 注册资金 s -->
+            <div class="f-item">
+                <em>{#$langData['siteConfig'][19][597]#}</em><input type="text" name="regFunds" id="regFunds" value="{#$detail_regFunds#}" max-length="60">
+            </div>
+            <!-- 营业期限 s -->
+            <div class="OpenData">
+                <em>{#$langData['siteConfig'][19][598]#}</em><span><input name="operPeriodb" type="text" value="{#if $detail_operPeriodb#}{#$detail_operPeriodb|date_format:"%Y-%m-%d"#}{#/if#}" id="operPeriodb" class="demo-test-date" readonly max="{#$smarty.now|date_format:"%Y-%m-%d"#}"><i>{#$langData['siteConfig'][13][7]#}</i><input name="operPeriode" type="text" id="operPeriode" value="{#if $detail_operPeriode#}{#$detail_operPeriode|date_format:"%Y-%m-%d"#}{#/if#}" class="demo-test-date" readonly></span>
+            </div>
+            <!-- 营业期限 e -->
+            <!-- 成立日期 s -->
+            <div class="OpenData">
+                <em>{#$langData['siteConfig'][19][599]#}</em><span><input name="founded" type="text" value="{#if $detail_founded#}{#$detail_founded|date_format:"%Y-%m-%d"#}{#/if#}" id="founded" class="demo-test-date" readonly max="{#$smarty.now|date_format:"%Y-%m-%d"#}"></span>
+            </div>
+            <!-- 成立日期 e -->
+            <!-- 登记机关 e -->
+            <div class="f-item">
+                <em>{#$langData['siteConfig'][19][600]#}</em><input type="text" name="authority" id="authority" value="{#$detail_authority#}" max-length="60">
+            </div>
+            <!-- 登记机关 e -->
+            <!-- 经营范围 s -->
+            <div class="introduce">
+                <p>{#$langData['siteConfig'][19][601]#}</p>
+                <textarea name="operRange" id="operRange" cols="30" rows="10">{#$detail_operRange#}</textarea>
+            </div>
+            <!-- 经营范围 e -->
+            <!-- 年检时间 s -->
+            <div class="OpenData">
+                <em>{#$langData['siteConfig'][19][602]#}</em><span><input name="inspection" type="text" value="{#if $detail_inspection#}{#$detail_inspection|date_format:"%Y-%m-%d"#}{#/if#}" id="inspection" class="demo-test-date" readonly></span>
+            </div>
+            <!-- 年检时间 e -->
+            <!-- 注册号 e -->
+            <div class="f-item">
+                <em>{#$langData['siteConfig'][19][603]#}</em><input type="text" name="regnumber" id="regnumber" value="{#$detail_regnumber#}" max-length="60">
+            </div>
+            <!-- 注册号 e -->
+            <!-- 法人 e -->
+            <div class="f-item">
+                <em>{#$langData['siteConfig'][26][35]#}</em><input type="text" name="legalPer" id="legalPer" value="{#$detail_legalPer#}" max-length="60">
+            </div>
+            <!-- 法人 e -->
+
+            <div class="tjBtn"><a href='javascript:;'>{#$langData['siteConfig'][6][27]#}</a></div>
+
+        </div>
+        <div class="gz-sel-addr gz-sel-addr-hide"id="gzSelAddr" >
+        	<div class="gz-sel-addr-header">
+        		<h3>{#$langData['siteConfig'][6][73]#}</h3>
+        		<p class="gz-sel-addr-close"id="gzSelAddrCloseBtn"></p>
+        	</div>
+        	<ul class="gz-sel-addr-nav"></ul>
+        	<div class="gz-sel-addr-list"></div>
+        </div>
+        <div class="gz-sel-addr-mask"></div>
+        <div class="QuanBox QuanBox_hide">
+            <div class="QuanTitle">
+                <h3>{#$langData['siteConfig'][6][156]#}</h3>
+                <p class="QuanTitle_close"></p>
+            </div>
+            <div class="QuanList" id="QuanList">
+                <ul>
+                    {#if $detail_addrid#}
+					{#tuan action="circle" type="{#$detail_addrid#}"#}
+                    <li><label><em>{#$row.name#}</em><div class="checkbox"><input type="checkbox" {#if $detail_circleid && $row.id|in_array:$detail_circleid#} checked{#/if#} name="circle[]" data-name="{#$row.name#}" value="{#$row.id#}"><i class="checkBtn"></i></div></label></li>
+					{#/tuan#}
+					{#/if#}
+                </ul>
+            </div>
+            <div class="Quan_SureBtn">{#$langData['siteConfig'][6][1]#}</div>
+        </div>
+        <div class="SubwayBox Subway_hide">
+            <div class="SubwayTitle">
+                <h3>{#$langData['siteConfig'][19][516]#}</h3>
+                <p class="Subway_close"></p>
+            </div>
+            <div class="SubwayList">
+                <div class="SubwayNav">
+									{#if $detail_city#}
+                  {#siteConfig action="subway" city=$detail_city return='city'#}
+									{#if is_array($city)#}
+                  <em {#if $_bindex.city == 1#}class="subBC"{#/if#}>{#$city.title#}</em>
+									{#/if#}
+  								{#/siteConfig#}
+									{#/if#}
+                </div>
+                <div class="SubChoice_box fn-clear">
+									{#if $detail_city#}
+                  {#siteConfig action="subway" return="subway1" city=$detail_city#}
+                  <div class="sub  {#if $_bindex.subway1 > 1#}fn-hide{#/if#} fn-clear">
+                    {#siteConfig action="subwayStation" type="{#$subway1.id#}" return="subway"#}
+                      <label><input type="checkbox" name="subway[]" {#if $detail_subwayid && $subway.id|in_array:$detail_subwayid#} checked{#/if#} data-name="{#$subway.title#}" value="{#$subway.id#}"><i class="SubCheckbtn"></i>{#$subway.title#}</label>
+                    {#/siteConfig#}
+                  </div>
+    							{#/siteConfig#}
+									{#/if#}
+                </div>
+            </div>
+            <div class="Subway_SureBtn">{#$langData['siteConfig'][6][1]#}</div>
+        </div>
+    </div>
+</form>
+<div class="pageitem" id="map">
+    <div class="lead">
+        <p></p>
+        <input type="text" id="searchAddr" placeholder="{#$langData['siteConfig'][20][411]#}">
+    </div>
+    <div class="map">
+        <div id="mapdiv"></div>
+        <span class="mapcenter"></span>
+    </div>
+    <div class="mapresults">
+        <ul></ul>
+    </div>
+</div>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}'
+	};
+</script>
+<script src="//res.wx.qq.com/open/js/jweixin-1.3.2.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
+
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script src="{#$cfg_staticPath#}js/webuploader/webuploader.js" type="text/javascript"></script>
+<script src="{#$cfg_basehost#}/templates/member/touch/js/common_2.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/config-renovation.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

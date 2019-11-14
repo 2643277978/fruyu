@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$siteCityInfo['name']#}{#$sp_seotitle#}商铺{#$pageType#},{#$siteCityInfo['name']#}旺铺{#$pageType#},{#$siteCityInfo['name']#}店铺{#$pageType#},{#$siteCityInfo['name']#}店面{#$pageType#}信息-{#$house_title#}</title>
+<meta name="keywords" content="{#$siteCityInfo['name']#}商铺{#$pageType#},{#$siteCityInfo['name']#}旺铺{#$pageType#},{#$siteCityInfo['name']#}店铺{#$pageType#},{#$siteCityInfo['name']#}店面{#$pageType#}信息" />
+<meta name="description" content="{#$cfg_shortname#}{#$siteCityInfo['name']#}商铺{#$pageType#}频道,为您提供丰富的{#$siteCityInfo['name']#}商铺{#$pageType#},旺铺,门店{#$pageType#}信息,经纪人更新商铺房源,帮助您快速找到理想的商铺。找{#$pageType#}商铺,就上{#$cfg_shortname#}。" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/sp.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	var atpage = 1, pageSize = 20, totalCount = 0, comid = '{#$comid#}';
+
+  var detail = {
+      addrid : {#$addrid|default:0#},
+      business : {#$business|default:0#},
+  }
+  var keywords = '{#$keywords#}';
+</script>
+</head>
+
+<body class="w1200">
+{#include file="../../siteConfig/top1.html"#}
+
+{#$pageCurr = "sp"#}
+{#include file="top.html"#}
+
+<div class="wrap">
+	<div class="crumb fn-clear">
+		<div class="location">
+			<a href="{#$house_channelDomain#}">首页</a> > <a href="{#getUrlPath service='house' template='sp' type={#$type#}#}">商铺{#$pageType#}</a>
+		</div>
+	</div>
+	<div class="filterbox">
+		<div class="filtertab">
+			<ul class="fn-clear"><li data-action="sp_zu"{#if !$type#} class="on" {#/if#}>商铺出租</li><li data-action="sp_sale" {#if $type == 1#} class="on" {#/if#}>商铺出售</li><li data-action="sp_zr"{#if $type == 2#} class="on" {#/if#}>商铺转让</li>{#if $loupan_sp_id#}<li><a href="{#getUrlPath service='house' template='loupan' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} typeid={#$loupan_sp_id#} salestate={#$salestate#} times={#$times#} zhuangxiu={#$zhuangxiu#} buildtype={#$buildtype#} tuandate={#$tuandate#} filter={#$filter#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}" target="_blank">商铺新盘</a></li>{#/if#}</ul>
+		</div>
+		<div class="filter">
+			<div class="filterlist">
+				<dl class="t-fi fn-clear">
+                    <dt>位置</dt>
+                    <dd class="fn-clear">
+                        <div class="pos-item fn-clear">
+                            <a href="javascript:;" data-id="0"{#if $addrid == 0#} class="all curr"{#/if#}>不限</a>
+                            {#house action="addr" return='addr'#}
+                            <a href="javascript:;" data-id="{#$addr.id#}"{#if $addrid == $addr.id#} class="curr"{#/if#}>{#$addr.typename#}<s></s></a>
+                            {#/house#}
+                        </div>
+                    </dd>
+                    {#if $addrid != 0#}
+                    <div class="area" style="display:block;">
+                        <div class="pos-sub-item fn-clear">
+                            <a href="javascript:;" data-id="0"{#if $business == 0#} class="all curr"{#/if#}>不限</a>
+                            {#house action="addr" type=$addrid return='addr'#}
+                            <a href="javascript:;" data-business="{#$addr.id#}" data-id="{#$addr.id#}"{#if $business == $addr.id#} class="curr"{#/if#}>{#$addr.typename#}</a>
+                            {#/house#}
+                        </div>
+                    </div>
+                    {#else#}
+                    <div class="area">
+                        <div class="pos-sub-item fn-clear"></div>
+                    </div>
+                    {#/if#}
+                </dl>
+				<dl class="o-fi fn-clear">
+					<dt>面积</dt>                                                 
+					<dd class="fn-clear">
+						<a href="javascript:;" data-id=""{#if $area == ''#} class="all curr"{#/if#}>不限</a>
+            <a href="javascript:;" data-id=",100"{#if $area == ',100'#} class="curr"{#/if#}>100m²以下</a>
+            <a href="javascript:;" data-id="100,150"{#if $area == '100,150'#} class="curr"{#/if#}>100-150m²</a>
+            <a href="javascript:;" data-id="150,200"{#if $area == '150,200'#} class="curr"{#/if#}>150-200m²</a>
+            <a href="javascript:;" data-id="200,300"{#if $area == '200,300'#} class="curr"{#/if#}>200-300m²</a>
+            <a href="javascript:;" data-id="300,500"{#if $area == '300,500'#} class="curr"{#/if#}>300-500m²</a>
+            <a href="javascript:;" data-id="500,1000"{#if $area == '500,1000'#} class="curr"{#/if#}>500-1000m²</a>
+            <a href="javascript:;" data-id="1000,"{#if $area == '1000,'#} class="curr"{#/if#}>1000m²以上</a>
+						<div class="spbox">
+							<div class="inpbox inp_area">
+								<input type="input" class="p1" id="areaLow" maxlength="5" value="" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"><em>-</em>
+								<input type="input" class="p2" id="areaTop" maxlength="5" value="" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"><em>m²</em>
+								<input type="button" class="btn btn_area" value="确定">
+							</div>
+						</div>
+					</dd>
+				</dl>
+				<!-- 出租 s -->
+        <dl class="o-fi fn-clear rentbox">
+            <dt>租金</dt>
+            <dd class="fn-clear">
+                <!-- 单价 -->
+                <span class="zjbox zshow">
+                    <a href="javascript:;" data-id=""{#if $price == ''#} class="all curr"{#/if#}>不限</a>
+                    <a href="javascript:;" data-id=",30"{#if $price == ',30'#} class="curr"{#/if#}>30元/m²•月以下</a>
+                    <a href="javascript:;" data-id="30,60"{#if $price == '30,60'#} class="curr"{#/if#}>30-60元</a>
+                    <a href="javascript:;" data-id="60,90"{#if $price == '60,900'#} class="curr"{#/if#}>60-90元</a>
+                    <a href="javascript:;" data-id="90,120"{#if $price == '90,120'#} class="curr"{#/if#}>90-120元</a>
+                    <a href="javascript:;" data-id="120,150"{#if $price == '120,150'#} class="curr"{#/if#}>120-150元</a>
+                    <a href="javascript:;" data-id="150,"{#if $price == '150,'#} class="curr"{#/if#}>150元以上</a>
+                    <div class="spbox">
+                        <div class="inpbox inp_price">
+                            <input type="input" class="p1" id = "zdpriceLow" maxlength="6" value="" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"><em>-</em>
+                            <input type="input" class="p2" id = "zdpriceTop" maxlength="6" value="" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"> <em>元/m²•月</em>
+
+                            <input type="button" class="btn btn_zdprice" value="确定">
+                        </div>
+                    </div>
+                </span>
+                <!-- 总价 -->
+                <span class="zjbox">
+                    <a href="javascript:;" data-id=""{#if $price == ''#} class="all curr"{#/if#}>不限</a>
+                    <a href="javascript:;" data-id=",1"{#if $price == ',1'#} class="curr"{#/if#}>1万/月以下</a>
+                    <a href="javascript:;" data-id="1,3"{#if $price == '1,3'#} class="curr"{#/if#}>1-3万</a>
+                    <a href="javascript:;" data-id="3,5"{#if $price == '3,5'#} class="curr"{#/if#}>3-5万</a>
+                    <a href="javascript:;" data-id="5,8"{#if $price == '5,8'#} class="curr"{#/if#}>5-8万</a>
+                    <a href="javascript:;" data-id="8,10"{#if $price == '8,10'#} class="curr"{#/if#}>8-10万</a>
+                    <a href="javascript:;" data-id="10,20"{#if $price == '10,20'#} class="curr"{#/if#}>10-20万</a>
+                    <a href="javascript:;" data-id="20,30"{#if $price == '20,30'#} class="curr"{#/if#}>20-30万</a>
+                    <a href="javascript:;" data-id="30,"{#if $price == '30,'#} class="curr"{#/if#}>30万以上</a>
+                    <div class="spbox">
+                        <div class="inpbox inp_price">
+                            <input type="input" class="p1" id = "zzpriceLow" maxlength="5" value="" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"><em>-</em>
+                            <input type="input" class="p2" id = "zzpriceTop" maxlength="5" value="" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"><em>万/月</em>
+                            <input type="button" class="btn btn_zzprice" value="确定">
+                        </div>
+                    </div>
+                </span>
+                <p class="filprice"><span class="on">单价</span><span>总价</span></p>
+            </dd>
+        </dl>
+        <!-- 出售 s -->
+        <dl class="o-fi fn-clear pricebox">
+            <dt>售价</dt>
+            <dd class="fn-clear">
+                <!-- 单价 -->
+                <span class="zjbox zshow">
+                    <a href="javascript:;" class="all curr">不限</a>
+                    <a href="javascript:;" data-id=",1">1万元/m²以下</a>
+                    <a href="javascript:;" data-id="1,2">1-2万</a>
+                    <a href="javascript:;" data-id="2,3">2-3万</a>
+                    <a href="javascript:;" data-id="3,5">3-5万</a>
+                    <a href="javascript:;" data-id="5,">5万以上</a>
+                    <div class="spbox">
+                        <div class="inpbox inp_price">
+                            <input type="input" class="p1" id = "sdpriceLow" maxlength="5" value="" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"><em>-</em>
+                            <input type="input" class="p2" id = "sdpriceTop" maxlength="5" value="" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"><em>元</em>
+                            <input type="button" class="btn btn_sdprice" value="确定">
+                        </div>
+                    </div>
+                </span>
+                <!-- 总价 -->
+                <span class="zjbox">
+                    <a href="javascript:;" class="all curr">不限</a>
+                    <a href="javascript:;" data-id=",100">100万元以下</a>
+                    <a href="javascript:;" data-id="100,200">100-200万</a>
+                    <a href="javascript:;" data-id="200,300">200-300万</a>
+                    <a href="javascript:;" data-id="300,500">300-500万</a>
+                    <a href="javascript:;" data-id="500,800">500-800万</a>
+                    <a href="javascript:;" data-id="800,1200">800-1200万</a>
+                    <a href="javascript:;" data-id="1200,2000">1200-2000万</a>
+                    <a href="javascript:;" data-id="2000,">2000万以上</a>
+                    <div class="spbox">
+                        <div class="inpbox inp_price">
+                            <input type="input" class="p1" id = "szpriceLow" maxlength="5" value="" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"><em>-</em>
+                            <input type="input" class="p2" id = "szpriceTop" maxlength="5" value="" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"><em>万</em>
+                            <input type="button" class="btn btn_szprice" value="确定">
+                        </div>
+                    </div>
+                </span>
+                <p class="filprice"><span class="on">单价</span><span>总价</span></p>
+            </dd>
+        </dl>
+				
+				<dl class="o-fi fn-clear" data-type="protype">
+					<dt>类型</dt>
+					<dd class="fn-clear">
+						<a href="javascript:;" data-id="" class="all{#if !$protype#} curr{#/if#}">不限</a>
+						{#house action="item" return="item" type="9"#}
+						<a href="javascript:;" data-id="{#$item.id#}"{#if $protype == $item.id#} class="curr"{#/if#}>{#$item.typename#}</a>
+						{#/house#}
+					</dd>
+				</dl>
+				<dl class="o-fi fn-clear" data-type="industry">
+					<dt>行业</dt>
+					<dd class="fn-clear">
+						<a href="javascript:;" data-id="" class="all{#if !$industry#} curr{#/if#}">不限</a>
+						{#house action="industry" return="item"#}
+						<a href="javascript:;" data-id="{#$item.id#}"{#if $industry == $item.id#} class="curr"{#/if#}>{#$item.typename#}</a>
+						{#/house#}
+					</dd>
+				</dl>
+			</div>
+			<div class="deletebox">
+				<dl class="fi-state fn-clear">
+					<dt>已选条件</dt>
+					<dd class="fn-clear"></dd>
+					<span class="btn_clear">清空条件</span>
+				</dl>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="wrap totalCount">
+	共找到 <b>0</b> 个符合条件的商铺
+</div>
+
+<div class="wrap fn-clear">
+	<div class="sidebar">
+      	<div class="SearchBox">
+            <form action="{#getUrlPath service='house' template='sp'#}" method="get">
+              <input type="search" placeholder="搜商铺..." name="keywords" class="inp"/>
+              <input type="submit" value="搜索" class="submit">
+            </form>
+        </div>
+		<div class="salehbox">
+			<a href="{#getUrlPath service=member type=user template='fabu-house-sp'#}" target="_blank">
+				<img src="{#$templets_skin#}images/img_sp.png" alt="">
+			</a>
+		</div>
+		<div class="lp_box">
+			<div class="lp_title">最近浏览的商铺</div>
+			<ul>
+				{#$_bindex.loupan = ""#}
+				{#house action=loupanHistory type=sp pageSize=3 return=loupan#}
+				{#if $_bindex.loupan < 4#}
+				<li>
+					<a href="{#$loupan.url#}" target="_blank">
+						<p title="{#$loupan.title#}">{#$loupan.title#}</p>
+						<p>{#$loupan.area#}㎡<em>|</em>{#if $loupan.price == 0#}待定{#else#}{#if $loupan.type == 1#}{#$loupan.price#}万{#else#}{#$loupan.price#}元/月{#/if#}{#/if#}<span>{#$loupan.addr[$loupan.addr|count-2]#}</span></p>
+					</a>
+				</li>
+				{#/if#}
+				{#/house#}
+			</ul>
+		</div>
+		<div class="lp_box">
+			<div class="lp_title">热门商铺</div>
+			<ul>
+				{#house action=spList orderby=click pageSize=3 return=loupan#}
+				<li>
+					<a href="{#$loupan.url#}" target="_blank">
+						<p title="{#$loupan.title#}">{#$loupan.title#}</p>
+						<p>{#$loupan.area#}㎡<em>|</em>{#if $loupan.price == 0#}待定{#else#}{#if $loupan.type == 1#}{#$loupan.price#}万{#else#}{#$loupan.price#}元/月{#/if#}{#/if#}<span>{#$loupan.addr[$loupan.addr|count-2]#}</span></p>
+					</a>
+				</li>
+				{#/house#}
+			</ul>
+		</div>
+		
+		<div class="lp_box">
+			<div class="lp_title">房产资讯</div>
+			<ul class="lp_news">
+				{#house action="news" return="list" page="1" pageSize="8"#}
+				<li><a href="{#$list.url#}" title="{#$list.title#}" target="_blank"><em>•</em>{#$list.title#}</a></li>
+				{#/house#}
+			</ul>
+		</div>
+	
+	</div>
+	<div class="main_con">
+		<div class="m-t fn-clear">
+			<ul>
+				<li class="curr"><a href="javascript:;">全部房源</a></li>
+				<li><a href="javascript:;">经纪人房源</a></li>
+				<li><a href="javascript:;">个人房源</a></li>
+				<li><a href="javascript:;">全景看房</a></li>
+				<li><a href="javascript:;">视频看房</a></li>
+			</ul>
+		</div>
+		<div class="m-o">
+			<div class="m-l">
+				<a href="javascript:;" class="ob">默认排序</a>
+                <a href="javascript:;" class="curr">最新</a>
+				<a href="javascript:;" class="ob">面积<s></s></a>
+				<a href="javascript:;" class="ob">总价<s></s></a>
+				<a href="javascript:;" class="ob">单价<s></s></a>
+			</div>
+		</div>
+		<div class="lplist zulist">
+			<ul></ul>
+			{#*
+			<ul>
+				<li class="fn-clear">
+					<div class="imgbox fn-left">
+						<a href="javascript:;">
+							<img src="{#$templets_skin#}upfile/sale_img01.png" alt="">
+						</a>
+						<i class="ivplay"></i>
+						<i class="ivr"></i>
+						<div class="markbox">
+							<span class="m_mark m_gr">个人</span>
+						</div>
+					</div>
+					<div class="infobox fn-left">
+						<div class="lptit fn-clear"> 
+							<a href="javascript:;"><h2>新创理想城</h2><i class="mtop"></i> <i class="mJiaji"></i></a>
+							<span class="lpprice"><b>15000</b>元/月</span> 
+						</div>
+						<div class="lpinf fn-clear">
+							<div class="sp_l fn-left"><span class="priCo">320m²</span><em>|</em><span>世纪金融大厦</span><em>|</em><span>精装</span><em>|</em><span>25/26层</span><em>|</em><span>写字楼</span></div>
+							<div class="sp_r fn-right">60 元/㎡/月</div>
+						</div>
+						<p class="lpinf">[新区]  中环西线与通浒路交汇处（浒墅关大润发北面）</p>
+						<p class="lpinf">物业费：4.5~9元/m²/月</p>
+						<div class="lpinf hinf fn-clear">
+							<div class="hilef fn-left">
+								<span><i class="iname"></i> 林麓是吃货</span>
+								<span><i class="itel"></i> 400-890-1200</span>
+							</div>
+							<div class="hirig fn-right">
+								<a href="javascript:;" class="btn_sc"><i class="isc"></i> 收藏</a>
+								<a href="javascript:;" class="btn_share"><i class="ishare"></i> 分享</a>
+							</div>
+						</div>
+						<div class="lpbottom">
+							<div class="lpmark">
+								<span>可注册</span><span>无中介费</span>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+			*#}
+		</div>
+	</div>
+	<div class="main_con fn-hide">
+		<div class="m-t fn-clear">
+			<ul>
+				<li class="curr"><a href="javascript:;">全部房源</a></li>
+				<li><a href="javascript:;">经纪人房源</a></li>
+				<li><a href="javascript:;">个人房源</a></li>
+				<li><a href="javascript:;">全景看房</a></li>
+				<li><a href="javascript:;">视频看房</a></li>
+			</ul>
+		</div>
+		<div class="m-o">
+			<div class="m-l">
+				<a href="javascript:;" class="curr">默认排序</a>
+				<a href="javascript:;" class="ob">面积<s></s></a>
+				<a href="javascript:;" class="ob">总价<s></s></a>
+				<a href="javascript:;" class="ob">单价<s></s></a>
+				<a href="javascript:;" class="ob">最新</a>
+			</div>
+		</div>
+		<div class="lplist salelist">
+			<ul></ul>
+		</div>
+	</div>
+	<div class="main_con fn-hide">
+		<div class="m-t fn-clear">
+			<ul>
+				<li class="curr"><a href="javascript:;">全部房源</a></li>
+				<li><a href="javascript:;">经纪人房源</a></li>
+				<li><a href="javascript:;">个人房源</a></li>
+				<li><a href="javascript:;">全景看房</a></li>
+				<li><a href="javascript:;">视频看房</a></li>
+			</ul>
+		</div>
+		<div class="m-o">
+			<div class="m-l">
+				<a href="javascript:;" class="curr">默认排序</a>
+				<a href="javascript:;" class="ob">面积<s></s></a>
+				<a href="javascript:;" class="ob">最新</a>
+			</div>
+		</div>
+		<div class="lplist zrlist">
+			<ul></ul>
+		</div>
+
+		<div class="pagination fn-clear"></div>
+	</div>
+</div>
+
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/sp.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

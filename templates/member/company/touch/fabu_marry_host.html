@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{#$langData['marry'][3][0]#}</title>{#*主持人管理*#}
+    <meta name="wap-font-scale" content="no">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fabu_marry_host.css?v={#$cfg_staticVersion#}">
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript"  src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.deferred.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+    <script type="text/javascript">
+        var masterDomain = '{#$cfg_basehost#}', staticPath = cfg_staticPath = '{#$cfg_staticPath#}';
+        var modelType = 'house';
+        var thumbSize = {#$thumbSize#}, thumbType = '{#$thumbType#}', atlasSize = {#$atlasSize*1024*1024#}, atlasType = '{#$atlasType#}', atlasMax = 20;
+    </script>
+</head>
+<body>
+
+{#$pageTitle = "{#$langData['marry'][3][0]#}"#}{#*主持人管理*#}
+{#include file="top.html"#}
+
+<div class="container">
+    <ul class="info">
+        <li class="fn-clear">
+            <span class="name">{#$langData['marry'][3][1]#}</span>{#*姓名*#}
+            <input type="text" id="comname" placeholder="{#$langData['marry'][3][2]#}"#}">{#*请输入*#}
+        </li>
+        <li class="fn-clear">
+            <span class="name">{#$langData['marry'][3][3]#}</span>{#*价格*#}
+            <span class="fn-right un">{#echoCurrency type='short'#}</span>
+            <input type="text" id="price" placeholder="0">
+        </li>
+        <li class="fn-clear">
+            <span class="name">{#$langData['marry'][3][4]#}</span>{#*电话*#}
+            <input type="text" id="phone"  placeholder="{#$langData['marry'][3][5]#}"#}">{#*请输入联系方式*#}
+        </li>
+
+    </ul>
+    <div class="describe">
+
+        <div class="tit">{#$langData['marry'][3][6]#}</div>{#*主持人介绍*#}
+        <div class="con">
+            <textarea name="" id="explain" placeholder="{#$langData['marry'][3][7]#}"#}..."></textarea>{#*描述*#}
+        </div>
+
+    </div>
+
+    <!--{#*上传视频 s*#}-->
+    <!--<div class="common_inp mb4r uploadVideo">-->
+        <!--<div class="tit">主持人视频</div>-->
+        <!--<div class="ml4r btop">-->
+            <!--<ul class="fn-clear" id="fileList2">-->
+                <!--{#if $detail_video#}-->
+                <!--<li id="WU_FILE_00" class="thumbnail complete">-->
+                    <!--<video class="video-js" id="video_WU_FILE_00" src="/include/attachment.php?f={#$detail_video#}" data-val="{#$detail_video#}"></video>-->
+                    <!--<div class="file-panel"><span class="cancel"></span></div>-->
+                    <!--<span class="player"></span>-->
+                <!--</li>-->
+                <!--{#/if#}-->
+            <!--</ul>-->
+            <!--<input type="hidden" name="video" id="video" value="{#$detail_video#}">-->
+        <!--</div>-->
+        <!--<div class="upwrap">-->
+            <!--<div class="btn filePicker" id="filePicker2" data-extensions="mp4,mov" data-mimeTypes="video/mp4,video/mov" data-count="1"><span>上传或录制视频</span></div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--{#*上传视频 e*#}-->
+
+    <!--主持人作品管理-->
+    <div class="workBox">
+        <div class="tit">{#$langData['marry'][4][32]#}</div>{#*主持人作品*#}
+        <div class="content">
+            <ul class="uploader-list fn-clear" id="fileList">
+
+                <li class="upload_btn" id="uploadbtn">
+                    <div id="filePicker" class="webuploader-container" href="{#getUrlPath service='member' type='user' template='marry_works_add'#}">
+                        <img src="{#$templets_skin#}images/add.png" />
+                        <p>{#$langData['marry'][4][33]#}</p>{#*上传视频*#}
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+
+
+    <div class="fabu_btn"> <span class="btn">{#$langData['marry'][3][8]#}</span> </div>{#*发布*#}
+
+</div>
+
+
+    <div class="upvideo-box upvideo-box-hide">
+        <div class="upvideo-header fn-clear"><span class="fn-right cancel_btn">{#$langData['marry'][4][34]#}</span></div>{#*取消*#}
+        <div class="name fn-clear"><span class="fn-left">{#$langData['marry'][4][35]#}</span><input class="fn-right" type="text" id="title_text" placeholder="{#$langData['marry'][2][23]#}"></div>{#*作品标题*#}{#*请填入*#}
+
+        <!--上传封面图-->
+        <div class="uploadImg up-box">
+            <div class="tit">{#$langData['marry'][4][36]#}</div>{#*上传封面图*#}
+            <dl class="up fn-clear" data-type="thumb">
+                <dt>
+                    <i></i>
+                    <p>{#$langData['marry'][4][40]#}</p>{#*点击上传封面图*#}
+                    {#if $detail_ac_photo#}
+                    <div class="pic"><img src="{#$detail_ac_photo#}" alt="{#$detail_ac_photoSource#}" data-val="{#$detail_ac_photoSource#}"><a href="javascript:;" class="remove"></a></div>
+                    {#/if#}
+                </dt>
+            </dl>
+        </div>
+
+        {#*上传视频 s*#}
+        <div class="common_inp mb4r uploadVideo">
+            <div class="tit">{#$langData['marry'][4][37]#}</div>{#*作品视频*#}
+            <div class="ml4r btop">
+                <ul class="fn-clear" id="fileList2">
+
+                </ul>
+                <input type="hidden" name="video" id="video" value="">
+            </div>
+            <div class="upwrap">
+                <div class="btn filePicker" id="filePicker2" data-extensions="mp4,mov" data-mimeTypes="video/mp4,video/mov" data-count="1"><span>{#$langData['marry'][4][38]#}</span></div>{#*上传或录制视频*#}
+            </div>
+        </div>
+        {#*上传视频 e*#}
+
+
+        <div class="sure_btn_box"><span class="sure_btn">{#$langData['marry'][4][39]#}</span></div>{#*确定*#}
+
+
+    </div>
+
+
+<div class="upvideo-bg upvideo-box-hide"></div>
+
+
+<!--<script src="{#$templets_skin#}js/gz-info.js?v={#$cfg_staticVersion#}"></script>-->
+
+<script src="{#$cfg_staticPath#}js/webuploader/webuploader.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/upload.js?v={#$cfg_staticVersion#}"></script>
+<!--<script src="{#$templets_skin#}js/upload-video2.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>-->
+<script type="text/javascript" src="{#$templets_skin#}js/upload-sigle-img.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/fabu_marry_host.js?v={#$cfg_staticVersion#}"></script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+{#if $do == "edit"#}
+{#$pageTitle = $langData['siteConfig'][6][142]|cat:" - "|cat:$detail_title|cat:" - "|cat:$cfg_webname#}
+{#else#}
+{#$pageTitle = $langData['siteConfig'][6][143]|cat:" - "|cat:$cfg_webname#}
+{#/if#}
+{#include file="head.html"#}
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fabu.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fabu-{#$module#}.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/jquery.chosen.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript">
+	var modelType = '{#$module#}', state = '{#$state#}', type = '{#$type#}', typeid = {#$typeid#}, uploadType = "thumb";
+	var thumbSize = {#$thumbSize#}, thumbType = '{#$thumbType#}', atlasSize = {#$atlasSize#}, atlasType = '{#$atlasType#}', atlasMax = {#$atlasMax#};
+	var id = {#$id#};
+</script>
+</head>
+{#if $type == "nanny" && $type != 0#}
+{#$pageCurr = "fabu_{#$module#}_{#$type#}"#}
+{#elseif $module == "pension"#}
+{#$pageCurr = "fabu_{#$module#}_{#$type#}"#}
+{#else#}
+{#$pageCurr = "fabu_{#$module#}"#}
+{#/if#}
+<body>
+{#include file="headSidebar.html"#}
+
+<div class="main">
+	<div class="container fn-clear">
+		{#if $type == "nanny" && $type != 0#}
+		{#include file="fabu-{#$module#}-{#$type#}.html"#}
+		{#elseif $module == "pension"#}
+		{#include file="fabu-{#$module#}-{#$type#}.html"#}
+		{#else#}
+		{#include file="fabu-$module.html"#}
+		{#/if#}
+	</div>
+</div>
+
+<script type='text/javascript' src='{#$cfg_basehost#}/include/ueditor/ueditor.config.js?v={#$cfg_staticVersion#}'></script>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/ueditor/ueditor.all.js?v={#$cfg_staticVersion#}'></script>
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/chosen.jquery.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dragsort-0.5.1.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/publicUpload.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/fabu.js?v={#$cfg_staticVersion#}"></script>
+{#if $module != "pension" && $type != 'albums'#}
+<script type="text/javascript" src="{#$templets_skin#}js/fabu-{#$module#}.js?v={#$cfg_staticVersion#}"></script>
+{#/if#}
+{#if $type != ""#}<script type="text/javascript" src="{#$templets_skin#}js/fabu-{#$module#}-{#if $type == "qzu" || $type == "qgou"#}demand{#else#}{#$type#}{#/if#}.js?v={#$cfg_staticVersion#}"></script>{#/if#}
+</body>
+</html>

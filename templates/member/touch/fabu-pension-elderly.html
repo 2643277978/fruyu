@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<title>老人信息</title>
+<meta name="wap-font-scale" content="no">
+<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$cfg_basehost#}/templates/member/touch/css/gz-fabu.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/mobileSelect.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fabu-pension-elderly.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript"  src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.deferred.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}', staticPath = cfg_staticPath = '{#$cfg_staticPath#}';templatePath = '{#$templets_skin#}';
+var service = '{#$module#}';
+var modelType = '{#$module#}';
+var thumbSize = {#$thumbSize#}, thumbType = '{#$thumbType#}', atlasSize = {#$atlasSize*1024*1024#}, atlasType = '{#$atlasType#}', atlasMax = 1;
+var id = '{#$id#}';
+</script>
+</head>
+<body>
+{#$pageTitle = '老人信息'#}  
+{#include file="top.html"#}
+<div class="container">
+    {#if $pensionState==1#}
+        {#if $detail_state == 0#}
+            <p class="state0">{#$langData['siteConfig'][16][168]#}</p>{#* 您的资料正在审核中，请耐心等待 *#}
+        {#elseif $detail_state == 2#}
+            <p class="state2">{#$langData['siteConfig'][28][12]#}</p>{#* 您的入驻申请已被拒绝，请重新提交 *#}
+        {#/if#}
+    {#/if#}
+    <form name="fabuForm" id="fabuForm" method="post" action="/include/ajax.php?service=pension&action=elderlyConfig">
+    <div class="baomu_info">
+        <p class="info_title">基本信息</p> 
+        <ul class="info">
+            <li class="fn-clear">
+                <span class="name"><span class="star">*</span><label for="elderlyname">老人姓名</label></span>
+                <input type="text" id="elderlyname" placeholder="请输入老人姓名" name="elderlyname" value="{#$detail_elderlyname#}">
+            </li> 
+            <li class="fn-clear ways_contact">
+                <span class="name">性别</span></span>
+                <div class="radio radioBox user_sex">
+                    <div class="active {#if $detail_sex == 0#}chose_btn{#/if#}">
+                    <div class="check_left">
+                        <input type="radio" name="sex" value="" />
+                        <span class="check_icon_round"></span>
+                    </div>
+                    <a href="javascript:;" data-id = "0">女</a>
+                    </div>
+                    <div class="active {#if $detail_sex == 1#}chose_btn{#/if#}">
+                    <div class="check_left">
+                        <input type="radio" name="sex" value="" />
+                        <span class="check_icon_round"></span>
+                    </div>
+                    <a href="javascript:;" data-id = "1">男</a>
+                    </div>
+                    <input type="hidden" name="sex" value="{#$detail_sex#}" id="sex" />
+                </div>
+            </li>
+      		<li class="fn-clear ways_contact">
+                <span class="name">开关</span></span>
+                <div class="radio radioBox user_switch">
+                    <div class="active {#if $detail_switch == 0#}chose_btn{#/if#}">
+                    <div class="check_left">
+                        <input type="radio" name="switch" value="" />
+                        <span class="check_icon_round"></span>
+                    </div>
+                    <a href="javascript:;" data-id = "0">关闭</a>
+                    </div>
+                    <div class="active {#if $detail_switch == 1#}chose_btn{#/if#}">
+                    <div class="check_left">
+                        <input type="radio" name="switch" value="" />
+                        <span class="check_icon_round"></span>
+                    </div>
+                    <a href="javascript:;" data-id = "1">开启</a>
+                    </div>
+                    <input type="hidden" name="switch" value="{#$detail_switch#}" id="switch" />
+                </div>
+            </li>
+            <li class="fn-clear">
+                <span class="name"><label for="age">年龄</label></span>
+                <input type="text" id="age" placeholder="请输入老人年龄" name="age" value="{#$detail_age#}">
+            </li>
+            <div class="qjimg_box img_box">
+                <h3>上传头像(请保证照片清晰)</h3>
+                <ul class="fn-clear" id="logoshow_box"{#if $detail_qj_type#} style="display:none;"{#/if#}>
+                    <li>
+                    <div class="addbtn img_show" id="up_logo" data-extensions="jpg,jpeg,bmp,png" data-mimetypes="image/jpg,image/jpeg,image/png"></div>
+                    {#if $detail_photo#}<div class="img" id="WU_FILE_has_9"><img src="{#$detail_photoSource#}" data-url="{#$detail_photo#}"></div><i class="del_btn">+</i>{#/if#}
+                    <p class="txt">点击上传照片</p>
+                    </li>
+                </ul>
+                <input type="hidden" name="photo" id="photo" value="{#$detail_photo#}">
+            </div>
+        </ul>
+    </div>
+    <div class="baomu_info">
+        <p class="info_title">其他信息</p>
+        <ul class="info">
+            <li class="fn-clear ways_ruzhu">
+                <span class="name">入住形式</span></span>
+                <div class="radio radioBox user_ru">
+                    {#pension action='accommodation_type' return='type'#}
+                    <div class="active {#if $detail_accommodation==$type.id#}chose_btn{#/if#}">
+                        <div class="check_left">
+                            <input type="radio" name="accommodation" value="" />
+                            <span class="check_icon_round"></span>
+                        </div>
+                        <a href="javascript:;" data-id = "{#$type.id#}">{#$type.typename#}</a>
+                    </div>
+                    {#/pension#}
+                    <input type="hidden" name="accommodation" value="{#$detail_accommodation#}" id="accommodation" />
+                </div>
+            </li>
+            <li class="fn-clear">
+                <span class="name"><span class="star">*</span>养老区域</span>
+                <span class="choose">  <i></i></span>
+                <div class="position_box" >
+                    <dl class="inpbox fn-clear gz-addr-seladdr" data-ids="{#getPublicParentInfo tab='site_area' id=$detail_addrid split=' '#}" data-id="{#$detail_addrid#}" >
+                        <dd ><i></i><p><font style="color: #a6a6a6;">{#if $detail_addrid != ""#}{#getPublicParentInfo tab='site_area' id=$detail_addrid type='typename' split=' '#}{#else#}请选择{#/if#}</font></p></dd>
+                        <input type="hidden" name="addrid" id="addrid" value="{#$detail_addrid#}">
+                        <input type="hidden" name="cityid" id="cityid" value="{#$detail_cityid#}">
+                    </dl>
+                </div>
+            </li>
+            <li class="fn-clear">
+                <span class="name"><label for="rzminprice">入住费用预算</label></span>
+                <div class="r_price">
+                    <div class="input-prepend input-append mr10">
+                        <input id="rzminprice" name="rzminprice" type="text" size="4" maxlength="7" data-title="价格必须为数字型" value="{#$detail_rzminprice#}" placeholder="最低价">
+                    </div>
+                    <em class="range">-</em>
+                    <div class="input-prepend input-append mr10">
+                        <input id="rzmaxprice" name="rzmaxprice" type="text" size="4" maxlength="3" onkeyup="value=value.replace(/\D+/ig,'')" value="{#$detail_rzmaxprice#}" placeholder="最高价">
+                        <span class="add-aft">万</span>
+                    </div>
+                </div>
+            </li> 
+            <li class="fn-clear">
+                <span class="name"><label for="rzminprice">月费用预算</label></span>
+                <div class="r_price">
+                    <div class="input-prepend input-append mr10">
+                        <input id="monthminprice" name="monthminprice" type="text" size="4" maxlength="7" data-title="价格必须为数字型" value="{#$detail_monthminprice#}" placeholder="最低价">
+                    </div>
+                     <em class="range">-</em>
+                    <div class="input-prepend input-append mr10">
+                        <span class="add-bef">高价</span>
+                        <input id="monthmaxprice" name="monthmaxprice" type="text" size="4" maxlength="3" onkeyup="value=value.replace(/\D+/ig,'')" value="{#$detail_monthmaxprice#}" placeholder="最高价">
+                        <span class="add-aft">{#echoCurrency type="short"#}</span>
+                    </div>
+                </div>
+            </li> 
+            <li class="fn-clear">
+                <span class="name"><span class="star">*</span><label for="people">联系人</label></span>
+                <input type="text" id="people" placeholder="请输入联系人" name="people" value="{#$detail_people#}">
+            </li> 
+            <li class="fn-clear">
+                <span class="name"><span class="star">*</span><label for="tel">联系方式</label></span>
+                <input type="text" id="tel" placeholder="请输入联系方式" name="tel" value="{#$detail_tel#}">
+            </li> 
+            <li class="fn-clear">
+                <span class="name"><span class="star">*</span><label for="wx">微信</label></span>
+                <input type="text" id="wx" placeholder="请输入微信" name="wx" value="{#$detail_wx#}">
+            </li> 
+            <li class="fn-clear">
+                <span class="name"><span class="star">*</span><label for="email">邮箱</label></span>
+                <input type="text" id="email" placeholder="请输入邮箱" name="email" value="{#$detail_email#}">
+            </li> 
+            <li class="fn-clear">
+                <span class="name"><span class="star">*</span><label for="relationship">亲属关系</label></span>
+                <input type="text" id="relationship" placeholder="请输入亲属关系" name="relationship" value="{#$detail_relationship#}">
+            </li> 
+            <li class="fn-clear">
+                <div class="com-box">
+                    <div class="targetcare fn-clear">
+                        <span class="name"><span class="star">*</span>照护对象</span><span class="choose"><span class="text">{#if $detail_targetcare#}{#$detail_targetcarename#}{#else#}请选择{#/if#}</span><i></i></span> 
+                          <input id="targetcarename" type="text" disabled="disabled">
+                      </div>       
+                </div>
+            </li>
+            <input type="hidden" name="targetcare" id="targetcare" value="{#$detail_targetcare#}">
+            <li class="fn-clear" style="border-bottom: none">
+                <div class="com-box">
+                    <div class="catid fn-clear">
+                        <span class="name"><span class="star">*</span>养老形式</span><span class="choose"><span class="text">{#if $detail_catid#}{#$detail_catname#}{#else#}请选择{#/if#}</span><i></i></span> 
+                          <input id="catname" type="text" disabled="disabled">
+                      </div>       
+                </div>
+            </li> 
+            <input type="hidden" name="catid" id="catid" value="{#$detail_catid#}">
+        </ul>
+    </div>
+    <div class="baomu_info">
+        <div class="yl_info location">
+            <p class="info_title LoTitle">详细地址<span><i></i>自由选择</span></p>
+            <div class="info class_spec" style="padding-top: .2rem">
+                <textarea name="address" id="address" placeholder="请填写详细地址">{#$detail_address#}</textarea>
+            </div>
+            <input type="hidden" name="lnglat" id="lnglat" value="{#$detail_lnglat#}">
+        </div>
+    </div>
+    <div class="baomu_info">
+        <div class="yl_info">
+            <p class="info_title">更多信息</p>
+            <div class="info class_spec" style="padding-top: .2rem">
+                <textarea name="level" id="level" placeholder="期望养老级别">{#$detail_level#}</textarea>
+            </div>
+            <div class="info class_spec">
+                <textarea name="personalsituation" id="personalsituation" placeholder="个人情况">{#$detail_personalsituation#}</textarea>
+            </div>
+            <div class="info class_spec">
+                <textarea name="situation" id="situation" placeholder="疾病情况">{#$detail_situation#}</textarea>
+            </div>
+            <div class="info class_spec">
+                <textarea name="desc" id="desc" placeholder="需求说明">{#$detail_desc#}</textarea>
+            </div>
+        </div>
+    </div>
+    <div class="btn-box"><span class="submit" id="submit">发布</span></div>
+</form>
+
+</div>
+
+<!--地图-->
+<div class="pageitem" id="map">
+    <div class="lead">
+        <p></p>
+        <input type="text" id="searchAddr" placeholder="{#$langData['siteConfig'][20][411]#}">
+    </div>
+    <div class="map">
+        <div id="mapdiv"></div>
+        <span class="mapcenter"></span>
+    </div>
+    <div class="mapresults">
+        <ul></ul>
+    </div>
+</div>
+
+<!--所在地弹出层-->
+<div class="gz-sel-addr gz-sel-addr-hide" id="gzSelAddr">
+    <div class="gz-sel-addr-header">
+        <h3>{#$langData['siteConfig'][7][2]#}</h3>  {#*请选择*#}
+        <button class="gz-sel-addr-close" id="gzSelAddrCloseBtn"></button>
+    </div>
+    <ul class="gz-sel-addr-nav"></ul>
+    <div class="gz-sel-addr-list"></div>
+</div>
+<div class="gz-sel-addr-mask"></div>
+
+<!--错误提示弹出层-->
+<div class="error"></div>
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}'
+	};
+</script>
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script src="{#$templets_skin#}js/gz-info.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/webuploader/webuploader.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/mobileSelect.js?v={#$cfg_staticVersion#}" ></script>
+<script type="text/javascript" src="{#$templets_skin#}js/upload.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/fabu-pension-elderly.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

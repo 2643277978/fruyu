@@ -1,0 +1,11 @@
+.total{color: #999; font-size: .26rem; padding: .2rem;}
+
+.list{padding: 0 .2rem; font-size: .28rem;}
+.list .item{padding: .2rem 0; border-bottom: 1px dotted #e5e5e5;}
+.list .imgbox{width: 1.2rem; height: 1.2rem; border-radius: 100%; margin-right: .4rem;}
+.list .imgbox img{width: 100%; height: 100%; display: block; border-radius: 100%;}
+.list .txtbox{padding-top: .2rem;}
+.list .txtbox .gray{color: #999;}
+.list .nofollow{color: #008cf4; border: 1px solid #008cf4; border-radius: .06rem; padding: .04rem 0; display: inline-block; margin-top: .38rem; width: 1.3rem; text-align: center;}
+.list .follow{color: #aeaeae; border-color: #aeaeae;}
+.list .loading{text-align: center; line-height: 1rem;}

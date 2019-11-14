@@ -1,0 +1,7 @@
+#openStart {border-radius: 4px 0 0 4px;}
+#openEnd {border-radius: 0 4px 4px 0;}
+#openEnd {margin-left: -1px;}
+.input-prepend .add-aft {border-radius: 0;}
+.list-holder li {width: 115px !important;height: 86px;}
+.list-holder li .li-thumb {margin: -5px 0 0 0 !important;}
+.list-holder li a.li-rm {margin: -17px -14px 0 0 !important;}

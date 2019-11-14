@@ -1,0 +1,221 @@
+{#if {#verifyModuleAuth module='shop'#}#}
+
+{#if ($typeid == 0 && $do != "edit") || $do == "editype"#}
+<form class="editform" method="post" action="{#getUrlPath service='member' template='fabu' action='shop' typeid='%typeid%' param="{#if $id != ""#}do=edit{#/if#}"#}">
+  <input type="hidden" name="typeid" id="typeid" value="{#$typeid#}" />
+  <input type="hidden" name="id" id="id" value="{#$id#}" />
+  <dl class="fn-clear">
+    <dt>{#$langData['siteConfig'][19][559]#}：</dt>
+    <dd>
+      <div class="t-main">
+        <s class="cc-nav prev" title="{#$langData['siteConfig'][26][187]#}">{#$langData['siteConfig'][26][187]#}</s>
+        <div class="t-list">
+          <ol class="t-ol fn-clear" id="tList"></ol>
+        </div>
+        <s class="cc-nav next" title="{#$langData['siteConfig'][26][188]#}">{#$langData['siteConfig'][26][188]#}</s>
+      </div>
+      <div class="confrim">
+        <strong>{#$langData['siteConfig'][19][561]#}：</strong><span id="cTxt">{#$langData['siteConfig'][13][20]#}</span>
+      </div>
+      <input class="btn btn-large{#if $typeid != ""#} btn-primary{#/if#}" type="submit" name="submit" id="btnNext" value="{#$langData['siteConfig'][6][95]#}" {#if $typeid == ""#}disabled{#/if#} />
+    </dd>
+  </dl>
+</form>
+<script type="text/javascript">
+  var specifiVal = [], atlasMax = 5;
+</script>
+<script type="text/javascript" src="{#$templets_skin#}js/selectShopCategory.js?v={#$cfg_staticVersion#}"></script>
+{#else#}
+<div class="w-form">
+	<form name="fabuForm" id="fabuForm" method="post" action="/include/ajax.php?service=shop&action={#if $do == "edit"#}edit&id={#$id#}{#else#}put{#/if#}" data-url="{#getUrlPath service='member' template='manage' action='shop' param='state=0'#}">
+    <input type="hidden" name="typeid" id="typeid" value="{#$typeid#}" />
+    <input type="hidden" name="id" id="id" value="{#$id#}" />
+    <input type="hidden" name="itemid" id="itemid" value="{#$itemid#}" />
+		<dl class="fn-clear" data-required="1">
+			<dt>{#$langData['siteConfig'][19][393]#}：</dt>
+			<dd class="editype">
+				{#$proType#}&nbsp;&nbsp;&nbsp;&nbsp;
+				【<a href="{#getUrlPath service='member' template='fabu' action='shop' typeid={#$typeid#} param="do=editype{#if $id != 0#}&id={#$id#}{#/if#}"#}">{#$langData['siteConfig'][19][562]#}</a>】
+			</dd>
+		</dl>
+		<dl class="fn-clear" data-required="1">
+			<dt>{#$langData['siteConfig'][19][563]#}：</dt>
+			<dd>
+				<select name="brand" id="brand" class="input-large">{#$brandOption#}</select>
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+	  {#if $proItemList != ""#}
+	  <div class="graybg" id="proItem">
+	    {#$proItemList#}
+	  </div>
+	  {#/if#}
+		<dl class="fn-clear" data-required="1">
+			<dt><span>*</span>{#$langData['siteConfig'][19][547]#}：</dt>
+			<dd>
+				<input type="text" name="title" class="inp" id="title" size="60" maxlength="50" data-title="{#$langData['siteConfig'][27][130]#}" value="{#$detail_title#}" />
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+    {#if $storeTypeOption#}
+		<dl class="fn-clear" data-required="1">
+			<dt>{#$langData['siteConfig'][19][488]#}：</dt>
+			<dd>
+				<select name="category[]" id="category" multiple style="width: 300px; height: 150px; margin-bottom: 10px;">{#$storeTypeOption#}</select>
+				<span class="tip-inline" style="display: inline-block;"><s></s>{#$langData['siteConfig'][20][119]#}</span>
+			</dd>
+		</dl>
+    {#/if#}
+    <dl class="fn-clear" data-required="1">
+			<dt><span>*</span>{#$langData['siteConfig'][19][527]#}：</dt>
+			<dd>
+        <div class="input-append">
+					<input id="mprice" name="mprice" type="text" size="8" maxlength="6" data-title="{#$langData['siteConfig'][27][131]#}" value="{#$detail_mprice#}">
+					<span class="add-aft">{#echoCurrency type="short"#}</span>
+				</div>
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+    <dl class="fn-clear" data-required="1">
+			<dt><span>*</span>{#$langData['siteConfig'][19][564]#}：</dt>
+			<dd>
+        <div class="input-append">
+					<input id="price" name="price" type="text" size="8" maxlength="6" data-title="{#$langData['siteConfig'][27][131]#}" value="{#$detail_price#}">
+					<span class="add-aft">{#echoCurrency type="short"#}</span>
+				</div>
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear" data-required="1" data-title="{#$langData['shop'][4][72]#}">
+			<dt><span>*</span>{#$langData['siteConfig'][19][452]#}：</dt>
+			<dd>
+				<select name="logistic" id="logistic" class="input-large">{#$logisticOption#}</select>
+				<span class="tip-inline"><s></s>{#$langData['siteConfig'][27][72]#}</span>
+        <span id="logisticDetail" class="fn-hide" style="padding-top: 10px;"><small></small></span>
+			</dd>
+		</dl>
+    <dl class="fn-clear" data-required="1">
+			<dt>{#$langData['siteConfig'][19][565]#}：</dt>
+			<dd>
+        <div class="input-append">
+					<input id="volume" name="volume" type="text" size="8" maxlength="6" value="{#$detail_volume#}">
+					<span class="add-aft">m³</span>
+				</div>
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+    <dl class="fn-clear" data-required="1">
+			<dt>{#$langData['siteConfig'][19][566]#}：</dt>
+			<dd>
+        <div class="input-append">
+					<input id="weight" name="weight" type="text" size="8" maxlength="6" value="{#$detail_weight#}">
+					<span class="add-aft">kg</span>
+				</div>
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+    {#if $specification != ""#}
+    <div class="graybg" id="specification">
+      {#$specification#}
+      <div id="speList" class="fn-hide">
+        <dl class="fn-clear">
+          <dt>{#$langData['siteConfig'][26][189]#}：</dt>
+          <dd>
+            <div class="speTab"><table><thead></thead><tbody></tbody></table></div>
+            <span class="tip-inline" style="display:inline-block;"><s></s>{#$langData['siteConfig'][27][132]#}</span>
+          </dd>
+        </dl>
+      </div>
+    </div>
+    {#/if#}
+    <dl class="fn-clear" data-required="1">
+			<dt><span>*</span>{#$langData['siteConfig'][19][525]#}：</dt>
+			<dd>
+        <div class="input-append">
+					<input id="inventory" name="inventory" type="text" size="8" maxlength="6" data-title="{#$langData['siteConfig'][27][133]#}" value="{#$detail_inventory#}">
+					<span class="add-aft">{#$langData['shop'][3][1]#}</span>
+				</div>
+				<span class="tip-inline"><s></s>{#$langData['siteConfig'][27][133]#}</span>
+			</dd>
+		</dl>
+    <dl class="fn-clear" data-required="1">
+			<dt><span>*</span>{#$langData['siteConfig'][19][567]#}：</dt>
+			<dd>
+        <div class="input-append">
+					<input id="limit" name="limit" type="text" size="8" maxlength="6" data-title="{#$langData['siteConfig'][27][134]#}" value="{#$detail_limit#}">
+					<span class="add-aft">{#$langData['shop'][3][1]#}</span>
+				</div>
+				<span class="tip-inline"><s></s>{#$langData['siteConfig'][27][134]#}</span>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>{#$langData['siteConfig'][19][19]#}：</dt>
+      <dd class="thumb fn-clear listImgBox">
+				<div class="uploadinp filePicker thumbtn{#if $detail_litpic != ""#} fn-hide{#/if#}" id="filePicker1" data-type="thumb"  data-count="1" data-size="{#$thumbSize#}" data-imglist=""><div></div><span></span></div>
+				{#if $detail_litpic != ""#}
+				<ul id="listSection1" class="listSection thumblist fn-clear" style="display:inline-block;"><li id="WU_FILE_0_1"><a href='{#$detail_litpic#}' target="_blank" title=""><img alt="" src="{#changeFileSize url="$detail_litpic" type="small"#}" data-val="{#$detail_litpicSource#}"/></a><a class="reupload li-rm" href="javascript:;">{#$langData['siteConfig'][19][176]#}</a></li></ul>
+				{#else#}
+				<ul id="listSection1" class="listSection thumblist fn-clear"></ul>
+				{#/if#}
+				<input type="hidden" name="litpic" value="{#$detail_litpicSource#}" class="imglist-hidden" id="litpic">
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>{#$langData['siteConfig'][19][2]#}：</dt>
+      <dd class="listImgBox fn-hide">
+				<div class="list-holder">
+					<ul id="listSection2" class="fn-clear listSection fn-hide"{#if $detail_pics#} style="display: block;"{#/if#}>
+						{#foreach from=$detail_pics key=k item=i#}
+						<li class="fn-clear" id="WU_FILE_1_{#$k#}">
+							<span class="li-move" title="{#$langData['siteConfig'][23][42]#}">↕</span>
+							<a class="li-rm" href="javascript:;">×</a>
+							<div class="li-thumb" style="display: block;">
+								<div class="r-progress"><s></s></div>
+								<span class="ibtn">
+									<a href="javascript:;" class="Lrotate" title="{#$langData['siteConfig'][23][43]#}"></a>
+									<a href="javascript:;" class="Rrotate" title="{#$langData['siteConfig'][23][44]#}"></a>
+									<a href="{#$i.path#}" target="_blank" class="enlarge" title="{#$langData['siteConfig'][23][45]#}"></a>
+								</span>
+								<span class="ibg"></span>
+								<img data-val="{#$i.pathSource#}" data-url="{#changeFileSize url="{#$i.path#}" type="small"#}" src="{#changeFileSize url="{#$i.path#}" type="small"#}" />
+							</div>
+						</li>
+						{#/foreach#}
+					</ul>
+					<input type="hidden" name="imglist" value="" class="imglist-hidden">
+				</div>
+        <div class="btn-section fn-clear">
+          <div class="wxUploadObj fn-clear">
+						<div class="uploadinp filePicker" id="filePicker2" data-type="album" data-count="{#$atlasMax#}" data-size="{#$atlasSize#}" data-imglist=""><div id="flasHolder"></div><span>{#$langData['siteConfig'][6][168]#}</span></div>
+						<span class="upload-split fn-hide">或</span>
+						<dl class="wxUpload fn-hide fn-clear">
+							<dt><img id="wxUploadImg" /></dt>
+							<dd>使用<em class="wx">微信</em>扫描左侧二维码<br />关注{#$cfg_weixinName#}公众号后<br />将图片<em class="fs">发送</em>给公众号即可传图</dd>
+						</dl>
+					</div>
+					<div class="upload-tip">
+						<p><a href="javascript:;" class="fn-hide deleteAllAtlas"{#if $detail_pics#} style="display: inline-block;"{#/if#}>{#$langData['siteConfig'][6][79]#}</a>&nbsp;&nbsp;{#$langData['siteConfig'][20][10]|replace:'1':($atlasSize/1024)|replace:'2':$atlasMax#} <span class="fileerror"></span></p>
+					</div>
+				</div>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt><span>*</span>{#$langData['siteConfig'][19][335]#}：</dt>
+			<dd>
+				<script id="body" name="body" type="text/plain" style="width:90%;height:500px">{#$detail_body#}</script>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>&nbsp;</dt>
+			<dd><button class="submit" id="submit">{#if $id == 0#}{#$langData['siteConfig'][11][19]#}{#else#}{#$langData['siteConfig'][6][122]#}{#/if#}</button></dd>
+		</dl>
+	</form>
+</div>
+<script type="text/javascript">
+  var specifiVal = {#$specifiVal#}, atlasMax = 5;
+</script>
+{#/if#}
+
+{#else#}
+<div class="list" style="padding: 200px 0; text-align: center; font-size: 14px; color: red;">{#$langData['siteConfig'][20][403]#}</div>
+{#/if#}

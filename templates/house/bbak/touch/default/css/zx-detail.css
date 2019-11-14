@@ -1,0 +1,28 @@
+
+.main-tit{text-align: left;padding: .16rem 0;margin: 0 .3rem;}
+.main-tit h1{font-size: .4rem;line-height: .56rem;padding: .2rem 0;color: #0c0d0e;}
+.main-tit p{font-size: .22rem;color: #83868f;line-height: .4rem;padding: .04rem 0;}
+.main-tit .time {font-family: Arial;margin-right: .1rem;}
+.main-txt{font-size: .3rem;line-height: .52rem;padding: .2rem .28rem .4rem;word-wrap: break-word;color: #3c3f46;text-align: justify;}
+.main-txt p{text-indent: .6rem;padding: 0 0 .3rem;}
+.main-txt img{width: 100%;vertical-align: middle;}
+
+/*相关阅读*/
+.main-read{margin: 0 .3rem 0 .3rem;}
+.read-tit{height: 1rem;color: #83868f;}
+.read-tit h2{font-size: .3rem;color: #83868f;padding: .4rem 0;font-weight: 100;}
+.main-read .read-list li{font-size: .28rem;height: .9rem;line-height: .9rem;border-bottom: 1px solid #f4f4f4;overflow: hidden;}
+
+/*猜你喜欢*/
+.main-like{margin: 0 .3rem 0 .3rem;}
+.like-list li a{padding: .2rem 0;overflow: hidden;display: block;}
+.like-list li .like-img{float: left;margin-right: .16rem;width: 2.12rem;height: 1.6rem;}
+.like-list li .like-img img{width: 100%;height: 100%;vertical-align: middle;}
+.like-list li .like-txt h3{font-size: .3rem;overflow: hidden;line-height: .36rem;color: #0c0d0e;margin-bottom: .1rem;white-space: nowrap;text-overflow: ellipsis;font-weight: 100;}
+.like-list li .like-txt p{color: #83868f;font-size: .24rem;overflow: hidden;line-height: .4rem;white-space: nowrap;text-overflow: ellipsis;}
+.like-list li .like-txt p em{margin-right: .1rem;}
+.like-price{float: right;font-size: .28rem;color: #df3031;}
+.like-tag {font-size: .22rem;color: #565c67;overflow: hidden;margin-top: .08rem;height: .32rem;}
+.like-tag span {float: left;margin-right: .1rem;line-height: .26rem;padding: 0 .06rem;border: 1px solid #e3e7ed;background: #fff;overflow: hidden;}
+
+table{width: 100%; overflow: hidden;}

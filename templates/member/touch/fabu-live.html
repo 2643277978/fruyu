@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发起直播</title>
+    <meta name="keywords" content="发起直播"/>
+    <meta name="description" content="发起直播"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" href="{#$templets_skin#}css/fabu-live.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" href="{#$templets_skin#}css/mobiscroll.css?v={#$cfg_staticVersion#}">
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+     <script src="{#$cfg_staticPath#}js/core/zepto.deferred.js" type="text/javascript"></script>
+    <script type="text/javascript" src="{#$templets_skin#}js/mobiscroll.js"></script>
+    <script type="text/javascript" src="{#$templets_skin#}js/mobiscroll.datetime.js"></script>
+    <script type="text/javascript" src="{#$templets_skin#}js/mobiscroll.select.js"></script>
+    <script>
+        var userDomain = '{#getUrlPath service='member' type='user' template='manage-live'#}', detailUrl = '{#$url#}', modelType='live',staticPath = '{#$cfg_staticPath#}', templatePath = '{#$templets_skin#}';
+        var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$cfg_currentHost#}';
+        var hideFileUrl = {#$cfg_hideUrl#},thumbSize = {#$thumbSize#}, thumbType = '{#$thumbType#}', atlasSize = {#$atlasSize*1024*1024#}, atlasType = '{#$atlasType#}', atlasMax =1;
+    </script>
+</head>
+<body>
+{#$pageTitle = '发起直播'#}
+{#include file="top.html"#}
+<div class="publish_live">
+    <div class="live_banner">
+        <div class="default_tip" id="fileList">
+        	<h5>上传直播封面</h5>
+            <p>(建议尺寸：640*360px)</p>
+        	<li class="uploadbtn">
+	        	<div id="filePicker" class="webuploader-container">
+	        		<div class="webuploader-pick">+</div>
+		            <div id="rt_rt_1b5mb0qo71j791ejf1ilj2mt1ie81" style="position: absolute; top: 0px; left: 0px; overflow: hidden; bottom: 0px; right: 0px;">
+		              <input type="file" name="file" class="webuploader-element-invisible" accept="image/jpeg,image/png,image/gif">
+		              <label style="opacity: 0; width: 100%; height: 100%; display: block; cursor: pointer; background: rgb(255, 255, 255);"></label>
+		            </div>
+	        	</div>
+        	</li>
+        	{#if !empty($litpicS)#}
+        	<li class="thumbnail" id="item_1"><img src="{#changeFileSize url="{#$litpic#}" type="small"#}" data-val="{#$litpicS#}" data-url="{#changeFileSize url="{#$litpic#}" type="small"#}" alt=""><div class="file-panel"><span class="cancel"></span></div></li>
+			{#/if#}
+			<!--<img  src="{#$templets_skin#}images/publish_up.png" alt="">
+            <h5>上传直播封面图</h5>
+            <p>(建议尺寸：640*360px)</p>-->
+        </div>
+       <div class="input_file"{#if !empty($litpicS)#} style="display: none;"{#/if#}>
+           <img src="{#$templets_skin#}images/pub_picture.png"><span>选择默认封面</span>
+       </div>
+   </div>
+    <div class="live_main">
+        <form id="myform"  action="/include/ajax.php?service=live&action={#if !empty($id)#}edit&id={#$id#}{#else#}getPushSteam{#/if#}">
+            <div class="input_title">
+                <input type="text" id="title" value="{#$title#}" name="title" autocomplete="off" placeholder="输入直播标题">
+            </div>
+            <input type="hidden" name="litpic" id="litpic" value="{#$litpicS#}" />
+            <ul class="set_info pub_info">
+                <li data-role="fieldcontain">
+                    <label for="live_class">直播分类</label>
+                    <select class="demo-test-select dw-hsel" name="typeid" id="live_class" tabindex="-1">
+                        <option value="0">请选择</option>
+                        {#live action="type" return="typenav" type="0"#}
+                        <option value="{#$typenav.id#}" {#if $typeid == $typenav.id#} selected{#/if#}>{#$typenav.typename#}</option>
+                        {#/live#}
+                    </select>
+                    <span class="right_icon"></span>
+                </li>
+                <li data-role="fieldcontain">
+                    <label for="valid">开始时间</label>
+                    <input name="valid" id="valid" class="demo-test-date" placeholder="请选择日期" value="{#$ftime#}" readonly="" type="text">
+                    <span class="right_icon"></span>
+                </li>
+                <li class="li_live" style="display:none;">
+                    <span>横竖屏直播</span>
+                    <div class="live_sel">
+                        <div class="h_live">
+                            <div class="h_screen {#if $way==0#}active{#/if#}" data-id="0" id="h_screen" ></div><label for="h_screen">横屏</label>
+                        </div>
+                        <div class="v_live">
+                            <div class="h_screen {#if $way==1#}active{#/if#}" data-id="1" id="v_screen"></div><label for="v_screen">竖屏</label>
+                        </div>
+                    </div>
+                    <input type="hidden" value="{#$way#}" name="way" id="show">
+                </li>
+                <li>
+                    <label for="live_style">直播类型</label>
+                    <select class="demo-test-select dw-hsel" name="catid" id="live_style" tabindex="-1">
+                        <option value="0" {#if $catid == 0#} selected{#/if#}>公开</option>
+                        <option value="1" {#if $catid == 1#} selected{#/if#}>加密</option>
+                        <option value="2" {#if $catid == 2#} selected{#/if#}>收费</option>
+                    </select>
+
+                    <span class="right_icon"></span>
+                </li>
+                <li class="li_pass" style="{#if $catid == 1#}display:block;{#/if#}">
+                    <input type="password" value="{#$password#}" name="password" placeholder="请输入密码">
+                </li>
+                <li class="li_collect" style="{#if $catid == 2#}display:block;{#/if#}">
+                    <label for="start_collect">开始收费</label>
+                    <span class="money_collect">
+                        <span class="symbol cReduce">-</span>
+                        <input type="text"  name="startmoney" value="{#if !empty($startmoney)#}{#$startmoney#}{#else#}0{#/if#}" id="start_collect">
+                        <span class="symbol cAdd">+</span>
+                        <span>元</span>
+                    </span>
+
+                </li>
+                <li class="li_collect" style="{#if $catid == 2#}display:block;{#/if#}">
+                    <label for="end_collect">结束收费</label>
+                    <span class="money_collect">
+                        <span class="symbol cReduce">-</span>
+                        <input type="text" value="{#if !empty($endmoney)#}{#$endmoney#}{#else#}0{#/if#}"  name="endmoney" id="end_collect">
+                        <span class="symbol cAdd">+</span>
+                        <span>元</span>
+                    </span>
+
+                </li>
+                <li data-role="fieldcontain">
+                    <label for="live_liuchang">拉流地址</label>
+                    <select class="demo-test-select dw-hsel" name="pulltype" id="live_pulltype" tabindex="-1">
+                        <option value="0" {#if !$pulltype#} selected{#/if#}>系统生成</option>
+                        <option value="1" {#if $pulltype#} selected{#/if#}>手动输入</option>
+                    </select>
+                    <span class="right_icon"></span>
+                </li>
+                
+                <li data-role="fieldcontain" class="pulltypeCon"{#if !$pulltype#} style="display:none;"{#/if#}>
+                    <label for="live_liuchang">电脑端</label>
+                    <input type="text" id="pullurl_pc" value="{#$pullurl_pc#}" name="pullurl_pc" autocomplete="off" placeholder="输入第三方拉流地址(电脑端)">
+                </li>
+                <li data-role="fieldcontain" class="pulltypeCon"{#if !$pulltype#} style="display:none;"{#/if#}>
+                    <label for="live_liuchang">移动端</label>
+                    <input type="text" id="pullurl_touch" value="{#$pullurl_touch#}" name="pullurl_touch" autocomplete="off" placeholder="输入第三方拉流地址(移动端)">
+                </li>
+
+                <li data-role="fieldcontain">
+                    <label for="live_liuchang">直播流畅度</label>
+                    <select class="demo-test-select dw-hsel" name="flow" id="live_liuchang" tabindex="-1">
+                        <option value="1" {#if $flow == 1#} selected{#/if#}>流畅</option>
+                        <option value="2" {#if $flow == 2#} selected{#/if#}>普清</option>
+                        <option value="3" {#if $flow == 3#} selected{#/if#}>高清</option>
+                    </select>
+                    <span class="right_icon"></span>
+                </li>
+
+                <li>
+                    <label for="location">坐标信息</label>
+                    <input type="text"  id="location" name="location" placeholder="{#$langData['siteConfig'][19][882]#}">
+                    <input type="hidden" id="lnglat" name="lnglat" value="{#$lnglat#}">
+                </li>
+
+                <li class="menu_box fn-clear">
+                    <label for="menu">直播菜单</label>
+                    <ul class="menu">
+                        {#if $menuArr#}
+                        {#foreach from=$menuArr item='cfg' key='k'#}
+                        <li data-idx="{#$k#}">
+                          <div class="input-prepend input-append">
+                            <!-- <span class="add-on sort">排序</span> -->
+                            <input class="input-small name" type="text" name="menu[{#$k#}][name]" placeholder="菜单名称" value="{#$cfg.name#}">
+                            <input class="input-middle url" type="text" name="menu[{#$k#}][url]" value="{#$cfg.url#}"{#if $cfg.sys#}readonly="" placeholder="此项不需要填写"{#else#} placeholder="菜单链接"{#/if#}>
+                            <input type="hidden" name="menu[{#$k#}][show]" class="show" value="{#$cfg.show#}">
+                            <input type="hidden" name="menu[{#$k#}][sys]" class="sys" value="{#$cfg.sys#}">
+                            <div class="line"></div>
+                            {#if $cfg.show == '1'#}
+                            <span class="add-on btn dn active">显示</span>
+                            {#else#}
+                            <span class="add-on btn dn">隐藏</span>
+                            {#/if#}
+                            <span class="add-on btn del">删除</span>
+                            <span class="add-on btn add">新增</span>
+                            <span class="add-on btn down">下移</span>
+                            <span class="add-on btn up">上移</span>
+                          </div>
+                        </li>
+                        {#/foreach#}
+                        {#else#}
+                        <li data-idx="0">
+                          <div class="input-prepend input-append">
+                            <!-- <span class="add-on sort">排序</span> -->
+                            <input class="input-small name" type="text" name="menu[0][name]" placeholder="菜单名称" value="图文">
+                            <input class="input-middle url" type="text" name="menu[0][url]" placeholder="此项不需要填写" value="" readonly="" title="此项不需要填写">
+                            <input type="hidden" name="menu[0][show]" class="show" value="1">
+                            <input type="hidden" name="menu[0][sys]" class="sys" value="1">
+                            <div class="line"></div>
+                            <span class="add-on btn dn active">显示</span>
+                            <span class="add-on btn del">删除</span>
+                            <span class="add-on btn add">新增</span>
+                            <span class="add-on btn down">下移</span>
+                            <span class="add-on btn up">上移</span>
+                          </div>
+                        </li>
+                        <li class="sys" data-idx="1">
+                          <div class="input-prepend input-append">
+                            <!-- <span class="add-on sort">排序</span> -->
+                            <input class="input-small name" type="text" name="menu[1][name]" placeholder="菜单名称" value="互动">
+                            <input class="input-middle url" type="text" name="menu[1][url]" placeholder="此项不需要填写" value="" readonly="" title="此项不需要填写">
+                            <input type="hidden" name="menu[1][show]" class="show" value="1">
+                            <input type="hidden" name="menu[1][sys]" class="sys" value="2">
+                            <div class="line"></div>
+                            <span class="add-on btn dn active">显示</span>
+                            <span class="add-on btn del">删除</span>
+                            <span class="add-on btn add">新增</span>
+                            <span class="add-on btn down">下移</span>
+                            <span class="add-on btn up">上移</span>
+                          </div>
+                        </li>
+                        <li class="sys" data-idx="2">
+                          <div class="input-prepend input-append">
+                            <!-- <span class="add-on sort">排序</span> -->
+                            <input class="input-small name" type="text" name="menu[2][name]" placeholder="菜单名称" value="榜单">
+                            <input class="input-middle url" type="text" name="menu[2][url]" placeholder="此项不需要填写" value="" readonly="" title="此项不需要填写">
+                            <input type="hidden" name="menu[2][show]" class="show" value="1">
+                            <input type="hidden" name="menu[2][sys]" class="sys" value="3">
+                            <div class="line"></div>
+                            <span class="add-on btn dn active">显示</span>
+                            <span class="add-on btn del">删除</span>
+                            <span class="add-on btn add">新增</span>
+                            <span class="add-on btn down">下移</span>
+                            <span class="add-on btn up">上移</span>
+                          </div>
+                        </li>
+                        {#/if#}
+                    </ul>
+                </li>
+            </ul>
+            <div class="input_title">
+                <textarea placeholder="请输入直播简介" name="note" class="textarea" id="textarea">{#$note#}</textarea>
+            </div>
+
+            <div class="button_create">
+                <button class="btn_create" type="submit">{#if !empty($id)#}提交{#else#}创建直播{#/if#}</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="error"></div>
+<div class="sel_modal" style="display: none">
+    <div class="modal_box">
+        <div class="modal_title"><span>选择封面图</span> <img src="{#$templets_skin#}images/close.png" id="close"></div>
+        <div class="modal_main">
+            <ul>
+                <li value="0"><img src="/templates/member/images/live/a_banner01.png" ></li>
+                <li value="1"><img src="/templates/member/images/live/a_banner02.png"></li>
+                <li value="2"><img src="/templates/member/images/live/a_banner03.png"></li>
+                <li value="3"><img src="/templates/member/images/live/a_banner04.png"></li>
+                <li value="4"><img src="/templates/member/images/live/a_banner05.png"></li>
+                <li value="5"><img src="/templates/member/images/live/a_banner06.png"></li>
+                <li value="6"><img src="/templates/member/images/live/a_banner07.png"></li>
+                <li value="7"><img src="/templates/member/images/live/a_banner08.png"></li>
+                <li value="8"><img src="/templates/member/images/live/a_banner09.png"></li>
+                <li value="9"><img src="/templates/member/images/live/a_banner10.png"></li>
+                <li value="10"><img src="/templates/member/images/live/a_banner11.png"></li>
+                <li value="11"><img src="/templates/member/images/live/a_banner12.png"></li>
+                <li value="12"><img src="/templates/member/images/live/a_banner13.png"></li>
+                <li value="13"><img src="/templates/member/images/live/a_banner14.png"></li>
+                <li value="14"><img src="/templates/member/images/live/a_banner15.png"></li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+<!--地图-->
+<div class="pageitem" id="map">
+    <div class="lead">
+        <p></p>
+        <input type="text" id="searchAddr" placeholder="{#$langData['siteConfig'][20][411]#}">
+    </div>
+    <div class="map">
+        <div id="mapdiv"></div>
+        <span class="mapcenter"></span>
+    </div>
+    <div class="mapresults">
+        <ul></ul>
+    </div>
+</div>
+
+<script id="menuTpl" type="text/html">
+  <li data-idx="100">
+    <div class="input-prepend input-append">
+      <!-- <span class="add-on sort">排序</span> -->
+      <input class="input-small name" type="text" name="menu[100][name]" placeholder="菜单名称" value="">
+      <input class="input-middle url" type="text" name="menu[100][url]" placeholder="菜单链接" value="">
+      <input type="hidden" name="menu[100][show]" class="show" value="1">
+      <input type="hidden" name="menu[0][sys]" class="sys" value="0">
+    <div class="line"></div>
+    <span class="add-on btn dn active">显示</span>
+    <span class="add-on btn del">删除</span>
+    <span class="add-on btn add">新增</span>
+    <span class="add-on btn down">下移</span>
+    <span class="add-on btn up">上移</span>
+    </div>
+  </li>
+</script>
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
+<script src="{#$cfg_staticPath#}js/webuploader/webuploader.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/fabu-live.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

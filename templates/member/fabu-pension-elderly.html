@@ -1,0 +1,211 @@
+{#include file="sidebar.html"#}
+<script>
+	var map_city = '{#$cfg_mapCity#}', site_map = "{#$site_map#}";
+</script>
+<div class="main">
+	<ul class="main-tab"><li class="curr"><a href="{#getUrlPath service='member' type='user' template='fabu-pension-elderly'#}">老人信息</a></li></ul>
+	<div class="box">
+		<div class="step2 w-form">
+			<form name="fabuForm" id="fabuForm" method="post" action="{#$cfg_basehost#}/include/ajax.php?service=pension&action=elderlyConfig">
+				{#if $pensionState==1#}
+					{#if $detail_state == 0#}
+						<p class="state0">{#$langData['siteConfig'][16][168]#}</p>{#* 您的资料正在审核中，请耐心等待 *#}
+					{#elseif $detail_state == 2#}
+						<p class="state2">{#$langData['siteConfig'][28][12]#}</p>{#* 您的入驻申请已被拒绝，请重新提交 *#}
+					{#/if#}
+				{#/if#}
+				<dl class="fn-clear" data-required="1">
+					<dt><span>*</span>老人姓名：</dt>
+					<dd>
+						<input type="text" name="elderlyname" class="inp" id="elderlyname" size="20" maxlength="50" data-title="请输入老人姓名" value="{#$detail_elderlyname#}" />
+						<span class="tip-inline"></span>
+					</dd>
+				</dl>
+				<dl class="fn-clear" data-required="1">
+					<dt>性别：</dt>
+					<dd>
+						<div class="radio">
+							<span data-id="0" {#if $detail_sex==0#}class="curr"{#/if#}>	女</span>
+							<span data-id="1" {#if $detail_sex==1#}class="curr"{#/if#}>	男</span>
+							<input type="hidden" name="sex" id="sex" value="{#$detail_sex#}">
+						</div>
+					</dd>
+				</dl>
+				<dl class="fn-clear" data-required="1">
+					<dt>年龄：</dt>
+					<dd>
+						<div class="input-prepend input-append mr10">
+							<input id="price" name="age" type="text" size="4" maxlength="7" value="{#$detail_age#}">
+						</div>
+					</dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt>头像：</dt>
+					<dd class="thumb fn-clear listImgBox">
+						<div class="uploadinp filePicker thumbtn{#if $detail_photo != ""#} fn-hide{#/if#}" id="filePicker1" data-type="thumb"  data-count="1" data-size="{#$thumbSize#}" data-imglist=""><div></div><span></span></div>
+						{#if $detail_photo != ""#}
+						<ul id="listSection1" class="listSection thumblist fn-clear" style="display:inline-block;"><li id="WU_FILE_0_1"><a href='{#$detail_photoSource#}' target="_blank" title=""><img alt="" src="{#changeFileSize url="$detail_photoSource" type="small"#}" data-val="{#$detail_photo#}"/></a><a class="reupload li-rm" href="javascript:;">{#$langData['siteConfig'][19][176]#}</a></li></ul>{#* 删除图片 *#}
+						{#else#}
+						<ul id="listSection1" class="listSection thumblist fn-clear"></ul>
+						{#/if#}
+						<div>
+							<div class="variable variable-2 variable-3" style="font-size:14px;color:#999;">{#$langData['siteConfig'][31][1]#}</div>{#* 本地上传视频可以不上传缩略图，系统将会选取视频第一帧作为封面（会有一定延迟） *#}
+						</div>
+						<input type="hidden" name="photo" value="{#$detail_photo#}" class="imglist-hidden">
+					</dd>
+				</dl>
+				<dl class="fn-clear" data-required="1">
+					<dt>期望入住形式：</dt>
+					<dd>
+						<div class="radio">
+							{#pension action='accommodation_type' return='type'#}
+							<span data-id="{#$type.id#}" {#if $detail_accommodation==$type.id#}class="curr"{#/if#}>	{#$type.typename#}</span>
+							{#/pension#}
+							<input type="hidden" name="accommodation" id="accommodation" value="{#$detail_accommodation#}">
+						</div>
+					</dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt><span>*</span>期望养老地域：</dt>
+					<dd id="selAddr">
+					<div class="sel-group" data-title="{#$langData['siteConfig'][20][68]#}">
+						<div class="city-title addrBtn" data-field="addrid" data-ids="{#getPublicParentInfo tab='site_area' id=$detail_addrid split=' '#}" data-id="{#$detail_addrid#}">{#if $detail_addrid#}{#getPublicParentInfo tab='site_area' id=$detail_addrid type='typename' split='/'#}{#else#}{#$langData['siteConfig'][7][2]#}{#/if#}</div>{#* 请选择 *#}
+					</div>
+						<input type="hidden" name="addrid" id="addrid" value="{#$detail_addrid#}" />
+						<input type="hidden" name="cityid" id="cityid" value="{#$detail_cityid#}" />
+						<span class="tip-inline"></span>
+					</dd>
+				</dl>
+				<dl class="single fn-clear">
+					<dt>详细地址：</dt>
+					<dd>
+						<input class="inp" type="text" name="address" id="addr" data-title="请填写详细地址" value="{#$detail_address#}">
+						<img src="/static/images/admin/markditu.jpg" id="mark" title="标注地图位置">
+						<input type="hidden" name="lnglat" id="lnglat" value="{#$detail_lnglat#}">
+					</dd>
+				</dl>
+				<dl class="fn-clear" data-required="1">
+					<dt>入住费用预算低价：</dt>
+					<dd>
+						<div class="input-prepend input-append mr10">
+							<input id="rzminprice" name="rzminprice" type="text" size="4" maxlength="7" data-title="价格必须为数字型" value="{#$detail_rzminprice#}">
+							<span class="add-aft">{#$langData['car'][6][20]#}</span>{#* 万 *#}
+						</div>
+						<div class="input-prepend input-append mr10">
+							<span class="add-bef">高价</span>
+							<input id="rzmaxprice" name="rzmaxprice" type="text" size="4" maxlength="3" onkeyup="value=value.replace(/\D+/ig,'')" value="{#$detail_rzmaxprice#}">
+							<span class="add-aft">{#$langData['car'][6][20]#}</span>{#* 万 *#}
+						</div>
+						<span class="tip-inline"></span>
+					</dd>
+				</dl>
+				<dl class="fn-clear" data-required="1">
+					<dt>月费用预算低价：</dt>
+					<dd>
+						<div class="input-prepend input-append mr10">
+							<input id="monthminprice" name="monthminprice" type="text" size="4" maxlength="7" data-title="价格必须为数字型" value="{#$detail_monthminprice#}">
+							<span class="add-aft">{#echoCurrency type="short"#}</span>
+						</div>
+						<div class="input-prepend input-append mr10">
+							<span class="add-bef">高价</span>
+							<input id="monthmaxprice" name="monthmaxprice" type="text" size="4" maxlength="3" onkeyup="value=value.replace(/\D+/ig,'')" value="{#$detail_monthmaxprice#}">
+							<span class="add-aft">{#echoCurrency type="short"#}</span>
+						</div>
+						<span class="tip-inline"></span>
+					</dd>
+				</dl>
+				<dl class="fn-clear" data-required="1">
+					<dt><span>*</span>联系人：</dt>
+					<dd>
+						<input type="text" name="people" class="inp" id="people" size="20" maxlength="50" data-title="请输入联系人" value="{#$detail_people#}" />
+						<span class="tip-inline"></span>
+					</dd>
+				</dl>
+				<dl class="fn-clear" data-required="1">
+					<dt><span>*</span>联系方式：</dt>
+					<dd>
+						<input type="text" name="tel" class="inp" id="tel" size="20" maxlength="50" data-title="请输入联系方式" value="{#$detail_tel#}" />
+						<span class="tip-inline"></span>
+					</dd>
+				</dl>
+				<dl class="fn-clear" data-required="1">
+					<dt><span>*</span>微信：</dt>
+					<dd>
+						<input type="text" name="wx" class="inp" id="wx" size="20" maxlength="50" data-title="请输入微信" value="{#$detail_wx#}" />
+						<span class="tip-inline"></span>
+					</dd>
+				</dl>
+				<dl class="fn-clear" data-required="1">
+					<dt><span>*</span>邮箱：</dt>
+					<dd>
+						<input type="text" name="email" class="inp" id="email" size="20" maxlength="50" data-title="请输入邮箱" value="{#$detail_email#}" />
+						<span class="tip-inline"></span>
+					</dd>
+				</dl>
+				<dl class="fn-clear" data-required="1">
+					<dt><span>*</span>亲属关系：</dt>
+					<dd>
+						<input type="text" name="relationship" class="inp" id="relationship" size="40" maxlength="50" data-title="请输入亲属关系" value="{#$detail_relationship#}" />
+						<span class="tip-inline"></span>
+					</dd>
+				</dl>
+				<dl class="fn-clear" data-required="1">
+					<dt>照护对象：</dt>
+					<dd>
+						<div class="radio">
+							{#pension action='pensionitem' type='1' return='type'#}
+							<span data-id="{#$type.id#}" {#if $detail_targetcare==$type.id#}class="curr"{#/if#}>	{#$type.typename#}</span>
+							{#/pension#}
+							<input type="hidden" name="targetcare" id="targetcare" value="{#$detail_targetcare#}">
+						</div>
+					</dd>
+				</dl>
+				<dl class="fn-clear" data-required="1">
+					<dt>期望养老形式：</dt>
+					<dd>
+						<div class="radio">
+							{#pension action='catid_type' return='type'#}
+							<span data-id="{#$type.id#}" {#if $detail_catid==$type.id#}class="curr"{#/if#}>	{#$type.typename#}</span>
+							{#/pension#}
+							<input type="hidden" name="catid" id="catid" value="{#$detail_catid#}">
+						</div>
+					</dd>
+				</dl>
+				<dl class="single fn-clear">
+					<dt>期望养老级别：</dt>
+					<dd><textarea name="level" id="level" class="inp profile">{#$detail_level#}</textarea></dd>
+				</dl>
+				<dl class="single fn-clear">
+					<dt>个人情况：</dt>
+					<dd><textarea name="personalsituation" id="personalsituation" class="inp profile">{#$detail_personalsituation#}</textarea></dd>
+				</dl>
+				<dl class="single fn-clear">
+					<dt>疾病情况：</dt>
+					<dd><textarea name="situation" id="situation" class="inp profile">{#$detail_situation#}</textarea></dd>
+				</dl>
+				<dl class="single fn-clear">
+					<dt>需求说明：</dt>
+					<dd><textarea name="desc" id="desc" class="inp profile">{#$detail_desc#}</textarea></dd>
+				</dl>
+              	<dl class="fn-clear" data-required="1">
+					<dt>开关：</dt>
+					<dd>
+						<div class="radio">
+							<span data-id="0" {#if $detail_switch==0#}class="curr"{#/if#}>	关闭</span>
+							<span data-id="1" {#if $detail_switch==1#}class="curr"{#/if#}>	开启</span>
+							<input type="hidden" name="switch" id="switch" value="{#$detail_switch#}">
+						</div>
+					</dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt>&nbsp;</dt>
+					<dd><button class="submit" id="submit">{#if $id == 0#}发布{#else#}{#$langData['siteConfig'][6][122]#}{#/if#}</button></dd>
+				</dl>
+			</form>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/publicAddr.js?v={#$cfg_staticVersion#}"></script>
+
+

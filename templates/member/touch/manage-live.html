@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="{#$cfg_soft_lang#}">
+    <title>直播列表</title>
+    <meta name="keywords" content="{#$live_keywords#}"/>
+    <meta name="description" content="{#$live_description#}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" href="{#$templets_skin#}css/fabu-live.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fabu-pay.css?v={#$cfg_staticVersion#}">
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript" src="{#$templets_skin#}js/mobiscroll.js"></script>
+    <script>
+        var hiddenid="{#$userinfo.userid#}",masterDomain = '{#$cfg_basehost#}',staticPath = '{#$cfg_staticPath#}', templatePath = '{#$templets_skin#}';
+        var imgtextUrl = '{#getUrlPath service='member' type='user' template='live_imgtext' param='id='#}';
+    </script>
+</head>
+<body>
+{#$pageTitle = '直播列表'#}
+{#include file="top.html"#}
+<div class="an_list">
+    <ul class="an_main">
+    </ul>
+</div>
+
+{#include file="fabu-pay.html"#}
+
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script src="{#$templets_skin#}js/fabu-pay.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/manage-live.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

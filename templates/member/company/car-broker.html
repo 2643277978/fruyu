@@ -1,0 +1,91 @@
+{#$pageTitle = $langData['siteConfig'][19][908]|cat:" - "|cat:$cfg_webname#}
+{#include file="head.html"#}
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/car-broker.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript">
+	var module = 'car', comid = {#$comid#}, atpage = 1, totalCount = 0, pageSize = 20, state = '{#$state#}', type = '{#$type#}';
+</script>
+</head>
+
+{#$pageCurr = "car_broker"#}
+
+<body>
+{#include file="headSidebar.html"#}
+
+<div class="main housebroker">
+	<div class="container fn-clear">
+		<div class="con-title fn-clear">
+			<div class="total">共<span>0</span>个{#$langData['car'][6][44]#}</div>
+			<div class="opera">
+				<form id="searchForm"><input type="text" class="keywords" placeholder="搜索{#$langData['car'][6][44]#}"><input type="submit" class="submit" value=""></form>
+				<a href="javascript:;" class="add">添加{#$langData['car'][6][44]#}</a>
+			</div>
+		</div>
+		<div class="list fn-clear" id="list"><p class="loading"><img src="{#$cfg_staticPath#}images/ajax-loader.gif" />{#$langData['siteConfig'][20][184]#}...</p></div>
+		<div class="pagination fn-clear"></div>
+	</div>
+</div>
+
+<!-- 新增/编辑层 -->
+<div class="model model_edit">
+	<div class="bg"></div>
+	<a href="javascript:;" class="close">×</a>
+	<form action="" class="model_m" id="zjuserForm">
+		<input type="hidden" name="id" id="userid" value="0">
+		<dl class="fn-clear photo">
+			<dt>上传头像<input type="hidden" name="photo" id="photo" value=""></dt>
+			<dd>
+				<div class="up">
+					<p class="sn"></p>
+					<p class="txt">上传照片</p>
+					<input type="file" name="Filedata" value="" class="Filedata" id="Filedata">
+					<a href="javascript:;" class="remove"></a>
+				</div>
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>姓名</dt>
+			<dd>
+				<input type="text" name="nickname" id="nickname" class="nickname" placeholder="请输入联系人姓名">
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>电话号码</dt>
+			<dd>
+				<input type="text" name="phone" id="phone" class="phone" placeholder="请输入您的手机号">
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>登陆密码</dt>
+			<dd>
+				<input type="text" name="password" id="password" class="password" placeholder="请输入密码">
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>金牌顾问</dt>
+			<dd>
+				<input type="checkbox" name="quality" id="quality" class="quality" value="1">
+			</dd>
+		</dl>
+		<p class="info"></p>
+		<input type="submit" class="submit" value="添加">
+	</form>
+</div>
+
+<!-- 删除确认层 -->
+<div class="model model_del">
+	<div class="bg"></div>
+	<a href="javascript:;" class="close">×</a>
+	<div class="model_m">
+		<div class="model_title">确认删除此{#$langData['siteConfig'][19][909]#}吗？</div>
+		<div class="model_btns">
+			<a href="javascript:;" class="cancel">取消</a>
+			<a href="javascript:;" class="ok">确定</a>
+		</div>
+	</div>
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.ajaxFileUpload.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/car-broker.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

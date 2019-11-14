@@ -1,0 +1,108 @@
+
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/profile.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/psw.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/security-shCertify.css?v={#$cfg_staticVersion#}" media="all" />
+<style>
+#fileList {margin:0 auto;}
+#fileList {position:relative; height: auto;}
+/*.addimg li.add {position: absolute;left:0;bottom:-.6rem;width: 3rem;height: .6rem;margin-top: 0;background: none;}*/
+.addimg .noimg li.add {position: relative; top:0;height: 1.6rem;}
+.addimg .noimg li.add .uploader-btn{position: absolute; bottom: 0; width: 100%;}
+.imgbox .btn {left:0;top:0;right:0;bottom:0;padding:0;margin:0;width: 100%;height: 100%;zoom: 1;z-index: 99;}
+.addimg li {width: 3rem;margin-top: .2rem;}
+.addimg li img {border-radius:.1rem; height: 100%;}
+</style>
+
+  {#$pageTitle = $langData['siteConfig'][19][255]#}
+  {#include file="top.html"#}
+
+
+  <div class="editForm" name="editForm">
+
+
+    {#if $userinfo.certifyState == 0 || $userinfo.certifyState == 2#}
+    <script>var waiting = false;</script>
+    <div class="security_bg">
+        <div class="edit-tip{#if $userinfo.certifyState == 2#} edit-error{#/if#}">
+          <p>{#if $userinfo.certifyState == 2#}{#$langData['siteConfig'][19][739]#}{#else#}{#$langData['siteConfig'][19][899]#}{#/if#}</p>
+        </div>
+    </div>
+    <dl class="inpbox">
+      <dt><img src="{#$templets_skin#}images/ic_name.png" alt=""><em></em></dt>
+      <dd style="width: 200px;"><input type="text" id="realname" name="realname" autocomplete="off" maxlength="10" placeholder="{#$langData['siteConfig'][20][105]#}" /></dd>
+    </dl>
+    <dl class="inpbox">
+      <dt><img src="{#$templets_skin#}images/ic_word.png" alt=""><em></em></dt>
+      <dd style="width: 200px;"><input type="text" id="idcard" name="idcard" autocomplete="off" maxlength="18" placeholder="{#$langData['siteConfig'][20][106]#}" /></dd>
+    </dl>
+    <p class="edtip">*仅支持二代身份证认证，认证审核需要1-2个工作日</p>
+    <div class="imgbox">
+      <div class="card">
+          <div class="card-file webuploader">
+              <img src="{#$templets_skin#}images/ic_zheng.png" id="idcardFimg">
+              <div class="input-img" id="idcardF"></div>
+              <input type="hidden" name="idcardFront" value="" id="idcardFront">
+          </div>
+          <div class="file-side webuploader">
+              <img src="{#$templets_skin#}images/ic_fan.png" id="idcardBimg">
+              <div class="input-img" id="idcardB"></div>
+              <input type="hidden" name="idcardBack" value="" id="idcardBack">
+          </div>
+        {#if $userinfo.userType == 2#}
+        <div class="file-side webuploader">
+              <img src="{#$templets_skin#}images/ic_company.png" id="licenseCimg">
+              <div class="input-img" id="licenseC"></div>
+              <input type="hidden" name="licenseCom" value="" id="licenseCom">
+        </div>
+        {#/if#}
+      </div>
+    </div>
+    <div class="submit">
+        <a href="javascript:;" id="submit">{#$langData['siteConfig'][6][60]#}</a>
+    </div>
+
+    {#else#}
+    <script>var waiting = true;</script>
+    <div class="editForm" name="editForm">
+      <div class="security_bg">
+          <div class="edit-tip{#if $userinfo.certifyState == 1#} success{#/if#}">
+              <p>{#if $userinfo.certifyState == 1#}{#$langData['siteConfig'][20][246]#}{#else#}{#$langData['siteConfig'][20][247]#}{#/if#}</p>
+          </div>
+      </div>
+      <dl class="inpbox">
+        <dt><img src="{#$templets_skin#}images/ic_name.png" alt=""><em></em></dt>
+        <dd id="realname"></dd>
+      </dl>
+      <dl class="inpbox">
+        <dt><img src="{#$templets_skin#}images/ic_word.png" alt=""><em></em></dt>
+        <dd id="idcard"></dd>
+      </dl>
+      <div class="imgbox{#if $userinfo.certifyState == 1#} result{#else#}{#/if#}">
+        <div class="card" id="imgCard">
+        </div>
+      </div>
+    </div>
+    {#/if#}
+  </div>
+
+  <div class="error"></div>
+
+<script>
+  var thumbSize = {#$thumbSize#}, thumbType = '{#$thumbType#}', atlasSize = {#$atlasSize*1024*1024#}, atlasType = '{#$atlasType#}', atlasMax = {#if $userinfo.userType == 1#}2{#else#}3{#/if#}, modelType = 'siteConfig', upType = 'card', nolitpic = true, moreParam = '', userType = {#$userinfo.userType#};
+</script>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+      "debug": true
+	};
+</script>
+<script src="//res.wx.qq.com/open/js/jweixin-1.3.2.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+
+<script src="{#$cfg_staticPath#}js/webuploader/webuploader.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/upload.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/common.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/security-shCertify.js?v={#$cfg_staticVersion#}"></script>

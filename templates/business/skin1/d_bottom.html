@@ -1,0 +1,31 @@
+          <div id="bf8" class="frame" style="display:block;">
+          <div id="module_25261176" class="module">
+            <div class="widget copyright_screen_wide">
+              <div class="footer" id="copyrightBar">
+                {#$cfg_powerby#}
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- qq -->
+    <!--二维码 start-->
+    <div id="qrcode">
+      <p>扫一扫，随行看</p>
+      <img src="{#$cfg_basehost#}/include/qrcode.php?data={#getUrlPath service='business' template='detail' id={#$detail_id#}#}" width="105" height="105" />
+      <p>进入我的手机站</p>
+    </div>
+    <!-- 发布采购单 -->
+    <div id="gotop" >
+      <a id="back" href="javascript:backToTop()"></a>
+    </div>
+    <!--二维码 end-->
+  </body>
+  
+  <script type="text/javascript" src="{#$cfg_staticPath#}js/common.js"></script>
+  <script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.colorPicker.js"></script>
+  <script type="text/javascript" src="{#$cfg_basehost#}/templates/siteConfig/default/js/index_public.js"></script>
+
+</html>

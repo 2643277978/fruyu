@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$dating_title#}</title>
+<meta name="keywords" content="{#$dating_keywords#}" />
+<meta name="description" content="{#$dating_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+</script>
+</head>
+
+<body>
+{#$pageCurr = "index"#}
+{#include file="top.html"#}
+
+<!-- 大图幻灯 s -->
+<div class="banner">
+
+	<div class="wrap">
+		<div class="slide" id="slide">
+			{#myad id="89" type="slide"#}
+		</div>
+		{#if $userinfo#}
+		<div class="member-info2">
+			<div class="reg fn-clear">
+				<p class="welcome">
+					<a href="{#$cfg_basehost#}/logout.html" class="fn-right">退出</a>
+					<span>晚上好！欢迎回来，{#if $userinfo.userType == 2#}{#$userinfo.person#}{#else#}{#$userinfo.nickname#}{#/if#}！</span>
+				</p>
+				<div class="photoout">
+					<div class="photo">
+						<img onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_100.jpg';" src="{#if $userinfo.photo == ""#}{#$cfg_staticPath#}images/noPhoto_100.jpg{#else#}{#changeFileSize url="{#$userinfo.photo#}" type="large"#}{#/if#}" id="user_tx">
+						<a href="{#getUrlPath service='member' type='user' template='portrait'#}" target="_blank" class="upload">上传头像</a>
+					</div>
+					{#if $u_review#}<a href="{#getUrlPath service='member' type='user' template='dating' action='review'#}" target="_blank" class="msg">消息{#$u_review#}</a>{#/if#}
+				</div>
+				<p class="renzhen pi">
+					认证：
+					{#if $userinfo.certifyState#}<a href="{#getUrlPath service='member' type='user' template='security-shCertify'#}" class="flag flag-2 past" title="已通过完整身份认证"></a>{#else#}<a href="{#getUrlPath service='member' type='user' template='security-shCertify'#}" class="flag flag-2" title="未通过完整身份认证"></a>{#/if#}
+					{#if $userinfo.phoneCheck#}<a href="{#getUrlPath service='member' type='user' template='security-chphone'#}" class="flag flag-1 past" title="已验证手机号"></a>{#else#}<a href="{#getUrlPath service='member' type='user' template='security-chphone'#}" class="flag flag-1" title="还未验证手机号"></a>{#/if#}
+					{#if $userinfo.emailCheck#}<a href="{#getUrlPath service='member' type='user' template='security-chemail'#}" class="flag flag-3 past" title="已通过邮箱认证"></a>{#else#}<a href="{#getUrlPath service='member' type='user' template='security-chemail'#}" class="flag flag-3" title="未通过邮箱认证"></a>{#/if#}
+				</p>
+				<p class="btn">
+					<a href="{#getUrlPath service='dating' template='u' id=$uid#}" class="gomycenter" target="_blank">进入我的主页</a>
+				</p>
+			</div>
+			<div class="mbgt"></div>
+			<div class="mbg"></div>
+		</div>
+		{#else#}
+		<div class="member-info">
+			<div class="reg fn-clear">
+				<h3>1分钟完成注册，寻找那个Ta</h3>
+				<dl class="fn-clear">
+					<dt>注册方式</dt>
+					<dd class="fn-clear rad type">
+						<label data-id="1" class="checked"><s></s>手机注册</label>
+						<label data-id="2"><s></s>邮箱注册</label>
+					</dd>
+				</dl>
+				<dl class="fn-clear" id="t1">
+					<dt><label for="mobile">手机号码</label></dt>
+					<dd class="fn-clear"><label><input type="text" name="mobile" autocomplete="off" class="inp" id="mobile" maxlength="11" placeholder="请输入11位手机号码" /></label></dd>
+				</dl>
+				<dl class="fn-clear fn-hide" id="t2">
+					<dt><label for="email">邮箱地址</label></dt>
+					<dd class="fn-clear"><label><input type="text" name="email" autocomplete="off" class="inp" id="email" placeholder="请输入邮箱地址" /></label></dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt><label for="password">密码</label></dt>
+					<dd class="fn-clear"><label><input type="password" name="password" id="password" class="inp" placeholder="请输入登录密码" /></label></dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt>性别</dt>
+					<dd class="fn-clear rad sex">
+						<label data-id="1" class="checked"><s></s>帅哥</label>
+						<label data-id="0"><s></s>美女</label>
+					</dd>
+				</dl>
+				<dl class="fn-clear bir">
+					<dt>出生日期</dt>
+					<dd class="fn-clear">
+						<div class="sel year">
+							<input name="year" id="year" readonly="readonly" class="inp" type="text" value="1990 年" />
+							<div class="popup-sel y">
+								<s></s>
+								<ul>
+									<li><strong>90后：</strong><a href="javascript:;">1990</a><a href="javascript:;">1991</a><a href="javascript:;">1992</a><a href="javascript:;">1993</a><a href="javascript:;">1994</a><a href="javascript:;">1995</a><a href="javascript:;">1996</a><a href="javascript:;">1997</a><a href="javascript:;">1998</a></li>
+									<li><strong>80后：</strong><a href="javascript:;">1980</a><a href="javascript:;">1981</a><a href="javascript:;">1982</a><a href="javascript:;">1983</a><a href="javascript:;">1984</a><a href="javascript:;">1985</a><a href="javascript:;">1986</a><a href="javascript:;">1987</a><a href="javascript:;">1988</a><a href="javascript:;">1989</a></li>
+									<li><strong>70后：</strong><a href="javascript:;">1970</a><a href="javascript:;">1971</a><a href="javascript:;">1972</a><a href="javascript:;">1973</a><a href="javascript:;">1974</a><a href="javascript:;">1975</a><a href="javascript:;">1976</a><a href="javascript:;">1977</a><a href="javascript:;">1978</a><a href="javascript:;">1979</a></li>
+									<li><strong>60后：</strong><a href="javascript:;">1960</a><a href="javascript:;">1961</a><a href="javascript:;">1962</a><a href="javascript:;">1963</a><a href="javascript:;">1964</a><a href="javascript:;">1965</a><a href="javascript:;">1966</a><a href="javascript:;">1967</a><a href="javascript:;">1968</a><a href="javascript:;">1969</a></li>
+									<li><strong>50后：</strong><a href="javascript:;">1950</a><a href="javascript:;">1951</a><a href="javascript:;">1952</a><a href="javascript:;">1953</a><a href="javascript:;">1954</a><a href="javascript:;">1955</a><a href="javascript:;">1956</a><a href="javascript:;">1957</a><a href="javascript:;">1958</a><a href="javascript:;">1959</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="sel">
+							<input name="month" id="month" readonly="readonly" class="inp" type="text" value="01 月" />
+							<div class="popup-sel m">
+								<s></s>
+								<ul>
+									<li><a href="javascript:;">1</a><a href="javascript:;">2</a><a href="javascript:;">3</a><a href="javascript:;">4</a><a href="javascript:;">5</a><a href="javascript:;">6</a><a href="javascript:;">7</a><a href="javascript:;">8</a><a href="javascript:;">9</a><a href="javascript:;">10</a><a href="javascript:;">11</a><a href="javascript:;">12</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="sel">
+							<input name="day" id="day" readonly="readonly" class="inp" type="text" value="01 日" />
+							<div class="popup-sel d">
+								<s></s>
+								<ul>
+									<li><a href="javascript:;">1</a><a href="javascript:;">2</a><a href="javascript:;">3</a><a href="javascript:;">4</a><a href="javascript:;">5</a><a href="javascript:;">6</a><a href="javascript:;">7</a><a href="javascript:;">8</a><a href="javascript:;">9</a><a href="javascript:;">10</a><a href="javascript:;">11</a><a href="javascript:;">12</a><a href="javascript:;">13</a><a href="javascript:;">14</a><a href="javascript:;">15</a><a href="javascript:;">16</a><a href="javascript:;">17</a><a href="javascript:;">18</a><a href="javascript:;">19</a><a href="javascript:;">20</a><a href="javascript:;">21</a><a href="javascript:;">22</a><a href="javascript:;">23</a><a href="javascript:;">24</a><a href="javascript:;">25</a><a href="javascript:;">26</a><a href="javascript:;">27</a><a href="javascript:;">28</a><a href="javascript:;">29</a><a href="javascript:;">30</a><a href="javascript:;">31</a></li>
+								</ul>
+							</div>
+						</div>
+					</dd>
+				</dl>
+				<dl class="fn-clear">
+					<dt><label for="addr">所在区域</label></dt>
+					<dd class="fn-clear addr"><label><input type="text" name="addr" id="addr" class="inp" readonly="readonly" placeholder="选择所在区域" /></label></dd>
+				</dl>
+				<input type="button" class="tj" value="免费注册" /> <div class="log">或 <a href="{#$cfg_basehost#}/login.html" id="ulogin"><u>登录</u></a></div>
+			</div>
+			<div class="mbg"></div>
+		</div>
+		{#/if#}
+		<div id="slidebtn" class="slidebtn"></div>
+	</div>
+</div>
+<!-- 大图幻灯 e -->
+
+<!-- 搜索 s -->
+<div class="wrap dsear" data-url="{#getUrlPath service='dating' template='search' param="orderby="#}">
+	<h2>缘分搜一搜</h2>
+	<div class="sform">
+		<label>我要找</label>
+		<div class="sel stype">
+			<span data-val="0">女朋友</span>
+			<s></s>
+			<div class="popup-sel">
+				<ul>
+					<li><a href="javascript:;" data-id="0">女朋友</a></li>
+					<li><a href="javascript:;" data-id="1">男朋友</a></li>
+				</ul>
+			</div>
+		</div>
+		<span class="spi"></span>
+		<label>年龄</label>
+		<div class="sel bage">
+			<span data-val="18">18</span>
+			<s></s>
+			<div class="popup-sel"><ul></ul></div>
+		</div>
+		<label>至</label>
+		<div class="sel eage">
+			<span data-val="28">28</span>
+			<s></s>
+			<div class="popup-sel"><ul></ul></div>
+		</div>
+		<label>岁</label>
+		<span class="spi"></span>
+		<label>区域</label>
+		<div class="sel saddr">
+			<span data-val="">不限</span>
+			<s></s>
+			<div class="popup-sel"></div>
+		</div>
+		<span class="spi"></span>
+		<label>身高</label>
+		<div class="sel bhei">
+			<span data-val="140">140</span>
+			<s></s>
+			<div class="popup-sel"><ul></ul></div>
+		</div>
+		<label>至</label>
+		<div class="sel ehei">
+			<span data-val="">不限</span>
+			<s></s>
+			<div class="popup-sel"><ul></ul></div>
+		</div>
+		<label>cm</label>
+		<a href="javascript:;" class="sbtn">搜索</a>
+	</div>
+</div>
+<!-- 搜索 e -->
+
+<!-- 会员推荐 s -->
+<div class="rec">
+	<div class="wrap">
+		<div class="mt">
+			<h2>优质会员推荐，就在你的眼前！</h2>
+			<a href="javascript:;" class="change"><s></s>换一组</a>
+		</div>
+		<div class="list">
+			<div class="ltype">
+				<a href="javascript:;" data-id="">全部</a>
+				<a href="javascript:;" data-id="144">妩媚</a>
+				<a href="javascript:;" data-id="145">柔美</a>
+				<a href="javascript:;" data-id="146">清纯</a>
+				<a href="javascript:;" data-id="147">可爱</a>
+				<a href="javascript:;" data-id="148">优雅</a>
+				<a href="javascript:;" data-id="149">气质</a>
+				<a href="javascript:;" data-id="150">型男</a>
+				<a href="javascript:;" data-id="151">短发</a>
+			</div>
+			<ul class="fn-clear"></ul>
+		</div>
+	</div>
+</div>
+<!-- 会员推荐 e -->
+
+<!-- 附近的人 s -->
+<div class="wrap nearby">
+	<div class="mt">
+		<h2>附近的帅哥美女</h2>
+		<a href="{#getUrlPath service='dating' template='list'#}" target="_blank" class="more">更多>></a>
+	</div>
+	<div class="list fn-clear">
+		{#dating action="memberList" return="member" sex="0" property="r" pageSize="3"#}
+		<dl class="fn-clear">
+			<dt><a href="{#$member.url#}" target="_blank"><img alt="{#$member.nickname#}" src="{#$member.photo#}" /></a></dt>
+			<dd>
+				<h5><a href="{#$member.url#}" target="_blank">{#$member.nickname#}</a><s title="实名认证"></s></h5>
+				<p>{#$member.age#}岁，{#$member.height#}CM，{#$member.educationName#}</p>
+				<p class="info">{#$member.sign#}</p>
+				<a href="{#$member.url#}" target="_blank" class="nbtn">查看资料</a>
+			</dd>
+		</dl>
+		{#/dating#}
+		{#dating action="memberList" return="member" sex="1" property="r" pageSize="3"#}
+		<dl class="fn-clear">
+			<dt><a href="{#$member.url#}" target="_blank"><img alt="{#$member.nickname#}" src="{#$member.photo#}" /></a></dt>
+			<dd>
+				<h5><a href="{#$member.url#}" target="_blank">{#$member.nickname#}</a><s title="实名认证"></s></h5>
+				<p>{#$member.age#}岁，{#$member.height#}CM，{#$member.educationName#}</p>
+				<p class="info">{#$member.sign#}</p>
+				<a href="{#$member.url#}" target="_blank" class="nbtn">查看资料</a>
+			</dd>
+		</dl>
+		{#/dating#}
+	</div>
+</div>
+<!-- 附近的人 e -->
+
+<!-- 成功故事 s -->
+<div class="wrap story">
+	<div class="mt">
+		<h2>我们的见证下，他们相爱了！</h2>
+		<a href="{#getUrlPath service='dating' template='story'#}" target="_blank" class="more">秀出自己的故事>></a>
+	</div>
+	<div class="list">
+		<ul class="fn-clear">
+			<li style="background:none;">
+				<div class="tags fn-clear">
+					<a href="javascript:;" data-id="114">一波三折</a>
+					<a href="javascript:;" data-id="139">倒追</a>
+					<a href="javascript:;" data-id="141">宅男</a>
+					<a href="javascript:;" data-id="137">求婚</a>
+					<a href="javascript:;" data-id="116">感人</a>
+					<a href="javascript:;" data-id="110">80后</a>
+					<a href="javascript:;" data-id="122">一见钟情</a>
+					<a href="javascript:;" data-id="124">坚持</a>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+<!-- 成功故事 s -->
+
+<!-- 相亲活动 s -->
+<div class="wrap activity">
+	<div class="mt">
+		<h2>相亲Party，等你来参加！</h2>
+		<a href="{#getUrlPath service='dating' template='activity'#}" target="_blank" class="more">更多活动>></a>
+	</div>
+	<div class="list">
+		<ul class="fn-clear">
+			{#dating action="activity" return="activity" pageSize="3"#}
+			<li>
+				<a href="{#$activity.url#}" target="_blank"><img src="{#changeFileSize url="{#$activity.litpic#}" type="o_large"#}" /></a>
+				<p><a href="{#$activity.url#}" target="_blank">{#$activity.title#}</a></p>
+				<p>时间：{#$activity.btime#}<br />地点：{#$activity.address#}</p>
+			</li>
+			{#/dating#}
+		</ul>
+	</div>
+</div>
+<!-- 相亲活动 e -->
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.cycle.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v=1"></script>
+</body>
+</html>

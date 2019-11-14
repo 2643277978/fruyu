@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$langData['siteConfig'][17][28]#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="/templates/courier/css/leMai.css?v={#$cfg_staticVersion#}">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+</head>
+<body>
+<!-- 外卖订单 -->
+<div class="waiMai">
+	<a href="javascript:;" class="kaiGuan xiaoXue{#if $courier_state == 1#} kaiGuan01{#/if#}"><i></i></a>
+	<p>{#$langData['siteConfig'][17][28]#}</p>
+	<a href="/?service=waimai&do=courier&template=logout" class="logout"></a>
+</div>
+
+<div class="lewaimai">
+	<div class="peisongyuan">
+		<!-- 我的评分 -->
+		<div class="myTongji">
+			<a href="#" class="fn-clear">
+				<i class="reMark"></i>
+				<span>{#$langData['siteConfig'][17][29]#}</span>
+				<span class="fiveStar">{#$courier_star#}</span>
+				<s style="background: none; margin-top: 0;">
+					<b></b>
+					<b class="star01" style="width:{#$courier_star/5*100#}%"></b>
+				</s>
+			</a>
+		</div>
+	</div>
+</div>
+
+<!-- 评论详细 -->
+<div id="list">
+	{#member action='getComment' return='common' peisongid=1 orderby='hot' pageSize='100'#}
+	<div class="remarkDetail">
+		<p class="waimBlue fn-clear">
+			<span>【{#if $common.type == 'waimai-order'#}{#$langData['siteConfig'][16][48]#}{#else#}{#$langData['siteConfig'][16][49]#}{#/if#}】</span>
+			<s><b></b><i style="width:{#$common.starps/5*100#}%;"></i></s>
+		</p>
+		<span class="goodRemark">{#$common.contentps#}</span>
+		<p class="goodRemark01 fn-clear">
+			<span>{#$common.user.nickname#}</span>
+			<i>{#$common.pubdatef#}</i>
+		</p>
+	</div>
+	{#/member#}
+	{#if $pageInfo.totalCount == 0#}
+	<div class="empty">{#$langData['waimai'][2][100]#}</div>
+	{#/if#}
+</div>
+
+<div class="bottomFix">
+	<ul class="fn-clear bottomFix01">
+		<li class="maiWai"><a href="/?service=waimai&do=courier&state=3"><i></i><p>{#$langData['waimai'][2][54]#}</p></a></li>
+		<li class="maiWai"><a href="/?service=waimai&do=courier&ordertype=paotui&state=3"><i></i><p>{#$langData['siteConfig'][16][49]#}</p></a></li>
+		<li class="paoTui paoTui01"><a href="/?service=waimai&do=courier&template=comment"><i></i><p>{#$langData['siteConfig'][19][365]#}</p></a></li>
+		<li class="woDe"><a href="/?service=waimai&do=courier&template=statistics"><i></i><p>{#$langData['siteConfig'][17][11]#}</p></a></li>
+	</ul>
+</div>
+
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type="text/javascript" src="/templates/courier/js/drag-loading.js"></script>
+<script type="text/javascript">
+$(function(){
+	//开工
+	$(".kaiGuan").bind("click", function(){
+		var t = $(this), state = 1, title = "{#$langData['waimai'][4][2]#}";
+		if(t.hasClass("kaiGuan01")){
+			state = 0;
+			title = "{#$langData['waimai'][4][2]#}";
+			t.removeClass("kaiGuan01");
+		}else{
+			t.addClass("kaiGuan01");
+		}
+
+		$('.youqingTixing').html('<i>'+title+'</i>').show();
+		setTimeout(function(){
+			$(".youqingTixing").hide();
+		}, 1000);
+
+		$.ajax({
+            url: '/include/ajax.php?service=waimai&action=updateCourierState',
+            data: {
+				state: state
+            },
+            type: 'get',
+            dataType: 'json',
+            success: function(data){
+				location.reload();
+			}
+		});
+
+	});
+});
+</script>
+</body>
+</html>

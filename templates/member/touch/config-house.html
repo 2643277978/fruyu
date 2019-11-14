@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>我的店铺</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/config-house.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = 0;
+	var module = 'house';
+</script>
+</head>
+
+<body>
+{#$pageTitle = '我的店铺'#}
+{#$pageRight = '<a href="javascript:;" class="notMenu"> </a>'#}
+{#include file="top.html"#}
+
+
+{#if $jjr == 0#}
+
+<div class="reg">
+<a href="{#getUrlPath service=member type=user template=enter_house#}" id="reg">{#$langData['siteConfig'][19][400]#}</a>，{#$langData['siteConfig'][20][144]#}
+</div>
+
+{#else#}
+
+{#if $jjr && $detail_state == 0#}
+{#if $detail_zjcom == 0#}
+<p class="state0">您的资料正在审核中，请耐心等待</p>
+{#else#}
+<p class="state0">{#$langData['siteConfig'][20][141]#}</p>
+{#/if#}
+{#elseif $jjr && $detail_state == 2#}
+<p class="state0">{#$langData['siteConfig'][20][413]#}{#if $detail_fail_type#}<br>拒绝理由：{#$detail_fail_type#}{#if $detail_fail_info#}<br>{#$detail_fail_info#}{#/if#}{#/if#}</p>
+{#/if#}
+
+
+<div class="mealinfo">
+	{#*配置了套餐或者有购买记录*#}
+	{#if $detail_meal_open || $detail_meal#}
+		{#if $detail_meal#}
+	<p class="name">{#$detail_meal.name#}<a href="{#getUrlPath service='member' type='user' template='house_meallist' param="type={#$detail_meal.type#}&item={#$detail_meal.item#}"#}" class="renew">续费</a>{#if $detail_meal_up#}<a href="{#getUrlPath service='member' type='user' template='house_meallist' param="type={#$detail_meal.type#}&item={#$detail_meal.item#}&upgrade=1"#}" class="upgrade">升级</a>{#/if#}<a href="{#getUrlPath service='member' type='user' template='deposit'#}" class="deposit">充值</a></p>
+	<p class="money">账户余额<font>{#$userinfo.money#}</font></p>
+	{#if $detail_meal.expired <= $smarty.now#}<p class="time">{#$detail_meal.expired|date_format:"%Y-%m-%d"#}到期，已过期</p>
+	{#else#}<p class="time">剩余<font>{#$detail_meal.expired_day#}</font>天到期</p>{#/if#}
+		{#else#}
+	<p class="name">暂无套餐<a href="{#getUrlPath service='member' type='user' template='house_meallist'#}" class="upgrade">购买</a><a href="{#getUrlPath service='member' type='user' template='deposit'#}" class="deposit">充值</a></p>
+	<p class="money">账户余额<font>{#$userinfo.money#}</font></p>
+		{#/if#}
+	{#else#}
+	<p class="name">暂无套餐<a href="{#getUrlPath service='member' type='user' template='deposit'#}" class="deposit">充值</a></p>
+	<p class="money">账户余额<font>{#$userinfo.money#}</font></p>
+	{#/if#}
+  <a href="{#getUrlPath service='house' template='broker-detail' id=$detail_id param="{#if $detail_state != 1#}u=1{#/if#}"#}" class="view">预览店铺</a>
+</div>
+
+<ul class="link">
+  <li><a href="{#getUrlPath service='member' type='user' template='config-house_base'#}">基本资料</a></li>
+  <li><a href="{#getUrlPath service='member' type='user' template='house_meallist'#}">套餐</a></li>
+  <li><a href="{#getUrlPath service='member' type='user' template='house_mymeal'#}">套餐记录</a></li>
+  <li><a href="{#getUrlPath service='member' type='user' template='config-house_area'#}">服务区域</a></li>
+  <li><a href="{#getUrlPath service='member' type='user' template='config-house_qr'#}">二维码</a></li>
+  <li><a href="{#getUrlPath service='member' type='user' template='config-house_idcard'#}">证件照</a></li>
+  <li><a href="{#getUrlPath service='member' type='user' template='config-house_card'#}">名片认证</a></li>
+  <li><a href="{#getUrlPath service='member' type='user' template='config-house_license'#}">职业资格认证</a></li>
+</ul>
+
+{#/if#}
+
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+</body>
+</html>

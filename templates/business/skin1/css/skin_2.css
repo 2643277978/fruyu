@@ -1,0 +1,91 @@
+@charset "utf-8";
+/* CSS Document */
+body{background:#4b0102;}
+.main {background: rgba(0, 0, 0, 0);}
+
+body .main {padding-top: 0; top: 0;}
+.topInfo {margin-bottom: 0;}
+
+/* 导航 */
+.channel_screen_wide{height:31px;line-height:31px; background:#8f0100;}
+.main .main-menu{height:31px;line-height:31px;}
+.main .main-menu li{background:url(../images/menuline.jpg) no-repeat right center;}
+.main .main-menu li a{color:#fff;font-size:14px;font-weight:bold; display:block;}
+.main .main-menu li a:hover{background:#6a0000;}
+.main .main-menu li.navcurrent a{background:#6a0000;}
+
+/* 招牌sign */
+.sign_screen_wide{background-image:url(../images/sign.jpg);}
+.m-sign .cname{color:#fff;}
+.clogo { color:#fff;}
+
+/* 标题 */
+.con-title{font-weight:bold;height:32px;line-height:32px;text-align:left;}
+.con-title span{ display:inline-block;padding-left:28px;background:url(../images/span.png) no-repeat left center;font-size:14px;color:#fff;}
+#bf0 .con-title,#bf6 .con-title{background:#8f0100;text-align:center;}
+#bfa .con-title{padding-left:10px;background:url(../images/bfa-h2.jpg) repeat-x left center;height:40px;line-height:32px;}
+.YH_Class #bf3 .con-title,.YH_Class .YH_bfc_Class .con-title{text-align:center;}
+
+/* 全屏轮播 */
+.flashDiv .JQ-slide-content li a{background:url(../images/banner1.jpg) no-repeat center top;}
+
+/* 公司档案 */
+.company_files .moduleBoxbg{background:#fff;}
+.com_da_T{background:url(../images/com_da_T.jpg) repeat-x;height:60px;line-height:60px;}
+.g_com_span{color:#fff;}
+.sj-line p{color:#3c3c3c;}
+
+/* 产品分类 */
+.cateBg_m{background:url(../images/cateBg.jpg) repeat-x 0 -30px;height:30px;line-height:30px;padding:0 10px;}
+.cateBg_l{background:url(../images/cateBg.jpg) no-repeat 0 0;height:30px;line-height:30px;width:4px;}
+.cateBg_r{background:url(../images/cateBg.jpg) no-repeat 0 -61px;height:30px;line-height:30px;width:4px;}
+.cateBg_m .icon_cate_i{display:block;padding-left:14px;background:url(../images/icon_cate_i.png) no-repeat left center;}
+
+/* 收藏店铺按钮 */
+.btn-collect{background:url(../images/btn-collect.png) no-repeat left center;}
+.btn-collect span{background: url(../images/btn-collect.png) no-repeat right center;}
+
+/* 产品搜索 */
+.product_search .moduleBoxbg{background:#fff;}
+.search_ul .search-l{color:#3c3c3c;}
+.input_w1,.input_w2{border:1px dotted #775522;background:#fff;}
+.search-btn{background:url(../images/sear_btn.png) no-repeat;}
+#bf1 .search-btn,#bf2 .search-btn{background-position:0 -36px;}
+.sear-cutLine, .keywordsLi a{color:#3c3c3c;}
+
+/* 搜索结果 */
+.con_title_second{border-top:2px solid #8f0100;}
+
+/* 产品橱窗 */
+.btnBuy{display:none;}
+
+/* 底部 */
+#bf8{color:#fff;}
+.copyright_screen_wide{background:#8f0100;}
+.footer p {text-align:center; color:#fff}
+.footer .nav{margin-bottom:10px;background:url(../images/f_nav.jpg) no-repeat left bottom;height:34px;line-height:34px; color:#fff;}
+.footer .nav a{color:#fff;}
+
+/* 公司相册 */
+.ad-gallery{padding-top:10px;}
+
+/* 单品属性 */
+.proSingle_i .moduleBoxbg{border:1px solid #8f0100;}
+.pro_item_r{background:#8f0100;color:#fff;}
+
+/* 亮点展示 */
+.prohighUl li{background:#8f0100;}
+.prohighUl,.proh_txt h2 a{color:#fff;}
+
+
+/*分页*/
+.pagination {min-width:450px; font-size:16px; margin: 30px 0 30px 50%; padding-bottom: 30px;}
+.pagination .inner {min-width:450px; margin-left:-50%;}
+.pagination .inner ul, .pagination .inner li {float:left; list-style:none; padding:0; margin:0;}
+.pagination .inner li {width:auto; margin-right:10px; background:#fff;}
+.pagination .inner li a, .pagination .inner li span {position:relative; height: 35px; line-height: 33px; display:block; padding:0 13px; border:1px solid #ccc; color:#666; background: #fafafa;}
+.pagination .inner li a:hover {text-decoration:none; border-color:#ccc; color:#666; z-index:1; background: #f3f3f3;}
+.pagination .inner li.page_disabled span {background:#fff; color:#9a9a9a; border-color:#ddd;}
+.pagination .inner li.page_current span {background:#fdeaa6; color:#a50; border-color:#f7bf4f; font-weight: 700;}
+.pagination .inner li.page_more span {background:none; border:none; font-size:10px; padding:0 5px;}
+.pagination .inner .page_info {float:left; margin-left:10px; color:#999; line-height: 35px;}

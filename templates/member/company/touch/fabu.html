@@ -1,0 +1,117 @@
+{#if $module == 'homemaking' && $type=='nanny'#}
+{#include file="fabu-homemaking-$type.html"#}
+{#elseif $module == 'marry' || $module == 'travel' || $module == 'education' || $module == 'pension'#}
+{#include file="fabu-$module-$type.html"#}
+{#else#}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{#if $do == "edit"#}{#$langData['siteConfig'][6][142]#} - {#$detail_title#}{#else#}{#$langData['siteConfig'][6][143]#}{#/if#}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/gz-fabu.css?v={#$cfg_staticVersion#}">
+{#if $module == 'homemaking'#}
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fabu-homemaking-sale.css?v={#$cfg_staticVersion#}" />
+{#/if#}
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fabu-{#$module#}{#if $type != ''#}-{#$type#}{#/if#}.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.deferred.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', staticPath = cfg_staticPath = '{#$cfg_staticPath#}';
+  var hideFileUrl = {#$cfg_hideUrl#};
+  var modelType = '{#$module#}', state = '{#$state#}', type = '{#$type#}', typeid = {#$typeid#};
+  var thumbSize = {#$thumbSize#}, thumbType = '{#$thumbType#}', atlasSize = {#$atlasSize*1024*1024#}, atlasType = '{#$atlasType#}', atlasMax = {#$atlasMax#};
+  var id = {#$id#};
+</script>
+	<style>
+		html, body {height: 100%;}
+		#fabuForm {padding-bottom: 1rem; padding-bottom: calc(1rem + constant(safe-area-inset-bottom));}
+		.tjBtn {position: fixed; left: 0; bottom: 0; width: 100%; height: 1rem; z-index: 9999;}
+		.tjBtn a {display: block; line-height: 1rem; background: #129bf0; text-align: center; font-size: .4rem; color: #fff;}
+	</style>
+</head>
+<body>
+{#if $module == "homemaking"#}
+{#include file="fabu-$module.html"#}
+{#else#}
+<div class="gz-address">
+  <div class="gz-addr-wrap" id="gzAddNewObj">
+  	{#if $do == "edit"#}
+  		{#$pageTitle = $langData['siteConfig'][6][142]#}
+        {#if $module == 'tuan'#}
+            {#$pageRight_ = "<a href='javascript:;'>"|cat:$langData['siteConfig'][6][151]|cat:"</a>"#}
+        {#/if#}
+  	{#else#}
+  		{#if $module == 'article'#}
+  			{#$pageTitle = $langData['siteConfig'][19][235]#}
+  		{#else if $module == 'tuan'#}
+            {#$pageTitle = $langData['siteConfig'][11][4]#}
+						{#$pageRight_ = "<a href='javascript:;'>"|cat:$langData['siteConfig'][6][151]|cat:"</a>"#}
+			{#else if $module == 'homemaking'#}
+            {#$pageTitle = $langData['homemaking'][0][2]#}
+      {#else#}
+  			{#$pageTitle = $langData['siteConfig'][6][143]#}
+  		{#/if#}
+  	{#/if#}
+	  {#$pageRight = "<a href='javascript:;' class='notMenu'></a>"#}
+	  {#include file="../../../siteConfig/touch_top.html"#}
+  	{#include file="fabu-$module.html"#}
+  </div>
+
+{#if $module != tuan#}
+  <div class="gz-sel-addr gz-sel-addr-hide" id="gzSelAddr">
+		<div class="gz-sel-addr-header">
+			<h3>{#$langData['siteConfig'][7][2]#}</h3>
+			<button class="gz-sel-addr-close" id="gzSelAddrCloseBtn"></button>
+		</div>
+		<ul class="gz-sel-addr-nav"></ul>
+		<div class="gz-sel-addr-list"></div>
+	</div>
+  <div class="gz-sel-addr-mask"></div>
+  {#/if#}
+</div>
+{#/if#}
+
+{#if $module != info#}
+<div class="tjBtn">{#$pageRight_#}</div>
+ {#/if#}
+
+<div class="error"></div>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}'
+	};
+</script>
+
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script src="{#$cfg_staticPath#}js/webuploader/webuploader.js" type="text/javascript"></script>
+{#if $module == "info" || $module == "tuan"#}
+<script src="{#$templets_skin#}../../touch/js/common_2.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+{#else#}
+<script src="{#$templets_skin#}../../touch/js/common.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+{#/if#}
+<script src="{#$templets_skin#}js/fabu.js?v={#$cfg_staticVersion#}"></script>
+{#if $module != 'tuan' && $module != 'shop'#}
+<script src="{#$templets_skin#}js/gz-{#$module#}.js?v={#$cfg_staticVersion#}"></script>
+{#/if#}
+{#if $module == "homemaking"#}
+{#if $cfg_geetest#}<script type="text/javascript" src="{#$cfg_secureAccess#}static.geetest.com/static/tools/gt.js"></script>{#/if#}
+<script type="text/javascript" src="{#$templets_skin#}../../touch/js/codetest.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}../../touch/js/mobileSelect.js?v={#$cfg_staticVersion#}" ></script>
+<script type="text/javascript" src="{#$templets_skin#}../../touch/js/upload.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}../../touch/js/upload-img.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}../../touch/js/upload-sigle-img.js?v={#$cfg_staticVersion#}"></script>		
+{#/if#}
+<script src="{#$templets_skin#}js/fabu{#if $module != ''#}-{#$module#}{#/if#}{#if $type != ''#}-{#$type#}{#/if#}.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>
+{#/if#}
+

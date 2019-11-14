@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$langData['siteConfig'][0][7]#} - {#$cfg_webname#}</title>{#* 会员中心 *#}
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/reward.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var atpage = 1, totalCount = 0, pageSize = 15;
+</script>
+</head>
+
+<body>
+{#$pageTitle = $langData['siteConfig'][19][233]#}{#* 打赏收益 *#}
+{#include file="top.html"#}
+
+<div class="wrap">
+	<div class="container fn-clear">
+    {#include file="sidebar.html"#}
+
+    <div class="main">
+
+      <div class="banner">
+        <dl class="fn-clear">
+          <dt class="photo"><a href="{#getUrlPath service='member' type='user' template='portrait'#}"><img  onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_100.jpg';" src="{#if $userinfo.photo == ""#}{#$cfg_staticPath#}images/noPhoto_100.jpg{#else#}{#changeFileSize url="{#$userinfo.photo#}" type="middle"#}{#/if#}" ></a></dt>
+          <dd class="fn-left">
+            <p class="name"><em>{#$userinfo.nickname#}</em>{#if $userinfo.level#}<em class="level">{#$userinfo.levelName#}</em>{#/if#}</p>
+            <ul class="fn-clear uinfo">
+  						<li><a href="{#getUrlPath service='member' type='user' template='security' doget='chphone'#}" class="mobile{#if $userinfo.phoneCheck == 0#} disable{#/if#}"><s></s></a></li>
+							<li><a href="{#if $userinfo.certifyState != 1#}{#getUrlPath service='member' type='user' template='security' doget='chCertify'#}{#else#}{#getUrlPath service='member' type='user' template='security' doget='shCertify'#}{#/if#}" class="real{#if $userinfo.certifyState != 1#} disable{#/if#}"><s></s></a></li>
+							<li><a href="{#getUrlPath service='member' type='user' template='security' doget='chemail'#}" class="email{#if $userinfo.emailCheck == 0#} disable{#/if#}"><s></s></a></li>
+							<li><a href="{#getUrlPath service='member' type='user' template='security' doget='chpassword'#}" class="save"><s></s></a></li>
+							<li><a href="{#if $userinfo.paypwdCheck == 0#}{#getUrlPath service='member' type='user' template='security' doget='paypwdAdd'#}{#else#}{#getUrlPath service='member' type='user' template='security' doget='paypwdEdit'#}{#/if#}" class="pay{#if $userinfo.paypwdCheck == 0#} disable{#/if#}"><s></s></a></li>
+							<li><a href="{#getUrlPath service='member' type='user' template='security' doget='question'#}" class="question{#if $userinfo.question == 0#} disable{#/if#}"><s></s></a></li>
+						</ul>
+          </dd>
+          <dd class="yue fn-right">
+            <p>{#$langData['siteConfig'][19][386]#}</p><p>{#echoCurrency type='symbol'#} <em class="count">{#$userinfo.money#}</em></p>{#* 账户余额 *#}
+          </dd>
+        </dl>
+      </div>
+      <ul class="fn-clear countBox">
+        <li><p class="gray">{#$langData['siteConfig'][19][387]#}（{#echoCurrency type='short'#}）</p><p>{#echoCurrency type='symbol'#} <font class="f20">{#$totalMoney#}</font></p></li>{#* 打赏总收入 *#}
+        <li><p class="gray">{#$langData['siteConfig'][19][388]#}</p><p><font class="f20">{#$totalCount#}</font></p></li>{#* 打赏总人数 *#}
+        <li class="br"><p class="gray">{#$langData['siteConfig'][19][389]#}</p><p><font class="f20">{#$cfg_rewardFee#}%</font></p></li>{#* 结算佣金 *#}
+      </ul>
+
+			{#if $totalCount > 0#}
+      <p class="title fn-clear"><font>·</font><span>{#$langData['siteConfig'][19][732]#}</span><font>·</font></p>{#* 打赏记录 *#}
+      <table class="record">
+        <colgroup><col width="20%"><col width="40%"><col width="20%"><col width="20%"></colgroup>
+        <thead>
+          <tr><th>{#$langData['siteConfig'][19][384]#}</th><th>{#$langData['siteConfig'][19][547]#}</th><th>{#$langData['siteConfig'][23][72]#}</th><th>{#$langData['siteConfig'][19][306]#}（{#echoCurrency type='short'#}）</th></tr>{#* 时间-名称-交易方 -金额   *#}
+        </thead>
+        <tbody id="list">
+					<tr><td colspan="4"><p class="loading"><img src="{#$cfg_staticPath#}images/ajax-loader.gif" />{#$langData['siteConfig'][20][184]#}...</p></td></tr>{#* 加载中，请稍候 *#}
+        </tbody>
+      </table>
+			<div class="pagination fn-clear"></div>
+			{#else#}
+			<div class="empty">{#$langData['siteConfig'][19][390]#}</div>{#* 暂无被打赏记录！ *#}
+			{#/if#}
+    </div>
+  </div>
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/reward.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

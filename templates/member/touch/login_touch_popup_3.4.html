@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<title>{#$langData['siteConfig'][2][0]#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/login_touch_popup_3.4.css?v={#$cfg_staticVersion#}">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', redirectUrl = '{#$redirectUrl#}', site = '{#$site#}', staticPath = '{#$cfg_staticPath#}';
+  var userDomain = '{#$member_userDomain#}';
+  var templets = '{#$templets_skin#}';
+  var geetest = {#$cfg_geetest#};
+  var regstatus = {#$cfg_regstatus#};
+  var regclosemessage = '{#$cfg_regclosemessage#}';
+  var audioSrc = {
+    refresh: '{#$cfg_staticPath#}audio/refresh.mp3',
+    tap: '{#$cfg_staticPath#}audio/tap.mp3',
+    cancel: '{#$cfg_staticPath#}audio/cancel.mp3',
+  }
+  var alipay_app_login = {#$alipay_app_login#};
+</script>
+{#* 微信分享 *#}
+{#$Share_description = {#$cfg_description#}#}
+{#$Share_title = {#$cfg_webname#}#}
+{#$Share_img = {#$cfg_weblogo#}#}
+{#$Share_url = {#$cfg_basehost#}#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+</head>
+
+<body>
+
+<div class="login-box">
+  <div class="formbox">
+    <div class="tabHead">
+      <ul class="fn-clear">
+        <li class="active"><a href="javascript:;" id="login">登录</a></li>
+        <li><a href="javascript:;" id="register">注册</a></li>
+      </ul>
+    </div>
+
+    <div class="tabCon showform">
+      <div class="logbox logshow">
+          <form action="" id="loginForm">
+          <dl class="fn-clear">
+            <dt><i class="icon-user"></i></dt>
+            <dd><input type="text" id="user-name" placeholder="手机号/邮箱" /></dd>
+          </dl>
+          <dl class="fn-clear">
+            <dt><i class="icon-pass"></i></dt>
+            <dd>
+              <input type="password" id="password" placeholder="密码">
+              <i class="icon-clear"></i>
+              <i class="icon-eye disabled"></i>
+            </dd>
+          </dl>
+        </form>
+      </div>
+      {#if $cfg_smsLoginState#}
+      <div class="logbox ">
+       <form action="" id="loginMobileForm">
+          <input type="hidden" name="areaCode" class="areaCode" id="loginAreaCode" value="86">
+          <input type="hidden" name="action" value="getPhoneVerify">
+          <input type="hidden" name="type" value="sms_login">
+          <dl class="f-mobile">
+          <dt><i class="icon_mobile"></i><label for=""><font id="loginAreaCodeLab">+86</font><span></span></label></dt>
+            <dd><input type="number" pattern="\d*" class="inp account" name="phone" data-send="phone" id="loginPhone" placeholder="请输入您的手机号" oninput="if(value.length>11) value=value.slice(0,11)"></dd>
+          </dl>
+          <dl>
+            <dt><i class="icon_yzm"></i></dt>
+            <dd><input type="text" class="inp" name="code" id="vcode1" placeholder="请输入您的手机验证码"><a href="javascript:;" class="get-yzm">获取验证码</a></dd>
+          </dl>
+        </form>
+      </div>
+      {#/if#}
+       <a class="login-button" href="javascript:"><span class="load"></span>登录</a>
+       <p class="flex"><a href="{#$cfg_basehost#}/fpwd.html" target="_blank">忘记密码</a><a class="blue free-reg" href="javascript:;">免费注册</a></p>
+      <div class="other-login fn-hide">
+        <ul>
+          {#if $cfg_smsLoginState#}<li class="li-sms"><a class="login-icon" href="javascript:;"><em class="login-icon sms"></em><p>短信登录</p></a></li>{#/if#}
+          {#siteConfig action="getLoginConnect" return="login"#}
+          {#if $login.code == "qq"#}
+          <li class="li-qq"><a class="login-icon" href="{#$cfg_basehost#}/api/login.php?type={#$login.code#}" target="_top"><em class="login-icon qq"></em><p>QQ登录</p></a></li>
+          {#elseif $login.code == "sina"#}
+          <li class="li-sina"><a class="login-icon" href="{#$cfg_basehost#}/api/login.php?type={#$login.code#}" target="_top"><em class="login-icon wb"></em><p>微博登录</p></a></li>
+          {#elseif $login.code == "wechat"#}
+          <li class="li-weixin"><a class="login-icon" href="{#$cfg_basehost#}/api/login.php?type={#$login.code#}" target="_top"><em class="login-icon wx"></em><p>微信登录</p></a></li>
+          {#elseif $login.code == "alipay"#}
+          <li class="li-alipay"><a class="login-icon" href="{#$cfg_basehost#}/api/login.php?type={#$login.code#}" target="_top"><em class="login-icon ali"></em><p>支付宝登录</p></a></li>
+          {#elseif $login.code == "facebook"#}
+          <li class="li-facebook"><a class="login-icon" href="{#$cfg_basehost#}/api/login.php?type={#$login.code#}" target="_top"><em class="login-icon facebook"></em><p>FaceBook</p></a></li>
+          {#/if#}
+          {#/siteConfig#}
+        </ul>
+      </div>
+    </div>
+
+    <div class="tabCon">
+      <div class="reg-tab">
+        <ul>
+          {#$first = 0#}
+          {#if in_array('2',$regtypeArr)#}
+          {#$first = 1#}
+          <li class="curr" data-type="phone">手机注册</li>
+          {#/if#}
+          {#if in_array('1',$regtypeArr)#}
+          {#$first = 1#}
+          <li{#if !$first#} class="curr"{#/if#} data-type="username">用户名注册</li>
+          {#/if#}
+          {#if in_array('3',$regtypeArr)#}
+          <li{#if !$first#} class="curr"{#/if#} data-type="email">邮箱注册</li>
+          {#/if#}
+        </ul>
+      </div>
+      {#$first = 0#}
+      {#if in_array('2',$regtypeArr)#}
+      <div class="regbox regbox-mobile regshow">
+        <form action="" class="registerForm" id="regPhoneForm" method="post">
+          <input type="hidden" name="areaCode" class="areaCode" id="registerAreaCode" value="86">
+          <input type="hidden" name="action" value="getPhoneVerify">
+          <input type="hidden" name="type" value="signup">
+          <input type="hidden" name="mtype" value="1">
+          <input type="hidden" name="rtype" value="3">
+          <dl class="f-mobile">
+          <dt><i class="icon_mobile"></i><label for=""><font id="registerAreaCodeLab">+86</font><span></span></label></dt>
+            <dd><input type="number" pattern="\d*" class="inp account" name="phone" data-send="phone" id="phone" placeholder="请输入您的手机号" oninput="if(value.length>11) value=value.slice(0,11)"></dd>
+          </dl>
+          <dl>
+            <dt><i class="icon_yzm"></i></dt>
+            <dd><input type="text" class="inp" name="vcode" id="phone_code" placeholder="请输入您的手机验证码"><a href="javascript:;" class="get-yzm">获取验证码</a></dd>
+          </dl>
+          <dl>
+            <dt><i class="icon_lock"></i></dt>
+            <dd><input type="text" class="inp" name="password" id="phone_pasw" placeholder="请填写密码"></dd>
+          </dl>
+          <input type="submit" class="fn-hide">
+        </form>
+      </div>
+      {#$first = 1#}
+      {#/if#}
+      {#if in_array('1',$regtypeArr)#}
+      <div class="regbox regbox-username{#if !$first#} regshow{#/if#}">
+        <form action="" class="registerForm" method="post">
+          <input type="hidden" name="areaCode" value="86">
+          <input type="hidden" name="mtype" value="1">
+          <input type="hidden" name="rtype" value="1">
+          <dl>
+            <dt><i class="icon_username"></i></dt>
+            <dd><input type="text" class="inp account" name="account" id="username" placeholder="请输入您的用户名"></dd>
+          </dl>
+          <dl>
+            <dt><i class="icon_lock"></i></dt>
+            <dd><input type="text" class="inp" name="password" id="username_pasw" placeholder="请填写密码"></dd>
+          </dl>
+          {#if in_array('1',$fieldsArr)#}
+          <!-- 真实姓名 -->
+          <dl>
+            <dt><i class="icon_realname"></i></dt>
+            <dd><input type="text" class="inp" name="nickname" id="username_nickname" placeholder="请输入您的真实姓名"></dd>
+          </dl>
+          {#/if#}
+          {#if in_array('2',$fieldsArr)#}
+          <!-- 邮箱 -->
+          <dl>
+            <dt><i class="icon_email"></i></dt>
+            <dd><input type="text" class="inp" name="email" id="username_email" placeholder="请输入您的邮箱账号"></dd>
+          </dl>
+          {#/if#}
+          {#if in_array('3',$fieldsArr)#}
+          <!-- 手机 -->
+          <dl>
+            <dt><i class="icon_mobile"></i></dt>
+            <dd><input type="number" pattern="\d*" class="inp" name="phone" id="username_phone" placeholder="请输入您的手机号" oninput="if(value.length>11) value=value.slice(0,11)"></dd>
+          </dl>
+          {#/if#}
+          {#if !empty($cfg_seccodetype)#}
+          <dl>
+            <dt><i class="icon_vericode"></i></dt>
+            <dd><input type="text" class="inp" name="vericode" id="username_code" placeholder="请输入验证码"><img src="/include/vdimgck.php" class="vericode_img"></dd>
+          </dl>
+          {#/if#}
+          <input type="submit" class="fn-hide">
+        </form>
+      </div>
+      {#$first = 1#}
+      {#/if#}
+      {#if in_array('3',$regtypeArr)#}
+      <div class="regbox regbox-email{#if !$first#} regshow{#/if#}">
+        <form action="" class="registerForm" method="post">
+          <input type="hidden" name="action" value="getEmailVerify">
+          <input type="hidden" name="type" value="signup">
+          <input type="hidden" name="mtype" value="1">
+          <input type="hidden" name="rtype" value="2">
+          <dl>
+            <dt><i class="icon_email"></i></dt>
+              <dd><input type="text" class="inp account" name="email" data-send="email" id="email" placeholder="请输入您的邮箱账号"></dd>
+            </dl>
+            <dl>
+              <dt><i class="icon_yzm"></i></dt>
+              <dd><input type="text" class="inp" name="vcode" id="email_code" placeholder="请输入您的邮箱验证码"><a href="javascript:;" class="get-yzm">获取验证码</a></dd>
+            </dl>
+            <dl>
+              <dt><i class="icon_lock"></i></dt>
+              <dd><input type="text" class="inp" name="password" id="email_pasw" placeholder="请填写密码"></dd>
+            </dl>
+            <input type="submit" class="fn-hide">
+          </form>
+      </div>
+      {#/if#}
+      <div class="f-agree">
+        <label for=""><input type="checkbox" class="agree"><span></span>{#$langData['siteConfig'][6][2]#}</label><a href="{#getUrlPath service='siteConfig' template='protocol' title='会员注册协议'#}" target="_top">《{#$langData['siteConfig'][12][0]#}》</a>
+      </div>
+      <div class="f-submit"><a href="javascript:;" class="submit">立即注册</a></div>
+    </div>
+    <div class="closeBox">
+      <a href="javascript:;"><i></i></a>
+    </div>
+  </div>
+
+</div>
+
+<!-- 区号弹出层 s -->
+<div class="layer">
+  <div class="layer_search"><p>国籍/地区</p><em class="layer_close"><span class="inpClose"><i class="inpClear"></i></span></em></div>
+  <div class="layer_list" id="layer_list">
+    <ul>
+      <li><span>China（中国大陆）</span><em class="fn-right">+86</em></li>
+      <li><span>Hong Kong（香港）</span><em class="fn-right">+852</em></li>
+      <li><span>Macau（澳门）</span><em class="fn-right">+853</em></li>
+      <li>Taiwan（台湾）<em class="fn-right">+886</em></li>
+      <li><span>Argentina（阿根廷）</span><em class="fn-right">+54</em></li>
+      <li><span>Australia（澳大利亚）</span><em class="fn-right">+61</em></li>
+      <li><span>Austria（奥地利）</span><em class="fn-right">+43</em></li>
+      <li><span>Bahamas（巴哈马）</span><em class="fn-right">+1242</em></li>
+      <li><span>Belarus（白俄罗斯）</span><em class="fn-right">+375</em></li>
+      <li><span>Belgium（比利时）</span><em class="fn-right">+32</em></li>
+      <li><span>Belize（伯利兹）</span><em class="fn-right">+501</em></li>
+      <li><span>Brazil（巴西）</span><em class="fn-right">+55</em></li>
+      <li><span>Bulgaria（保加利亚）</span><em class="fn-right">+359</em></li>
+      <li><span>Cambodia（柬埔寨）</span><em class="fn-right">+855</em></li>
+      <li><span>Canada（加拿大）</span><em class="fn-right">+1</em></li>
+      <li><span>Chile（智利）</span><em class="fn-right">+56</em></li>
+      <li><span>Colombia（哥伦比亚）</span><em class="fn-right">+57</em></li>
+      <li><span>Denmark（丹麦）</span><em class="fn-right">+45</em></li>
+      <li><span>Egypt（埃及）</span><em class="fn-right">+20</em></li>
+      <li><span>Estonia（爱沙尼亚）</span><em class="fn-right">+372</em></li>
+      <li><span>Finland（芬兰）</span><em class="fn-right">+358</em></li>
+      <li><span>France（法国）</span><em class="fn-right">+33</em></li>
+      <li><span>Germany（德国）</span><em class="fn-right">+49</em></li>
+      <li><span>Greece（希腊）</span><em class="fn-right">+30</em></li>
+      <li><span>Hungary（匈牙利）</span><em class="fn-right">+36</em></li>
+      <li><span>India（印度）</span><em class="fn-right">+91</em></li>
+      <li><span>Indonesia（印度尼西亚）</span><em class="fn-right">+62</em></li>
+      <li><span>Ireland（爱尔兰）</span><em class="fn-right">+353</em></li>
+      <li><span>Israel（以色列）</span><em class="fn-right">+972</em></li>
+      <li><span>Italy（意大利）</span><em class="fn-right">+39</em></li>
+      <li><span>Japan（日本）</span><em class="fn-right">+81</em></li>
+      <li><span>Jordan（约旦）</span><em class="fn-right">+962</em></li>
+      <li><span>Kyrgyzstan（吉尔吉斯斯坦）</span><em class="fn-right">+996</em></li>
+      <li><span>Lithuania（立陶宛）</span><em class="fn-right">+370</em></li>
+      <li><span>Luxembourg（卢森堡）</span><em class="fn-right">+352</em></li>
+      <li><span>Malaysia（马来西亚）</span><em class="fn-right">+60</em></li>
+      <li><span>Maldives（马尔代夫）</span><em class="fn-right">+960</em></li>
+      <li><span>Mexico（墨西哥）</span><em class="fn-right">+52</em></li>
+      <li><span>Mongolia（蒙古）</span><em class="fn-right">+976</em></li>
+      <li><span>Morocco（摩洛哥）</span><em class="fn-right">+212</em></li>
+      <li><span>Netherlands（荷兰）</span><em class="fn-right">+31</em></li>
+      <li><span>New Zealand（新西兰）</span><em class="fn-right">+64</em></li>
+      <li><span>Nigeria（尼日利亚）</span><em class="fn-right">+234</em></li>
+      <li><span>Norway（挪威）</span><em class="fn-right">+47</em></li>
+      <li><span>Panama（巴拿马）</span><em class="fn-right">+507</em></li>
+      <li><span>Peru（秘鲁）</span><em class="fn-right">+51</em></li>
+      <li><span>Philippines（菲律宾）</span><em class="fn-right">+63</em></li>
+      <li><span>Poland（波兰）</span><em class="fn-right">+48</em></li>
+      <li><span>Portugal（葡萄牙）</span><em class="fn-right">+351</em></li>
+      <li><span>Qatar（卡塔尔）</span><em class="fn-right">+974</em></li>
+      <li><span>Romania（罗马尼亚）</span><em class="fn-right">+40</em></li>
+      <li><span>Russia（俄罗斯）</span><em class="fn-right">+7</em></li>
+      <li><span>Saudi Arabia（沙特阿拉伯）</span><em class="fn-right">+966</em></li>
+      <li><span>Serbia（塞尔维亚）</span><em class="fn-right">+381</em></li>
+      <li><span>Seychelles（塞舌尔）</span><em class="fn-right">+248</em></li>
+      <li><span>Singapore（新加坡）</span><em class="fn-right">+65</em></li>
+      <li><span>South Africa（南非）</span><em class="fn-right">+27</em></li>
+      <li><span>South Korea（韩国）</span><em class="fn-right">+82</em></li>
+      <li><span>Spain（西班牙）</span><em class="fn-right">+34</em></li>
+      <li><span>Sri Lanka（斯里兰卡）</span><em class="fn-right">+94</em></li>
+      <li><span>Sweden（瑞典）</span><em class="fn-right">+46</em></li>
+      <li><span>Switzerland（瑞士）</span><em class="fn-right">+41</em></li>
+      <li><span>Thailand（泰国）</span><em class="fn-right">+66</em></li>
+      <li><span>Tunisia（突尼斯）</span><em class="fn-right">+216</em></li>
+      <li><span>Turkey（土耳其）</span><em class="fn-right">+90</em></li>
+      <li><span>Ukraine（乌克兰）</span><em class="fn-right">+380</em></li>
+      <li><span>United Arab Emirates（阿联酋）</span><em class="fn-right">+971</em></li>
+      <li><span>United Kingdom（英国）</span><em class="fn-right">+44</em></li>
+      <li><span>United States（美国）</span><em class="fn-right">+1</em></li>
+      <li><span>Venezuela（委内瑞拉）</span><em class="fn-right">+58</em></li>
+      <li><span>Vietnam（越南）</span><em class="fn-right">+84</em></li>
+      <li><span>Virgin Islands（英属维尔京群岛）</span><em class="fn-right">+1284</em></li>
+    </ul>
+  </div>
+</div>
+<!-- 区号弹出层 e -->
+<div class="mask" id="maskReg"></div>
+<div id="popupReg-captcha-mobile"></div>
+{#if $cfg_geetest#}<script type="text/javascript" src="{#$cfg_secureAccess#}static.geetest.com/static/tools/gt.js"></script>{#/if#}
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type="text/javascript" src="{#$templets_skin#}js/login_touch_popup_3.4.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

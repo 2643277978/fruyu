@@ -1,0 +1,20 @@
+<!-- 导航 s -->
+<div class="main-nav">
+	<ul class="wrap fn-clear">
+		<li{#if $pageCurr == "index"#} class="curr"{#/if#}><a href="{#getUrlPath service='business' template='detail' bid={#$detail_id#}#}">首页</a></li>
+		<li{#if $pageCurr == "intro"#} class="curr"{#/if#}><a href="{#getUrlPath service='business' template='intro' bid={#$detail_id#}#}">介绍</a></li>
+		<li{#if $pageCurr == "news"#} class="curr"{#/if#}><a href="{#getUrlPath service='business' template='news' bid={#$detail_id#}#}">动态</a></li>
+		<li{#if $pageCurr == "albums"#} class="curr"{#/if#}><a href="{#getUrlPath service='business' template='albums' bid={#$detail_id#}#}">相册</a></li>
+		<li{#if $pageCurr == "panor"#} class="curr"{#/if#}><a href="{#getUrlPath service='business' template='panor' bid={#$detail_id#}#}">全景</a></li>
+		<li{#if $pageCurr == "video"#} class="curr"{#/if#}><a href="{#getUrlPath service='business' template='video' bid={#$detail_id#}#}">视频</a></li>
+		{#if $detail_store['tuan']#}<li{#if $pageCurr == "tuan"#} class="curr"{#/if#}><a href="{#getUrlPath service='business' template='tuan' bid={#$detail_id#}#}">团购</a></li>{#/if#}
+		{#if $detail_store['shop']#}<li{#if $pageCurr == "shop"#} class="curr"{#/if#}><a href="{#getUrlPath service='business' template='shop' bid={#$detail_id#}#}">商城</a></li>{#/if#}
+		{#if $detail_store['house']#}<li{#if $pageCurr == "house"#} class="curr"{#/if#}><a href="{#getUrlPath service='business' template='house-sale' bid={#$detail_id#}#}">房产</a></li>{#/if#}
+		{#if $detail_store['job']#}<li{#if $pageCurr == "job"#} class="curr"{#/if#}><a href="{#getUrlPath service='business' template='job' bid={#$detail_id#}#}">招聘</a></li>{#/if#}
+		{#if $detail_store['waimai']#}<li{#if $pageCurr == "waimai"#} class="curr"{#/if#}><a href="{#getUrlPath service='business' template='waimai' bid={#$detail_id#}#}">外卖</a></li>{#/if#}
+		{#if $detail_store['build']#}<li><a href="{#getUrlPath service='build' template='store-detail' id={#$detail_store['build']#}#}" target="_blank">建材</a></li>{#/if#}
+		{#if $detail_store['home']#}<li><a href="{#getUrlPath service='home' template='store-detail' id={#$detail_store['home']#}#}" target="_blank">家居</a></li>{#/if#}
+		{#if $detail_store['furniture']#}<li><a href="{#getUrlPath service='furniture' template='store-detail' id={#$detail_store['furniture']#}#}" target="_blank">家具</a></li>{#/if#}
+	</ul>
+</div>
+<!-- 导航 e -->
