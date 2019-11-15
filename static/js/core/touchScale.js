@@ -346,6 +346,63 @@ window.onload = function(){
     }
   })
 
+    //app微信分享
+    function appWX() {
+        var auths = null;
+        $(".f-fenxiang").on("click", ".loginBtn", function () {
+            if (navigator.userAgent.indexOf("Html5Plus") > -1) {
+                plus.oauth.getServices(function (services) {
+                    auths = services;
+                    authLogin();
+                }, function (e) {
+                    alert("获取分享服务列表失败:" + e.message + " - " + e.code);
+                });
+            }
+        });
+
+        //登录认证
+        function authLogin() {
+            var s = auths[0];
+            if (!s.authResult) {
+                s.login(function (e) {
+                    var result = e.target.authResult;
+                    alert("登录认证成功:" + JSON.stringify(result));
+                    authUserInfo()
+                }, function (e) {
+                    alert("登录认证失败！");
+                }, {})
+            }
+        }
+
+        //获取登录用户信息操作
+        function authUserInfo() {
+            var s = auths[0];
+            if (!s.authResult) {
+                alert("未登录授权！");
+            } else {
+                s.getUserInfo(function (e) {
+                    alert("获取用户信息成功：" + JSON.stringify(s.userInfo));
+                    var prame = JSON.stringify(s.userInfo);
+                }, function (e) {
+                    alert("获取用户信息失败:" + e.message + " - " + e.code);
+                });
+            }
+        }
+
+        //退出登录
+        function authLogout() {
+            for (var i in auths) {
+                var s = auths[i];
+                if (s.authResult) {
+                    s.logout(function (e) {
+                        alert("注销登录认证成功！");
+                    }, function (e) {
+                        alert("注销登录认证失败！");
+                    });
+                }
+            }
+        }
+    }
   // 举报提交
   $('.JubaoBox-submit').click(function(){
     var t = $(this);
@@ -884,7 +941,7 @@ var huoniao = {
 		});
 	}
 
-}
+};
 
 
 var utils = {
@@ -1005,57 +1062,4 @@ function returnHumanClick(click){
    }
    return click;
 }
-console.info("a");
 //分享
-console.info("a");
-   function weixin() {
-        function entityToString(str) {
-            var div = document.createElement('div');
-            div.innerHTML = str.replace(/&amp;/g, '&');
-            return div.innerText;
-        }
-        wxconfig && (wxconfig.title = entityToString(wxconfig.title));
-        wxconfig && (wxconfig.description = entityToString(wxconfig.description));
-
-        if (wxconfig && wxconfig.imgUrl.indexOf('siteConfig/logo') > -1 && shareAdvancedUrl) {
-            wxconfig.imgUrl = shareAdvancedUrl;
-        }
-        if (wxconfig) {
-            var userid = $.cookie((window.cookiePre ? window.cookiePre : 'HN_') + 'userid');
-            if (userid) {
-                wxconfig.link = wxconfig.link.indexOf('?') > -1 ? (wxconfig.link + '&fromShear=' + userid) : (wxconfig.link + '?fromShear=' + userid)
-            }
-    }
-    var shareHtml = '<div class="HN_PublicShare_shearBox fn-hide"id="HN_PublicShare_shearBox" >' +
-        '<div class="HN_PublicShare_sheark1"><div class="HN_PublicShare_sheark2">' +
-        '<div class="HN_PublicShare_HN_style_32x32"><ul class="fn-clear">' +
-        '<li><a class="HN_button_qzone" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + wxconfig.link + '&desc=' + wxconfig.title + '"></a>QQ空间</li>' +
-        '<li><a class="HN_button_tsina" href="http://service.weibo.com/share/share.php?url=' + wxconfig.link + '&desc=' + document.title + '"></a>新浪微博</li>' +
-        '<li><a class="HN_button_tweixin" href="javascript:;" ></a>微信好友</li>' +
-        '<li><a class="HN_button_ttqq"></a>QQ好友</li>' +
-        '<li><a class="HN_button_comment"><span class="HN_txt jtico jtico_comment"></span></a>朋友圈</li>' +
-        '<li><a class="HN_button_code"><span class="HN_txt jtico jtico_code"></span></a>二维码</li></ul>' +
-        '</div></div><div class="HN_PublicShare_cancel"id="HN_PublicShare_cancelShear">取消</div></div>' +
-        '<div class="HN_PublicShare_bg"id="HN_PublicShare_shearBg"></div></div>' +
-        '<div class="HN_PublicShare_shearBox HN_PublicShare_codeBox"id="HN_PublicShare_codeBox">' +
-        '<div class="HN_PublicShare_sheark1"><img src=""alt=""width="130"height="130"><p>让朋友扫一扫访问当前网页</p>' +
-        '<div class="HN_PublicShare_cancel"id="HN_PublicShare_cancelcode">取消</div></div><div class="HN_PublicShare_bg"></div></div>' +
-        '<div class="HN_PublicShare_zhiyin fn-hide"><div class="HN_PublicShare_bg"><div class="HN_PublicShare_zhibox">' +
-        '<img src="' + staticPath + 'images/HN_Public_sharezhi.png"alt=""></div></div></div>';
-
-    console.info("a");
-    //
-    // $('.f-fenxiang').click(function () {
-    //     $("body").append(shareHtml);
-    //     var button=$("button");
-    //     console.log(button);
-    //     var bu=$(".but");
-    //     bu.removeClass("openNav");
-    // })
-   //显示链接
-    $('body').delegate('.popupRightBottom .f-fenxiang', 'click', function(){
-        console.info("a");
-        $("body").append(shareHtml);
-     });
-   }
-   weixin();

@@ -230,7 +230,7 @@ $(function() {
 	// $('.HN_button_tweixin').click(function () {
 		// if (navigator.userAgent.toLowerCase().match(/micromessenger/)) {
 			wx.config({
-				debug: false,
+				debug: true,
 				appId: wxconfig.appId,
 				timestamp: wxconfig.timestamp,
 				nonceStr: wxconfig.nonceStr,
