@@ -228,7 +228,7 @@ $(function() {
 
 	//微信分享
 	// $('.HN_button_tweixin').click(function () {
-		// if (navigator.userAgent.toLowerCase().match(/micromessenger/)) {
+	// 	if (navigator.userAgent.toLowerCase().match(/micromessenger/)) {//判断是否是微信
 			wx.config({
 				debug: true,
 				appId: wxconfig.appId,
@@ -237,6 +237,44 @@ $(function() {
 				signature: wxconfig.signature,
 				jsApiList: ['updateTimelineShareData', 'updateAppMessageShareData', 'onMenuShareWeibo', 'openLocation']
 			});
+
+			var id= $('.im_phone').attr('data-item');
+	       var desc = wxconfig.description;
+			var link = wxconfig.link;
+			// var aid = '{#$detail_id#}';
+			// var type = '{#$detail_protype#}';
+			// var aa=link.substring(link.lastIndexOf("/")+1); //截取网址最后一个/后面的内容
+			// if (aa.search("loupan") != -1) {
+			// 	var type = 1;
+			// }
+			// if (aa.search("sale") != -1) {
+			// 	var type = 2;
+			// }
+			// if (aa.search("zu") != -1) {
+			// 	var type = 3;
+			// }
+			// if (aa.search("sp") != -1) {
+			// 	var type = 4;
+			// }
+			// if (aa.search("xzl") != -1) {
+			// 	var type = 5;
+			// }
+			// if (aa.search("cf") != -1) {
+			// 	var type = 6;
+			// }
+			// console.log(id);
+			 // console.log(type);
+
+			// $.ajax({
+			// 	url:'include/ajax.php?service=member&action=wxShare&aid='+aid+'&link='+link+'&description='+desc+'&type='+type,
+			// 	type:"get",
+			// 	datatype: "jsonp",
+			// 	success:function (data) {
+			// 		if (data.state == 100){
+			// 			var sid =data.sid;
+			// 		}
+			// 	}
+			// });
 			wx.ready(function () {
 				wx.updateAppMessageShareData({//分享到朋友或者qq
 					title: wxconfig.title,
@@ -246,34 +284,25 @@ $(function() {
 					trigger: function (res) {
 						hnShare.closeSRBox();
 					},
-					success:function () {
-					    alert("分享成功");
+					success: function () {
+
 					},
-					cancel:function () {
-						// alert(data.err_msg);
-						alert("取消分享");
-				   }
-				   // fail:function () {
-					//    console.info("b");
-				   // }
+					cancel: function () {
+						// alert("取消分享");
+					}
 
 				});
 				wx.updateTimelineShareData({//分享给朋友圈或者qq空间
-				    title: wxconfig.title,
-				    link: wxconfig.link,
-				    imgUrl: wxconfig.imgUrl,
+					title: wxconfig.title,
+					link: wxconfig.link,
+					imgUrl: wxconfig.imgUrl,
 				});
 				wx.onMenuShareWeibo({//分享到微博
-				    title: wxconfig.title,
-				    desc: wxconfig.description,
-				    link: wxconfig.link,
-				    imgUrl: wxconfig.imgUrl,
+					title: wxconfig.title,
+					desc: wxconfig.description,
+					link: wxconfig.link,
+					imgUrl: wxconfig.imgUrl,
 				});
 			});
-		wx.error(function(res){
-			// config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
-			console.log('res',res);
-		});
 		// }
-	// })
 });
