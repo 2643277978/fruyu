@@ -63,89 +63,35 @@ $(function(){
     });
 
     //点击电话
-    $('.im_icon .im_iphone, .call_phone').click(function () {
-        var user_id=window.sessionStorage.getItem('userid');
-      if(user_id == true){
-          bodaPhone();
-      }else {
-          $(".phone_frame").show();
-          $('.desk').show();
-      }
+    $('.im_icon .im_iphone, .call_phone').click(function(){
+        var id = $(this).attr('data-id');
+        var itemid = $(this).attr('data-item');
+        var type = $(this).attr('data-type');
+        $.ajax({
+            url : "/include/ajax.php?service=member&action=getTempVisualPhone&id="+id+"&itemid="+itemid+"&type="+type,
+            type: "get",
+            datatype: "jsonp",
+            success: function(data){
+                data = JSON.parse(data);
+                if(data && data.state == 100){
+                    $(".phone_frame a").attr('href','tel:'+data.info.phone);
+                    $(".call_phone").attr('href','tel:'+data.info.phone);
+                    $(".phoneNum_show").text(data.info.phone);
+                    $('.phone_frame').show();
+                    $('.desk').show();
+                }else{
+                    alert(data.info);
+                }
+            }
+        });
+        if($(this).hasClass('call_phone')){
+            return false;
+        }
+        // $('.phone_frame').show();
+        // $('.desk').show();
     });
 
-    $('.immediate_phone').click(function () {
-        var userPhone = $('.user_phone').val();
-        var regMobilePhone = new RegExp(/^1[34578]\d{9}$/);
-        var regTelephone = new RegExp(/^((0\d{2,3})-?)(\d{7,8})(-(\d{3,}))?$/);
-        if (userPhone == "") {
-            console.log(userPhone);
-            alert("请输入您的电话号码");
-            return false;
-        } else if (!(regMobilePhone.test(userPhone) || regTelephone.test(userPhone))) {
-            // $('.user_phone').val("");
-            console.log(userPhone);
-            alert("电话号码格式有误,请重新输入!");
-            return false;
-        }
-        if (userPhone) {
-            // if (!(regMobilePhone.test(userPhone) || regTelephone.test(userPhone))){
-            var id = $(this).attr('data-id');
-            var itemid = $(this).attr('data-item');
-            var type = $(this).attr('data-type');
-            $.ajax({
-                url: "/include/ajax.php?service=member&action=getTempVisualPhone&id=" + id + "&itemid=" + itemid + "&type=" + type,
-                type: "post",
-                date: {userPhone: userPhone},
-                datatype: "jsonp",
-                success: function (jsondata) {
-                    if (jsondata.success == true) {
-                        $(".phone_frame a").attr('href', 'tel:' + data.info.phone);
-                        $(".call_phone").attr('href', 'tel:' + data.info.phone);
-                        $(".phoneNum_show").text(data.info.phone);
-                        $('.phone_frame').show();
-                        $('.user_phone').hide();
-                        $('.desk').show();
-                    } else {
-                        alert("failed");
-                        return false;
-                    }
-                },
-                error: function (err) {
-                    alert("失败");
-                    return false;
-                }
-            })
-        }
-        return false;
-    })
 
-
-    function  bodaPhone(){
-            var id = $(this).attr('data-id');
-            var itemid = $(this).attr('data-item');
-            var type = $(this).attr('data-type');
-            $.ajax({
-                url : "/include/ajax.php?service=member&action=getTempVisualPhone&id="+id+"&itemid="+itemid+"&type="+type,
-                type: "get",
-                datatype: "jsonp",
-                success: function(data){
-                    data = JSON.parse(data);
-                    if(data && data.state == 100){
-                        $(".phone_frame a").attr('href','tel:'+data.info.phone);
-                        $(".call_phone").attr('href','tel:'+data.info.phone);
-                        $(".phoneNum_show").text(data.info.phone);
-                        $('.phone_frame').show();
-                        // $(".user_phone").hide();
-                        $('.desk').show();
-                    }else{
-                        alert(data.info);
-                    }
-                }
-            });
-            if($(this).hasClass('call_phone')){
-                return false;
-            }
-    }
     //关闭
     $('.phone_frame .phone_cuo').click(function(){
         $('.phone_frame').hide();
