@@ -267,6 +267,7 @@ $(function() {
 				success:function (data) {
                     // if (data.state == 200) {
                     console.log(data);
+                    data = JSON.parse(data);
                         console.log(data.info);
                         var sid = data.info.sid;
                         console.log(sid);
