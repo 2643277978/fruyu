@@ -347,62 +347,62 @@ window.onload = function(){
   })
 
     //app微信分享
-    function appWX() {
-        var auths = null;
-        $(".f-fenxiang").on("click", ".loginBtn", function () {
-            if (navigator.userAgent.indexOf("Html5Plus") > -1) {
-                plus.oauth.getServices(function (services) {
-                    auths = services;
-                    authLogin();
-                }, function (e) {
-                    alert("获取分享服务列表失败:" + e.message + " - " + e.code);
-                });
-            }
-        });
-
-        //登录认证
-        function authLogin() {
-            var s = auths[0];
-            if (!s.authResult) {
-                s.login(function (e) {
-                    var result = e.target.authResult;
-                    alert("登录认证成功:" + JSON.stringify(result));
-                    authUserInfo()
-                }, function (e) {
-                    alert("登录认证失败！");
-                }, {})
-            }
-        }
-
-        //获取登录用户信息操作
-        function authUserInfo() {
-            var s = auths[0];
-            if (!s.authResult) {
-                alert("未登录授权！");
-            } else {
-                s.getUserInfo(function (e) {
-                    alert("获取用户信息成功：" + JSON.stringify(s.userInfo));
-                    var prame = JSON.stringify(s.userInfo);
-                }, function (e) {
-                    alert("获取用户信息失败:" + e.message + " - " + e.code);
-                });
-            }
-        }
-
-        //退出登录
-        function authLogout() {
-            for (var i in auths) {
-                var s = auths[i];
-                if (s.authResult) {
-                    s.logout(function (e) {
-                        alert("注销登录认证成功！");
-                    }, function (e) {
-                        alert("注销登录认证失败！");
-                    });
-                }
-            }
-        }
-    }
+    // function appWX() {
+    //     var auths = null;
+    //     $(".f-fenxiang").on("click", ".loginBtn", function () {
+    //         if (navigator.userAgent.indexOf("Html5Plus") > -1) {
+    //             plus.oauth.getServices(function (services) {
+    //                 auths = services;
+    //                 authLogin();
+    //             }, function (e) {
+    //                 alert("获取分享服务列表失败:" + e.message + " - " + e.code);
+    //             });
+    //         }
+    //     });
+    //
+    //     //登录认证
+    //     function authLogin() {
+    //         var s = auths[0];
+    //         if (!s.authResult) {
+    //             s.login(function (e) {
+    //                 var result = e.target.authResult;
+    //                 alert("登录认证成功:" + JSON.stringify(result));
+    //                 authUserInfo()
+    //             }, function (e) {
+    //                 alert("登录认证失败！");
+    //             }, {})
+    //         }
+    //     }
+    //
+    //     //获取登录用户信息操作
+    //     function authUserInfo() {
+    //         var s = auths[0];
+    //         if (!s.authResult) {
+    //             alert("未登录授权！");
+    //         } else {
+    //             s.getUserInfo(function (e) {
+    //                 alert("获取用户信息成功：" + JSON.stringify(s.userInfo));
+    //                 var prame = JSON.stringify(s.userInfo);
+    //             }, function (e) {
+    //                 alert("获取用户信息失败:" + e.message + " - " + e.code);
+    //             });
+    //         }
+    //     }
+    //
+    //     //退出登录
+    //     function authLogout() {
+    //         for (var i in auths) {
+    //             var s = auths[i];
+    //             if (s.authResult) {
+    //                 s.logout(function (e) {
+    //                     alert("注销登录认证成功！");
+    //                 }, function (e) {
+    //                     alert("注销登录认证失败！");
+    //                 });
+    //             }
+    //         }
+    //     }
+    // }
   // 举报提交
   $('.JubaoBox-submit').click(function(){
     var t = $(this);
