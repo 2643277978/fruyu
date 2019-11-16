@@ -128,11 +128,11 @@
   </div>
   {#/if#}
 </div>
-<!--<footer id="footer">-->
-  <!--{#if in_array('2',$regtypeArr)#}<div class="item item-mobile active" data-type="2" data-rtype="3"><i></i><p>{#$langData['siteConfig'][1][2]#}</p></div>{#/if#}-->
-  <!--{#if in_array('1',$regtypeArr)#}<div class="item item-username" data-type="1" data-rtype="1"><i></i><p>用户名注册</p></div>{#/if#}-->
-  <!--{#if in_array('3',$regtypeArr)#}<div class="item item-email" data-type="3" data-rtype="2"><i></i><p>{#$langData['siteConfig'][1][3]#}</p></div>{#/if#}-->
-<!--</footer>-->
+<footer id="footer">
+  {#if in_array('2',$regtypeArr)#}<div class="item item-mobile active" data-type="2" data-rtype="3"><i></i><p>{#$langData['siteConfig'][1][2]#}</p></div>{#/if#}
+  {#if in_array('1',$regtypeArr)#}<div class="item item-username" data-type="1" data-rtype="1"><i></i><p>用户名注册</p></div>{#/if#}
+  {#if in_array('3',$regtypeArr)#}<div class="item item-email" data-type="3" data-rtype="2"><i></i><p>{#$langData['siteConfig'][1][3]#}</p></div>{#/if#}
+</footer>
 
 <!-- 区号弹出层 s -->
 <div class="layer">

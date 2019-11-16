@@ -229,80 +229,86 @@ $(function() {
 	//微信分享
 	// $('.HN_button_tweixin').click(function () {
 	// 	if (navigator.userAgent.toLowerCase().match(/micromessenger/)) {//判断是否是微信
-			wx.config({
-				debug: true,
-				appId: wxconfig.appId,
-				timestamp: wxconfig.timestamp,
-				nonceStr: wxconfig.nonceStr,
-				signature: wxconfig.signature,
-				jsApiList: ['updateTimelineShareData', 'updateAppMessageShareData', 'onMenuShareWeibo', 'openLocation']
-			});
 
-			var id= $('.im_phone').attr('data-item');
-	       var desc = wxconfig.description;
+	        var desc = wxconfig.description;
 			var link = wxconfig.link;
-			// var aid = '{#$detail_id#}';
-			// var type = '{#$detail_protype#}';
-			// var aa=link.substring(link.lastIndexOf("/")+1); //截取网址最后一个/后面的内容
-			// if (aa.search("loupan") != -1) {
-			// 	var type = 1;
-			// }
-			// if (aa.search("sale") != -1) {
-			// 	var type = 2;
-			// }
-			// if (aa.search("zu") != -1) {
-			// 	var type = 3;
-			// }
-			// if (aa.search("sp") != -1) {
-			// 	var type = 4;
-			// }
-			// if (aa.search("xzl") != -1) {
-			// 	var type = 5;
-			// }
-			// if (aa.search("cf") != -1) {
-			// 	var type = 6;
-			// }
-			// console.log(id);
-			 // console.log(type);
-
-			// $.ajax({
-			// 	url:'include/ajax.php?service=member&action=wxShare&aid='+aid+'&link='+link+'&description='+desc+'&type='+type,
-			// 	type:"get",
-			// 	datatype: "jsonp",
-			// 	success:function (data) {
-			// 		if (data.state == 100){
-			// 			var sid =data.sid;
-			// 		}
-			// 	}
-			// });
-			wx.ready(function () {
-				wx.updateAppMessageShareData({//分享到朋友或者qq
-					title: wxconfig.title,
-					desc: wxconfig.description,
-					link: wxconfig.link,
-					imgUrl: wxconfig.imgUrl,
-					trigger: function (res) {
-						hnShare.closeSRBox();
-					},
-					success: function () {
-
-					},
-					cancel: function () {
-						// alert("取消分享");
-					}
-
-				});
-				wx.updateTimelineShareData({//分享给朋友圈或者qq空间
-					title: wxconfig.title,
-					link: wxconfig.link,
-					imgUrl: wxconfig.imgUrl,
-				});
-				wx.onMenuShareWeibo({//分享到微博
-					title: wxconfig.title,
-					desc: wxconfig.description,
-					link: wxconfig.link,
-					imgUrl: wxconfig.imgUrl,
-				});
-			});
+			if(typeof JubaoConfig === 'function') {
+                var aid = JubaoConfig['id'];
+                var name = JubaoConfig['action'];
+                var type = "";
+                if (name == "loupan") {
+                    type = 1;
+                } else if (name == "sale") {
+                    type = 2;
+                } else if (name == "zu") {
+                    type = 3;
+                } else if (name == "sp") {
+                    type = 4;
+                } else if (name == "xzl") {
+                    type = 5;
+                } else if (name == "cf") {
+                    type = 6;
+                }
+            }else {
+			    aid="";
+			    type="";
+            }
+			 console.log(aid);
+			 console.log(type);
+			 console.log("a");
+            wx.config({
+                debug: true,
+                appId: wxconfig.appId,
+                timestamp: wxconfig.timestamp,
+                nonceStr: wxconfig.nonceStr,
+                signature: wxconfig.signature,
+                jsApiList: ['updateTimelineShareData', 'updateAppMessageShareData', 'onMenuShareWeibo', 'openLocation']
+            });//end config
+			$.ajax({
+				url:'include/ajax.php?service=member&action=wxShare&aid='+aid+'&link='+link+'&description='+desc+'&type='+type,
+				type:"get",
+				datatype: "jsonp",
+				success:function (data) {
+						var sid =data.sid;
+                        wx.ready(function () {
+                            wx.updateAppMessageShareData({//分享到朋友或者qq
+                                title: wxconfig.title,
+                                desc: wxconfig.description,
+                                link: link+'?ori='+wxShare+'&sid='+sid,
+                                imgUrl: wxconfig.imgUrl,
+                                // trigger: function (res) {
+                                //     hnShare.closeSRBox();
+                                // },
+                                success: function () {
+                                },
+                                cancel: function () {
+                                    // alert("取消分享");
+                                }
+                            });//end message
+                            wx.updateTimelineShareData({//分享给朋友圈或者qq空间
+                                title: wxconfig.title,
+                                link: wxconfig.link,
+                                imgUrl: wxconfig.imgUrl,
+                                success:function () {
+                                },
+                                cancel:function () {
+                                }
+                            });//end update
+                            wx.onMenuShareWeibo({//分享到微博
+                                title: wxconfig.title,
+                                desc: wxconfig.description,
+                                link: wxconfig.link,
+                                imgUrl: wxconfig.imgUrl,
+                                success:function () {
+                                },
+                                cancel:function () {
+                                }
+                            });//end menu
+                        });//end ready
+				},//end success
+                error:function (data) {
+                    alert(errMsg);
+                }
+     });//ens ajax
 		// }
 });
