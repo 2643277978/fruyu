@@ -232,10 +232,8 @@ $(function() {
 
 	        var desc = wxconfig.description;
 			var link = wxconfig.link;
-			var aid;
 			var type;
-			// if(typeof JubaoConfig  === 'function') {
-               aid = JubaoConfig.id;
+               var aid = JubaoConfig.id;
                var name = JubaoConfig.action;
                 if (name == "loupan") {
                     type = 1;
@@ -250,10 +248,6 @@ $(function() {
                 } else if (name == "cf") {
                     type = 6;
                 }
-            // }else {
-			//     aid="";
-			//     type="";
-            // }
 			console.log(aid);
 			console.log(type);
             wx.config({
@@ -265,13 +259,14 @@ $(function() {
                 jsApiList: ['updateTimelineShareData', 'updateAppMessageShareData', 'onMenuShareWeibo', 'openLocation']
             });//end config
 			$.ajax({
-				url:"include/ajax.php?service=member&action=wxShare&aid="+aid+"&type="+type,
+				// url:"include/ajax.php?service=member&action=wxShare&id"=+aid+"&type="+type,
+                url:"/include/ajax.php?service=member&action=wxShare&aid="+aid+"&type="+type,
 				type:"get",
                 datatype: "jsonp",
-				success:function (info) {
+				success:function (data) {
                     // if (data.state == 200) {
-                        console.log(info);
-                        var sid = info.sid;
+                        console.log(data.info);
+                        var sid = data.info.sid;
                         console.log(sid);
                         wx.ready(function () {
                             wx.updateAppMessageShareData({//分享到朋友或者qq
@@ -284,7 +279,7 @@ $(function() {
                                 // },
                                 success: function () {
                                     $.ajax({
-                                        url: "include/ajax.php?service=member&action=wxShare&sid=" + sid + "&description=" + desc + "&link=" + link,
+                                        url: "include/ajax.php?service=member&action=wxShare&sid="+sid+"&description="+desc+"&link="+link,
                                         type: "get",
                                         datatype: "jsonp",
                                         success: function () {
@@ -302,7 +297,7 @@ $(function() {
                                 imgUrl: wxconfig.imgUrl,
                                 success: function () {
                                     $.ajax({
-                                        url: "include/ajax.php?service=member&action=wxShare&sid=" + sid + "&description=" + desc + "&link=" + link,
+                                        url: "include/ajax.php?service=member&action=wxShare&sid="+sid+"&description="+desc+"&link="+link,
                                         type: "get",
                                         datatype: "jsonp",
                                         success: function () {
@@ -320,7 +315,7 @@ $(function() {
                                 imgUrl: wxconfig.imgUrl,
                                 success: function () {
                                     $.ajax({
-                                        url: "include/ajax.php?service=member&action=wxShare&sid=" + sid + "&description=" + desc + "&link=" + link,
+                                        url: "include/ajax.php?service=member&action=wxShare&sid="+sid+"&description="+desc+"&link="+link,
                                         type: "get",
                                         datatype: "jsonp",
                                         success: function () {
