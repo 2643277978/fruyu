@@ -250,6 +250,7 @@ $(function() {
                 }
 			console.log(aid);
 			console.log(type);
+			var aa=1;
             wx.config({
                 debug: true,
                 appId: wxconfig.appId,
@@ -279,7 +280,7 @@ $(function() {
                                 // },
                                 success: function () {
                                     $.ajax({
-                                        url: "include/ajax.php?service=member&action=wxShare&sid="+sid+"&description="+desc+"&link="+link+"&serverid=",
+                                        url: "include/ajax.php?service=member&action=wxShare&sid="+sid+"&description="+desc+"&link="+link+"&serverid="+aa,
                                         type: "get",
                                         datatype: "jsonp",
                                         success: function () {
@@ -297,7 +298,7 @@ $(function() {
                                 imgUrl: wxconfig.imgUrl,
                                 success: function () {
                                     $.ajax({
-                                        url: "include/ajax.php?service=member&action=wxShare&sid="+sid+"&description="+desc+"&link="+link+"&serverid=",
+                                        url: "include/ajax.php?service=member&action=wxShare&sid="+sid+"&description="+desc+"&link="+link+"&serverid="+aa,
                                         type: "get",
                                         datatype: "jsonp",
                                         success: function () {
@@ -315,7 +316,7 @@ $(function() {
                                 imgUrl: wxconfig.imgUrl,
                                 success: function () {
                                     $.ajax({
-                                        url: "include/ajax.php?service=member&action=wxShare&sid="+sid+"&description="+desc+"&link="+link+"&serverid=",
+                                        url: "include/ajax.php?service=member&action=wxShare&sid="+sid+"&description="+desc+"&link="+link+"&serverid="+aa,
                                         type: "get",
                                         datatype: "jsonp",
                                         success: function () {
