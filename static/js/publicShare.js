@@ -232,10 +232,11 @@ $(function() {
 
 	        var desc = wxconfig.description;
 			var link = wxconfig.link;
-			if(typeof JubaoConfig === 'function') {
-                var aid = JubaoConfig['id'];
-                var name = JubaoConfig['action'];
-                var type = "";
+			var aid;
+			var type;
+			if(typeof JubaoConfig  === 'function') {
+               aid = JubaoConfig['id'];
+               var name = JubaoConfig['action'];
                 if (name == "loupan") {
                     type = 1;
                 } else if (name == "sale") {
@@ -253,9 +254,6 @@ $(function() {
 			    aid="";
 			    type="";
             }
-			 console.log(aid);
-			 console.log(type);
-			 console.log("a");
             wx.config({
                 debug: true,
                 appId: wxconfig.appId,
@@ -265,21 +263,30 @@ $(function() {
                 jsApiList: ['updateTimelineShareData', 'updateAppMessageShareData', 'onMenuShareWeibo', 'openLocation']
             });//end config
 			$.ajax({
-				url:'include/ajax.php?service=member&action=wxShare&aid='+aid+'&link='+link+'&description='+desc+'&type='+type,
+				url:"include/ajax.php?service=member&action=wxShare&aid="+aid+"&type="+type,
 				type:"get",
-				datatype: "jsonp",
+                datatype: "jsonp",
 				success:function (data) {
+				   console.log(data);
 						var sid =data.sid;
                         wx.ready(function () {
                             wx.updateAppMessageShareData({//分享到朋友或者qq
                                 title: wxconfig.title,
                                 desc: wxconfig.description,
-                                link: link+'?ori='+wxShare+'&sid='+sid,
+                                link:wxconfig.link,
                                 imgUrl: wxconfig.imgUrl,
                                 // trigger: function (res) {
                                 //     hnShare.closeSRBox();
                                 // },
                                 success: function () {
+                                    $.ajax({
+                                        url:"include/ajax.php?service=member&action=wxShare&sid="+sid+"&description="+desc+"&link="+link,
+                                        type:"get",
+                                        datatype: "jsonp",
+                                        success:function () {
+                                            // alert("分享成功");
+                                        }
+                                    })//end ajax
                                 },
                                 cancel: function () {
                                     // alert("取消分享");
@@ -290,6 +297,14 @@ $(function() {
                                 link: wxconfig.link,
                                 imgUrl: wxconfig.imgUrl,
                                 success:function () {
+                                    $.ajax({
+                                        url:"include/ajax.php?service=member&action=wxShare&sid="+sid+"&description="+desc+"&link="+link,
+                                        type:"get",
+                                        datatype: "jsonp",
+                                        success:function () {
+                                            // alert("分享成功");
+                                        }
+                                    })//end ajax
                                 },
                                 cancel:function () {
                                 }
@@ -300,6 +315,14 @@ $(function() {
                                 link: wxconfig.link,
                                 imgUrl: wxconfig.imgUrl,
                                 success:function () {
+                                    $.ajax({
+                                        url:"include/ajax.php?service=member&action=wxShare&sid="+sid+"&description="+desc+"&link="+link,
+                                        type:"get",
+                                        datatype: "jsonp",
+                                        success:function () {
+                                            // alert("分享成功");
+                                        }
+                                    })//end ajax
                                 },
                                 cancel:function () {
                                 }
@@ -307,7 +330,7 @@ $(function() {
                         });//end ready
 				},//end success
                 error:function (data) {
-                    alert(errMsg);
+                   console.log(data.info);
                 }
      });//ens ajax
 		// }
