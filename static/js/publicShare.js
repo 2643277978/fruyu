@@ -272,6 +272,7 @@ $(function() {
                     // if (data.state == 200) {
                         console.log(info);
                         var sid = info.sid;
+                        console.log(sid);
                         wx.ready(function () {
                             wx.updateAppMessageShareData({//分享到朋友或者qq
                                 title: wxconfig.title,
