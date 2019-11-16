@@ -255,7 +255,7 @@ $(function() {
 			    type="";
             }
             wx.config({
-                debug: true,
+                debug: false,
                 appId: wxconfig.appId,
                 timestamp: wxconfig.timestamp,
                 nonceStr: wxconfig.nonceStr,
@@ -267,23 +267,24 @@ $(function() {
 				type:"get",
                 datatype: "jsonp",
 				success:function (data) {
-				   console.log(data);
-						var sid =data.sid;
+                    if (data.state == 200) {
+                        // console.log(data);
+                        var sid = data.sid;
                         wx.ready(function () {
                             wx.updateAppMessageShareData({//分享到朋友或者qq
                                 title: wxconfig.title,
                                 desc: wxconfig.description,
-                                link:wxconfig.link,
+                                link: wxconfig.link,
                                 imgUrl: wxconfig.imgUrl,
                                 // trigger: function (res) {
                                 //     hnShare.closeSRBox();
                                 // },
                                 success: function () {
                                     $.ajax({
-                                        url:"include/ajax.php?service=member&action=wxShare&sid="+sid+"&description="+desc+"&link="+link,
-                                        type:"get",
+                                        url: "include/ajax.php?service=member&action=wxShare&sid=" + sid + "&description=" + desc + "&link=" + link,
+                                        type: "get",
                                         datatype: "jsonp",
-                                        success:function () {
+                                        success: function () {
                                             // alert("分享成功");
                                         }
                                     })//end ajax
@@ -296,17 +297,17 @@ $(function() {
                                 title: wxconfig.title,
                                 link: wxconfig.link,
                                 imgUrl: wxconfig.imgUrl,
-                                success:function () {
+                                success: function () {
                                     $.ajax({
-                                        url:"include/ajax.php?service=member&action=wxShare&sid="+sid+"&description="+desc+"&link="+link,
-                                        type:"get",
+                                        url: "include/ajax.php?service=member&action=wxShare&sid=" + sid + "&description=" + desc + "&link=" + link,
+                                        type: "get",
                                         datatype: "jsonp",
-                                        success:function () {
+                                        success: function () {
                                             // alert("分享成功");
                                         }
                                     })//end ajax
                                 },
-                                cancel:function () {
+                                cancel: function () {
                                 }
                             });//end update
                             wx.onMenuShareWeibo({//分享到微博
@@ -314,23 +315,24 @@ $(function() {
                                 desc: wxconfig.description,
                                 link: wxconfig.link,
                                 imgUrl: wxconfig.imgUrl,
-                                success:function () {
+                                success: function () {
                                     $.ajax({
-                                        url:"include/ajax.php?service=member&action=wxShare&sid="+sid+"&description="+desc+"&link="+link,
-                                        type:"get",
+                                        url: "include/ajax.php?service=member&action=wxShare&sid=" + sid + "&description=" + desc + "&link=" + link,
+                                        type: "get",
                                         datatype: "jsonp",
-                                        success:function () {
+                                        success: function () {
                                             // alert("分享成功");
                                         }
                                     })//end ajax
                                 },
-                                cancel:function () {
+                                cancel: function () {
                                 }
                             });//end menu
                         });//end ready
-				},//end success
+                    }//end date
+                },//end success
                 error:function (data) {
-                   console.log(data.info);
+                   // console.log(data);
                 }
      });//ens ajax
 		// }
