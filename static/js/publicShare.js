@@ -234,9 +234,9 @@ $(function() {
 			var link = wxconfig.link;
 			var aid;
 			var type;
-			if(typeof JubaoConfig  === 'function') {
-               aid = JubaoConfig['id'];
-               var name = JubaoConfig['action'];
+			// if(typeof JubaoConfig  === 'function') {
+               aid = JubaoConfig.id;
+               var name = JubaoConfig.action;
                 if (name == "loupan") {
                     type = 1;
                 } else if (name == "sale") {
@@ -250,10 +250,10 @@ $(function() {
                 } else if (name == "cf") {
                     type = 6;
                 }
-            }else {
-			    aid="";
-			    type="";
-            }
+            // }else {
+			//     aid="";
+			//     type="";
+            // }
 			console.log(aid);
 			console.log(type);
             wx.config({
