@@ -9,6 +9,7 @@
     <!--<script type="text/javascript" src="../js/common.js"></script>-->
     <script src="{#$templets_skin#}js/common.js?v={#$cfg_staticVersion#}"></script>
     <script type="text/javascript">
+        alert("IMEI：" + plus.device.imei);
         function getDeviceInfo(){
             var str = "",i;
             str += "设备型号：" + plus.device.model + "\n";
