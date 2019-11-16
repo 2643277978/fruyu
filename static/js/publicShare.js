@@ -254,6 +254,8 @@ $(function() {
 			    aid="";
 			    type="";
             }
+			console.log(aid);
+			console.log(type);
             wx.config({
                 debug: false,
                 appId: wxconfig.appId,
@@ -266,10 +268,10 @@ $(function() {
 				url:"include/ajax.php?service=member&action=wxShare&aid="+aid+"&type="+type,
 				type:"get",
                 datatype: "jsonp",
-				success:function (data) {
-                    if (data.state == 200) {
-                        // console.log(data);
-                        var sid = data.sid;
+				success:function (info) {
+                    // if (data.state == 200) {
+                        console.log(info);
+                        var sid = info.sid;
                         wx.ready(function () {
                             wx.updateAppMessageShareData({//分享到朋友或者qq
                                 title: wxconfig.title,
@@ -329,10 +331,10 @@ $(function() {
                                 }
                             });//end menu
                         });//end ready
-                    }//end date
+                    // }//end date
                 },//end success
                 error:function (data) {
-                   // console.log(data);
+                   console.log(data);
                 }
      });//ens ajax
 		// }
