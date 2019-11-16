@@ -250,7 +250,7 @@ $(function() {
                 }
 			console.log(aid);
 			console.log(type);
-			var aa=1;
+			var aa = 1;
             wx.config({
                 debug: true,
                 appId: wxconfig.appId,
@@ -260,12 +260,12 @@ $(function() {
                 jsApiList: ['updateTimelineShareData', 'updateAppMessageShareData', 'onMenuShareWeibo', 'openLocation']
             });//end config
 			$.ajax({
-				// url:"include/ajax.php?service=member&action=wxShare&id"=+aid+"&type="+type,
                 url:"/include/ajax.php?service=member&action=wxShare&aid="+aid+"&type="+type,
 				type:"get",
                 datatype: "jsonp",
 				success:function (data) {
                     // if (data.state == 200) {
+                    console.log(data);
                         console.log(data.info);
                         var sid = data.info.sid;
                         console.log(sid);
@@ -273,14 +273,14 @@ $(function() {
                             wx.updateAppMessageShareData({//分享到朋友或者qq
                                 title: wxconfig.title,
                                 desc: wxconfig.description,
-                                link: wxconfig.link,
+                                link: link,
                                 imgUrl: wxconfig.imgUrl,
                                 // trigger: function (res) {
                                 //     hnShare.closeSRBox();
                                 // },
                                 success: function () {
                                     $.ajax({
-                                        url: "include/ajax.php?service=member&action=wxShare&sid="+sid+"&description="+desc+"&link="+link+"&serverid="+aa,
+                                        url: "include/ajax.php?service=member&action=wxShare&sid="+sid+"&description="+desc+"&link="+lnik+"&serverid="+aa,
                                         type: "get",
                                         datatype: "jsonp",
                                         success: function () {
