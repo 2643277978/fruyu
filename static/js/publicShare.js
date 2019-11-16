@@ -257,7 +257,7 @@ $(function() {
 			console.log(aid);
 			console.log(type);
             wx.config({
-                debug: false,
+                debug: true,
                 appId: wxconfig.appId,
                 timestamp: wxconfig.timestamp,
                 nonceStr: wxconfig.nonceStr,
