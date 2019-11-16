@@ -279,7 +279,7 @@ $(function() {
                                 // },
                                 success: function () {
                                     $.ajax({
-                                        url: "include/ajax.php?service=member&action=wxShare&sid="+sid+"&description="+desc+"&link="+link,
+                                        url: "include/ajax.php?service=member&action=wxShare&sid="+sid+"&description="+desc+"&link="+link+"&serverid=",
                                         type: "get",
                                         datatype: "jsonp",
                                         success: function () {
@@ -297,7 +297,7 @@ $(function() {
                                 imgUrl: wxconfig.imgUrl,
                                 success: function () {
                                     $.ajax({
-                                        url: "include/ajax.php?service=member&action=wxShare&sid="+sid+"&description="+desc+"&link="+link,
+                                        url: "include/ajax.php?service=member&action=wxShare&sid="+sid+"&description="+desc+"&link="+link+"&serverid=",
                                         type: "get",
                                         datatype: "jsonp",
                                         success: function () {
@@ -315,7 +315,7 @@ $(function() {
                                 imgUrl: wxconfig.imgUrl,
                                 success: function () {
                                     $.ajax({
-                                        url: "include/ajax.php?service=member&action=wxShare&sid="+sid+"&description="+desc+"&link="+link,
+                                        url: "include/ajax.php?service=member&action=wxShare&sid="+sid+"&description="+desc+"&link="+link+"&serverid=",
                                         type: "get",
                                         datatype: "jsonp",
                                         success: function () {
