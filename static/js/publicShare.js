@@ -233,6 +233,7 @@ $(function() {
 	        var desc = wxconfig.description;
 			var link = wxconfig.link;
 			var type;
+			// var aid="1";
                var aid = JubaoConfig.id;
                var name = JubaoConfig.action;
                 if (name == "loupan") {
@@ -250,7 +251,7 @@ $(function() {
                 }
 			console.log(aid);
 			console.log(type);
-			var aa = 1;
+			var aa = "1";
             wx.config({
                 debug: true,
                 appId: wxconfig.appId,
@@ -273,7 +274,7 @@ $(function() {
                             wx.updateAppMessageShareData({//分享到朋友或者qq
                                 title: wxconfig.title,
                                 desc: wxconfig.description,
-                                link: link,
+                                link: link + '?ori=wxShare&sid="+sid',
                                 imgUrl: wxconfig.imgUrl,
                                 // trigger: function (res) {
                                 //     hnShare.closeSRBox();
@@ -294,7 +295,7 @@ $(function() {
                             });//end message
                             wx.updateTimelineShareData({//分享给朋友圈或者qq空间
                                 title: wxconfig.title,
-                                link: wxconfig.link,
+                                link: link + '?ori=wxShare&sid="+sid',
                                 imgUrl: wxconfig.imgUrl,
                                 success: function () {
                                     $.ajax({
@@ -312,7 +313,7 @@ $(function() {
                             wx.onMenuShareWeibo({//分享到微博
                                 title: wxconfig.title,
                                 desc: wxconfig.description,
-                                link: wxconfig.link,
+                                link: link + '?ori=wxShare&sid="+sid',
                                 imgUrl: wxconfig.imgUrl,
                                 success: function () {
                                     $.ajax({
