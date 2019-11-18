@@ -79,6 +79,12 @@
 					<p>{#$langData['siteConfig'][19][268]#}<img src="{#$cfg_weixinQr#}" width="150" height="150" /></p>
 				</div>
 			</li>
+			<li><a href="javascript:;"><i class=""></i>下载app</a><span class="separ">|</span>
+				<div class="pop" style="left: -26px;">
+					<s></s>
+					<p>请打开游览器扫码下载<img src="{#$cfg_staticPath#}images/downapp.png" width="150" height="150" /></p>
+				</div>
+			</li>
 			<li class="dropdown">
 				<a href="javascript:;">{#$langData['siteConfig'][11][2]#}<i class="picon picon-down"></i></a>
 				<div class="submenu">
@@ -95,12 +101,6 @@
 					{#siteConfig action="siteModule" return="module" type="1"#}
 					<a href="{#$module.url#}"{#if $module.target#} target="_blank"{#/if#} style="{#if $module.color#} color: {#$module.color#};{#/if#}{#if $module.bold#} font-weight: 700;{#/if#}">{#$module.name#}</a>
 					{#/siteConfig#}
-				</div>
-			</li>
-			<li><a href="javascript:;"><i class=""></i>下载app</a><span class="separ">|</span>
-				<div class="pop" style="left: -26px;">
-					<s></s>
-					<p>请打开游览器扫码下载<img src="{#$cfg_staticPath#}images/downapp.png" width="150" height="150" /></p>
 				</div>
 			</li>
 		</ul>
