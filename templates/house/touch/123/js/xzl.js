@@ -444,7 +444,7 @@ $(function() {
 								// html.push('<div class="house-img l"><img src="'+list[i].litpic+'"></div>');
 								var video = list[i].video==1 ? '<i class="play_img"></i>' : '';
 								var vr    = list[i].qj==1 ? '<i class="VR_img"></i>' : '';
-								var typestate = list[i].usertype==1 ? '<em class="zhongjie">中介</em>' : '<em class="geren">个人</em>';
+								var typestate = list[i].usertype==1 ? '' : '<em class="geren">个人</em>';
 								html.push('<div class="house-img l"><i class="house_disk"></i><img src="'+pic+'">'+video+vr+typestate+'</div>');
 								html.push('<dl class="l">');
 								var top = list[i].isbid==1 ? '<i class="set_top"></i>' : '';

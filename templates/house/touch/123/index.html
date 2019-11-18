@@ -279,7 +279,7 @@
     <li><a href="{#getUrlPath service='member' type='user' template='house'#}"><img src="{#$templets_skin#}images/fShop.png" alt=""><p>管理房源</p></a></li>
     <li class="fabu"><a href="{#getUrlPath service='member' type='user' template='house'#}#fabu"><img src="{#$templets_skin#}images/fFabu.png" alt=""><p>发布房源</p></a></li>
     <li><a href="{#getUrlPath service='member' type='user' template='message'#}"><span><img src="{#$templets_skin#}images/fInfo.png" alt=""><em id="message"></em></span><p>消息</p></a></li>
-    <li><a href="{#getUrlPath service=house template=sbh#}"><img src="{#$templets_skin#}images/fMy.png" alt=""><p>我的</p></a></li>
+    <li><a href="{#$member_userDomain#}"><img src="{#$templets_skin#}images/fMy.png" alt=""><p>我的</p></a></li>
   </ul>
   <div class="fabuBg"></div>
 </div>
@@ -296,7 +296,6 @@
 		"imgUrl": '{#$house_logoUrl#}',
 		"link": '{#$house_channelDomain#}',
 	};
-
 	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
 </script>
 <script src="{#$cfg_staticPath#}js/ui/swiper.min.js" type="text/javascript"></script>
