@@ -87,7 +87,7 @@ $(function() {
 		'<div class="HN_PublicShare_HN_style_32x32"><ul class="fn-clear">' +
 		'<li><a class="HN_button_qzone" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + wxconfig.link + '&desc=' + wxconfig.title + '"></a>QQ空间</li>' +
 		'<li><a class="HN_button_tsina" href="http://service.weibo.com/share/share.php?url=' + wxconfig.link + '&desc=' + document.title + '"></a>新浪微博</li>' +
-		'<li><a class="HN_button_tweixin" ></a>微信好友</li>' +
+		'<li><a class="HN_button_tweixin" open-type="share" ></a>微信好友</li>' +
 		'<li><a class="HN_button_ttqq"></a>QQ好友</li>' +
 		'<li><a class="HN_button_comment"><span class="HN_txt jtico jtico_comment"></span></a>朋友圈</li>' +
 		'<li><a class="HN_button_code"><span class="HN_txt jtico jtico_code"></span></a>二维码</li></ul>' +
@@ -220,17 +220,15 @@ $(function() {
 		$('#HN_PublicShare_codeBox img').attr('src', code);
 	});
 
-	// $('.HN_button_tweixin, .HN_button_ttqq, .HN_button_comment').click(function(){
-	// 	hnShare.closeShearBox();
-	// 	hnShare.showSRBox();
-	// });
+	$('.HN_button_tweixin, .HN_button_ttqq, .HN_button_comment').click(function(){
+		hnShare.closeShearBox();
+		hnShare.showSRBox();
+	});
 
 
 	//微信分享
-	$('.HN_button_tweixin').click(function () {
-		// if (navigator.userAgent.toLowerCase().match(/micromessenger/)) {//判断是否是微信
-		    hnShare.closeShearBox();
-		    // hnShare.showSRBox();
+	// $('.HN_button_tweixin').click(function () {
+		if (navigator.userAgent.toLowerCase().match(/micromessenger/)) {//判断是否是微信
 			var desc = wxconfig.description;
 			var link = wxconfig.link;
 			var type;
@@ -335,9 +333,30 @@ $(function() {
 					// console.log(data);
 				}//error end
 			});//ens ajax
-		})// end dianji
-
+			// })// end dianji
+		}
 
 	//微信小程序之微信分享
 	// var fenxiang = $(".f-fenxiang");
+	//
+	// function onLoad() {
+	//
+	// }
+
+	// function onShareAppMessage(){
+	// 	var desc = wxconfig.description;
+	// 	var link = wxconfig.link;
+	// 	var title = wxconfig.title;
+	// 	var imgUrl = wxconfig.imgUrl;
+	// 	if (res.from === 'button') {
+	// 		// 来自页面内转发按钮
+	// 		return {
+	// 			title: goods_title,
+	// 			path: '/page/details?id=' +goods_id,
+	// 			imageUrl:goods_img //不设置则默认为当前页面的截图
+	// 		}
+	// 	}
+	// 	}
+
+		
 });
