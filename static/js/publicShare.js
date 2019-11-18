@@ -220,16 +220,17 @@ $(function() {
 		$('#HN_PublicShare_codeBox img').attr('src', code);
 	});
 
-	$('.HN_button_tweixin, .HN_button_ttqq, .HN_button_comment').click(function(){
-		hnShare.closeShearBox();
-		hnShare.showSRBox();
-	});
+	// $('.HN_button_tweixin, .HN_button_ttqq, .HN_button_comment').click(function(){
+	// 	hnShare.closeShearBox();
+	// 	hnShare.showSRBox();
+	// });
 
 
 	//微信分享
 	$('.HN_button_tweixin').click(function () {
 		// if (navigator.userAgent.toLowerCase().match(/micromessenger/)) {//判断是否是微信
-
+		    hnShare.closeShearBox();
+		    // hnShare.showSRBox();
 			var desc = wxconfig.description;
 			var link = wxconfig.link;
 			var type;
