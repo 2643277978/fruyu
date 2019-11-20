@@ -674,7 +674,7 @@ window.onload = function(){
                 }
 
                 liArr.push('<li class="f-user"><a href="'+userDomain+'">' + langData['siteConfig'][10][0] + '</a></li>');  //我的
-                liArr.push('<li class="f-fenxiang"><a href="">' + '分享'+ '</a></li>');  //分享
+                // liArr.push('<li class="f-fenxiang"><a href="">' + '分享'+ '</a></li>');  //分享
 
                 //验证是否有发布需求
                 for (var i = 0; i < fabuArr.length; i++){
