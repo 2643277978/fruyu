@@ -226,7 +226,6 @@ $(function() {
 		$('.choose li').removeClass('active');
 		$('.white').hide();
 		isClick = true;
-
 		getList(1);
 	})
 
@@ -315,7 +314,6 @@ $(function() {
 			atpage = 1;
 			$(".house-list").html("");
 		}
-
 		//自定义筛选内容
 		var item = [];
 		$(".choose-more-condition ul").each(function(){

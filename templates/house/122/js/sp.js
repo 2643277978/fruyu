@@ -551,7 +551,7 @@ $(function () {
     function showPageInfo() {
         var info = $(".pagination");
         var nowPageNum = atpage;
-        var allPageNum = Math.ceil(totalCount / pageSize);
+        var allPageNum = Math.ceil(totalCount/pageSize);
         var pageArr = [];
 
         info.html("").hide();
@@ -559,12 +559,11 @@ $(function () {
         //输入跳转
         var redirect = document.createElement("div");
         redirect.className = "pagination-gotopage";
-        redirect.innerHTML =
-            '<label for="">跳转</label><input type="text" class="inp" maxlength="4" /><input type="button" class="btn" value="GO" />';
+        redirect.innerHTML = '<label for="">跳转</label><input type="text" class="inp" maxlength="4" /><input type="button" class="btn" value="GO" />';
         info.append(redirect);
 
         //分页跳转
-        info.find(".btn").bind("click", function () {
+        info.find(".btn").bind("click", function(){
             var pageNum = info.find(".inp").val();
             if (pageNum != "" && pageNum >= 1 && pageNum <= Number(allPageNum)) {
                 atpage = pageNum;
@@ -622,7 +621,8 @@ $(function () {
                         var page = document.createElement("span");
                         page.className = "curr";
                         page.innerHTML = i;
-                    } else {
+                    }
+                    else {
                         var page = document.createElement("a");
                         page.innerHTML = i;
                         page.setAttribute('href','#');
@@ -643,15 +643,18 @@ $(function () {
                 for (var i = nowPageNum - 1; i <= nowPageNum + 1; i++) {
                     if (i > allPageNum) {
                         break;
-                    } else {
+                    }
+                    else {
                         if (i <= 2) {
                             continue;
-                        } else {
+                        }
+                        else {
                             if (nowPageNum == i) {
                                 var page = document.createElement("span");
                                 page.className = "curr";
                                 page.innerHTML = i;
-                            } else {
+                            }
+                            else {
                                 var page = document.createElement("a");
                                 page.innerHTML = i;
                                 page.setAttribute('href','#');
@@ -674,7 +677,8 @@ $(function () {
                 for (var i = allPageNum - 1; i <= allPageNum; i++) {
                     if (i <= nowPageNum + 1) {
                         continue;
-                    } else {
+                    }
+                    else {
                         var page = document.createElement("a");
                         page.innerHTML = i;
                         page.setAttribute('href','#');
@@ -706,7 +710,7 @@ $(function () {
 
             info.show();
 
-        } else {
+        }else{
             info.hide();
         }
     }
