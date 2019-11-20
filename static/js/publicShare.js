@@ -319,7 +319,7 @@ $(function() {
 							// },
 							success: function () {
 								$.ajax({
-									url: "/include/ajax.php?service=member&action=wxShare&sid=" + sid + "&description=" + desc + "&link=" + link + "&serverid=" + aa,
+									url: "/include/ajax.php?service=member&action=wxShare&sid=" +sid+"&description="+ desc + "&link=" + link + "&serverid=" + aa,
 									type: "get",
 									datatype: "jsonp",
 									success: function () {
