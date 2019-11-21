@@ -87,7 +87,7 @@ $(function() {
 		'<div class="HN_PublicShare_HN_style_32x32"><ul class="fn-clear">' +
 		'<li><a class="HN_button_qzone" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + wxconfig.link + '&desc=' + wxconfig.title + '"></a>QQ空间</li>' +
 		'<li><a class="HN_button_tsina" href="http://service.weibo.com/share/share.php?url=' + wxconfig.link + '&desc=' + document.title + '"></a>新浪微博</li>' +
-		'<li><button open-type="share" class="HN_button_tweixin" ><a class="HN_button_tweixin"  ></a>微信好友</button></li>' +
+		'<li><a class="HN_button_tweixin" id="HN_button_tweixin" ></a>微信好友</li>' +
 		'<li><a class="HN_button_ttqq"></a>QQ好友</li>' +
 		'<li><a class="HN_button_comment"><span class="HN_txt jtico jtico_comment"></span></a>朋友圈</li>' +
 		'<li><a class="HN_button_code"><span class="HN_txt jtico jtico_code"></span></a>二维码</li></ul>' +
@@ -101,7 +101,7 @@ $(function() {
 
 	// $("head").append('<style id="publit_shear_load">.HN_PublicShare_shearBox,.HN_PublicShare_zhiyin {display:none;}</style>');
 	$("body").append(shareHtml);
-
+// <button open-type="share" class="HN_button_tweixin" ></button>
 
 	var device = navigator.userAgent;
 	$("body").delegate(".HN_PublicShare", "tap click", function () {
@@ -364,60 +364,79 @@ $(function() {
 		}// end if
 	// });//end click
 
-	//微信小程序之微信分享
+	//app之微信分享
 
-	// var desc = wxconfig.description;
-	// var link1 =wxconfig.link;
-	// var link = link1 + '?ori=wxShare&sid="+sid';
-	// var title = wxconfig.title;
-	// var imgUrl = wxconfig.imgUrl;
-	// var aa ="1";
-	// var type;
-	// var aid = JubaoConfig.id;
-	// var name = JubaoConfig.action;
-	// if (name == "loupan") {
-	//  type = 1;
-	// } else if (name == "sale") {
-	// type = 2;
-	// } else if (name == "zu") {
-	// type = 3;
-	// } else if (name == "sp") {
-	// 	type = 4;
-	// } else if (name == "xzl") {
-	// 	type = 5;
-	// } else if (name == "cf") {
-	// 	type = 6;
+	// plus.share.getServices(function(s) {
+	// 	shares = ss;
+	// 	for (var i in ss ) {
+	// 		var s = ss[i];
+	// 		var item = document.createElement("li");
+	// 		item.setAttribute("class", "ditem");
+	// 		item.setAttribute("onclick", (s.id == "weixin") ? "shareWeiXin(this.plusShare)" : "shareAction(this.plusShare)");
+	// 		item.innerText = s.description;
+	// 		item.plusShare = s;
+	// 		list.appendChild(item);
+	// 	}
+	// }, function(e) {
+	// 	alert("获取分享服务列表失败：" + e.message);
+	// });
+	// function shareAction(s, ex) {
+	// 	outSet("分享操作：");
+	// 	if (!s) {
+	// 		outLine("无效的分享服务！");
+	// 		return;
+	// 	}
+	// 	if (s.authenticated) {
+	// 		outLine("---已授权---");
+	// 		shareMessage(s, ex);
+	// 	} else {
+	// 		outLine("---未授权---");
+	// 		s.authorize(function() {
+	// 			shareMessage(s, ex);
+	// 		}, function(e) {
+	// 			outLine("认证授权失败：" + e.code + " - " + e.message);
+	// 		});
+	// 	}
 	// }
-	// console.log(aid);
-	// console.log(type);
-	// $.ajax({
-	// 	url: "/include/ajax.php?service=member&action=wxShare&aid=" + aid + "&type=" + type,
-	// 	type: "get",
-	// 	datatype: "jsonp",
-	// 	success: function (data) {
-	// 		data = JSON.parse(data);
-	// 		var sid = data.info.sid;
-	// 		console.log(sid);
-	//       function onShareAppMessage(){
-	// 			if (res.from === 'button') {
-	// 				// 来自页面内转发按钮
-	// 				return {
-	// 					title: title,
-	// 					path: link,
-	// 					imageUrl: imgUrl, //不设置则默认为当前页面的截图
-	// 					success: function () {
-	// 						$.ajax({
-	// 							url: "/include/ajax.php?service=member&action=wxShare&sid=" + sid + "&description=" + desc + "&link=" + link + "&serverid=" + aa,
-	// 							type: "get",
-	// 							datatype: "jsonp",
-	// 							success: function () {
-	// 								alert("分享成功");
-	// 							}
-	// 						})//end ajax
-	// 					} //end success
-	// 				} //end return
-	// 			}// end if
-	// 		}//end onshare
-	// 	}//end ajaxsuccess
-	// });//end ajax
+	// function shareMessage(s,ex){
+	// 	var msg={content:sharecontent.value,extra:{scene:ex}};
+	// 	if(pic&&pic.realUrl){
+	// 		msg.pictures=[pic.realUrl];
+	// 	}
+	//
+	// 	s.send( msg, function(){
+	// 		alert( "分享到\""+s.description+"\"成功！ " );
+	// 	}, function(e){
+	// 		alert( "分享到\""+s.description+"\"失败: "+e.code+" - "+e.message );
+	// 	} );
+	// }
+	//  function cancelAuth(){try{
+	//  	for ( var i in shares ) {
+	// 		var s = shares[i];
+	// 		if ( s.authenticated ) {
+	// 			outLine( "取消\""+s.description+"\"");
+	// 		}
+	// 		s.forbid();
+	// 	}
+    // // 取消授权后需要更新服务列表
+	// 	updateServices();
+	// 	outLine( "操作成功！" );}catch(e){alert(e);}
+	// }
+
+	document.getElementById("HN_button_tweixin").addEventListener("click", function() {
+		if(navigator.userAgent.indexOf("Html5Plus") > -1) {
+			//5+ 原生分享
+			window.plusShare({
+				title: wxconfig.title,//应用名字
+				content: wxconfig.description,
+				href:wxconfig.link ,//分享出去后，点击跳转地址
+				thumbs:wxconfig.imgUrl //分享缩略图
+			}, function(result) {
+				//分享回调
+				alert("分享成功");
+			});
+		} else {
+			//原有wap分享实现
+		}
+	});
 });
