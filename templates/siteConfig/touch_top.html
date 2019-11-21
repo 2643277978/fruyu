@@ -1,3 +1,7 @@
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/mui.min.css?v={#$cfg_staticVersion#}">
+<script src="{#$templets_skin#}js/mui.min.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/mui.zoom.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/mui.previewimage.js?v={#$cfg_staticVersion#}"></script>
 <div class="header {#$headTheme#}">
 	{#if $pageLeft != ""#}
 	{#$pageLeft#}
@@ -41,7 +45,7 @@
 					</a>
 				</li>
 				<li class="HN_PublicShare" style="display: block !important;">
-					<a onclick="openShare();">
+					<a onclick="shareHref()">
 						<i><img src="{#$cfg_staticPath#}/images/top_fast5.png"/></i>
 						<p>分享</p>
 					</a>
