@@ -1,190 +1,190 @@
+<!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
-    <title>Hello MUI</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <!--标准mui.css-->
-    <!--<link rel="stylesheet" href="../css/mui.min.css">-->
-    <!--<link rel="stylesheet" href="../css/mui.css" />-->
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <!--<script src="js/mui.min.js"></script>-->
+    <script src="{#$templets_skin#}js/mui.min.js?v={#$cfg_staticVersion#}"></script>
+    <!--<link href="css/mui.min.css" rel="stylesheet" />-->
     <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/mui.min.css?v={#$cfg_staticVersion#}">
-    <!--App自定义的css-->
+
     <style type="text/css">
-        .share {
-            float: right;
+        .mui-grid-9 {
+            background: white !important;
         }
-        .tip-title {
-            font-size: 20px;
-            color: blue;
-            padding-left: 10px;
+        li {
+            border-left: none !important;
         }
-        .content {
-            padding-top: 5px;
-            padding-bottom: 10px;
-            padding-left: 10px;
+        img {
+            width: 50px !important;
         }
-        .content span {
-            color: red;
+        body {
+            background: transparent !important;
+        }
+        .mui-content {
+            background: white;
+            text-align: center;
         }
     </style>
 </head>
-<body>
-<header class="mui-bar mui-bar-nav">
-    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-    <a class="share mui-icon mui-icon-redo" onclick="shareHref()"></a>
-    <h1 class="mui-title">第三方分享</h1>
-</header>
-<div class="mui-content">
-    <span class="tip-title">分享平台:</span><br>
-    <div class="content">
-        1.微信分享:微信好友/微信朋友圈 <br>
-        2.QQ分享 <br>
-        3.新浪微博分享 <br>
-    </div>
-    <span class="tip-title">注意事项:</span><br>
-    <div class="content">
-                <span>
-                    微信分享图片大小不能超过32kb限制 <br>
-                </span>
-    </div>
-    <span class="tip-title">解决办法:</span><br>
-    <div class="content">
-        1.把分享的图片的url转换成图片对象image; <br>
-        2.把生成的图片对象image压缩后上传服务器返回新的图片的url; <br>
-        3.分享图片地址使用压缩上传后从服务器获取的url; <br>
-        或者：<br>
-        第一次服务器返回的图片的体积就是32kb以下的. <br>
-    </div>
-</div>
-</body>
-<!--<script src="../js/mui.min.js"></script>-->
-<script src="{#$templets_skin#}js/mui.min.js?v={#$cfg_staticVersion#}"></script>
-<script src="{#$templets_skin#}js/mui.zoom.js?v={#$cfg_staticVersion#}"></script>
-<script src="{#$templets_skin#}js/mui.previewimage.js?v={#$cfg_staticVersion#}"></script>
-<script>
-    mui.init({
-        swipeBack:true //启用右滑关闭功能
-    });
 
-    var Intent = null,
-        File = null,
-        Uri = null,
-        main = null;
-    var shares = null;
-    var shareImageUrl = '';
-    mui.plusReady(function() {
+<body οnclick="closeShare();">
+<div class="mui-content">
+    <img id="pic" src="img/add.png" style="display: none;" />
+</div>
+<footer style="position: absolute;bottom: 0px; width:100%;background: white;">
+    <div style="height: 30px; line-height: 30px ;font-family: '黑体'; margin-left:40%; ;margin-top: 50%;">分享订单</div>
+    <ul class="mui-table-view mui-grid-view mui-grid-9">
+        <li οnclick="shareHref(1);" class="mui-table-view-cell mui-media mui-col-xs-4">
+            <img class="mui-media-object" src="{#$templets_skin#}images/wx.png">
+            <div class="mui-media-body">微信</div>
+        </li>
+        <li οnclick="shareHref(0);" class="mui-table-view-cell mui-media mui-col-xs-4">
+            <img class="mui-media-object" src="{#$templets_skin#}images/wxpyq.png">
+            <div class="mui-media-body">朋友圈</div>
+        </li>
+        <li οnclick="shareHref(2);" class="mui-table-view-cell mui-media mui-col-xs-4">
+            <img class="mui-media-object" src="{#$templets_skin#}images/qq.png">
+            <div class="mui-media-body">QQ</div>
+        </li>
+    </ul>
+</footer>
+<input id="sharehref" style="display: none;" class="sharehref" type="url" value="www.baidu.com" placeholder="请输入要分享的链接地址" />
+<input id="sharehrefTitle" style="display: none;" class="sharehref" type="text" value="加工详情" placeholder="请输入要分享的链接标题" />
+<input id="sharehrefDes" style="display: none;" class="sharehref" type="text" value="我正在使用HBuilder+HTML5开发移动应用，赶紧跟我一起来体验！" placeholder="请输入要分享的链接描述" />
+</body>
+
+<script type="text/javascript" charset="utf-8">
+
+    var shares=null;
+    var Intent=null,File=null,Uri=null,main=null;
+    // H5 plus事件处理
+    function plusReady(){
         updateSerivces();
-        if (plus.os.name == "Android") {
+        if(plus.os.name=="Android"){
+            main = plus.android.runtimeMainActivity();
             Intent = plus.android.importClass("android.content.Intent");
             File = plus.android.importClass("java.io.File");
             Uri = plus.android.importClass("android.net.Uri");
             main = plus.android.runtimeMainActivity();
         }
-    })
+        var shareInfo = plus.webview.currentWebview().shareInfo;
+        sharehref.value = shareInfo.href;
+        sharehrefTitle.value = shareInfo.title;
+        sharehrefDes.value = shareInfo.content;
+        pageSourceId = shareInfo.pageSourceId;
+        console.log("pageSource:" + pageSourceId);
+    }
+    if(window.plus){
+        plusReady();
+    }else{
+        document.addEventListener("plusready",plusReady,false);
+    }
+
     /**
+     *
      * 更新分享服务
      */
-    function updateSerivces() {
-        plus.share.getServices(function(s) {
-            shares = {};
-            for (var i in s) {
-                var t = s[i];
-                shares[t.id] = t;
+    function updateSerivces(){
+        plus.share.getServices( function(s){
+            shares={};
+            for(var i in s){
+                var t=s[i];
+                shares[t.id]=t;
             }
-            outSet("获取分享服务列表成功");
-        }, function(e) {
-            outSet("获取分享服务列表失败：" + e.message);
-        });
+        }, function(e){
+            outSet("获取分享服务列表失败："+e.message );
+        } );
     }
+
+
+
     /**
      * 分享操作
+     * @param {JSON} sb 分享操作对象s.s为分享通道对象(plus.share.ShareService)
+     * @param {Boolean} bh 是否分享链接
      */
-    function shareAction(id, ex) {
-        var s = null;
-        if (!id || !(s = shares[id])) {
-            outLine("无效的分享服务！");
+    function shareAction(sb,bh) {
+        if(!sb||!sb.s){
+            console.log("无效的分享服务！");
             return;
         }
-        if (s.authenticated) {
-            outSet("---已授权---");
-            shareMessage(s, ex);
+        if (plus.os.name !== "Android") {
+            plus.nativeUI.alert("此平台暂不支持系统分享功能!");
+            return;
+        }
+
+        var msg={content:sharehrefDes.value,extra:{scene:sb.x}};
+        if(bh){
+            msg.href=sharehref.value;
+            if(sharehrefTitle&&sharehrefTitle.value!=""){
+                msg.title=sharehrefTitle.value;
+            }
+            if(sharehrefDes&&sharehrefDes.value!=""){
+                msg.content=sharehrefDes.value;
+            }
+            msg.thumbs=["_www/logo.png"];
+            msg.pictures=["_www/logo.png"];
+        }else{
+            if(pic&&pic.realUrl){
+                msg.pictures=[pic.realUrl];
+            }
+        }
+        // 发送分享
+        if ( sb.s.authenticated ) {
+            console.log("---已授权---");
+            shareMessage(msg,sb.s);
         } else {
-            outSet("---未授权---");
-            s.authorize(function() {
-                shareMessage(s, ex);
-            }, function(e) {
-                outLine("认证授权失败");
+            console.log("---未授权---");
+            sb.s.authorize( function(){
+                shareMessage(msg,sb.s);
+            },function(e){
+                console.log("认证授权失败："+e.code+" - "+e.message );
+
             });
         }
     }
     /**
      * 发送分享消息
+     * @param {JSON} msg
+     * @param {plus.share.ShareService} s
      */
-    function shareMessage(s, ex) {
-        var msg = {
-            href: 'http://blog.csdn.net/zhuming3834',
-            title: 'HGDQ-分享测试-title',
-            content: 'HGDQ-分享测试-content',
-            thumbs: ['http://img3.3lian.com/2013/v10/4/87.jpg'],
-            pictures: ['http://img3.3lian.com/2013/v10/4/87.jpg'],
-            extra: {
-                scene: ex
-            }
-        };
-        s.send(msg, function() {
-            outLine("分享成功!");
-        }, function(e) {
-            outLine("分享失败!");
-        });
+    function shareMessage(msg,s){
+
+        console.log(JSON.stringify(msg));
+        s.send( msg, function(){
+            console.log("分享到\""+s.description+"\"成功！ " );
+
+        }, function(e){
+            console.log( "分享到\""+s.description+"\"失败: "+JSON.stringify(e) );
+
+        } );
     }
-    /**
-     * 分享按钮点击事件
-     */
-    function shareHref() {
-        var ids = [{
-                id: "weixin",
-                ex: "WXSceneSession"  /*微信好友*/
-            }, {
-                id: "weixin",
-                ex: "WXSceneTimeline" /*微信朋友圈*/
-            }, {
-                id: "qq"   /*QQ好友*/
-            }, {
-                id: "tencentweibo"   /*腾讯微博*/
-            },{
-                id: "sinaweibo"  /*新浪微博*/
-            }],
-            bts = [{
-                title: "发送给微信好友"
-            }, {
-                title: "分享到微信朋友圈"
-            }, {
-                title: "分享到QQ"
-            }, {
-                title: "分享到腾讯微博"
-            }, {
-                title: "分享到新浪微博"
-            }];
-        plus.nativeUI.actionSheet({
-                cancel: "取消",
-                buttons: bts
-            },
-            function(e) {
-                var i = e.index;
-                if (i > 0) {
-                    shareAction(ids[i - 1].id, ids[i - 1].ex);
-                }
-            }
-        );
+    // 分析链接
+    function shareHref(index){
+        var shareBts=[];
+        // 更新分享列表
+        var ss=shares['weixin'];
+        ss&&ss.nativeClient&&(shareBts.push({title:'微信朋友圈',s:ss,x:'WXSceneTimeline'}),
+            shareBts.push({title:'微信好友',s:ss,x:'WXSceneSession'}));
+        ss=shares['qq'];
+        ss&&ss.nativeClient&&shareBts.push({title:'QQ',s:ss});
+
+        shareAction(shareBts[index],true);
     }
-    // 控制台输出日志
-    function outSet(msg) {
-        console.log(msg);
+    mui.back = function() {
+        var sourcePage = plus.webview.getWebviewById(pageSourceId);
+        if (sourcePage) {
+            sourcePage.evalJS("closeMask()");
+        }
     }
-    // 界面弹出吐司提示
-    function outLine(msg) {
-        mui.toast(msg);
+
+    function closeShare() {
+        console.log("e:" + event.target.name);
     }
+
 </script>
+
 </html>
