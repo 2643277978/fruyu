@@ -100,9 +100,38 @@
 //     }
 // });
 $(document).ready(function(){
+    let  findSibling = ( tag )=>{
+        let  parentEl = tag.parentNode ;
+        let  childs = parentEl.children ;
+        let  siblings = [];
+        for( let i = 0; i <= childs.length - 1 ; i++ ){
+            if( childs[i] === tag  ){
+                continue ;
+            }
+            siblings[ siblings.length] = childs[i];
+        }
+        return siblings ;
+    };
     // 改为鼠标移上的事件只需把click改为mousemove
-    $(".sl").click(function(){
-        $(this).addClass("active");
-        $(this).siblings().removeClass("active");
-    });
+    var sl=$(".sl");
+    // var house=$(".house");
+    var house=$(".house-list");
+    for(let i=0;i<=sl.length-1;i++){
+        sl[i].click(function () {
+            this.className="active";
+            let liSiblings=findSibling(this);
+            for(let i=0;i<=liSiblings.length-1;i++){
+                liSiblings[i].className="sl";
+            }
+            let  blockSibling = findSibling( house[i] );
+            house[i].className="house-list esf-list show";
+            for( let i = 0 ; i <= blockSibling.length-1 ; i++){
+                blockSibling[i].className = "house-list esf-list";
+            }
+        })
+    }
+    // $(".sl").click(function(){
+    //     $(this).addClass("active");
+    //     $(this).siblings().removeClass("active");
+    // });
 });

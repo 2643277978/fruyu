@@ -9,10 +9,10 @@
 .tubiao li span img,.convenience li span img{display: block;height: .85rem;margin: 0 auto;}
 
 /*导航*/
-.hd_dh li.active a span, .hd_dh li.active a span{color: #ff6666;}
 .hd{position: relative;width: 100%;border-top: 1px solid #f4f4f4;;z-index: 1002;background: #fff;margin-top:10px;}
 .hd_dh{height: .8rem}
 .hd>ul{height: .8rem;}
 .hd>ul>li{float: left; padding-left: 20px;width: 6em;height:2em; text-align: center;line-height: 2em;}
 .hd>ul>li:first-child{padding-left: 5px;}
 .hd>ul>li>a>i>span{font-size: 16px;}
+.hd>ul>.active>a>i>span{color: red;}
