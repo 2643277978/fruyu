@@ -228,7 +228,7 @@ $(function() {
 
 	//微信分享
 	// $('.HN_button_tweixin').click(function () {
-		if (navigator.userAgent.toLowerCase().match(/micromessenger/)) {//判断是否是微信
+	// 	if (navigator.userAgent.toLowerCase().match(/micromessenger/)) {//判断是否是微信
 			var desc = wxconfig.description;
 			var link = wxconfig.link;
 			var type;
@@ -249,119 +249,119 @@ $(function() {
 			} else if (name == "cf") {
 				type = 6;
 			}
-			console.log(aid);
-			console.log(type);
+	// 		console.log(aid);
+	// 		console.log(type);
 			var aa = "1";
-			wx.config({
-				debug: false,
-				appId: wxconfig.appId,
-				timestamp: wxconfig.timestamp,
-				nonceStr: wxconfig.nonceStr,
-				signature: wxconfig.signature,
-				jsApiList: ['updateTimelineShareData', 'updateAppMessageShareData', 'onMenuShareWeibo', 'openLocation']
-			});//end config
-			$.ajax({
-				url: "/include/ajax.php?service=member&action=wxShare&aid=" + aid + "&type=" + type,
-				type: "get",
-				crossDomain: true,
-				datatype: "jsonp",
-				success: function (data) {
-					data = JSON.parse(data);
-					var sid = data.info.sid;
-					console.log(sid);
-					wx.ready(function () {
-						wx.updateAppMessageShareData({//分享到朋友或者qq
-							title: wxconfig.title,
-							desc: wxconfig.description,
-							link: link + '?ori=wxShare&sid="+sid',
-							imgUrl: wxconfig.imgUrl,
-							// trigger: function (res) {
-							//     hnShare.closeSRBox();
-							// },
-							success: function () {
-								$.ajax({
-									url: "/include/ajax.php?service=member&action=wxShare&sid=" + sid + "&description=" + desc + "&link=" + link + "&serverid=" + aa,
-									type: "get",
-									datatype: "jsonp",
-									success: function () {
-										// alert("分享成功");
-									}
-								})//end ajax
-							},
-							cancel: function () {
-								// alert("取消分享");
-							}
-						});//end message
-						wx.updateTimelineShareData({//分享给朋友圈或者qq空间
-							title: wxconfig.title,
-							link: link + '?ori=wxShare&sid="+sid',
-							imgUrl: wxconfig.imgUrl,
-							success: function () {
-								$.ajax({
-									url: "/include/ajax.php?service=member&action=wxShare&sid=" + sid + "&description=" + desc + "&link=" + link + "&serverid=" + aa,
-									type: "get",
-									datatype: "jsonp",
-									success: function () {
-										// alert("分享成功");
-									}
-								})//end ajax
-							},
-							cancel: function () {
-							}
-						});//end update
-						wx.onMenuShareAppMessage({//分享朋友
-							title: wxconfig.title,
-							desc: wxconfig.description,
-							link: link + '?ori=wxShare&sid="+sid',
-							imgUrl: wxconfig.imgUrl,
-							// trigger: function (res) {
-							//     hnShare.closeSRBox();
-							// },
-							success: function () {
-								$.ajax({
-									url: "/include/ajax.php?service=member&action=wxShare&sid=" +sid+"&description="+ desc + "&link=" + link + "&serverid=" + aa,
-									type: "get",
-									datatype: "jsonp",
-									success: function () {
-										// alert("分享成功");
-									}
-								})//end ajax
-							},
-							cancel: function () {
-								// alert("取消分享");
-							}
-						});//end on
-						wx.onMenuShareTimeline({//分享朋友圈
-							title: wxconfig.title,
-							desc: wxconfig.description,
-							link: link + '?ori=wxShare&sid="+sid',
-							imgUrl: wxconfig.imgUrl,
-							// trigger: function (res) {
-							//     hnShare.closeSRBox();
-							// },
-							success: function () {
-								$.ajax({
-									url: "/include/ajax.php?service=member&action=wxShare&sid=" + sid + "&description=" + desc + "&link=" + link + "&serverid=" + aa,
-									type: "get",
-									datatype: "jsonp",
-									success: function () {
-										// alert("分享成功");
-									}
-								})//end ajax
-							},
-							cancel: function () {
-								// alert("取消分享");
-							}
-						})//end on
-						});//end ready
-					// }//end date
-				},//end success
-				error: function (data) {
-					// console.log(data);
-				}//error end
-			});//ens ajax
-			// })// end dianji
-		}// end if
+	// 		wx.config({
+	// 			debug: false,
+	// 			appId: wxconfig.appId,
+	// 			timestamp: wxconfig.timestamp,
+	// 			nonceStr: wxconfig.nonceStr,
+	// 			signature: wxconfig.signature,
+	// 			jsApiList: ['updateTimelineShareData', 'updateAppMessageShareData', 'onMenuShareWeibo', 'openLocation']
+	// 		});//end config
+	// 		$.ajax({
+	// 			url: "/include/ajax.php?service=member&action=wxShare&aid=" + aid + "&type=" + type,
+	// 			type: "get",
+	// 			crossDomain: true,
+	// 			datatype: "jsonp",
+	// 			success: function (data) {
+	// 				data = JSON.parse(data);
+	// 				var sid = data.info.sid;
+	// 				console.log(sid);
+	// 				wx.ready(function () {
+	// 					wx.updateAppMessageShareData({//分享到朋友或者qq
+	// 						title: wxconfig.title,
+	// 						desc: wxconfig.description,
+	// 						link: link + '?ori=wxShare&sid="+sid',
+	// 						imgUrl: wxconfig.imgUrl,
+	// 						// trigger: function (res) {
+	// 						//     hnShare.closeSRBox();
+	// 						// },
+	// 						success: function () {
+	// 							$.ajax({
+	// 								url: "/include/ajax.php?service=member&action=wxShare&sid=" + sid + "&description=" + desc + "&link=" + link + "&serverid=" + aa,
+	// 								type: "get",
+	// 								datatype: "jsonp",
+	// 								success: function () {
+	// 									// alert("分享成功");
+	// 								}
+	// 							})//end ajax
+	// 						},
+	// 						cancel: function () {
+	// 							// alert("取消分享");
+	// 						}
+	// 					});//end message
+	// 					wx.updateTimelineShareData({//分享给朋友圈或者qq空间
+	// 						title: wxconfig.title,
+	// 						link: link + '?ori=wxShare&sid="+sid',
+	// 						imgUrl: wxconfig.imgUrl,
+	// 						success: function () {
+	// 							$.ajax({
+	// 								url: "/include/ajax.php?service=member&action=wxShare&sid=" + sid + "&description=" + desc + "&link=" + link + "&serverid=" + aa,
+	// 								type: "get",
+	// 								datatype: "jsonp",
+	// 								success: function () {
+	// 									// alert("分享成功");
+	// 								}
+	// 							})//end ajax
+	// 						},
+	// 						cancel: function () {
+	// 						}
+	// 					});//end update
+	// 					wx.onMenuShareAppMessage({//分享朋友
+	// 						title: wxconfig.title,
+	// 						desc: wxconfig.description,
+	// 						link: link + '?ori=wxShare&sid="+sid',
+	// 						imgUrl: wxconfig.imgUrl,
+	// 						// trigger: function (res) {
+	// 						//     hnShare.closeSRBox();
+	// 						// },
+	// 						success: function () {
+	// 							$.ajax({
+	// 								url: "/include/ajax.php?service=member&action=wxShare&sid=" +sid+"&description="+ desc + "&link=" + link + "&serverid=" + aa,
+	// 								type: "get",
+	// 								datatype: "jsonp",
+	// 								success: function () {
+	// 									// alert("分享成功");
+	// 								}
+	// 							})//end ajax
+	// 						},
+	// 						cancel: function () {
+	// 							// alert("取消分享");
+	// 						}
+	// 					});//end on
+	// 					wx.onMenuShareTimeline({//分享朋友圈
+	// 						title: wxconfig.title,
+	// 						desc: wxconfig.description,
+	// 						link: link + '?ori=wxShare&sid="+sid',
+	// 						imgUrl: wxconfig.imgUrl,
+	// 						// trigger: function (res) {
+	// 						//     hnShare.closeSRBox();
+	// 						// },
+	// 						success: function () {
+	// 							$.ajax({
+	// 								url: "/include/ajax.php?service=member&action=wxShare&sid=" + sid + "&description=" + desc + "&link=" + link + "&serverid=" + aa,
+	// 								type: "get",
+	// 								datatype: "jsonp",
+	// 								success: function () {
+	// 									// alert("分享成功");
+	// 								}
+	// 							})//end ajax
+	// 						},
+	// 						cancel: function () {
+	// 							// alert("取消分享");
+	// 						}
+	// 					})//end on
+	// 					});//end ready
+	// 				// }//end date
+	// 			},//end success
+	// 			error: function (data) {
+	// 				// console.log(data);
+	// 			}//error end
+	// 		});//ens ajax
+	// 		// })// end dianji
+	// 	}// end if
 	// });//end click
 
 	//app之微信分享
@@ -458,63 +458,132 @@ $(function() {
 	// 	}
 	// });// click end
 
-		function openShare() {
-			shareWebview();
-		}
-	mui.plusReady(function() {
-		ws = plus.webview.currentWebview();
-		//关闭splash页面；
-		plus.navigator.closeSplashscreen();
+	mui.init({
+		swipeBack:true //启用右滑关闭功能
 	});
-	var sharew;
-	var ws = null;
+
+	var Intent = null,
+		File = null,
+		Uri = null,
+		main = null;
+	var shares = null;
+	var shareImageUrl = '';
+	mui.plusReady(function() {
+		updateSerivces();
+		if (plus.os.name == "Android") {
+			Intent = plus.android.importClass("android.content.Intent");
+			File = plus.android.importClass("java.io.File");
+			Uri = plus.android.importClass("android.net.Uri");
+			main = plus.android.runtimeMainActivity();
+		}
+	})
 	/**
-	 *分享窗口
+	 * 更新分享服务
 	 */
-	function shareWebview() {
-		ws = plus.webview.currentWebview();
-		if (sharew) { // 避免快速多次点击创建多个窗口
+	function updateSerivces() {
+		plus.share.getServices(function(s) {
+			shares = {};
+			for (var i in s) {
+				var t = s[i];
+				shares[t.id] = t;
+			}
+			outSet("获取分享服务列表成功");
+		}, function(e) {
+			outSet("获取分享服务列表失败：" + e.message);
+		});
+	}
+	/**
+	 * 分享操作
+	 */
+	function shareAction(id, ex) {
+		var s = null;
+		if (!id || !(s = shares[id])) {
+			outLine("无效的分享服务！");
 			return;
 		}
-		var top = plus.display.resolutionHeight - 134;
-		var href = "share.html";
-		sharew = plus.webview.create(href, "{#getUrlPath service=house template=tt#}", {
-			width: '100%',
-			height: '134',
-			top: top,
-			scrollIndicator: 'none',
-			scalable: false,
-			popGesture: 'none'
-		}, {
-			shareInfo: {
-				"href": wxconfig.link,
-				"title": wxconfig.title,
-				"content": wxconfig.description,
-				// "pageSourceId": ws.id
+		if (s.authenticated) {
+			outSet("---已授权---");
+			shareMessage(s, ex);
+		} else {
+			outSet("---未授权---");
+			s.authorize(function() {
+				shareMessage(s, ex);
+			}, function(e) {
+				outLine("认证授权失败");
+			});
+		}
+	}
+	/**
+	 * 发送分享消息
+	 */
+	function shareMessage(s, ex) {
+		var msg = {
+			href: link+ '?ori=wxShare',
+			title:wxconfig.title,
+			content:desc,
+			thumbs: wxconfig.imgUrl,
+			pictures: wxconfig.imgUrl,
+			extra: {
+				scene: ex
 			}
+		};
+		s.send(msg, function() {
+			outLine("分享成功!");
+			$.ajax({
+				url: "/include/ajax.php?service=member&action=wxShare&aid=" + aid + "&type=" + type+"&serverid=" +aa+ "&description=" + desc + "&link=" + link ,
+			    type: "get",
+				datatype: "jsonp",
+				success: function () {
+					// alert("分享成功");
+				}
+				})//end ajax
+		}, function(e) {
+			outLine("分享失败!");
 		});
-		sharew.addEventListener("loaded", function() {
-			sharew.show('slide-in-bottom', 300);
-		}, false);
-		// 显示遮罩层
-		ws.setStyle({
-			mask: "rgba(0,0,0,0.5)"
-		});
-		// 点击关闭遮罩层
-		ws.addEventListener("maskClick", closeMask, false);
+	}
+	/**
+	 * 分享按钮点击事件
+	 */
+	function shareHref() {
+		var ids = [{
+				id: "weixin",
+				ex: "WXSceneSession"  /*微信好友*/
+			}, {
+				id: "weixin",
+				ex: "WXSceneTimeline" /*微信朋友圈*/
+			}, {
+				id: "qq"   /*QQ好友*/
+			},{
+				id: "sinaweibo"  /*新浪微博*/
+			}],
+			bts = [{
+				title: "发送给微信好友"
+			}, {
+				title: "分享到微信朋友圈"
+			}, {
+				title: "分享到QQ"
+			}, {
+				title: "分享到新浪微博"
+			}];
+		plus.nativeUI.actionSheet({
+				cancel: "取消",
+				buttons: bts
+			},
+			function(e) {
+				var i = e.index;
+				if (i > 0) {
+					shareAction(ids[i - 1].id, ids[i - 1].ex);
+				}
+			}
+		);
+	}
+	// 控制台输出日志
+	function outSet(msg) {
+		console.log(msg);
+	}
+	// 界面弹出吐司提示
+	function outLine(msg) {
+		mui.toast(msg);
 	}
 
-	function closeMask() {
-		ws.setStyle({
-			mask: "none"
-		});
-		//避免出现特殊情况，确保分享页面在初始化时关闭
-		if (!sharew) {
-			sharew = plus.webview.getWebviewById("share.html");
-		}
-		if (sharew) {
-			sharew.close();
-			sharew = null;
-		}
-	}
 });
