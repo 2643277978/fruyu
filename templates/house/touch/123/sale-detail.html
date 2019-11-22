@@ -24,7 +24,11 @@
     var JubaoConfig = {
 		"module" : 'house',
 		"action" : 'sale',
-		"id" : '{#$detail_id#}'
+		"id" : '{#$detail_id#}',
+        "desc": '{#$mbody#}',
+        "title": '{#$detail_title#}',
+        "imgUrl": '{#$detail_litpic#}',
+        "link":'{#getUrlPath service='house'  template='sale-detail' id={#$detail_id#}#}',
 	};
 </script>
 </head>
@@ -282,6 +286,7 @@
         "description": '{#$mbody#}',
         "title": '{#$detail_title#}',
         "imgUrl": '{#$detail_litpic#}',
+        "link":'{#getUrlPath service='house'  template='sale-detail' id={#$detail_id#}#}',
     };
     document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
 </script>

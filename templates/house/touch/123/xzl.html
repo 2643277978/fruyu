@@ -14,6 +14,15 @@
 	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', staticPath = '{#$cfg_staticPath#}', templets_skin = '{#$templets_skin#}';
 	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
 	var action = 'xzlList', detailListId = 'xzl-list';
+	var JubaoConfig = {
+		"module" : 'house',
+		"action" : 'xzl',
+		"id" : '',
+		"desc": '{#$house_description#}',
+		"title": '{#$siteCityInfo['name']#}{#$sp_seotitle#}写字楼{#$pageType#}',
+		"imgUrl": '{#$house_logoUrl#}',
+		"link": '{#getUrlPath service='house' template='xzl'#}',
+	};
 </script>
 </head>
 

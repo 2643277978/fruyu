@@ -19,7 +19,11 @@
 	var JubaoConfig = {
 		"module" : 'house',
 		"action" : 'loupan',
-		"id" : '{#$detail_id#}'
+		"id" : '{#$detail_id#}',
+		"desc": '{#$detail_title#}',
+		"title": '{#$hx_title#}',
+		"imgUrl": '{#$hx_imglist[0]['path']#}',
+		"link": '{#getUrlPath service='house'  template='loupan-hx-detail' id={#$detail_id#} aid={#$hx_id#}#}',
 	};
 </script>
 </head>

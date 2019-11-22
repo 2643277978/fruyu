@@ -27,7 +27,11 @@
 	var JubaoConfig = {
 		"module" : 'house',
 		"action" : 'sp',
-		"id" : '{#$detail_id#}'
+		"id" : '{#$detail_id#}',
+		"desc": '{#$mbody#}',
+		"title": '{#$detail_title#}',
+		"imgUrl": '{#$detail_litpic#}',
+		"link": '{#getUrlPath service='house'  template='sp-detail' id={#$detail_id#}#}',
 	};
 	var cookiePre = '{#$cfg_cookiePre#}';
 </script>

@@ -15,6 +15,15 @@
 
 	var hideFileUrl = {#$cfg_hideUrl#};
 	var cookiePre = '{#$cfg_cookiePre#}';
+	var JubaoConfig = {
+		"module" : 'house',
+		"action" : 'loupan',
+		"id" : '{#$detail_id#}',
+		"desc": '{#$detail_title#}',
+		"title": '{#$detail_title#}',
+		"imgUrl": '{#$detail_litpic#}',
+		"link": '{#getUrlPath service='house'  template='news-detail' id={#$detail_id#} aid={#$news_id#}#}',
+	};
 </script>
 </head>
 

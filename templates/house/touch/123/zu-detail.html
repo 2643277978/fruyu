@@ -19,7 +19,7 @@
 	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
 
 	var pageData = {
-		id: {#$detail_id#},
+		id: '{#$detail_id#}',
 		title: '{#$detail_community#}',
 		address: '{#$detail_address#}',
 		lat: '{#$detail_latitude#}',
@@ -27,14 +27,17 @@
 		mapType: '{#$site_map#}',
 		cityName: '{#$siteCityInfo['name']#}',
 		mapKey: '{#$site_map_key#}',
-    title: '{#$detail_title#}'
 	};
 	var page_type = 'zu';
 
 	var JubaoConfig = {
 		"module" : 'house',
 		"action" : 'zu',
-		"id" : '{#$detail_id#}'
+		"id" : '{#$detail_id#}',
+		"desc": '{#$mbody#}',
+		"title": '{#$detail_title#}',
+		"imgUrl": '{#$detail_litpic#}',
+		"link": '{#getUrlPath service='house'  template='zu-detail' id={#$detail_id#}#}',
 	};
 </script>
 </head>

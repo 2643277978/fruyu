@@ -16,6 +16,15 @@
 	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', staticPath = '{#$cfg_staticPath#}', templets_skin = '{#$templets_skin#}';
 	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
     var aid = {#$detail_id#};
+    var JubaoConfig = {
+        "module" : 'house',
+        "action" : 'demand',
+        "id" : '{#$detail_id#}',
+        "desc": '{#$house_description#}',
+        "title": '{#$detail_title#}',
+        "imgUrl": '{#$house_logoUrl#}',
+        "link": '{#getUrlPath service='house' template='demand-detail' id={#$detail_id#}#}',
+    };
 </script>
 </head>
 

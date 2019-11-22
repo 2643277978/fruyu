@@ -19,8 +19,12 @@
     var page_type = 'sale';
     var JubaoConfig = {
 		"module" : 'house',
-		"action" : 'sale',
-		"id" : '{#$detail_id#}'
+		"action" : 'community',
+		"id" : '{#$detail_id#}',
+        "desc": '{#$mbody#}',
+        "title": '{#$detail_title#}',
+        "imgUrl": '{#$detail_litpic#}',
+        "link":'{#getUrlPath service='house'  template='community-detail' id={#$detail_id#}#}',
 	};
   var detail_video = '{#$detail_video#}';
 

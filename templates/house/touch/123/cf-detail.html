@@ -24,19 +24,17 @@
 		mapType: '{#$site_map#}',
 		cityName: '{#$siteCityInfo['name']#}',
 		mapKey: '{#$site_map_key#}',
-    title: '{#$detail_title#}'
 	};
 	var JubaoConfig = {
 		"module" : 'house',
 		"action" : 'cf',
-		"id" : '{#$detail_id#}'
+		"id" : '{#$detail_id#}',
+		"link":'{#getUrlPath service='house'  template='cf-detail' id={#$detail_id#}#}',
+		"desc":'{#$detail_address#}',
+		"imgUrl": '{#$detail_litpic#}',
+		'title': '{#$detail_title#}',
 	};
-	// var id=JubaoConfig['id'];
-	// var type=JubaoConfig['action'];
-	// console.info(id);
-	// console.info(type);
   var page_type = 'cf';
-
 </script>
 </head>
 
@@ -296,6 +294,7 @@
 		"description": '{#$mbody#}',
 		"title": '{#$detail_title#}',
 		"imgUrl": '{#$detail_litpic#}',
+		"link":'{#getUrlPath service='house'  template='cf-detail' id={#$detail_id#}#}',
 	};
 	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
 </script>

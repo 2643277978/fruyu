@@ -10,7 +10,6 @@
 <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/estate-list.css?v={#$cfg_staticVersion#}">
 <script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
 <script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
-<script type="text/javascript" src="{#$cfg_staticPath#}js/publicShare.js?v={#$cfg_staticVersion#}"></script>
 <script type="text/javascript">
 	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', cfg_staticPath = '{#$cfg_staticPath#}', staticPath = '{#$cfg_staticPath#}',templets_skin = '{#$templets_skin#}';
 
@@ -18,6 +17,15 @@
 	var addrUrl     = '{#getUrlPath service="house" template="list" typeid="{#$list_id#}" addrid="%addr%" business="%circle%" subway="0" param="{#$skeyword#}"#}';
 	var subwayUrl   = '{#getUrlPath service="house" template="list" typeid="{#$list_id#}" addrid="0" business="0" subway="%subway%" station="%station%" param="{#$skeyword#}"#}';
 	var action = 'loupanList', detailListId = 'loupan-list';
+    var JubaoConfig = {
+        "module" : 'house',
+        "action" : 'loupan',
+        "id" : '',
+        "desc": '{#$house_description#}',
+        "title": '{#$siteCityInfo['name']|cat:'新房'#}',
+        "imgUrl": '{#$house_logoUrl#}',
+        "link": '{#getUrlPath service='house' template='loupan'#}',
+    };
 </script>
 </head>
 

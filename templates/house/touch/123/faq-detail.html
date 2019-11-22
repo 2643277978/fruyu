@@ -13,6 +13,15 @@
 <script type="text/javascript" src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
 <script type="text/javascript">
   var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', cfg_staticPath = '{#$cfg_staticPath#}', staticPath = '{#$cfg_staticPath#}';
+  JubaoConfig = {
+    "module" : 'house',
+    "action" : 'loupan',
+    "id" : '{#$detail_id#}',
+    "desc": '{#$house_description#}',
+    "title": '{#$detail_title#}',
+    "imgUrl": '{#$house_logoUrl#}',
+    "link": '{#getUrlPath service='house' template='faq-detail' id={#$detail_id#}#}',
+  };
 </script>
 </head>
 

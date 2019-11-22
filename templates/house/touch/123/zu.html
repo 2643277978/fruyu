@@ -17,6 +17,15 @@
 	var addrUrl     = '{#getUrlPath service="house" template="list" typeid="{#$list_id#}" addrid="%addr%" business="%circle%" subway="0" param="{#$skeyword#}"#}';
 	var subwayUrl   = '{#getUrlPath service="house" template="list" typeid="{#$list_id#}" addrid="0" business="0" subway="%subway%" station="%station%" param="{#$skeyword#}"#}';
 	var action = 'zuList', detailListId = 'house-list';
+	var JubaoConfig = {
+		"module" : 'house',
+		"action" : 'zu',
+		"id" : '',
+		"desc": '{#$house_description#}',
+		"title": '{#$tit#}',
+		"imgUrl": '{#$house_logoUrl#}',
+		"link": '{#getUrlPath service='house' template='zu'#}',
+	};
 </script>
 </head>
 

@@ -36,7 +36,11 @@
 	var JubaoConfig = {
 		"module" : 'house',
 		"action" : 'cw',
-		"id" : '{#$detail_id#}'
+		"id" : '{#$detail_id#}',
+		"desc": '{#$mbody#}',
+		"title": '{#$detail_title#}',
+		"imgUrl": '{#$detail_litpic#}',
+		"link": '{#getUrlPath service='house'  template='cw-detail' id={#$detail_id#}#}',
 	};
 	var detail_video='{#$detail_video#}';
 	var cookiePre = '{#$cfg_cookiePre#}';

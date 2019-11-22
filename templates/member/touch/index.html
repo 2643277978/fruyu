@@ -58,7 +58,7 @@
   {#*<li><a href="{#getUrlPath service='member' type='user' template='history'#}"><i class="icon-history"></i>浏览历史</a></li>*#}
   {#*<li><a href="{#getUrlPath service='member' type='user' template='friend'#}"><i class="icon-friend"></i>我的好友</a></li>*#}
   {#if !$is_ios_app || !$cfg_ios_shelf#}
-  {#if !$userinfo || $userinfo.userType == 1#}<li><a href="{#getUrlPath service='member' type='user' template='upgrade'#}"><i class="icon-vip"></i>会员中心</a></li>{#/if#}
+  {#if !$userinfo || $userinfo.userType == 1#}<li><a href="{#getUrlPath service=house template=weixin#}"><i class="icon-vip"></i>会员中心</a></li>{#/if#}
   {#/if#}
   {#*<li><a href="{#getUrlPath service='member' type='user' template='task'#}"><i class="icon-task"></i>任务中心</a></li>*#}
   {#*<li><a href="{#getUrlPath service='member' type='user' template='invite'#}"><i class="icon-invite"></i>邀请返利</a></li>*#}

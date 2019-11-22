@@ -18,6 +18,15 @@
 	var subwayUrl   = '{#getUrlPath service="house" template="list" typeid="{#$list_id#}" addrid="0" business="0" subway="%subway%" station="%station%" param="{#$skeyword#}"#}';
 	var action = 'spList', detailListId = 'sp-list';
 	var type = '{#$type#}';
+	var JubaoConfig = {
+		"module" : 'house',
+		"action" : 'sp',
+		"id" : '',
+		"desc": '{#$house_description#}',
+		"title": '{#$siteCityInfo['name']#}{#$sp_seotitle#}商铺{#$pageType#}',
+		"imgUrl": '{#$house_logoUrl#}',
+		"link": '{#getUrlPath service='house' template='sp'#}',
+	};
 </script>
 </head>
 

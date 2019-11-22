@@ -25,6 +25,15 @@
 	};
 	var comid='{#$storeId#}';
 	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	var JubaoConfig = {
+		"module" : 'house',
+		"action" : 'store',
+		"id" : '{#$detail_id#}#}',
+		"desc": '{#$detail_address#}',
+		"title": '{#$detail_title#}',
+		"imgUrl": '{#$detail_litpic#}',
+		"link": '{#getUrlPath service='house'  template='store-detail' id={#$detail_id#}#}',
+	};
 </script>
 
 </head>

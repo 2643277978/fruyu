@@ -19,7 +19,11 @@
 	var JubaoConfig = {
         "module" : 'house',
         "action" : 'loupan',
-        "id" : '{#$detail_id#}'
+        "id" : '{#$detail_id#}',
+        "desc": '{#$detail_title#}',
+        "title": '{#$detail_title#}',
+        "imgUrl": '{#$detail_litpic#}',
+        "link": '{#getUrlPath service="house" template="loupan-news" id={#$detail_id#}#}',
     };
 </script>
 </head>

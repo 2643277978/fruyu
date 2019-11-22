@@ -41,7 +41,7 @@
 					</a>
 				</li>
 				<li class="HN_PublicShare" style="display: block !important;">
-					<a class="mui-icon mui-icon-redo" onclick="shareHref()">
+					<a onclick="shareHref()">
 						<i><img src="{#$cfg_staticPath#}/images/top_fast5.png"/></i>
 						<p>分享</p>
 					</a>
@@ -243,12 +243,12 @@
 	    }
 		$('#navBox_4 .close_btn,#shearBg').click(function(){
 			closeShearBox()
-		})
+		});
 		$('#navlist_4 li').click(function(){
 	        setTimeout(function(){
 	            closeShearBox();
 	        }, 500);
-	    })
+	    });
 		function closeShearBox(){
 		    $('.fixFooter').show();
 		    $('.header').removeClass('open');
@@ -264,7 +264,6 @@
 		       dataType: "json",
 		       timeout: 3000,
 		       success: function (data) {
-
 			       var html = [];
 			       if(data.state == 100){
 			       	var info = data.info.pageInfo;
@@ -294,8 +293,6 @@
 		}else{
 			setInterval(getnum,5000)
 		}
-
-
 </script>
 <script src="{#$templets_skin#}js/mui.min.js?v={#$cfg_staticVersion#}"></script>
 <script src="{#$templets_skin#}js/mui.zoom.js?v={#$cfg_staticVersion#}"></script>
@@ -308,8 +305,13 @@
     var imgUrl= JubaoConfig.imgUrl;
     var type;
     // var type=1;
-    // var aid="1";
-    var aid = JubaoConfig.id;
+    var aid;
+    // var aid = JubaoConfig.id;
+    if(aid == JubaoConfig.id){
+		aid = JubaoConfig.id
+	}else {
+    	aid="";
+	}
     var name = JubaoConfig.action;
     if (name == "loupan") {
         type = 1;
@@ -323,7 +325,9 @@
         type = 5;
     } else if (name == "cf") {
         type = 6;
-    }
+    }else {
+    	type="";
+	}
     // console.log(aid);
     // console.log(type);
     // console.log(desc);
@@ -334,7 +338,6 @@
     mui.init({
         swipeBack:true //启用右滑关闭功能
     });
-
     var Intent = null,
         File = null,
         Uri = null,
@@ -402,14 +405,14 @@
         };
         s.send(msg, function() {
             outLine("分享成功!");
-            // $.ajax({
-            // 	url: "/include/ajax.php?service=member&action=wxShare&aid=" + aid + "&type=" + type+"&serverid=" +aa+ "&description=" + desc + "&link=" + link ,
-            //     type: "get",
-            // 	datatype: "jsonp",
-            // 	success: function () {
-            // 		// alert("分享成功");
-            // 	}
-            // 	})//end ajax
+            $.ajax({
+            	url: "/include/ajax.php?service=member&action=wxShare&aid=" + aid + "&type=" + type +"&serverid=" +aa+ "&description=" + desc + "&link=" + link ,
+                type: "get",
+            	datatype: "jsonp",
+            	success: function () {
+            		// alert("分享成功");
+            	}
+            	})//end ajax
         }, function(e) {
             outLine("分享失败!");
         });
