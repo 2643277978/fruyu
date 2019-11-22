@@ -41,7 +41,7 @@
 					</a>
 				</li>
 				<li class="HN_PublicShare" style="display: block !important;">
-					<a onclick="shareHref()">
+					<a class="fx">
 						<i><img src="{#$cfg_staticPath#}/images/top_fast5.png"/></i>
 						<p>分享</p>
 					</a>
@@ -298,6 +298,17 @@
 <script src="{#$templets_skin#}js/mui.zoom.js?v={#$cfg_staticVersion#}"></script>
 <script src="{#$templets_skin#}js/mui.previewimage.js?v={#$cfg_staticVersion#}"></script>
 <script type="text/javascript">
+	$(".fx").click(function () {
+		var userid;
+		if(cookiePre){
+			userid = $.cookie(cookiePre+"login_user");
+		}
+		if(userid == null || userid == " "){
+			location.href="{#$cfg_basehost#}/login.html"
+		}else{
+		    shareHref();
+		}
+	});
     // $(function () {
     var desc = JubaoConfig.desc;
     var link = JubaoConfig.link;
@@ -305,12 +316,12 @@
     var imgUrl= JubaoConfig.imgUrl;
     var type;
     // var type=1;
-    var aid;
-    // var aid = JubaoConfig.id;
-    if(aid == JubaoConfig.id){
-		aid = JubaoConfig.id
+    // var aid;
+    var aid = JubaoConfig.id;
+    if(aid == ""){
+		aid = "";
 	}else {
-    	aid="";
+		aid = JubaoConfig.id
 	}
     var name = JubaoConfig.action;
     if (name == "loupan") {
@@ -441,7 +452,7 @@
             }, {
                 title: "分享到新浪微博"
             }];
-        plus.nativeUI.actionSheet({
+          plus.nativeUI.actionSheet({
                 cancel: "取消",
                 buttons: bts
             },

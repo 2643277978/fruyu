@@ -10,7 +10,10 @@
 
 /*导航*/
 .hd{position: relative;width: 100%;border-top: 1px solid #f4f4f4;;z-index: 1002;background: #fff;margin-top:10px;}
+.list>.esf-list{display: none;}
+.list>.esf-list:first-child{display: block;}
 .hd_dh{height: .8rem}
+.house-list.show{display: block;}
 .hd>ul{height: .8rem;}
 .hd>ul>li{float: left; padding-left: 20px;width: 6em;height:2em; text-align: center;line-height: 2em;}
 .hd>ul>li:first-child{padding-left: 5px;}

@@ -6,8 +6,6 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <title>微信访客</title>
     <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
-    <!--<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">-->
-    <!--<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/estate-list.css?v={#$cfg_staticVersion#}">-->
     <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/weixin.css?v={#$cfg_staticVersion#}">
     <script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
     <script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
@@ -45,42 +43,35 @@
                     <td>转发量</td>
                 </tr>
                 <tr>
-                    <th>新房</th>
+                    <th>店铺</th>
                     <th>0</th>
                     <th>0</th>
                     <th>0</th>
                     <th>0</th>
                 </tr>
                 <tr>
-                    <th>二手房</th>
+                    <th>楼盘</th>
                     <th>0</th>
                     <th>0</th>
                     <th>0</th>
                     <th>0</th>
                 </tr>
                 <tr>
-                    <th>租房</th>
+                    <th>文章</th>
                     <th>0</th>
                     <th>0</th>
                     <th>0</th>
                     <th>0</th>
                 </tr>
                 <tr>
-                    <th>商铺</th>
+                    <th>海报</th>
                     <th>0</th>
                     <th>0</th>
                     <th>0</th>
                     <th>0</th>
                 </tr>
                 <tr>
-                    <th>写字楼</th>
-                    <th>0</th>
-                    <th>0</th>
-                    <th>0</th>
-                    <th>0</th>
-                </tr>
-                <tr>
-                    <th>厂房</th>
+                    <th>名片</th>
                     <th>0</th>
                     <th>0</th>
                     <th>0</th>
@@ -116,10 +107,10 @@
         "timestamp": '{#$wxjssdk_timestamp#}',
         "nonceStr": '{#$wxjssdk_nonceStr#}',
         "signature": '{#$wxjssdk_signature#}',
-        "description": '{#$house_description#}',
-        "title": '{#$siteCityInfo['name']#}{#$sp_seotitle#}写字楼{#$pageType#}',
-        "imgUrl": '{#$house_logoUrl#}',
-        "link": '{#getUrlPath service='house' template='xzl'#}',
+        // "description": '{#$house_description#}',
+        // "title": '{#$siteCityInfo['name']#}{#$sp_seotitle#}写字楼{#$pageType#}',
+        // "imgUrl": '{#$house_logoUrl#}',
+        // "link": '{#getUrlPath service='house' template='xzl'#}',
     };
     document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
 </script>
