@@ -339,13 +339,9 @@
     }else {
     	type="";
 	}
-    // console.log(aid);
-    // console.log(type);
-    // console.log(desc);
-    // console.log(link);
-    // console.log(title);
-    // console.log(imgUrl);
-    var aa = "1";
+    var serverid = "1";
+	// var url ="/include/ajax.php?service=member&action=wxShare&aid=" + aid + "&type=" + type +"&serverid=" +serverid+ "&description=" + desc + "&link=" + link ;
+	// console.log(url);
     mui.init({
         swipeBack:true //启用右滑关闭功能
     });
@@ -364,6 +360,7 @@
             main = plus.android.runtimeMainActivity();
         }
     });
+
     /**
      * 更新分享服务
      */
@@ -414,19 +411,19 @@
                 scene: ex
             }
         };
-        s.send(msg, function() {
-            outLine("分享成功!");
-            $.ajax({
-            	url: "/include/ajax.php?service=member&action=wxShare&aid=" + aid + "&type=" + type +"&serverid=" +aa+ "&description=" + desc + "&link=" + link ,
-                type: "get",
-            	datatype: "jsonp",
-            	success: function () {
-            		// alert("分享成功");
-            	}
-            	})//end ajax
-        }, function(e) {
-            outLine("分享失败!");
-        });
+		$.ajax({
+			url: "/include/ajax.php?service=member&action=wxShare&aid=" + aid + "&type=" + type +"&serverid=" +serverid+ "&description=" + desc + "&link=" + link ,
+			type: "get",
+			datatype: "jsonp",
+			success: function () {
+				// alert("分享成功");
+				s.send(msg, function() {
+					outLine("分享成功!");
+				}, function(e) {
+					outLine("分享失败!");
+				});
+			}
+		})//end ajax
     }
     /**
      * 分享按钮点击事件
