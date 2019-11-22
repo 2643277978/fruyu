@@ -229,12 +229,13 @@ $(function() {
 	//微信分享
 	// $('.HN_button_tweixin').click(function () {
 	// 	if (navigator.userAgent.toLowerCase().match(/micromessenger/)) {//判断是否是微信
-			var desc = wxconfig.description;
-			var link = wxconfig.link;
+			var desc = pageData.desc;
+			var link = pageData.link;
+			var title = pageData.title;
 			var type;
 			// var type=1;
 			// var aid="1";
-			var aid = JubaoConfig.id;
+			var aid = pageData.id;
 			var name = JubaoConfig.action;
 			if (name == "loupan") {
 				type = 1;
@@ -529,14 +530,14 @@ $(function() {
 		};
 		s.send(msg, function() {
 			outLine("分享成功!");
-			$.ajax({
-				url: "/include/ajax.php?service=member&action=wxShare&aid=" + aid + "&type=" + type+"&serverid=" +aa+ "&description=" + desc + "&link=" + link ,
-			    type: "get",
-				datatype: "jsonp",
-				success: function () {
-					// alert("分享成功");
-				}
-				})//end ajax
+			// $.ajax({
+			// 	url: "/include/ajax.php?service=member&action=wxShare&aid=" + aid + "&type=" + type+"&serverid=" +aa+ "&description=" + desc + "&link=" + link ,
+			//     type: "get",
+			// 	datatype: "jsonp",
+			// 	success: function () {
+			// 		// alert("分享成功");
+			// 	}
+			// 	})//end ajax
 		}, function(e) {
 			outLine("分享失败!");
 		});
