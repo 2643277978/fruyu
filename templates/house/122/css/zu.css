@@ -72,7 +72,7 @@ body,html{background-color: #fff;}
 .main .lplist li .ivr{width: 60px;height: 60px;display: block;background: url(../images/vr.gif) no-repeat center center;background-size: cover;position: absolute;left:0;bottom:0;}
 .main .lplist li .markbox{position: absolute;top:0;left:0;font-size: 12px;color:#fff;}
 .main .lplist li .markbox .m_mark{width: 50px;height: 24px;line-height: 22px;-webkit-border-radius: 0 0 10px 0; -moz-border-radius: 0 0 10px 0;border-radius: 0 0 10px 0;color:#fff;text-align: center;display: block;position: absolute;left:0;z-index: 2;}
-.main .lplist li .markbox .m_zj{background: -moz-linear-gradient( 0deg, rgb(255,162,0) 0%, rgb(255,195,11) 100%);background: -webkit-linear-gradient( 0deg, rgb(255,162,0) 0%, rgb(255,195,11) 100%);background: -ms-linear-gradient( 0deg, rgb(255,162,0) 0%, rgb(255,195,11) 100%);}
+/*.main .lplist li .markbox .m_zj{background: -moz-linear-gradient( 0deg, rgb(255,162,0) 0%, rgb(255,195,11) 100%);background: -webkit-linear-gradient( 0deg, rgb(255,162,0) 0%, rgb(255,195,11) 100%);background: -ms-linear-gradient( 0deg, rgb(255,162,0) 0%, rgb(255,195,11) 100%);}*/
 .main .lplist li .markbox .m_gr{background: -moz-linear-gradient( 0deg, rgb(34,112,255) 0%, rgb(87,142,255) 100%);background: -webkit-linear-gradient( 0deg, rgb(34,112,255) 0%, rgb(87,142,255) 100%);background: -ms-linear-gradient( 0deg, rgb(34,112,255) 0%, rgb(87,142,255) 100%);}
 
 

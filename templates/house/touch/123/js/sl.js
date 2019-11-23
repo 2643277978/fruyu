@@ -6,7 +6,9 @@
             // 另一种方法:  $(".house-list").eq($(".sl").index(this)).addClass("show").siblings().removeClass('show');
         });
     });
+$(function () {
 
+    var device = navigator.userAgent, isClick = true;
     function getSpList(tr,a,b){
 
         isload = true;
@@ -146,8 +148,11 @@
             }
         });//end ajax
     }
-
-    getSpList(1,$(".maiSp"),$(".maiSp .loading"));
+    $(".buysp").click(function () {
+        var type="type";
+        $(".buysp").attr("data-id",'');
+        getSpList(1,$(".maiSp"),$(".maiSp .loading"));
+    })
     getSpList(1,$(".zuSp"),$(".zuSp .loading"));
 
     function getList(tr,a,b){
@@ -175,9 +180,6 @@
         //请求数据
         var data = [];
         data.push("pageSize="+pageSize);
-        // data.push("type="+$('#sptype').val());
-
-        // var tabArea = $(".tab-area"), areaType = tabArea.attr("data-type"),
         var areaType,
             addrid = 0, business = 0;
 
@@ -190,32 +192,11 @@
         }
         data.push("addrid="+addrid);
 
-        // var price = $(".tab-price").attr("data-id");
         var price = 0;
-        // price = price == undefined ? "" : price;
-        // if(price != ""){
-        //     data.push("price="+price);
-        // }
 
-        // var type = $(".tab-type").attr("data-id");
-        // type = type == undefined ? "" : type;
-        // if(type != ""){
-        //     data.push("area="+type);
-        // }
         var type=0;
         var genre=0;
-        // var genre = $(".tab-genre").attr("data-id");
-        // genre = genre == undefined ? "0" : genre;
-        // if(genre != ""){
-        //     data.push("type="+genre);
-        // }
 
-
-        // var protype = $(".tab-more").attr("data-id");
-        // protype = protype == undefined ? "" : protype;
-        // if(protype != ""){
-        //     data.push("protype="+protype);
-        // }
         var protype=0;
 
         data.push("page="+atpage);
@@ -229,7 +210,7 @@
             type: "GET",
             dataType: "jsonp",
             success: function (data) {
-                console.log(data);
+                // console.log(data);
                 if(data){
                     if(data.state == 100){
                         b.remove();
@@ -315,5 +296,20 @@
             }
         });
     }
-    getList(1,$(".maiXzl"),$(".maiXzl .loading"));
-    getList(1,$(".zuXzl"),$(".zuXzl .loading"));
+    $(".zuxzl").click(function () {
+        var t = $(this), dom = t.find('a').html();
+        isClick = true;
+        var area = "";
+        var type="0";
+        area = area == undefined ? "" : area;
+        getList(1,$(".zuXzl"),$(".zuXzl .loading"));
+    })
+    $(".buyxzl").click(function () {
+        var t = $(this), dom = t.find('a').html();
+        isClick = true;
+        var area = "";
+        var type="1";
+        area = area == undefined ? "" : area;
+        getList(1,$(".maiXzl"),$(".maiXzl .loading"));
+    })
+});

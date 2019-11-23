@@ -148,7 +148,7 @@
 		<div class="list_d leixin"><span>类型：</span><span>{#$detail_buildtype#}</span></div>
 		<div class="list_d kaipan"><span>开盘：</span><span>{#if $detail_deliverdate#}预计{#$detail_deliverdate|date_format:'%Y'#}年{#$detail_deliverdate|date_format:'%m'#}月{#$detail_deliverdate|date_format:'%d'#}日{#else#}待定{#/if#}</div>
 		<div class="list_d dizhi"><a href="javascript:;"  class="appMapBtn" target="_blank"><span>地址：</span><span>{#$detail_addr[$detail_addr|count-2]#} {#$detail_addr[$detail_addr|count-1]#} {#$detail_address#}</span></a></div>
-		<div class="label fn-clear"><span>{#$detail_zhuangxiu#}</span><span>{#$detail_protype#}</span><p class="fenxiang HN_PublicShare" onclick="shareHref()">分享</p></div>
+		<div class="label fn-clear"><span>{#$detail_zhuangxiu#}</span><span>{#$detail_protype#}</span><p class="fenxiang HN_PublicShare">分享</p></div>
 		<a href="{#getUrlPath service='house' template='loupan-info' id={#$detail_id#}#}" class="gengduo">更多楼盘信息</a>
 		<!--<div class="building_phone">-->
 			<!--<img src="{#$templets_skin#}images/d_p.png">-->

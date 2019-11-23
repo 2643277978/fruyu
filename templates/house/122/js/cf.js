@@ -448,7 +448,7 @@ $(function () {
                             html.push('<i class="ivr"></i>');
                         }
                         html.push('</a>');
-                        html.push('<div class="markbox"><span class="m_mark m_zj">中介</span></div>');
+                        html.push('<div class="markbox"><span class="m_mark m_zj"></span></div>');
                         html.push('</div>');
                         html.push('<div class="infobox fn-left">');
                         html.push('<div class="lptit fn-clear"> ');
