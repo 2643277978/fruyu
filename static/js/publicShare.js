@@ -229,30 +229,30 @@ $(function() {
 	//微信分享
 	// $('.HN_button_tweixin').click(function () {
 	// 	if (navigator.userAgent.toLowerCase().match(/micromessenger/)) {//判断是否是微信
-			var desc = pageData.desc;
-			var link = pageData.link;
-			var title = pageData.title;
-			var type;
-			// var type=1;
-			// var aid="1";
-			var aid = pageData.id;
-			var name = JubaoConfig.action;
-			if (name == "loupan") {
-				type = 1;
-			} else if (name == "sale") {
-				type = 2;
-			} else if (name == "zu") {
-				type = 3;
-			} else if (name == "sp") {
-				type = 4;
-			} else if (name == "xzl") {
-				type = 5;
-			} else if (name == "cf") {
-				type = 6;
-			}
-	// 		console.log(aid);
-	// 		console.log(type);
-			var aa = "1";
+	// 		var desc = pageData.desc;
+	// 		var link = pageData.link;
+	// 		var title = pageData.title;
+	// 		var type;
+	// 		// var type=1;
+	// 		// var aid="1";
+	// 		var aid = pageData.id;
+	// 		var name = JubaoConfig.action;
+	// 		if (name == "loupan") {
+	// 			type = 1;
+	// 		} else if (name == "sale") {
+	// 			type = 2;
+	// 		} else if (name == "zu") {
+	// 			type = 3;
+	// 		} else if (name == "sp") {
+	// 			type = 4;
+	// 		} else if (name == "xzl") {
+	// 			type = 5;
+	// 		} else if (name == "cf") {
+	// 			type = 6;
+	// 		}
+	// // 		console.log(aid);
+	// // 		console.log(type);
+	// 		var aa = "1";
 	// 		wx.config({
 	// 			debug: false,
 	// 			appId: wxconfig.appId,
@@ -367,80 +367,80 @@ $(function() {
 
 	//app之微信分享
 
-     //  document.addEventListener('plusready',function () {
-		//   //获取分享服务列表
-     //   plus.share.getServices(function(s) {
-     //   shares = ss;
-     //   for (var i in ss ) {
-     //       var s = ss[i];
-     //       var item = document.createElement("li");
-     //       item.setAttribute("class", "ditem");
-     //       item.setAttribute("onclick", (s.id == "weixin") ? "shareWeiXin(this.plusShare)" : "shareAction(this.plusShare)");
-     //       item.innerText = s.description;
-     //       item.plusShare = s;
-     //       list.appendChild(item);
-     //   }
-     //   }, function(e) {
-     //   alert("获取分享服务列表失败：" + e.message);
-     //   });
-		//
-		// //是否授权
-		// function shareAction(s, ex) {
-		// outSet("分享操作：");
-		// if (!s) {
-		//     outLine("无效的分享服务！");
-		//     return;
-		// }
-		// if (s.authenticated) {
-		//     outLine("---已授权---");
-		//     shareMessage(s, ex);
-		// } else {
-		//     outLine("---未授权---");
-		//     s.authorize(function() {
-		//         shareMessage(s, ex);
-		//     }, function(e) {
-		//         outLine("认证授权失败：" + e.code + " - " + e.message);
-		//     });
-		// }
-		// }
-		//
-		// //分享内容
-		// function shareMessage(s,ex){
-		// var msg={
-		// 	title:wxconfig.title,
-		// 	content:wxconfig.description,
-		// 	herf:wxconfig.link,
-		// 	pictures:wxconfig.imgUrl,
-		// 	extra:{scene:ex},
-		// 	};
-		// // if(pic&&pic.realUrl){
-		// //     msg.pictures=[pic.realUrl];
-		// // }
-		// s.send( msg, function(){
-		//     alert( "分享到\""+s.description+"\"成功！ " );
-		// }, function(e){
-		//     alert( "分享到\""+s.description+"\"失败: "+e.code+" - "+e.message );
-		// } );
-		// }
-		// //分享按钮点击事件
-		//
-	 //
-	 // //取消分享
-	 // function cancelAuth(){try{
-	 //
-	 // for ( var i in shares ) {
-	 //     var s = shares[i];
-	 //     if ( s.authenticated ) {
-	 //         outLine( "取消\""+s.description+"\"");
-	 //     }
-	 //     s.forbid();
-	 // }
-	 // // 取消授权后需要更新服务列表
-	 // updateServices();
-	 // outLine( "操作成功！" );}catch(e){alert(e);}
-	 // }
-	 
-	 // });// ready end
+	//  document.addEventListener('plusready',function () {
+	//   //获取分享服务列表
+	//   plus.share.getServices(function(s) {
+	//   shares = ss;
+	//   for (var i in ss ) {
+	//       var s = ss[i];
+	//       var item = document.createElement("li");
+	//       item.setAttribute("class", "ditem");
+	//       item.setAttribute("onclick", (s.id == "weixin") ? "shareWeiXin(this.plusShare)" : "shareAction(this.plusShare)");
+	//       item.innerText = s.description;
+	//       item.plusShare = s;
+	//       list.appendChild(item);
+	//   }
+	//   }, function(e) {
+	//   alert("获取分享服务列表失败：" + e.message);
+	//   });
+	//
+	// //是否授权
+	// function shareAction(s, ex) {
+	// outSet("分享操作：");
+	// if (!s) {
+	//     outLine("无效的分享服务！");
+	//     return;
+	// }
+	// if (s.authenticated) {
+	//     outLine("---已授权---");
+	//     shareMessage(s, ex);
+	// } else {
+	//     outLine("---未授权---");
+	//     s.authorize(function() {
+	//         shareMessage(s, ex);
+	//     }, function(e) {
+	//         outLine("认证授权失败：" + e.code + " - " + e.message);
+	//     });
+	// }
+	// }
+	//
+	// //分享内容
+	// function shareMessage(s,ex){
+	// var msg={
+	// 	title:wxconfig.title,
+	// 	content:wxconfig.description,
+	// 	herf:wxconfig.link,
+	// 	pictures:wxconfig.imgUrl,
+	// 	extra:{scene:ex},
+	// 	};
+	// // if(pic&&pic.realUrl){
+	// //     msg.pictures=[pic.realUrl];
+	// // }
+	// s.send( msg, function(){
+	//     alert( "分享到\""+s.description+"\"成功！ " );
+	// }, function(e){
+	//     alert( "分享到\""+s.description+"\"失败: "+e.code+" - "+e.message );
+	// } );
+	// }
+	// //分享按钮点击事件
+	//
+	//
+	// //取消分享
+	// function cancelAuth(){try{
+	//
+	// for ( var i in shares ) {
+	//     var s = shares[i];
+	//     if ( s.authenticated ) {
+	//         outLine( "取消\""+s.description+"\"");
+	//     }
+	//     s.forbid();
+	// }
+	// // 取消授权后需要更新服务列表
+	// updateServices();
+	// outLine( "操作成功！" );}catch(e){alert(e);}
+	// }
+
+	// });// ready end
 
 	// document.getElementById("share").addEventListener("click", function() {
 	// 	if(navigator.userAgent.indexOf("Html5Plus") > -1) {
@@ -459,132 +459,144 @@ $(function() {
 	// 	}
 	// });// click end
 
-	mui.init({
-		swipeBack:true //启用右滑关闭功能
-	});
-
-	var Intent = null,
-		File = null,
-		Uri = null,
-		main = null;
-	var shares = null;
-	var shareImageUrl = '';
-	mui.plusReady(function() {
-		updateSerivces();
-		if (plus.os.name == "Android") {
-			Intent = plus.android.importClass("android.content.Intent");
-			File = plus.android.importClass("java.io.File");
-			Uri = plus.android.importClass("android.net.Uri");
-			main = plus.android.runtimeMainActivity();
+// 	mui.init({
+// 		swipeBack:true //启用右滑关闭功能
+// 	});
+//
+// 	var Intent = null,
+// 		File = null,
+// 		Uri = null,
+// 		main = null;
+// 	var shares = null;
+// 	var shareImageUrl = '';
+// 	mui.plusReady(function() {
+// 		updateSerivces();
+// 		if (plus.os.name == "Android") {
+// 			Intent = plus.android.importClass("android.content.Intent");
+// 			File = plus.android.importClass("java.io.File");
+// 			Uri = plus.android.importClass("android.net.Uri");
+// 			main = plus.android.runtimeMainActivity();
+// 		}
+// 	});
+// 	/**
+// 	 * 更新分享服务
+// 	 */
+// 	function updateSerivces() {
+// 		plus.share.getServices(function(s) {
+// 			shares = {};
+// 			for (var i in s) {
+// 				var t = s[i];
+// 				shares[t.id] = t;
+// 			}
+// 			outSet("获取分享服务列表成功");
+// 		}, function(e) {
+// 			outSet("获取分享服务列表失败：" + e.message);
+// 		});
+// 	}
+// 	/**
+// 	 * 分享操作
+// 	 */
+// 	function shareAction(id, ex) {
+// 		var s = null;
+// 		if (!id || !(s = shares[id])) {
+// 			outLine("无效的分享服务！");
+// 			return;
+// 		}
+// 		if (s.authenticated) {
+// 			outSet("---已授权---");
+// 			shareMessage(s, ex);
+// 		} else {
+// 			outSet("---未授权---");
+// 			s.authorize(function() {
+// 				shareMessage(s, ex);
+// 			}, function(e) {
+// 				outLine("认证授权失败");
+// 			});
+// 		}
+// 	}
+// 	/**
+// 	 * 发送分享消息
+// 	 */
+// 	function shareMessage(s, ex) {
+// 		var msg = {
+// 			href: link+ '?ori=wxShare',
+// 			title:wxconfig.title,
+// 			content:desc,
+// 			thumbs: wxconfig.imgUrl,
+// 			pictures: wxconfig.imgUrl,
+// 			extra: {
+// 				scene: ex
+// 			}
+// 		};
+// 		s.send(msg, function() {
+// 			outLine("分享成功!");
+// 			// $.ajax({
+// 			// 	url: "/include/ajax.php?service=member&action=wxShare&aid=" + aid + "&type=" + type+"&serverid=" +aa+ "&description=" + desc + "&link=" + link ,
+// 			//     type: "get",
+// 			// 	datatype: "jsonp",
+// 			// 	success: function () {
+// 			// 		// alert("分享成功");
+// 			// 	}
+// 			// 	})//end ajax
+// 		}, function(e) {
+// 			outLine("分享失败!");
+// 		});
+// 	}
+// 	/**
+// 	 * 分享按钮点击事件
+// 	 */
+// 	function shareHref() {
+// 		var ids = [{
+// 				id: "weixin",
+// 				ex: "WXSceneSession"  /*微信好友*/
+// 			}, {
+// 				id: "weixin",
+// 				ex: "WXSceneTimeline" /*微信朋友圈*/
+// 			}, {
+// 				id: "qq"   /*QQ好友*/
+// 			},{
+// 				id: "sinaweibo"  /*新浪微博*/
+// 			}],
+// 			bts = [{
+// 				title: "发送给微信好友"
+// 			}, {
+// 				title: "分享到微信朋友圈"
+// 			}, {
+// 				title: "分享到QQ"
+// 			}, {
+// 				title: "分享到新浪微博"
+// 			}];
+// 		plus.nativeUI.actionSheet({
+// 				cancel: "取消",
+// 				buttons: bts
+// 			},
+// 			function(e) {
+// 				var i = e.index;
+// 				if (i > 0) {
+// 					shareAction(ids[i - 1].id, ids[i - 1].ex);
+// 				}
+// 			}
+// 		);
+// 	}
+// 	// 控制台输出日志
+// 	function outSet(msg) {
+// 		console.log(msg);
+// 	}
+// 	// 界面弹出吐司提示
+// 	function outLine(msg) {
+// 		mui.toast(msg);
+// 	}
+//
+// });
+	$(".fenxiang").click(function () {
+		var userid;
+		if (cookiePre) {
+			userid = $.cookie(cookiePre + "login_user");
 		}
-	});
-	/**
-	 * 更新分享服务
-	 */
-	function updateSerivces() {
-		plus.share.getServices(function(s) {
-			shares = {};
-			for (var i in s) {
-				var t = s[i];
-				shares[t.id] = t;
-			}
-			outSet("获取分享服务列表成功");
-		}, function(e) {
-			outSet("获取分享服务列表失败：" + e.message);
-		});
-	}
-	/**
-	 * 分享操作
-	 */
-	function shareAction(id, ex) {
-		var s = null;
-		if (!id || !(s = shares[id])) {
-			outLine("无效的分享服务！");
-			return;
-		}
-		if (s.authenticated) {
-			outSet("---已授权---");
-			shareMessage(s, ex);
+		if (userid == null || userid == " ") {
+			location.href = "{#$cfg_basehost#}/login.html"
 		} else {
-			outSet("---未授权---");
-			s.authorize(function() {
-				shareMessage(s, ex);
-			}, function(e) {
-				outLine("认证授权失败");
-			});
+			shareHref();
 		}
-	}
-	/**
-	 * 发送分享消息
-	 */
-	function shareMessage(s, ex) {
-		var msg = {
-			href: link+ '?ori=wxShare',
-			title:wxconfig.title,
-			content:desc,
-			thumbs: wxconfig.imgUrl,
-			pictures: wxconfig.imgUrl,
-			extra: {
-				scene: ex
-			}
-		};
-		s.send(msg, function() {
-			outLine("分享成功!");
-			// $.ajax({
-			// 	url: "/include/ajax.php?service=member&action=wxShare&aid=" + aid + "&type=" + type+"&serverid=" +aa+ "&description=" + desc + "&link=" + link ,
-			//     type: "get",
-			// 	datatype: "jsonp",
-			// 	success: function () {
-			// 		// alert("分享成功");
-			// 	}
-			// 	})//end ajax
-		}, function(e) {
-			outLine("分享失败!");
-		});
-	}
-	/**
-	 * 分享按钮点击事件
-	 */
-	function shareHref() {
-		var ids = [{
-				id: "weixin",
-				ex: "WXSceneSession"  /*微信好友*/
-			}, {
-				id: "weixin",
-				ex: "WXSceneTimeline" /*微信朋友圈*/
-			}, {
-				id: "qq"   /*QQ好友*/
-			},{
-				id: "sinaweibo"  /*新浪微博*/
-			}],
-			bts = [{
-				title: "发送给微信好友"
-			}, {
-				title: "分享到微信朋友圈"
-			}, {
-				title: "分享到QQ"
-			}, {
-				title: "分享到新浪微博"
-			}];
-		plus.nativeUI.actionSheet({
-				cancel: "取消",
-				buttons: bts
-			},
-			function(e) {
-				var i = e.index;
-				if (i > 0) {
-					shareAction(ids[i - 1].id, ids[i - 1].ex);
-				}
-			}
-		);
-	}
-	// 控制台输出日志
-	function outSet(msg) {
-		console.log(msg);
-	}
-	// 界面弹出吐司提示
-	function outLine(msg) {
-		mui.toast(msg);
-	}
-
-});
+	})
+})
