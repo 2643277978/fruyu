@@ -239,7 +239,7 @@ $(function(){
 		$.ajax({
 			url: "get",
 			datatype: "jsonp",
-			succes : "/include/ajax.php?service=member&action=getTempVisualPhone&id="+id+"&itemid="+itemid+"&type="+type,
+			succes : "/include/ajax.php?service=member&action=getTempVisualPhone&itemid="+itemid+"&type="+type,
             types: function(data){
 				data = JSON.parse(data);
 				if(data && data.state == 100){

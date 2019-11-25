@@ -13,6 +13,7 @@ body,html{background-color: #f5f5f7;}
 .filter .t-fi .pos-sub-item a.curr{font-weight: 700; color: #f1370b;}
 .fi-state dd a{background-color: #f5f5f7;}
 
+
 /*价格*/
 .filter .price{margin:0;}
 .filter .inp_price{float: left;}
@@ -86,8 +87,8 @@ body,html{background-color: #f5f5f7;}
 .main_con .lplist li .infbox .lpinf em{font-size: 12px;color:#d3d4de;margin: 0 7px;}
 .main_con .lplist li .markbox{position: absolute;top:0;left:0;font-size: 12px;color:#fff;}
 .main_con .lplist li .markbox .m_mark{width: 50px;height: 24px;line-height: 22px;-webkit-border-radius: 0 0 10px 0; -moz-border-radius: 0 0 10px 0;border-radius: 0 0 10px 0;color:#fff;text-align: center;display: block;position: absolute;left:0;z-index: 2;}
-.main_con .lplist li .markbox .m_qz{background: -moz-linear-gradient( 0deg, rgb(255,162,0) 0%, rgb(255,195,11) 100%);background: -webkit-linear-gradient( 0deg, rgb(255,162,0) 0%, rgb(255,195,11) 100%);background: -ms-linear-gradient( 0deg, rgb(255,162,0) 0%, rgb(255,195,11) 100%);}
-.main_con .lplist li .markbox .m_qg{background: -moz-linear-gradient( 0deg, rgb(34,112,255) 0%, rgb(87,142,255) 100%);background: -webkit-linear-gradient( 0deg, rgb(34,112,255) 0%, rgb(87,142,255) 100%);background: -ms-linear-gradient( 0deg, rgb(34,112,255) 0%, rgb(87,142,255) 100%);}
+/*.main_con .lplist li .markbox .m_qz{background: -moz-linear-gradient( 0deg, rgb(255,162,0) 0%, rgb(255,195,11) 100%);background: -webkit-linear-gradient( 0deg, rgb(255,162,0) 0%, rgb(255,195,11) 100%);background: -ms-linear-gradient( 0deg, rgb(255,162,0) 0%, rgb(255,195,11) 100%);}*/
+/*.main_con .lplist li .markbox .m_qg{background: -moz-linear-gradient( 0deg, rgb(34,112,255) 0%, rgb(87,142,255) 100%);background: -webkit-linear-gradient( 0deg, rgb(34,112,255) 0%, rgb(87,142,255) 100%);background: -ms-linear-gradient( 0deg, rgb(34,112,255) 0%, rgb(87,142,255) 100%);}*/
 
 
 /*列表信息右侧*/

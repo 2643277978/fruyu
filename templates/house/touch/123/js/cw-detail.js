@@ -241,7 +241,7 @@ $(function(){
 			return false;
 		}
 		$.ajax({
-			url : "/include/ajax.php?service=member&action=getTempVisualPhone&id="+id+"&itemid="+itemid+"&type="+type,
+			url : "/include/ajax.php?service=member&action=getTempVisualPhone&itemid="+itemid+"&type="+type,
 			type: "get",
 			datatype: "jsonp",
 			success: function(data){

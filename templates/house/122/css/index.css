@@ -20,7 +20,7 @@ html,body{background-color: #f5f5f7;}
 .PicFocus .hd{position: absolute;height: 30px;bottom: 0;left: 0;right: 12px;text-align: center;}
 .PicFocus .hd ul li{display: inline-block;width: 8px;height: 8px;-moz-border-radius: 50%; -webkit-border-radius: 50%;border-radius: 50%;margin:0 4px;cursor: pointer;background-color: rgb(245, 245, 247,.502);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#80f5f5f7,endColorstr=#80f5f5f7);}
 .PicFocus .hd ul li.on{width: 16px;height: 8px;-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;background: #fff;}
-.PicFocus .ulcover{position: absolute;width: 1200px;left: 50%;margin-left: -600px;overflow:hidden;bottom: 73px;z-index: 20}
+.PicFocus .ulcover{position: absolute;width: 1200px;left: 60%;margin-left: -600px;overflow:hidden;bottom: 73px;z-index: 20}
 .PicFocus .ulcover li{width: 239px;padding:25px 30px;float: left;background-color: rgb(0, 0, 0,.231);-webkit-transition: all .2s ease-in-out;-moz-transition: all .2s ease-in-out;transition: all .2s ease-in-out;margin-right: 1px;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#3b000000,endColorstr=#3b000000);}
 .PicFocus .ulcover li:last-child{margin-right: 0;}
 .PicFocus .ulcover li:hover{background-color: rgb(0, 0, 0,.51);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#82000000,endColorstr=#82000000);}
@@ -40,8 +40,8 @@ html,body{background-color: #f5f5f7;}
 .leader p a i,.i_right{display: inline-block; width: 7px;height: 7px;border-top: 2px solid #3b3b3b;border-right: 2px solid #3b3b3b;-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);-o-transform: rotate(45deg);transform: rotate(45deg);
 -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.7071067811865474, M12=-0.7071067811865477, M21=0.7071067811865477, M22=0.7071067811865474, SizingMethod='auto expand')";vertical-align: middle;margin-top:-3px;}
 /*新房楼盘*/
-.ulbox li{width: 285px;height:360px;float: left;margin-right: 20px;background: #4d4d4f;overflow: hidden;}
-.ulbox li:last-child{margin-right: 0;}
+.ulbox li{width: 270px;height:360px;float: left;margin-left: 20px;background: #4d4d4f;overflow: hidden;margin-top: 20px;}
+/*.ulbox li:last-child{margin-right: 0;}*/
 .ulbox a{width:100%;height:100%;display: block;position: relative;}
 .ulbox li .imgbox,.ulbox li .imgbox img{width: 285px;height: 230px;display: block;}
 .ulbox li .imgbox a{display: block;}

@@ -438,7 +438,7 @@ $(function () {
                         if (d.usertype == 0) {
                             html.push('<span class="m_mark m_gr">个人</span>');
                         } else {
-                            html.push('<span class="m_mark m_zj">中介</span>');
+                            html.push('<span class="m_mark m_zj"></span>');
                         }
                         html.push('</div>');
                         html.push('</div>');

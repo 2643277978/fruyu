@@ -30,7 +30,7 @@
       </div>
       {#if $userinfo.level#}
       <!--<a href="{#getUrlPath service='member' type='user' template='upgrade'#}">-->
-	  <div class="levelinfo">[{#$userinfo.levelName#}]于{#$userinfo.expired|date_format:"%Y.%m.%d"#}到期<a href="{#getUrlPath service='member'  type='user' template='weixin'#}">微信统计</a></div>
+	  <div class="levelinfo">[{#$userinfo.levelName#}]于{#$userinfo.expired|date_format:"%Y.%m.%d"#}到期<a href="{#getUrlPath service='member'  type='user' template='wxtj'#}">微信统计</a></div>
       {#/if#}
     </dd>
     {#else#}

@@ -230,7 +230,7 @@ $(function(){
 						for(var i = 0; i < list.length; i++){
 							html.push('<li class="fn-clear">');
 							html.push('<div class="markbox">');
-							var typetext = list[i].type==1 ? "<span class='m_mark m_qg'>求购</span>" : "<span class='m_mark m_qz'>求租</span>";
+							var typetext = list[i].type==1 ? "<span class='m_mark m_qg'></span>" : "<span class='m_mark m_qz'></span>";
 							html.push(typetext);
 							html.push('</div>');
 							html.push('<div class="infbox fn-left">');
