@@ -6,12 +6,15 @@ $(function(){
       var id = $(this).attr('data-id');
       var itemid = $(this).attr('data-item');
       var type = $(this).attr('data-type');
+      // var url ="http://test.fangruyu.net/include/ajax.php?service=member&action=getTempVisualPhone&itemid="+itemid+"&type="+type;
+      // console.log(url);
       $.ajax({
           url : "/include/ajax.php?service=member&action=getTempVisualPhone&itemid="+itemid+"&type="+type,
           type: "get",
           datatype: "jsonp",
           success: function(data){
               data = JSON.parse(data);
+              console.log(data);
               if(data && data.state == 100){
                   $(".phone_frame a").attr('href','tel:'+data.info.phone);
                   $(".call_phone").attr('href','tel:'+data.info.phone);
@@ -19,7 +22,8 @@ $(function(){
                   $('.phone_frame').show();
                   $('.desk').show();
               }else{
-                  alert(data.info);
+                  // alert(data.info);
+                  alert("请稍后再试！");
               }
           }
       });

@@ -169,7 +169,7 @@
 			{#if $detail_usertype == 1#}
 			<div class="topbox">
 				<div class="l">
-					<a href="{#$detail_user.url#}" target="_blank">{#$detail_username#}<img src="{#$detail_user['photo']#}" alt="{#$detail_user['nickname']#}"></a>
+					<a href="{#$detail_user.url#}" target="_blank"><img src="{#$detail_user['photo']#}" alt="{#$detail_user['nickname']#}"></a>
 				</div>
 				<div class="r">
 					<h4><a href="{#$detail_user.url#}" target="_blank">{#$detail_user['nickname']#}</a><span class="tip">{#if $detail_user.zjcomId#}{#$detail_user.zjcomName#}{#else#}独立经纪人{#/if#}</span></h4>
@@ -178,17 +178,17 @@
 			</div>
 			
 			<div class="manbox fn-clear">
-				<div class="mobile_kf fn-clear">
-					<div class="mk_lef fn-left">
-						<div id="qrcode"></div>
-					</div>
-					<div class="mk_rig fn-right">
-						<span>手</span>
-						<span>机</span>
-						<span>看</span>
-						<span>房</span>
-					</div>
-				</div>
+				<!--<div class="mobile_kf fn-clear">-->
+					<!--<div class="ewm_lef fn-left">-->
+						<!--<div id="qrcode"></div>-->
+					<!--</div>-->
+					<!--<div class="mk_rig fn-right">-->
+						<!--<span>手</span>-->
+						<!--<span>机</span>-->
+						<!--<span>看</span>-->
+						<!--<span>房</span>-->
+					<!--</div>-->
+				<!--</div>-->
 				<!--<a href="javascript:;" class="btnTel"><i></i> {#$detail_user.phone#}</a>-->
 				{#if $detail_user.wx || $detail_user.wxQr#}
 				<a href="javascript:;" class="btnWx"><i></i> 获取微信

@@ -9,6 +9,14 @@ $(function() {
     text: huoniao.toUtf8(window.location.href)
   });
 
+  //电话改为二维码
+  $(".mobile_kf #qrcode").qrcode({
+    render: window.applicationCache ? "canvas" : "table",
+    width: 74,
+    height: 74,
+    text: huoniao.toUtf8(window.location.href)
+  });
+
 
 
   // 预约看房

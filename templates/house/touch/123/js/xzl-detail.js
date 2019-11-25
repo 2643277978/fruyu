@@ -249,7 +249,8 @@ $(function(){
 					$('.phone_frame').show();
 					$('.desk').show();
 				}else{
-					alert(data.info);
+					// alert(data.info);
+                    alert("请稍后再试！");
 				}
 			}
 		});
