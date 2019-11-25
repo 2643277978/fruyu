@@ -236,9 +236,9 @@ $(function(){
 			$('.phone_frame').show();
 			$('.desk').show();	
 		}
-		console.log(id);
-		console.log(itemid);
-		console.log(type);
+		// console.log(id);
+		// console.log(itemid);
+		// console.log(type);
 		if(!id || !itemid || !type){
 			alert("未知错误，请重试！");
 			// return false;
