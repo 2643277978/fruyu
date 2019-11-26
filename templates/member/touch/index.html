@@ -47,7 +47,7 @@
   {#if 'order'|in_array:$cfg_ucenterLinks#}
   <li><a href="{#getUrlPath service='member' type='user' template='order'#}"><i class="icon-order"></i>{#$langData['siteConfig'][19][359]#}</a></li>{#* 订单 *#}
   {#/if#}
-  <li><a href="{#getUrlPath service='member' type='user' template='manage'#}"><i class="icon-manage"></i>{#$langData['siteConfig'][6][22]#}</a></li>{#* 管理 *#}
+  <li><a href="{#getUrlPath service='member' type='user' template='househome'#}"><i class="icon-manage"></i>{#$langData['siteConfig'][6][22]#}</a></li>{#* 管理 *#}
   {#if !$is_ios_app || !$cfg_ios_shelf#}
   <li><a href="{#getUrlPath service='member' type='user' template='pocket'#}"><i class="icon-account"></i>{#$langData['siteConfig'][19][874]#}</a></li>{#* 账户 *#}
   {#/if#}
@@ -59,16 +59,16 @@
   {#*<li><a href="{#getUrlPath service='member' type='user' template='history'#}"><i class="icon-history"></i>浏览历史</a></li>*#}
   {#*<li><a href="{#getUrlPath service='member' type='user' template='friend'#}"><i class="icon-friend"></i>我的好友</a></li>*#}
   {#if !$is_ios_app || !$cfg_ios_shelf#}
-  {#if !$userinfo || $userinfo.userType == 1#}<li><a href="{#getUrlPath service='member' type='user' template='upgrade'#}"><i class="icon-vip"></i>会员中心</a></li>{#/if#}
+  <!--{#if !$userinfo || $userinfo.userType == 1#}<li><a href="{#getUrlPath service='member' type='user' template='upgrade'#}"><i class="icon-vip"></i>会员中心</a></li>{#/if#}-->
   {#/if#}
   {#*<li><a href="{#getUrlPath service='member' type='user' template='task'#}"><i class="icon-task"></i>任务中心</a></li>*#}
   {#*<li><a href="{#getUrlPath service='member' type='user' template='invite'#}"><i class="icon-invite"></i>邀请返利</a></li>*#}
   {#if !$is_ios_app || !$cfg_ios_shelf#}
-  {#if !$userinfo || $userinfo.userType == 1#}<li><a href="javascript:;" class="sjSign"><i class="icon-sign"></i>签约商家</a></li>
+  <!--{#if !$userinfo || $userinfo.userType == 1#}<li><a href="javascript:;" class="sjSign"><i class="icon-sign"></i>签约商家</a></li>-->
                                               <!--<li><a href="javascript:;" class="jjr"><i class="icon-sign"></i>入驻经纪人</a></li>-->
   {#/if#}
   {#/if#}
-  <li><a href="{#getUrlPath service='siteConfig' template='help'#}"><i class="icon-help"></i>{#$langData['siteConfig'][19][273]#}</a></li>{#* 帮助中心 *#}
+  <!--<li><a href="{#getUrlPath service='siteConfig' template='help'#}"><i class="icon-help"></i>{#$langData['siteConfig'][19][273]#}</a></li>{#* 帮助中心 *#}-->
   <li class="hotline"><a href="tel:{#$cfg_hotline#}"><i class="icon-tel"></i>{#$langData['siteConfig'][16][169]#}</a></li>{#* 网站客服 *#}
   <li><a href="{#getUrlPath service='member' type='user' template='security'#}"><i class="icon-security"></i>{#$langData['siteConfig'][0][8]#}</a></li>{#* 安全中心 *#}
   {#if $cfg_fenxiaoState && 'fenxiao'|in_array:$cfg_ucenterLinks#}
