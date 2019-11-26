@@ -152,7 +152,7 @@
         {#else#}
         <div class="im_name">
             <p>
-                <span>{#$detail_username#}</span>
+                <span  data-item="{#$detail_id#}" data-type="xzl" data-id="{#$detail_userid#}">{#$detail_username#}</span>
             </p>
 			<!--<p>{#$detail_contact#}</p> -->
         </div>
@@ -285,9 +285,9 @@
 <div class="phone_frame">
 	<i class="phone_icon"></i>
     {#if $detail_usertype == 1#}
-    <p class="phoneNum_show"></p><a href="javascript;">立即拨打</a>
+    <p class="phoneNum_show"></p><a href="">立即拨打</a>
     {#else#}
-    <p class="phoneNum_show"></p><a href="javascript;">立即拨打</a>
+    <p class="phoneNum_show"></p><a href="">立即拨打</a>
     {#/if#}
     <i class="phone_cuo"></i>
 </div>
@@ -310,6 +310,5 @@
 <script src="{#$cfg_staticPath#}js/publicOpenMap.js?v={#$cfg_staticVersion#}"></script>
 	{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
 <script src="{#$templets_skin#}js/xzl-detail.js?v={#$cfg_staticVersion#}"></script>
-<script src="https://github.com/dcloudio/plusto/blob/master/share/plusShare.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>

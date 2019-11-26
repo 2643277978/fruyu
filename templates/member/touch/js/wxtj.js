@@ -1,7 +1,7 @@
 
 $(function () {
     $.ajax({
-        url:"http://test.fangruyu.net/include/ajax.php?service=member&action=getWxShareData",
+        url:"/include/ajax.php?service=member&action=getWxShareData",
         type:"GET",
         dataType: "jsonp",
         success:function (data) {

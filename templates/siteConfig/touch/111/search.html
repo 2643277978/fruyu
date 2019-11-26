@@ -35,25 +35,25 @@
   </form>
 
   <!-- 滑动导航 s -->
-  <div class="slideNav">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">
-        <ul class="clearfix">
-          {#siteConfig action="siteModule" return="module"#}
-					{#if $module.code != "special" && $module.code != "paper" && $module.code != "website" && $module.code != "live" && $module.code != "quanjing" && $module.code != "integral"#}
-          <li data-action="{#$module.code#}" class="{#$module.code#}">
-            <a href="javascript:;">
-              <span class="icon-circle"></span>
-              <span class="icon-txt">{#$module.name#}</span>
-            </a>
-          </li>
-					{#/if#}
-          {#/siteConfig#}
-        </ul>
-      </div>
-    </div>
-    <div class="swiper-pagination"></div>
-  </div>
+  <!--<div class="slideNav">-->
+    <!--<div class="swiper-wrapper">-->
+      <!--<div class="swiper-slide">-->
+        <!--<ul class="clearfix">-->
+          <!--{#siteConfig action="siteModule" return="module"#}-->
+					<!--{#if $module.code != "special" && $module.code != "paper" && $module.code != "website" && $module.code != "live" && $module.code != "quanjing" && $module.code != "integral"#}-->
+          <!--<li data-action="{#$module.code#}" class="{#$module.code#}">-->
+            <!--<a href="javascript:;">-->
+              <!--<span class="icon-circle"></span>-->
+              <!--<span class="icon-txt">{#$module.name#}</span>-->
+            <!--</a>-->
+          <!--</li>-->
+					<!--{#/if#}-->
+          <!--{#/siteConfig#}-->
+        <!--</ul>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="swiper-pagination"></div>-->
+  <!--</div>-->
   <!-- 滑动导航 e -->
 
   <!-- 列表 s -->
