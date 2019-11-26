@@ -231,11 +231,14 @@ $(function(){
         $('.desk').hide();
     });
 
+
     // 点击电话
     $('.im_icon .im_iphone, .call_phone').click(function(){
 		var id = $(this).attr('data-id');
 		var itemid = $(this).attr('data-item');
 		var type = $(this).attr('data-type');
+        // var aa="http://test.fangruyu.net/include/ajax.php?service=member&action=getTempVisualPhone&itemid="+itemid+"&type="+type;
+        // console.log(aa);
 		$.ajax({
 			url: "get",
 			datatype: "jsonp",

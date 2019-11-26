@@ -55,12 +55,12 @@
 				{#if in_array("shop", $installModuleArr)#}<li><a href="{#getUrlPath service='shop' template='cart'#}"><span class="imgbox"><img src="{#$cfg_basehost#}/static/images/admin/nav/shop_car.png?v={#$cfg_staticVersion#}" class=""></span><span class="txtbox">{#$langData['siteConfig'][22][12]#}</span></a></li>{#/if#}
 				{#siteConfig action="siteModule" return="module" type="1"#}
 				{#if $module.code != "special" && $module.code != "website"#}
-				<li>
-					<a data-name="{#$module.name#}" data-code="{#$module.code#}" href="{#$module.url#}"{#if $module.target#} target="_blank"{#/if#}>
-						<span class="imgbox"><img src="{#$module.icon#}"></span>
-						<span class="txtbox" style="{#if $module.color#} color: {#$module.color#};{#/if#}{#if $module.bold#} font-weight: 700;{#/if#}">{#$module.name#}</span>
-					</a>
-				</li>
+				<!--<li>-->
+					<!--<a data-name="{#$module.name#}" data-code="{#$module.code#}" href="{#$module.url#}"{#if $module.target#} target="_blank"{#/if#}>-->
+						<!--<span class="imgbox"><img src="{#$module.icon#}"></span>-->
+						<!--<span class="txtbox" style="{#if $module.color#} color: {#$module.color#};{#/if#}{#if $module.bold#} font-weight: 700;{#/if#}">{#$module.name#}</span>-->
+					<!--</a>-->
+				<!--</li>-->
 				{#/if#}
 				{#/siteConfig#}
 				<!-- 分享 s -->
