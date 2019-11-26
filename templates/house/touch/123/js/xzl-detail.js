@@ -231,35 +231,32 @@ $(function(){
         $('.desk').hide();
     });
 
-
     // 点击电话
     $('.im_icon .im_iphone, .call_phone').click(function(){
-		var id = $(this).attr('data-id');
-		var itemid = $(this).attr('data-item');
-		var type = $(this).attr('data-type');
-        // var aa="http://test.fangruyu.net/include/ajax.php?service=member&action=getTempVisualPhone&itemid="+itemid+"&type="+type;
-        // console.log(aa);
-		$.ajax({
-			url: "get",
-			datatype: "jsonp",
-			succes : "/include/ajax.php?service=member&action=getTempVisualPhone&itemid="+itemid+"&type="+type,
-            types: function(data){
-				data = JSON.parse(data);
-				if(data && data.state == 100){
-					$(".phone_frame a").attr('href','tel:'+data.info.phone);
-					$(".call_phone").attr('href','tel:'+data.info.phone);
-					$(".phoneNum_show").text(data.info.phone);
-					$('.phone_frame').show();
-					$('.desk').show();
-				}else{
-					// alert(data.info);
+        var id = $(this).attr('data-id');
+        var itemid = $(this).attr('data-item');
+        var type = $(this).attr('data-type');
+        $.ajax({
+            url : "/include/ajax.php?service=member&action=getTempVisualPhone&itemid="+itemid+"&type="+type,
+            type: "get",
+            datatype: "jsonp",
+            success: function(data){
+                data = JSON.parse(data);
+                if(data && data.state == 100){
+                    $(".phone_frame a").attr('href','tel:'+data.info.phone);
+                    $(".call_phone").attr('href','tel:'+data.info.phone);
+                    $(".phoneNum_show").text(data.info.phone);
+                    $('.phone_frame').show();
+                    $('.desk').show();
+                }else{
+                    // alert(data.info);
                     alert("请稍后再试！");
-				}
-			}
-		});
-		if($(this).hasClass('call_phone')){
-			return false;
-		}
+                }
+            }
+        });
+        if($(this).hasClass('call_phone')){
+            return false;
+        }
     });
     $('.phone_frame .phone_cuo').click(function(){
         $('.phone_frame').hide();
