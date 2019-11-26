@@ -430,7 +430,7 @@ $(function() {
 			type: "GET",
 			dataType: "jsonp",
 			success: function (data) {
-				console.log(data);
+				// console.log(data);
 				if(data){
 					if(data.state == 100){
 						$(".house-list .loading").remove();
