@@ -5,7 +5,6 @@ $(function () {
         dataType: "jsonp",
         success:function (data) {
             if(data ){
-                console.log(data);
                 if(data.state == 100){
                     var list = data.info;
                     var html = [];
@@ -27,14 +26,15 @@ $(function () {
                             html.push('</li>');
                         }
                         $(".share").append(html.join(""));
+                    }else {
+                        $(".share").append('<li class="loading">暂无相关信息</li>');
                     }
-                }
 
-            }
-            else {
-                $(".share").append('<div class="loading">暂无相关信息</div>');
-            }
-        }
+                }//100
+
+
+            }//data
+        }// success
     })
 
 });
