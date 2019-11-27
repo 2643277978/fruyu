@@ -56,7 +56,7 @@ $(function () {
                     $(".shareALll").html(shareAll);
                 }
                 shareALll();
-                //转发
+                //浏览
                 function zf() {
                     var sp=$("#shop th:eq(2)").html();
                     var fy=$("#housing th:eq(2)").html();
@@ -64,10 +64,10 @@ $(function () {
                     var  hb=$("#poster th:eq(2)").html();
                     var  mp=$("#businessCard th:eq(2)").html();
                     var shareAll=parseInt(sp)+parseInt(fy)+parseInt(hb)+parseInt(wz)+parseInt(mp);
-                    $(".reALll").html(shareAll);
+                    $(".ylALll").html(shareAll);
                 }
                 zf();
-                //浏览
+                //访客
                 function ll() {
                     var  sp=$("#shop th:eq(3)").html();
                     var fy=$("#housing th:eq(3)").html();
@@ -75,10 +75,10 @@ $(function () {
                     var  hb=$("#poster th:eq(3)").html();
                     var  mp=$("#businessCard th:eq(3)").html();
                     var shareAll=parseInt(sp)+parseInt(fy)+parseInt(hb)+parseInt(wz)+parseInt(mp);
-                    $(".ylALll").html(shareAll);
+                    $(".visitALll").html(shareAll);
                 }
                 ll();
-                //访客
+                //转发
                 function fk() {
                     var  sp=$("#shop th:eq(4)").html();
                     var fy=$("#housing th:eq(4)").html();
@@ -86,7 +86,7 @@ $(function () {
                     var  hb=$("#poster th:eq(4)").html();
                     var  mp=$("#businessCard th:eq(4)").html();
                     var shareAll=parseInt(sp)+parseInt(fy)+parseInt(hb)+parseInt(wz)+parseInt(mp);
-                    $(".ylALll").html(shareAll);
+                    $(".reALll").html(shareAll);
                 }
                 fk();
                 $(".inday").css("width",today+"%");
@@ -94,6 +94,6 @@ $(function () {
                 $(".inseven").css("width",sevenDay+"%");
             }
         }
-    })
+    });
 })
 
