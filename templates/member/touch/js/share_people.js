@@ -1,6 +1,6 @@
 $(function () {
     $.ajax({
-        url:remote_domain + "/include/ajax.php?service=member&action=getWxShareVisitor",
+        url:"/include/ajax.php?service=member&action=getWxShareVisitor",
         type:"GET",
         dataType: "jsonp",
         success:function (data) {
@@ -9,14 +9,12 @@ $(function () {
                 if(data.state == 100){
                     var list = data.info;
                     var html = [];
-                    console.log(list);
                     if(list.length>0){
                         for (var i=0;i<list.length;i++){
                             html.push('<li>');
                             html.push('<a href="">');
                             var imgurl=list[i].headimg;
                             var ll=list[i].nickname;
-                            console.log(ll);
                             html.push('<img src="'+imgurl+'" alt="">');
                             html.push('</a>');
                             html.push('<div class="title">');
@@ -32,6 +30,9 @@ $(function () {
                     }
                 }
 
+            }
+            else {
+                $(".share").append('<div class="loading">暂无相关信息</div>');
             }
         }
     })
