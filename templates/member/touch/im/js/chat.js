@@ -158,11 +158,10 @@ var kumanIMLib = function (wsHost) {
 				       success: function (data) {
 					       if(data.state==100){
 					       	  var datalist = data.info;
-					       	  //判断有没有这个用户
-							   console.log(datalist.name);
+					       	  //判断有没有这个用户;
 							   if(datalist.name==null){
-							     	alert("该用户未注册！请稍后联系");
-							     	return false;
+							      alert("该用户未注册，请稍后再试！")
+								   window.history.back(-1);
 							   }else {
 								   //判断是否为好友
 								   if(datalist.isfriend){
