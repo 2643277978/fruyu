@@ -162,16 +162,13 @@ var kumanIMLib = function (wsHost) {
     });
 
 
-
  function msg_list(){
-
 	$.ajax({
        url: '/include/ajax.php?service=siteConfig&action=getImFriendList&userid=' + userinfo['uid']+'&type=temp',
        type: "GET",
        dataType: "json",
        success: function (data) {
 	       var datalist = data.info;
-
 	       var html = [];
 	       if(data.state == 100){
 	          if(datalist.length==0){
@@ -180,9 +177,7 @@ var kumanIMLib = function (wsHost) {
 	          	  var unread = '';
 	          	 $('.message_list .loading').remove();
 	            for(var i=0; i<datalist.length; i++){
-
 						if(datalist[i].lastMessage.unread>0){
-
 							unread ='<span class="tip_num">'+datalist[i]['lastMessage']['unread']+'</span>';
 						}else{
 
@@ -253,17 +248,16 @@ function notice_list(){
        type: "GET",
        dataType: "json",
        success: function (data) {
-
 	       var html = [];
 	       if(data.state == 100){
 	       	  var datalist = data.info.list;
 		       var totalpage = data.info.pageInfo.totalPage;
-
 		       $('.tip_list').attr('data-total',totalpage);
 	          if(datalist.length==0){
 	          	$('.tip_list .loading').html('<div class="im-no_list"><img src="'+templets_skin+'images/no_notice.png"/><p>暂无未读通知~</p></div>');
 	          }else{
 	          	var unread = '';
+				  $('.tip_list .loading').remove();
 	            for(var i=0; i<datalist.length; i++){
 	            	if(datalist[i].state=="0"){
 	            		unread='unread'
@@ -319,14 +313,6 @@ function notice_list(){
     });
 
 }
-
-
-
-
-
-
-
-
 	$('.tab_box li').click(function(){
 		var i = $(this).index(),type=$(this).attr('data-type'),total = $('.ulbox').eq(i).attr("data-total"),page = $('.ulbox').eq(i).attr("data-page");
 		$(this).addClass('on').siblings('li').removeClass('on');

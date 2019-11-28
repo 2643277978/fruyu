@@ -641,7 +641,7 @@ var userAgent = navigator.userAgent.toLowerCase();
 			}
 			$('.im-input img').remove();
 			var con  = $('.im-input').html();
-			console.log(con)
+			// console.log(con)
 			msgto(con,'text')
 //
 			$('.im-input').html(''); //清空输入框
