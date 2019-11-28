@@ -159,6 +159,7 @@ var kumanIMLib = function (wsHost) {
 					       if(data.state==100){
 					       	  var datalist = data.info;
 					       	  //判断有没有这个用户
+							   console.log(datalist.name);
 							   if(datalist.name==null){
 							     	alert("该用户未注册！请稍后联系");
 							     	return false;
