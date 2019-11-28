@@ -90,7 +90,7 @@ var kumanIMLib = function (wsHost) {
                 var msg = JSON.parse(evt.data);
                 switch (msg.type) {
                     case "init":
-                        console.log(msg.info.content);
+                        // console.log(msg.info.content);
                         break;
                     default:
                         if(userinfo['uid'] == msg.info.to && msg.info.type == 'member'){
@@ -158,24 +158,30 @@ var kumanIMLib = function (wsHost) {
 				       success: function (data) {
 					       if(data.state==100){
 					       	  var datalist = data.info;
-					       	  //判断是否为好友
-					       	  if(datalist.isfriend){
-					       	  	$('.im-tip_box').hide();
-					       	  	$('.im-chat_content').css('padding-top','1.2rem');
-					       	  	$('.huoniao_iOS .im-chat_content').css('padding-top','.2rem !important');
-					       	  }else{
-					       	  	$('.im-tip_box').show();
-					       	  	$('.im-chat_content').css('padding-top','2.1rem');
-					       	  	$('.huoniao_iOS .im-chat_content').css('padding-top','1.2rem !important');
-					       	  }
-					       	  $('.header-address').attr('data-token',datalist.token).find('span').text(datalist.name);
-					       	  toChatToken = datalist.token;
-					       	  toUserinfo = {
-					       		  'uid': datalist.uid,
-								  'name': datalist.name,
-								  'photo': datalist.photo
-					       	  }
-					       	  getcur_record();
+					       	  //判断有没有这个用户
+							   if(datalist.name==null){
+							     	alert("该用户未注册！请稍后联系");
+							     	return false;
+							   }else {
+								   //判断是否为好友
+								   if(datalist.isfriend){
+									   $('.im-tip_box').hide();
+									   $('.im-chat_content').css('padding-top','1.2rem');
+									   $('.huoniao_iOS .im-chat_content').css('padding-top','.2rem !important');
+								   }else{
+									   $('.im-tip_box').show();
+									   $('.im-chat_content').css('padding-top','2.1rem');
+									   $('.huoniao_iOS .im-chat_content').css('padding-top','1.2rem !important');
+								   }
+								   $('.header-address').attr('data-token',datalist.token).find('span').text(datalist.name);
+								   toChatToken = datalist.token;
+								   toUserinfo = {
+									   'uid': datalist.uid,
+									   'name': datalist.name,
+									   'photo': datalist.photo
+								   }
+								   getcur_record();
+							   }
 					       }
 				       },
 				       error: function(){

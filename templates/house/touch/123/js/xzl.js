@@ -2,6 +2,7 @@ $(function() {
 
 	var device = navigator.userAgent, isClick = true;
 	$('#xzl-list').css('min-height', $(window).height() - $('.footer').height());
+	$('#xzl_list').css('min-height', $(window).height() - $('.footer').height());
 
 	var detailList, getParid;
   detailList = new h5DetailList();
@@ -48,6 +49,9 @@ $(function() {
 		isClick = true;
 	})
 
+	function xzlList(){
+
+	}
 	$('#xzl-list').delegate('.house-box', 'click', function(){
 		var t = $(this), a = t.find('a'), url = a.attr('data-url');
 
@@ -87,6 +91,48 @@ $(function() {
                 location.href = url;
             }, 500);
         }
+
+	})
+
+	$('#xzl_list').delegate('.house-box', 'click', function(){
+		var t = $(this), a = t.find('a'), url = a.attr('data-url');
+
+		var addrid = $(".tab-area").attr("data-business");
+		addrid = addrid == undefined || addrid == 0 ? $('.tab-area').attr('data-area') : addrid;
+
+		var price = $(".tab-price").attr("data-id");
+		price = price == undefined ? "" : price;
+
+		var area = $(".tab-type").attr("data-id");
+		area = area == undefined ? "" : area;
+
+		var protype = $(".tab-mold").attr("data-id");
+		protype = protype == undefined ? "" : protype;
+
+		var genre = $(".tab-genre").attr("data-id");
+		genre = genre == undefined ? "" : genre;
+
+		//更新筛选条件
+		// dataInfo.type = $('#sptype').val();
+		dataInfo.parid = $('#area-box .active').attr('data-id');
+		dataInfo.addrid = addrid;
+		dataInfo.price = price;
+		dataInfo.area = area;
+		dataInfo.protype = protype;
+		dataInfo.genre = genre;
+		dataInfo.addrName = $('.tab-area span').text();
+		dataInfo.priceName = $('.tab-price span').text();
+		dataInfo.areaName = $('.tab-type span').text();
+		dataInfo.protypeName = $('.tab-mold span').text();
+		dataInfo.genreName = $('.tab-genre span').text();
+
+		detailList.insertHtmlStr(dataInfo, $("#xzl_list").html(), {lastIndex: atpage});
+
+		if(!wx_miniprogram) {
+			setTimeout(function () {
+				location.href = url;
+			}, 500);
+		}
 
 	})
 

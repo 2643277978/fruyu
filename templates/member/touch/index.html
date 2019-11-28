@@ -11,8 +11,8 @@
 <script type="text/javascript">
   var masterDomain = '{#$cfg_basehost#}', cookiePre = '{#$cfg_cookiePre#}';
   var joinBusiUrl = '{#getUrlPath service='member' type='user' template='enter'#}';
-  var aa= '{$userinfo#}';
-  console.log(aa);
+  // var aa='{#$cfg_ios_shelf#}';
+  // console.log(aa);
 </script>
 </head>
 
@@ -62,7 +62,9 @@
   {#*<li><a href="{#getUrlPath service='member' type='user' template='history'#}"><i class="icon-history"></i>浏览历史</a></li>*#}
   {#*<li><a href="{#getUrlPath service='member' type='user' template='friend'#}"><i class="icon-friend"></i>我的好友</a></li>*#}
   {#if !$is_ios_app || !$cfg_ios_shelf#}
-  {#if $userinfo.level#}<li><a href="{#getUrlPath service='member' type='user' template='wxtj'#}"><i class="icon-vip"></i>微信分享统计</a></li>{#/if#}
+  {#if $userinfo.level#}<li><a href="{#getUrlPath service='member' type='user' template='wxtj'#}"><i class="icon-vip"></i>微信分享统计</a></li>
+  <li><a href="{#getUrlPath service='member' type='user' template='BrokerBinding'#}"><i class="icon-invite"></i>经纪人绑定</a></li>
+  {#/if#}
   {#/if#}
   {#*<li><a href="{#getUrlPath service='member' type='user' template='task'#}"><i class="icon-task"></i>任务中心</a></li>*#}
   {#*<li><a href="{#getUrlPath service='member' type='user' template='invite'#}"><i class="icon-invite"></i>邀请返利</a></li>*#}

@@ -2,6 +2,7 @@ $(function() {
 
 	var device = navigator.userAgent, isClick = true;
 	$('#sp-list').css('min-height', $(window).height() - $('.footer').height());
+	$('#sp_list').css('min-height', $(window).height() - $('.footer').height());
 
 	var detailList, getParid;
   detailList = new h5DetailList();
@@ -62,6 +63,47 @@ $(function() {
                 location.href = url;
             }, 500);
         }
+
+	})
+	$('#sp_list').delegate('.house-box', 'click', function(){
+		var t = $(this), a = t.find('a'), url = a.attr('data-url');
+
+		var addrid = $(".tab-addrid").attr("data-id");
+		addrid = addrid == undefined ? "" : addrid;
+
+		var price = $(".tab-price").attr("data-id");
+		price = price == undefined ? "" : price;
+
+		var area = $(".tab-area").attr("data-id");
+		area = area == undefined ? "" : area;
+
+		var protype = $(".tab-protype").attr("data-id");
+		protype = protype == undefined ? "" : protype;
+
+		var industry = $(".tab-industry").attr("data-id");
+		industry = industry == undefined ? "" : industry;
+
+		//更新筛选条件
+		dataInfo.type = $('#sptype').val();
+		dataInfo.parid = $('#area-box .active').attr('data-area');
+		dataInfo.addrid = addrid;
+		dataInfo.price = price;
+		dataInfo.area = area;
+		dataInfo.protype = protype;
+		dataInfo.industry = industry;
+		dataInfo.addridName = $('.tab-addrid span').text();
+		dataInfo.priceName = $('.tab-price span').text();
+		dataInfo.areaName = $('.tab-area span').text();
+		dataInfo.protypeName = $('.tab-protype span').text();
+		dataInfo.industryName = $('.tab-industry span').text();
+
+		detailList.insertHtmlStr(dataInfo, $("#sp_list").html(), {lastIndex: atpage});
+
+		if(!wx_miniprogram) {
+			setTimeout(function () {
+				location.href = url;
+			}, 500);
+		}
 
 	})
 
