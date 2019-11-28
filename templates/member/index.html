@@ -279,7 +279,7 @@
 								{#$houseSp = $list['totalCount']#}
 							{#/house#}
 							<li class="li-10">
-								<div class="m-content"><img src="{#$templets_skin#}images/icon/m-house.png?v={#$cfg_staticVersion#}" /><h5>{#$langData['siteConfig'][10][22]#}</h5>{#* 我的房产 *#}
+								<div class="m-content"><a href="{#getUrlPath service='member' type='user'  action='config-house'#}"><img src="{#$templets_skin#}images/icon/m-house.png?v={#$cfg_staticVersion#}" /><h5>{#$langData['siteConfig'][10][22]#}</h5>{#* 我的房产 *#}</a>
 									<div class="fn-clear item4">
 										<p><a href="{#getUrlPath service='member' type='user' template='manage' action='house-sale'#}">{#$langData['siteConfig'][19][218]#} {#$houseSale|string_format:"%d"#}</a></p>{#* 二手房 *#}
 										<p><a href="{#getUrlPath service='member' type='user' template='manage' action='house-zu'#}">{#$langData['siteConfig'][19][219]#} {#$houseZu|string_format:"%d"#}</a></p>{#* 租房 *#}
