@@ -9,7 +9,7 @@
 $(function () {
 
     var device = navigator.userAgent, isClick = true;
-    function getSpList(tr,a,b){
+    function getSpList(tr,a,b,c){
 
         isload = true;
 
@@ -20,14 +20,7 @@ $(function () {
         }
         //自定义筛选内容
         var item = [];
-        // $(".choose-more-condition ul").each(function(){
-        //     var t = $(this), active = t.find(".active");
-        //     if(active.text() != "不限"){
-        //     }
-        // });
-
         b.remove();
-        // a.append('<div class="loading">加载中...</div>');
 
         //请求数据
         var data = [];
@@ -37,18 +30,9 @@ $(function () {
         var keywords = $('#search_keyword').val();
         data.push("keywords="+keywords);
 
-
-        if(action == 'zuList'){
-            console.log(lng);
-            lng= lng==undefined ? '' : lng;
-            lat= lat==undefined ? '' : lat;
-            data.push("orderby=juli");
-            data.push("lng="+lng);
-            data.push("lat="+lat);
-            data.push("community="+community);
-        }
         $.ajax({
-            url: "/include/ajax.php?service=house&action="+action,
+            // url: "/include/ajax.php?service=house&action="+action,
+            url: "/include/ajax.php?service=house&action=spList&pageSize=20&type="+c+"&page=1&keywords=&callback=jsonp2",
             data: data.join("&"),
             type: "GET",
             dataType: "jsonp",
@@ -148,14 +132,10 @@ $(function () {
             }
         });//end ajax
     }
-    $(".buysp").click(function () {
-        var type="type";
-        $(".buysp").attr("data-id",'');
-        getSpList(1,$(".maiSp"),$(".maiSp .loading"));
-    })
-    getSpList(1,$(".zuSp"),$(".zuSp .loading"));
+    getSpList(1,$(".maiSp"),$(".maiSp .loading"),1);//1代表买
+    getSpList(1,$(".zuSp"),$(".zuSp .loading"),0);//0代表租
 
-    function getList(tr,a,b){
+    function getList(tr,a,b,c){
 
         isload = true;
 
@@ -167,12 +147,6 @@ $(function () {
 
         //自定义筛选内容
         var item = [];
-        $(".choose-more-condition ul").each(function(){
-            var t = $(this), active = t.find(".active");
-            if(active.text() != "不限"){
-            }
-        });
-
 
         b.remove();
         // a.append('<div class="loading">加载中...</div>');
@@ -182,14 +156,6 @@ $(function () {
         data.push("pageSize="+pageSize);
         var areaType,
             addrid = 0, business = 0;
-
-        if(areaType == "area"){
-            addrid = Number(tabArea.attr("data-area"));
-            business = Number(tabArea.attr("data-business"));
-            if(business){
-                addrid = business;
-            }
-        }
         data.push("addrid="+addrid);
 
         var price = 0;
@@ -201,11 +167,12 @@ $(function () {
 
         data.push("page="+atpage);
 
-        var keywords = $('#search_keyword').val();
-        data.push("keywords="+keywords);
+        // var keywords = $('#search_keyword').val();
+        // data.push("keywords="+keywords);
 
         $.ajax({
-            url: "/include/ajax.php?service=house&action=xzlList",
+            // url: "/include/ajax.php?service=house&action=xzlList",
+            url: "/include/ajax.php?service=house&action=xzlList&pageSize=20&addrid=0&type="+c+"&page=1&keywords=&callback=jsonp4",
             data: data.join("&"),
             type: "GET",
             dataType: "jsonp",
@@ -251,18 +218,12 @@ $(function () {
                                     html.push('<dd class="item-type-1 xzl-item-type-1">');
                                     html.push('<em>'+list[i].address+'</em>'+total);
                                 }
-
                                 html.push('</dd>')
-
-
-
                                 html.push('</dl>')
                                 html.push('</div>')
                                 html.push('<div class="clear"></div>')
                                 html.push('</a>')
                                 html.push('</div>')
-
-
                             }
 
                             a.append(html.join(""));
@@ -271,23 +232,23 @@ $(function () {
                             //最后一页
                             if(atpage >= data.info.pageInfo.totalPage){
                                 isload = true;
-                                $(".house-list").append('<div class="loading">已经到最后一页了</div>');
+                                a.append('<div class="loading">已经到最后一页了</div>');
                             }
 
                             //没有数据
                         }else{
                             isload = true;
-                            $(".house-list").append('<div class="loading">暂无相关信息</div>');
+                            a.append('<div class="loading">暂无相关信息</div>');
                         }
 
                         //请求失败
                     }else{
-                        $(".house-list .loading").html(data.info);
+                        b.html(data.info);
                     }
 
                     //加载失败
                 }else{
-                    $(".house-list .loading").html('加载失败');
+                    b.html('加载失败');
                 }
             },
             error: function(){
@@ -296,20 +257,7 @@ $(function () {
             }
         });
     }
-    $(".zuxzl").click(function () {
-        var t = $(this), dom = t.find('a').html();
-        isClick = true;
-        var area = "";
-        var type="0";
-        area = area == undefined ? "" : area;
-        getList(1,$(".zuXzl"),$(".zuXzl .loading"));
-    })
-    $(".buyxzl").click(function () {
-        var t = $(this), dom = t.find('a').html();
-        isClick = true;
-        var area = "";
-        var type="1";
-        area = area == undefined ? "" : area;
-        getList(1,$(".maiXzl"),$(".maiXzl .loading"));
-    })
+        getList(1,$(".zuXzl"),$(".zuXzl .loading"),1);//1代表买zu
+        getList(1,$(".maiXzl"),$(".maiXzl .loading"),0);//0代表买
+
 });
