@@ -43,7 +43,11 @@
 	</div>
 	<div class="filterbox">
 		<div class="filtertab">
-			<ul class="fn-clear"><li data-action="sp_sale" {#if $type == 1#} class="on" {#/if#}>商铺出售</li><li data-action="sp_zu"{#if !$type#} class="on" {#/if#}>商铺出租</li><li data-action="sp_zr"{#if $type == 2#} class="on" {#/if#}>商铺转让</li>{#if $loupan_sp_id#}<li><a href="{#getUrlPath service='house' template='loupan' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} typeid={#$loupan_sp_id#} salestate={#$salestate#} times={#$times#} zhuangxiu={#$zhuangxiu#} buildtype={#$buildtype#} tuandate={#$tuandate#} filter={#$filter#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}" target="_blank">商铺新盘</a></li>{#/if#}</ul>
+			<ul class="fn-clear">
+				<li data-action="sp_zu" {#if $type == 1#} class="on" {#/if#}>商铺出租</li>
+				<li data-action="sp_sale"{#if !$type#} class="on" {#/if#}>商铺出售</li>
+				<li data-action="sp_zr"{#if $type == 2#} class="on" {#/if#}>商铺转让</li>
+				{#if $loupan_sp_id#}<li><a href="{#getUrlPath service='house' template='loupan' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} typeid={#$loupan_sp_id#} salestate={#$salestate#} times={#$times#} zhuangxiu={#$zhuangxiu#} buildtype={#$buildtype#} tuandate={#$tuandate#} filter={#$filter#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}" target="_blank">商铺新盘</a></li>{#/if#}</ul>
 		</div>
 		<div class="filter">
 			<div class="filterlist">
