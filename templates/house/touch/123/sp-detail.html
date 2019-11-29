@@ -47,19 +47,19 @@
 	          <div class="swiper-wrapper">
 	          	  {#if $detail_qj_file#}
 	          	  <div class="swiper-slide panorama-box">
-	              	<img src="{#$detail_litpic#}" width="100%" height="100%">
-	              	<div class="imgplay"><img src="{#$templets_skin#}images/vr.gif" alt=""></div>
+	              	<img src="{#$detail_litpic#}" onerror="javascript:this.src='/static/images/404.jpg';" width="100%" height="100%">
+	              	<div class="imgplay"><img src="{#$templets_skin#}images/vr.gif" onerror="javascript:this.src='/static/images/404.jpg';" alt=""></div>
 	              </div>
 	              {#/if#}
 	              {#if $detail_video#}
 	              <div class="swiper-slide video-box">
 	              	<img src="{#$detail_litpic#}" width="100%" height="100%">
-	              	<div class="imgplay"><img src="{#$templets_skin#}images/viplay.png" alt=""></div>
+	              	<div class="imgplay"><img src="{#$templets_skin#}images/viplay.png" onerror="javascript:this.src='/static/images/404.jpg';" alt=""></div>
 	              </div>
 	              {#/if#}
 	              {#foreach from=$detail_imglist item=img#}
 	              <div class="swiper-slide">
-	              	<img src="{#$img.path#}" width="100%" height="100%">
+	              	<img src="{#$img.path#}" onerror="javascript:this.src='/static/images/404.jpg';" width="100%" height="100%">
 	              </div>
 	              {#/foreach#}
 	          </div>
@@ -92,7 +92,7 @@
 	            <div class="swiper-slide"><video width="100%" height="100%" controls preload="meta" x5-video-player-type="h5" x5-playsinline playsinline webkit-playsinline  x5-video-player-fullscreen="true" id="video" src="{#$detail_video#}"  poster="{#$detail_litpic#}"></video></div>
 	            {#/if#}
 	            {#foreach from=$detail_imglist item=img#}
-                <div class="swiper-slide"><img src="{#$img.path#}" / ></div>
+                <div class="swiper-slide"><img src="{#$img.path#}" onerror="javascript:this.src='/static/images/404.jpg';" / ></div>
                 {#/foreach#}
 	          </div>
 	          <div class="swiper-pagination"></div>
@@ -198,7 +198,7 @@
 				<p><span>物业公司</span><span>{#$detail_loupanDetail.property#}</span></p>
 			</div>
 			<div class="txt-right">
-				<img src="{#$detail_loupanDetail.litpic#}">
+				<img src="{#$detail_loupanDetail.litpic#}" onerror="javascript:this.src='/static/images/404.jpg';">
 				<!--<span>共57张</span>-->
 			</div>
 		</div>
@@ -223,7 +223,7 @@
 			{#house action=spList addrid=$detail_addrid pageSize=4#}
 		    <li class="fn-clear">
 		      <a href="{#$row.url#}" title="{#$row.title#}">
-		      <div class="rleft"><img src="{#$row.litpic|replace:"large":"small"#}" alt=""></div>
+		      <div class="rleft"><img src="{#$row.litpic|replace:"large":"small"#}" onerror="javascript:this.src='/static/images/404.jpg';" alt=""></div>
 		      <div class="rright">
 		        <div class="rtitle fn-clear">{#if $row.isbid#}<i></i>{#/if#}<p>{#$row.title#}</p>{#if $row.qj#}<em class="quanjing">全景</em>{#/if#}</div>
 		        <div class="comment fn-clear"><span>{#$row.room#}|{#$row.loupan#}|{#$row.zhuangxiu#}</span>
@@ -283,7 +283,7 @@
 {#if $detail_user.wxQr#}
 <div class="wx_frame">
 	<p class="ewm_title">微信中长按识别二维码</p>
-	<div class="ewm"><img src="{#$detail_user.wxQr#}"></div>
+	<div class="ewm"><img src="{#$detail_user.wxQr#}" onerror="javascript:this.src='/static/images/404.jpg';"></div>
 	<p class="ewm_txt">扫一扫上面的二维码图案，加微信客服</p>
 	<i class="wx_cuo"></i>
 </div>
