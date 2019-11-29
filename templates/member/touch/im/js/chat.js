@@ -160,7 +160,7 @@ var kumanIMLib = function (wsHost) {
 					       	  var datalist = data.info;
 					       	  //判断有没有这个用户;
 							   if(datalist.name==null){
-							      alert("该用户未注册，请稍后再试！")
+							      alert("该用户未注册，请稍后再试！");
 								   window.history.back(-1);
 							   }else {
 								   //判断是否为好友
@@ -179,7 +179,7 @@ var kumanIMLib = function (wsHost) {
 									   'uid': datalist.uid,
 									   'name': datalist.name,
 									   'photo': datalist.photo
-								   }
+								   };
 								   getcur_record();
 							   }
 					       }

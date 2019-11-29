@@ -240,7 +240,7 @@
             <div class="big-wrapper">
                 <!--<a href="{#getUrlPath service=house template=yuyue param="type=zu&id={#$detail_id#}"#}" class="button post_ulog"><i></i>预约看房</a> <a href="tel:{#if $detail_usertype == 1#}{#$detail_user.phone#}{#else#}{#$detail_contact#}{#/if#}" class="button call_phone"><i></i>电话咨询</a> -->
                 <!--<a href="{#$member_userDomain#}/message.html" class="button post_news"><i></i>微聊</a>-->
-                <a href="{#$member_userDomain#}/im/chat-{#$detail_userid#}.html" class="button post_news"><i></i>微聊</a>
+                <a class="button post_news"  data-id="{#$detail_userid#}" ><i></i>微聊</a>
                 <a href="javascript;" data-item="{#$detail_id#}" data-type="sale" data-id="{#$detail_userid#}"  class="button call_phone"><i></i>电话咨询</a>
             </div>
         </div>
@@ -290,6 +290,22 @@
         "link":'{#getUrlPath service='house'  template='sale-detail' id={#$detail_id#}#}',
     };
     document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+
+    //点击微聊
+    $(".post_news").click(function () {
+        var id = $(this).attr('data-id');
+        var herf="{#$member_userDomain#}/im/chat-"+id+'.html';
+        var login="{#$member_userDomain#}/login.html";
+        var userid;
+        if(cookiePre){
+            userid = $.cookie(cookiePre+"login_user");
+        }
+        if(userid == null || userid == " "){
+            location.href=login;
+        }else{
+            location.href=herf;
+        }
+    });
 </script>
 
 <script src="{#$templets_skin#}js/swiper.min.js"></script>

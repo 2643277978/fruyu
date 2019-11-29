@@ -319,6 +319,22 @@
 		"link": '{#getUrlPath service='house'  template='sp-detail' id={#$detail_id#}#}',
 	};
 	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+
+	//点击微聊
+	$(".post_news").click(function () {
+		var id = $(this).attr('data-id');
+		var herf="{#$member_userDomain#}/im/chat-"+id+'.html';
+		var login="{#$member_userDomain#}/login.html";
+		var userid;
+		if(cookiePre){
+			userid = $.cookie(cookiePre+"login_user");
+		}
+		if(userid == null || userid == " "){
+			location.href=login;
+		}else{
+			location.href=herf;
+		}
+	});
 </script>
 </body>
 </html>

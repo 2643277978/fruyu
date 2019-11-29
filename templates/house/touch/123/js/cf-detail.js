@@ -64,7 +64,6 @@ $(function(){
         $('.qq_frame').hide();
         $('.desk').hide();
     });
-
     // 点击电话
     $('.im_icon .im_iphone, .call_phone').click(function(){
 		var id = $(this).attr('data-id');
