@@ -49,23 +49,23 @@
 	          <div class="swiper-wrapper">
 	          	  {#if $detail_qj_file#}
                 <div class="swiper-slide panorama-box">
-                    <img src="{#$detail_litpic#}" onerror="javascript:this.src='/static/images/404.jpg';" width="100%" height="100%">
+                    <img src="{#$detail_litpic#}"onerror="javascript:this.src='/static/images/404.jpg';" width="100%" height="100%">
                     <div class="imgplay">
-                        <img src="{#$templets_skin#}images/vr.gif" onerror="javascript:this.src='/static/images/404.jpg';" alt="">
+                        <img src="{#$templets_skin#}images/vr.gif"onerror="javascript:this.src='/static/images/404.jpg';" alt="">
                     </div>
                 </div>
                 {#/if#}
                 {#if $detail_video#}
                 <div class="swiper-slide video-box">
-                    <img src="{#$detail_litpic#}" onerror="javascript:this.src='/static/images/404.jpg';" width="100%" height="100%">
+                    <img src="{#$detail_litpic#}"onerror="javascript:this.src='/static/images/404.jpg';" width="100%" height="100%">
                     <div class="imgplay">
-                        <img src="{#$templets_skin#}images/viplay.png" onerror="javascript:this.src='/static/images/404.jpg';" alt="">
+                        <img src="{#$templets_skin#}images/viplay.png"onerror="javascript:this.src='/static/images/404.jpg';" alt="">
                     </div>
                 </div>
                 {#/if#}
                 {#foreach from=$detail_imglist item=img#}
                 <div class="swiper-slide">
-                    <img src="{#$img.path#}" onerror="javascript:this.src='/static/images/404.jpg';" width="100%" height="100%">
+                    <img src="{#$img.path#}"onerror="javascript:this.src='/static/images/404.jpg';" width="100%" height="100%">
                 </div>
                 {#/foreach#}
 	          </div>
@@ -88,10 +88,10 @@
         	<div class="swiper-slide">
         		{#* h5 *#}
 						{#if $detail_qj_type == 0#}
-							<iframe src="{#$cfg_basehost#}/include/360panorama.php?f={#$detail_qj_file#}"></iframe>
+							<iframe src="{#$cfg_basehost#}/include/360panorama.php?f={#$detail_qj_file#}"onerror="javascript:this.src='/static/images/404.jpg';"></iframe>
 						{#* iframe *#}
 						{#elseif $detail_qj_type == 1#}
-							<iframe src="{#$detail_qj_file#}"></iframe>
+							<iframe src="{#$detail_qj_file#}"onerror="javascript:this.src='/static/images/404.jpg';"></iframe>
 						{#/if#}
       		</div>
 					{#/if#}
@@ -99,7 +99,7 @@
         	<div class="swiper-slide"><video width="100%" height="100%" controls preload="meta" x5-video-player-type="h5" x5-playsinline playsinline webkit-playsinline  x5-video-player-fullscreen="true" id="video" src="{#$detail_video#}"  poster="{#$detail_litpic#}"></video></div>
         	{#/if#}
         	{#foreach from=$detail_imglist item=img#}
-					<div class="swiper-slide"><img src="{#$img.path#}" onerror="javascript:this.src='/static/images/404.jpg';" / ></div>
+					<div class="swiper-slide"><img src="{#$img.path#}"onerror="javascript:this.src='/static/images/404.jpg';" / ></div>
 					{#/foreach#}
         </div>
         <div class="swiper-pagination"></div>
