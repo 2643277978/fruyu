@@ -491,7 +491,7 @@ $(function() {
 								var vr    = list[i].qj==1 ? '<i class="VR_img"></i>' : '';
 								// var typestate = list[i].usertype==1 ? '<em class="zhongjie">中介</em>' : '<em class="geren">个人</em>';
 								var typestate = list[i].usertype==1 ? '' : '<em class="geren">个人</em>';
-								html.push('<div class="house-img l"><i class="house_disk"></i><img src="'+huoniao.changeFileSize(list[i].litpic, "small")+'">'+video+vr+typestate+'</div>');
+								html.push('<div class="house-img l"><i class="house_disk"></i><img src="'+huoniao.changeFileSize(list[i].litpic, "small")+'"onerror="javascript:this.src=\'/static/images/404.jpg\';">'+video+vr+typestate+'</div>');
 								html.push('<dl class="l">');
 								var top = list[i].isbid==1 ? '<i class="set_top"></i>' : '';
 								var vrstate = list[i].qj==1 ? '<span class="label_01">全景</span>' : '';

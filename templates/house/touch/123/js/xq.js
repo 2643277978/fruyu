@@ -491,7 +491,7 @@ $(function() {
 								html.push('<div class="house-item">');
 								var video = list[i].video==1 ? '<i class="play_img"></i>' : '';
 								var vr    = list[i].qj==1 ? '<i class="VR_img"></i>' : '';
-								html.push('<div class="house-img l"><i class="house_disk"></i><img src="'+pic+'">'+video+vr+'</div>');
+								html.push('<div class="house-img l"><i class="house_disk"></i><img src="'+pic+'"onerror="javascript:this.src=\'/static/images/404.jpg\';">'+video+vr+'</div>');
 								html.push('<dl class="l">');
 								var top = list[i].isbid==1 ? '<i class="set_top"></i>' : '';
 								html.push('<dt>'+top+'<em class="sp_title">'+list[i].title+'</em></dt>');

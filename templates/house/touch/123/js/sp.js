@@ -418,7 +418,7 @@ $(function() {
 								var video = list[i].video==1 ? '<i class="play_img"></i>' : '';
 								var vr    = list[i].qj==1 ? '<i class="VR_img"></i>' : '';
 								var typestate = list[i].usertype==1 ? '' : '<em class="geren">个人</em>';
-								html.push('<div class="house-img l"><i class="house_disk"></i><img src="'+pic+'"onerror="javascript:this.src=\'/static/images/noPhoto_100.jpg\';">'+video+vr+typestate+'</div>');
+								html.push('<div class="house-img l"><i class="house_disk"></i><img src="'+pic+'"onerror="javascript:this.src=\'/static/images/404.jpg\';">'+video+vr+typestate+'</div>');
 								html.push('<dl class="l">');
 								var top = list[i].isbid==1 ? '<i class="set_top"></i>' : '';
 								html.push('<dt>'+top+'<em class="sp_title">'+list[i].title+'</em></dt>');

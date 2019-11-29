@@ -47,19 +47,19 @@
 	          <div class="swiper-wrapper">
 	          	  {#if $detail_qj#}
 	          	  <div class="swiper-slide panorama-box">
-	              	<img src="{#$detail_qj.litpic#}" width="100%" height="100%">
-	              	<div class="imgplay"><img src="{#$templets_skin#}images/vr.gif" alt=""></div>
+	              	<img src="{#$detail_qj.litpic#}" onerror="javascript:this.src='/static/images/404.jpg';" width="100%" height="100%">
+	              	<div class="imgplay"><img src="{#$templets_skin#}images/vr.gif" onerror="javascript:this.src='/static/images/404.jpg';" alt=""></div>
 	              </div>
 	              {#/if#}
 	              {#if $detail_video#}
 	              <div class="swiper-slide video-box">
-	              	<img src="{#$detail_video.litpic#}" width="100%" height="100%">
-	              	<div class="imgplay"><img src="{#$templets_skin#}images/viplay.png" alt=""></div>
+	              	<img src="{#$detail_video.litpic#}" onerror="javascript:this.src='/static/images/404.jpg';" width="100%" height="100%">
+	              	<div class="imgplay"><img src="{#$templets_skin#}images/viplay.png"onerror="javascript:this.src='/static/images/404.jpg';" alt=""></div>
 	              </div>
 	              {#/if#}
 	              {#house action="albumList" return="list" act="loupan" loupanid={#$detail_id#} pageSize="5"#}
 	              <div class="swiper-slide">
-	              	<img src="{#$list.imglist[0]['path']#}" width="100%" height="100%">
+	              	<img src="{#$list.imglist[0]['path']#}" onerror="javascript:this.src='/static/images/404.jpg';" width="100%" height="100%">
 	              </div>
 	              {#/house#}
 	          </div>
@@ -126,7 +126,7 @@
 	            {#/if#}
 
 	            {#house action="albumList" return="list" act="loupan" loupanid={#$detail_id#} pageSize="5"#}
-                <div class="swiper-slide"><img src="{#$list.imglist[0]['path']#}" / ></div>
+                <div class="swiper-slide"><img src="{#$list.imglist[0]['path']#}"onerror="javascript:this.src='/static/images/404.jpg';" / ></div>
                 {#/house#}
 	          </div>
 	          <div class="swiper-pagination"></div>
@@ -135,11 +135,11 @@
 	<!-- 视频图片弹出层 e-->
 
 	<div class="list_icon fn-clear">
-		<div><a href="{#getUrlPath service='house' template='loupan-info' id={#$detail_id#}#}"><img src="{#$templets_skin#}images/lp_01.png"><p>详情</p></a></div>
-		<div><a href="{#getUrlPath service='house' template='loupan-hx' id={#$detail_id#}#}"><img src="{#$templets_skin#}images/lp_02.png"><p>户型</p></a></div>
-		<div><a href="{#getUrlPath service='house' template='loupan-gw' id={#$detail_id#}#}"><img src="{#$templets_skin#}images/lp_03.png"><p>顾问</p></a></div>
-		<div><a href="{#getUrlPath service='house' template='loupan-news' id={#$detail_id#}#}"><img src="{#$templets_skin#}images/lp_04.png"><p>动态</p></a></div>
-		<div><a href="#peitao"><img src="{#$templets_skin#}images/lp_05.png"><p>配套</p></a></div>
+		<div><a href="{#getUrlPath service='house' template='loupan-info' id={#$detail_id#}#}"><img src="{#$templets_skin#}images/lp_01.png" onerror="javascript:this.src='/static/images/404.jpg';"><p>详情</p></a></div>
+		<div><a href="{#getUrlPath service='house' template='loupan-hx' id={#$detail_id#}#}"><img src="{#$templets_skin#}images/lp_02.png" onerror="javascript:this.src='/static/images/404.jpg';"><p>户型</p></a></div>
+		<div><a href="{#getUrlPath service='house' template='loupan-gw' id={#$detail_id#}#}"><img src="{#$templets_skin#}images/lp_03.png" onerror="javascript:this.src='/static/images/404.jpg';"><p>顾问</p></a></div>
+		<div><a href="{#getUrlPath service='house' template='loupan-news' id={#$detail_id#}#}"><img src="{#$templets_skin#}images/lp_04.png" onerror="javascript:this.src='/static/images/404.jpg';"><p>动态</p></a></div>
+		<div><a href="#peitao"><img src="{#$templets_skin#}images/lp_05.png" onerror="javascript:this.src='/static/images/404.jpg';"><p>配套</p></a></div>
 	</div>
 
 
@@ -165,7 +165,7 @@
     {#if $detail_tuan == 1 && $detail_tuanState == 2#}
 	<!-- 团购倒计时 -->
 	<div class="count_down">
-		<div class="count_img"><img src="{#$detail_litpic#}"></div>
+		<div class="count_img"><img src="{#$detail_litpic#}" onerror="javascript:this.src='/static/images/404.jpg';"></div>
 		<div class="count_txt infbox">
 			<p class="txt_01">{#$detail_tuantitle#}</p>
 			<p class="txt_02"><span>{#$detail_tuanbegan|date_format:'%Y-%m-%d'#}</span><em>|</em><span>{#$detail_tuanCount#}人已报名</span></p>
@@ -182,7 +182,7 @@
             {#house action="apartmentList" act="loupan" return="apartmentList" loupanid={#$detail_id#} pageSize="2"#}
 			<div class="huxing_list">
                 <a href="{#$apartmentList.url#}">
-                    <div class="list_img"><img src="{#$apartmentList.litpic#}"><span>{#$apartmentList.direction#}</span></div>
+                    <div class="list_img"><img src="{#$apartmentList.litpic#}" onerror="javascript:this.src='/static/images/404.jpg';"><span>{#$apartmentList.direction#}</span></div>
                     <p class="list_title">{#$apartmentList.title#}</p>
                     <p class="list_price">
                         {#if $detail_ptype == 1#}
@@ -222,7 +222,7 @@
             {#foreach from=$detail_gw key=k item=gw#}
             {#if $k < 4#}
 			<div class="adviser_list fn-clear">
-				<div class="ad_list_img"><img src="{#$gw.photo#}"></div>
+				<div class="ad_list_img"><img src="{#$gw.photo#}" onerror="javascript:this.src='/static/images/404.jpg';"></div>
 				<div class="ad_list_right">
 					<p class="list_right_name"><span>{#$gw.nickname#}</span>{#if $gw.post#}<em>{#$gw.post#}</em>{#/if#}</p>
 					<p class="list_right_title"><span>本楼盘带看{#$gw.see|string_format:"%d"#}次</span><span>成交{#$gw.suc|string_format:"%d"#}单</span></p>
@@ -242,7 +242,7 @@
 		<div class="sandimg nikan-area">
 			<div id="shapan-box">
 				<div id="shapan-obj">
-					<img src="{#$detail_shapan['litpic']#}" alt="" class="">
+					<img src="{#$detail_shapan['litpic']#}" onerror="javascript:this.src='/static/images/404.jpg';" alt="" class="">
                     {#foreach from=$detail_shapan['data'] item=conf name=d#}
 					<p class="map-mark forsale{#if $conf.state == 1#}_02{#elseif $conf.state == 2#}_01{#elseif $conf.state == 3#}_03{#/if#}" style="left: {#$conf.coorx#}px; top: {#$conf.coory#}px;">{#if $conf.state == 0#}<span>待售</span>{#elseif $conf.state == 1#}<span>在售</span>{#else#}<span>售罄</span>{#/if#}<em>{#$conf.name#}</em><i></i></p>
                     {#/foreach#}
@@ -293,7 +293,7 @@
                 {#house action="loupanList" addrid={#$detail_addrid#} nid={#$detail_id#} pageSize=1#}
 			    <li class="fn-clear">
 			      <a href="{#$row.url#}">
-			        <div class="rleft"><img src="{#$row.litpic#}" alt="">{#if $row.quanjingcount#}<i></i>{#/if#}</div>
+			        <div class="rleft"><img src="{#$row.litpic#}" onerror="javascript:this.src='/static/images/404.jpg';" alt="">{#if $row.quanjingcount#}<i></i>{#/if#}</div>
 			        <div class="rright">
 			          <div class="rtitle fn-clear"><p>{#$row.title#}</p><em class="zaishou">{#if $row.salestate == 0#}
                           新盘待售
@@ -308,7 +308,7 @@
 			          <p class="addr">{#$row.addr[$row.addr|count-2]#}-{#$row.addr[$row.addr|count-1]#}<span></span></p>
 			        </div>
 			      </a>
-			      <div class="tel" data-tel="{#$row.tel#}" data-phone=""><img src="{#$templets_skin#}images/hPhone.png" alt=""></div>
+			      <div class="tel" data-tel="{#$row.tel#}" data-phone=""><img src="{#$templets_skin#}images/hPhone.png" onerror="javascript:this.src='/static/images/404.jpg';"alt=""></div>
 			    </li>
                 {#/house#}
 			</ul>

@@ -524,7 +524,7 @@ $(function() {
 									html.push('<div class="house-item">');
 									var video = list[i].videocount > 0 ? '<i class="play_img"></i>' : '';
 									var vr = list[i].quanjingcount > 0 ? '<i class="VR_img"></i>' : '';
-									html.push('<div class="house-img l"><i class="house_disk"></i><img src="'+list[i].litpic+'">' + video + vr +'</i></div>');
+									html.push('<div class="house-img l"><i class="house_disk"></i><img src="'+list[i].litpic+'"onerror="javascript:this.src=\'/static/images/404.jpg\';">' + video + vr +'</i></div>');
 									html.push('<dl class="l">');
 
 									//销售状态
