@@ -6,6 +6,15 @@ var wx_miniprogram;
 // }
 document.head.appendChild(document.createElement('script')).src = 'https://res2.wx.qq.com/open/js/jweixin-1.4.0.js?v=' + ~(-new Date());
 
+//远程服务器域名配置
+// alert();
+if (document.domain == "www.gs.text"){
+    var remote_domain = "http://test.fangruyu.net";
+}else{
+    var remote_domain = window.location.protocol + "//" + document.domain;
+}
+
+
 //多语言包
 if(typeof langData == "undefined"){
     document.head.appendChild(document.createElement('script')).src = '/include/json.php?action=lang';
