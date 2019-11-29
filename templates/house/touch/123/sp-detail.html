@@ -131,7 +131,13 @@
 			 <a href="https://api.map.baidu.com/marker?location={#$detail_latitude#},{#$detail_longitude#}&title={#$detail_title#}&content={#foreach from=$detail_latitude item=addr#}{#$addr#}{#/foreach#}{#$detail_address#}&output=html" target="_blank" class="zf_address appMapBtn">{#foreach from=$detail_addr item=addr#}{#$addr#}{#/foreach#}{#$detail_address#}</a>
 		</div>
 		<div class="information fn-clear">
-			<div class="im_img"><img src="{#$detail_user['photo']#}"></div>
+			<div class="im_img">
+				{#if $detail_user['photo'] == "" #}
+				<img src="{#$cfg_staticPath#}images/noPhoto_100.jpg" alt="{#$detail_username#}">
+				{#else if#}
+				<img src="{#$detail_user['photo']#}" alt="{#$detail_username#}">
+				{#/if#}
+			</div>
 			{#if $detail_usertype == 1#}
 			<div class="im_name"><p><span>{#$detail_username#}</span>
 				{#if $detail_user['certify'] == 1#}<i class="rz_01"></i>{#/if#}

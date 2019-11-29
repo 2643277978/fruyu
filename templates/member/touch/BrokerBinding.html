@@ -1,35 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0, user-scalable=0">
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <title>{#$siteCityInfo['name']#}{#$sp_seotitle#}商铺{#$pageType#},{#$siteCityInfo['name']#}旺铺{#$pageType#},{#$siteCityInfo['name']#}店铺{#$pageType#},{#$siteCityInfo['name']#}店面{#$pageType#}信息-{#$house_title#}</title>
-    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+    <meta charset="utf-8">
+    <title>房产经纪人</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
     <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
-    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/estate-list.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/brokerbinding.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$cfg_basehost#}/templates/house/touch/123/css/estate-list.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/househome.css?v={#$cfg_staticVersion#}">
     <script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
-    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
-    <script>
-        var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', cfg_staticPath = '{#$cfg_staticPath#}', staticPath = '{#$cfg_staticPath#}',templets_skin = '{#$templets_skin#}';
-
-        var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
-        var addrUrl     = '{#getUrlPath service="house" template="list" typeid="{#$list_id#}" addrid="%addr%" business="%circle%" subway="0" param="{#$skeyword#}"#}';
-        var subwayUrl   = '{#getUrlPath service="house" template="list" typeid="{#$list_id#}" addrid="0" business="0" subway="%subway%" station="%station%" param="{#$skeyword#}"#}';
-        var action = 'spList', detailListId = 'sp-list';
-        var type = '{#$type#}';
-        var JubaoConfig = {
-            "module" : 'house',
-            "action" : '',
-            "id" : '',
-            "desc": '{#$house_description#}',
-            "title": '{#$siteCityInfo['name']#}{#$sp_seotitle#}商铺{#$pageType#}',
-            "imgUrl": '{#$house_logoUrl#}',
-            "link": '{#getUrlPath service='house' template='sp'#}',
-        };
+    <script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+    <script src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript">
+        var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+        var hideFileUrl = 0;
+        var module = 'house';
     </script>
 </head>
 <body>
+{#$pageTitle = '经纪人找房'#}
+{#$pageRight = '<a href="javascript:;" class="notMenu"> </a>'#}
+{#include file="top.html"#}
 
+<div class="house-list" id="br-list">
+    <ul class="br-list">
+    </ul>
+</div>
+
+<script>
+    var atpage = '{#$page#}',
+        community = '{#$community#}',
+        totalCount = {#if $pageInfo.totalCount == 0#}0{#else#}{#$pageInfo.totalCount#}{#/if#},
+        totalPage = {#if $pageInfo.totalPage == 0#}0{#else#}{#$pageInfo.totalPage#}{#/if#},
+            pageSize = 10;
+</script>
+<script src="{#$templets_skin#}js/BrokerBinding.js?{#$cfg_staticVersion#}"></script>
 </body>
 </html>

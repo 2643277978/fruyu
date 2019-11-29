@@ -57,7 +57,6 @@ $(function () {
                                 html.push('<dl class="l">');
                                 var top = list[i].isbid==1 ? '<i class="set_top"></i>' : '';
                                 html.push('<dt>'+top+'<em class="sp_title">'+list[i].title+'</em></dt>');
-
                                 html.push('<dd class="item-area sp_item-area">');
 
                                 html.push('<em>'+list[i].area+'㎡|'+list[i].loupan+'|'+list[i].zhuangxiu+'</em>');

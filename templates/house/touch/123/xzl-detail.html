@@ -17,7 +17,6 @@
 	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
 
 	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
-
 	var pageData = {
 		id: '{#$detail_id#}',
 		title: '{#$detail_community#}',
@@ -134,7 +133,12 @@
 		<div class="information usertype{#$detail_usertype#} fn-clear">
         {#if $detail_usertype == 1#}
         <div class="im_img">
-            <img src="{#$detail_user['photo']#}" alt="{#$detail_username#}">
+            <!--<img src="{#$detail_user['photo']#}" alt="{#$detail_username#}">-->
+			{#if $detail_user['photo'] == "" #}
+			<img src="{#$cfg_staticPath#}images/noPhoto_100.jpg" alt="{#$detail_username#}">
+			{#else if#}
+			<img src="{#$detail_user['photo']#}" alt="{#$detail_username#}">
+			{#/if#}
         </div>
         <div class="im_name">
             <p>

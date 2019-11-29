@@ -126,7 +126,13 @@
             <div class="information usertype{#$detail_usertype#} fn-clear">
                 {#if $detail_usertype == 1#}
                 <div class="im_img">
-                    <a href="{#$detail_user.url#}"><img src="{#$detail_user['photo']#}" alt="{#$detail_username#}"></a>
+                    <a href="{#$detail_user.url#}">
+                        {#if $detail_user['photo'] == "" #}
+                        <img src="{#$cfg_staticPath#}images/noPhoto_100.jpg" alt="{#$detail_username#}">
+                        {#else if#}
+                        <img src="{#$detail_user['photo']#}" alt="{#$detail_username#}">
+                        {#/if#}
+                    </a>
                 </div>
                 <div class="im_name">
                     <p>
@@ -184,7 +190,14 @@
                     <p><span>物业公司</span><span>{#$detail_communityDetail.property#}</span></p>
                 </div>
                 <div class="txt-right">
-                	<a href="{#getUrlPath service=house template='community-detail' id=$detail_communityid#}"><img src="{#$detail_communityDetail.litpic#}">	{#*<span>共57张</span>*#}</a>
+                	<a href="{#getUrlPath service=house template='community-detail' id=$detail_communityid#}">
+                        {#if $detail_communityDetail.litpic == "" #}
+                        <img src="{#$cfg_staticPath#}images/404.jpg" alt="{#$detail_username#}">
+                        {#else if#}
+                        <img src="{#$detail_communityDetail.litpic#}">
+                        {#/if#}
+                        <!--<img src="{#$detail_communityDetail.litpic#}">-->
+                        {#*<span>共57张</span>*#}</a>
                 </div>
             </div>
         </div>

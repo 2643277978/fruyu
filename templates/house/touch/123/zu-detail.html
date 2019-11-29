@@ -52,7 +52,12 @@
 	          <div class="swiper-wrapper">
 	          	  {#if $detail_qj_file#}
                 <div class="swiper-slide panorama-box">
+                    {#if $detail_litpic == "" #}
+                    <img src="{#$cfg_staticPath#}images/404.jpg" width="100%" height="100%">
+                    {#else if#}
                     <img src="{#$detail_litpic#}" width="100%" height="100%">
+                    {#/if#}
+                    <!--<img src="{#$detail_litpic#}" width="100%" height="100%">-->
                     <div class="imgplay">
                         <img src="{#$templets_skin#}images/vr.gif" alt="">
                     </div>
@@ -60,7 +65,12 @@
                 {#/if#}
                 {#if $detail_video#}
                 <div class="swiper-slide video-box">
+                    <!--<img src="{#$detail_litpic#}" width="100%" height="100%">-->
+                    {#if $detail_litpic == "" #}
+                    <img src="{#$cfg_staticPath#}images/404.jpg" width="100%" height="100%">
+                    {#else if#}
                     <img src="{#$detail_litpic#}" width="100%" height="100%">
+                    {#/if#}
                     <div class="imgplay">
                         <img src="{#$templets_skin#}images/viplay.png" alt="">
                     </div>
@@ -68,7 +78,12 @@
                 {#/if#}
                 {#foreach from=$detail_imglist item=img#}
                 <div class="swiper-slide">
+                    <!--<img src="{#$img.path#}" width="100%" height="100%">-->
+                    {#if $img.path == "" #}
+                    <img src="{#$cfg_staticPath#}images/404.jpg" width="100%" height="100%">
+                    {#else if#}
                     <img src="{#$img.path#}" width="100%" height="100%">
+                    {#/if#}
                 </div>
                 {#/foreach#}
 	          </div>
@@ -124,7 +139,13 @@
 		<div class="information usertype{#$detail_usertype#} fn-clear">
         {#if $detail_usertype == 1#}
         <div class="im_img">
-            <a href="{#$detail_user.url#}"><img src="{#$detail_user['photo']#}" alt="{#$detail_username#}"></a>
+            <a href="{#$detail_user.url#}">
+				{#if $detail_user['photo'] == "" #}
+				<img src="{#$cfg_staticPath#}images/noPhoto_100.jpg" alt="{#$detail_username#}">
+				{#else if#}
+				<img src="{#$detail_user['photo']#}" alt="{#$detail_username#}">
+				{#/if#}
+			</a>
         </div>
         <div class="im_name">
             <p>
