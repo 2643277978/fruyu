@@ -25,6 +25,13 @@
 
 <div class="house-list" id="br-list">
     <ul class="br-list">
+        <!--<li>-->
+            <!--<img src=""onerror="javascript:this.src='/static/images/404.jpg';" alt="">-->
+            <!--<h4>出售渝中解放碑民族路合景大厦1-6楼带租约1.4亿打包</h4>-->
+            <!--<span class="all"><span class="adder">重庆解放碑 </span><span>|</span><span class="houseType">写字楼 </span><span>|</span><span>毛呸</span></span>-->
+            <!--<p class="price">出售：10万</p>-->
+            <!--<a href="" class="ruzhu">一键入驻</a>-->
+        <!--</li>-->
     </ul>
 </div>
 
@@ -34,6 +41,7 @@
         totalCount = {#if $pageInfo.totalCount == 0#}0{#else#}{#$pageInfo.totalCount#}{#/if#},
         totalPage = {#if $pageInfo.totalPage == 0#}0{#else#}{#$pageInfo.totalPage#}{#/if#},
             pageSize = 10;
+        console.log($(".br-list"));
 </script>
 <script src="{#$templets_skin#}js/BrokerBinding.js?{#$cfg_staticVersion#}"></script>
 </body>

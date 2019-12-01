@@ -1,20 +1,42 @@
 //获得
+function onclikRz(curr) {
+    // if( $(curr).html("已入驻")){
+    //
+    // }
+    var type = $(curr).attr('data-type');
+    var id = $(curr).attr('data-id');
+    $.ajax({
+        url:"/include/ajax.php?service=member&action=getFreeHouseList&id="+id+"&type="+type,
+        type:"GET",
+        dataType: "jsonp",
+        success:function () {
+            $(curr).html("已入驻");
+            alert("入驻成功");
+        },
+        error:function () {
+            alert("入驻失败");
+        }
+    })
+
+}
 $(function () {
     var data = [];
     data.push("pageSize="+pageSize);
     data.push("page="+atpage);
     $.ajax({
-        url:"http://test.fangruyu.net/include/ajax.php?service=member&action=getFreeHouseList",
+        url:"/include/ajax.php?service=member&action=getFreeHouseList",
         type: "GET",
         dataType: "jsonp",
         success:function (data) {
             if(data.state==100){
-                console.log(data.info.list);
+                // console.log(data.info.list);
                 var list = data.info.list, html = [];
                 if(list.length>0){
                     for (var i=0;i<list.length;i++){
                         html.push('<li>');
+                        html.push('<img src="'+list[i].litpic+'"onerror="javascript:this.src=\'/static/images/404.jpg\';">');
                         html.push(' <h4>'+list[i].title+'</h4>');
+                        html.push(' <span class="all">');
                         // var typestate = list[i].usertype==1 ? '':'<em class="geren">个人</em>';
                         html.push('<span class="adder">'+list[i].address+'</span>');
                         html.push('<span>|</span>');
@@ -50,6 +72,7 @@ $(function () {
                             zhuangxiu="其他";
                         }
                         html.push('<span>'+zhuangxiu+'</span>');
+                        html.push(' </span>');
                         var elevatortxt = '';
                         var type;
                         if(list[i].price!=0){
@@ -67,23 +90,20 @@ $(function () {
                         }
                         html.push('<p class="price">'+type+''+elevatortxt+'</p>');
                         var id=list[i].id;
-                        html.push('<a data-id="'+id+'" data-type="'+hType+'" class="ruzhu button">一键入驻</a>');
+                        html.push('<a onclick="onclikRz(this)" data-id="'+id+'" data-type="'+hType+'" class="ruzhu" id="ruzhu">一键入驻</a>');
                         html.push('</li>')
                     }
                    $(".br-list").append(html.join(""));
-
                     //最后一页
                     if(atpage >= data.info.pageInfo.totalPage){
                         isload = true;
-                        a.append('<li class="loading">已经到最后一页了</li>');
+                        $(".br-list").append('<li class="loading">已经到最后一页了</li>');
                     }
+                }else {
+                    $(".br-list").append('<li class="loading">暂无相关信息</li>')
                 }
             }
         }
     })
-    $(".ruzhu").click(function () {
-        console.log("aa");
-        $(this).text("已入驻")
-    })
-
 })
+

@@ -21,6 +21,7 @@
     	phoneCheck: {#$userinfo.phoneCheck|default:0#},
     }
     var geetest = {#$cfg_geetest#};
+    // var addr= {#$addr.typename#};
 </script>
 <body class="w1200">
 <!-- 顶部信息 -->
@@ -921,7 +922,7 @@
 			      		<div class="bd">
 			      			{#house action="news" return="news" litpic=1 typeid=$type.id pageSize="2"#}
 			      			<div class="slideshow-item" >
-							  		<a href="{#$news.url#}" title="{#$news.title#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url={#$news.litpic#} type='small'#}" alt="{#$news.title#}"></a>
+							  		<a href="{#$news.url#}" title="{#$news.title#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif"onerror="javascript:this.src='/static/images/404.jpg';" data-url="{#changeFileSize url={#$news.litpic#} type='small'#}" alt="{#$news.title#}"></a>
 							    </div>
 							    {#/house#}
 					  		</div>
@@ -935,7 +936,7 @@
 			      		<div class="bd">
 			      			{#house action="news" return="news" litpic=1 typeid=$type.id page=2 pageSize="2"#}
 			      			<div class="slideshow-item" >
-							  		<a href="{#$news.url#}" title="{#$news.title#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url={#$news.litpic#} type='small'#}" alt="{#$news.title#}"></a>
+							  		<a href="{#$news.url#}" title="{#$news.title#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif"onerror="javascript:this.src='/static/images/404.jpg';" data-url="{#changeFileSize url={#$news.litpic#} type='small'#}" alt="{#$news.title#}"></a>
 							    </div>
 							    {#/house#}
 					  		</div>
@@ -963,7 +964,7 @@
 				<li>
 					<a href="{#$news.url#}" target="_blank" title="{#$news.title#}" class="fn-clear">
 						<div class="newImg fn-left">
-							<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url={#$news.litpic#} type='small'#}" alt="{#$news.title#}">
+							<img src="{#$cfg_staticPath#}images/blank.gif"onerror="javascript:this.src='/static/images/404.jpg';" data-url="{#changeFileSize url={#$news.litpic#} type='small'#}" alt="{#$news.title#}">
 						</div>
 						<div class="newInfo">{#$news.description|default:$news.title#}</div>
 					</a>

@@ -48,24 +48,24 @@
 
 
 <!-- 最新活动 s-->
-<div class="wrap newAct fn-clear">
-	<div class="nAtop"><i class="inew"></i> 最新活动</div>
-	<div class="nAmain fn-clear">
-		{#if $detail_tuan == 1 && $detail_tuanState == 2#}
-		<div class="imgbox fn-left"><img src="{#$detail_litpic#}" alt="{#$detail_title#}"></div>
-		<div class="infbox fn-left">
-			<h2>看房团 :  {#$detail_tuantitle#}</h2>
-			<p class="ptime">时间： <b>{#$detail_tuanbegan|date_format:'%Y-%m-%d'#}</b> </p>
-			<div class="time" data-ntime="{#$smarty.now#}" data-etime="{#$detail_tuanend#}"><span>报名倒计时：<em>00</em>天<em>00</em>小时<em>00</em>分<em>48</em>秒</span></div>
-			<div class="tcount"><i class="itnum"></i> <span><b>{#$detail_tuanCount#}</b>人已参与</span></div>
-			<a href="javascript:;" class="bm">立即报名</a>
-		</div>
-		{#else#}
-		<div class="empty">暂无活动</div>
-		{#/if#}
-	</div>
+<!--<div class="wrap newAct fn-clear">-->
+	<!--<div class="nAtop"><i class="inew"></i> 最新活动</div>-->
+	<!--<div class="nAmain fn-clear">-->
+		<!--{#if $detail_tuan == 1 && $detail_tuanState == 2#}-->
+		<!--<div class="imgbox fn-left"><img src="{#$detail_litpic#}" alt="{#$detail_title#}"></div>-->
+		<!--<div class="infbox fn-left">-->
+			<!--<h2>看房团 :  {#$detail_tuantitle#}</h2>-->
+			<!--<p class="ptime">时间： <b>{#$detail_tuanbegan|date_format:'%Y-%m-%d'#}</b> </p>-->
+			<!--<div class="time" data-ntime="{#$smarty.now#}" data-etime="{#$detail_tuanend#}"><span>报名倒计时：<em>00</em>天<em>00</em>小时<em>00</em>分<em>48</em>秒</span></div>-->
+			<!--<div class="tcount"><i class="itnum"></i> <span><b>{#$detail_tuanCount#}</b>人已参与</span></div>-->
+			<!--<a href="javascript:;" class="bm">立即报名</a>-->
+		<!--</div>-->
+		<!--{#else#}-->
+		<!--<div class="empty">暂无活动</div>-->
+		<!--{#/if#}-->
+	<!--</div>-->
 
-</div>
+<!--</div>-->
 <!-- 最新活动 e-->
 
 
@@ -243,9 +243,9 @@
 				<li>
 					<a href="{#$img.path#}" target="_blank">
 						{#if $i == 0#}
-						<img src="{#$img.path#}" title="{#$list.title#}" />
+						<img src="{#$img.path#}"onerror="javascript:this.src='/static/images/404.jpg';" title="{#$list.title#}" />
 						{#else#}
-						<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$img.path#}" title="{#$img.info#}" />
+						<img src="{#$cfg_staticPath#}images/blank.gif"onerror="javascript:this.src='/static/images/404.jpg';" data-url="{#$img.path#}" title="{#$img.info#}" />
 						{#/if#}
 					</a>
 				</li>
@@ -261,7 +261,7 @@
 						{#foreach from=$photo.imglist item=img key=k#}
 						<li>
 							<a href="javascript:;" target="_blank">
-								<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$img.path|replace:"large":"small"#}" title="{#$img.info#}" />
+								<img src="{#$cfg_staticPath#}images/blank.gif"onerror="javascript:this.src='/static/images/404.jpg';" data-url="{#$img.path|replace:"large":"small"#}" title="{#$img.info#}" />
 							</a>
 						</li>
 						{#/foreach#}
@@ -285,130 +285,130 @@
 
 
 <!-- 沙盘看房 s -->
-<div class="wrap shapan"  id="shapan">
-	<div class="lpTop fn-clear">沙盘看房</div>
-	<div class="shapanBox fn-clear">
-		{#if $detail_shapan#}
-		<!-- 左侧图片区域 s -->
-		<div class="sandleft fn-left">
-			<div class="sandimg nikan-area" id="dzshapan" >
-				<div id="shapan-box">
-					<div id="shapan-obj">
-						<img src="{#$detail_shapan['litpic']#}" alt="" />
-						{#foreach from=$detail_shapan['data'] item=conf name=d#}
-						<span class="map-mark" style="left: {#$conf.coorx#}px; top: {#$conf.coory#}px;"><em>{#$conf.name#}</em>{#if $conf.state == 0#}<em class="forsale">待售</em>{#elseif $conf.state == 1#}<em class="onsale">在售</em>{#else#}<em class="outsale">售罄</em>{#/if#}<i></i></span>
-						{#/foreach#}
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- 左侧图片区域 e -->
-		<!-- 右边tab区域 s -->
-		<div class="dist-detail fn-right">
-			<div class="dist-tab" id="j-switch-distinfo">
-				<div class="dist-clip">
-					<ul >
-						{#foreach from=$detail_shapan['data'] item=conf name=d#}
-            <li class="on"><a href="javascript:;">{#$conf.name#}</a></li>
-			  		{#/foreach#}
-					</ul>
-				</div>
-				<a href="javascript:;" class="prev prev-dis"><i></i></a>
-				<a href="javascript:;" class="next"><i></i></a>
-			</div>
-			<div id="j-dist-content">
-				{#foreach from=$detail_shapan['data'] item=conf name=d#}
-				<div class="dist-items fn-hide">
-					<ul>
-						<li>
-							<p><span>均价：</span>{#$conf.price#}</p>
-							<p><span>层数：</span>{#$conf.floor#}</p>
-						</li>
-						<li>
-							<p><span>户数：</span>{#$conf.hushu#}</p>
-							<p><span>梯数：</span>{#$conf.tishu#}</p>
-						</li>
-						{#*
-						<li>
-							<p><span>装修：</span>精装</p>
-							<p><span>产权：</span>70年</p>
-						</li>
-						*#}
-						<li>
-							<p><span>开盘：</span>{#if $conf.began#}{#$conf.began#}{#else#}待定{#/if#}</p>
-							<p><span>交房：</span>{#if $conf.end#}{#$conf.end#}{#else#}待定{#/if#}</p>
-						</li>
-					</ul>
+<!--<div class="wrap shapan"  id="shapan">-->
+	<!--<div class="lpTop fn-clear">沙盘看房</div>-->
+	<!--<div class="shapanBox fn-clear">-->
+		<!--{#if $detail_shapan#}-->
+		<!--&lt;!&ndash; 左侧图片区域 s &ndash;&gt;-->
+		<!--<div class="sandleft fn-left">-->
+			<!--<div class="sandimg nikan-area" id="dzshapan" >-->
+				<!--<div id="shapan-box">-->
+					<!--<div id="shapan-obj">-->
+						<!--<img src="{#$detail_shapan['litpic']#}" alt="" />-->
+						<!--{#foreach from=$detail_shapan['data'] item=conf name=d#}-->
+						<!--<span class="map-mark" style="left: {#$conf.coorx#}px; top: {#$conf.coory#}px;"><em>{#$conf.name#}</em>{#if $conf.state == 0#}<em class="forsale">待售</em>{#elseif $conf.state == 1#}<em class="onsale">在售</em>{#else#}<em class="outsale">售罄</em>{#/if#}<i></i></span>-->
+						<!--{#/foreach#}-->
+					<!--</div>-->
+				<!--</div>-->
+			<!--</div>-->
+		<!--</div>-->
+		<!--&lt;!&ndash; 左侧图片区域 e &ndash;&gt;-->
+		<!--&lt;!&ndash; 右边tab区域 s &ndash;&gt;-->
+		<!--<div class="dist-detail fn-right">-->
+			<!--<div class="dist-tab" id="j-switch-distinfo">-->
+				<!--<div class="dist-clip">-->
+					<!--<ul >-->
+						<!--{#foreach from=$detail_shapan['data'] item=conf name=d#}-->
+            <!--<li class="on"><a href="javascript:;">{#$conf.name#}</a></li>-->
+			  		<!--{#/foreach#}-->
+					<!--</ul>-->
+				<!--</div>-->
+				<!--<a href="javascript:;" class="prev prev-dis"><i></i></a>-->
+				<!--<a href="javascript:;" class="next"><i></i></a>-->
+			<!--</div>-->
+			<!--<div id="j-dist-content">-->
+				<!--{#foreach from=$detail_shapan['data'] item=conf name=d#}-->
+				<!--<div class="dist-items fn-hide">-->
+					<!--<ul>-->
+						<!--<li>-->
+							<!--<p><span>均价：</span>{#$conf.price#}</p>-->
+							<!--<p><span>层数：</span>{#$conf.floor#}</p>-->
+						<!--</li>-->
+						<!--<li>-->
+							<!--<p><span>户数：</span>{#$conf.hushu#}</p>-->
+							<!--<p><span>梯数：</span>{#$conf.tishu#}</p>-->
+						<!--</li>-->
+						<!--{#*-->
+						<!--<li>-->
+							<!--<p><span>装修：</span>精装</p>-->
+							<!--<p><span>产权：</span>70年</p>-->
+						<!--</li>-->
+						<!--*#}-->
+						<!--<li>-->
+							<!--<p><span>开盘：</span>{#if $conf.began#}{#$conf.began#}{#else#}待定{#/if#}</p>-->
+							<!--<p><span>交房：</span>{#if $conf.end#}{#$conf.end#}{#else#}待定{#/if#}</p>-->
+						<!--</li>-->
+					<!--</ul>-->
 
-					{#*
-					<div class="item_con">
-						<p>1#户型</p>
-						<ul>
-							<li><span class="fir">165平复式</span><span class="sec">2室2厅3卫1厨</span><span class="thir">165.00㎡</span><span class="fou">待售</span></li>
-							<li><span class="fir">95平户型</span><span class="sec">2室2厅3卫1厨</span><span class="thir">122.00㎡</span><span class="fou">待售</span></li>
-							<li><span class="fir">125平户型</span><span class="sec">4室2厅2卫1厨</span><span class="thir">125.00㎡</span><span class="fou">待售</span></li>
-						</ul>
-					</div>
-					*#}
-				</div>
-				{#/foreach#}
-			</div>
-		</div>
-		<!-- 右边tab区域 d --></div>
-		{#else#}
-		<div class="empty">暂无沙盘</div>
-		{#/if#}
-</div>
-<!-- 沙盘看房 e -->
+					<!--{#*-->
+					<!--<div class="item_con">-->
+						<!--<p>1#户型</p>-->
+						<!--<ul>-->
+							<!--<li><span class="fir">165平复式</span><span class="sec">2室2厅3卫1厨</span><span class="thir">165.00㎡</span><span class="fou">待售</span></li>-->
+							<!--<li><span class="fir">95平户型</span><span class="sec">2室2厅3卫1厨</span><span class="thir">122.00㎡</span><span class="fou">待售</span></li>-->
+							<!--<li><span class="fir">125平户型</span><span class="sec">4室2厅2卫1厨</span><span class="thir">125.00㎡</span><span class="fou">待售</span></li>-->
+						<!--</ul>-->
+					<!--</div>-->
+					<!--*#}-->
+				<!--</div>-->
+				<!--{#/foreach#}-->
+			<!--</div>-->
+		<!--</div>-->
+		<!--&lt;!&ndash; 右边tab区域 d &ndash;&gt;</div>-->
+		<!--{#else#}-->
+		<!--<div class="empty">暂无沙盘</div>-->
+		<!--{#/if#}-->
+<!--</div>-->
+<!--&lt;!&ndash; 沙盘看房 e &ndash;&gt;-->
 
 
 
 <!-- 全景看房 s -->
-<div class="wrap quanjing" id="quanjing">
-	<div class="lpTop fn-clear">全景看房</div>
-	{#if $detail_qj#}
-	<div class="qjbox">
-		{#* h5 *#}
-		{#if $detail_qj.typeid == 0#}
-			<iframe src="{#$cfg_basehost#}/include/360panorama.php?f={#$detail_qj.file#}"></iframe>
+<!--<div class="wrap quanjing" id="quanjing">-->
+	<!--<div class="lpTop fn-clear">全景看房</div>-->
+	<!--{#if $detail_qj#}-->
+	<!--<div class="qjbox">-->
+		<!--{#* h5 *#}-->
+		<!--{#if $detail_qj.typeid == 0#}-->
+			<!--<iframe src="{#$cfg_basehost#}/include/360panorama.php?f={#$detail_qj.file#}"></iframe>-->
 
-		{#* swf *#}
-		{#elseif $detail_qj.typeid == 1#}
-			<embed width="120" height="400" src="{#$detail_qj.file#}" type="application/x-shockwave-flash" quality="high" wmode="opaque">
+		<!--{#* swf *#}-->
+		<!--{#elseif $detail_qj.typeid == 1#}-->
+			<!--<embed width="120" height="400" src="{#$detail_qj.file#}" type="application/x-shockwave-flash" quality="high" wmode="opaque">-->
 
-		{#* iframe *#}
-		{#elseif $detail_qj.typeid == 2#}
-			<iframe src="{#$detail_qj.file#}"></iframe>
+		<!--{#* iframe *#}-->
+		<!--{#elseif $detail_qj.typeid == 2#}-->
+			<!--<iframe src="{#$detail_qj.file#}"></iframe>-->
 
-		{#/if#}
+		<!--{#/if#}-->
 
-	</div>
-	{#else#}
-	<div class="empty">暂无全景</div>
-	{#/if#}
-</div>
+	<!--</div>-->
+	<!--{#else#}-->
+	<!--<div class="empty">暂无全景</div>-->
+	<!--{#/if#}-->
+<!--</div>-->
 <!-- 全景看房 e -->
 
 
 
 <!-- 视频看房 s -->
-<div class="wrap quanjing" id="video">
-	<div class="lpTop fn-clear">视频看房</div>
-	{#if $detail_video#}
-	<div class="qjbox">
-		{#* 本地 *#}
-		{#if $detail_video.videotype == 0#}
-			<iframe src="/include/videoPreview.php?f={#$detail_video.videourl#}" frameborder="0"></iframe>
-		{#* 第三方 *#}
-		{#elseif $detail_video.videotype == 1#}
-			<iframe src="{#$detail_video.videourl#}" frameborder="0" allowfullscreen="true"></iframe>
-		{#/if#}
+<!--<div class="wrap quanjing" id="video">-->
+	<!--<div class="lpTop fn-clear">视频看房</div>-->
+	<!--{#if $detail_video#}-->
+	<!--<div class="qjbox">-->
+		<!--{#* 本地 *#}-->
+		<!--{#if $detail_video.videotype == 0#}-->
+			<!--<iframe src="/include/videoPreview.php?f={#$detail_video.videourl#}" frameborder="0"></iframe>-->
+		<!--{#* 第三方 *#}-->
+		<!--{#elseif $detail_video.videotype == 1#}-->
+			<!--<iframe src="{#$detail_video.videourl#}" frameborder="0" allowfullscreen="true"></iframe>-->
+		<!--{#/if#}-->
 
-	</div>
-	{#else#}
-	<div class="empty">暂无视频</div>
-	{#/if#}
-</div>
+	<!--</div>-->
+	<!--{#else#}-->
+	<!--<div class="empty">暂无视频</div>-->
+	<!--{#/if#}-->
+<!--</div>-->
 <!-- 全景看房 e -->
 
 
