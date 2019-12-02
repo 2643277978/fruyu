@@ -33,9 +33,9 @@ $(function () {
                 // console.log(data.info.list);
                 var list = data.info.list, html = [];
                 if(list.length>0){
-                    if(list.userid==null){
-                        console.log(list.userid);
                         for (var i=0;i<list.length;i++){
+                            if(list[i].userid==null){
+                                console.log(list[i].userid);
                             html.push('<li>');
                             html.push('<img src="'+list[i].litpic+'"onerror="javascript:this.src=\'/static/images/404.jpg\';">');
                             html.push(' <h4>'+list[i].title+'</h4>');
@@ -97,12 +97,13 @@ $(function () {
                             html.push('</li>')
                         }
                        $(".br-list").append(html.join(""));
-                    }
+
                     //最后一页
                     if(atpage >= data.info.pageInfo.totalPage){
                         isload = true;
                         $(".br-list").append('<li class="loading">已经到最后一页了</li>');
                     }
+                        }
                 }else {
                     $(".br-list").append('<li class="loading">暂无相关信息</li>')
                 }
