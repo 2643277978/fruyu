@@ -34,8 +34,7 @@ $(function () {
                 var list = data.info.list, html = [];
                 if(list.length>0){
                         for (var i=0;i<list.length;i++){
-                            if(list[i].userid==0) {
-                                console.log(list[i].userid);
+                            // if(list[i].userid==0) {
                                 html.push('<li>');
                                 html.push('<img src="' + list[i].litpic + '"onerror="javascript:this.src=\'/static/images/404.jpg\';">');
                                 html.push(' <h4>' + list[i].title + '</h4>');
@@ -96,7 +95,7 @@ $(function () {
                                 html.push('<a onclick="onclikRz(this)" data-id="' + id + '" data-type="' + hType + '" class="ruzhu" id="ruzhu">一键入驻</a>');
                                 html.push('</li>')
                             }
-                            }
+                            // }
 
                                $(".br-list").append(html.join(""));
 
