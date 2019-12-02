@@ -76,7 +76,7 @@
 .manager .r h4{font-size: 18px;color:#1a1c21;font-weight: bold;margin-top: 10px;}
 .manager .r .tip{margin-left: 7px;background-color: #f2f3f7;padding: 2px 5px;font-size: 12px;color:#87a3c4;margin-top:5px;font-weight: normal;}
 .manager .r p i{margin:0 3px 0 0;}
-.manbox{margin-top: 20px;}
+.manbox{margin-top: 20px;position: relative;}
 .manbox a{display: block;position: relative;width: 98px;height:40px;line-height:40px;text-align:center;color:#f1370b;font-size:16px;border:solid 1px #ff4f57;background-color: #fff7f7;box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.07);-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;margin: auto;-webkit-transition:all .3s ease-in-out;-moz-transition:all .3s ease-in-out;transition:all .3s ease-in-out;float: left;margin-right: 15px;font-weight: bold;}
 .manbox a:last-child{margin-right: 0;}
 .manbox a.btnTel{width: 200px;height: 42px;background-color: rgb(241, 55, 11);box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.13);color:#fff;font-size: 18px;border:none;}
