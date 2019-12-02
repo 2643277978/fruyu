@@ -19,7 +19,7 @@
 	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
 
 	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
-	var atpage = 1, totalCount = 0, pageSize = 10;
+	var atpage = 1, totalCount = 0, pageSize = 60;
 	var detail = {
 		addrid : {#$addrid|default:0#},
 		business : {#$business|default:0#},
@@ -259,9 +259,9 @@
 				<li{#if !$hot && $filter != "hot" && $filter != "tuan" && !$tuan && !$video && !$qj && !$shapan#} class="curr"{#/if#} data-id="all"><a href="javascript:;">全部楼盘</a></li>
 				<li{#if $hot || $filter == "hot"#} class="curr"{#/if#} data-id="hot"><a href="javascript:;">热销楼盘</a></li>
 				<li{#if $tuan || $filter == "tuan"#} class="curr"{#/if#} data-id="tuan"><a href="javascript:;">团购楼盘</a></li>
-				<li{#if $video#} class="curr"{#/if#} data-id="video"><a href="javascript:;">视频看房</a></li>
-				<li{#if $qj#} class="curr"{#/if#} data-id="qj"><a href="javascript:;">全景看房</a></li>
-				<li{#if $shapan#} class="curr"{#/if#} data-id="shapan"><a href="javascript:;">沙盘看房</a></li>
+				<!--<li{#if $video#} class="curr"{#/if#} data-id="video"><a href="javascript:;">视频看房</a></li>-->
+				<!--<li{#if $qj#} class="curr"{#/if#} data-id="qj"><a href="javascript:;">全景看房</a></li>-->
+				<!--<li{#if $shapan#} class="curr"{#/if#} data-id="shapan"><a href="javascript:;">沙盘看房</a></li>-->
 			</ul>
 		</div>
 		<div class="m-o">

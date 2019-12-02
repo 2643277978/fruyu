@@ -1,13 +1,18 @@
 $(function() {
 	$("img").scrollLoading();
 
-  $(".mobile_kf #qrcode").qrcode({
+
+function sjkf(a){
+ a.qrcode({
     render: window.applicationCache ? "canvas" : "table",
-    width: 74,
-    height: 74,
+    width: 84,
+    height: 84,
     text: huoniao.toUtf8(window.location.href)
   });
-
+}
+sjkf( $(".mobile_kf #qrcode"));
+sjkf( $(".mobile_kf_mid #sjkf"));
+sjkf( $(".mobile_kf_mid #sj"));
 
   // 预约看房
   $(".btnYy").bind("click", function(){

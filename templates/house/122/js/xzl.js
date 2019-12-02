@@ -684,7 +684,7 @@ $(function(){
                                     getList();
                                 }
                             }
-                            info.find(".pagination-pages").append(page);
+                            // info.find(".pagination-pages").append(page);
                         }
                     }
                 }
@@ -707,7 +707,7 @@ $(function(){
                             atpage = Number($(this).text());
                             getList();
                         }
-                        info.find(".pagination-pages").append(page);
+                        // info.find(".pagination-pages").append(page);
                     }
                 }
             }

@@ -1,7 +1,8 @@
 {#if $detail_banner#}
-{#$banner = $detail_banner#}
+{#$banner =$detail_litpic#}
 {#else#}
-{#$banner = $templets_skin|cat:'images/detail_bg.png'#}
+<!--{#$banner = $templets_skin|cat:'images/detail_bg.png'#}-->
+{#$banner = $detail_litpic#}
 {#/if#}
 <div class="mod-banner" >
     <div class="filter-bg">

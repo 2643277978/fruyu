@@ -114,7 +114,7 @@ p.ptip{ width: 280px;height: 68px;line-height:68px;text-align:center;color:#fff;
 .c-info .detail {width: 100%; border-left: 1px solid #eee; border-bottom: 1px solid #eee;}
 .c-info .detail td {width: 50%; padding: 10px 20px; line-height: 1.5em; border-top: 1px solid #eee; border-right: 1px solid #eee;}
 .c-info dl {padding: 5px 0;}
-.c-info dt {float: left; width: 110px; text-align: right; margin-right: 5px;}
+.c-info dt {float: left; text-align: right; margin-right: 5px;}
 .c-info dd {position: relative; overflow: hidden;}
 .c-info dd a {display: inline-block; border-bottom: 1px dotted #ccc;}
 .c-info dd a:hover {text-decoration: none;}

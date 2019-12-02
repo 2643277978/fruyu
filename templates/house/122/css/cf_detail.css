@@ -23,6 +23,13 @@
 .cf-detail .cf_slide .sprev, .cf-detail .cf_slide .snext {position: absolute; top:0;  height: 82px; width: 30px; line-height: 82px; overflow: hidden;background: rgba(0,0,0,.77);filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#c4000000,endColorstr=#c4000000);}
 .pageState{position: absolute;bottom: 102px;right: 20px;height: 30px;line-height: 30px;text-align: center;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;font-size: 16px;color:#fff;z-index: 9;}
 
+/*手机看房*/
+.mobile_kf_mid{width:104px;height:90px;display: inline-block; -webkit-box-shadow: 0 3px 5px rgba(0,0,0,.13);-moz-box-shadow: 0 3px 5px rgba(0,0,0,.13);box-shadow: 0 3px 5px rgba(0,0,0,.13);-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;overflow: hidden;}
+.mobile_kf_mid .mk_lef{padding:5px;background-color:#fff;}
+.mobile_kf_mid .mk_lef #sjkf{display: block;width: 84px;height: 84px;overflow: hidden;}
+.mobile_kf_mid .mk_lef #sj{display: block;width: 84px;height: 84px;overflow: hidden;}
+.mobile_kf_mid .mk_rig{width: 14px;height:81px;text-align: center;background-color:#9899a3;color:#fff;padding-top: 9px;position:absolute;}
+
 .cf-detail .cf_slide .sprev {left: 0;}
 .cf-detail .cf_slide .snext {right: 0;}
 .w1200 .cf-detail .cf_slide .sprev {left: 0;}

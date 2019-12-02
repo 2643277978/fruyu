@@ -24,10 +24,11 @@
 .pageState{position: absolute;bottom: 102px;right: 20px;height: 30px;line-height: 30px;text-align: center;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;font-size: 16px;color:#fff;z-index: 9;}
 
 /*手机看房*/
-.mobile_kf_mid{width:94px;height:90px;display: inline-block; -webkit-box-shadow: 0 3px 5px rgba(0,0,0,.13);-moz-box-shadow: 0 3px 5px rgba(0,0,0,.13);box-shadow: 0 3px 5px rgba(0,0,0,.13);-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;overflow: hidden;}
+.mobile_kf_mid{width:114px;height:90px;display: inline-block; -webkit-box-shadow: 0 3px 5px rgba(0,0,0,.13);-moz-box-shadow: 0 3px 5px rgba(0,0,0,.13);box-shadow: 0 3px 5px rgba(0,0,0,.13);-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;overflow: hidden;}
 .mobile_kf_mid .mk_lef{padding:5px;background-color:#fff;}
-.mobile_kf_mid .mk_lef #sjkf{display: block;width: 74px;height: 74px;overflow: hidden;}
-.mobile_kf_mid .mk_rig{width: 14px;height:81px;text-align: center;background-color:#9899a3;color:#fff;padding-top: 9px;position:absolute;}
+.mobile_kf_mid .mk_lef #sjkf{display: block;width: 84px;height: 84px;overflow: hidden;}
+.mobile_kf_mid .mk_lef #sj{display: block;width: 84px;height: 84px;overflow: hidden;}
+.mobile_kf_mid .mk_rig{width: 14px;height:81px;text-align: center;background-color:#9899a3;color:#fff;padding-top: 9px;position:absolute;left: 100px;}
 
 .xzl-detail .xzl_slide .sprev {left: 0;}
 .xzl-detail .xzl_slide .snext {right: 0;}

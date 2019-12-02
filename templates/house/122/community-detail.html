@@ -29,7 +29,6 @@
 		lng: '{#$detail_longitude#}',
 		url: '{#$pageUrl#}'
 	};
-
 	var site_map = "{#$site_map#}";
 </script>
 </head>
@@ -128,12 +127,13 @@
 		</div>
 		<div class="com_gw">
 			<h4>小区顾问 <span class="line"></span></h4>
+			<div class="jjr">
+			</div>
 			<div class="gwlistbox">
 				<div class="listmore"><a href="javascript:;"></a></div>
 				
 				<ul class="gwlist fn-clear">
 					{#foreach from=$detail_zjUserList item=zj key=k#}
-					
 					<li{#if $k > 2#} class="fn-hide"{#/if#}>
 						<div class="topbox">
 							<div class="l">

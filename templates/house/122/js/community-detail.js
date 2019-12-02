@@ -1,4 +1,26 @@
 $(function(){
+	//小区顾问
+	var c_id=pageData.id;
+	$.ajax({
+		url:  "/include/ajax.php?service=house&action=getCommunityZjList&cid=1",
+		type: "get",
+		dataType: "jsonp",
+		success:function (data) {
+			if(data.state==100){
+				var html=[];
+				var phone="电话：";
+				var name="昵称：";
+				html.push('<img src="'+data.info[0].photo+'"onerror="javascript:this.src=\'/static/images/noPhoto_100.jpg\';" alt="">');
+				html.push('<span class="jjrphone">'+phone+''+data.info[0].phone+'</span>');
+				html.push('<span class="jjrname">'+name+''+data.info[0].nickname+'</span>')
+				$(".jjr").html(html.join(""));
+			}
+			else {
+				$(".jjr").html('<span>暂无顾问！</span>');
+			}
+		}
+	});
+
 	//大图切换
   $(".com_slide").slide({titCell: ".plist li",mainCell: ".album",effect: "fold",autoPlay: true,delayTime: 500,switchLoad: "_src",pageStateCell:".pageState",startFun: function(i, p) {if (i == 0) {$(".sprev").click()} else if (i % 5 == 0) {$(".snext").click()}}});
 

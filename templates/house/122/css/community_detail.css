@@ -53,6 +53,11 @@
 .comAdd dd span{max-width: 310px;  float: left;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 .comAdd dd a{color:#4884ff;margin-left: 10px;float: left;}
 /*小区顾问*/
+.jjr{margin-top: 10px;width: 200px;display: inline-block;height: 70px;position: relative;}
+.jjr img{border-radius: 50px;width: 60px;height: 60px;display: inline-block}
+.jjr .jjrphone{width:130px;height: 20px;display: inline-block;position: absolute;left: 70px;top: 5px; }
+.jjr .jjrname{width:130px;height: 20px;display: inline-block;position: absolute;left: 70px;top: 30px; }
+.com_gw{width: 430px;}
 .com_gw h4{font-size: 16px;color:#4b4c4f;font-weight: bold;}
 .com_gw h4 span{width: 340px;height: 1px;background-color: #e8e8e8;float: right; margin-top: 12px; }
 .gwlist li{padding:10px 0;width: 33.33%;float: left;position: relative;}

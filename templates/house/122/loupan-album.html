@@ -26,6 +26,7 @@
 		panName: '{#$detail_title#}',
 		lat: '{#$detail_latitude#}',
 		lng: '{#$detail_longitude#}',
+		img:'{#$detail_litpic#}',
 		url: '{#getUrlPath service="house" template="loupan-detail" id={#$detail_id#}#}'
 	};
 </script>
@@ -51,12 +52,12 @@
 				{#foreach from=$photo.imglist item=img key=k#}
 				<li>
 					<a href="{#$img.path#}">
-						<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$img.path|replace:"large":"small"#}" title="{#$img.info#}" />
+						<img src="{#$cfg_staticPath#}images/blank.gif"onerror="javascript:this.src='/static/images/404.jpg';" data-url="{#$img.path|replace:"large":"small"#}" title="{#$img.info#}" />
 					</a>
 				</li>
 				{#/foreach#}
 				{#/house#}
-				<!-- <div class="empty">抱歉，该楼盘暂无相册！</div> -->
+				 <div class="empty">抱歉，该楼盘暂无相册！</div>
 			</ul>
 		</div>
 	</div>

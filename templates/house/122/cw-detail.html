@@ -208,13 +208,24 @@
 					<a href="{#$detail_user.url#}" target="_blank"><img src="{#$detail_user['photo']#}" alt="{#$detail_user['nickname']#}"></a>
 				</div>
 				<div class="r">
-					<h4><a href="{#$detail_user.url#}" target="_blank">{#$detail_user['nickname']#}</a><span class="tip">{#if $detail_user.zjcomId#}{#$detail_user.zjcomName#}{#else#}独立经纪人{#/if#}</span></h4>
+					<h4><a href="{#$detail_user.url#}" target="_blank">{#$detail_user['nickname']#}</a><span class="tip">{#if $detail_user.zjcomId#}{#$detail_user.zjcomName#}{#else#}{#/if#}</span></h4>
 					<p>{#if $detail_user['certify'] == 1#}<i class="isf" title="身份认证"></i>{#/if#}{#if $detail_user['flag'] == 1#}<i class="imp" title="名片认证"></i>{#/if#}</p>
 				</div>
 			</div>
 
 			<div class="manbox fn-clear">
-				<a href="javascript:;" class="btnTel"><i></i> {#$detail_user.phone#}</a>
+				<div class="mobile_kf_mid  fn-clear">
+					<div class="mk_lef fn-left">
+						<div id="sj"></div>
+					</div>
+					<div class="mk_rig fn-right">
+						<span>手</span>
+						<span>机</span>
+						<span>看</span>
+						<span>房</span>
+					</div>
+				</div>
+				<!--<a href="javascript:;" class="btnTel"><i></i> {#$detail_user.phone#}</a>-->
 				{#if $detail_user.wx || $detail_user.wxQr#}
 				<a href="javascript:;" class="btnWx"><i></i> 获取微信
 					<div class="mbox wechat">
@@ -244,7 +255,18 @@
 			</div>
 
 			<div class="manbox fn-clear">
-				<a href="javascript:;" class="btnTel"><i></i> {#$detail_contact#}</a>
+				<div class="mobile_kf_mid  fn-clear">
+					<div class="mk_lef fn-left">
+						<div id="sjkf"></div>
+					</div>
+					<div class="mk_rig fn-right">
+						<span>手</span>
+						<span>机</span>
+						<span>看</span>
+						<span>房</span>
+					</div>
+				</div>
+				<!--<a href="javascript:;" class="btnTel"><i></i> {#$detail_contact#}</a>-->
 			</div>
 
 			{#/if#}

@@ -48,24 +48,28 @@
 
 
 <!-- 最新活动 s-->
-<!--<div class="wrap newAct fn-clear">-->
-	<!--<div class="nAtop"><i class="inew"></i> 最新活动</div>-->
-	<!--<div class="nAmain fn-clear">-->
-		<!--{#if $detail_tuan == 1 && $detail_tuanState == 2#}-->
-		<!--<div class="imgbox fn-left"><img src="{#$detail_litpic#}" alt="{#$detail_title#}"></div>-->
-		<!--<div class="infbox fn-left">-->
-			<!--<h2>看房团 :  {#$detail_tuantitle#}</h2>-->
-			<!--<p class="ptime">时间： <b>{#$detail_tuanbegan|date_format:'%Y-%m-%d'#}</b> </p>-->
-			<!--<div class="time" data-ntime="{#$smarty.now#}" data-etime="{#$detail_tuanend#}"><span>报名倒计时：<em>00</em>天<em>00</em>小时<em>00</em>分<em>48</em>秒</span></div>-->
-			<!--<div class="tcount"><i class="itnum"></i> <span><b>{#$detail_tuanCount#}</b>人已参与</span></div>-->
-			<!--<a href="javascript:;" class="bm">立即报名</a>-->
-		<!--</div>-->
-		<!--{#else#}-->
-		<!--<div class="empty">暂无活动</div>-->
-		<!--{#/if#}-->
-	<!--</div>-->
+<div class="wrap newAct fn-clear">
+	<div class="nAtop"><i class="inew"></i> 最新活动</div>
+	<div class="nAmain fn-clear">
+		{#if $detail_tuan == 1 && $detail_tuanState == 2#}
+		<div class="imgbox fn-left"><img src="{#$detail_litpic#}" alt="{#$detail_title#}"></div>
+		<div class="infbox fn-left">
+			<h2>看房团 :  {#$detail_tuantitle#}</h2>
+			<p class="ptime">时间： <b>{#$detail_tuanbegan|date_format:'%Y-%m-%d'#}</b> </p>
+			<div class="time" data-ntime="{#$smarty.now#}" data-etime="{#$detail_tuanend#}"><span>报名倒计时：<em>00</em>天<em>00</em>小时<em>00</em>分<em>48</em>秒</span></div>
+			<div class="tcount"><i class="itnum"></i> <span><b>{#$detail_tuanCount#}</b>人已参与</span></div>
+			<a href="javascript:;" class="bm">立即报名</a>
+		</div>
+		{#else#}
+		<style>
+			.newAct{
+				display: none;;
+			}
+		</style>
+		{#/if#}
+	</div>
 
-<!--</div>-->
+</div>
 <!-- 最新活动 e-->
 
 

@@ -28,80 +28,80 @@
 {#$pageCurr = "news"#}
 {#include file="top.html"#}
 
-<!--<div class="wrap">-->
-	<!--<div class="pubbox newsbox fn-clear">-->
-		<!--<div class="nl fn-left">-->
-			<!--<div class="slideBox slideBox1">-->
-				<!--<div class="slide">-->
-					<!--<div class="bd">-->
-						<!--{#house action="news" return="news" page=1 pageSize="5"#}-->
-						<!--<div class="slideshow-item" >-->
-							<!--<div class="siteAdvObj">-->
-								<!--<a href="{#$news.url#}" target="_blank">-->
-									<!--<img src="{#changeFileSize url={#$news.litpic#} type='small'#}" width="1200" height="100" alt="{#$news.title#}">-->
-								<!--</a>-->
-							<!--</div>-->
-							<!--<div class="slideinfo">-->
-								<!--<h3><a href="{#$news.url#}" target="_blank">{#$news.title#}</a></h3>-->
-								<!--<div class="bg"></div>-->
-							<!--</div>-->
-						<!--</div>-->
-						<!--{#$noid[]=$news.id#}-->
-						<!--{#/house#}-->
-					<!--</div>-->
-					<!--<div class="hd"><ul></ul></div>-->
-				<!--</div>-->
-				<!--<a href="javascript:;" class="prev"></a>-->
-				<!--<a href="javascript:;" class="next"></a>-->
-			<!--</div>-->
-		<!--</div>-->
-		<!--<div class="nm fn-left">-->
-			<!--{#house action="news" return="news" noid=$noid page=1 pageSize="1"#}-->
-			<!--<h2><a href="{#$news.url#}" target="_blank">{#$news.title#}</a></h2>-->
-			<!--{#$noid1[]=$news.id#}-->
-			<!--{#/house#}-->
-			<!--<ul>-->
-				<!--{#$noid2=array_merge($noid1,$noid)#}-->
-				<!--{#house action="news" return="news" noid=$noid2 page=1 pageSize="4"#}-->
-				<!--<li><a href="{#$news.url#}" target="_blank"><em>•</em> {#$news.title#}</a></li>-->
-				<!--{#$noid3[]=$news.id#}-->
-				<!--{#/house#}-->
-			<!--</ul>-->
-			<!--{#$noid4=array_merge($noid3,$noid2)#}-->
-			<!--{#house action="news" return="news" noid=$noid4 page=1 pageSize="1"#}-->
-			<!--<h2><a href="{#$news.url#}" target="_blank">{#$news.title#}</a></h2>-->
-			<!--{#$noid5[]=$news.id#}-->
-			<!--{#/house#}-->
-			<!--<ul>-->
-				<!--{#$noid6=array_merge($noid5,$noid4)#}-->
-				<!--{#house action="news" return="news" noid=$noid6 page=1 pageSize="4"#}-->
-				<!--<li><a href="{#$news.url#}" target="_blank"><em>•</em> {#$news.title#}</a></li>-->
-				<!--{#$noid7[]=$news.id#}-->
-				<!--{#/house#}-->
-			<!--</ul>-->
-		<!--</div>-->
-		<!--<div class="nr fn-left">-->
-			<!--<div class="imgbox">-->
-				<!--{#$noid8=array_merge($noid7,$noid6)#}-->
-				<!--{#house action="news" return="news" noid=$noid8 page=1 pageSize="1"#}-->
-				<!--<a href="{#$news.url#}">-->
-					<!--<img src="{#changeFileSize url={#$news.litpic#} type='small'#}" target="_blank" alt="">-->
-					<!--<div class="imgInfo">-->
-						<!--<h3>{#$news.title#}</h3>-->
-						<!--<div class="bg"></div>-->
-					<!--</div>-->
-				<!--</a>-->
-				<!--{#$noid9[]=$news.id#}-->
-				<!--{#/house#}-->
-			<!--</div>-->
-			<!--<ul>-->
-				<!--{#$noid10=array_merge($noid9,$noid8)#}-->
-				<!--{#house action="news" return="news" noid=$noid10 page=1 pageSize="8"#}-->
-				<!--<li><a href="{#$news.url#}" target="_blank"><em>•</em> {#$news.title#}</a></li>-->
-				<!--{#/house#}-->
-			<!--</ul>-->
-		<!--</div>-->
-	<!--</div>-->
+<div class="wrap">
+	<div class="pubbox newsbox fn-clear">
+		<div class="nl fn-left">
+			<div class="slideBox slideBox1">
+				<div class="slide">
+					<div class="bd">
+						{#house action="news" return="news" page=1 pageSize="5"#}
+						<div class="slideshow-item" >
+							<div class="siteAdvObj">
+								<a href="{#$news.url#}" target="_blank">
+									<img src="{#changeFileSize url={#$news.litpic#} type='small'#}" width="1200" height="100" alt="{#$news.title#}">
+								</a>
+							</div>
+							<div class="slideinfo">
+								<h3><a href="{#$news.url#}" target="_blank">{#$news.title#}</a></h3>
+								<div class="bg"></div>
+							</div>
+						</div>
+						{#$noid[]=$news.id#}
+						{#/house#}
+					</div>
+					<div class="hd"><ul></ul></div>
+				</div>
+				<a href="javascript:;" class="prev"></a>
+				<a href="javascript:;" class="next"></a>
+			</div>
+		</div>
+		<div class="nm fn-left">
+			{#house action="news" return="news" noid=$noid page=1 pageSize="1"#}
+			<h2><a href="{#$news.url#}" target="_blank">{#$news.title#}</a></h2>
+			{#$noid1[]=$news.id#}
+			{#/house#}
+			<ul>
+				{#$noid2=array_merge($noid1,$noid)#}
+				{#house action="news" return="news" noid=$noid2 page=1 pageSize="4"#}
+				<li><a href="{#$news.url#}" target="_blank"><em>•</em> {#$news.title#}</a></li>
+				{#$noid3[]=$news.id#}
+				{#/house#}
+			</ul>
+			{#$noid4=array_merge($noid3,$noid2)#}
+			{#house action="news" return="news" noid=$noid4 page=1 pageSize="1"#}
+			<h2><a href="{#$news.url#}" target="_blank">{#$news.title#}</a></h2>
+			{#$noid5[]=$news.id#}
+			{#/house#}
+			<ul>
+				{#$noid6=array_merge($noid5,$noid4)#}
+				{#house action="news" return="news" noid=$noid6 page=1 pageSize="4"#}
+				<li><a href="{#$news.url#}" target="_blank"><em>•</em> {#$news.title#}</a></li>
+				{#$noid7[]=$news.id#}
+				{#/house#}
+			</ul>
+		</div>
+		<div class="nr fn-left">
+			<div class="imgbox">
+				{#$noid8=array_merge($noid7,$noid6)#}
+				{#house action="news" return="news" noid=$noid8 page=1 pageSize="1"#}
+				<a href="{#$news.url#}">
+					<img src="{#changeFileSize url={#$news.litpic#} type='small'#}" target="_blank" alt="">
+					<div class="imgInfo">
+						<h3>{#$news.title#}</h3>
+						<div class="bg"></div>
+					</div>
+				</a>
+				{#$noid9[]=$news.id#}
+				{#/house#}
+			</div>
+			<ul>
+				{#$noid10=array_merge($noid9,$noid8)#}
+				{#house action="news" return="news" noid=$noid10 page=1 pageSize="8"#}
+				<li><a href="{#$news.url#}" target="_blank"><em>•</em> {#$news.title#}</a></li>
+				{#/house#}
+			</ul>
+		</div>
+	</div>
 	<!--<div class="pubbox mainbox">-->
 		<!--<div class="leadertop fn-clear">-->
 			<!--<span class="ltit" data-id="1">时事热点</span>-->
@@ -242,76 +242,76 @@
 	<!--<div class="adCon">-->
 		<!--{#myad title="房产信息_模板六_电脑端_广告二"#}-->
 	<!--</div>-->
-	<!--<div class="pubbox mainbox">-->
-		<!--<div class="leadertop fn-clear">-->
-			<!--<span class="ltit" data-id="3">购房知识</span>-->
-			<!--<a href="{#getUrlPath service='house' template='news-list' id='3'#}" class="news_more">更多 <em>>></em></a>-->
-			<!--<ul>-->
-				<!--{#house action="newsType" type="3" return="type"#}-->
-				<!--<li><a href="{#getUrlPath service='house' template='news-list' typeid={#$type.id#}#}">{#$type.typename#}</a></li>-->
-				<!--{#/house#}-->
-			<!--</ul>-->
-		<!--</div>-->
-		<!--<div class="contbox fn-clear">-->
-			<!--<div class="nl fn-left">-->
-				<!--<div class="adbox">-->
-					<!--{#myad title="房产_模板六_电脑端_广告_3-1"#}-->
-				<!--</div>-->
-				<!--<div class="adbox">-->
-					<!--{#myad title="房产_模板六_电脑端_广告_3-2"#}-->
-				<!--</div>-->
-			<!--</div>-->
-			<!--<div class="nm fn-left">-->
-				<!--{#house action="news" return="news" typeid="3" page=1 pageSize="1"#}-->
-				<!--<h2><a href="{#$news.url#}" target="_blank">{#$news.title#}</a></h2>-->
-				<!--{#$noidT24[]=$news.id#}-->
-				<!--{#/house#}-->
-				<!--<ul>-->
-					<!--{#$noidT25=$noidT24#}-->
-					<!--{#house action="news" return="news" typeid="3" noid=$noidT25 page=1 pageSize="4"#}-->
-					<!--<li><a href="{#$news.url#}" target="_blank"><em>•</em> {#$news.title#}</a></li>-->
-					<!--{#$noidT26[]=$news.id#}-->
-					<!--{#/house#}-->
-				<!--</ul>-->
-				<!--{#$noidT26=array_merge($noidT26,$noidT25)#}-->
-				<!--{#house action="news" return="news" typeid="3" noid=$noidT26 page=1 pageSize="1"#}-->
-				<!--<h2><a href="{#$news.url#}" target="_blank">{#$news.title#}</a></h2>-->
-				<!--{#$noidT27[]=$news.id#}-->
-				<!--{#/house#}-->
-				<!--<ul>-->
-					<!--{#$noidT28=array_merge($noidT27,$noidT26)#}-->
-					<!--{#house action="news" return="news" typeid="3" noid=$noidT28 page=1 pageSize="4"#}-->
-					<!--<li><a href="{#$news.url#}" target="_blank"><em>•</em> {#$news.title#}</a></li>-->
-					<!--{#$noidT29[]=$news.id#}-->
-					<!--{#/house#}-->
-				<!--</ul>-->
-			<!--</div>-->
-			<!--<div class="nr fn-left">-->
-				<!--<div class="imgbox">-->
-					<!--{#$noidT30=array_merge($noidT29,$noidT28)#}-->
-					<!--{#house action="news" return="news" typeid="3" noid=$noidT30 page=1 pageSize="1"#}-->
-					<!--<a href="{#$news.url#}">-->
-						<!--<img src="{#changeFileSize url={#$news.litpic#} type='small'#}" target="_blank" alt="">-->
-						<!--<div class="imgInfo">-->
-							<!--<h3>{#$news.title#}</h3>-->
-							<!--<div class="bg"></div>-->
-						<!--</div>-->
-					<!--</a>-->
-					<!--{#$noidT31[]=$news.id#}-->
-					<!--{#/house#}-->
-				<!--</div>-->
-				<!--<ul>-->
-					<!--{#$noidT32=array_merge($noidT31,$noidT30)#}-->
-					<!--{#house action="news" return="news" typeid="3" noid=$noidT32 page=1 pageSize="8"#}-->
-					<!--<li><a href="{#$news.url#}" target="_blank"><em>•</em> {#$news.title#}</a></li>-->
-					<!--{#/house#}-->
-				<!--</ul>-->
-			<!--</div>-->
-		<!--</div>-->
-	<!--</div>-->
-	<!--<div class="adCon">-->
-		<!--{#myad title="房产信息_模板六_电脑端_广告三"#}-->
-	<!--</div>-->
+	<div class="pubbox mainbox">
+		<div class="leadertop fn-clear">
+			<span class="ltit" data-id="3">购房知识</span>
+			<a href="{#getUrlPath service='house' template='news-list' id='3'#}" class="news_more">更多 <em>>></em></a>
+			<ul>
+				{#house action="newsType" type="3" return="type"#}
+				<li><a href="{#getUrlPath service='house' template='news-list' typeid={#$type.id#}#}">{#$type.typename#}</a></li>
+				{#/house#}
+			</ul>
+		</div>
+		<div class="contbox fn-clear">
+			<div class="nl fn-left">
+				<div class="adbox">
+					{#myad title="房产_模板六_电脑端_广告_3-1"#}
+				</div>
+				<div class="adbox">
+					{#myad title="房产_模板六_电脑端_广告_3-2"#}
+				</div>
+			</div>
+			<div class="nm fn-left">
+				{#house action="news" return="news" typeid="3" page=1 pageSize="1"#}
+				<h2><a href="{#$news.url#}" target="_blank">{#$news.title#}</a></h2>
+				{#$noidT24[]=$news.id#}
+				{#/house#}
+				<ul>
+					{#$noidT25=$noidT24#}
+					{#house action="news" return="news" typeid="3" noid=$noidT25 page=1 pageSize="4"#}
+					<li><a href="{#$news.url#}" target="_blank"><em>•</em> {#$news.title#}</a></li>
+					{#$noidT26[]=$news.id#}
+					{#/house#}
+				</ul>
+				{#$noidT26=array_merge($noidT26,$noidT25)#}
+				{#house action="news" return="news" typeid="3" noid=$noidT26 page=1 pageSize="1"#}
+				<h2><a href="{#$news.url#}" target="_blank">{#$news.title#}</a></h2>
+				{#$noidT27[]=$news.id#}
+				{#/house#}
+				<ul>
+					{#$noidT28=array_merge($noidT27,$noidT26)#}
+					{#house action="news" return="news" typeid="3" noid=$noidT28 page=1 pageSize="4"#}
+					<li><a href="{#$news.url#}" target="_blank"><em>•</em> {#$news.title#}</a></li>
+					{#$noidT29[]=$news.id#}
+					{#/house#}
+				</ul>
+			</div>
+			<div class="nr fn-left">
+				<div class="imgbox">
+					{#$noidT30=array_merge($noidT29,$noidT28)#}
+					{#house action="news" return="news" typeid="3" noid=$noidT30 page=1 pageSize="1"#}
+					<a href="{#$news.url#}">
+						<img src="{#changeFileSize url={#$news.litpic#} type='small'#}" target="_blank" alt="">
+						<div class="imgInfo">
+							<h3>{#$news.title#}</h3>
+							<div class="bg"></div>
+						</div>
+					</a>
+					{#$noidT31[]=$news.id#}
+					{#/house#}
+				</div>
+				<ul>
+					{#$noidT32=array_merge($noidT31,$noidT30)#}
+					{#house action="news" return="news" typeid="3" noid=$noidT32 page=1 pageSize="8"#}
+					<li><a href="{#$news.url#}" target="_blank"><em>•</em> {#$news.title#}</a></li>
+					{#/house#}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="adCon">
+		{#myad title="房产信息_模板六_电脑端_广告三"#}
+	</div>
 	<!--<div class="pubbox mainbox">-->
 		<!--<div class="leadertop fn-clear">-->
 			<!--<span class="ltit" data-id="4">明星楼市</span>-->
@@ -380,8 +380,8 @@
 		<!--</div>-->
 	<!--</div>-->
 
-	<!--<a href="javascript:;" class="btnMore">查看更多</a>-->
-<!--</div>-->
+	<a href="javascript:;" class="btnMore">查看更多</a>
+</div>
 
 
 {#include file="footer.html"#}
