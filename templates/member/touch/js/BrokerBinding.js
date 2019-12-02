@@ -6,7 +6,8 @@ function onclikRz(curr) {
     var type = $(curr).attr('data-type');
     var id = $(curr).attr('data-id');
     $.ajax({
-        url:"/include/ajax.php?service=member&action=getFreeHouseList&id="+id+"&type="+type,
+        // url:"/include/ajax.php?service=member&action=getFreeHouseList&id="+id+"&type="+type,
+        url:"/include/ajax.php?service=house&action=zjRecordHouse&hid="+id+"&type="+type,
         type:"GET",
         dataType: "jsonp",
         success:function () {
