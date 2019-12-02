@@ -92,6 +92,9 @@ $(function () {
                 $(".inday").css("width",today+"%");
                 $(".inthree").css("width",threeDay+"%");
                 $(".inseven").css("width",sevenDay+"%");
+            }else {
+                alert("你还不是会员！请先开通会员");
+                window.history.back(-1);
             }
         }
     });

@@ -2,20 +2,18 @@ $(function() {
   
 	$("img").scrollLoading();
 
-  $(".mobile_kf #qrcode").qrcode({
-    render: window.applicationCache ? "canvas" : "table",
-    width: 74,
-    height: 74,
-    text: huoniao.toUtf8(window.location.href)
-  });
+	function sjkf(a){
+     a.qrcode({
+        render: window.applicationCache ? "canvas" : "table",
+        width: 74,
+        height: 74,
+        text: huoniao.toUtf8(window.location.href)
+      });
+    }
+    sjkf( $(".mobile_kf #qrcode"));
+   sjkf($(".mobile_kf_mid #sjkf"));
+   sjkf($(".mobile_kf_mid #sj"));
 
-  //电话改为二维码
-  $(".mobile_kf #qrcode").qrcode({
-    render: window.applicationCache ? "canvas" : "table",
-    width: 74,
-    height: 74,
-    text: huoniao.toUtf8(window.location.href)
-  });
 
 
 

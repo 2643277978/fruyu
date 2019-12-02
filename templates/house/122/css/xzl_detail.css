@@ -23,6 +23,12 @@
 .xzl-detail .xzl_slide .sprev, .xzl-detail .xzl_slide .snext {position: absolute; top:0;  height: 82px; width: 30px; line-height: 82px; overflow: hidden;background: rgba(0,0,0,.77);}
 .pageState{position: absolute;bottom: 102px;right: 20px;height: 30px;line-height: 30px;text-align: center;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;font-size: 16px;color:#fff;z-index: 9;}
 
+/*手机看房*/
+.mobile_kf_mid{width:94px;height:90px;display: inline-block; -webkit-box-shadow: 0 3px 5px rgba(0,0,0,.13);-moz-box-shadow: 0 3px 5px rgba(0,0,0,.13);box-shadow: 0 3px 5px rgba(0,0,0,.13);-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;overflow: hidden;}
+.mobile_kf_mid .mk_lef{padding:5px;background-color:#fff;}
+.mobile_kf_mid .mk_lef #sjkf{display: block;width: 74px;height: 74px;overflow: hidden;}
+.mobile_kf_mid .mk_rig{width: 14px;height:81px;text-align: center;background-color:#9899a3;color:#fff;padding-top: 9px;position:absolute;}
+
 .xzl-detail .xzl_slide .sprev {left: 0;}
 .xzl-detail .xzl_slide .snext {right: 0;}
 .w1200 .xzl-detail .xzl_slide .sprev {left: 0;}
@@ -70,7 +76,7 @@
 .manager .r h4{font-size: 18px;color:#1a1c21;font-weight: bold;margin-top: 10px;}
 .manager .r .tip{margin-left: 7px;background-color: #f2f3f7;padding: 2px 5px;font-size: 12px;color:#87a3c4;margin-top:5px;font-weight: normal;}
 .manager .r p i{margin:0 3px 0 0;}
-.manbox{margin-top: 20px;}
+.manbox{margin-top: 20px; position: relative;}
 .manbox a{display: block;position: relative;width: 98px;height:40px;line-height:40px;text-align:center;color:#f1370b;font-size:16px;border:solid 1px #ff4f57;background-color: #fff7f7;box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.07);-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;margin: auto;-webkit-transition:all .3s ease-in-out;-moz-transition:all .3s ease-in-out;transition:all .3s ease-in-out;float: left;margin-right: 15px;font-weight: bold;}
 .manbox a:last-child{margin-right: 0;}
 .manbox a.btnTel{width: 200px;height: 42px;background-color: rgb(241, 55, 11);box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.13);color:#fff;font-size: 18px;border:none;}
