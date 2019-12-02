@@ -8,9 +8,9 @@
 <meta name="description" content="{#$house_description#}" />
 <link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
 <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
-
 <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/jquery.mCustomScrollbar.min.css" media="all" />
 <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/map_{#$do#}.css?v=2" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/map_sale.css?v=2" media="all" />
 <script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
 <script type="text/javascript">
 	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}';
@@ -41,14 +41,14 @@
 		{#/if#}
 		<ul class="topbarlink">
 			<li class="index"><a href="{#$house_channelDomain#}">首页</a></li>
-			<li class="index"><a href="{#getUrlPath service='house' template='loupan'#}">新房</a></li>
-			<li class="index"><a href="{#getUrlPath service='house' template='community'#}">小区</a></li>
-			<li class="index"><a href="{#getUrlPath service='house' template='broker'#}">经纪人</a></li>
-			<li class="index"><a href="{#getUrlPath service='house' template='sale'#}">二手房</a></li>
-			<li class="index"><a href="{#getUrlPath service='house' template='zu'#}">租房</a></li>
-			<li class="index"><a href="{#getUrlPath service='house' template='xzl'#}">写字楼</a></li>
-			<li class="index"><a href="{#getUrlPath service='house' template='sp'#}">商铺</a></li>
-			<li class="index"><a href="{#getUrlPath service='house' template='cf'#}">厂房/仓库</a></li>
+			<li class="index"><a href="{#getUrlPath service='house' template='map' action='loupan'#}">新房</a></li>
+			<li class="index"><a href="{#getUrlPath service='house' template='map' action='community'#}">小区</a></li>
+			<!--<li class="index"><a href="{#getUrlPath service='house' template='map' action='broker'#}">经纪人</a></li>-->
+			<li class="index"><a href="{#getUrlPath service='house' template='map' action='sale'#}">二手房</a></li>
+			<li class="index"><a href="{#getUrlPath service='house' template='map' action='zu'#}">租房</a></li>
+			<li class="index"><a href="{#getUrlPath service='house' template='map' action='xzl'#}">写字楼</a></li>
+			<li class="index"><a href="{#getUrlPath service='house' template='map' action='sp'#}">商铺</a></li>
+			<li class="index"><a href="{#getUrlPath service='house' template='map' action='cf'#}">厂房/仓库</a></li>
 		</ul>
 	</div>
 </div>
@@ -62,6 +62,7 @@
 <script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.mCustomScrollbar.min.js"></script>
 <script type="text/javascript" src="{#$cfg_staticPath#}js/common.js"></script>
 <script type="text/javascript" src="{#$site_map_apiFile#}"></script>
+<!--<script type="text/javascript" src="{#$templets_skin#}js/map_{#$do#}_{#$site_map#}.js?V={#$cfg_staticVersion#}"></script>-->
 <script type="text/javascript" src="{#$templets_skin#}js/map_{#$do#}_{#$site_map#}.js?V={#$cfg_staticVersion#}"></script>
 </body>
 </html>
