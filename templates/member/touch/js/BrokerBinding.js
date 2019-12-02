@@ -7,7 +7,7 @@ function onclikRz(curr) {
     var id = $(curr).attr('data-id');
     $.ajax({
         // url:"/include/ajax.php?service=member&action=getFreeHouseList&id="+id+"&type="+type,
-        url:"http://test.fangruyu.net/include/ajax.php?service=house&action=zjRecordHouse&hid="+id+"&type="+type,
+        url:"/include/ajax.php?service=house&action=zjRecordHouse&hid="+id+"&type="+type,
         type:"GET",
         dataType: "jsonp",
         success:function () {
@@ -25,7 +25,7 @@ $(function () {
     data.push("pageSize="+pageSize);
     data.push("page="+atpage);
     $.ajax({
-        url:"http://test.fangruyu.net/include/ajax.php?service=member&action=getFreeHouseList",
+        url:"/include/ajax.php?service=member&action=getFreeHouseList",
         type: "GET",
         dataType: "jsonp",
         success:function (data) {
