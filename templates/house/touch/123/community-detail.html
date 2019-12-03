@@ -156,7 +156,7 @@
       {#house action="saleList" return="sale" community={#$detail_id#} page={#$page#} pageSize="4"#}
       <li class="fn-clear">
         <a href="{#$zu.url#}">
-          <div class="rleft"><img src="{#changeFileSize url={#$sale.litpic#} type='small'#}" alt="{#$sale.title#}"></div>
+          <div class="rleft"><img src="{#changeFileSize url={#$sale.litpic#} type='small'#}"onerror="javascript:this.src='/static/images/404.jpg';" alt="{#$sale.title#}"></div>
           <div class="rright">
             <div class="rtitle fn-clear">{#if $sale.isbid#}<i></i>{#/if#}<p>{#$sale.title#}</p>{#if $sale.qj#}<em class="quanjing">全景</em>{#/if#}</div>
             <div class="comment_l fn-clear"><span>{#$sale.room#}</span><span class="area">{#$sale.area#}平米</span><em>{#if $sale.price#}{#$sale.price#}万{#else#}面议{#/if#}</em></div>
@@ -170,7 +170,7 @@
       {#house action="zuList" return="sale" community={#$detail_id#} page={#$page#} pageSize="4"#}
       <li class="fn-clear">
         <a href="{#$zu.url#}">
-          <div class="rleft"><img src="{#changeFileSize url={#$sale.litpic#} type='small'#}" alt="{#$sale.title#}"></div>
+          <div class="rleft"><img src="{#changeFileSize url={#$sale.litpic#} type='small'#}"onerror="javascript:this.src='/static/images/404.jpg';" alt="{#$sale.title#}"></div>
           <div class="rright">
             <div class="rtitle fn-clear">{#if $sale.isbid#}<i></i>{#/if#}<p>{#$sale.title#}</p>{#if $sale.qj#}<em class="quanjing">全景</em>{#/if#}</div>
             <div class="comment_l fn-clear"><span>{#$sale.room#}</span><span class="area">{#$sale.area#}平米</span><em>{#if $sale.price#}{#$sale.price#}万{#else#}面议{#/if#}</em></div>
@@ -191,7 +191,7 @@
 	    {#house action="saleList" return="sale" orderby=click pageSize="4"#}
       <li class="fn-clear">
         <a href="{#$sale.url#}">
-          <div class="rleft"><img src="{#changeFileSize url={#$sale.litpic#} type='small'#}" alt="{#$sale.title#}"></div>
+          <div class="rleft"><img src="{#changeFileSize url={#$sale.litpic#} type='small'#}"onerror="javascript:this.src='/static/images/404.jpg';" alt="{#$sale.title#}"></div>
           <div class="rright">
             <div class="rtitle fn-clear">{#if $sale.isbid#}<i></i>{#/if#}<p>{#$sale.title#}</p>{#if $sale.qj#}<em class="quanjing">全景</em>{#/if#}</div>
             <div class="comment_l fn-clear"><span>{#$sale.room#}</span><span class="area">{#$sale.area#}平米</span><em>{#if $sale.price#}{#$sale.price#}万{#else#}面议{#/if#}</em></div>

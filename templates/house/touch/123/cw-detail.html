@@ -212,7 +212,7 @@
 			{#house action=cwList addrid=$detail_addrid pageSize=4 return="cw"#}
 		    <li class="fn-clear">
 		    	<a href="{#$cw.url#}" title="{#$cw.title#}">
-		      <div class="rleft"><img src="{#$cw.litpic#}" alt=""></div>
+		      <div class="rleft"><img src="{#$cw.litpic#}"onerror="javascript:this.src='/static/images/404.jpg';" alt=""></div>
 		      <div class="rright">
 		        <div class="rtitle fn-clear">{#if $cw.isbid#}<i></i>{#/if#}<p>{#$cw.title#}</p>{#if $cw.qj#}<em class="quanjing">全景</em>{#/if#}</div>
 		        <div class="comment fn-clear"><span>{#$cw.area#}平|{#$cw.protype#}</span></div>

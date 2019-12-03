@@ -106,10 +106,10 @@
 				{#if $detail_qj#}
 	            <div class="swiper-slide">
                     {#if $detail_qj.typeid == 0#}
-                        <iframe src="{#$cfg_basehost#}/include/360panorama.php?f={#$detail_qj.file#}"></iframe>
+                        <iframe src="{#$cfg_basehost#}/include/360panorama.php?f={#$detail_qj.file#}"onerror="javascript:this.src='/static/images/404.jpg';"></iframe>
                     {#* iframe *#}
                     {#else#}
-                        <iframe src="{#$detail_qj.file#}"></iframe>
+                        <iframe src="{#$detail_qj.file#}"onerror="javascript:this.src='/static/images/404.jpg';"></iframe>
                     {#/if#}
 	            </div>
 	            {#/if#}
@@ -120,7 +120,7 @@
 						<video width="100%" height="100%" controls preload="meta" x5-video-player-type="h5" x5-playsinline playsinline webkit-playsinline  x5-video-player-fullscreen="true" id="video" src="{#$detail_video.videourl#}"  poster="{#$detail_video.litpic#}"></video>
 					{#* 第三方 *#}
 					{#elseif $detail_video.videotype == 1#}
-						<iframe src="{#$detail_video.videourl#}" frameborder="0" allowfullscreen="true"></iframe>
+						<iframe src="{#$detail_video.videourl#}"onerror="javascript:this.src='/static/images/404.jpg';" frameborder="0" allowfullscreen="true"></iframe>
 					{#/if#}
 	            </div>
 	            {#/if#}
@@ -165,7 +165,7 @@
     {#if $detail_tuan == 1 && $detail_tuanState == 2#}
 	<!-- 团购倒计时 -->
 	<div class="count_down">
-		<div class="count_img"><img src="{#$detail_litpic#}" onerror="javascript:this.src='/static/images/404.jpg';"></div>
+		<div class="count_img"><img src="{#$detail_litpic#}"onerror="javascript:this.src='/static/images/404.jpg';"></div>
 		<div class="count_txt infbox">
 			<p class="txt_01">{#$detail_tuantitle#}</p>
 			<p class="txt_02"><span>{#$detail_tuanbegan|date_format:'%Y-%m-%d'#}</span><em>|</em><span>{#$detail_tuanCount#}人已报名</span></p>
