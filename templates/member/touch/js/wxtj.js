@@ -93,7 +93,7 @@ $(function () {
                 $(".inthree").css("width",threeDay+"%");
                 $(".inseven").css("width",sevenDay+"%");
             }else {
-                alert("你还不是会员！请先开通会员");
+                alert("你还不是会员或已过期！请先开通会员");
                 window.history.back(-1);
             }
         }
