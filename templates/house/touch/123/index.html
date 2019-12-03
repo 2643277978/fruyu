@@ -228,7 +228,7 @@
     {#house action="saleList" return="hlist" page="1" pageSize="4"#}
     <li class="fn-clear">
      <a href="{#$hlist.url#}">
-      <div class="rleft"><img src="{#changeFileSize url={#$hlist.litpic#} type='middle'#}" alt=""></div>
+      <div class="rleft"><img src="{#changeFileSize url={#$hlist.litpic#} type='middle'#}"onerror="javascript:this.src='/static/images/404.jpg';" alt=""></div>
       <div class="rright">
         <div class="rtitle fn-clear">{#if $hlist.isbid#}<i></i>{#/if#}<p>{#$hlist.title#}</p>{#if $hlist.qj==1#}<em class="quanjing">全景</em>{#/if#}</div>
         <div class="comment fn-clear"><span>{#$hlist.room#}</span><span class="area">{#$hlist.area#}平米</span><em>{#if $hlist.price>0#}{#$hlist.price#}万{#else#}面议{#/if#}</em></div>

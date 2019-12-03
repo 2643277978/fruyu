@@ -51,13 +51,13 @@
                     <div class="swiper-slide video-box">
                         <img src="{#$detail_litpic#}" width="100%" height="100%">
                         <div class="imgplay">
-                            <img src="{#$templets_skin#}images/viplay.png"onerror="javascript:this.src='/static/images/404.jpg';" alt="">
+                            <img src="{#$templets_skin#}images/viplay.png" onerror="javascript:this.src='/static/images/404.jpg';" alt="">
                         </div>
                     </div>
                     {#/if#}
                     {#foreach from=$detail_imglist item=img#}
                     <div class="swiper-slide">
-                        <img src="{#$img.path#}"onerror="javascript:this.src='/static/images/404.jpg';" width="100%" height="100%">
+                        <img src="{#$img.path#}" onerror="javascript:this.src='/static/images/404.jpg';" width="100%" height="100%">
                     </div>
                     {#/foreach#}
                 </div>
@@ -79,10 +79,10 @@
         	<div class="swiper-slide">
         		{#* h5 *#}
 				{#if $detail_qj_type == 0#}
-					<iframe src="{#$cfg_basehost#}/include/360panorama.php?f={#$detail_qj_file#}"></iframe>
+					<iframe src="{#$cfg_basehost#}/include/360panorama.php?f={#$detail_qj_file#}" onerror="javascript:this.src='/static/images/404.jpg';"></iframe>
 				{#* iframe *#}
 				{#elseif $detail_qj_type == 1#}
-					<iframe src="{#$detail_qj_file#}"></iframe>
+					<iframe src="{#$detail_qj_file#}" onerror="javascript:this.src='/static/images/404.jpg';"></iframe>
 				{#/if#}
       		</div>
 					{#/if#}
@@ -127,11 +127,7 @@
                 {#if $detail_usertype == 1#}
                 <div class="im_img">
                     <a href="{#$detail_user.url#}">
-                        {#if $detail_user['photo'] == "" #}
-                        <img src="{#$cfg_staticPath#}images/noPhoto_100.jpg" alt="{#$detail_username#}">
-                        {#else if#}
-                        <img src="{#$detail_user['photo']#}" alt="{#$detail_username#}">
-                        {#/if#}
+                        <img src="{#$detail_user['photo']#}"onerror="javascript:this.src='/static/images/noPhoto_100.jpg';" alt="{#$detail_username#}">
                     </a>
                 </div>
                 <div class="im_name">
@@ -152,7 +148,6 @@
                     <p>
                         <span>{#$detail_username#}</span>
                     </p>
-					<!--<p>{#$detail_contact#}</p> -->
                 </div>
                 <div class="im_icon">
 					<span data-item="{#$detail_id#}" data-type="sale" data-id="{#$detail_userid#}" class="im_iphone"></span>
@@ -191,12 +186,7 @@
                 </div>
                 <div class="txt-right">
                 	<a href="{#getUrlPath service=house template='community-detail' id=$detail_communityid#}">
-                        {#if $detail_communityDetail.litpic == "" #}
-                        <img src="{#$cfg_staticPath#}images/404.jpg" alt="{#$detail_username#}">
-                        {#else if#}
-                        <img src="{#$detail_communityDetail.litpic#}">
-                        {#/if#}
-                        <!--<img src="{#$detail_communityDetail.litpic#}">-->
+                        <img src="{#$detail_communityDetail.litpic#}"onerror="javascript:this.src='/static/images/noPhoto_100.jpg';" alt="{#$detail_username#}">
                         {#*<span>共57张</span>*#}</a>
                 </div>
             </div>

@@ -133,12 +133,7 @@
 		<div class="information usertype{#$detail_usertype#} fn-clear">
         {#if $detail_usertype == 1#}
         <div class="im_img">
-            <!--<img src="{#$detail_user['photo']#}" alt="{#$detail_username#}">-->
-			{#if $detail_user['photo'] == "" #}
-			<img src="{#$cfg_staticPath#}images/noPhoto_100.jpg" alt="{#$detail_username#}">
-			{#else if#}
-			<img src="{#$detail_user['photo']#}" alt="{#$detail_username#}">
-			{#/if#}
+            <img src="{#$detail_user['photo']#}"onerror="javascript:this.src='/static/images/noPhoto_100.jpg';" alt="{#$detail_username#}">
         </div>
         <div class="im_name">
             <p>

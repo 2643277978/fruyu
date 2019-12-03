@@ -44,7 +44,7 @@ $(function(){
 							html.push('<li class="fn-clear">');
 							html.push('<a href="'+list[i].url+'">');
 							var video = list[i].video==1 ? '<i></i>' : '';
-							html.push('<div class="rleft"><img src="'+huoniao.changeFileSize(list[i].litpic, "small")+'" alt="'+list[i].title+'">'+video+'</div>');
+							html.push('<div class="rleft"><img src="'+huoniao.changeFileSize(list[i].litpic, "small")+'"onerror="javascript:this.src=\'/static/images/404.jpg\';" alt="'+list[i].title+'">'+video+'</div>');
 							html.push('<div class="rright">');
 								html.push('<div class="rtitle fn-clear">');
 								if(list[i].isbid==1){
@@ -111,7 +111,7 @@ $(function(){
 							html.push('<li class="fn-clear">');
 							html.push('<a href="'+list[i].url+'">');
 							var video = list[i].video==1 ? '<i></i>' : '';
-							html.push('<div class="rleft"><img src="'+huoniao.changeFileSize(list[i].litpic, "small")+'" alt="'+list[i].title+'">'+video+'</div>');
+							html.push('<div class="rleft"><img src="'+huoniao.changeFileSize(list[i].litpic, "small")+'"onerror="javascript:this.src=\'/static/images/404.jpg\';" alt="'+list[i].title+'">'+video+'</div>');
 							html.push('<div class="rright">');
 								html.push('<div class="rtitle fn-clear">');
 								if(list[i].isbid==1){
