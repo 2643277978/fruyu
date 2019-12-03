@@ -219,10 +219,10 @@
 						<div id="sj"></div>
 					</div>
 					<div class="mk_rig fn-right">
-						<span>手</span>
-						<span>机</span>
-						<span>看</span>
-						<span>房</span>
+						<span>扫</span>
+						<span>码</span>
+						<span>联</span>
+						<span>系</span>
 					</div>
 				</div>
 				<!--<a href="javascript:;" class="btnTel"><i></i> {#$detail_user.phone#}</a>-->
@@ -260,10 +260,10 @@
 						<div id="sjkf"></div>
 					</div>
 					<div class="mk_rig fn-right">
-						<span>手</span>
-						<span>机</span>
-						<span>看</span>
-						<span>房</span>
+						<span>扫</span>
+						<span>码</span>
+						<span>联</span>
+						<span>系</span>
 					</div>
 				</div>
 				<!--<a href="javascript:;" class="btnTel"><i></i> {#$detail_contact#}</a>-->
@@ -283,7 +283,7 @@
 				<ul>
 					<li class="curr"><a href="javascript:;">车位信息</a></li>
 					<li><a href="javascript:;">交通位置</a></li>
-					<li><a href="javascript:;">全景看车位</a></li>
+					<!--<li><a href="javascript:;">全景看车位</a></li>-->
 					<li><a href="javascript:;">视频看车位</a></li>
 					<li><a href="javascript:;">附近车位</a></li>
 				</ul>
@@ -358,25 +358,25 @@
 	<!-- 交通位置 e -->
 
 	<!-- 全景看房 s -->
-	<div class="wrap quanjing">
-		<h2 class="sub-title"><span>全景看房</span></h2>
-		{#if $detail_qj_file#}
-		<div class="qjbox">
-			{#* h5 *#}
-			{#if $detail_qj_type == 0#}
-				<iframe src="{#$cfg_basehost#}/include/360panorama.php?f={#$detail_qj_file#}"></iframe>
+	<!--<div class="wrap quanjing">-->
+		<!--<h2 class="sub-title"><span>全景看房</span></h2>-->
+		<!--{#if $detail_qj_file#}-->
+		<!--<div class="qjbox">-->
+			<!--{#* h5 *#}-->
+			<!--{#if $detail_qj_type == 0#}-->
+				<!--<iframe src="{#$cfg_basehost#}/include/360panorama.php?f={#$detail_qj_file#}"></iframe>-->
 
-			{#* iframe *#}
-			{#elseif $detail_qj_type == 1#}
-				<iframe src="{#$detail_qj_file#}"></iframe>
+			<!--{#* iframe *#}-->
+			<!--{#elseif $detail_qj_type == 1#}-->
+				<!--<iframe src="{#$detail_qj_file#}"></iframe>-->
 
-			{#/if#}
+			<!--{#/if#}-->
 
-		</div>
-		{#else#}
-		<div class="empty">暂无全景</div>
-		{#/if#}
-	</div>
+		<!--</div>-->
+		<!--{#else#}-->
+		<!--<div class="empty">暂无全景</div>-->
+		<!--{#/if#}-->
+	<!--</div>-->
 	<!-- 全景看房 e -->
 
 

@@ -1,8 +1,8 @@
 $(function(){
 	$(".mobile_kf #qrcode").qrcode({
 		render: window.applicationCache ? "canvas" : "table",
-		width: 74,
-		height: 74,
+		width: 84,
+		height: 84,
 		text: huoniao.toUtf8(window.location.href)
 	});
 	//收藏
