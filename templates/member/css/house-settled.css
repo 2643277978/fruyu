@@ -1,0 +1,46 @@
+/* 列表 */
+.wrap .lplist li{padding:20px 0;border-bottom: solid 1px #f0f1f7;-webkit-transition:all .3s ease-in-out;-moz-transition:all .3s ease-in-out;transition:all .3s ease-in-out;}
+.wrap .lplist li:hover{background-color:#f7f8fa;}
+.wrap .lplist li:last-child{border-bottom: 0;}
+.wrap .lplist li .imgbox{width: 300px;height: 216px;position: relative;overflow: hidden;margin-right: 20px;}
+.wrap .lplist li .imgbox img{max-width: 100%;max-height: 100%;position:absolute;top:0;left:0;right:0;bottom:0;margin:auto;display: block;-webkit-transform: scale(1);-moz-transform: scale(1);transform:scale(1);-webkit-transition: all .4s ease-in-out;-moz-transition: all .4s ease-in-out;transition: all .4s ease-in-out;}
+.wrap .lplist li .imgbox:hover img{-webkit-transform: scale(1.1);-moz-transform: scale(1.1);transform:scale(1.1)}
+.wrap .lplist li .ivplay{width: 50px;height: 50px;display: block;background: url(../images/video.png) no-repeat center center;background-size: cover;position: absolute;top:50%;left:50%;margin-top:-25px;margin-left: -25px;}
+.wrap .lplist li .ivr{width: 60px;height: 60px;display: block;background: url(../images/vr.gif) no-repeat center center;background-size: cover;position: absolute;left:0;bottom:0;}
+.wrap .lplist li .markbox{position: absolute;top:0;left:0;font-size: 12px;color:#fff;}
+.wrap .lplist li .markbox .m_mark{width: 50px;height: 24px;line-height: 22px;-webkit-border-radius: 0 0 10px 0; -moz-border-radius: 0 0 10px 0;border-radius: 0 0 10px 0;color:#fff;text-align: center;display: block;position: absolute;left:0;z-index: 2;}
+/*.wrap .lplist li .markbox .m_zj{background: -moz-linear-gradient( 0deg, rgb(255,162,0) 0%, rgb(255,195,11) 100%);background: -webkit-linear-gradient( 0deg, rgb(255,162,0) 0%, rgb(255,195,11) 100%);background: -ms-linear-gradient( 0deg, rgb(255,162,0) 0%, rgb(255,195,11) 100%);}*/
+.wrap .lplist li .markbox .m_gr{background: -moz-linear-gradient( 0deg, rgb(34,112,255) 0%, rgb(87,142,255) 100%);background: -webkit-linear-gradient( 0deg, rgb(34,112,255) 0%, rgb(87,142,255) 100%);background: -ms-linear-gradient( 0deg, rgb(34,112,255) 0%, rgb(87,142,255) 100%);}
+
+
+
+/*列表信息右侧*/
+.wrap .lplist li .infobox{width: 576px;height:214px;position: relative;padding:0 10px;}
+.wrap .lplist li .infobox .lptit{height: 33px;line-height: 33px;margin-bottom: 16px;}
+.wrap .lplist li .infobox .lptit a{display: block;overflow: hidden;float: left;}
+.wrap .lplist li .infobox h2{font-size: 22px;color:#212121;max-width: 310px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;float: left;margin-right: 7px;-webkit-transition:all .3s ease-in-out;-moz-transition:all .3s ease-in-out;transition:all .3s ease-in-out;}
+.wrap .lplist li:hover .infobox h2{color:#2974ff;}
+.wrap .lplist li .infobox .lptit i.mtop{margin-right: 5px;}
+.wrap .lplist li .infobox .lpprice{float: right;color:#f1370b;font-size: 14px;font-weight: bold;height: 33px;line-height: 33px;}
+.wrap .lplist li .infobox .lpprice.noprice b{font-size: 22px;}
+.wrap .lplist li .infobox .lpprice b{font-size: 28px;}
+.wrap .mJiaji, .wrap .mtop{margin-top: 7px;}
+.wrap .lplist li .infobox .lpinf{font-size: 14px;color:#797a82;line-height: 30px;}
+.wrap .lplist li .infobox p.lpinf{max-width: 400px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.wrap .lplist li .infobox .lpinf em{font-size: 12px;color:#d3d4de;margin: 0 7px;}
+.wrap .lplist li .infobox .lpinf .sp_r{color:#9fa1ab;}
+.wrap .lplist li .infobox .hinf{display: none;position: absolute;bottom: 40px;left:10px;right: 10px;-webkit-transition:all .3s ease-in-out;-moz-transition:all .3s ease-in-out;transition:all .3s ease-in-out;-webkit-animation: bottomFadeIn .3s ease-out;-moz-animation: bottomFadeIn .3s ease-out;animation: bottomFadeIn .3s ease-out;}
+.wrap .lplist li .infobox .hilef span{margin-right: 30px;font-weight: bold;}
+.wrap .lplist li .infobox .lpinf span i{display: inline-block;width: 16px;height: 16px;vertical-align: middle;margin-right: 5px;margin-top: -4px;}
+.wrap .lplist li .infobox .lpinf span i.iname{background:url(../images/icon_inf.png) no-repeat center center;background-size: cover;}
+.wrap .lplist li .infobox .lpinf span i.itel{background:url(../images/lp_tel.png) no-repeat center center;background-size: cover;}
+.wrap .lplist li .infobox .lpbottom{position: absolute;bottom: 0;left: 10px;right: 10px;}
+.wrap .lplist li .infobox .hirig{height: 28px; line-height: 28px;}
+.wrap .lplist li .infobox .hirig a{display: block;float: left;font-size: 14px;color:#9fa1ab;}
+.wrap .lplist li .infobox .hirig a i{width: 16px;height: 16px;display: inline-block;vertical-align: middle;    margin-top: -3px;}
+.wrap .hirig .btn_sc{margin-right: 35px;}
+.wrap .hirig .btn_sc i.isc{background: url(../images/icon_sc.png) no-repeat center center;}
+.wrap .hirig .btn_sc.btn_ysc i.isc{background: url(../images/icon_ysc.png) no-repeat center center;}
+.wrap .hirig .btn_share i.ishare{background: url(../images/icon_share.png) no-repeat center center;}
+
+.wrap .lplist li:hover .hinf{display: block;}

@@ -343,6 +343,8 @@ $(function() {
 	// 下拉加载
 	$(document).ready(function() {
 		$(window).scroll(function() {
+			var scrollH = $(document).height();
+			// var  h = scrollH-$(this).scrollTop();
 			var h = $('.footer').height() + $('.house-box').height() * 2;
 			var allh = $('body').height();
 			var w = $(window).height();
@@ -519,16 +521,11 @@ $(function() {
 								}
 
 								html.push('</dd>')
-
-
-
 								html.push('</dl>')
 								html.push('</div>')
 								html.push('<div class="clear"></div>')
 								html.push('</a>')
 								html.push('</div>')
-
-
 							}
 
 							$(".house-list").append(html.join(""));
