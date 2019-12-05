@@ -76,18 +76,17 @@ function onclikRz(curr) {
                                 html.push('<span class="adder">' + list[i].address + '</span>');
                                 html.push('<span>|</span>');
                                 var hosue;
-                                var hType = list[i].housetype;
-                                if (hType == "xzl") {
+                                if (list[i].housetype == "xzl") {
                                     hosue = "写字楼";
-                                } else if (hType == "loupan") {
+                                } else if (list[i].housetype == "loupan") {
                                     hosue = "新房";
-                                } else if (hType == "sale") {
+                                } else if (list[i].housetype == "sale") {
                                     hosue = "二手房";
-                                } else if (hType == "zu") {
+                                } else if (list[i].housetype == "zu") {
                                     hosue = "租房";
-                                } else if (hType == "sp") {
+                                } else if (list[i].housetype == "sp") {
                                     hosue = "商铺";
-                                } else if (hType == "cf") {
+                                } else if (list[i].housetype == "cf") {
                                     hosue = "厂房";
                                 } else {
                                     hosue = "未知";
@@ -125,7 +124,7 @@ function onclikRz(curr) {
                                 }
                                 html.push('<p class="price">' + type + '' + elevatortxt + '</p>');
                                 var id = list[i].id;
-                                html.push('<a onclick="onclikRz(this)" data-id="' + id + '" data-type="' + hType + '" class="ruzhu" id="ruzhu">一键入驻</a>');
+                                html.push('<a onclick="onclikRz(this)" data-id="' + id + '" data-type="' +list[i].housetype + '" class="ruzhu" id="ruzhu">一键入驻</a>');
                                 html.push('</li>')
                             }
                             $(".br-list") .append(html.join(""));
