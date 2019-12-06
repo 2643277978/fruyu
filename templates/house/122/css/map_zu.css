@@ -157,7 +157,7 @@ html, body {height: 100%;}
 .item-aside .item-btm span {float: left; text-align: center; padding-left: 4px; padding-right: 4px;}
 .item-main {height: 90px; position: relative;}
 .item-main .item-tle {height: 42px; font-size: 14px; color: #262626; font-weight: 800; overflow: hidden; line-height: 21px;}
-.item-main .item-des {position: absolute; left: 100px; bottom: 22px; right: 0; white-space: nowrap; line-height: 20px;}
+.item-main .item-des {position: absolute; bottom: 22px; right: 0; white-space: nowrap; line-height: 20px;}
 .item-main .item-des span {margin-right: 5px;}
 .item-main .item-des .item-side {margin-right: 0; font-size: 16px; position: absolute; right: 0; bottom: -1px; color: #e4393c; font-weight: 800; font-family: tahoma;}
 .item-main .item-des .item-side span {font-size: 12px; font-weight: normal; margin-left: 2px; margin-right: 0;}

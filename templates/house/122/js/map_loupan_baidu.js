@@ -525,7 +525,7 @@ $(function(){
 			if(isClickHx) return false;
 
 			//可视区域内楼盘数量
-			$(".lcount strong").html(data.length);
+			// $(".lcount strong").html(data.length);
 
 			if(data.length == 0){
 				$(".loupan-list").html('<p class="empty">很抱歉，没有找到合适的房源，请重新查找</p>');
@@ -927,13 +927,13 @@ $(function(){
 		,listTemplate = {
 
 			//楼盘列表
-			building: '<dl class="fn-clear"data-id="${loupan_id}"data-lng="${longitude}"data-lat="${latitude}"title="${resblock_name}"><dt><img src="${cover_pic}"/></dt><dd><h2>${resblock_name}</h2><p>${loupan_addr}</p><p>${house_type}</p><p class="price">均价${priceTpl}</p></dd></dl>',
+			building: '<dl class="fn-clear"data-id="${loupan_id}"data-lng="${longitude}"data-lat="${latitude}"title="${resblock_name}"><dt><img src="${cover_pic}"onerror="javascript:this.src=\'/static/images/404.jpg\';"/></dt><dd><h2>${resblock_name}</h2><p>${loupan_addr}</p><p>${house_type}</p><p class="price">均价${priceTpl}</p></dd></dl>',
 
 			//户型楼盘信息
-			longpanOnly: '<a href="javascript:;"class="closehx"title="关闭户型">&times;</a><dl class="loupan fn-clear"title="${resblock_name}"><a href="${url}"target="_blank"><dt><img src="${cover_pic}"></dt><dd><h2>${resblock_name}</h2><p>${loupan_addr}</p><p>${house_type}</p><p class="price">均价${priceTpl}</p></dd></a></dl><p class="hcount">共有<strong>${hxcount}</strong>个户型</p><div class="con"><div class="hx-list">${hx}</div></div>',
+			longpanOnly: '<a href="javascript:;"class="closehx"title="关闭户型">&times;</a><dl class="loupan fn-clear"title="${resblock_name}"><a href="${url}"target="_blank"><dt><img src="${cover_pic}"onerror="javascript:this.src=\'/static/images/404.jpg\';"></dt><dd><h2>${resblock_name}</h2><p>${loupan_addr}</p><p>${house_type}</p><p class="price">均价${priceTpl}</p></dd></a></dl><p class="hcount">共有<strong>${hxcount}</strong>个户型</p><div class="con"><div class="hx-list">${hx}</div></div>',
 
 			//户型列表
-			hxlist: '<dl class="fn-clear"><a href="${url}"target="_blank"><dt><img src="${frame_pic}"/><span>${frame_name}</span></dt><dd><h3>${room_num} ${build_area}㎡ 朝${direction}</h3><p>${note}</p></dd></a></dl>'
+			hxlist: '<dl class="fn-clear"><a href="${url}"target="_blank"><dt><img src="${frame_pic}"onerror="javascript:this.src=\'/static/images/404.jpg\';"/><span>${frame_name}</span></dt><dd><h3>${room_num} ${build_area}㎡ 朝${direction}</h3><p>${note}</p></dd></a></dl>'
 		}
 
 		//气泡样式

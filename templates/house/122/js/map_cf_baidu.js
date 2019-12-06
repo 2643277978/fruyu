@@ -463,11 +463,23 @@ $(function(){
 							datalist[i]['frame_room'] = _list[i].room;
 							datalist[i]['zhuangxiu'] = _list[i].zhuangxiu;
 							datalist[i]['house_area'] = _list[i].area;
-							if(_list[i].type==0){
-								datalist[i]['price_total'] = _list[i].price+'元/m²·月';
-							}else if(_list[i].type==1){
-								datalist[i]['price_total'] = _list[i].price+' 万元/m²';
+							var dprice;
+							if(_list[i].price==""||_list[i].price==undefined||_list[i].price==0){
+								datalist[i]['price_total']='<span class="item-side">价格面议</span></span>'
+							}else {
+								if(_list[i].type==0||_list[i].type==2){
+									var dpr = _list[i].price / _list[i].area;
+									if(dpr>=1){
+										dprice = dpr.toFixed(0);
+									}else{
+										dprice = dpr.toFixed(1);
+									}
+									datalist[i]['price_total'] = '<span class="item-side">'+dprice+'<span>'+(_list[i].type == '2' ? '万元' : '元/月')+'·平方</span></span>';
+								}else if(_list[i].type==1){
+									datalist[i]['price_total'] = '<span class="item-side">'+_list[i].transfer+'<span>'+万+'</span></span>';
+								}
 							}
+
 							datalist[i]['tags'] = _list[i].flags;
 							datalist[i]['list_picture_url'] = _list[i].litpic;
 							datalist[i]['community_id'] = _list[i].communityid;
@@ -824,7 +836,7 @@ $(function(){
 		,listTemplate = {
 
 			//楼盘列表
-			roomlist: '<div class="list-item"><a href="${href}" target="_blank" title="${title}" data-community="${community_id}"><div class="item-aside"><img src="${list_picture_url}"onerror="javascript:this.src=\'/static/images/404.jpg\';"><div class=""><span class=""><i class="i-icon-arrow"></i><i class="i-icon-dot"></i></span><span></span></div></div><div class="item-main"><p class="item-tle">${title}</p><p class="item-des"><span></span><span data-origin="${house_area}">${house_area}㎡</span><span>${zhuangxiu}</span><span class="item-side">${price_total}<span></span></span></p><p class="item-community"><span class="item-exact-com"></span><em>${update}</em></p></div></a></div>'
+			roomlist: '<div class="list-item"><a href="${href}" target="_blank" title="${title}" data-community="${community_id}"><div class="item-aside"><img src="${list_picture_url}"onerror="javascript:this.src=\'/static/images/404.jpg\';"><div class=""><span class=""><i class="i-icon-arrow"></i><i class="i-icon-dot"></i></span><span></span></div></div><div class="item-main"></p><p class="item-tle">${title}</p><p class="item-des"><span></span><span data-origin="${house_area}">${house_area}㎡</span><span></span>${price_total}</p><p class="item-community"><span class="item-exact-com"></span><em>${update}</em></p></div></a></div>'
 
 		}
 

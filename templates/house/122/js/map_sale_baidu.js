@@ -483,7 +483,7 @@ $(function(){
 						list.mCustomScrollbar("update");
 
 						//可视区域内房源数量
-						$(".lcount strong").html(total_count);
+						// $(".lcount strong").html(total_count);
 
 						if(total_count == 0){
 							$(".sale-list").html('<p class="empty">很抱歉，没有找到合适的房源，请重新查找</p>');
@@ -524,7 +524,7 @@ $(function(){
 
 					//没有数据
 					}else{
-						$(".lcount strong").html(0);
+						// $(".lcount strong").html(0);
 						$(".sale-list").html('<p class="empty">很抱歉，没有找到合适的房源，请重新查找</p>');
 						list.mCustomScrollbar("update");
 					}

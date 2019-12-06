@@ -420,7 +420,7 @@ $(function(){
 	                        atpage = Number($(this).text());
 	                        getList();
 	                    }
-	                    info.find(".pagination-pages").append(page);
+	                    // info.find(".pagination-pages").append(page);
 	                }
 	            }
 	        }

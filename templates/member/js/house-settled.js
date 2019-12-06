@@ -54,7 +54,7 @@
 
                         html.push('<div class="markbox">');
                         if (d.usertype == 0) {
-                            html.push('<span class="m_mark m_gr">个人</span>');
+                            html.push('<span class="m_mark m_gr"></span>');
                         } else {
                             html.push('<span class="m_mark m_zj"></span>');
                         }
@@ -276,7 +276,7 @@ function showPageInfo() {
                                 getList();
                             }
                         }
-                        // info.find(".pagination-pages").append(page);
+                        info.find(".pagination-pages").append(page);
                     }
                 }
             }

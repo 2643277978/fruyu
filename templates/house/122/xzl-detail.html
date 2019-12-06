@@ -29,6 +29,8 @@
 		phoneCheck : {#$userinfo.phoneCheck|default:0#}
 	}
 	var geetest = {#$cfg_geetest#};
+	var name={#$detail_username#};
+	var type={#$detail_usertype#};
 </script>
 </head>
 
@@ -231,15 +233,12 @@
 				</a>
 				{#/if#}
 			</div>
-
 			{#else#}
-
 			<div class="topbox">
 				<div class="r">
 					<h4>{#$detail_username#}</h4>
 				</div>
 			</div>
-
 			<div class="manbox fn-clear">
 				<!--<a href="javascript:;" class="btnTel"><i></i> {#$detail_contact#}</a>-->
 				<div class="mobile_kf_mid  fn-clear">

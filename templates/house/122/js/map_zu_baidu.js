@@ -481,7 +481,7 @@ $(function(){
 						list.mCustomScrollbar("update");
 
 						//可视区域内房源数量
-						$(".lcount strong").html(total_count);
+						// $(".lcount strong").html(total_count);
 
 						if(total_count == 0){
 							$(".sale-list").html('<p class="empty">很抱歉，没有找到合适的房源，请重新查找</p>');
@@ -511,7 +511,7 @@ $(function(){
 
 					//没有数据
 					}else{
-						$(".lcount strong").html(0);
+						// $(".lcount strong").html(0);
 						$(".sale-list").html('<p class="empty">很抱歉，没有找到合适的房源，请重新查找</p>');
 						list.mCustomScrollbar("update");
 					}
@@ -821,7 +821,7 @@ $(function(){
 		,listTemplate = {
 
 			//楼盘列表
-			roomlist: '<div class="list-item"><a href="${href}" target="_blank" title="${title}" data-community="${community_id}"><div class="item-aside"><img src="${list_picture_url}"><div class="item-btm"><span class="item-img-icon"><i class="i-icon-arrow"></i><i class="i-icon-dot"></i></span><span>${house_picture_count}</span></div></div><div class="item-main"><p class="item-tle">${title}</p><p class="item-des"><span>${frame_room}</span><span data-origin="${house_area}">${house_area}㎡</span><span>朝${frame_orientation}</span><span class="item-side">${price_total}<span>'+echoCurrency('short')+'/月</span></span></p><p class="item-community"><span class="item-exact-com">${community_name}</span><em>${update}</em></p></div></a></div>'
+			roomlist: '<div class="list-item"><a href="${href}" target="_blank" title="${title}" data-community="${community_id}"><div class="item-aside"><img src="${list_picture_url}"onerror="javascript:this.src=\'/static/images/404.jpg\';"><div class="item-btm"><span class="item-img-icon"><i class="i-icon-arrow"></i><i class="i-icon-dot"></i></span><span>${house_picture_count}</span></div></div><div class="item-main"><p class="item-tle">${title}</p><p class="item-des"><span>${frame_room}</span><span data-origin="${house_area}">${house_area}㎡</span><span>朝${frame_orientation}</span><span class="item-side">${price_total}<span>'+echoCurrency('short')+'/月</span></span></p><p class="item-community"><span class="item-exact-com">${community_name}</span><em>${update}</em></p></div></a></div>'
 
 		}
 

@@ -463,10 +463,12 @@ $(function(){
 							datalist[i]['frame_room'] = _list[i].room;
 							datalist[i]['zhuangxiu'] = _list[i].zhuangxiu;
 							datalist[i]['house_area'] = _list[i].area;
-							if(_list[i].type==0){
-								datalist[i]['price_total'] = _list[i].price+'元/m²·月';
-							}else if(_list[i].type==1){
-								datalist[i]['price_total'] = _list[i].price+' 万元/m²';
+							if (_list[i].type == 0) {
+								datalist[i]['price_total'] = '<span class="item-side">'+(_list[i].price / _list[i].area).toFixed(1)+'<span>'+' 元/平米·月</span></span>';
+							} else if (_list[i].type == 1) {
+								datalist[i]['price_total'] = '<span class="item-side">'+(_list[i].price / _list[i].area).toFixed(1)+'<span>'+'万/平米</span></span>';
+							}else {
+								datalist[i]['price_total'] = '<span class="item-side">转让费：'+_list[i].transfer+'<span>'+万+'</span></span>';
 							}
 							datalist[i]['tags'] = _list[i].flags;
 							datalist[i]['list_picture_url'] = _list[i].litpic;

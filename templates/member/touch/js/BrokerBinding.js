@@ -199,7 +199,8 @@ function onclikRz(curr) {
                        }
                 //请求失败
                 }else{
-                $(".br-list .loading").html(data.info);
+                    var tip =data.info;
+                    $(".br-list").append('<div class="loading">'+tip+'</div>');
             }
 
             //加载失败

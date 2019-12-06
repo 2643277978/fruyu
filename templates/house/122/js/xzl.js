@@ -684,7 +684,7 @@ $(function(){
                                     getList();
                                 }
                             }
-                            // info.find(".pagination-pages").append(page);
+                            info.find(".pagination-pages").append(page);
                         }
                     }
                 }

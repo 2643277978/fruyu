@@ -24,6 +24,7 @@
 </head>
 
 <body>
+
 {#$tit = "地图找楼盘"#}
 {#include file="../../../siteConfig/touch_top.html" headTheme='absolute' pageTitle=$tit#}
 <div class="choose-blank">
@@ -88,6 +89,13 @@
           <li><a href="javascript:;" data-val="lmonth">上月</a></li>
         </ul>
       </div>
+        <div class="choose-more-item" data-type="">
+            <h3>其他房源</h3>
+            <ul>
+                <li><a href="{#getUrlPath service='house' template='map' action='zu'#}">租房</a></li>
+                <li><a href="{#getUrlPath service='house' template='map' action='sale'#}" >二手房</a></li>
+            </ul>
+        </div>
       <div class="reset">重置</div>
       <div class="confirm">确认</div>
     </div>
