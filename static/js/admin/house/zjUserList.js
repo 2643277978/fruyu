@@ -270,6 +270,58 @@ $(function(){
 			init.del();
 		});
 	});
+	
+	//修改经纪人套餐
+	$("#list").delegate(".meal", "click", function(){
+		var id = $(this).data("id");
+		var mealList = window.sessionStorage.getItem("meal");
+		mealList = JSON.parse(mealList);
+		mealInfo = JSON.parse(mealList[id]);
+		if(mealInfo.name){
+			$(".mealName").text("套餐名称："+mealInfo.name);
+		}else{
+			$(".mealName").text("套餐名称：默认套餐");
+		}
+		$(".mealHouse").val(mealInfo.house);
+		$(".mealRefresh").val(mealInfo.refresh);
+		$(".mealTop").val(mealInfo.settop);
+		$(".mealExpired").val(mealInfo.expired);
+		layer.open({
+			type: 1,
+			skin: 'layui-layer-demo', //样式类名
+			area: ['500px', '300px'],
+			maxmin: true, //允许全屏最小化
+			anim: 2,
+			shade: 0,	//遮罩层透明度
+			shadeClose: true, //开启遮罩关闭
+			content: $(".mealBox"),
+			success: function(){
+				$(".mealBox").show();
+				$(".mealSubmit").click(function(){
+					var mealData = {
+						name: "默认套餐",
+						house: $(".mealHouse").val(),
+						refresh: $(".mealRefresh").val(),
+						settop: $(".mealTop").val(),
+						expired: $(".mealExpired").val()
+					};
+					$.ajax({
+						url:"/admin/house/zjUserList.php?XDEBUG_SESSION_START=1",
+						data: {id:id, dopost: "modifyMeal", "meal":mealData},
+						type: "POST",
+						success: function(data){
+							layer.msg("修改成功！", {time:2000,icon:6}, function(){
+								layer.closeAll();
+								$(".mealBox").hide();
+								getList();
+							});
+						}
+					});
+				});
+			}
+		});
+		$(".mealExpired").datetimepicker({format: "yyyy-mm-dd hh:ii:ss",autoclose:true, language: "zh-CN"});
+	});
 
 	//批量审核
 	$("#batchAudit a").bind("click", function(){
@@ -373,6 +425,7 @@ $(function(){
 
 //获取列表
 function getList(){
+	window.sessionStorage.removeItem("meal");
 	huoniao.showTip("loading", "正在操作，请稍候...");
 	$("#list table, #pageInfo").hide();
 	$("#selectBtn a:eq(1)").click();
@@ -406,8 +459,10 @@ function getList(){
 		if(val.state == "100"){
 			//huoniao.showTip("success", "获取成功！", "auto");
 			huoniao.hideTip();
-
+			
+			var mealList = new Array();
 			for(i; i < zjUserList.length; i++){
+				mealList[zjUserList[i].id] = JSON.stringify(zjUserList[i].meal);
 				list.push('<tr data-id="'+zjUserList[i].id+'">');
 				list.push('  <td class="row3"><span class="check"></span></td>');
 				list.push('  <td class="row20 left"><a href="javascript:;" data-id="'+zjUserList[i].userid+'" class="userinfo">'+zjUserList[i].username+'</a>&nbsp;&nbsp;<a href="'+zjUserList[i].url+'" target="_blank"><i class="icon-share" style="margin-top:4px;"></i></a></td>');
@@ -447,10 +502,11 @@ function getList(){
 				list.push('  <td class="row15">'+zjUserList[i].pubdate+'</td>');
 				list.push('  <td class="row10">');
 				list.push('<a data-id="'+zjUserList[i].id+'" data-title="'+zjUserList[i].username+'" href="zjUserAdd.php?dopost=edit&id='+zjUserList[i].id+'" title="修改" class="edit">修改</a>');
-				list.push('<a href="javascript:;" title="删除" class="del">删除</a></td>');
+				list.push('<a href="javascript:;" title="删除" class="del">删除</a><a data-id="'+zjUserList[i].id+'" href="javascript:;" title="套餐" class="meal">套餐</a></td>');
 				list.push('</tr>');
 			}
-
+			
+			window.sessionStorage.setItem("meal", JSON.stringify(mealList));
 			obj.find("tbody").html(list.join(""));
 			$("#loading").hide();
 			$("#list table").show();
