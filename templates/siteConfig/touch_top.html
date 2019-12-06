@@ -51,11 +51,11 @@
 		<!--便捷导航e-->
 		<div class="navlist_4" id="navlist_4">
 			<ul class="clearfix fn-clear">
-				<li class="HN_Jubao"><a href="https://apps.apple.com/cn/app/%E6%88%BF%E5%A6%82%E7%8E%89/id1489305385">
-					<span class="imgbox"><img src="{#$cfg_basehost#}/static/images/admin/nav/down.png?v={#$cfg_staticVersion#}" class="nav_23"></span><span class="txtbox">ios下载</span>
+				<li ><a href="https://apps.apple.com/cn/app/%E6%88%BF%E5%A6%82%E7%8E%89/id1489305385">
+					<span class="imgbox"><img src="{#$cfg_basehost#}/static/images/admin/nav/down.png?v={#$cfg_staticVersion#}" ></span><span >ios下载</span>
 				</a></li>
-				<li class="HN_Jubao"><a href="{#$cfg_basehost#}/release/fangruyu-android_v1.0.apk">
-					<span class="imgbox"><img src="{#$cfg_basehost#}/static/images/admin/nav/down.png?v={#$cfg_staticVersion#}" class="nav_23"></span><span class="txtbox">android下载</span>
+				<li ><a href="{#$cfg_basehost#}/release/fangruyu-android_v1.0.apk">
+					<span class="imgbox"><img src="{#$cfg_basehost#}/static/images/admin/nav/down.png?v={#$cfg_staticVersion#}" ></span><span >android下载</span>
 				</a></li>
 				{#if in_array("shop", $installModuleArr)#}<li><a href="{#getUrlPath service='shop' template='cart'#}"><span class="imgbox"><img src="{#$cfg_basehost#}/static/images/admin/nav/shop_car.png?v={#$cfg_staticVersion#}" class=""></span><span class="txtbox">{#$langData['siteConfig'][22][12]#}</span></a></li>{#/if#}
 				{#siteConfig action="siteModule" return="module" type="1"#}
