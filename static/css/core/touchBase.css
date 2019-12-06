@@ -96,7 +96,7 @@ i, em{font-style: normal;}
 	#navBox_4 .bg {position: fixed;top:0;width: 7.5rem;height: 0;opacity:0;background:rgba(0,0,0,0.5);-webkit-transition:opacity .5s;transition:opacity .5s;z-index: 1;left: 0; right: 0;}
 	#cancelNav_4{ padding: .15rem 0; background: #F2F7FC; border-bottom: 1px solid #f0f5f9; margin: .1rem 0 0;}
 	#navBox_4 .boxall_nav{padding-bottom: .3rem; background-color: #fff;z-index: 6;position: relative; border-radius:0 0 .36rem .36rem;}
-	#navBox_4 .boxall_nav:after{display: block; content: '' ; width: .68rem; height: .06rem; border-radius: .03rem; background-color: #878991; position: absolute; left: 50%; bottom: .08rem; margin-left: -.34rem;}
+	#navBox_4 .boxall_nav:after{display: block; content: '' ; width: .68rem; height: .06rem; border-radius: .03rem;  position: absolute; left: 50%; bottom: .08rem; margin-left: -.34rem;}/*background-color: #878991;*/
 	#fast_nav{background-color: #fff; position: relative; z-index: 10; padding:0 .3rem; padding-bottom: .4rem;}
 	#fast_nav ul{display: flex; justify-content: space-between;}
 	#fast_nav li{background-color: #f5f6f8; width: 1.5rem; height: 1.5rem; border-radius: .2rem; }

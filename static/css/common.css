@@ -3,7 +3,7 @@ html {overflow-x: hidden;}
 a *{*cursor:pointer}
 a:hover {color: #cd0001; text-decoration: none;}
 
-.wrap {width: 1000px; margin: 0 auto;}
+.wrap {width: 1200px; margin: 0 auto;}
 .w1200 .wrap {width: 1200px;}
 .ad {position: relative; margin: 10px auto; overflow: hidden;}
 .ad .adClose {position: absolute; right: 0; top: 0; width: 30px; height: 16px;}
