@@ -8,7 +8,7 @@
         var type = $(curr).attr('data-type');
         var id = $(curr).attr('data-id');
         $.ajax({
-            url:"http://test.fangruyu.net/include/ajax.php?service=house&action=zjRecordHouse&hid="+id+"&type="+type,
+            url:"/include/ajax.php?service=house&action=zjRecordHouse&hid="+id+"&type="+type,
             type:"GET",
             dataType: "jsonp",
             success:function (data) {
@@ -28,13 +28,13 @@
     }
 
     function getList() {
-        $(".sllist ul").html('<li class="empty">正在获取，请稍后</li>');
+        // $(".sllist ul").html('<li class="empty">正在获取，请稍后</li>');
         $(".pagination").html('').hide();
         var data = [];
         data.push('page='+atpage);
         data.push('pageSize='+pageSize);
         $.ajax({
-            url:"http://test.fangruyu.net/include/ajax.php?service=member&action=getFreeHouseList",
+            url:"/include/ajax.php?service=member&action=getFreeHouseList",
             type: "GET",
             dataType: "jsonp",
             success:function (data) {
@@ -153,6 +153,9 @@
                     }
                     $(".sllist ul").html(html.join(""));
                     showPageInfo();
+                }else{
+                    var tip=data.info;
+                    $(".sllist ul").html('<li class="empty">'+tip+'</li>');
                 }
             }
         })

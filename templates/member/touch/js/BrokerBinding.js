@@ -37,7 +37,7 @@ function onclikRz(curr) {
     var type = $(curr).attr('data-type');
     var id = $(curr).attr('data-id');
     $.ajax({
-        url:"http://test.fangruyu.net/include/ajax.php?service=house&action=zjRecordHouse&hid="+id+"&type="+type,
+        url:"/include/ajax.php?service=house&action=zjRecordHouse&hid="+id+"&type="+type,
         type:"GET",
         dataType: "jsonp",
         success:function (data) {
@@ -48,7 +48,6 @@ function onclikRz(curr) {
             else {
                 alert(data.info);
             }
-
         },
         error:function () {
             alert("入驻失败");
@@ -63,7 +62,7 @@ function onclikRz(curr) {
     data.push("pageSize="+pageSize);
     data.push("page="+atpage);
     $.ajax({
-        url:"http://test.fangruyu.net/include/ajax.php?service=member&action=getFreeHouseList",
+        url:"/include/ajax.php?service=member&action=getFreeHouseList",
         type: "GET",
         dataType: "jsonp",
         success:function (data) {

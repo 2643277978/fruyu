@@ -7,7 +7,7 @@ var bidDefaultAdd = 2;
 
 <ul class="main-tab fn-clear">
 	<li><a href="{#getUrlPath service='member' type='user' template='config-house'#}">{#$langData['siteConfig'][19][398]#}</a></li>{#* 房产经纪人  *#}
-	<li><a href="{#getUrlPath service='member' type='user' template='house' action='settled'#}" >入驻房源</a></li>
+	<li><a href="{#getUrlPath service='member' type='user' template='BrokerBinding'#}">入驻房源</a></li>
 	<li data-id="demand"{#if $type == "demand" || $type == "qzu" || $type == "qgou"#} class="curr"{#/if#}><a href="{#getUrlPath service='member' type='user' template='manage' action='house' dopost='demand'#}">{#$langData['siteConfig'][31][20]#}{#$langData['siteConfig'][31][21]#}</a></li>{#* 求租求购  *#}
 	
 	<li data-id="sale"{#if $type == "sale"#} class="curr"{#/if#}><a href="{#getUrlPath service='member' type='user' template='manage' action='house' dopost='sale'#}">{#$langData['siteConfig'][19][218]#}</a></li>{#* 二手房  *#}
