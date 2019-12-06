@@ -148,16 +148,32 @@ body, html {font-family: 'microsoft yahei'; background-color: #f5f5f5;}
 .list tbody td a.del s {background-position: -13px -54px;}
 .list tbody td a.link {color: #027cff;}
 
-/* 分页 */
-.pagination {height: 28px; margin-top: 23px; display: none;}
-.pagination-pages {float: right;}
-.pagination-pages a, .pagination-pages span {float: left; min-width: 18px; height: 28px; padding: 0 5px; margin: 0 0 0 4px; background-color: #f8f8f8; text-align: center; line-height: 28px; font-size: 14px; cursor: pointer; color: #333; text-decoration: none;}
-.pagination-pages .curr, .pagination-pages .interim {cursor: default;}
-.pagination-pages .curr {background: #999; color: #fff;}
-.pagination-pages a:hover {background-color: #f60; color: #fff;}
-.pagination-pages .prev, .next {padding: 0 8px;}
-.pagination-pages .disabled {background-color: #999; color: #fff; cursor: default;}
+/*!* 分页 *!*/
+/*.pagination {height: 28px; margin-top: 23px; display: none;}*/
+/*.pagination-pages {float: right;}*/
+/*.pagination-pages a, .pagination-pages span {float: left; min-width: 18px; height: 28px; padding: 0 5px; margin: 0 0 0 4px; background-color: #f8f8f8; text-align: center; line-height: 28px; font-size: 14px; cursor: pointer; color: #333; text-decoration: none;}*/
+/*.pagination-pages .curr, .pagination-pages .interim {cursor: default;}*/
+/*.pagination-pages .curr {background: #999; color: #fff;}*/
+/*.pagination-pages a:hover {background-color: #f60; color: #fff;}*/
+/*.pagination-pages .prev, .next {padding: 0 8px;}*/
+/*.pagination-pages .disabled {background-color: #999; color: #fff; cursor: default;}*/
 
+/* 分页 */
+.pagination {padding: 10px 0 30px; text-align: center; line-height: 28px; font-size: 14px; color: #797a82; margin-top: 30px; width: 980px;display: inline-block;}
+.pagination-gotopage {float: right; margin-left: 15px;}
+.pagination-gotopage label {float: left; line-height: 28px; margin-right: 8px;font-size: 14px;color: #5a5a5e;}
+.pagination-gotopage .inp {float: left; line-height: 28px; width: 30px; height: 26px; text-align: center; border: 1px solid #dae2ed; padding: 0 5px; margin-right: 4px; outline: none;}
+.pagination-gotopage .btn {float: left; line-height: 28px; height: 28px; padding: 0 16px; color:#fff;border:none; background-color: #f1370b; outline: none; cursor: pointer;}
+
+.pagination-pages {float: right;}
+.pagination-pages a, .pagination-pages span {float: left; width: 18px; height: 28px; padding: 0 5px; margin: 0 10px 0 0; text-align: center; line-height: 28px; font-size: 14px; cursor: pointer; color: #666;text-decoration: none;background-color: rgb(250, 250, 252);border:solid 1px rgb(230, 232, 242);}
+/*.pagination-pages span {float: left; width: 18px; height: 28px; padding: 0 5px; margin: 0 10px 0 0; text-align: center; line-height: 28px; font-size: 14px; cursor: pointer; color: #666;text-decoration: none;background-color: rgb(250, 250, 252);border:solid 1px rgb(230, 232, 242);}*/
+.pagination-pages .curr, .pagination-pages .interim {background-color: transparent; border-color: transparent; cursor: default;}
+.pagination-pages .curr {color: #f1370b;border:solid 1px #f1370b;}
+.pagination-pages a:hover { color: #f1370b;}
+.pagination-pages .prev {display: inline-block;}
+.pagination-pages .prev,.pagination-pages .next{width: 56px!important;background-color: rgb(250, 250, 252);border:solid 1px rgb(230, 232, 242);}
+.pagination-pages .prev .next {padding: 0 8px;}
 
 /* 版权 */
 .footer {background: transparent; padding: 15px 0 20px; text-align: center; line-height: 30px; font-size: 14px; color: #333;}
