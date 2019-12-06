@@ -82,7 +82,7 @@ body,html{background-color: #fff;}
 .main .lplist li .infobox{width: 576px;height:214px;position: relative;padding:0 10px;}
 .main .lplist li .infobox .lptit{height: 33px;line-height: 33px;margin-bottom: 16px;}
 .main .lplist li .infobox .lptit a{display: block;overflow: hidden;float: left;}
-.main .lplist li .infobox h2{font-size: 22px;color:#212121;max-width: 310px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;float: left;margin-right: 7px;-webkit-transition:all .3s ease-in-out;-moz-transition:all .3s ease-in-out;transition:all .3s ease-in-out;}
+.main .lplist li .infobox h2{font-size: 22px;color:#212121;max-width: 430px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;float: left;margin-right: 7px;-webkit-transition:all .3s ease-in-out;-moz-transition:all .3s ease-in-out;transition:all .3s ease-in-out;}
 .main .lplist li:hover .infobox h2{color:#2974ff;}
 .main .lplist li .infobox .lptit i.mtop{margin-right: 5px;}
 .main .lplist li .infobox .lpprice{float: right;color:#f1370b;font-size: 14px;font-weight: bold;height: 33px;line-height: 33px;}

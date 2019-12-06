@@ -257,11 +257,20 @@ $(function(){
 			}
 
 			//余额选项
+			var total,cullPrice,lastPrice;
+
 			if(userTotalBalance){
-				var rtUseBalance = userTotalBalance > refreshTopAmount ? parseFloat(refreshTopAmount).toFixed(2) : userTotalBalance.toFixed(2);
-        refreshTopPayAmount = (refreshTopAmount - rtUseBalance).toFixed(2);
-				$('.rtBody .reduce-yue').text(rtUseBalance);
-	      $('.rtBody .pay-total').text(refreshTopPayAmount);
+		// 		var rtUseBalance = userTotalBalance > refreshTopAmount ? parseFloat(refreshTopAmount).toFixed(2) : userTotalBalance.toFixed(2);
+        // refreshTopPayAmount = (refreshTopAmount - rtUseBalance).toFixed(2);
+		// 		$('.rtBody .reduce-yue').text(rtUseBalance);
+	    //   $('.rtBody .pay-total').text(refreshTopPayAmount);
+				total=rtConfig.topDeposit.availableCoins;
+				if(parseInt(total)-parseInt(refreshTopAmount)<0){
+						lastPrice=Math.abs(parseInt(total)-parseInt(refreshTopAmount));
+				}else {
+					lastPrice=parseInt(total)-parseInt(refreshTopAmount);
+				}
+				  $('.rtBody .pay-total').text(lastPrice);
 			}
 			refreshTopFunc.calculationPayPrice();
 
@@ -302,8 +311,15 @@ $(function(){
 		    }else{
 					$('#refreshTopForm #useBalance').val(0);
 		    }
-        refreshTopPayAmount = parseFloat(rtTotalPay).toFixed(2);
-				$('.rtBody .pay-total').text(refreshTopPayAmount);
+        // refreshTopPayAmount = parseFloat(rtTotalPay).toFixed(2);
+		// 		$('.rtBody .pay-total').text(refreshTopPayAmount);
+				total=rtConfig.topDeposit.availableCoins;
+				if(parseInt(total)-parseInt(refreshTopAmount)<0){
+					lastPrice=Math.abs(parseInt(total)-parseInt(refreshTopAmount));
+				}else {
+					lastPrice=parseInt(total)-parseInt(refreshTopAmount);
+				}
+				$('.rtBody .pay-total').text(lastPrice);
 			}else{
         $('.rtBody .rtSett, .rtBody .paySubmit').hide();
 			}

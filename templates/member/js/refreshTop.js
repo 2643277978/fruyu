@@ -72,19 +72,31 @@ $(function(){
 
 				zjuser_meal = rtConfig.zjuserMeal.meal;
 
-				var has = 0, count, name;
+				var has = 0, count, name,info,jinbi,total;
 				if(type == 'refresh'){
 					count = rtConfig.zjuserMeal.meal.refresh;
 					name = langData['siteConfig'][16][70];//刷新
 					has = zjuser_meal.refresh;
+					info = langData['siteConfig'][30][68]+name+langData['siteConfig'][30][69]+'<font color="#ff6600">'+count+'</font>'+langData['siteConfig'][13][26]+'<br>'+langData['siteConfig'][30][70]+'<font style="color:#f60;">'+need+'</font>'+langData['siteConfig'][13][26];
+					//您是经纪人，已购买套餐<br>剩余---次数共-----次---当前操作需要消耗----次
 				}else if(type == 'topping'){
-					count = rtConfig.zjuserMeal.meal.settop;
+					console.log(rtConfig.zjuserMeal.iszjuser);
+					console.log(rtConfig.zjuserMeal.meal_check.state);
+					if( rtConfig.zjuserMeal.iszjuser==1 && rtConfig.zjuserMeal.meal_check.state==100){
+						count=parseInt(rtConfig.zjuserMeal.meal.settop)+parseInt(rtConfig.topDeposit.availableCoins);
+					}else {
+						count=rtConfig.topDeposit.availableCoins;
+					}
 					name = langData['siteConfig'][19][762];//置顶
 					has = zjuser_meal.settop;
+					jinbi="个";
+					total=parseInt(rtConfig.topPlan[0].all)+parseInt(rtConfig.topPlan[1].all)+parseInt(rtConfig.topPlan[2].all)+parseInt(rtConfig.topPlan[3].all)+parseInt(rtConfig.topPlan[4].all)+parseInt(rtConfig.topPlan[5].all)+parseInt(rtConfig.topPlan[6].all);
+					console.log(total);
+					info = langData['siteConfig'][30][68]+name+langData['siteConfig'][30][69]+'<font color="#ff6600">'+count+'</font>'+jinbi+'<br>'+langData['siteConfig'][30][70]+'<font style="color:#f60;">'+total+'</font>'+jinbi;
+					//您是经纪人，已购买套餐<br>剩余---次数共-----次---当前操作需要消耗----次
 				}
 
-				var info = langData['siteConfig'][30][68]+name+langData['siteConfig'][30][69]+'<font color="#ff6600">'+count+'</font>'+langData['siteConfig'][13][26]+'<br>'+langData['siteConfig'][30][70]+'<font style="color:#f60;">'+need+'</font>'+langData['siteConfig'][13][26];
-				//您是经纪人，已购买套餐<br>剩余---次数共-----次---当前操作需要消耗----次
+
 
 				if(type == 'topping'){
 					info = info.replace(/次/g, langData['siteConfig'][13][6]);//天

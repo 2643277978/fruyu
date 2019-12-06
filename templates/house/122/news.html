@@ -38,7 +38,7 @@
 						<div class="slideshow-item" >
 							<div class="siteAdvObj">
 								<a href="{#$news.url#}" target="_blank">
-									<img src="{#changeFileSize url={#$news.litpic#} type='small'#}" width="1200" height="100" alt="{#$news.title#}">
+									<img src="{#changeFileSize url={#$news.litpic#} type='small'#}"onerror="javascript:this.src='/static/images/404.jpg';" width="1200" height="100" alt="{#$news.title#}">
 								</a>
 							</div>
 							<div class="slideinfo">
@@ -85,7 +85,7 @@
 				{#$noid8=array_merge($noid7,$noid6)#}
 				{#house action="news" return="news" noid=$noid8 page=1 pageSize="1"#}
 				<a href="{#$news.url#}">
-					<img src="{#changeFileSize url={#$news.litpic#} type='small'#}" target="_blank" alt="">
+					<img src="{#changeFileSize url={#$news.litpic#} type='small'#}" onerror="javascript:this.src='/static/images/404.jpg';" target="_blank" alt="">
 					<div class="imgInfo">
 						<h3>{#$news.title#}</h3>
 						<div class="bg"></div>
@@ -151,7 +151,7 @@
 					<!--{#$noidT8=array_merge($noidT7,$noidT6)#}-->
 					<!--{#house action="news" return="news" typeid="1" noid=$noidT8 page=1 pageSize="1"#}-->
 					<!--<a href="{#$news.url#}">-->
-						<!--<img src="{#changeFileSize url={#$news.litpic#} type='small'#}" target="_blank" alt="">-->
+						<!--<img src="{#changeFileSize url={#$news.litpic#} type='small'#}" onerror="javascript:this.src='/static/images/404.jpg';"target="_blank" alt="">-->
 						<!--<div class="imgInfo">-->
 							<!--<h3>{#$news.title#}</h3>-->
 							<!--<div class="bg"></div>-->
@@ -221,7 +221,7 @@
 					<!--{#$noidT19=array_merge($noidT8,$noidT17)#}-->
 					<!--{#house action="news" return="news" typeid="2" noid=$noidT19 page=1 pageSize="1"#}-->
 					<!--<a href="{#$news.url#}">-->
-						<!--<img src="{#changeFileSize url={#$news.litpic#} type='small'#}" target="_blank" alt="">-->
+						<!--<img src="{#changeFileSize url={#$news.litpic#} type='small'#}" onerror="javascript:this.src='/static/images/404.jpg';" target="_blank" alt="">-->
 						<!--<div class="imgInfo">-->
 							<!--<h3>{#$news.title#}</h3>-->
 							<!--<div class="bg"></div>-->
@@ -291,7 +291,7 @@
 					{#$noidT30=array_merge($noidT29,$noidT28)#}
 					{#house action="news" return="news" typeid="3" noid=$noidT30 page=1 pageSize="1"#}
 					<a href="{#$news.url#}">
-						<img src="{#changeFileSize url={#$news.litpic#} type='small'#}" target="_blank" alt="">
+						<img src="{#changeFileSize url={#$news.litpic#} type='small'#}" onerror="javascript:this.src='/static/images/404.jpg';" target="_blank" alt="">
 						<div class="imgInfo">
 							<h3>{#$news.title#}</h3>
 							<div class="bg"></div>
@@ -361,7 +361,7 @@
 					<!--{#$noidT41=array_merge($noidT40,$noidT39)#}-->
 					<!--{#house action="news" return="news" typeid="4" noid=$noidT41 page=1 pageSize="1"#}-->
 					<!--<a href="{#$news.url#}">-->
-						<!--<img src="{#changeFileSize url={#$news.litpic#} type='small'#}" target="_blank" alt="">-->
+						<!--<img src="{#changeFileSize url={#$news.litpic#} type='small'#}"onerror="javascript:this.src='/static/images/404.jpg';" target="_blank" alt="">-->
 						<!--<div class="imgInfo">-->
 							<!--<h3>{#$news.title#}</h3>-->
 							<!--<div class="bg"></div>-->
