@@ -36,7 +36,7 @@ $(function(){
 				location.reload();
 				return false;
 			}
-
+			var rtConfig;
 			//初始加载配置信息，包括会员相关信息
 			$.ajax({
 				type: "POST",
@@ -66,6 +66,7 @@ $(function(){
 			refreshTopModule = mod;
 			refreshTopAction = act;
 			refreshTopID = aid;
+			rtConfig = refreshTopConfig.config;
 			$('#refreshTopForm #type').val(type == 'refresh' ? 'smartRefresh' : type);
 			$('#refreshTopForm #act').val(act);
 			$('#refreshTopForm #aid').val(aid);
@@ -78,7 +79,7 @@ $(function(){
 		},
 
     update_zjuser_btn: function(type, need){
-      var rtConfig = refreshTopConfig.config;
+      rtConfig = refreshTopConfig.config;
       var btn = $('#zjuser_refresh'), href = btn.data('url'); 
 
       if(rtConfig.zjuserMeal.meal_check.state == 200){
@@ -102,7 +103,7 @@ $(function(){
         var info = '您是经纪人，已购买套餐<br>剩余'+name+'次数共<font color="#ff6600">'+count+'</font>次<br>当前操作需要消耗<font style="color:#f60;">'+need+'</font>次';
 
         if(type == 'topping'){
-          info = info.replace(/次/g, '天');
+          info = info.replace(/次/g, '金币');
         }
         if(has >= need){
           btn.attr('href', 'javascript:;').text(name);
@@ -257,13 +258,13 @@ $(function(){
 			}
 
 			//余额选项
-			var total,cullPrice,lastPrice;
+			var total,lastPrice;
 
 			if(userTotalBalance){
-		// 		var rtUseBalance = userTotalBalance > refreshTopAmount ? parseFloat(refreshTopAmount).toFixed(2) : userTotalBalance.toFixed(2);
-        // refreshTopPayAmount = (refreshTopAmount - rtUseBalance).toFixed(2);
-		// 		$('.rtBody .reduce-yue').text(rtUseBalance);
-	    //   $('.rtBody .pay-total').text(refreshTopPayAmount);
+				var rtUseBalance = userTotalBalance > refreshTopAmount ? parseFloat(refreshTopAmount).toFixed(2) : userTotalBalance.toFixed(2);
+               refreshTopPayAmount = (refreshTopAmount - rtUseBalance).toFixed(2);
+				$('.rtBody .reduce-yue').text(rtUseBalance);
+	            //   $('.rtBody .pay-total').text(refreshTopPayAmount);
 				total=rtConfig.topDeposit.availableCoins;
 				if(parseInt(total)-parseInt(refreshTopAmount)<0){
 						lastPrice=Math.abs(parseInt(total)-parseInt(refreshTopAmount));
@@ -311,8 +312,8 @@ $(function(){
 		    }else{
 					$('#refreshTopForm #useBalance').val(0);
 		    }
-        // refreshTopPayAmount = parseFloat(rtTotalPay).toFixed(2);
-		// 		$('.rtBody .pay-total').text(refreshTopPayAmount);
+        refreshTopPayAmount = parseFloat(rtTotalPay).toFixed(2);
+				// $('.rtBody .pay-total').text(refreshTopPayAmount);
 				total=rtConfig.topDeposit.availableCoins;
 				if(parseInt(total)-parseInt(refreshTopAmount)<0){
 					lastPrice=Math.abs(parseInt(total)-parseInt(refreshTopAmount));

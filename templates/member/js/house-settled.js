@@ -37,6 +37,7 @@
             url:"/include/ajax.php?service=member&action=getFreeHouseList",
             type: "GET",
             dataType: "jsonp",
+            data: data.join("&"),
             success:function (data) {
                 if(data.state==100){
                     var list = data.info.list,
@@ -203,10 +204,10 @@ function showPageInfo() {
             prev.className = "prev";
             prev.innerHTML = '上一页';
             prev.setAttribute('href','#');
-            prev.click(function () {
+            prev.onclick = function () {
                 atpage = nowPageNum - 1;
                 getList();
-            })
+            }
         } else {
             var prev = document.createElement("span");
             prev.className = "prev disabled";

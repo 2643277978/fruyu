@@ -65,6 +65,7 @@ function onclikRz(curr) {
         url:"/include/ajax.php?service=member&action=getFreeHouseList",
         type: "GET",
         dataType: "jsonp",
+        data: data.join("&"),
         success:function (data) {
             if(data){
                 if(data.state==100){

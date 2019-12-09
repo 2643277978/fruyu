@@ -80,8 +80,6 @@ $(function(){
 					info = langData['siteConfig'][30][68]+name+langData['siteConfig'][30][69]+'<font color="#ff6600">'+count+'</font>'+langData['siteConfig'][13][26]+'<br>'+langData['siteConfig'][30][70]+'<font style="color:#f60;">'+need+'</font>'+langData['siteConfig'][13][26];
 					//您是经纪人，已购买套餐<br>剩余---次数共-----次---当前操作需要消耗----次
 				}else if(type == 'topping'){
-					console.log(rtConfig.zjuserMeal.iszjuser);
-					console.log(rtConfig.zjuserMeal.meal_check.state);
 					if( rtConfig.zjuserMeal.iszjuser==1 && rtConfig.zjuserMeal.meal_check.state==100){
 						count=parseInt(rtConfig.zjuserMeal.meal.settop)+parseInt(rtConfig.topDeposit.availableCoins);
 					}else {
@@ -90,8 +88,8 @@ $(function(){
 					name = langData['siteConfig'][19][762];//置顶
 					has = zjuser_meal.settop;
 					jinbi="个";
+
 					total=parseInt(rtConfig.topPlan[0].all)+parseInt(rtConfig.topPlan[1].all)+parseInt(rtConfig.topPlan[2].all)+parseInt(rtConfig.topPlan[3].all)+parseInt(rtConfig.topPlan[4].all)+parseInt(rtConfig.topPlan[5].all)+parseInt(rtConfig.topPlan[6].all);
-					console.log(total);
 					info = langData['siteConfig'][30][68]+name+langData['siteConfig'][30][69]+'<font color="#ff6600">'+count+'</font>'+jinbi+'<br>'+langData['siteConfig'][30][70]+'<font style="color:#f60;">'+total+'</font>'+jinbi;
 					//您是经纪人，已购买套餐<br>剩余---次数共-----次---当前操作需要消耗----次
 				}
@@ -99,9 +97,9 @@ $(function(){
 
 
 				if(type == 'topping'){
-					info = info.replace(/次/g, langData['siteConfig'][13][6]);//天
+					info = info.replace(/次/g, langData['siteConfig'][13][60]);//天
 				}
-				if(has >= need){
+				if(count >= total){
 					btn.attr('href', 'javascript:;').text(name);
 				}else{
 					btn.attr('href', href).text(langData['siteConfig'][30][71]);//升级套餐

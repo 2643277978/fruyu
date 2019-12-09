@@ -11,7 +11,7 @@ html, body {height: 100%;}
 .choose-tab{position: fixed; top: .91rem; left: 0; right: 0; border-bottom: 1px solid #f4f4f4; z-index: 11; background: #fff;}
 .huoniao_iOS .choose-tab{top:0;}
 
-.choose-tab li{width: 25%; font-size: .3rem; float: left;text-align: center;position: relative;padding: .2rem 0;}
+.choose-tab li{width: 20%; font-size: .3rem; float: left;text-align: center;position: relative;padding: .2rem 0;}
 .choose-tab li a{display: block;border-right: 1px solid #f4f4f4;height: .4rem;line-height: .4rem;font-size: 14px;text-align: center;color: #565c67!important;padding: 0 6px;}
 .choose-tab li span{position: relative;display: inline-block;height: .4rem;line-height: .4rem;max-width: 85%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding-right: .26rem;font-size: .25rem;}
 .choose-tab li span:after{content: '';position: absolute;width: 0;height: 0;border-style: solid;border-width: .08rem;border-color: #cccfd8 transparent transparent transparent;right: 0;top: 50%;margin-top: -2px;}
