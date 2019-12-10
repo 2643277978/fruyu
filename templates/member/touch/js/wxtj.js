@@ -40,52 +40,47 @@ $(function () {
 
                     }
                 }
-                getlist(6,$("#shop"));
-                getlist(7,$("#housing"));
+                getlist(6,$("#housing"));
                 getlist(8,$("#article"));
                 getlist(9,$("#poster"));
                 getlist(10,$("#businessCard"));
                 //分享总数
                 function shareALll() {
-                    var sp=$("#shop th:eq(1)").html();
                     var fy=$("#housing th:eq(1)").html();
                     var wz=$("#article th:eq(1)").html();
                     var  hb=$("#poster th:eq(1)").html();
                     var  mp=$("#businessCard th:eq(1)").html();
-                    var shareAll=parseInt(sp)+parseInt(fy)+parseInt(hb)+parseInt(wz)+parseInt(mp);
+                    var shareAll=parseInt(fy)+parseInt(hb)+parseInt(wz)+parseInt(mp);
                     $(".shareALll").html(shareAll);
                 }
                 shareALll();
                 //浏览
                 function zf() {
-                    var sp=$("#shop th:eq(2)").html();
                     var fy=$("#housing th:eq(2)").html();
                     var wz=$("#article th:eq(2)").html();
                     var  hb=$("#poster th:eq(2)").html();
                     var  mp=$("#businessCard th:eq(2)").html();
-                    var shareAll=parseInt(sp)+parseInt(fy)+parseInt(hb)+parseInt(wz)+parseInt(mp);
+                    var shareAll=parseInt(fy)+parseInt(hb)+parseInt(wz)+parseInt(mp);
                     $(".ylALll").html(shareAll);
                 }
                 zf();
                 //访客
                 function ll() {
-                    var  sp=$("#shop th:eq(3)").html();
                     var fy=$("#housing th:eq(3)").html();
                     var wz=$("#article th:eq(3)").html();
                     var  hb=$("#poster th:eq(3)").html();
                     var  mp=$("#businessCard th:eq(3)").html();
-                    var shareAll=parseInt(sp)+parseInt(fy)+parseInt(hb)+parseInt(wz)+parseInt(mp);
+                    var shareAll=parseInt(fy)+parseInt(hb)+parseInt(wz)+parseInt(mp);
                     $(".visitALll").html(shareAll);
                 }
                 ll();
                 //转发
                 function fk() {
-                    var  sp=$("#shop th:eq(4)").html();
                     var fy=$("#housing th:eq(4)").html();
                     var wz=$("#article th:eq(4)").html();
                     var  hb=$("#poster th:eq(4)").html();
                     var  mp=$("#businessCard th:eq(4)").html();
-                    var shareAll=parseInt(sp)+parseInt(fy)+parseInt(hb)+parseInt(wz)+parseInt(mp);
+                    var shareAll=parseInt(fy)+parseInt(hb)+parseInt(wz)+parseInt(mp);
                     $(".reALll").html(shareAll);
                 }
                 fk();
@@ -93,10 +88,10 @@ $(function () {
                 $(".inthree").css("width",threeDay+"%");
                 $(".inseven").css("width",sevenDay+"%");
             }else {
-                alert("你还不是会员或已过期！请先开通会员");
+                alert(data.info);
                 window.history.back(-1);
             }
         }
     });
-})
+});
 

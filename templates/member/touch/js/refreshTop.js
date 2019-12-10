@@ -151,7 +151,6 @@ $(function(){
 
 			//刷新业务
 			if(type == 'refresh'){
-
 				$('.rtRefresh, .normalRefresh').show();
 				$('.rtHeader h5').html('刷新');
 
@@ -169,7 +168,7 @@ $(function(){
 					var smartHtml = [];
 					for (var i = 0; i < refreshSmart.length; i++) {
             if(i == 0){
-    					refreshTopAmount = refreshTopPayAmount = refreshSmart[i].price;
+            	refreshTopAmount = refreshTopPayAmount = refreshSmart[i].price;
               $('#refreshTopForm #amount').val(refreshTopAmount);
           		$('#refreshTopForm #config').val(0);
             }
@@ -258,14 +257,15 @@ $(function(){
 			}
 
 			//余额选项
-			var total,lastPrice;
 
 			if(userTotalBalance){
+				rtConfig = refreshTopConfig.config;
 				var rtUseBalance = userTotalBalance > refreshTopAmount ? parseFloat(refreshTopAmount).toFixed(2) : userTotalBalance.toFixed(2);
                refreshTopPayAmount = (refreshTopAmount - rtUseBalance).toFixed(2);
 				$('.rtBody .reduce-yue').text(rtUseBalance);
+				var total=rtConfig.topDeposit.availableCoins;
+				var lastPrice;
 	            //   $('.rtBody .pay-total').text(refreshTopPayAmount);
-				total=rtConfig.topDeposit.availableCoins;
 				if(parseInt(total)-parseInt(refreshTopAmount)<0){
 						lastPrice=Math.abs(parseInt(total)-parseInt(refreshTopAmount));
 				}else {
@@ -298,6 +298,7 @@ $(function(){
 
 		//价格业务，判断是否显示支付
 		calculationPayPrice: function(){
+			var rtConfig = refreshTopConfig.config;
 			if(refreshTopAmount){
         $('.rtBody .rtSett, .rtBody .paySubmit').show();
 				var rtUseBalance = userTotalBalance > refreshTopAmount ? parseFloat(refreshTopAmount).toFixed(2) : userTotalBalance.toFixed(2);
@@ -312,8 +313,10 @@ $(function(){
 		    }else{
 					$('#refreshTopForm #useBalance').val(0);
 		    }
-        refreshTopPayAmount = parseFloat(rtTotalPay).toFixed(2);
+               refreshTopPayAmount = parseFloat(rtTotalPay).toFixed(2);
 				// $('.rtBody .pay-total').text(refreshTopPayAmount);
+				var total=rtConfig.topDeposit.availableCoins;
+				var lastPrice;
 				total=rtConfig.topDeposit.availableCoins;
 				if(parseInt(total)-parseInt(refreshTopAmount)<0){
 					lastPrice=Math.abs(parseInt(total)-parseInt(refreshTopAmount));

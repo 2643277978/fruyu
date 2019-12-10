@@ -25,6 +25,16 @@
     <ul class="share">
     </ul>
 </div>
+<div class="popupRightBottom">
+    <div class="fastTop" ><i></i></div>
+</div>
+<script>
+    var atpage = '{#$page#}',
+        community = '{#$community#}',
+        totalCount = {#if $pageInfo.totalCount == 0#}0{#else#}{#$pageInfo.totalCount#}{#/if#},
+        totalPage = {#if $pageInfo.totalPage == 0#}0{#else#}{#$pageInfo.totalPage#}{#/if#},
+            pageSize = 10;
+</script>
 <script type="text/javascript" src="{#$templets_skin#}js/share_people.js?v={#$cfg_staticVersion#}"></script>
 </body>
 </html>

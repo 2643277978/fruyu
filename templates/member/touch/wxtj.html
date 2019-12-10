@@ -44,9 +44,6 @@
                 <td>访客量</td>
                 <td>转发量</td>
             </tr>
-            <tr id="shop" >
-                <th >商铺</th>
-            </tr>
             <tr id="housing" >
                 <th >房源</th>
             </tr>
@@ -69,8 +66,7 @@
     <div class="fkfx-top">
         <div class="fkfx-top-left">
             <span class="fksall">0</span>
-            <span class="fks">累计访客数</span>
-            <a href="{#getUrlPath service='member' type='user' template='share_people'#}">查看访客详情</a>
+            <span class="fks">累计访客人数</span>
         </div>
         <div class="fkfx-top-right">
             <ul>
@@ -79,6 +75,11 @@
                 <li ><span>7天内新增</span><span class="sz sDay">0</span><span class="tx"><span class="inseven"></span></span></li>
             </ul>
         </div>
+    </div>
+    <div class="ul">
+        <ul>
+            <li><a href="{#getUrlPath service='member' type='user' template='share_people'#}">最近来访记录<span>> </span> </a></li>
+        </ul>
     </div>
 </div>
 <!-- 访客分析 e-->
