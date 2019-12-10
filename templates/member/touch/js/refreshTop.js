@@ -212,6 +212,7 @@ $(function(){
 					}
 					$('.rtSmartPackage').html(smartHtml.join(''));
 					$(".rtSett").addClass('hide_impt');
+					$('#zjuser_refresh').addClass('hide_impt');
           if(smartHtml.length == 0){
             $('.house_zjuser_choose li:eq(1)').addClass('curr').siblings().hide();
             that_.update_zjuser_btn(type,1);
@@ -273,12 +274,12 @@ $(function(){
 
         // 房产经纪人操作
         if(check_zjuser){
+        	$('#refreshTopForm #type').val('rtToppingPlan');
           $('.rtToppingType li:eq(1)').click();
           $('.rtToppingType li:eq(0)').hide();
           $('.rtToppingPlan .rtToppingPlan,.rtSett').addClass('hide_impt');
           $('.house_zjuser_choose').hide();
-          $('.refreshTopPrev .paySubmit1').show();
-          $('#refreshTopForm #type').val('toppingPlan');
+          $('#zjuser_refresh').removeClass('hide_impt');
         }
 
 			}
