@@ -89,28 +89,40 @@ $(function(){
 
         zjuser_meal = rtConfig.zjuserMeal.meal;
 
-        var has = 0, count, name;
+        var has = 0, count, name,info;
         if(type == 'refresh'){
           count = rtConfig.zjuserMeal.meal.refresh;
           name = '刷新';
           has = zjuser_meal.refresh;
-        }else if(type == 'topping'){
-          count = rtConfig.zjuserMeal.meal.settop;
-          name = '置顶';
-          has = zjuser_meal.settop;
-        }
+		 info = '您是经纪人，已购买套餐<br>剩余'+name+'次数共<font color="#ff6600">'+count+'</font>次<br>当前操作需要消耗<font style="color:#f60;">'+need+'</font>次';
 
-        var info = '您是经纪人，已购买套餐<br>剩余'+name+'次数共<font color="#ff6600">'+count+'</font>次<br>当前操作需要消耗<font style="color:#f60;">'+need+'</font>次';
+		}else if(type == 'topping'){
+			if( rtConfig.zjuserMeal.iszjuser==1 && rtConfig.zjuserMeal.meal_check.state==100){
+				has=parseInt(rtConfig.zjuserMeal.meal.settop)+parseInt(rtConfig.topDeposit.availableCoins);
+			}else {
+				has=rtConfig.topDeposit.availableCoins;
+			}
+          name = '置顶';
+          count=parseInt(rtConfig.topPlan[0].all)+parseInt(rtConfig.topPlan[1].all)+parseInt(rtConfig.topPlan[2].all)+parseInt(rtConfig.topPlan[3].all)+parseInt(rtConfig.topPlan[4].all)+parseInt(rtConfig.topPlan[5].all)+parseInt(rtConfig.topPlan[6].all);
+          info = '您是经纪人，已购买套餐<br>剩余'+name+'次数共<font color="#ff6600">'+has+'</font>次<br>当前操作需要消耗<font style="color:#f60;">'+count+'</font>次';
+		}
 
         if(type == 'topping'){
           info = info.replace(/次/g, '金币');
-        }
-        if(has >= need){
-          btn.attr('href', 'javascript:;').text(name);
-        }else{
-          btn.attr('href', href).text('升级套餐');
-          info += '<br>请购买或升级套餐';
-        }
+			if(has >= count){
+				btn.attr('href', 'javascript:;').text(name);
+			}else{
+				btn.attr('href', href).text('升级套餐');
+				info += '<br>请购买或升级套餐';
+			}
+        }else if (type == 'refresh'){
+			if(has >= need){
+				btn.attr('href', 'javascript:;').text(name);
+			}else{
+				btn.attr('href', href).text('升级套餐');
+				info += '<br>请购买或升级套餐';
+			}
+		}
         $('.zjuser_info').html(info);
       }
     },
@@ -262,7 +274,7 @@ $(function(){
         // 房产经纪人操作
         if(check_zjuser){
           $('.rtToppingType li:eq(1)').click().siblings().hide();
-          $('.rtToppingPlan .rtToppingPlan, .rtSett').addClass('hide_impt');
+          $('.rtToppingPlan .rtToppingPlan, .rtSett .paySubmit1').addClass('hide_impt');
           $('.house_zjuser_choose').hide();
         }
 
