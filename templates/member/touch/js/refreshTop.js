@@ -131,7 +131,7 @@ $(function(){
 		show: function(type, title){
       var that_ = this;
 
-			$('.rtRefresh, .normalRefresh, .rtTopping').hide();
+			$('.rtRefresh, .normalRefresh, .rtTopping,.rtBody .paySubmit').hide();
 			// $('.rtRefresh, .rtTopping, .rtBody .paytypeObj').hide();
 			var rtConfig = refreshTopConfig.config;
 
@@ -212,7 +212,6 @@ $(function(){
 					}
 					$('.rtSmartPackage').html(smartHtml.join(''));
 					$('#zjuser_refresh').addClass('hide_impt');
-					$('.normalRefresh').addClass('hide_impt');
           if(smartHtml.length == 0){
             $('.house_zjuser_choose li:eq(1)').addClass('curr').siblings().hide();
             that_.update_zjuser_btn(type,1);
