@@ -274,8 +274,9 @@ $(function(){
         // 房产经纪人操作
         if(check_zjuser){
           $('.rtToppingType li:eq(1)').click().siblings().hide();
-          $('.rtToppingPlan .rtToppingPlan, .rtSett .paySubmit1').addClass('hide_impt');
+          $('.rtToppingPlan .rtToppingPlan, .rtSett').addClass('hide_impt');
           $('.house_zjuser_choose').hide();
+			$('#refreshTopForm #type').val('toppingPlan');
         }
 
 			}
