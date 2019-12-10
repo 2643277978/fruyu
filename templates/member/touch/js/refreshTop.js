@@ -136,31 +136,31 @@ $(function(){
 			var rtConfig = refreshTopConfig.config;
 
       // 房产模块、经纪人、后台配置了经纪人套餐
-		if(rtConfig.zjuserMeal.iszjuser == "1" && rtConfig.zjuserMeal.meal_check.state == 100){
-        check_zjuser = true;
-        $('.refreshTopPopup').addClass('check_zjuser');
-        if(type == "refresh"){
-          // $('.freeRefresh, .rtSett, .paySubmit, .normalRefresh').addClass('hide_impt');
-          $('.freeRefresh, .normalRefresh, .rtSett').addClass('hide_impt');
-
-          $('.house_zjuser_choose').show().children('li').click(function(){
-            var t = $(this), index = t.index();
-            t.addClass('curr').siblings().removeClass('curr');
-            if(index == 1){
-              that_.update_zjuser_btn(type, 1);
-              $('#refreshTopForm #type').val('refresh');
-            }else{
-              $('.rtSmartPackage li.curr').click();
-              $('#refreshTopForm #type').val('smartRefresh');
-            }
-          })
-        }else{
-          this.update_zjuser_btn(type, 7);
-			$('#zjuser_refresh').show();
-        }
-      }else{
-        $('#zjuser_refresh').remove();
-      }
+		// if(rtConfig.zjuserMeal.iszjuser == "1" && rtConfig.zjuserMeal.meal_check.state == 100){
+      //   check_zjuser = true;
+      //   $('.refreshTopPopup').addClass('check_zjuser');
+      //   if(type == "refresh"){
+      //     // $('.freeRefresh, .rtSett, .paySubmit, .normalRefresh').addClass('hide_impt');
+      //     $('.freeRefresh, .normalRefresh, .rtSett').addClass('hide_impt');
+	  //
+      //     $('.house_zjuser_choose').show().children('li').click(function(){
+      //       var t = $(this), index = t.index();
+      //       t.addClass('curr').siblings().removeClass('curr');
+      //       if(index == 1){
+      //         that_.update_zjuser_btn(type, 1);
+      //         $('#refreshTopForm #type').val('refresh');
+      //       }else{
+      //         $('.rtSmartPackage li.curr').click();
+      //         $('#refreshTopForm #type').val('smartRefresh');
+      //       }
+      //     })
+      //   }else{
+      //     this.update_zjuser_btn(type, 7);
+		// 	$('#zjuser_refresh').show();
+      //   }
+      // }else{
+      //   $('#zjuser_refresh').remove();
+      // }
 
 			//刷新业务
 			if(type == 'refresh'){
