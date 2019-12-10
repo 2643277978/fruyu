@@ -274,10 +274,10 @@ $(function(){
 
         // 房产经纪人操作
         if(check_zjuser){
-        	$('#refreshTopForm #type').val('rtToppingPlan');
+        	$('#refreshTopForm #type').val('toppingPlan');
           $('.rtToppingType li:eq(1)').click();
           $('.rtToppingType li:eq(0)').hide();
-          $('.rtToppingPlan .rtToppingPlan,.rtSett').addClass('hide_impt');
+          $('.rtToppingPlan .rtToppingPlan,.rtSett').hide();
           $('.house_zjuser_choose').hide();
           $('#zjuser_refresh').removeClass('hide_impt');
         }
@@ -287,7 +287,7 @@ $(function(){
 			//余额选项
 
 			if(userTotalBalance){
-				rtConfig = refreshTopConfig.config;
+				 rtConfig = refreshTopConfig.config;
 				var rtUseBalance = userTotalBalance > refreshTopAmount ? parseFloat(refreshTopAmount).toFixed(2) : userTotalBalance.toFixed(2);
                refreshTopPayAmount = (refreshTopAmount - rtUseBalance).toFixed(2);
 				$('.rtBody .reduce-yue').text(rtUseBalance);
@@ -306,6 +306,7 @@ $(function(){
 			//显示浮动窗口
       		$('body').addClass('bodyFixed');
 			refreshTopPopup.show();
+
 
             //APP端取消下拉刷新
             toggleDragRefresh('off');
@@ -326,6 +327,7 @@ $(function(){
 
 		//价格业务，判断是否显示支付
 		calculationPayPrice: function(){
+			if(!check_zjuser){
 			var rtConfig = refreshTopConfig.config;
 			if(refreshTopAmount){
         $('.rtBody .rtSett, .rtBody .paySubmit').show();
@@ -355,6 +357,7 @@ $(function(){
 			}else{
         $('.rtBody .rtSett, .rtBody .paySubmit').hide();
 			}
+			}
 		},
 
 		//计算计划置顶费用
@@ -366,7 +369,7 @@ $(function(){
 			//统计费用明细
 			if(topPlan){
 
-				refreshTopAmount = refreshTopPayAmount = 0;
+				refreshTopAmount = 0;
 
 				//获取已选时段
 				var rtPlanSelected = [];

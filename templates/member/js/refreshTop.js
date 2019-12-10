@@ -301,7 +301,6 @@ $(function(){
 					var rtUseBalance = userTotalBalance > refreshTopAmount ? refreshTopAmount.toFixed(2) : userTotalBalance.toFixed(2);
 					var rtTotalPay = refreshTopAmount.toFixed(2);
 					$('.rtPayObj, .rtBody .paySubmit').show();
-
 					if($('.rtBody .yue-btn').hasClass('active')){
 						$('#refreshTopForm #useBalance').val(1);
 			      rtTotalPay = (refreshTopAmount - rtUseBalance).toFixed(2);
@@ -360,6 +359,7 @@ $(function(){
 
 					if(rtPlanSelected[week]){
 						refreshTopAmount += topPlan[week][rtPlanSelected[week]];
+						refreshTopPayAmount += topPlan[week][rtPlanSelected[week]];
 					}
 				}
 
