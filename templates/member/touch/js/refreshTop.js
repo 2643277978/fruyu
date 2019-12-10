@@ -142,7 +142,7 @@ $(function(){
 
         if(type == "refresh"){
           // $('.freeRefresh, .rtSett, .paySubmit, .normalRefresh').addClass('hide_impt');
-          $('.freeRefresh, .normalRefresh, .rtPayObj').addClass('hide_impt');
+          $('.freeRefresh, .normalRefresh, .rtSett').addClass('hide_impt');
 
           $('.house_zjuser_choose').show().children('li').click(function(){
             var t = $(this), index = t.index();
@@ -181,12 +181,26 @@ $(function(){
 
         //普通刷新单价
         $('.refreshNormalPrice').html(refreshNormalPrice);
+				//如果还有免费次数
+				if(surplusFreeRefresh > 0){
+					$('.freeRefresh').show();
+					$('.tollRefresh, .rtBody .rtSett, .rtBody .paySubmit, .rtBody .normalRefresh').hide();
+					$('.refreshFreeSurplus').html(surplusFreeRefresh);
+					refreshTopAmount =0;
+				}else{
+					$('.freeRefresh').hide();
+					$('.tollRefresh').show();
+					refreshTopAmount = refreshNormalPrice;
+					$('#refreshTopForm #amount').val(refreshTopAmount);
+					$(".rtSett").show();
+				}
+
 
 				//拼接智能刷新方案
 				if(refreshSmart.length > 0){
 					var smartHtml = [];
 					for (var i = 0; i < refreshSmart.length; i++) {
-            if(i == 0){
+              if(i == 0){
             	refreshTopAmount = refreshTopPayAmount = refreshSmart[i].price;
               $('#refreshTopForm #amount').val(refreshTopAmount);
           		$('#refreshTopForm #config').val(0);
@@ -204,19 +218,6 @@ $(function(){
           }else{
             $('.rtSmartPackage li.curr').click();
           }
-
-          //如果还有免费次数
-  				if(surplusFreeRefresh > 0){
-  					$('.freeRefresh').show();
-  					$('.tollRefresh, .rtBody .rtSett, .rtBody .paySubmit, .rtBody .normalRefresh').hide();
-  					$('.refreshFreeSurplus').html(surplusFreeRefresh);
-  					refreshTopAmount = refreshTopPayAmount = 0;
-  				}else{
-  					$('.freeRefresh').hide();
-  					$('.tollRefresh').show();
-  					$('#refreshTopForm #amount').val(refreshTopAmount);
-  				}
-
 				//没有智能刷新方案
 				}else{
 					$('.normalTips, .rtSmart').hide();
