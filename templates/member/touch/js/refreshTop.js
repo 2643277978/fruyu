@@ -131,7 +131,7 @@ $(function(){
 		show: function(type, title){
       var that_ = this;
 
-			$('.rtRefresh, .normalRefresh, .rtTopping,.refreshTopPrev').hide();
+			$('.rtRefresh, .normalRefresh, .rtTopping').hide();
 			// $('.rtRefresh, .rtTopping, .rtBody .paytypeObj').hide();
 			var rtConfig = refreshTopConfig.config;
 
