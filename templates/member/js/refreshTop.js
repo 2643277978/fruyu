@@ -25,7 +25,7 @@ $(function(){
 			//初始加载配置信息，包括会员相关信息
 			$.ajax({
 				type: "POST",
-				url: masterDomain + "/include/ajax.php",
+				url:  masterDomain + "/include/ajax.php",
 				dataType: "jsonp",
 				data: {
 					'service': 'siteConfig',
@@ -63,7 +63,7 @@ $(function(){
 
 		update_zjuser_btn: function(type, need){
 			var rtConfig = refreshTopConfig.config;
-			var btn = $('#zjuser_refresh'), href = btn.data('url'); 
+			var btn = $('#zjuser_refresh'),href = btn.data('url');
 
 			if(rtConfig.zjuserMeal.meal_check.state == 200){
 				$('.zjuser_info').html(rtConfig.zjuserMeal.meal_check.info);
@@ -72,7 +72,7 @@ $(function(){
 
 				zjuser_meal = rtConfig.zjuserMeal.meal;
 
-				var has = 0, count, name,info,jinbi,total;
+				var has = 0, count, name,info,jinbi;
 				if(type == 'refresh'){
 					count = rtConfig.zjuserMeal.meal.refresh;
 					name = langData['siteConfig'][16][70];//刷新
@@ -81,16 +81,14 @@ $(function(){
 					//您是经纪人，已购买套餐<br>剩余---次数共-----次---当前操作需要消耗----次
 				}else if(type == 'topping'){
 					if( rtConfig.zjuserMeal.iszjuser==1 && rtConfig.zjuserMeal.meal_check.state==100){
-						count=parseInt(rtConfig.zjuserMeal.meal.settop)+parseInt(rtConfig.topDeposit.availableCoins);
+						has=parseInt(rtConfig.zjuserMeal.meal.settop)+parseInt(rtConfig.topDeposit.availableCoins);
 					}else {
-						count=rtConfig.topDeposit.availableCoins;
+						has=rtConfig.topDeposit.availableCoins;
 					}
 					name = langData['siteConfig'][19][762];//置顶
-					has = zjuser_meal.settop;
 					jinbi="个";
-
-					total=parseInt(rtConfig.topPlan[0].all)+parseInt(rtConfig.topPlan[1].all)+parseInt(rtConfig.topPlan[2].all)+parseInt(rtConfig.topPlan[3].all)+parseInt(rtConfig.topPlan[4].all)+parseInt(rtConfig.topPlan[5].all)+parseInt(rtConfig.topPlan[6].all);
-					info = langData['siteConfig'][30][68]+name+langData['siteConfig'][30][69]+'<font color="#ff6600">'+count+'</font>'+jinbi+'<br>'+langData['siteConfig'][30][70]+'<font style="color:#f60;">'+total+'</font>'+jinbi;
+					count=parseInt(rtConfig.topPlan[0].all)+parseInt(rtConfig.topPlan[1].all)+parseInt(rtConfig.topPlan[2].all)+parseInt(rtConfig.topPlan[3].all)+parseInt(rtConfig.topPlan[4].all)+parseInt(rtConfig.topPlan[5].all)+parseInt(rtConfig.topPlan[6].all);
+					info = langData['siteConfig'][30][68]+name+langData['siteConfig'][30][69]+'<font color="#ff6600">'+has+'</font>'+jinbi+'<br>'+langData['siteConfig'][30][70]+'<font style="color:#f60;">'+count+'</font>'+jinbi;
 					//您是经纪人，已购买套餐<br>剩余---次数共-----次---当前操作需要消耗----次
 				}
 
@@ -98,13 +96,20 @@ $(function(){
 
 				if(type == 'topping'){
 					info = info.replace(/次/g, langData['siteConfig'][13][60]);//天
-				}
-				if(count >= total){
-					btn.attr('href', 'javascript:;').text(name);
-				}else{
-					btn.attr('href', href).text(langData['siteConfig'][30][71]);//升级套餐
-					info += langData['siteConfig'][30][72];
-				}
+                    if(has >= count){
+                        btn.attr('href', 'javascript:;').text(name);
+                    }else{
+                        btn.attr('href', href).text(langData['siteConfig'][30][71]);//升级套餐
+                        info += langData['siteConfig'][30][72];
+                    }
+				}else if(type == 'refresh'){
+                    if(has >= need){
+                        btn.attr('href', 'javascript:;').text(name);
+                    }else{
+                        btn.attr('href', href).text(langData['siteConfig'][30][71]);//升级套餐
+                        info += langData['siteConfig'][30][72];
+                    }
+                }
 				$('.zjuser_info').html(info);
 			}
 		},
@@ -122,13 +127,25 @@ $(function(){
 
 				if(type == "refresh"){
 					$('.freeRefresh, .normalRefresh, .rtPayObj').addClass('hide_impt');
-					this.update_zjuser_btn(type, 1);
+					// this.update_zjuser_btn(type, 1);
+					$('.house_zjuser_choose').show().children('li').click(function(){
+						var t = $(this), index = t.index();
+						t.addClass('curr').siblings().removeClass('curr');
+						if(index == 1){
+							that_.update_zjuser_btn(type, 1);
+							$('#refreshTopForm #type').val('refresh');
+						}else{
+							$('.rtSmartPackage li.curr').click();
+							$('#refreshTopForm #type').val('smartRefresh');
+						}
+					})
 				}else{
-					$('.rtPayObj').addClass('hide_impt');
+					// $('.rtPayObj').addClass('hide_impt');
 					this.update_zjuser_btn(type, 7);
 				}
 			}else{
-				$('.zjuser_tj, .zjuser_info').remove();	
+				// $('.zjuser_tj, .zjuser_info').remove();
+				$('#zjuser_refresh').remove();
 			}
 
 			//刷新业务

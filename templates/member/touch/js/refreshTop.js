@@ -120,7 +120,8 @@ $(function(){
 
       var that_ = this;
 
-			$('.rtRefresh, .normalRefresh, .rtTopping').hide();
+			// $('.rtRefresh, .normalRefresh, .rtTopping').hide();
+			$('.rtRefresh, .rtTopping, .rtBody .paytypeObj, .rtBody .paySubmit').hide();
 			var rtConfig = refreshTopConfig.config;
 
       // 房产模块、经纪人、后台配置了经纪人套餐
@@ -129,7 +130,8 @@ $(function(){
         $('.refreshTopPopup').addClass('check_zjuser');
 
         if(type == "refresh"){
-          $('.freeRefresh, .rtSett, .paySubmit, .normalRefresh').addClass('hide_impt');
+          // $('.freeRefresh, .rtSett, .paySubmit, .normalRefresh').addClass('hide_impt');
+          $('.freeRefresh, .normalRefresh, .rtPayObj').addClass('hide_impt');
 
           $('.house_zjuser_choose').show().children('li').click(function(){
             var t = $(this), index = t.index();
@@ -153,6 +155,12 @@ $(function(){
 			if(type == 'refresh'){
 				$('.rtRefresh, .normalRefresh').show();
 				$('.rtHeader h5').html('刷新');
+
+				//初始化默认选中普通刷新
+				$('.rtTab li').removeClass('curr');
+				$('.rtTab li:eq(1)').addClass('curr');
+				$('.rtCon .rtItem, .rtPayObj').hide();
+				$('.rtCon .rtItem:eq(1)').show();
 
 				refreshFreeTimes = rtConfig.refreshFreeTimes;  //可免费刷新次数
 				refreshNormalPrice = rtConfig.refreshNormalPrice;  //普通刷新价格
