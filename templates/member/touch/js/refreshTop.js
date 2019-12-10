@@ -139,7 +139,6 @@ $(function(){
 		if(rtConfig.zjuserMeal.iszjuser == "1" && rtConfig.zjuserMeal.meal_check.state == 100){
         check_zjuser = true;
         $('.refreshTopPopup').addClass('check_zjuser');
-
         if(type == "refresh"){
           // $('.freeRefresh, .rtSett, .paySubmit, .normalRefresh').addClass('hide_impt');
           $('.freeRefresh, .normalRefresh, .rtSett').addClass('hide_impt');
