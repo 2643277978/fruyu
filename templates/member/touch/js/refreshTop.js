@@ -131,7 +131,7 @@ $(function(){
 		show: function(type, title){
       var that_ = this;
 
-			$('.rtRefresh, .normalRefresh, .rtTopping').hide();
+			$('.rtRefresh, .normalRefresh, .rtTopping,.refreshTopPrev').hide();
 			// $('.rtRefresh, .rtTopping, .rtBody .paytypeObj').hide();
 			var rtConfig = refreshTopConfig.config;
 
@@ -192,7 +192,6 @@ $(function(){
 					$('.tollRefresh').show();
 					refreshTopAmount = refreshNormalPrice;
 					$('#refreshTopForm #amount').val(refreshTopAmount);
-					$(".rtSett").show();
 				}
 
 
@@ -277,7 +276,7 @@ $(function(){
           $('.rtToppingType li:eq(0)').hide();
           $('.rtToppingPlan .rtToppingPlan,.rtSett').addClass('hide_impt');
           $('.house_zjuser_choose').hide();
-          $('#zjuser_refresh').show();
+          $('.refreshTopPrev').show();
           $('#refreshTopForm #type').val('toppingPlan');
         }
 
