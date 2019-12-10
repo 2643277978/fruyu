@@ -168,10 +168,10 @@ $(function(){
 				$('.rtHeader h5').html('刷新');
 
 				//初始化默认选中普通刷新
-				$('.rtTab li').removeClass('curr');
-				$('.rtTab li:eq(1)').addClass('curr');
-				$('.rtCon .rtItem, .rtPayObj').hide();
-				$('.rtCon .rtItem:eq(1)').show();
+				$('.rtToppingType li').removeClass('curr');
+				$('.rtToppingType li:eq(0)').addClass('curr');
+				$('.rtToppingPlan').hide();
+				$('.rtToppingNormal').show();
 
 				refreshFreeTimes = rtConfig.refreshFreeTimes;  //可免费刷新次数
 				refreshNormalPrice = rtConfig.refreshNormalPrice;  //普通刷新价格
@@ -211,10 +211,10 @@ $(function(){
 	          smartHtml.push('</li>');
 					}
 					$('.rtSmartPackage').html(smartHtml.join(''));
-					$(".rtSett").hide();
+					$(".rtSett").addClass('hide_impt');
           if(smartHtml.length == 0){
             $('.house_zjuser_choose li:eq(1)').addClass('curr').siblings().hide();
-            that_.update_zjuser_btn(type, 1);
+            that_.update_zjuser_btn(type,1);
           }else{
             $('.rtSmartPackage li.curr').click();
           }
