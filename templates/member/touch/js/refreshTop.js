@@ -227,6 +227,10 @@ $(function(){
 
 				topNormal = rtConfig.topNormal;  //普通置顶
 				topPlan = rtConfig.topPlan;  //计划置顶
+				if(!topPlan) {
+					alert(rtConfig);
+					return false;
+				}
 
 				//将周日的数据移到第一位
 				topPlan.unshift(1);
@@ -257,9 +261,14 @@ $(function(){
 
         // 房产经纪人操作
         if(check_zjuser){
-          $('.rtToppingType li:eq(1)').click().siblings().hide();
-          $('.rtToppingPlan .rtToppingPlan, .rtSett, .paySubmit').addClass('hide_impt');
+          // $('.rtToppingType li:eq(1)').click().siblings().hide();
+          // $('.rtToppingPlan .rtToppingPlan, .rtSett, .paySubmit').addClass('hide_impt');
           $('.house_zjuser_choose').hide()
+			$('.rtToppingType li:eq(0)').hide();
+			$('.rtToppingType li:eq(1)').click();
+			$('.rtToppingPlan .rtSett').hide();
+			// $('.rtTopping .topNormal').hide();
+			$('#refreshTopForm #type').val('toppingPlan');
         }
 
 			}
