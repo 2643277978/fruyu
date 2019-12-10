@@ -211,6 +211,7 @@ $(function(){
 	          smartHtml.push('</li>');
 					}
 					$('.rtSmartPackage').html(smartHtml.join(''));
+					$(".rtSett").hide();
           if(smartHtml.length == 0){
             $('.house_zjuser_choose li:eq(1)').addClass('curr').siblings().hide();
             that_.update_zjuser_btn(type, 1);
