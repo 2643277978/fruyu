@@ -136,7 +136,7 @@ $(function(){
 			var rtConfig = refreshTopConfig.config;
 
       // 房产模块、经纪人、后台配置了经纪人套餐
-      if(refreshTopModule == 'house' && rtConfig.zjuserMeal.iszjuser == "1" && rtConfig.zjuserMeal.meal_check.state != 101){
+		if(rtConfig.zjuserMeal.iszjuser == "1" && rtConfig.zjuserMeal.meal_check.state == 100){
         check_zjuser = true;
         $('.refreshTopPopup').addClass('check_zjuser');
 
@@ -157,6 +157,7 @@ $(function(){
           })
         }else{
           this.update_zjuser_btn(type, 7);
+			$('#zjuser_refresh').show();
         }
       }else{
         $('#zjuser_refresh').remove();
@@ -279,7 +280,7 @@ $(function(){
           $('.rtToppingType li:eq(0)').hide();
           $('.rtToppingPlan .rtToppingPlan,.rtSett').hide();
           $('.house_zjuser_choose').hide();
-          $('#zjuser_refresh').removeClass('hide_impt');
+          $('#zjuser_refresh').show();
         }
 
 			}
