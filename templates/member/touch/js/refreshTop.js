@@ -133,7 +133,7 @@ $(function(){
       var that_ = this;
 
 			// $('.rtRefresh, .normalRefresh, .rtTopping').hide();
-			$('.rtRefresh, .rtTopping, .rtBody .paytypeObj, .rtBody .paySubmit').hide();
+			$('.rtRefresh, .rtTopping, .rtBody .paytypeObj').hide();
 			var rtConfig = refreshTopConfig.config;
 
       // 房产模块、经纪人、后台配置了经纪人套餐
@@ -273,7 +273,8 @@ $(function(){
 
         // 房产经纪人操作
         if(check_zjuser){
-          $('.rtToppingType li:eq(1)').click().siblings().hide();
+          $('.rtToppingType li:eq(1)').click();
+          $('.rtToppingType li:eq(0)').hide();
           $('.rtToppingPlan .rtToppingPlan, .rtSett').addClass('hide_impt');
           $('.house_zjuser_choose').hide();
           $('#zjuser_refresh').show();
