@@ -129,11 +129,10 @@ $(function(){
 
 		//显示业务窗口，以及填充初始数据
 		show: function(type, title){
-
       var that_ = this;
 
-			// $('.rtRefresh, .normalRefresh, .rtTopping').hide();
-			$('.rtRefresh, .rtTopping, .rtBody .paytypeObj').hide();
+			$('.rtRefresh, .normalRefresh, .rtTopping').hide();
+			// $('.rtRefresh, .rtTopping, .rtBody .paytypeObj').hide();
 			var rtConfig = refreshTopConfig.config;
 
       // 房产模块、经纪人、后台配置了经纪人套餐
@@ -275,7 +274,7 @@ $(function(){
         if(check_zjuser){
           $('.rtToppingType li:eq(1)').click();
           $('.rtToppingType li:eq(0)').hide();
-          $('.rtToppingPlan .rtToppingPlan, .rtSett').addClass('hide_impt');
+          $('.rtToppingPlan .rtToppingPlan,.rtSett').addClass('hide_impt');
           $('.house_zjuser_choose').hide();
           $('#zjuser_refresh').show();
           $('#refreshTopForm #type').val('toppingPlan');
