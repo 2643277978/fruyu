@@ -184,7 +184,7 @@ $(function(){
 				//如果还有免费次数
 				if(surplusFreeRefresh > 0){
 					$('.freeRefresh').show();
-					$('.tollRefresh, .rtBody .rtSett, .rtBody .paySubmit, .rtBody .normalRefresh').hide();
+					$('.tollRefresh, .rtBody .paySubmit, .rtBody .normalRefresh').hide();
 					$('.refreshFreeSurplus').html(surplusFreeRefresh);
 					refreshTopAmount =0;
 				}else{
@@ -211,7 +211,6 @@ $(function(){
 	          smartHtml.push('</li>');
 					}
 					$('.rtSmartPackage').html(smartHtml.join(''));
-					$(".rtSett").addClass('hide_impt');
 					$('#zjuser_refresh').addClass('hide_impt');
           if(smartHtml.length == 0){
             $('.house_zjuser_choose li:eq(1)').addClass('curr').siblings().hide();
@@ -277,7 +276,7 @@ $(function(){
         	$('#refreshTopForm #type').val('toppingPlan');
           $('.rtToppingType li:eq(1)').click();
           $('.rtToppingType li:eq(0)').hide();
-          $('.rtToppingPlan .rtToppingPlan,.rtSett').hide();
+          $('.rtToppingPlan .rtToppingPlan,').hide();
           $('.house_zjuser_choose').hide();
           $('#zjuser_refresh').show();
         }
