@@ -79,7 +79,7 @@ $(function(){
 		},
 
     update_zjuser_btn: function(type, need){
-      rtConfig = refreshTopConfig.config;
+       var   rtConfig = refreshTopConfig.config;
       var btn = $('#zjuser_refresh'), href = btn.data('url'); 
 
       if(rtConfig.zjuserMeal.meal_check.state == 200){
@@ -261,14 +261,9 @@ $(function(){
 
         // 房产经纪人操作
         if(check_zjuser){
-          // $('.rtToppingType li:eq(1)').click().siblings().hide();
-          // $('.rtToppingPlan .rtToppingPlan, .rtSett, .paySubmit').addClass('hide_impt');
-          $('.house_zjuser_choose').hide()
-			$('.rtToppingType li:eq(0)').hide();
-			$('.rtToppingType li:eq(1)').click();
-			$('.rtToppingPlan .rtSett').hide();
-			// $('.rtTopping .topNormal').hide();
-			$('#refreshTopForm #type').val('toppingPlan');
+          $('.rtToppingType li:eq(1)').click().siblings().hide();
+          $('.rtToppingPlan .rtToppingPlan, .rtSett').addClass('hide_impt');
+          $('.house_zjuser_choose').hide();
         }
 
 			}
