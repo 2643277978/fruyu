@@ -276,7 +276,7 @@ $(function(){
           $('.rtToppingType li:eq(1)').click().siblings().hide();
           $('.rtToppingPlan .rtToppingPlan, .rtSett').addClass('hide_impt');
           $('.house_zjuser_choose').hide();
-          $('.rtBody .paySubmit').show();
+          $('#zjuser_refresh').show();
           $('#refreshTopForm #type').val('toppingPlan');
         }
 
