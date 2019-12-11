@@ -1,0 +1,91 @@
+body{background: #f5f5f5;}
+
+/*面包屑*/
+.bread{height: .8rem;background-color: #f5f5f5;padding-left: .1rem;}
+.bread a{display: inline-block;height: .8rem;line-height: .8rem;float: left;font-size: .28rem;margin: 0 .15rem 0 .1rem;}
+.bread a.active{color: #999;}
+.bread i{background: url(../images/bread.png) no-repeat;display: inline-block;width: .25rem;height: .8rem;background-size: .2rem .8rem;float: left;}
+
+/*头部幻灯片*/
+.wrapper .swiper-container,.wrapper .swiper-slide img{width: 100%;height: 4rem;}
+.swiper-pagination{width: .7rem;height: .4rem;background-color: rgba(0,0,0,.6);color: #fff;border-radius: .4rem;line-height: .4rem;}
+.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction{width: .7rem!important;right: .2rem;}
+
+
+/*正文*/
+.home-detail-info{background: #fff;}
+.home-detail-info dl{padding: .2rem .25rem;}
+.home-detail-info dl dt h3{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;font-weight: 100;font-size: .3rem;vertical-align: middle;}
+.home-detail-info dt span{padding: .02rem .12rem .02rem 0;font-size: .24rem;color: #9abe54;border: 1px solid #9abe54;border-radius: .04rem;vertical-align: middle;display: inline-block;margin-right: .2rem;}
+.home-detail-info dt em{vertical-align: middle;}
+.home-detail-info dd{margin: .2rem 0;}
+.home-detail-info dd .info-price em{font-size: .48rem;color: #e43;}
+.home-detail-info dd a{display: block;float: right;margin-right: .2rem;font-size: .28rem;line-height: .6rem;color: #e43}
+.home-detail-info dd a.info-cal{padding-left: .3rem;background: url(../images/cal.png) 0 center no-repeat;background-size: .2rem .26rem;}
+
+/*优惠报名*/
+.discount{margin: .2rem 0;background: #FFF;}
+.discount .discount-item{padding: .16rem .3rem;display: block;}
+.discount .icon-1{background: url(../images/icon-1.png) no-repeat;display: inline-block;width: .5rem;height: .5rem;background-size: .5rem .5rem;}
+.discount p{display: inline-block;width: 73%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;vertical-align: super;font-size: .28rem;margin-left: .2rem}
+.discount .discount-link{width: 1rem;height: .5rem;font-size: .24rem;text-align: center;color: #fff;border-radius: .08rem;background: #e43;display: inline-block;line-height: .5rem;vertical-align: top;}
+
+.info-param{background: #fff;margin: .2rem 0;padding: .2rem 0;}
+.info-param p{display: -webkit-box;padding: .06rem .3rem;font-size: .3rem;}
+.info-param p em{display: block;width: 1.6rem;color: #999;}
+.info-param p span{display: block;-webkit-box-flex: 1;}
+.info-param .param-map-link{display: inline-block;padding-right: .2rem;margin-left: .2rem;font-size: .28rem;color: #999;background: url("../images/arrow-box.png") no-repeat 59px -80px;-webkit-background-size: 13px 99px;background-size: 13px 99px;}
+.info-param .dyn .dyn-h{display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;}
+.info-param .dyn i{display: block;margin-top: .1rem;color: #999;}
+.param-bar{display: -webkit-box;padding: .2rem 0;border-top: 1px solid #e9e9e9;border-bottom: 1px solid #e9e9e9; margin-top: .2rem;}
+.param-bar a{display: block;-webkit-box-flex: 1;text-align: center;line-height: .54rem;}
+.param-bar span{display: inline-block;padding-left: .46rem;background: url(../images/icon-2.png) 0 .1rem no-repeat;background-size: .26rem .3rem;font-size: .3rem}
+.param-bar .bar-mation span{background: url(../images/icon-3.png) 0 .1rem no-repeat;background-size: .26rem .3rem;}
+.info-param .param-more-link {display: block;font-size: .32rem;color: #E43;line-height: .9rem;text-align: center;}
+.info-param .param-more-link span{background: url(../images/next-arrow.png) 99% .3rem no-repeat;display: inline-block;padding-right: .3rem;background-size: .14rem .24rem;}
+
+/*户型*/
+.module-three{display: none;}
+.house-huxing{background: #fff;}
+.house-huxing-tit{padding: .36rem .3rem .32rem .15rem;position: relative;font-size: .32rem;text-indent: .3rem;border-bottom: 1px solid #e9e9e9;line-height: 100%;}
+.house-huxing-tit .huxing-tit-icon{display: block;position: absolute;left: .3rem;top: .32rem;width: .04rem;height: .36rem;background-color: #E43;}
+.house-huxing-tit a{position: absolute;padding-right: .2rem;right: .3rem;top: .4rem;font-size: .28rem;color: #999;}
+.lable-link-icon{position: absolute;right: 0;top: .04rem;width: .14rem;height: .22rem;background-image: url(../images/next.png);background-size: .14rem .22rem;background-repeat: no-repeat;}
+.house-huxing-module .huxing-module-tab {display: -webkit-box;border-bottom: 1px solid #e9e9e9;}
+.house-huxing-module .huxing-module-tab a{display: block;margin-bottom: -1px;-webkit-box-flex: 1;text-align: center;}
+.house-huxing-module .huxing-module-tab a span {display: inline-block;height: .92rem;line-height: .92rem;font-size: .28rem;}
+.house-huxing-module .huxing-module-tab .active span {color: #E43;height: .86rem;border-bottom: .06rem solid #E43;}
+.huxing-module-list {padding: 0 .32rem;}
+.huxing-item-box .huxing-item{display: -webkit-box;padding: .36rem 0;border-bottom: 1px solid #e9e9e9;}
+.huxing-item .huxing-img {position: relative;width: 2.2rem;height: 1.64rem;}
+.huxing-item-box a.last{border: none;}
+.resale-list a.last{border: none;}
+.huxing-item .huxing-img img{width: 100%;height: 100%;vertical-align: middle;}
+.huxing-item .huxing-img em{position: absolute;width: .64rem;height: .64rem;left: 50%;top: 50%;margin: -0.32rem 0 0 -0.32rem;background: url(../images/over.png) no-repeat center;background-size: .64rem;}
+.huxing-item dl{-webkit-box-flex: 1;margin-left: .24rem;}
+.huxing-item dl dt{padding-top: .1rem;font-size: .32rem;color: #333;line-height: 100%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.huxing-item dl dd{padding-top: .2rem;font-size: .36rem;color: #e43;line-height: 100%;}
+
+/*周边楼盘*/
+.house-resale-tab {display: -webkit-box;border-bottom: 1px solid #e9e9e9;}
+.house-resale-tab .tab-item {margin-bottom: -1px;-webkit-box-flex: 1;text-align: center;}
+.house-resale-tab .active span {color: #E43;height: .9rem;border-bottom: 3px solid #E43;}
+.house-resale-tab .tab-item span {display: inline-block;height: .92rem;line-height: .92rem;font-size: .36rem;}
+.home-resale{background: #fff;margin-top: .24rem}
+.resale-list img{display: block;width: 2.4rem;height: 1.8rem;}
+.resale-list{padding: 0 .32rem;}
+.resale-list a{display: -webkit-box;padding: .36rem 0 .24rem 0;border-bottom: 1px solid #e9e9e9;}
+.resale-list dl{-webkit-box-flex: 1;margin-left: .3rem;}
+.resale-list dl dt{display: -webkit-box;font-size: .32rem;line-height: .4rem;text-overflow: ellipsis;overflow: hidden;-webkit-line-clamp: 1;-webkit-box-orient: vertical;}
+.resale-list dl .resale-price{padding: .14rem 0 .2rem 0;font-size: .36rem;line-height: 100%;color: #E43;}
+.resale-list dl .resale-detail{font-size: .24rem;line-height: 100%;color: #999;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+.resale-list dl .resale-tag span{margin-right: .1rem;padding: .04rem .12rem;box-sizing: border-box;border: 1px solid #ddd;border-radius: .04rem;}
+.resale-list dl .resale-tag{padding-top: .14rem;font-size: .24rem;color: #999;line-height: .4rem;}
+.resale-second{display: none;}
+
+.page{position: absolute;bottom: .2rem;right: .2rem;background-color: rgba(0,0,0,.6);color: #fff;padding: .1rem .2rem;border-radius: .2rem;}
+
+.collect {padding: .02rem 0;white-space: nowrap;float: right;color: #999;}
+.collect:hover, .collect:active {color: #999;}
+.collect i {display: inline-block;width: .3rem;height: .3rem;margin: -.03rem .1rem 0 0;background-image: url('../images/collect_no.png');background-size:contain;background-repeat:no-repeat;background-position:center;vertical-align: middle;}
+.collect.has i {background-image: url('../images/collect_has.png');}

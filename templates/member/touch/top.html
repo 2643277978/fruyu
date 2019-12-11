@@ -1,0 +1,39 @@
+
+  <!-- 头部 s -->
+  <div class="header">
+    <div class="header-l">
+      {#if $backUrl != undefined && $backUrl != ''#}
+      <a href="{#$backUrl#}" class="goBack"><img src="{#$templets_skin#}images/header_back.png"></a>
+      {#else#}
+      <a href="javascript:;" onclick="history.go(-1)" class="goBack"><img src="{#$templets_skin#}images/header_back.png"></a>
+      {#/if#}
+    </div>
+    <div class="header-c">{#$pageTitle#}</div>
+    {#if $module == "resume"#}
+    <div class="header-r">
+      <a href="javascript:;" class="look">{#$langData['siteConfig'][6][124]#}</a>
+    </div>
+    {#elseif $template=='protrait'#}
+    <div class="header-r">
+      <a href="javascript:;">&nbsp;</a>
+    </div>
+    {#elseif $template=='dating-album'#}
+    <div class="header-r">
+      <a href="{#getUrlPath service="member" type="user" template="dating-album-add"#}" class="reset">{#$langData['siteConfig'][6][126]#}</a>
+    </div>
+    {#elseif $template=='dating-review-detail'#}
+    <div class="header-r">
+      <a href="javascript:;" class="reply">{#$langData['siteConfig'][6][29]#}</a>
+    </div>
+    {#elseif $pageRight#}
+    <div class="header-r">
+      {#$pageRight#}
+    </div>
+    {#else#}
+    <div class="header-r">
+      <a href="javascript:;">&nbsp;</a>
+    </div>
+    {#/if#}
+
+  </div>
+  <!-- 头部 s -->

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{#$langData['marry'][2][4]#}</title>{#*婚车管理 *#}
+    <meta name="wap-font-scale" content="no">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/marry_rental.css?v={#$cfg_staticVersion#}">
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+    <script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+    <script type="text/javascript" src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+</head>
+<body>
+{#$pageTitle = "{#$langData['marry'][2][4]#}"#}{#*婚车管理 *#}
+{#include file="top.html"#}
+
+<div class="content">
+    <div class="car-tab">
+        <div class="tab-box">
+            <a href="javascript:;" class="active" data-state=""><span>{#$langData['siteConfig'][9][0]#}</span><s></s></a>
+            <a href="javascript:;" data-state="0"><span>{#$langData['siteConfig'][19][556]#}</span><em id="gray"></em><s></s></a>
+            <a href="javascript:;" data-state="1"><span>{#$langData['siteConfig'][26][73]#}</span><em id="audit"></em><s></s></a>
+            <a href="javascript:;" data-state="2"><span>{#$langData['siteConfig'][9][35]#}</span><em id="refuse"></em><s></s></a>
+        </div>
+    </div>
+
+    <div class="car-list sale-list" id="list">
+        <div class="car-box item" data-id="39" data-title="dddd">
+            <div class="title fn-clear"><span style="color:#919191;font-size: .24rem;">{#$langData['car'][5][38]#}：2019-01-09 09:35:13</span><a href="javascript:;" class="topping fn-right">{#$langData['car'][5][39]#}<s></s></a></div>{#*发布时间 *#}{#*开通置顶 *#}
+            <div class="car-item fn-clear">
+                <div class="car-img fn-left">
+                    <a href="#"><img src="{#$templets_skin#}images/upfile/03.png"></a>
+                </div>
+                <dl><a href="#">
+                    <dt>dddd</dt>
+                    <dd class="item-area"><em class="sp_room">2014年</em><em class="sp_area">3.5万公里</em></dd>
+                    <dd class="price"><em>{#echoCurrency type='symbol'#}</em>9800</dd>
+                </a>
+                </dl>
+            </div>
+            <div class="o fn-clear"><a href="javascript:;" class="refresh">{#$langData['car'][5][40]#}</a><a href="#" class="edit">{#$langData['car'][5][41]#}</a><a href="javascript:;" class="del">{#$langData['car'][5][42]#}</a></div>{#*刷新 *#}{#*编辑 *#}{#*删除 *#}
+        </div>
+
+        <div class="car-box item" data-id="39" data-title="dddd">
+            <div class="title fn-clear"><span style="color:#919191;font-size: .24rem;">{#$langData['car'][5][38]#}：2019-01-09 09:35:13</span><a href="javascript:;" class="topping fn-right">{#$langData['car'][5][39]#}<s></s></a></div>{#*发布时间 *#}{#*开通置顶 *#}
+            <div class="car-item fn-clear">
+                <div class="car-img fn-left">
+                    <a href="#"><img src="{#$templets_skin#}images/upfile/03.png"></a>
+                </div>
+                <dl><a href="#">
+                    <dt>dddd</dt>
+                    <dd class="item-area"><em class="sp_room">2014年</em><em class="sp_area">3.5万公里</em></dd>
+                    <dd class="price"><em>{#echoCurrency type='symbol'#}</em>9800</dd>
+                </a>
+                </dl>
+            </div>
+            <div class="o fn-clear"><a href="javascript:;" class="refresh">{#$langData['car'][5][40]#}</a><a href="#" class="edit">{#$langData['car'][5][41]#}</a><a href="javascript:;" class="del">{#$langData['car'][5][42]#}</a></div>{#*刷新 *#}{#*编辑 *#}{#*删除 *#}
+        </div>
+
+        <div class="car-box item" data-id="39" data-title="dddd">
+            <div class="title fn-clear"><span style="color:#919191;font-size: .24rem;">{#$langData['car'][5][38]#}：2019-01-09 09:35:13</span><a href="javascript:;" class="topping fn-right">{#$langData['car'][5][39]#}<s></s></a></div>{#*发布时间 *#}{#*开通置顶 *#}
+            <div class="car-item fn-clear">
+                <div class="car-img fn-left">
+                    <a href="#"><img src="{#$templets_skin#}images/upfile/03.png"></a>
+                </div>
+                <dl><a href="#">
+                    <dt>dddd</dt>
+                    <dd class="item-area"><em class="sp_room">2014年</em><em class="sp_area">3.5万公里</em></dd>
+                    <dd class="price"><em>{#echoCurrency type='symbol'#}</em>9800</dd>
+                </a>
+                </dl>
+            </div>
+            <div class="o fn-clear"><a href="javascript:;" class="refresh">{#$langData['car'][5][40]#}</a><a href="#" class="edit">{#$langData['car'][5][41]#}</a><a href="javascript:;" class="del">{#$langData['car'][5][42]#}</a></div>{#*刷新 *#}{#*编辑 *#}{#*删除 *#}
+        </div>
+
+
+
+    </div>
+</div>
+
+<div class="fabuBtn"><a href="{#getUrlPath service='member' template='fabu_marry_rental'#}">{#$langData['marry'][2][62]#}</a></div>{#*添加*#}
+
+<script type="text/javascript" src="{#$templets_skin#}js/marry_list.js?v={#$cfg_staticVersion#}"></script>
+
+
+
+
+</body>
+</html>

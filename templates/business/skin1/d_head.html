@@ -1,0 +1,42 @@
+<div id="module_25261174" class="module">
+  <div class="sign_screen_wide">
+    <div class="widget sign">
+      <div class="m-sign minHeight">
+        <div class="logoDiv-l fl clogo">
+          <a href="#" title="{#$detail_title#}">
+            <img src="{#$detail_logo#}" alt="{#$detail_title#}" title="{#$detail_title#}" class="clogo"></a>
+        </div>
+        <div class="logoDiv-r fl companyTitle-isDisplay">
+          <p class="logo-cname-p clearfix">
+            <a class="cname fl" href="{#getUrlPath service='business' template='detail' id={#$detail_id#}#}" title="" id="signtitle">{#$detail_title#}</a>
+          </p>
+          <p class="logo-icon-p">
+            <!-- 认真信息 -->
+            <span class="cn-icon" style="position:relative;">
+                {#if $detail_member['phoneCheck']#}<a href="javascript:;" class="cert_item" title="通过手机真实性验证">手</a>{#/if#}
+                {#if $detail_member['certifyState']#}<a href="javascript:;" class="cert_item" title="通过有效身份证验证">实</a>{#/if#}
+                {#if $detail_member['licenseState']#}<a href="javascript:;" class="cert_item" title="通过营业执照验证">营</a>{#/if#}
+                {#foreach from=$detail_auth item=auth#}
+                  <a href="javascript:;" class="cert_item" title="{#$auth.typename#}">{#$auth.jc#}</a>
+                {#/foreach#}
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="module_25261175" class="module">
+  <div class="channel_screen_wide">
+    <div class="widget channel" id="channelBar">
+      <ul class="main-menu clearfix ul" style="display:block">
+        <li{#if $pageCurr == "index"#} class='navcurrent'{#/if#}><a href="{#getUrlPath service='business' template='detail' bid={#$detail_id#}#}" title="首页">首页</a></li>
+        <li{#if $pageCurr == "intro"#} class='navcurrent'{#/if#}><a href="{#getUrlPath service='business' template='intro' bid={#$detail_id#}#}" title="公司介绍">公司介绍</a></li>
+        <li{#if $pageCurr == "shop"#} class='navcurrent'{#/if#}><a href="{#getUrlPath service='business' template='shop' bid={#$detail_id#}#}" title="产品供应">产品供应</a></li>
+        <li{#if $pageCurr == "news"#} class='navcurrent'{#/if#}><a href="{#getUrlPath service='business' template='news' bid={#$detail_id#}#}" title="公司资讯">公司资讯</a></li>
+        <li{#if $pageCurr == "albums"#} class='navcurrent'{#/if#}><a href="{#getUrlPath service='business' template='albums' bid={#$detail_id#}#}" title="公司相册">公司相册</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="home_coupons"></div>

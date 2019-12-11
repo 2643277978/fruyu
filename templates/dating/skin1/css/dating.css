@@ -1,0 +1,446 @@
+.dating{
+	width: 675px;
+	float: left;
+	margin:0 22px;
+}
+
+
+
+
+/*幻灯片*/
+.flash{
+	width: 675px;
+	height: 350px;
+	overflow: hidden;
+	margin-top: 20px;
+	position: relative;
+}
+.flash img{
+	width: 100%;
+	height: 100%;
+}
+.flash .slideshow-item{
+	position: relative;
+	height: 350px;
+}
+.flash .slideinfo{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+}
+.flash .slideinfo .bg{
+
+}
+.flash .slideinfo h3{
+	z-index: 2;
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+}
+.flash .slideinfo h3 a{
+	color: #fff;
+	font-size: 18px;
+	width: 450px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+}
+.flash .hd{
+	position: absolute;
+	bottom: 20px;
+	right: 10px;
+	z-index: 2;
+}
+.flash .hd ul li{
+	float: left;
+	width: 10px;
+	height: 10px;
+	border-radius: 100%;
+	background: #7d7c77;
+	margin-right: 10px;
+	cursor: pointer;
+}
+.flash .hd ul li.on{
+	background: #fff;
+}
+
+
+/*公用导航栏*/
+.NewsNav {
+	background: #f4f4f4;
+	height: 50px;
+	line-height: 50px;
+	width: 675px;
+	overflow: hidden;
+}
+.NewsNav ul li {
+	float: left;
+	width: 84px;
+	text-align: center;
+	font-size: 16px;
+	position: relative;
+}
+.NewsNav ul li:after{
+	content:"";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 84px;
+	height: 2px;
+	background: #23b8f6;
+	display: none;
+}
+.NewsNav ul li.NewsNav_bc:after{
+	display: block;
+}
+.NewsNav ul li a{
+	display: block;
+	font-weight: 600;
+}
+.NewsNav ul li i{
+    width: 17px;
+    height: 10px;
+    background: url(../images/artile.png) no-repeat;
+    background-position: -6px -7px;
+    margin-left: 3px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.NewsNav ul li:hover i{
+	background-position: -32px -65px;
+}
+
+
+/*约会详尽列表信息*/
+.Dating_datile{
+	padding: 25px 5px;
+	border-bottom: 1px solid #dadada;
+}
+.Dating_datile:hover{
+	background: rgba(241, 241, 241, 0.39);
+}
+.Dating_datile .infor {
+	height: 60px;
+	width: 665px;
+	overflow: hidden;
+}
+.Dating_datile .infor .infor_left{
+	float: left;
+	width: 350px;
+}
+.Dating_datile .infor .infor_left .infor_img{
+	float: left;
+	width: 60px;
+	height: 60px;
+	border-radius: 100%;
+	overflow: hidden;
+	margin-right: 18px;
+	background: url(../images/per.png) no-repeat center;
+	background-size: 60px;
+}
+.Dating_datile .infor .infor_left .infor_img img{
+	width: 60px;
+	min-height: 60px;
+}
+.Dating_datile .infor .infor_left .name{
+	font-size: 20px;
+	margin-top: 5px;
+}
+.Dating_datile .infor .infor_left .name i{
+	vertical-align: text-bottom;
+	margin-left: 5px;
+	width: 25px;
+	height: 26px;
+	background: url(../images/infor.png) no-repeat;
+	display: inline-block;
+}
+.Dating_datile .infor .infor_left .form{
+	color: #afafaf;
+	font-size: 14px;
+}
+.Dating_datile .infor .infor_left .name i.VIP{
+	background-position: -2px -3px;
+}
+.Dating_datile .infor .infor_left .name i.diamond{
+	background-position: -41px -6px;
+}
+.Dating_datile .infor .infor_right{
+	float: right;
+	line-height: 60px;
+	color: #23b8f6;
+	font-size: 16px;
+	font-weight: bold;
+}
+.Dating_datile .infor .infor_right i{
+	width: 25px;
+	height: 25px;
+	display: inline-block;
+	background: url(../images/infor.png) no-repeat;
+	background-position: -1px -106px;
+	vertical-align: text-bottom;
+	margin-right: 3px;
+}
+.Dating_datile .ELD_title{
+	margin-top: 10px;
+	font-size: 20px;
+}
+.Dating_datile .ELD_title a{
+	font-weight: bold;
+	margin-right: 5px;
+}
+.Dating_datile ul{
+	width: 690px;
+	margin-top: 15px;
+}
+.Dating_datile ul li{
+	float: left;
+	width: 160px;
+	height: 110px;
+	overflow: hidden;
+	margin-right: 8px;
+}
+.Dating_datile ul li a{
+	display: block;
+	position: relative;
+	height: 110px;
+}
+.Dating_datile ul li a img{
+	width: 160px;
+	height: 110px;
+}
+.Dating_datile ul li a .Pic_Number{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, transparent), color-stop(.8, #000));
+    background-image: -webkit-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,.8));
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,.8));
+    background: #333\0;
+    height: 30px;
+    text-align: right;
+    color: #fff;
+    padding-right: 5px;
+    line-height: 25px;
+    font-size: 14px;
+    font-weight: bold;
+}
+.Dating_datile .ELD_foot{
+	margin-top: 25px;
+}
+
+.ELD_foot .da_left{
+	float: left;
+	color: #afafaf;
+}
+.ELD_foot .da_left em{
+	margin-left: 10px;
+}
+.ELD_foot .da_right{
+	float: right;
+}
+.ELD_foot .Share i{
+	width: 26px;
+	height: 26px;
+	border-radius: 100%;
+	background: #ededed;
+	display: block;
+}
+.ELD_foot .Share:hover i{
+	background: #23b8f6;
+}
+.ELD_foot .Share{
+	position: relative;
+	width: 26px;
+	height: 26px;
+    float: left;
+    margin-right: 6px;
+}
+.ELD_foot .Share a{
+	width: 26px;
+	height: 26px;
+	display: inline-block;
+	border-radius: 100%;
+	background: url(../images/infor.png) no-repeat;
+    padding: 0;
+    margin: 0;
+}
+.ELD_foot .Share a:hover{
+	opacity: 1;
+}
+.ELD_foot .Share_QQ a{
+	background-position: -224px -7px;
+}
+.ELD_foot .Share_weixin a{
+	background-position: -261px -7px;
+}
+.ELD_foot .Share_weibo a{
+	background-position: -299px -7px;
+}
+.loading{
+	width: 100%;
+	height: 53px;
+	line-height: 53px;
+	text-align: center;
+	font-size: 14px;
+	background: #f8f8f8;
+	color: #bfbfbf;
+	margin-top: 30px;
+	cursor: pointer;
+}
+.loading:hover{
+	background: #23b8f6;
+	color: #fff;
+}
+
+
+
+/*右侧资讯汇总*/
+.Information{
+	float: left;
+	width: 351px;
+}
+.Information .issue{
+	width: 351px;
+	height: 62px;
+	background: url(../images/btn_bc.png) no-repeat center;
+	background-size: 355px;
+	text-align: center;
+	line-height: 62px;
+	font-size: 16px;
+	font-weight: bold;
+	margin-top: 20px;
+}
+.Information .issue a{
+	display: block;
+}
+.Infor_list{
+    margin-top: 20px;
+    width: 351px;
+}
+.Infor_list .Infor_lead {
+    height: 20px;
+    line-height: 20px;
+    font-size: 16px;
+    border-left: 3px solid #23b8f6;
+    padding-left: 10px;
+}
+.Pic_Show{
+	margin-top: 15px;	
+}
+.Pic_Show ul {
+	width: 400px;
+}
+.Pic_Show ul li{
+	float: left;
+	width: 111px;
+	height: 140px;
+	margin-right: 9px;
+	margin-bottom: 9px;
+}
+.Pic_Show ul li img{
+	width: 111px;
+	height: 111px;
+}
+.Pic_Show ul li .per_age em{
+	float: left;
+	width: 81px;
+	height: 18px;
+	overflow: hidden;
+}
+.Pic_Show ul li .per_age span{
+	float: right;
+	width: 30px;
+	height: 18px;
+	overflow: hidden;
+	text-align: right;
+}
+.succes_list{
+    padding: 0 20px;
+    background: #f8f8f8;
+    margin-top: 10px;
+}
+.succes_list .succes{
+    padding: 10px 0;
+    font-size: 14px;
+    position: relative;
+    border-bottom: 1px solid #cacaca;
+}
+.succes_list .succes .succes_pic{
+	float: left;
+	width: 88px;
+	height: 88px;
+	border-radius: 100%;
+	margin-right: 10px;
+	background: url(../images/per.png) no-repeat center;
+	background-size: 88px;
+}
+.succes_list .succes .succes_pic img{
+	width: 88px;
+	height: 88px;
+	border-radius: 100%;
+}
+.succes_list .succes .emotion_pic{
+	float: left;
+	width: 103px;
+	height: 103px;
+	margin-right: 10px;
+	background: url(../images/per.png) no-repeat center;
+	background-size: 103px;
+}
+.succes_list .succes .emotion_pic img{
+	width: 100px;
+	height: 100px;
+}
+.succes_list .succes h1{
+	font-size: 14px;
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+.succes_list .succes .story {
+	position: relative;
+	overflow: hidden;
+}
+.succes_list .succes .minute {
+	text-align: right;
+	position: relative;
+	overflow: hidden;
+    color: #23b8f6;
+}
+.succes_list .succes .minute a{
+    color: #23b8f6;
+}
+.Qrcode{
+	margin-top: 20px;
+}
+.Qrcode ul{
+	width: 380px;
+}
+.Qrcode ul li{
+	width: 165px;
+	height: 200px;
+	float: left;
+	margin-right: 18px;
+}
+.Qrcode ul li img{
+	width: 146px;
+	height: 146px;
+	padding: 10px;
+	border: 1px solid #e1e1e1;
+}
+.Qrcode ul li p{
+	text-align: center;
+	font-size: 14px;
+	height: 25px;
+	line-height: 25px;
+}
+.mnbtn{
+	height: 100px;
+	font-size: 16px;
+	text-align: center;
+	display: block;
+	line-height: 100px;
+}

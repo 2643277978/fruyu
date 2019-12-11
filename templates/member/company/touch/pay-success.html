@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>确认订单</title>
+<meta name="wap-font-scale" content="no">
+<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v=100">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/pay-success.css?v=2">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v=100"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script src="{#$templets_skin#}js/public.js?v=100"></script>
+</head>
+<body>
+
+<div class="header">
+  <dl class="fn-clear">
+    <dt><img src="{#$templets_skin#}images/pay_success.png" alt=""></dt>
+    <dd><p>支付成功</p><p class="tip">您已成功入驻，欢迎您的加入...</p></dd>
+  </dl>
+</div>
+
+<div class="order-info">
+  <table>
+    <colgroup>
+        <col width="29%">
+        <col width="42%">
+        <col width="29%">
+    </colgroup>
+    <tbody>
+      <tr class="gray">
+        <td colspan="3"><span>订单详情</span></td>
+      </tr>
+      <tr>
+        <td>新闻投稿</td>
+        <td>4年</td>
+        <td>{#echoCurrency type='symbol'#}3890.00</td>
+      </tr>
+      <tr>
+        <td>二手</td>
+        <td>4年</td>
+        <td>{#echoCurrency type='symbol'#}3890.00</td>
+      </tr>
+      <tr>
+        <td>团购</td>
+        <td>4年</td>
+        <td>{#echoCurrency type='symbol'#}3890.00</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ul class="price-list">
+  <li class="fn-clear">总计<span>{#echoCurrency type='symbol'#}10000.00</span></li>
+  <li class="fn-clear">优惠金额<span>{#echoCurrency type='symbol'#}700.00</span></li>
+  <li class="fn-clear">现金余额<span>{#echoCurrency type='symbol'#}1000.00</span></li>
+</ul>
+
+<ul class="time-list">
+  <li>订单编号：024545645456</li>
+  <li>付款时间：2017.6.3  15:21:35</li>
+  <li>支付方式：支付宝</li>
+</ul>
+
+
+
+
+<div class="nextbtn"><a href="enter-order.html">返回</a></div>
+
+</body>
+</html>

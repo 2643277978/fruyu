@@ -1,0 +1,338 @@
+<div class="head">
+	<ul class="l">
+		<li class="index"><a href="{#$cfg_basehost#}" target="_blank"><s></s>{#$langData['siteConfig'][0][5]#}</a></li>
+		<li class="ucenter"><a href="{#$member_busiDomain#}"><s></s>{#$langData['siteConfig'][0][15]#}</a></li>
+		<li class="personal"><a href="{#$member_userDomain#}" target="_blank"><s></s>{#$langData['siteConfig'][0][11]#}</a></li>
+		<li class="menu">
+			<a href="javascript:;"><s></s>{#$langData['siteConfig'][19][430]#}</a>
+			<div class="popup">
+				<s></s><b></b>
+				<div class="popupMenuList"></div>
+			</div>
+		</li>
+	</ul>
+	<ul class="r">
+		<li class="message has">
+			<a href="javascript:;"><s></s><i>{#$userinfo.message#}</i>{#$langData['siteConfig'][19][239]#}</a>
+			<div class="popup">
+				<s></s><b></b>
+				<ul class="mlist" data-url="{#getUrlPath service='member' template='message_detail' id="%id"#}"></ul>
+				<p><a href="{#getUrlPath service='member' template='message'#}">{#$langData['siteConfig'][19][680]#}></a></p>
+			</div>
+		</li>
+		<li class="setting">
+			<a href="javascript:;"><s></s>{#$langData['siteConfig'][26][71]#}</a>
+			<div class="popup">
+				<s></s><b></b>
+				<div class="link">
+					<a class="config" href="{#getUrlPath service='member' template='profile'#}"><i></i>{#$langData['siteConfig'][26][70]#}</a>
+					<a class="security" href="{#getUrlPath service='member' template='security'#}"><i></i>{#$langData['siteConfig'][0][8]#}</a>
+					<a class="connect" href="{#getUrlPath service='member' template='connect'#}"><i></i>{#$langData['siteConfig'][15][11]#}</a>
+					<a class="record" href="{#getUrlPath service='member' template='loginrecord'#}"><i></i>{#$langData['siteConfig'][15][8]#}</a></div>
+			</div>
+		</li>
+		<li class="uinfo">
+			<a href="javascript:;"><s></s>{#$userinfo.nickname#}<i></i></a>
+			<div class="subnav"><a href="{#$cfg_basehost#}/logout.html" class="logout">{#$langData['siteConfig'][6][123]#}</a></div>
+		</li>
+	</ul>
+</div>
+
+<div class="sidebar">
+	<div class="sidebar-content">
+		<dl class="item{#if $pageCurr == "config_business" || $pageCurr == "business_about" || $pageCurr == "fabu_business" || $pageCurr == "business_news" || $pageCurr == "business_albums" || $pageCurr == "business_video" || $pageCurr == "business_panor" || $pageCurr == "business_comment" || $pageCurr == "business_diancan" || $pageCurr == "business_dingzuo"|| $pageCurr == "business_paidui"|| $pageCurr == "business_maidan" || $pageCurr == 'business_custom_nav' || $pageCurr == 'business_custom_menu'#} active{#/if#}">
+			<dt><s><i></i></s>{#$langData['siteConfig'][19][431]#}</dt>
+			<dd>
+				<a{#if $pageCurr == "config_business"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='business-config'#}">{#$langData['siteConfig'][19][432]#}</a>
+				<a{#if $pageCurr == "business_custom_nav" || ($pageCurr == "fabu_business" && $type == "custom_nav")#} class="curr"{#/if#} href="{#getUrlPath service='member' template='business-custom_nav'#}">自定义导航</a>
+				<a{#if $pageCurr == "business_custom_menu" || ($pageCurr == "fabu_business" && $type == "custom_menu")#} class="curr"{#/if#} href="{#getUrlPath service='member' template='business-custom_menu'#}">自定义菜单</a>
+				<a{#if $pageCurr == "business_about" || ($pageCurr == "fabu_business" && $type == "about")#} class="curr"{#/if#} href="{#getUrlPath service='member' template='business-about'#}">{#$langData['siteConfig'][19][433]#}</a>
+				<a{#if $pageCurr == "business_news" || ($pageCurr == "fabu_business" && $type == "news")#} class="curr"{#/if#} href="{#getUrlPath service='member' template='business-news'#}">{#$langData['siteConfig'][19][434]#}</a>
+				<a{#if $pageCurr == "business_albums" || ($pageCurr == "fabu_business" && $type == "albums")#} class="curr"{#/if#} href="{#getUrlPath service='member' template='business-albums'#}">{#$langData['siteConfig'][19][435]#}</a>
+				<a{#if $pageCurr == "business_video" || ($pageCurr == "fabu_business" && $type == "video")#} class="curr"{#/if#} href="{#getUrlPath service='member' template='business-video'#}">{#$langData['siteConfig'][19][436]#}</a>
+				<a{#if $pageCurr == "business_panor" || ($pageCurr == "fabu_business" && $type == "panor")#} class="curr"{#/if#} href="{#getUrlPath service='member' template='business-panor'#}">{#$langData['siteConfig'][19][437]#}</a>
+				<a{#if $pageCurr == "business_comment"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='business-comment'#}">{#$langData['siteConfig'][19][438]#}</a>
+				{#if 'food'|in_array:$cfg_ucenterLinks#}
+
+                {#if {#verifyModuleAuth module='diancan'#}#}
+				<a{#if $pageCurr == "business_diancan"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='business-diancan'#}">{#$langData['siteConfig'][19][439]#}</a>
+                {#/if#}
+                {#if {#verifyModuleAuth module='dingzuo'#}#}
+				<a{#if $pageCurr == "business_dingzuo"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='business-dingzuo'#}">{#$langData['siteConfig'][19][440]#}</a>
+                {#/if#}
+                {#if {#verifyModuleAuth module='paidui'#}#}
+				<a{#if $pageCurr == "business_paidui"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='business-paidui'#}">{#$langData['siteConfig'][19][441]#}</a>
+                {#/if#}
+                {#if {#verifyModuleAuth module='maidan'#}#}
+				<a{#if $pageCurr == "business_maidan"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='business-maidan'#}">{#$langData['siteConfig'][19][442]#}</a>
+                {#/if#}
+
+				{#/if#}
+			</dd>
+		</dl>
+
+		{#siteConfig action="siteModule" return="module"#}
+
+			{#* 新闻投稿 *#}
+			{#if $module.code == 'article' && $showModuleConfig.article && $showModuleConfig.article.show#}
+				<dl class="item{#if $pageCurr == "manage_article" || $pageCurr == "fabu_article"#} active{#/if#}">
+					<dt><s><i></i></s>{#$langData['siteConfig'][19][235]#}</dt>
+					<dd>
+						<a{#if $pageCurr == "manage_article"#} class="curr"{#/if#} href="{#getUrlPath service='member' type='user' template='manage' action='article'#}" target="_blank">{#$langData['siteConfig'][26][66]#}</a>
+						<a{#if $pageCurr == "fabu_article"#} class="curr"{#/if#} href="{#getUrlPath service='member' type='user' template='fabu' action='article'#}" target="_blank">{#$langData['siteConfig'][16][16]#}</a>
+					</dd>
+				</dl>
+
+			{#* 二手信息 *#}
+			{#elseif $module.code == 'info' && $showModuleConfig.info && $showModuleConfig.info.show#}
+				<dl class="item{#if $pageCurr == "manage_info" || $pageCurr == "fabu_info"#} active{#/if#}">
+					<dt><s><i></i></s>{#$langData['siteConfig'][26][67]#}</dt>
+					<dd>
+						<a{#if $pageCurr == "manage_info"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='manage' action='info'#}">{#$langData['siteConfig'][16][20]#}</a>
+						<a{#if $pageCurr == "fabu_info"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='fabu' action='info'#}">{#$langData['siteConfig'][6][143]#}</a>
+						<a{#if $pageCurr == "config_info"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='config' action='info'#}">{#$langData['siteConfig'][6][190]#}</a>
+						<a{#if $pageCurr == "order_info"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='order' action='info'#}">{#$langData['siteConfig'][6][191]#}</a>
+					</dd>
+				</dl>
+
+			{#* 团购秒杀 *#}
+			{#elseif $module.code == 'tuan' && $showModuleConfig.tuan && $showModuleConfig.tuan.show#}
+				<dl class="item{#if $pageCurr == "manage_tuan" || $pageCurr == "fabu_tuan" || $pageCurr == "config_tuan" || $pageCurr == "verify_tuan" || $pageCurr == "quan_tuan" || $pageCurr == "order_tuan"#} active{#/if#}">
+					<dt><s><i></i></s>{#$langData['siteConfig'][10][36]#}</dt>
+					<dd>
+						<a{#if $pageCurr == "config_tuan"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='config' action='tuan'#}">{#$langData['siteConfig'][19][443]#}</a>
+						<a{#if $pageCurr == "manage_tuan" || $pageCurr == "fabu_tuan"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='manage' action='tuan'#}">{#$langData['siteConfig'][19][444]#}</a>
+						<a{#if $pageCurr == "verify_tuan"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='verify' action='tuan'#}">{#$langData['siteConfig'][19][445]#}</a>
+						<a{#if $pageCurr == "quan_tuan"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='quan' action='tuan'#}">{#$langData['siteConfig'][19][446]#}</a>
+						<a{#if $pageCurr == "order_tuan"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='order' action='tuan'#}">{#$langData['siteConfig'][19][447]#}</a>
+					</dd>
+				</dl>
+
+			{#* 房产信息 *#}
+			{#elseif $module.code == 'house' && $showModuleConfig.house && $showModuleConfig.house.show#}
+				<dl class="item{#if $pageCurr == "config_house" || $pageCurr == "house_broker" || $pageCurr == "house_entrust" || $pageCurr == "house_receive_broker"#} active{#/if#}">
+					<dt><s><i></i></s>{#$langData['siteConfig'][19][237]#}</dt>
+					<dd>
+						<a{#if $pageCurr == "config_house"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='config' action='house'#}">{#$langData['siteConfig'][19][448]#}</a>
+						<a{#if $pageCurr == "house_broker"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='house-broker'#}">{#$langData['siteConfig'][19][449]#}</a>
+						<a{#if $pageCurr == "house_receive_broker"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='house_receive_broker'#}">入驻申请</a>
+						<a{#if $pageCurr == "house_entrust"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='house_entrust'#}">房源委托</a>
+					</dd>
+				</dl>
+
+			{#* 商城 *#}
+			{#elseif $module.code == 'shop' && $showModuleConfig.shop && $showModuleConfig.shop.show#}
+				<dl class="item{#if $pageCurr == "config_shop" || $pageCurr == "category_shop" || $pageCurr == "manage_shop" || $pageCurr == "fabu_shop" || $pageCurr == "order_shop" || $pageCurr == "logistic_shop"#} active{#/if#}">
+					<dt><s><i></i></s>{#$langData['siteConfig'][10][37]#}</dt>
+					<dd>
+						<a{#if $pageCurr == "config_shop"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='config' action='shop'#}">{#$langData['siteConfig'][19][443]#}</a>
+						<a{#if $pageCurr == "category_shop"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='category' action='shop'#}">{#$langData['siteConfig'][19][450]#}</a>
+						<a{#if $pageCurr == "manage_shop" || $pageCurr == "fabu_shop"#} class="curr"{#/if#}  href="{#getUrlPath service='member' template='manage' action='shop'#}">{#$langData['siteConfig'][19][451]#}</a>
+						<a{#if $pageCurr == "order_shop"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='order' action='shop'#}">{#$langData['siteConfig'][19][447]#}</a>
+						<a{#if $pageCurr == "logistic_shop"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='logistic' action='shop'#}">{#$langData['siteConfig'][19][452]#}</a>
+					</dd>
+				</dl>
+
+			{#* 装修 *#}
+			{#elseif $module.code == 'renovation' && $showModuleConfig.renovation && $showModuleConfig.renovation.show#}
+				<dl class="item{#if $pageCurr == "config_renovation" || $pageCurr == "team_renovation" || $pageCurr == "albums_renovation" || $pageCurr == "case_renovation" || $pageCurr == "booking_renovation"#} active{#/if#}">
+					<dt><s><i></i></s>{#$langData['siteConfig'][10][38]#}</dt>
+					<dd>
+						<a{#if $pageCurr == "config_renovation"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='config' action='renovation'#}">{#$langData['siteConfig'][19][453]#}</a>
+						<a{#if $pageCurr == "team_renovation"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='team' action='renovation'#}">{#$langData['siteConfig'][19][454]#}</a>
+						<a{#if $pageCurr == "albums_renovation"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='albums' action='renovation'#}">{#$langData['siteConfig'][19][455]#}</a>
+						<a{#if $pageCurr == "case_renovation"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='case' action='renovation'#}">{#$langData['siteConfig'][19][456]#}</a>
+						<a{#if $pageCurr == "booking_renovation"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='booking' action='renovation'#}">{#$langData['siteConfig'][19][457]#}</a>
+					</dd>
+				</dl>
+
+			{#* 招聘 *#}
+			{#elseif $module.code == 'job' && $showModuleConfig.job && $showModuleConfig.job.show#}
+				<dl class="item{#if $pageCurr == "config_job" || $pageCurr == "post" || $pageCurr == "resume_job" || $pageCurr == "invitation_job" || $pageCurr == "collections_job"#} active{#/if#}">
+					<dt><s><i></i></s>{#$langData['siteConfig'][19][765]#}</dt>
+					<dd>
+						<a{#if $pageCurr == "config_job"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='config' action='job'#}">{#$langData['siteConfig'][19][453]#}</a>
+						<a{#if $pageCurr == "post"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='post'#}">{#$langData['siteConfig'][19][459]#}</a>
+						<a{#if $pageCurr == "resume_job"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='resume' action='job'#}">{#$langData['siteConfig'][19][460]#}</a>
+						<a{#if $pageCurr == "invitation_job"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='invitation' action='job'#}">{#$langData['siteConfig'][19][461]#}</a>
+						<a{#if $pageCurr == "collections_job"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='collections' action='job'#}">{#$langData['siteConfig'][19][462]#}</a>
+					</dd>
+				</dl>
+
+			{#* 外卖 *#}
+			{#elseif $module.code == 'waimai' && $showModuleConfig.waimai && $showModuleConfig.waimai.show#}
+				<dl class="item{#if $pageCurr == "config_waimai" || $pageCurr == "waimai-menus" || $pageCurr == "fabu_waimai" || $pageCurr == "waimai-albums" || $pageCurr == "order_waimai"#} active{#/if#}">
+					<dt><s><i></i></s>{#$langData['siteConfig'][10][35]#}</dt>
+					<dd>
+						<a href="{#$cfg_basehost#}/wmsj?from={#getUrlPath service='member'#}" target="_blank">{#$langData['siteConfig'][19][463]#}</a>
+					</dd>
+				</dl>
+
+			{#* 自助建站 *#}
+			{#elseif $module.code == 'website' && $showModuleConfig.website && $showModuleConfig.website.show#}
+				<dl class="item{#if $pageCurr == "config_website" || $pageCurr == "fabu_website" || $pageCurr == "website-guest" || $pageCurr == "website-honor" || $pageCurr == "website-job" || $pageCurr == "website-video" || $pageCurr == "website-qj" || $pageCurr == "website-custom_nav" || $pageCurr == "website-news" || $pageCurr == "website-product"#} active{#/if#}">
+					<dt><s><i></i></s>{#$langData['siteConfig'][26][68]#}</dt>
+					<dd>
+						<a{#if $pageCurr == "config_website"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='config' action='website'#}">{#$langData['siteConfig'][19][464]#}</a>
+						<a href="{#getUrlPath service='member' template='dressup' action='website'#}" target="_blank">{#$langData['siteConfig'][19][465]#}</a>
+						<a{#if $pageCurr == "website-news" || ($pageCurr == "fabu_website" && $type == 'news')#} class="curr"{#/if#} href="{#getUrlPath service='member' template='website-news'#}">{#$langData['siteConfig'][19][466]#}</a>
+						<a{#if $pageCurr == "website-guest"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='website-guest'#}">{#$langData['siteConfig'][19][467]#}</a>
+						<a{#if $pageCurr == "website-honor" || ($pageCurr == "fabu_website" && $type == 'honor')#} class="curr"{#/if#} href="{#getUrlPath service='member' template='website-honor'#}">企业荣誉</a>
+						<a{#if $pageCurr == "website-job" || ($pageCurr == "fabu_website" && $type == 'job')#} class="curr"{#/if#} href="{#getUrlPath service='member' template='website-job'#}">人才招聘</a>
+						<a{#if $pageCurr == "website-product" || ($pageCurr == "fabu_website" && $type == 'product')#} class="curr"{#/if#} href="{#getUrlPath service='member' template='website-product'#}">产品管理</a>
+						<a{#if $pageCurr == "website-custom_nav"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='website-custom_nav'#}">自定义导航</a>
+					</dd>
+				</dl>
+
+			{#* 贴吧 *#}
+			{#elseif $module.code == 'tieba' && $showModuleConfig.tieba && $showModuleConfig.tieba.show#}
+				<dl class="item{#if $pageCurr == "manage_tieba"#} active{#/if#}">
+					<dt><s><i></i></s>{#$langData['siteConfig'][19][238]#}</dt>
+					<dd>
+						<a{#if $pageCurr == "manage_tieba"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='manage' action='tieba'#}">{#$langData['siteConfig'][26][69]#}</a>
+					</dd>
+				</dl>
+
+			{#* 黄页 *#}
+			{#*
+			{#elseif $module.code == 'huangye' && {#verifyModuleAuth module='huangye'#}#}
+				<dl class="item{#if $pageCurr == "manage_huangye"#} active{#/if#}">
+					<dt><s><i></i></s>{#$langData['siteConfig'][10][34]#}</dt>
+					<dd>
+						<a{#if $pageCurr == "manage_huangye"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='manage' action='huangye'#}">{#$langData['siteConfig'][19][469]#}</a>
+					</dd>
+				</dl>
+			*#}
+
+			{#* 投票 *#}
+			{#elseif $module.code == 'vote' && $showModuleConfig.vote && $showModuleConfig.vote.show#}
+				<dl class="item{#if $pageCurr == "manage_vote" || $pageCurr == "fabu_vote" || $pageCurr == "vote-join"#} active{#/if#}">
+					<dt><s><i></i></s>{#$langData['siteConfig'][10][26]#}</dt>
+					<dd>
+						<a{#if $pageCurr == "vote-join"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='vote-join' #}">{#$langData['siteConfig'][19][252]#}</a>
+						<a{#if $pageCurr == "manage_vote"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='manage' action='vote'#}">{#$langData['siteConfig'][10][26]#}</a>
+						<a{#if $pageCurr == "fabu_vote"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='fabu' action='vote'#}">{#$langData['siteConfig'][10][27]#}</a>
+					</dd>
+				</dl>
+
+			{#* 活动 *#}
+			{#elseif $module.code == 'huodong' && $showModuleConfig.huodong && $showModuleConfig.huodong.show#}
+				<dl class="item{#if $pageCurr == "huodong-join" || $pageCurr == "manage_huodong"#} active{#/if#}">
+					<dt><s><i></i></s>{#$langData['siteConfig'][10][3]#}</dt>
+					<dd>
+						<a{#if $pageCurr == "huodong-join"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='huodong-join'#}">{#$langData['siteConfig'][19][252]#}</a>
+						<a{#if $pageCurr == "manage_huodong"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='manage' action='huodong'#}">{#$langData['siteConfig'][10][3]#}</a>
+						<a href="{#getUrlPath service='huodong' template='fabu'#}" target="_blank">{#$langData['siteConfig'][6][170]#}</a>
+					</dd>
+				</dl>
+
+			{#* 汽车门户 *#}
+			{#elseif $module.code == 'car' && $showModuleConfig.car && $showModuleConfig.car.show#}
+				<dl class="item{#if $pageCurr == "car_entrust" || $pageCurr == "car_receive_broker" || $pageCurr == "car_broker" || $pageCurr == "config_car" || $pageCurr == "manage_car" || $pageCurr == "fabu_car"#} active{#/if#}">
+					<dt><s><i></i></s>{#$langData['car'][6][43]#}</dt>
+					<dd>
+						<a{#if $pageCurr == "config_car"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='config' action='car'#}">{#$langData['car'][6][45]#}</a>
+						<a{#if $pageCurr == "car_broker"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='car-broker'#}">{#$langData['car'][6][44]#}</a>
+						<a{#if $pageCurr == "car_receive_broker"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='car_receive_broker'#}">{#$langData['car'][6][46]#}</a>
+					</dd>
+				</dl>
+
+			{#* 家政服务 *#}
+			{#elseif $module.code == 'homemaking' && $showModuleConfig.homemaking && $showModuleConfig.homemaking.show#}
+				<dl class="item{#if $pageCurr == "fabu_homemaking_nanny" || $pageCurr == "homemaking_nanny" || $pageCurr == "manage_homemaking" || $pageCurr == "fabu_homemaking" || $pageCurr == "config_homemaking" || $pageCurr == "order_homemaking"#} active{#/if#}">
+					<dt><s><i></i></s>{#$langData['homemaking'][8][26]#}</dt>
+					<dd>
+						<a{#if $pageCurr == "config_homemaking"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='config' action='homemaking'#}">{#$langData['siteConfig'][19][443]#}</a>
+						<a{#if $pageCurr == "manage_homemaking" || $pageCurr == "fabu_homemaking"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='manage' action='homemaking'#}">{#$langData['homemaking'][8][31]#}</a>
+						<a{#if $pageCurr == "homemaking_nanny" || $pageCurr == "fabu_homemaking_nanny"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='homemaking-nanny'#}">{#$langData['homemaking'][8][44]#}</a>
+						<a{#if $pageCurr == "order_homemaking"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='order' action='homemaking'#}">{#$langData['siteConfig'][19][447]#}</a>
+					</dd>
+				</dl>
+
+			{#* 养老服务 *#}
+			{#elseif $module.code == 'pension' && $showModuleConfig.pension && $showModuleConfig.pension.show#}
+			<dl class="item{#if $pageCurr == "pension_invitation" || $pageCurr == "pension_award" || $pageCurr == "config_pension" || $pageCurr == "pension_albums" || $pageCurr == "fabu_pension_albums" || $pageCurr == "booking_pension"#} active{#/if#}">
+				<dt><s><i></i></s>{#$langData['pension'][0][1]#}</dt>
+				<dd>
+					<a{#if $pageCurr == "config_pension"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='config' action='pension'#}">{#$langData['siteConfig'][19][443]#}</a>
+					<a{#if $pageCurr == "pension_albums" || $pageCurr == "fabu_pension_albums"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='pension-albums'#}">{#$langData['siteConfig'][19][435]#}</a>
+					<a{#if $pageCurr == "booking_pension"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='booking' action='pension'#}">{#$langData['siteConfig'][19][457]#}</a>
+					<a{#if $pageCurr == "pension_award"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='pension-award'#}">入驻申请</a>
+					<a{#if $pageCurr == "pension_invitation"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='pension-invitation'#}">我的邀请</a>
+				</dd>
+			</dl>
+
+			{#/if#}
+
+		{#/siteConfig#}
+
+		{#if 'deposit'|in_array:$cfg_ucenterLinks || 'withdraw'|in_array:$cfg_ucenterLinks || ($cfg_pointState && 'convert'|in_array:$cfg_ucenterLinks) || 'record'|in_array:$cfg_ucenterLinks || ($cfg_pointState && ('transfer'|in_array:$cfg_ucenterLinks || 'point'|in_array:$cfg_ucenterLinks)) || 'checkout'|in_array:$cfg_ucenterLinks#}
+		<dl class="item{#if $pageCurr == "deposit" || $pageCurr == "withdraw" || $pageCurr == "convert" || $pageCurr == "record" || $pageCurr == "transfer" || $pageCurr == "point" || $pageCurr == "checkout" || $pageCurr == "checkout-order"#} active{#/if#}">
+			<dt><s><i></i></s>{#$langData['siteConfig'][19][470]#}</dt>
+			<dd{#if $pageCurr == "deposit" || $pageCurr == "withdraw" || $pageCurr == "convert" || $pageCurr == "record" || $pageCurr == "transfer" || $pageCurr == "point"#} style="display: block;"{#/if#}>
+
+				{#if 'deposit'|in_array:$cfg_ucenterLinks#}
+				<a{#if $pageCurr == "deposit"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='deposit'#}">{#$langData['siteConfig'][15][1]#}</a>
+				{#/if#}
+
+				{#if 'withdraw'|in_array:$cfg_ucenterLinks#}
+				<a{#if $pageCurr == "withdraw"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='withdraw'#}">{#$langData['siteConfig'][19][471]#}</a>
+				{#/if#}
+
+				{#if $cfg_pointState && 'convert'|in_array:$cfg_ucenterLinks#}
+				<a{#if $pageCurr == "convert"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='convert'#}">{#$langData['siteConfig'][19][726]|replace:'1':$cfg_pointName#}</a>
+				{#/if#}
+
+				{#if 'record'|in_array:$cfg_ucenterLinks#}
+				<a{#if $pageCurr == "record"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='record'#}">{#$langData['siteConfig'][19][226]#}</a>
+				{#/if#}
+
+				{#if $cfg_pointState#}
+				{#if 'transfer'|in_array:$cfg_ucenterLinks#}
+				<a{#if $pageCurr == "transfer"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='transfer'#}">{#$cfg_pointName#}{#$langData['siteConfig'][19][730]#}</a>
+				{#/if#}
+
+				{#if 'point'|in_array:$cfg_ucenterLinks#}
+				<a{#if $pageCurr == "point"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='point'#}">{#$cfg_pointName#}{#$langData['siteConfig'][23][78]#}</a>
+				{#/if#}
+				{#/if#}
+
+				{#if 'checkout'|in_array:$cfg_ucenterLinks#}
+				<a{#if $pageCurr == "checkout"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='checkout'#}">{#$langData['siteConfig'][16][38]#}</a>
+                {#/if#}
+                {#if 'order'|in_array:$cfg_ucenterLinks#}
+				<a{#if $pageCurr == "checkout-order"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='checkout-order'#}">{#$langData['siteConfig'][19][879]#}</a>
+				{#/if#}
+			</dd>
+		</dl>
+		{#/if#}
+
+		{#if 'business'|in_array:$cfg_ucenterLinks#}
+		<dl class="item{#if $pageCurr == "module" || $pageCurr == "promotion"#} active{#/if#}">
+			<dt><s><i></i></s>{#$langData['siteConfig'][10][6]#}</dt>
+			<dd{#if $pageCurr == "module" || $pageCurr == "promotion"#} style="display: block;"{#/if#}>
+				<a{#if $pageCurr == "module"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='module'#}">{#$langData['siteConfig'][19][472]#}</a>
+				<a{#if $pageCurr == "promotion"#} class="curr"{#/if#} href="{#getUrlPath service='member' template='promotion'#}">{#$langData['siteConfig'][19][473]#}</a>
+			</dd>
+		</dl>
+		{#/if#}
+
+	</div>
+
+	<div class="bottom-nav">
+		<a href="javascript:;" class="custom-nav" id="custom-nav"><i></i>模块开关</a>
+	</div>
+</div>
+
+
+<script id="popupModuleList" type="text/html">
+	<ul class="fn-clear">
+		{#foreach from=$showModuleConfig item=module#}
+		<li{#if $module.purview == 0#} class="nopower"{#/if#}><label><input type="checkbox" value="{#$module.name#}"{#if $module.show && $module.purview == 1#} checked{#/if#}{#if $module.purview == 0#} readonly{#/if#} /> {#$module.title#}</label></li>
+		{#/foreach#}
+	</ul>
+</script>
+<script>
+	var pageCurr = '{#$pageCurr#}';
+	var upgradeUrl = '{#getUrlPath service='member' template='join_upgrade'#}';
+</script>

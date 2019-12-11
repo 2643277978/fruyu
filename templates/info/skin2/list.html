@@ -1,0 +1,377 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<title>{#if $list_seotitle != ""#}{#$list_seotitle#}{#else#}{#$list_typename#}{#/if#} - {#$info_channelName#} - {#$cfg_webname#}</title>
+<meta name="keywords" content="{#$list_keywords#}" />
+<meta name="description" content="{#$list_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base.css">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}/css/ui/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/list.css">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$info_channelDomain#}', cfg_staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+
+	var typeid = {#$typeid#}, addrid = 0, atpage = 1, totalCount = 0, pageSize = 20;
+</script>
+</head>
+<body>
+	<div class="container">
+	<!-- 顶部 -->
+		<div class="header">
+			<div class="header-box fn-clear">
+				<div class="header-l fn-left">
+					<i class="icon-phone"></i>
+					<a href="javascirpt:;">手机版</a><em>|</em>
+					<a href="javascirpt:;">收藏本站</a>
+				</div>
+				<div class="header-r fn-right">
+					<ul class="fn-clear">
+						{#if $userinfo#}
+						{#$userDomain = $member_userDomain#}
+						{#if $userinfo.userType == 2#}
+						{#$userDomain = $member_busiDomain#}
+						{#/if#}
+						<li>你好，<a href="javascirpt:;" class="login">{#$userinfo.nickname#}</a></li>
+						<li><a href="{#$cfg_basehost#}/logout.html" class="loginout">安全退出</a></li>
+						{#else#}
+						<li>你好，<a href="{#$cfg_basehost#}/login.html" class="login" id="login">请登录</a></li>
+						<li><a href="{#$cfg_basehost#}/register.html">免费注册</a><em>|</em></li>
+						<li><a href="{#$cfg_basehost#}/api/login.php?type=qq">QQ登录</a><em>|</em></li>
+						<li><a href="{#$cfg_basehost#}/api/login.php?type=wechat">微信登录</a><em>|</em></li>
+						{#/if#}
+						<li class="dropdown"><a href="{#$member_userDomain#}">我的中心<i class="picon"></i></a><em>|</em>
+							<ul>
+								<li><a href="{#getUrlPath service='member' type='user' template='order'#}" target="_blank">我的订单</a></li>
+								<li><a href="{#getUrlPath service='member' type='user' template='record'#}" target="_blank">交易明细</a></li>
+								<li><a href="{#getUrlPath service='member' type='user' template='security'#}" target="_blank">安全中心</a></li>
+							</ul>
+						</li>
+						<li class="dropdown"><a href="javascirpt:;">快速发布<i class="picon"></i></a><em>|</em>
+							<ul>
+								<li><a href="{#getUrlPath service='member' type='user' template='fabu' action='article'#}" target="_blank">新闻投稿</a></li>
+								<li><a href="{#getUrlPath service='member' type='user' template='fabu' action='info'#}" target="_blank">分类信息</a></li>
+								<li><a href="{#getUrlPath service='member' type='user' template='config' action='house'#}" target="_blank">发布房源</a></li>
+							</ul>
+						</li>
+						<li class="dropdown"><a href="javascirpt:;">网站导航<i class="picon"></i></a>
+							<ul>
+								{#siteConfig action="siteModule" return="module"#}
+								<li><a href="{#$module.url#}" target="_blank">{#$module.name#}</a></li>
+								{#/siteConfig#}
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	<!-- 顶部 end -->
+
+	<!-- 头部 -->
+		<div class="wrapper fn-clear">
+			<div class="logo">
+				<a href="{#$cfg_basehost#}">
+					<img src="{#$templets_skin#}images/logo.png" alt="">
+				</a>
+			</div>
+			<div class="search-box">
+				<div class="search-info">
+					<form action="" method="get">
+						<div class="search-nav">
+							<span>生活信息</span>
+							<ul>
+								{#$i = 0#}
+								{#siteConfig action="siteModule" return="module"#}
+								{#if $i < 7#}
+								<li>{#$module.name#}</li>
+								{#/if#}
+								{#$i = $i + 1#}
+								{#/siteConfig#}
+							</ul>
+						</div>
+						<input type="text" name="" placeholder="请输入关键字" class="search-txt">
+						<input type="button" name="" value="" class="search-btn">
+					</form>
+				</div>
+			</div>
+			<div class="free fn-right">
+				<a href="{#getUrlPath service='member' type='user' template='fabu' action='info'#}" target="_blank">免费发布信息</a>
+			</div>
+		</div>
+	<!-- 头部 end -->
+
+	<!-- 导航 -->
+		<div class="nav">
+			<div class="nav-list">
+				<ul>
+					<li class="active"><a href="{#$info_channelDomain#}" target="_blank">首页</a></li>
+					<li><a href="javascript:;">二手房</a></li>
+					<li><a href="javascript:;"><i class="new"></i>租房</a></li>
+					<li><a href="javascript:;">汽车</a></li>
+					<li><a href="javascript:;">跳蚤市场</a></li>
+					<li><a href="javascript:;"><i class="hot"></i>店铺</a></li>
+					<li><a href="javascript:;">同城活动</a></li>
+					<li><a href="javascript:;">便民常用</a></li>
+				</ul>
+			</div>
+		</div>
+	<!-- 导航 end -->
+
+  <div class="wrap">
+    <!-- 面包屑 s -->
+    <!-- <div class="bread">
+      <span>当前位置：</span><a href="{#$info_channelDomain#}">{#$info_channelName#}</a>
+    </div> -->
+    <!-- 面包屑 e -->
+
+    <!-- 广告位 s -->
+    <div class="adv">
+      <a href="#"><img src="{#$templets_skin#}upfile/adv1.jpg" alt="" /></a>
+    </div>
+    <!-- 广告位 e -->
+
+		<div class="mainbox fn-clear">
+			<!-- 导航条 s -->
+			<div class="leftnav fn-left">
+				<div class="leftnav-tit"><h3>全部信息</h3></div>
+				<div class="leftnav-slide">
+					{#info action="type" return='type'#}
+					<div class="slide-box">
+						<h3><em></em>{#$type.typename#}</h3>
+						<ul{#if id == $type.id#} class="on" {#/if#}>
+							{#info action="type" return='subtype1' type="{#$type.id#}"#}
+							<li{#if $typeid == $subtype1.id#} class="on" {#/if#}><a href="{#$subtype1.url#}">{#$subtype1.typename#}</a></li>
+							{#/info#}
+						</ul>
+					</div>
+					{#/info#}
+				</div>
+				<div class="leftnav-bottom"><a href="{#getUrlPath service='member' type='user' template='fabu' action='info'#}" target="_blank">极速发布信息</a></div>
+			</div>
+			<!-- 导航条 e -->
+
+			<!-- 主要内容 s -->
+			<div class="main fn-right">
+				<div class="filter">
+					<dl class="fn-clear" id="addr">
+						<dt>区域：</dt>
+						<dd>
+							<a href="javascript:;" data-id="0" class="on">全部区域</a>
+							{#info action="addr" return="addr" son="1"#}
+							<a href="javascript:;" data-id="{#$addr.id#}">{#$addr.typename#}</a>
+							{#/info#}
+							<div class="subnav fn-clear">
+								{#info action="addr" return="addr1" son="1"#}
+								{#if $addr1.lower#}
+								<div id="addr{#$addr1.id#}">
+									<a href="javascript:;" data-id="{#$addr1.id#}" class="on">不限</a>
+									{#info action="addr" return="addr2" type=$addr1.id#}
+									<a href="javascript:;" data-id="{#$addr2.id#}">{#$addr2.typename#}</a>
+									{#/info#}
+								</div>
+								{#/if#}
+								{#/info#}
+							</div>
+						</dd>
+					</dl>
+
+					{#if $list_lower > 0#}
+					<dl class="fn-clear" id="subnav">
+						<dt>分类：</dt>
+						<dd>
+							<a href="javascript:;" data-id="{#$list_id#}" class="on">不限</a>
+							{#info action="type" return="type" type=$list_id son="1"#}
+							<a href="javascript:;" data-id="{#$type.id#}">{#$type.typename#}{#if $type.lower#}<s></s>{#/if#}</a>
+							{#/info#}
+							<div class="subnav fn-clear">
+								{#info action="type" return="type1" type=$list_id son="1"#}
+								{#if $type1.lower#}
+								<div id="subnav{#$type1.id#}">
+									<a href="javascript:;" data-id="{#$type1.id#}">不限</a>
+									{#info action="type" return="type2" type=$type1.id#}
+									<a href="javascript:;" data-id="{#$type2.id#}">{#$type2.typename#}</a>
+									{#/info#}
+								</div>
+								{#/if#}
+								{#/info#}
+							</div>
+						</dd>
+					</dl>
+					{#/if#}
+
+					<div id="itemOptions"></div>
+
+					{#if $list_item#}
+					{#foreach from=$list_item key=key item=item#}
+					{#if $item.formtype != "text"#}
+					<dl class="item fn-clear" data-name="{#$item.field#}" data-id="{#$item.id#}">
+						<dt>{#$item.title#}：</dt>
+						<dd>
+							<a href="javascript:;" data-id="0" class="on">不限</a>
+							{#foreach from=$item.options key=k item=options#}
+							<a href="javascript:;" data-id="{#$options#}">{#$options#}</a>
+							{#/foreach#}
+						</dd>
+					</dl>
+					{#/if#}
+					{#/foreach#}
+					{#/if#}
+
+					<div class="f-search">
+						<form method="post" class="searchform">
+							<input type="text" value="" placeholder="请输入关键字" class="f-inp" id="search_keyword">
+							<button type="button" class="f-btn">搜索</button>
+						</form>
+					</div>
+				</div>
+				<div class="filter-selected fn-clear">
+					<div class="fr-selected fn-right">
+						<a href="{#getUrlPath service='member' type='user' template='fabu' action='info'#}" target="_blank">免费发布生活服务信息</a>
+					</div>
+				</div>
+				<div class="main-list">
+					{#*
+					<ul class="hot">
+						<li class="fn-clear">
+							<span class="floor floor-1"><span class="num"><em>1</em>F</span><a href="#" class="gray">[生活服务]</a><a href="#" class="title">业空调维修安装移机加氟 太阳能安装维修</a><a href="#" class="gray">家电维修</a><span class="label"><em class="tu">6图</em><em class="hf fn-hide">0回复</em><em class="sj fn-hide">商家</em></span></span>
+							<span class="area">丰台区 - 六里桥</span>
+							<span class="user">hello</span>
+							<span class="tag hot-tag"><s class="tag1"></s></span>
+						</li>
+						<li class="fn-clear">
+							<span class="floor floor-2"><span class="num"><em>2</em>F</span><a href="#" class="gray">[生活服务]</a><a href="#" class="title">晶之恋婚纱摄影厅—8588送1000元购物卡</a><a href="#" class="gray">写真/摄影</a><span class="label"><em class="tu">7图</em><em class="hf fn-hide">0回复</em><em class="sj">商家</em></span></span>
+							<span class="area">通州区 - 土桥</span>
+							<span class="user">hello</span>
+							<span class="tag hot-tag"><s class="tag1"></s></span>
+						</li>
+						<li class="fn-clear">
+							<span class="floor floor-3"><span class="num"><em>3</em>F</span><a href="#" class="gray">[生活服务]</a><a href="#" class="title">做网站,多年网站经验,承接各种网站开发</a><a href="#" class="gray">网站建设</a><span class="label"><em class="tu">7图</em><em class="hf fn-hide">0回复</em><em class="sj fn-hide">商家</em></span></span>
+							<span class="area">丰台区 - 丰台路</span>
+							<span class="user">hello</span>
+							<span class="tag hot-tag"><s class="tag1"></s></span>
+						</li>
+					</ul>
+
+
+					<div class="spread fn-clear">
+						<span class="tag fn-left fn-clear"><s class="tag1"></s><s class="tag2"></s></span><div class="tag-txt fn-left"><span>置顶推广效果将提升</span><em class="orange">10</em>倍以上 <a href="#" class="orange want">我要出现在上面</a></div>
+					</div>
+
+					*#}
+
+					<div class="theme-tit list-title"><span class="theme-1 fn-left">信息主题</span><span class="theme-2 fn-left">区域</span><span class="theme-3 fn-left">发布</span><span class="theme-4 fn-left">发布时间</span></div>
+					<div class="loading"><img src="{#$cfg_staticPath#}images/loading_h8.gif" /><br />努力加载中，请稍候...</div>
+					<div class="failed"><img src="{#$cfg_staticPath#}images/ui/loadFailed.gif" /><br /><span>暂无相关数据！</span></div>
+					<ul class="theme"></ul>
+
+
+
+					<div class="pagination">
+					  <div class="inner">
+					    <ul>
+					      <li class="page_disabled">
+					        <span>上一页</span></li>
+					      <li class="page_current">
+					        <span>1</span></li>
+					      <li>
+					        <a href="#">2</a></li>
+					      <li>
+					        <a href="#">3</a></li>
+					      <li class="page_more">
+					        <span>...</span></li>
+					      <li>
+					        <a href="#">10</a></li>
+					      <li>
+					        <a href="#">下一页</a></li>
+					    </ul>
+					    <div class="page_info">共965条</div></div>
+					</div>
+				</div>
+			</div>
+			<!-- 主要内容 e -->
+
+		</div>
+
+  </div>
+
+	<!-- 联系我们 -->
+		<div class="contact-box">
+			<div class="contact fn-clear">
+				<div class="contact-l fn-left">
+					<h2>客服电话</h2>
+					<span>400-025-1158</span>
+					<p>工作时间 每天 9:00-17:00</p>
+					<em>客服QQ</em>
+					<a href="#"><img src="{#$templets_skin#}images/button.gif" alt=""></a>
+				</div>
+				<div class="contact-c fn-left">
+					<ul>
+						<li><h2>购物</h2></li>
+						<li><a href="#">省啦商城</a></li>
+						<li><a href="#">同城快递</a></li>
+						<li><a href="#">商家入驻</a></li>
+						<li><a href="#">商家管理</a></li>
+					</ul>
+					<ul>
+						<li><h2>供求</h2></li>
+						<li><a href="#">跳蚤市场</a></li>
+						<li><a href="#">交友征婚</a></li>
+						<li><a href="#">商业服务</a></li>
+						<li><a href="#">同城活动</a></li>
+					</ul>
+					<ul>
+						<li><h2>房产</h2></li>
+						<li><a href="#">新楼盘</a></li>
+						<li><a href="#">二手房</a></li>
+						<li><a href="#">出租房</a></li>
+						<li><a href="#">找中介</a></li>
+					</ul>
+					<ul>
+						<li><h2>招聘</h2></li>
+						<li><a href="#">找工作</a></li>
+						<li><a href="#">找人才</a></li>
+						<li><a href="#">发招聘</a></li>
+						<li><a href="#">填简历</a></li>
+					</ul>
+				</div>
+				<div class="contact-r fn-right">
+					<div class="contact-img-l fn-left">
+						<p>微信公众号</p>
+						<span><img src="{#$cfg_attachment#}{#$cfg_weixinQr#}" alt=""></span>
+					</div>
+					<div class="contact-img-r fn-right">
+						<p>手机站</p>
+						<span><img src="{#$cfg_basehost#}/include/qrcode.php?data={#$cfg_basehost#}" alt=""></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- 联系我们 end-->
+
+	<!-- 底部 s -->
+	<div class="footer">
+		<div class="footer-tit">
+			{#siteConfig action="singel"#}
+			<a href="{#getUrlPath service='siteConfig' template='about' id={#$row.id#}#}" target="_blank">{#$row.title#}</a><em>|</em>
+			{#/siteConfig#}
+			<a href="{#getUrlPath service='siteConfig' template='help'#}" target="_blank">帮助中心</a>
+		</div>
+		<div class="copyright">
+			{#$cfg_powerby#}
+		</div>
+	</div>
+	<!-- 底部 e -->
+
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/common.js"></script>
+<script src="{#$templets_skin#}js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="{#$templets_skin#}js/list.js?v=23"></script>
+</body>
+</html>

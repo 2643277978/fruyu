@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$dating_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/swiper.min.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/datingPublic.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+	var cookiePre = '{#$cfg_cookiePre#}';
+  var sysId = {#$userinfo.userid|default:0#};
+  var uid = {#$uid#};
+  var lng = lat = 0;
+  var check = {#$check#};
+</script>
+</head>
+
+<body>
+  {#include file="../../../siteConfig/touch_top.html" pageTitle="{#$dating_channelName#}" pageLeft="<div class=\"header-l\"><a href=\"{#$cfg_basehost#}\" class=\"goBack\"></a></div>"#}
+
+<!-- 幻灯片 -->
+<div class="banner pdc">
+  <div class="swiper-container swiper-container-banner">
+      <div class="swiper-wrapper">
+        {#myad id="191" type="slide"#}
+      </div>
+    <div class="pagination"></div>
+  </div>
+</div>
+<!-- 幻灯片 end -->
+
+<!-- 导航 -->
+<div class="nav pdc">
+  <div class="nav-list fn-clear">
+    <a href="{#getUrlPath service='dating' template='samecity'#}" class="nav-item">
+      <div class="nav-img"><img src="{#$templets_skin#}images/nav_1.png" alt="同城交友"></div>同城交友
+    </a>
+    <a href="{#getUrlPath service='dating' template='nearby'#}" class="nav-item">
+      <div class="nav-img"><img src="{#$templets_skin#}images/nav_2.png" alt="附近交友"></div>附近交友
+    </a>
+    <a href="{#getUrlPath service='dating' template='circle'#}" class="nav-item">
+      <div class="nav-img"><img src="{#$templets_skin#}images/nav_3.png" alt="圈子动态"></div>圈子动态
+    </a>
+    {#if in_array("huodong", $installModuleArr)#}
+    <a href="{#$huodong_channelDomain#}" class="nav-item">
+      <div class="nav-img"><img src="{#$templets_skin#}images/nav_6.png" alt="{#$huodong_channelName#}"></div>{#$huodong_channelName#}
+    </a>
+    {#/if#}
+    <a href="{#getUrlPath service='dating' template='story'#}" class="nav-item">
+      <div class="nav-img"><img src="{#$templets_skin#}images/nav_7.png" alt="成功故事"></div>成功故事
+    </a>
+    {#if in_array("article", $installModuleArr)#}
+    <a href="{#$article_channelDomain#}" class="nav-item">
+      <div class="nav-img"><img src="{#$templets_skin#}images/nav_8.png" alt="{#$article_channelName#}"></div>{#$article_channelName#}
+    </a>
+    {#/if#}
+  </div>
+</div>
+<!-- 导航 end-->
+
+<!-- 会员推荐 s -->
+<div class="box recommend" data-action="memberList">
+  <div class="box-head fn-clear">
+    <div class="box-line"></div>
+    <span class="box-head-l linemask"></span>
+    <h3 class="box-title"><span class="icl"></span>会员推荐<span class="icr"></span></h3>
+    <span class="box-head-r linemask"></span>
+  </div>
+
+  <div class="navbar fn-clear">
+    <ul>
+      <li data-param="orderby=5" class="active">人气会员</li>
+      <li data-param="orderby=3">最新会员</li>
+      <li data-param="sex=1">男会员</li>
+      <li data-param="sex=0">女会员</li>
+    </ul>
+  </div>
+  <!-- 内容部分 -->
+  <div class="container memberContain">
+    <div class="swiper-container tabs-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="content-slide fn-clear"><div class="loading">正在获取，请稍后</div></div>
+        </div>
+        <div class="swiper-slide">
+          <div class="content-slide fn-clear"><div class="loading">正在获取，请稍后</div></div>
+        </div>
+        <div class="swiper-slide">
+          <div class="content-slide fn-clear"><div class="loading">正在获取，请稍后</div></div>
+        </div>
+        <div class="swiper-slide">
+          <div class="content-slide fn-clear"><div class="loading">正在获取，请稍后</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 会员推荐 e -->
+
+{#if in_array("huodong", $installModuleArr)#}
+<!-- 活动 s -->
+<div class="box activity" data-action="">
+  <div class="box-head fn-clear">
+    <div class="box-line"></div>
+    <span class="box-head-l linemask"></span>
+    <h3 class="box-title"><span class="icl"></span>{#$huodong_channelName#}<span class="icr"></span></h3>
+    <span class="box-head-r linemask"></span>
+  </div>
+
+  <div class="navbar fn-clear">
+    <ul class="fn-clear">
+      <li class="active">全部</li>
+      {#huodong action='type' pageSize=4 return='type'#}
+      <li>{#$type.typename#}</li>
+      {#/huodong#}
+    </ul>
+  </div>
+  <!-- 内容部分 -->
+  <div class="container">
+    <div class="swiper-container tabs-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="content-slide load fn-clear">
+            {#huodong action='hlist' pageSize=4 return='list'#}
+            <div class="item">
+              <a href="{#$list.url#}">
+                <div class="img"><img src="{#$list.litpic#}" alt="{#$list.title#}"></div>
+                <h3 class="title">{#$list.title#}</h3>
+              </a>
+            </div>
+            {#/huodong#}
+          </div>
+        </div>
+        {#huodong action='type' return='type'#}
+        <div class="swiper-slide">
+          <div class="content-slide load fn-clear">
+            {#huodong action='hlist' typeid=$type.id pageSize=4 return='list'#}
+            <div class="item">
+              <a href="{#$list.url#}">
+                <div class="img"><img src="{#$list.litpic#}" alt="{#$list.title#}"></div>
+                <h3 class="title">{#$list.title#}</h3>
+              </a>
+            </div>
+            {#/huodong#}
+            {#if $pageInfo.totalCount == 0#}
+            <div class="empty">暂无相关信息</div>
+            {#/if#}
+          </div>
+        </div>
+        {#/huodong#}
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 活动 e -->
+{#/if#}
+
+{#if in_array("article", $installModuleArr)#}
+<!-- 新闻资讯 s -->
+<div class="box classroom">
+  <div class="box-head fn-clear">
+    <div class="box-line"></div>
+    <span class="box-head-l linemask"></span>
+    <h3 class="box-title"><span class="icl"></span>{#$article_channelName#}<span class="icr"></span></h3>
+    <span class="box-head-r linemask"></span>
+  </div>
+
+  <div class="navbar fn-clear">
+    <ul>
+      <li class="active">全部</li>
+      {#article action='type' pageSize=4 return='type'#}
+      <li>{#$type.typename#}</li>
+      {#/article#}
+    </ul>
+  </div>
+  <!-- 内容部分 -->
+  <div class="container pdc">
+    <div class="swiper-container tabs-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="content-slide load fn-clear">
+            {#article action='alist' pageSize=4 return='list'#}
+            <div class="item">
+              <a href="{#$list.url#}" class="fn-clear">
+                <div class="img"><img src="{#$list.litpic#}" alt="{#$list.title#}"></div>
+                <div class="info">
+                  <h3 class="title"><span class="time">3/15</span>{#$list.title#}</h3>
+                  <p class="des">{#$list.description#}</p>
+                  <p class="click">{#$list.click#}</p>
+                </div>
+              </a>
+            </div>
+            {#/article#}
+          </div>
+        </div>
+        {#article action='type' pageSize=4 return='type'#}
+        <div class="swiper-slide">
+          <div class="content-slide load fn-clear">
+            {#article action='alist' typeid=$type.id pageSize=4 return='list'#}
+            <div class="item">
+              <a href="{#$list.url#}" class="fn-clear">
+                <div class="img"><img src="{#$list.litpic#}" alt="{#$list.title#}"></div>
+                <div class="info">
+                  <h3 class="title"><span class="time">3/15</span>{#$list.title#}</h3>
+                  <p class="des">{#$list.description#}</p>
+                  <p class="click">{#$list.click#}</p>
+                </div>
+              </a>
+            </div>
+            {#/article#}
+            {#if $pageInfo.totalCount == 0#}
+            <div class="empty">暂无相关信息</div>
+            {#/if#}
+          </div>
+        </div>
+        {#/article#}
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 新闻资讯 e -->
+{#/if#}
+
+<!-- 成功故事 s -->
+<div class="box story">
+  <div class="box-head fn-clear">
+    <div class="box-line"></div>
+    <span class="box-head-l linemask"></span>
+    <h3 class="box-title"><span class="icl"></span>成功故事<span class="icr"></span></h3>
+    <span class="box-head-r linemask"></span>
+  </div>
+  <!-- 内容部分 -->
+  <div class="container fn-clear">
+    {#dating action='story' pageSize=6 return=list#}
+    {#$process = ""#}
+    {#if $list.process == 0#}
+    {#$process = "约会中"#}
+    {#elseif $list.process == 1#}
+    {#$process = "恋爱中"#}
+    {#elseif $list.process == 2#}
+    {#$process = "结婚啦"#}
+    {#/if#}
+    <div class="item">
+      <a href="{#$list.url#}" class="fn-clear">
+        <div class="img"><img src="{#$list.litpic|replace:"large":"small"#}" alt=""></div>
+        <div class="txt">{#$process#}</div>
+        <div class="bg"></div>
+      </a>
+    </div>
+    {#/dating#}
+  </div>
+</div>
+<!-- 成功故事 e -->
+
+<div class="tofoot">已经到底啦...</div>
+
+{#include file='_foot.html'#}
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$dating_description#}',
+		"title": '{#$dating_title#}',
+		"imgUrl": '{#$dating_logoUrl#}',
+		"link": '{#$dating_channelDomain#}',
+	};
+
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
+<script src="{#$cfg_staticPath#}js/ui/swiper.min.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/datingPublic.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>
+
+  
+

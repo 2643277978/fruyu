@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_title#}楼盘动态_团购|优惠|打折信息-{#$house_title#}</title>
+<meta name="keywords" content="{#$detail_title#}楼盘动态,{#$detail_title#}团购,{#$detail_title#}优惠,{#$detail_title#}打折信息" />
+<meta name="description" content="{#$siteCityInfo['name']#}{#$detail_title#}详情信息频道为您提供{#$detail_title#}售楼处电话、地址、物业费、物业电话、开盘时间、入住时间、地图、周边楼盘等最新{#$detail_title#}新楼盘信息，找新房上{#$siteCityInfo['name']#}{#$cfg_shortname#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v=1" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/loupan_public.css?v=1" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/loupan_news.css?v=1" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+
+	var pageData = {
+		id: '{#$detail_id#}',
+		panName: '{#$detail_title#}',
+		lat: '{#$detail_latitude#}',
+		lng: '{#$detail_longitude#}',
+		url: '{#getUrlPath service="house" template="loupan-detail" id={#$detail_id#}#}'
+	};
+</script>
+</head>
+
+<body class="w1200">
+{#include file="../../siteConfig/top1.html"#}
+
+{#$pageCurr = 'loupan'#}
+{#include file="top.html"#}
+
+{#$loupanNav = 6#}
+{#$crumbTitle = "楼盘动态"#}
+{#include file="loupan_top.html"#}
+
+<div class="wrap  detail-info fn-clear">
+	<div class="container-left">
+		<div class="article">
+			{#house action="loupanNewsList" loupanid={#$detail_id#} page={#$page#} pageSize="10"#}
+			<dl>
+				<dd>
+					<h3><a href="{#$row.url#}" title="[{#$row.loupan#}]{#$row.title#}">{#$row.title#}</a></h3>
+					<p>{#$row.note#}...<a href="{#$row.url#}" target="_blank">阅读全文</a></p>
+					<div class="bt"><span class="mark">楼盘资讯</span><span class="time">{#$row.pubdate|date_format:'%Y-%m-%d'#}</span></div>
+				</dd>
+			</dl>
+			{#/house#}
+
+			{#if $pageInfo.totalCount == 0#}
+			<div class="empty">抱歉，该楼盘暂无动态！</div>
+			{#/if#}
+		</div>
+
+		{#getPageList service='house' template='loupan-news' id="{#$detail_id#}"#}
+	</div>
+	<div class="container-right">
+		<div class="sidebar">
+			<div class="mapbox">
+				<a href="{#getUrlPath service='house' template='map' action='loupan'#}" class="smap" target="_blank">
+					<img src="{#$templets_skin#}images/mapImg.png" alt="">
+					<span>试试地图找房</span>
+				</a>
+			</div>
+			<div class="lp_box">
+				<div class="lp_title">最近浏览的楼盘</div>
+				<ul>
+					<li>
+						<a href="javascript:;">
+							<p>泰禾华发姑苏院子</p>
+							<p>35000元/㎡ <span>昆山</span></p>
+						</a>
+					</li>
+					<li> 
+						<a href="javascript:;">
+							<p>枫丹壹號</p>
+							<p>22000元/㎡ <span>张家港</span></p>
+						</a>
+					</li>
+					<li>
+						<a href="javascript:;">
+							<p>新湖明珠城</p>
+							<p>19000元/㎡ <span>吴中</span></p>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="lp_box">
+				<div class="lp_title">热门楼盘</div>
+				<ul>
+					<li>
+						<a href="javascript:;">
+							<p>泰禾华发姑苏院子</p>
+							<p>35000元/㎡ <span>昆山</span></p>
+						</a>
+					</li>
+					<li> 
+						<a href="javascript:;">
+							<p>枫丹壹號</p>
+							<p>22000元/㎡ <span>张家港</span></p>
+						</a>
+					</li>
+					<li>
+						<a href="javascript:;">
+							<p>新湖明珠城</p>
+							<p>19000元/㎡ <span>吴中</span></p>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="lp_box">
+				<div class="lp_title">本月最新楼盘</div>
+				<ul>
+					<li>
+						<a href="javascript:;">
+							<p>泰禾华发姑苏院子</p>
+							<p>35000元/㎡ <span>昆山</span></p>
+						</a>
+					</li>
+					<li> 
+						<a href="javascript:;">
+							<p>枫丹壹號</p>
+							<p>22000元/㎡ <span>张家港</span></p>
+						</a>
+					</li>
+					<li>
+						<a href="javascript:;">
+							<p>新湖明珠城</p>
+							<p>19000元/㎡ <span>吴中</span></p>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="lp_box">
+				<div class="lp_title">楼盘动态</div>
+				<ul class="lp_news">
+					<li><a href="javascript:;"><em>•</em>世茂御珑墅房源已不足10套</a></li>
+					<li><a href="javascript:;"><em>•</em>世茂御珑墅别墅现房在售</a></li>
+					<li><a href="javascript:;"><em>•</em>红星国际生活广场加推21#精… </a></li>
+					<li><a href="javascript:;"><em>•</em>御珑墅联排别墅总价约550万</a></li>
+					<li><a href="javascript:;"><em>•</em>亨通长安府新房源加推待定</a></li>
+					<li><a href="javascript:;"><em>•</em>香堤澜湾二期爱琴岛在售别墅… </a></li>
+					<li><a href="javascript:;"><em>•</em>旭辉美澜城在售建筑面积138…</a></li>
+					<li><a href="javascript:;"><em>•</em>亨通长安府新房源加推待定</a></li>
+				</ul>
+			</div>
+			
+			
+		
+		</div>
+	</div>
+	
+
+</div>
+
+{#include file="footer.html"#}
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.qrcode.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/loupan_public.js"></script>
+</body>
+</html>

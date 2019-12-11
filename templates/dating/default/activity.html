@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>相亲活动-{#$dating_title#}</title>
+<meta name="keywords" content="{#$dating_keywords#}" />
+<meta name="description" content="{#$dating_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/xqhd.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+  var criticalPoint = 1240, criticalClass = "w1200";
+  $("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+  var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+{#$pageCurr = "activity"#}
+{#include file="top.html"#}
+
+<!-- 大图幻灯 s -->
+<div class="banner">
+
+	<div class="wrap">
+		<div class="slide" id="slide">
+			{#myad id="149" type="slide"#}
+		</div>
+		<div id="slidebtn" class="slidebtn"></div>
+	</div>
+</div>
+<!-- 大图幻灯 e -->
+
+<!-- 活动 s -->
+<div class="wrap huodong">
+	<div class="tabbody">
+		<div class="tab-panel">
+			<ul class="hdlist">
+				{#dating action='activity' page={#$page#} pageSize=15#}
+				<li>
+					<div class="pic">
+						<a href="{#$row.url#}" target="_blank">
+							<img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#$row.litpic#}" alt="{#$row.title#}" />
+							<p>已有<span>{#$row.been#}</span>人参与报名</p>
+							<div class="bg"></div>
+						</a>
+					</div>
+					<div class="txt">
+						<a href="{#$row.url#}" class="bt" target="_blank">{#$row.title#}</a>
+						<p class="des">时间：<span class="red">{#$row.btime#}</span></p>
+						<p class="des">地点：<span>{#$row.address#}</span></p>
+						<p class="des ask">要求：<span>{#$row.else#}</span></p>
+						<p class="btn"><a href="{#$row.url#}" class="joinbtn">我要参加</a>报名结束时间：<span>{#$row.deadline|date_format:"%Y-%m-%d %H:%M:%S"#}</span></p>
+					</div>
+				</li>
+				{#/dating#}
+			</ul>
+
+			<!-- 分页 -->
+			{#getPageList service='dating' template='activity' pageType='dynamic' param="page=#page#"#}
+		</div>
+	</div>
+</div>
+<!-- 活动 e -->
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.cycle.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/xqhd.js"></script>
+</body>
+</html>
+<!-- Processed in 0.101006 second(s), 150 queries -->

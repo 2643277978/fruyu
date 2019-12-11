@@ -1,0 +1,77 @@
+body, html{background: #f8f8f8;}
+html{overflow-x: hidden;}
+a:hover, a:link{text-decoration: none;}
+.wrap{width: 1200px; margin: 0 auto;}
+
+/*头部*/
+.header{background: #fff;}
+.header .logo{float: left; width: 500px;}
+.header .logo a{display: block;}
+.header .logo img{float: left; height: 60px;}
+.header .logo p{float: left; margin-left: 10px; font-size: 20px; color: #757575; line-height: 60px;}
+.header .loginbar{float: right; font-size: 14px; margin-top: 45px;}
+.header .loginbar a{padding: 2px 11px; border: 1px solid #989898; color: #989898; border-radius: 4px; display: block; float: right; margin-left: 10px;}
+.header .loginbar .nickname{color: #f77134; border: none; padding: 6px 0 0;}
+
+.grade{margin-top: 40px;}
+.grade ul{width: 1220px;}
+.grade li{width: 390px; height: 130px; background: #fff; border-radius: 4px; text-align: center; float: left; margin: 0 15px 15px 0; color: #b0b0b0; cursor: pointer;}
+.grade li.active{background-color: #0ac9f9; background:-moz-linear-gradient(bottom, #0ab7f9, #0ae6f9); color: #fff; background:-webkit-gradient(linear, left bottom, right top, from(#0ab7f9), to(#0ae6f9)); background:-o-linear-gradient(bottom, #0ab7f9, #0ae6f9);}
+.grade li p{width: 220px; margin: 0 auto;}
+.grade li img{float: left; margin-top: 29px;}
+.grade li span{float: left; font-size: 22px; display: block; line-height: 130px; margin-left: 20px;}
+
+.special{position: relative; margin-top: 20px; border-radius: 4px;}
+.special .arrow{position: absolute; display: block; border-top: 11px solid #f8f8f8; border-left: 11px solid transparent; border-right: 11px solid transparent; width: 0; height: 0;}
+.special .top_arrow{left: 149px; top: 0;}
+.special .bottom_arrow{left: 149px; top: 294px; border-bottom: 11px solid #f8f8f8; border-top: 0;}
+.special .spec-tit{width: 160px; background: url(../images/special.png) 0 0 no-repeat; height: 305px; color: #fff; float: left; margin-right: 15px;}
+.special .spec-tit span{display: block; font-size: 22px; width: 20px; margin: 83px auto;}
+.special .spec-txt{position: relative; overflow: hidden; background: #fff; min-height: 305px;}
+.special .specbox{display: none; overflow: hidden;}
+.special .spec-txt ul{width: 105%; overflow: hidden; padding: 26px 0;}
+.special .spec-txt .line{border-right: 1px solid #e5e5e5;}
+.special .spec-txt li{width: 443px; float: left; padding: 0 20px 20px 50px; border-right: 1px solid #e5e5e5;}
+.special .spec-txt li p{color: #898989; font-size: 16px; padding-left: 14px;}
+.special .spec-txt li .tit{font-size: 18px; color: #1f1f1f; padding-left: 0; margin-bottom: 4px;}
+.special .spec-txt li .tit em{font-size: 20px; margin-right: 5px;}
+
+.choose{margin: 20px 0 50px; background: #fff; padding: 30px 30px 50px;}
+.choose-tit{font-size: 18px; margin-bottom: 20px;}
+.pricebox {display: none;}
+.pricebox.show {display: block;}
+.pricebox li{text-align: center; border: 1px solid #e5e5e5; border-radius: 4px; float: left; width: 170px; height: 70px; border-radius: 4px; font-size: 14px; color: #898989; margin: 0 30px 23px 0; cursor: pointer;}
+.pricebox li.active{border-color: #0ab7f9; background: url(../images/active_bg.png) right bottom no-repeat;}
+.pricebox li .tit{font-size: 18px; color: #1f1f1f; line-height: 68px;}
+.payway{padding: 20px; font-size: 16px;}
+.payway li{text-align: center; float: left; border: 1px solid #e7e7e7; width: 190px; line-height: 30px; padding: 15px 0; margin: 0 30px 15px 0; border-radius: 4px; cursor: pointer;}
+.payway li.active{border-color: #0ab7f9; background: url(../images/active_bg.png) right bottom no-repeat; }
+.payway li a:hover{text-decoration: none;}
+.payway li a img{height: 44px; vertical-align: middle; margin-right: 10px;}
+
+.yue{margin-bottom: 20px; font-size: 18px;}
+.yue dt{margin-right: 20px; width: 80px;}
+.yue-btn{margin-right: 30px; position: relative; padding-left: 25px; cursor: pointer;}
+.yue-btn .radio{position: absolute; border: 1px solid #ccc; width: 17px; height: 17px; border-radius: 50%; left: 0; top: 3px;}
+.yue-btn .radio s{position: absolute; width: 13px; height: 13px; border-radius: 50%; top: 2px; left: 2px;}
+.yue-btn.active .radio{border-color: #1bafec;}
+.yue-btn.active .radio s{background: #1bafec;}
+
+/* 支付方式 */
+.payTab {height: 44px; border-bottom: 1px solid #e0e0e0; background: #f9f9f9;}
+.payTab li {position: relative; float: left; width: 150px; height: 42px; line-height: 42px; border-right: 1px solid #e0e0e0; border: 1px solid #e0e0e0; border-top: 2px solid #e0e0e0; border-bottom: 0; text-align: center; font-size: 16px; color: #666; margin-right: -1px; cursor: pointer;}
+.payTab li.curr {border-top-color: #0ab7f9; background: #fff; height: 43px;}
+.qrpay, .payway {border: 1px solid #e0e0e0; border-top: 0;}
+.qrpay {padding: 50px 20px; text-align: center;}
+.qrpay dt {position: relative; width: 220px; height: 220px; padding: 10px; border: 1px solid #d8d8d8; margin: 0 auto;}
+.qrpay dt .pay_top, .qrpay dt .pay_bottom {position: absolute; width: 15px; height: 16px;}
+.qrpay dt .pay_top {left: -3px; top: -3px;}
+.qrpay dt .pay_bottom {right: -3px; bottom: -3px;}
+.qrpay dt img {width: 100%; height: 100%; display: block;}
+.qrpay dd {font-size: 14px; line-height: 30px; text-align: center; margin-top: 15px;}
+.qrpay dd img {width: 30px; height: 30px; display: inline-block; vertical-align: middle; margin-right: 5px;}
+
+.stepBtn{margin: 60px 0 0; text-align: center;}
+.stepBtn a{font-size: 16px; border-radius: 4px; padding: 14px 52px; border: 1px solid #0ab7f9; background: #0ab7f9; color: #fff;}
+
+.footer{background: #fff; padding: 30px 0 20px;}

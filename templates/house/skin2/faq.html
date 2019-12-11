@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>房产问答-{#$house_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v=1" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/faq.css">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+{#include file="../../siteConfig/top.html"#}
+
+<div class="wrap ad">{#myad id="75"#}</div>
+
+{#$pageCurr = "faq"#}
+{#include file="top.html"#}
+
+<div class="container">
+
+	<div class="main fn-clear">
+		<div class="main-l fn-left">
+			<div class="search-box">
+				<form action="" method="get" class="fn-clear">
+					<input type="text" name="" placeholder="搜索问题、话题">
+					<input type="submit" name="" value="" class="search-btn">
+				</form>
+			</div>
+			<h3>问题分类</h3>
+			<dl class="fn-clear">
+				<dt>楼盘问题</dt>
+				<dd><a href="#">最新动态</a></dd>
+				<dd><a href="#">买房指南</a></dd>
+				<dd><a href="#">户口问题</a></dd>
+				<dd><a href="#">楼盘质量</a></dd>
+				<dd><a href="#">车位问题</a></dd>
+				<dd><a href="#">楼盘投诉</a></dd>
+				<dd><a href="#">物业问题</a></dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>银行贷款</dt>
+				<dd><a href="#">公积金贷款</a></dd>
+				<dd><a href="#">商业贷款</a></dd>
+				<dd><a href="#">组合贷款</a></dd>
+				<dd><a href="#">购房首付</a></dd>
+				<dd><a href="#">首套二套</a></dd>
+				<dd><a href="#">贷款流程</a></dd>
+				<dd><a href="#">贷款利率</a></dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>房屋买卖</dt>
+				<dd><a href="#">其他税费</a></dd>
+				<dd><a href="#">维修基金</a></dd>
+				<dd><a href="#">契税</a></dd>
+				<dd><a href="#">房产税</a></dd>
+				<dd><a href="#">个人所得税</a></dd>
+				<dd><a href="#">税单退税</a></dd>
+				<dd><a href="#">委托担保</a></dd>
+				<dd><a href="#">交易流程</a></dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>房产知识</dt>
+				<dd><a href="#">小产权</a></dd>
+				<dd><a href="#">房屋性质</a></dd>
+				<dd><a href="#">户籍户口</a></dd>
+				<dd><a href="#">房价走势</a></dd>
+				<dd><a href="#">交易过户</a></dd>
+				<dd><a href="#">购房税费</a></dd>
+				<dd><a href="#">产权产证</a></dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>法律法规</dt>
+				<dd><a href="#">房产法律</a></dd>
+				<dd><a href="#">房产政策</a></dd>
+				<dd><a href="#">拆迁补偿</a></dd>
+				<dd><a href="#">继承赠予</a></dd>
+				<dd><a href="#">财产分割</a></dd>
+				<dd><a href="#">房产纠纷</a></dd>
+				<dd><a href="#">合同协议</a></dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>装修风水</dt>
+				<dd><a href="#">户型房型</a></dd>
+				<dd><a href="#">楼层朝向</a></dd>
+				<dd><a href="#">房屋维修</a></dd>
+				<dd><a href="#">风水周边</a></dd>
+			</dl>
+		</div>
+		<div class="main-r">
+			<div class="main-top">
+				<h3>我要咨询</h3>
+				<div class="main-box">
+					<form action="" method="get">
+						<div class="txt-box">
+							<textarea name="" placeholder="在这里输入问题，房产专家会帮您解答，您还可以输入255个字符" cols="30" rows="10"></textarea>
+						</div>
+						<div class="txt-info">
+							<input type="text" name="" value="" placeholder="姓名" id="name" class="inp">
+							<input type="text" name="" value="" placeholder="手机号" id="phone" class="inp">
+							<div class="main-tip">获取答案及时通知你</div>
+						</div>
+						<input type="submit" name="" value="提交问题" class="submit">
+					</form>
+				</div>
+			</div>
+			<div class="main-bottom fn-clear">
+				<div class="question-l">
+					<h3>最新问题</h3>
+					<ul class="list">
+						<li>
+							<span class="tit">问</span>
+							<a href="#" class="brief">[滨江·万家花城]</a>
+							<a href="#" class="grey">锦湖园3期那几栋楼有89户型的，都什么时候开盘<span>08-30</span></a>
+						</li>
+						<li>
+							<span class="tit">问</span>
+							<a href="#" class="brief">[滨江·万家花城]</a>
+							<a href="#" class="grey">滨江6号大概什么时候开盘?<span>08-30</span></a>
+						</li>
+						<li>
+							<span class="tit">问</span>
+							<a href="#" class="grey">百合嘉苑什么时候开盘<span>08-30</span></a>
+						</li>
+						<li>
+							<span class="tit">问</span>
+							<a href="#" class="brief">[玫瑰湾]</a>
+							<a href="#" class="grey">玫瑰湾110的还有房源吗<span>08-30</span></a>
+						</li>
+						<li>
+							<span class="tit">问</span>
+							<a href="#" class="brief">[东湖雅苑 ]</a>
+							<a href="#" class="grey">东湖雅苑还有房源吗<span>08-30</span></a>
+						</li>
+						<li>
+							<span class="tit">问</span>
+							<a href="#" class="grey">有买房意向，想问一下平湖现在需要认筹，即将开盘的楼盘分别是...<span>08-30</span></a>
+						</li>
+						<li>
+							<span class="tit">问</span>
+							<a href="#" class="grey">小编平湖哪个盘还有89十平小面积房子？<span>08-30</span></a>
+						</li>
+						<li>
+							<span class="tit">问</span>
+							<a href="#" class="grey">十月份平湖那个楼房开盘<span>08-30</span></a>
+						</li>
+						<li>
+							<span class="tit">问</span>
+							<a href="#" class="brief">[金色港湾]</a>
+							<a href="#" class="grey">金色港湾70平方左右的小套房还有么<span>08-30</span></a>
+						</li>
+						<li>
+							<span class="tit">问</span>
+							<a href="#" class="brief">[理想城]</a>
+							<a href="#" class="grey">理想城还有房吗<span>08-30</span></a>
+						</li>
+						<li>
+							<span class="tit">问</span>
+							<a href="#" class="brief">[万城·御珑湾]</a>
+							<a href="#" class="grey">御龙湾89平的还有吗<span>08-30</span></a>
+						</li>
+						<li>
+							<span class="tit">问</span>
+							<a href="#" class="brief">[滨江·万家花城]</a>
+							<a href="#" class="grey">请问滨江6号楼什么时候开盘<span>08-30</span></a>
+						</li>
+						<li>
+							<span class="tit">问</span>
+							<a href="#" class="brief">[万城·御珑湾]</a>
+							<a href="#" class="grey">御龙弯现在还有没有房源，还有没有新开的楼盘。<span>08-30</span></a>
+						</li>
+						<li>
+							<span class="tit">问</span>
+							<a href="#" class="brief">[恒隆·嘉荟城]</a>
+							<a href="#" class="grey">恒隆嘉荟城啥时候开盘。<span>08-30</span></a>
+						</li>
+						<li>
+							<span class="tit">问</span>
+							<a href="#" class="brief">[滨江·万家花城]</a>
+							<a href="#" class="grey">滨江锦湖园三期5号楼什么时候开盘呀？<span>08-30</span></a>
+						</li>
+					</ul>
+
+					<div class="pagination">
+					  <div class="inner">
+					    <ul>
+					      <li class="page_disabled"><span>上一页</span></li>
+					      <li class="page_current"><span>1</span></li>
+					      <li><a href="#">2</a></li>
+					      <li><a href="#">3</a></li>
+					      <li class="page_more"><span>...</span></li>
+					      <li><a href="#">10</a></li>
+					      <li><a href="#">下一页</a></li>
+					    </ul>
+					    <div class="page_info">共965条</div></div>
+					</div>
+				</div>
+				<div class="question-r fn-right">
+					<h3>热点问题</h3>
+					<ul class="question-hot">
+						<li><a href="#">想买套房子，看中了滨江的，想请问下楼层在1几楼110多个平方的还有吗？</a></li>
+						<li><a href="#">平湖滨江一期还有房哇？</a></li>
+						<li><a href="#">滨江锦湖园三期的6号楼什么时候开盘？房型都有哪些？</a></li>
+						<li><a href="#">龙湫湾现在房价是多少?</a></li>
+						<li><a href="#">滨江的10幢楼什么时候开盘啊？</a></li>
+						<li><a href="#">想问下平湖楼盘有小平方的在售商品房吗？</a></li>
+						<li><a href="#">御龙湾现在的价格是多少？</a></li>
+						<li><a href="#">恒大现在还有房源吗</a></li>
+						<li><a href="#">金色港湾100多平米的多层还有房源吗？</a></li>
+						<li><a href="#">嘉荟城多少一平米？</a></li>
+					</ul>
+					<div class="tool">
+						<h3>购房工具</h3>
+						<ul class="fn-clear">
+							<li><a href="{#getUrlPath service='house' template='calculator' do='sy'#}">商贷计算器</a></li>
+							<li><a href="{#getUrlPath service='house' template='calculator' do='gjj'#}">公积金贷款</a></li>
+							<li><a href="{#getUrlPath service='house' template='calculator' do='zh'#}">组合贷款</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+{#include file="footer.html"#}
+
+<script src="{#$templets_skin#}js/faq.js"></script>
+</body>
+</html>

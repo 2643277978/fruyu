@@ -1,0 +1,138 @@
+<form name="fabuForm" id="fabuForm" method="post" action="/include/ajax.php?service=renovation&action={#if $id != ""#}editAlbums&id={#$id#}{#else#}addAlbums{#/if#}" data-url="{#getUrlPath service='member' template='albums' action='renovation'#}">
+    <div class="personal_bac">
+        <div class="mask_box">
+            <!-- 头部 s -->
+            {#$pageTitle = $tit#}
+            {#$pageRight = '<a href="javascript:;" class="notMenu"></a>'#}
+            {#include file="../../../siteConfig/touch_top.html"#}
+
+            <!-- 图集 s-->
+            <div class="img-box">
+              <ul class="uploader-list fn-clear" id="fileList1" >
+                <li class="uploadbtn">
+                  <div id="filePicker1" class="filePicker" data-type="atlas" data-amount="1"><p>+</p></div>
+                </li>
+                {#if $detail_litpicSource#}
+                <li class="thumbnail" id="WU_FILE_1_0"><img src="{#$detail_litpic#}" data-val="{#$detail_litpicSource#}" data-url="{#$detail_litpicSource#}" /><div class="file-panel"><span class="cancel"></span></div></li>
+                {#/if#}
+                {#foreach from=$detail_pics key=k item=i#}
+                <li class="thumbnail" id="WU_FILE_2_{#$k#}"><img src="{#$i.path|replace:"large":"small"#}" data-val="{#$i.pathSource#}" data-url="{#$i.pathSource#}" /><div class="file-panel"><span class="cancel"></span></div></li>
+                {#/foreach#}
+              </ul>
+              <input type="hidden" name="litpic" id="litpic" value="{#$detail_litpicSource#}" class="imglist-hidden">
+              <input type="hidden" name="imglist" id="imglist" value="" class="imglist-hidden">
+            </div>
+            <!-- 图集 e-->
+            
+            <!-- 设计师 s -->
+            <div class="f-item">
+                <em>设计师</em>
+                <select name="designer" id="designer" class="demo-select-opt">
+                  {#foreach from=$designer item="des"#}
+                  <option value="{#$des.id#}"{#if $detail_designer == $des.id#} selected{#/if#}>{#$des.name#}</option>
+                  {#/foreach#}
+                </select>
+            </div>
+            <!-- 设计师 e -->
+            <!-- 标题 s -->
+            <div class="f-item">
+                <em>{#$langData['siteConfig'][19][0]#}</em><input type="text" name="title" id="title" value="{#$detail_title#}" max-length="60" placeholder="{#$langData['siteConfig'][27][49]#}...">
+            </div>
+            <!-- 标题 e -->
+
+            <!-- 类别 s -->
+            <dl class="radioWrap fn-clear">
+              <dt>{#$langData['siteConfig'][19][108]#}</dt>
+              <dd>
+                <div class="radio" id="typeObj">
+                  <span data-id="0"{#if $detail_type == 0 || $detail_type == ""#} class="curr"{#/if#}>{#$langData['siteConfig'][19][611]#}</span>
+                  <span data-id="1"{#if $detail_type == 1#} class="curr"{#/if#}>{#$langData['siteConfig'][19][612]#}</span>
+                  <input type="hidden" name="type" id="type" value="{#$detail_type#}" />
+                </div>
+              </dd>
+            </dl>
+            <div id="type0" class="radioWrap{#if $detail_type == 1#} fn-hide{#/if#}">
+              <dl class="fn-clear">
+                <dt>{#$langData['siteConfig'][19][613]#}</dt>
+                <dd>
+                  <div class="radio">
+                    {#renovation action="type" return='type' type='4'#}
+                    <span data-id="{#$type.id#}"{#if $detail_styleid == $type.id#} class="curr"{#/if#}>{#$type.typename#}</span>
+                    {#/renovation#}
+                    <input type="hidden" name="style" id="style" value="{#$detail_styleid#}" />
+                  </div>
+                </dd>
+              </dl>
+              <dl class="fn-clear">
+                <dt>{#$langData['siteConfig'][19][107]#}</dt>
+                <dd>
+                  <div class="radio">
+                    {#renovation action="type" return='type' type='8'#}
+                    <span data-id="{#$type.id#}"{#if $detail_unitsid == $type.id#} class="curr"{#/if#}>{#$type.typename#}</span>
+                    {#/renovation#}
+                    <input type="hidden" name="units" id="units" value="{#$detail_unitsid#}" />
+                  </div>
+                </dd>
+              </dl>
+              <dl class="fn-clear">
+                <dt>{#$langData['siteConfig'][19][614]#}</dt>
+                <dd>
+                  <div class="checkbox fn-clear">
+                    {#renovation action="type" return='type' type='533'#}
+                    <label><input type="checkbox" name="kongjian[]" value="{#$type.id#}"{#if strstr($detail_kongjian, $type.id)#} checked{#/if#}>{#$type.typename#}</label>
+                    {#/renovation#}
+                  </div>
+                </dd>
+              </dl>
+              <dl class="fn-clear">
+                <dt>{#$langData['siteConfig'][19][615]#}</dt>
+                <dd>
+                  <div class="checkbox">
+                    {#renovation action="type" return='type' type='545'#}
+                    <label><input type="checkbox" name="jubu[]" value="{#$type.id#}"{#if strstr($detail_jubu, $type.id)#} checked{#/if#}>{#$type.typename#}</label>
+                    {#/renovation#}
+                  </div>
+                </dd>
+              </dl>
+            </div>
+            <div id="type1" class="radioWrap{#if $detail_type == 0 || $detail_type == ""#} fn-hide{#/if#}">
+              <dl class="fn-clear">
+                <dt>{#$langData['siteConfig'][19][84]#}</dt>
+                <dd>
+                  <div class="radio">
+                    {#renovation action="type" return='type' type='3'#}
+                    <span data-id="{#$type.id#}"{#if $detail_comstyleid == $type.id#} class="curr"{#/if#}>{#$type.typename#}</span>
+                    {#/renovation#}
+                    <input type="hidden" name="comstyle" id="comstyle" value="{#$detail_comstyleid#}" />
+                  </div>
+                </dd>
+              </dl>
+            </div>
+            <!-- 面积 s -->
+            <div class="f-item">
+                <em>{#$langData['siteConfig'][19][85]#}</em><input type="text" name="area" id="area" value="{#$detail_area#}" max-length="6" placeholder="㎡">
+            </div>
+            <!-- 面积 e -->
+            <!-- 预算 s -->
+            <div class="f-item">
+                <em>{#$langData['siteConfig'][19][616]#}</em>
+                <select name="apartment" id="apartment" class="demo-select-opt">
+                  {#renovation action="type" return='type' type='6'#}
+                  <option value="{#$type.id#}"{#if $detail_apartmentid == $type.id#} selected{#/if#}>{#$type.typename#}</option>
+                  {#/renovation#}
+                </select> 
+            </div>
+            <!-- 预算 e -->
+            <!-- 简介 s -->
+            <div class="introduce">
+                <p>{#$langData['siteConfig'][18][8]#}</p>
+                <textarea name="note" placeholder="{#$langData['siteConfig'][20][410]#}..." id="note" cols="30" rows="10">{#$detail_note#}</textarea>
+            </div>
+            <!-- 简介 e -->
+
+            <div class="tjBtn"><a href='javascript:;'>{#$langData['siteConfig'][6][27]#}</a></div>
+
+        </div>
+    </div>
+    <input type="submit" class="fn-hide">
+</form>

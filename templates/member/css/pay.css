@@ -1,0 +1,109 @@
+.ui-form .fn-pt14 { padding-top: 14px;}
+
+/* 两个选框 */
+.tab-choose{ width:778px; height:67px; box-shadow: 0 0 3px #C7C5C5;}
+.tab-choose-item{ float:left;}
+.btn-personal,.tab-choose-item a,.tab-choose-item-personal .arrow,.ui-dropdown-trigger{ background-image:url("https://i.alipayobjects.com/e/201209/1DY4fMlnIi.png"); background-repeat:no-repeat;}
+.tab-choose-item a{ display:block; height:68px; text-indent:-9999em;}
+.tab-choose-item-personal{ position:relative;}
+.tab-choose-item-personal a{ background-position:0 0; width:388px;}
+.tab-choose-item-personal .arrow{ display:block; width:25px; height:11px; background-position: 0 -71px; position:absolute; top:67px; left:47%;}
+.tab-choose-item-business a{ background-position:-386px 0; width: 390px;}
+.box-shadow{ box-shadow: 0 0 5px #c7c5c5; background:#fff; border:1px solid #e7e7e7; border-top: none; width: 776px;}
+/* 表单重设 */
+.ui-form-general .ui-form-item{ /**padding-left:140px;**/}
+.ui-form-general{ padding-top:50px;}
+.ui-form-general .ui-label{ width:140px; margin-left:-140px;}
+.login-form-cnt{ width:418px; background:#fff; padding: 15px 200px 0 160px;}
+.license{  margin-left:60px; float: left; vertical-align: middle;        }
+.ime-disabled{ ime-mode: disabled;}
+.checkcode-img{ border: 1px solid #C1C1C1; vertical-align: middle; padding: 5px;}
+.ui-form-item { position: relative; zoom:1;}
+.ui-form-item .ui-input{ margin-right: 6px;}
+.ui-form-item-checkcode-error .ui-form-explain{ background-color:#fff; border: none; background-position: -59px -66px; padding: 10px 8px 9px 25px; position: absolute; top:0;}
+.ui-form-item-checkcode-error .ui-form-explain .ui-form-arrow{ display: none;}
+.ui-form-item-checkcode-error .ui-input{   border: 1px solid #FF0000;}
+
+.reg-area{ /**text-align: right;del by lin.weng**/}
+.ui-form-l .ui-form-item-area{ padding-bottom:27px; _padding-bottom:20px;}
+.ui-form-item-area .ui-label-area{ padding-top:8px;}
+.ui-form input::-webkit-input-placeholder { color:#999; }
+.ui-form input:-moz-placeholder { color:#999; }
+.ui-form-l .ui-input { width: 252px;}
+.ui-form-item .ui-input-100 { width: 100px;}
+.ui-form-item .ui-input-110 { width: 110px;}
+
+/* 阿里账户 */
+.aliusers-list li{ float: left; margin: 10px 8px 0 auto; white-space: nowrap;}
+.ui-ali-icons{ background-image: url("https://i.alipayobjects.com/e/201208/3ocQFumQPT.png"); display: inline-block; width: 16px; height: 16px; margin-right: 5px; vertical-align: text-top; overflow:hidden;}
+.ui-ali-icons-1{ background-position: 0 -99px;}
+.ui-ali-icons-3, .ui-ali-icons-4{ background-position: 0 -40px;}
+.ui-ali-icons-15{ background-position: 0 -40px;}
+.ui-ali-icons-5{ background-position: 0 -80px;}
+.ui-ali-icons-0{ background-position: 0 0;}
+.ui-ali-icons-2{ background-position: 0 -60px;}
+/***select重新设置***/
+.ui-form-item-area .ui-littleselect-trigger{ border:1px solid #ccc; height:28px; line-height:28px;}
+/***select重新设置***/
+.ui-select-trigger { width: auto !important; min-width: 49px !important; margin-right: 5px;}
+.ui-select .ui-select-content { width: 320px; height: 250px; overflow: auto; clear: both; background: #fff; zoom: 1;}
+.ui-select .ui-select-content:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0}
+.ui-select .ui-select-item {  padding-left: 10px; padding-right: 10px;}
+.ui-select .ui-select-item:hover {background: #f2f2f2;}
+.ui-select .ui-select-item-top { width: 90px; padding: 5px 10px; border-bottom: 1px dashed #dedede;}
+/***国家手机代码样式***/
+.ui-input.ui-input-countryCode { background: #f2f2f2; position: relative;}
+
+/*#J-countryMobileCode{ background: url(../images/sanjiao.png) no-repeat 46px; background-size: 12px;}*/
+.ui-form-item-mobile { position: relative;}
+.mobile-code-trangle { font-size: 15px; position: absolute; left: 183px; top: 10px;}
+.ui-input.ui-input-countryCode:hover, .ui-form-item-hover .ui-input-countryCode, .ui-form-item-focus .ui-input-countryCode, .ui-form-item-error .ui-input-countryCode { border-color: #c1c1c1; -webkit-box-shadow: none !important; box-shadow: none;}
+
+.switch-re-type { margin-left: 140px;}
+
+#J-pop-accName { _width: 197px !important; max-width: 197px !important;}
+
+.ui-country-trigger { width: auto !important; min-width: 85px !important; margin-right: 5px;}
+
+/***图片验证码xbox***/
+.ui-form-checkCode { padding-top: 30px;}
+
+.ui-form-checkCode .ui-form-item { padding-left: 75px;}
+
+.ui-form-checkCode .ui-form-submit { padding-left: 150px;}
+
+.ui-form-checkCode .ui-input { padding: 11px 10px; font-size: 14px; height: 18px; line-height: 18px; color: #4d4d4d;}
+
+.ui-form-checkCode .ui-form-explain-xbox { color: red;}
+
+.ui-form-checkCode .ui-form-item-error .ui-form-explain-xbox:before { content: '\F045'; font-family: rei; padding-right: 5px;}
+
+/*countbutton样式reset*/
+
+.ui-button-nsdisable button{ padding: 9px; font-weight: normal; background-color: #f2f2f2; color: gray; cursor: default; border: 1px solid #c1c1c1;}
+
+.ui-button-nswhite button { padding: 9px; font-weight: normal; background-color: #f2f2f2; color: black; cursor: pointer; border: 1px solid #c1c1c1;   }
+.fn-hide { display:none;}
+.ui-country a,.ui-country-trigger { color:#7d7d7d; font-size:14px; text-decoration:none;}
+.ui-country a:hover,.ui-country-trigger:hover { text-decoration:none;}
+.ui-country { border:1px solid #ccc; display:inline-block; *display:inline; *zoom:1; background:#fff; color:#7d7d7d; font-size:14px;}
+.ui-country-tops { border-bottom:1px dashed #ccc;}
+.ui-country-group { background:#f8f8f8;}
+.ui-country-tops,.ui-country-group { list-style:none; margin:0; padding:0; clear:both;}
+.tab-active { background-color:#fff;}
+.ui-country .ui-country-tops:after,.ui-country .ui-country-group:after,.ui-country .ui-country-content:after { visibility:hidden; display:block; font-size:0; content:" "; clear:both; height:0;}
+.ui-country-top { width:90px; float:left; line-height:40px; padding:0 15px; cursor:pointer; overflow:hidden; white-space:nowrap;}
+.ui-country-tabpan { text-align:center; float:left; line-height:40px; padding:0 30px; cursor:pointer; overflow:hidden; white-space:nowrap;}
+.ui-country-tabpan:hover,.ui-country-tabpan-hover { background:#fff;}
+.ui-country-top:hover,.ui-country-top-hover { background:#f2f2f2;}
+.ui-country-content { margin:-1px 0 0; padding:0; height:210px; overflow:auto; list-style:none; clear:both; zoom:1; background:#fff; _float:left;}
+.ui-country-content ul { list-style:none; padding:0; margin:0;}
+.ui-country-item { line-height:30px; padding:0 15px; cursor:pointer; overflow:hidden; white-space:nowrap;}
+.ui-country-item:hover,.ui-country-item-hover { background:#f2f2f2;}
+.ui-country-item-disabled,.ui-country-item-disabled a { cursor:not-allowed; color:#ccc;}
+.ui-country-item-disabled:hover,.ui-country-item-disabled a:hover { background:#fff;}
+.ui-country-trigger { position:relative; display:inline-block; *display:inline; *zoom:1; border:1px solid #ccc; height:30px; line-height:30px;}
+.ui-country-trigger i { position:absolute; top:0px; right:15px; line-height:28px; text-indent:0; font-size:14px; cursor:pointer;}
+.ui-country-trigger:hover { border:1px solid #999;}
+.ui-country .ui-country-trigger { display:block;}
+.ui-country-disabled,.ui-country .ui-country-disabled { color:#aaa; cursor:not-allowed;}

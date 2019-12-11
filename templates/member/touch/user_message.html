@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+<title>{#$langData['siteConfig'][19][843]#} </title>
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/user_message.css?v={#$cfg_staticVersion#}">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', cookiePre = '{#$cfg_cookiePre#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, uid = {#$id#};
+	var page = 1, totalCount = 0, pageSize = 10;
+</script>
+</head>
+<body>
+
+  {#$pageTitle = $langData['siteConfig'][19][843]#}
+  {#include file="top.html"#}
+
+  <div class="list"></div>
+
+  <div class="fabuBtn"><a href="javascript:;">我要留言</a></div>
+
+  <div class="layer">
+    <div class="header">
+      <div class="header-l">
+        <a href="javascript:;"><img src="{#$templets_skin#}images/header_back.png"></a>
+      </div>
+      <div class="header-c">{#$langData['siteConfig'][19][843]#}</div>
+      <div class="header-r"><a href="javascript:;" class="post">{#$langData['siteConfig'][6][147]#}</a></div>
+    </div>
+    <div class="layer_txt">
+      <textarea name="name" class="textarea" rows="10" placeholder="{#$langData['siteConfig'][19][844]#}..."></textarea>
+      <p class="layer_num">200</p>
+    </div>
+    <div class="tjBtn"><a href="javascript:;">提交留言</a></div>
+  </div>
+
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script src="{#$templets_skin#}js/user_message.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+</body>
+</html>

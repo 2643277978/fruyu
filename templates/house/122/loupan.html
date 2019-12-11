@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#if $loupan_seotitle != ""#}{#$loupan_seotitle#}楼盘{#else#}【{#$siteCityInfo['name']#}楼盘_{#$siteCityInfo['name']#}新房楼盘_{#$siteCityInfo['name']#}新房价格信息】{#/if#}-{#$house_title#}</title>
+<meta name="keywords" content="{#$siteCityInfo['name']#}楼盘,{#$siteCityInfo['name']#}新楼盘,{#$siteCityInfo['name']#}新房价格信息" />
+<meta name="description" content="{#$siteCityInfo['name']#}楼盘频道提供{#$siteCityInfo['name']#}最新新楼盘、{#$siteCityInfo['name']#}开盘楼盘、在售楼盘、房价等信息查询，让您快捷的找新房楼盘，更多{#$siteCityInfo['name']#}新房楼盘信息尽在{#$siteCityInfo['name']#}{#$cfg_shortname#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/loupan.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	var atpage = 1, totalCount = 0, pageSize = 60;
+	var detail = {
+		addrid : {#$addrid|default:0#},
+		business : {#$business|default:0#},
+		subway : {#$subway|default:0#},
+		station : {#$station|default:0#},
+	}
+    var keywords = '{#$keywords#}';
+</script>
+</head>
+
+<body class="w1200">
+{#include file="../../siteConfig/top1.html"#}
+
+{#$pageCurr = 'loupan'#}
+{#include file="top.html"#}
+
+<div class="wrap">
+	<div class="crumb fn-clear">
+		<div class="location">
+			<a href="{#$house_channelDomain#}">首页</a> > <a href="{#getUrlPath service='house' template='loupan'#}">楼盘</a>
+		</div>
+	</div>
+	<div class="filter">
+      	<div class="filterlist">
+          	<dl class="t-fi fn-clear">
+                <dt>位置</dt>
+                <dd class="fn-clear">
+                    <ul class="t-fi-item fn-clear">
+                        <li class="area{#if $from == "" && $subway == 0#} curr{#/if#}"><a href="javascript:;">区域找房<i class="idown"></i></a></li>
+                        {#if $cfg_subway_state#}<li class="subway{#if $from == "subway" || $subway != 0#} curr{#/if#}"><a href="javascript:;">{#$cfg_subway_title#}<i class="idown"></i></a></li>{#/if#}
+                    </ul>
+                </dd>
+                <div class="sub-fi areabox"{#if $from == "" && $subway == 0#} style="display: block;"{#/if#}>
+                    <s><i></i></s>
+                    <div class="pos-item">
+                        <a href="javascript:;" data-id="0"{#if $addrid == 0#} class="curr"{#/if#}>不限</a>
+                        {#house action="addr" return='addr'#}
+                        <a href="javascript:;" data-id="{#$addr.id#}"{#if $addrid == $addr.id#} class="curr"{#/if#}>{#$addr.typename#}</a>
+                        {#/house#}
+                    </div>
+                    {#if $addrid != 0#}
+                    <div class="pos-sub-item" style="display:block;">
+                        <a href="javascript:;" data-id="0"{#if $business == 0#} class="curr"{#/if#}>不限</a>
+                        {#house action="addr" type=$addrid return='addr'#}
+                        <a href="javascript:;" data-business="{#$addr.id#}"{#if $business == $addr.id#} class="curr"{#/if#}>{#$addr.typename#}</a>
+                        {#/house#}
+                    </div>
+                    {#else#}
+                    <div class="pos-sub-item"></div>
+                    {#/if#}
+                </div>
+                <div class="sub-fi subwaybox"{#if $from == "subway" || $subway != 0#} style="display:block"{#/if#}>
+                    <s><i></i></s>                    
+                    <div class="pos-item">
+                        <a href="javascript:;" data-id="0"{#if $subway == 0#} class="curr"{#/if#}>不限</a>
+                        {#siteConfig action="subway" return='sub' city={#$siteCityInfo['cityid']#}#}
+                        <a href="javascript:;" data-id="{#$sub.id#}"{#if $subway == $sub.id#} class="curr"{#/if#}>{#$sub.title#}</a>
+                        {#/siteConfig#}
+                    </div>
+                    <div class="pos-sub-item">
+                        <div class="pos-sub-title subway-sub-title">
+                            <div class="direction-line left-direction"></div>
+                            <div class="direction-line  right-direction"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </dl>
+            <dl class="o-fi fn-clear">
+                <dt>均价</dt>
+                <dd class="fn-clear">
+                    <a href="javascript:;"{#if $price == ""#} class="curr"{#/if#}>不限</a>
+                    <a href="javascript:;" data-id=",8"{#if $price == ",8"#} class="curr"{#/if#}>8千以下</a>
+                    <a href="javascript:;" data-id="8,10"{#if $price == "8,10"#} class="curr"{#/if#}>8千-1万</a>
+                    <a href="javascript:;" data-id="10,15"{#if $price == "10,15"#} class="curr"{#/if#}>1-1.5万</a>
+                    <a href="javascript:;" data-id="15,20"{#if $price == "15,20"#} class="curr"{#/if#}>1.5-2万</a>
+                    <a href="javascript:;" data-id="20,25"{#if $price == "20,25"#} class="curr"{#/if#}>2-2.5万</a>
+                    <a href="javascript:;" data-id="25,30"{#if $price == "25,30"#} class="curr"{#/if#}>2.5-3万</a>
+                    <a href="javascript:;" data-id="30,"{#if $price == "30,"#} class="curr"{#/if#}>3万以上</a>
+                    <div class="price">
+                        <div class="inp_price">
+                            <input type="input" class="p1" maxlength="5" value="" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"><em>-</em>
+                            <input type="input" class="p2" maxlength="5" value="" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');">万
+                            <input type="button" class="btn" value="确定">
+                        </div>
+                    </div>
+                </dd>
+            </dl>
+            <dl class="o-fi fn-clear">
+                <dt>类型</dt>
+                <dd class="fn-clear">
+                    <a href="javascript:;"{#if $typeid == 0#} class="curr"{#/if#}>不限</a>
+                    {#house action="item" return="item" type="1"#}
+                    <a href="javascript:;" data-id="{#$item.id#}"{#if $typeid == $item.id#} class="curr"{#/if#}>{#$item.typename#}</a>
+                    {#/house#}
+                </dd>
+            </dl>
+            <dl class="more fn-clear">
+                <dd class="fn-clear">
+                    <div class="item salestate" data-type="salestate">
+                        <label title="销售状态"><span>销售状态</span><s class="idown"></s></label>
+                        <ul>
+                            <li data-id=""{#if $filter == ""#} class="active"{#/if#}><a href="javascript:;">不限</a></li>
+                            <li data-id="0"{#if $filter == "0"#} class="active"{#/if#}><a href="javascript:;">待售</a></li>
+                            <li data-id="1"{#if $filter == "1"#} class="active"{#/if#}><a href="javascript:;">在售</a></li>
+                            <li data-id="2"{#if $filter == "2"#} class="active"{#/if#}><a href="javascript:;">尾盘</a></li>
+                            <li data-id="3"{#if $filter == "3"#} class="active"{#/if#}><a href="javascript:;">售完</a></li>
+                        </ul>
+                    </div>
+                    <div class="item times" data-type="times">
+                        <label title="开盘时间"><span {#if $times#}class="cur"{#/if#}>{#$timesname#}</span><s class="idown"></s></label>
+                        <ul>
+                            <li data-id=""{#if $times == ""#} class="active"{#/if#}><a href="javascript:;">不限</a></li>
+                            <li data-id='ptoday'{#if $times == "ptoday"#} class="active"{#/if#}><a href="javascript:;">今日开盘</a></li>
+                            <li data-id='ptomorrow'{#if $times == "ptomorrow"#} class="active"{#/if#}><a href="javascript:;">明日开盘</a></li>
+                            <li data-id='pyesterday'{#if $times == "pyesterday"#} class="active"{#/if#}><a href="javascript:;">昨日开盘</a></li>
+                            <li data-id='ptmonth'{#if $times == "tmonth"#} class="active"{#/if#}><a href="javascript:;">本月开盘</a></li>
+                            <li data-id='pnmonth'{#if $times == "pnmonth"#} class="active"{#/if#}><a href="javascript:;">下月开盘</a></li>
+                            <li data-id='plmonth'{#if $times == "plmonth"#} class="active"{#/if#}><a href="javascript:;">上月开盘</a></li>
+                        </ul>
+                    </div>
+                    <div class="item zhuangxiu" data-type="zhuangxiu">
+                        <label title="装修情况"><span>装修情况</span><s class="idown"></s></label>
+                        <ul>
+                            <li data-id=""{#if $zhuangxiu == ""#} class="active"{#/if#}><a href="javascript:;">不限</a></li>
+                            {#house action="item" return="item" type="2"#}
+                            <li data-id='{#$item.id#}'{#if $zhuangxiu == $item.id#} class="active"{#/if#}><a href="javascript:;">{#$item.typename#}</a></li>
+                            {#/house#}
+                        </ul>
+                    </div>
+                    <div class="item buildtype" data-type="buildtype">
+                        <label title="建筑类型"><span>建筑类型</span><s class="idown"></s></label>
+                        <ul>
+                            <li data-id=''{#if $buildtype == ""#} class="active"{#/if#}><a href="javascript:;">不限</a></li>
+                            {#house action="item" return="item" type="3"#}
+                            <li data-id='{#$item.id#}'{#if $buildtype == $item.id#} class="active"{#/if#}><a href="javascript:;">{#$item.typename#}</a></li>
+                            {#/house#}
+                        </ul>
+                    </div>
+                    <div class="item tuandate" data-type="tuandate">
+                        <label title="开团时间"><span>开团时间</span><s class="idown"></s></label>
+                        <ul>
+                            <li data-id=""{#if $tuandate == ""#} class="active"{#/if#}><a href="javascript:;">不限</a></li>
+                            <li data-id='ttoday'{#if $tuandate == "ttoday"#} class="active"{#/if#}><a href="javascript:;">今日开团</a></li>
+                            <li data-id='ttomorrow'{#if $tuandate == "ttomorrow"#} class="active"{#/if#}><a href="javascript:;">明日开团</a></li>
+                            <li data-id='tyesterday'{#if $tuandate == "tyesterday"#} class="active"{#/if#}><a href="javascript:;">昨日开团</a></li>
+                            <li data-id='ttmonth'{#if $tuandate == "ttmonth"#} class="active"{#/if#}><a href="javascript:;">本月开团</a></li>
+                            <li data-id='tnmonth'{#if $tuandate == "tnmonth"#} class="active"{#/if#}><a href="javascript:;">下月开团</a></li>
+                            <li data-id='tlmonth'{#if $tuandate == "tlmonth"#} class="active"{#/if#}><a href="javascript:;">上月开团</a></li>
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+      	</div>
+        <div class="deletebox">
+      		<dl class="fi-state fn-clear">
+              <dt>已选条件</dt>
+              <dd class="fn-clear"></dd>
+              <span class="btn_clear">清空条件</span>
+          </dl>
+      	</div>
+	</div>
+</div>
+
+<!--<div class="wrap totalCount">-->
+	<!--共找到 <b>0</b> 个符合条件的楼盘-->
+<!--</div>-->
+
+<div class="wrap fn-clear">
+	<div class="sidebar">
+      	<div class="SearchBox">
+			<form action="{#getUrlPath service='house' template='loupan'#}" method="get">
+				<input type="search" placeholder="搜楼盘..." name="keywords" class="inp"/>
+				<input type="submit" value="搜索" class="submit">
+			</form>
+		</div>
+		<div class="mapbox">
+			<a href="{#getUrlPath service='house' template='map' action='loupan'#}" class="smap" target="_blank">
+				<img src="{#$templets_skin#}images/mapImg.png" alt="">
+				<span>试试地图找房</span>
+			</a>
+		</div>
+		<div class="lp_box">
+			<div class="lp_title">最近浏览的楼盘</div>
+			<ul>
+				{#$_bindex = ""#}
+				{#house action=loupanHistory pageSize=3 return=loupan#}
+				{#if $_bindex.loupan < 4#}
+				<li>
+					<a href="{#$loupan.url#}" target="_blank">
+						<p title="{#$loupan.title#}">{#$loupan.title#}</p>
+						<p>{#if $loupan.price == 0#}待定{#else#}{#$loupan.price#}{#if $loupan.ptype == 1#}{#echoCurrency type='short'#}/㎡{#else#}万{#echoCurrency type='short'#}/套{#/if#}{#/if#}<span>{#$loupan.addr[$loupan.addr|count-2]#}</span></p>
+					</a>
+				</li>
+				{#/if#}
+				{#/house#}
+			</ul>
+		</div>
+		<div class="lp_box">
+			<div class="lp_title">热门楼盘</div>
+			<ul>
+				{#house action=loupanList filter="hot" pageSize=3 return=loupan#}
+				<li>
+					<a href="{#$loupan.url#}" target="_blank">
+						<p title="{#$loupan.title#}">{#$loupan.title#}</p>
+						<p>{#if $loupan.price == 0#}待定{#else#}{#$loupan.price#}{#if $loupan.ptype == 1#}{#echoCurrency type='short'#}/㎡{#else#}万{#echoCurrency type='short'#}/套{#/if#}{#/if#}<span>{#$loupan.addr[$loupan.addr|count-2]#}</span></p>
+					</a>
+				</li>
+				{#/house#}
+			</ul>
+		</div>
+		<div class="lp_box">
+			<div class="lp_title">本月最新楼盘</div>
+			<ul>
+				{#house action="loupanList" return="loupan" times="tmonth" page="1" pageSize="5"#}
+				<li>
+					<a href="{#$loupan.url#}" target="_blank">
+						<p title="{#$loupan.title#}">{#$loupan.title#}</p>
+						<p>{#if $loupan.price == 0#}待定{#else#}{#$loupan.price#}{#if $loupan.ptype == 1#}{#echoCurrency type='short'#}/㎡{#else#}万{#echoCurrency type='short'#}/套{#/if#}{#/if#}<span>{#$loupan.addr[$loupan.addr|count-2]#}</span></p>
+					</a>
+				</li>
+				{#/house#}
+			</ul>
+		</div>
+		<div class="lp_box">
+			<div class="lp_title">楼盘动态</div>
+			<ul class="lp_news">
+				{#house action="loupanNewsList" return="list" rand="1" page="1" pageSize="8"#}
+				<li><a href="{#$list.url#}" title="{#$list.title#}" target="_blank"><em>•</em>{#$list.title#}</a></li>
+				{#/house#}
+			</ul>
+		</div>
+	</div>
+	<div class="main">
+		<div class="m-t fn-clear">
+			<ul>
+				<li{#if !$hot && $filter != "hot" && $filter != "tuan" && !$tuan && !$video && !$qj && !$shapan#} class="curr"{#/if#} data-id="all"><a href="javascript:;">全部楼盘</a></li>
+				<li{#if $hot || $filter == "hot"#} class="curr"{#/if#} data-id="hot"><a href="javascript:;">热销楼盘</a></li>
+				<li{#if $tuan || $filter == "tuan"#} class="curr"{#/if#} data-id="tuan"><a href="javascript:;">团购楼盘</a></li>
+				<!--<li{#if $video#} class="curr"{#/if#} data-id="video"><a href="javascript:;">视频看房</a></li>-->
+				<!--<li{#if $qj#} class="curr"{#/if#} data-id="qj"><a href="javascript:;">全景看房</a></li>-->
+				<!--<li{#if $shapan#} class="curr"{#/if#} data-id="shapan"><a href="javascript:;">沙盘看房</a></li>-->
+			</ul>
+		</div>
+		<div class="m-o">
+			<div class="m-l">
+				<a href="javascript:;" data-id="0" class="curr">默认排序</a>
+				<a href="javascript:;" data-id="time" class="ob">开盘时间<s></s></a>
+				<a href="javascript:;" data-id="price" class="ob">价格<s></s></a>
+			</div>
+		</div>
+		<div class="lplist">
+			<ul></ul>
+		</div>
+		
+		<div class="pagination fn-clear"></div>
+	</div>
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.qrcode.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/loupan.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

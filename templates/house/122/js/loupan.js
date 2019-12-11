@@ -721,7 +721,11 @@ $(function () {
                                     getList();
                                 }
                             }
+<<<<<<< HEAD
                             // info.find(".pagination-pages").append(page);
+=======
+                            info.find(".pagination-pages").append(page);
+>>>>>>> af292168ca1086ced598825851370e3527379665
                         }
                     }
                 }

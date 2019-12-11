@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>入驻申请</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/house_receive_broker.css?v={#$cfg_staticVersion#}">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+var module = '{#$module#}', comid = {#$comid#}, atpage = 1, totalCount = 0, pageSize = 10, state = '{#$state#}', type = '{#$type#}';
+</script>
+</head>
+<body>
+
+{#include file="top.html" pageTitle="入驻申请"#}
+
+<div class="tab">
+  <ul>
+    <li data-id="" class="type curr"><a href="javascript:;">全部(<span id="total">0</span>)</a></li>
+    <li class="type" data-id="1,2"><a href="javascript:;">已处理(<span id="state1">0</span>)</a></li>
+    <li class="type" data-id="0"><a href="javascript:;">未处理(<span id="state0">0</span>)</a></li>
+  </ul>
+</div>
+
+<div class="list" id="list"></div>
+
+<div class="model model_fail">
+  <a href="javascript:;" class="close">×</a>
+  <P class="info"></P>
+  <div class="model_m">
+    <div class="model_title">拒绝理由</div>
+    <div class="model_body">
+      <textarea name="" id="" cols="30" rows="4" placeholder="请输入..."></textarea>
+      <p class="choose"><label for="" class="active" data-id="1"><em></em>人员已满</label><label for="" data-id="2"><em></em>不符合门店要求</label></p>
+    </div>
+    <div class="model_btns">
+      <a href="javascript:;" class="ok">确定</a>
+    </div>
+  </div>
+</div>
+
+<!-- 删除确认层 -->
+<div class="model model_del">
+  <a href="javascript:;" class="close">×</a>
+  <div class="model_m">
+    <div class="model_title" data-del="此操作将删除该经纪人账号！！！" data-agree="确定要通过该申请吗？">确定要通过该申请吗？</div>
+    <div class="model_btns">
+      <a href="javascript:;" class="cancel">取消</a>
+      <a href="javascript:;" class="ok">确定</a>
+    </div>
+  </div>
+</div>
+<div class="desk"></div>
+
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script src="{#$templets_skin#}js/house_receive_broker.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

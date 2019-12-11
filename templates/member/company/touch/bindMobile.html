@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<title>{#$langData['siteConfig'][19][774]#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/bind.css?v={#$cfg_staticVersion#}">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', userDomain = '{#$member_userDomain#}';
+  var geetest = {#$cfg_geetest#};
+  var cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+<body>
+
+<div class="step step1 show2">
+    <!-- 头部 s -->
+    <div class="header fn-clear">
+      <a href="{#$cfg_basehost#}/login.html" class="back"></a>
+      <a href="javascript:;" class="page_tit">{#$langData['siteConfig'][19][774]#}</a>
+    </div>
+    <!-- 头部 e -->
+
+    <!-- 内容 s -->
+    <div class="main">
+      <form class="sendform" method="post">
+        <input type="hidden" name="type" id="type" value="signup" />
+        <input type="hidden" name="code" id="code" value="{#$code#}" />
+        <div class="inpbox account">
+          <dl class="fn-clear">
+            <dt class="fn-left"><label><span id="areaCode">+86</span><i class="drop-arrow"></i></label></dt>
+            <dd class="fn-left"><input type="tel" name="" value="" placeholder="{#$langData['siteConfig'][20][27]#}" id="tel"></dd>
+          </dl>
+        </div>
+        <input type="button" name="submit" value="{#$langData['siteConfig'][6][32]#}" class="get-yzm submit disabled" id="step1_btn">
+      </form>
+    </div>
+    <!-- 内容 e -->
+
+</div>
+
+<div class="step step2 show2">
+    <!-- 头部 s -->
+    <div class="header fn-clear">
+      <a href="javascript:;" class="back"></a>
+      <a href="javascript:;" class="page_tit">{#$langData['siteConfig'][3][5]#}</a>
+    </div>
+    <!-- 头部 e -->
+
+    <div class="telbox"><img src="{#$templets_skin#}images/tel_icon.png" alt=""><p class="jsphone"></p></div>
+
+    <!-- 内容 s -->
+    <div class="main">
+      <form method="post" id="regForm">
+        <div class="inpbox yzm">
+          <dl class="fn-clear">
+            <dt class="fn-right get-yzm" id="djs">{#$langData['siteConfig'][4][2]#} <em>60</em></dt>
+            <dd class="fn-left"><input type="number" name="" value="" placeholder="{#$langData['siteConfig'][20][28]#}" id="yzm"></dd>
+          </dl>
+        </div>
+        <input type="submit" name="submit" value="{#$langData['siteConfig'][6][3]#}" class="submit disabled" id="step2_btn">
+      </form>
+    </div>
+    <!-- 内容 e -->
+
+</div>
+
+
+<!-- 区号弹出层 s -->
+<div class="layer">
+    <div class="layer_search"><p>{#$langData['siteConfig'][19][285]#}</p><em class="layer_close"></em></div>
+		<div class="layer_list" id="layer_list">
+      <ul>
+        <li>Taiwan（台湾）<em class="fn-right">+886</em></li>
+        <li><span>China（中国大陆）</span><em class="fn-right">+86</em></li>
+        <li><span>Argentina（阿根廷）</span><em class="fn-right">+54</em></li>
+        <li><span>Australia（澳大利亚）</span><em class="fn-right">+61</em></li>
+        <li><span>Austria（奥地利）</span><em class="fn-right">+43</em></li>
+        <li><span>Bahamas（巴哈马）</span><em class="fn-right">+1242</em></li>
+        <li><span>Belarus（白俄罗斯）</span><em class="fn-right">+375</em></li>
+        <li><span>Belgium（比利时）</span><em class="fn-right">+32</em></li>
+        <li><span>Belize（伯利兹）</span><em class="fn-right">+501</em></li>
+        <li><span>Brazil（巴西）</span><em class="fn-right">+55</em></li>
+        <li><span>Bulgaria（保加利亚）</span><em class="fn-right">+359</em></li>
+        <li><span>Cambodia（柬埔寨）</span><em class="fn-right">+855</em></li>
+        <li><span>Canada（加拿大）</span><em class="fn-right">+1</em></li>
+        <li><span>Chile（智利）</span><em class="fn-right">+56</em></li>
+        <li><span>Colombia（哥伦比亚）</span><em class="fn-right">+57</em></li>
+        <li><span>Denmark（丹麦）</span><em class="fn-right">+45</em></li>
+        <li><span>Egypt（埃及）</span><em class="fn-right">+20</em></li>
+        <li><span>Estonia（爱沙尼亚）</span><em class="fn-right">+372</em></li>
+        <li><span>Finland（芬兰）</span><em class="fn-right">+358</em></li>
+        <li><span>France（法国）</span><em class="fn-right">+33</em></li>
+        <li><span>Germany（德国）</span><em class="fn-right">+49</em></li>
+        <li><span>Greece（希腊）</span><em class="fn-right">+30</em></li>
+        <li><span>Hong Kong（香港）</span><em class="fn-right">+852</em></li>
+        <li><span>Hungary（匈牙利）</span><em class="fn-right">+36</em></li>
+        <li><span>India（印度）</span><em class="fn-right">+91</em></li>
+        <li><span>Indonesia（印度尼西亚）</span><em class="fn-right">+62</em></li>
+        <li><span>Ireland（爱尔兰）</span><em class="fn-right">+353</em></li>
+        <li><span>Israel（以色列）</span><em class="fn-right">+972</em></li>
+        <li><span>Italy（意大利）</span><em class="fn-right">+39</em></li>
+        <li><span>Japan（日本）</span><em class="fn-right">+81</em></li>
+        <li><span>Jordan（约旦）</span><em class="fn-right">+962</em></li>
+        <li><span>Kyrgyzstan（吉尔吉斯斯坦）</span><em class="fn-right">+996</em></li>
+        <li><span>Lithuania（立陶宛）</span><em class="fn-right">+370</em></li>
+        <li><span>Luxembourg（卢森堡）</span><em class="fn-right">+352</em></li>
+        <li><span>Macau（澳门）</span><em class="fn-right">+853</em></li>
+        <li><span>Malaysia（马来西亚）</span><em class="fn-right">+60</em></li>
+        <li><span>Maldives（马尔代夫）</span><em class="fn-right">+960</em></li>
+        <li><span>Mexico（墨西哥）</span><em class="fn-right">+52</em></li>
+        <li><span>Mongolia（蒙古）</span><em class="fn-right">+976</em></li>
+        <li><span>Morocco（摩洛哥）</span><em class="fn-right">+212</em></li>
+        <li><span>Netherlands（荷兰）</span><em class="fn-right">+31</em></li>
+        <li><span>New Zealand（新西兰）</span><em class="fn-right">+64</em></li>
+        <li><span>Nigeria（尼日利亚）</span><em class="fn-right">+234</em></li>
+        <li><span>Norway（挪威）</span><em class="fn-right">+47</em></li>
+        <li><span>Panama（巴拿马）</span><em class="fn-right">+507</em></li>
+        <li><span>Peru（秘鲁）</span><em class="fn-right">+51</em></li>
+        <li><span>Philippines（菲律宾）</span><em class="fn-right">+63</em></li>
+        <li><span>Poland（波兰）</span><em class="fn-right">+48</em></li>
+        <li><span>Portugal（葡萄牙）</span><em class="fn-right">+351</em></li>
+        <li><span>Qatar（卡塔尔）</span><em class="fn-right">+974</em></li>
+        <li><span>Romania（罗马尼亚）</span><em class="fn-right">+40</em></li>
+        <li><span>Russia（俄罗斯）</span><em class="fn-right">+7</em></li>
+        <li><span>Saudi Arabia（沙特阿拉伯）</span><em class="fn-right">+966</em></li>
+        <li><span>Serbia（塞尔维亚）</span><em class="fn-right">+381</em></li>
+        <li><span>Seychelles（塞舌尔）</span><em class="fn-right">+248</em></li>
+        <li><span>Singapore（新加坡）</span><em class="fn-right">+65</em></li>
+        <li><span>South Africa（南非）</span><em class="fn-right">+27</em></li>
+        <li><span>South Korea（韩国）</span><em class="fn-right">+82</em></li>
+        <li><span>Spain（西班牙）</span><em class="fn-right">+34</em></li>
+        <li><span>Sri Lanka（斯里兰卡）</span><em class="fn-right">+94</em></li>
+        <li><span>Sweden（瑞典）</span><em class="fn-right">+46</em></li>
+        <li><span>Switzerland（瑞士）</span><em class="fn-right">+41</em></li>
+        <li><span>Thailand（泰国）</span><em class="fn-right">+66</em></li>
+        <li><span>Tunisia（突尼斯）</span><em class="fn-right">+216</em></li>
+        <li><span>Turkey（土耳其）</span><em class="fn-right">+90</em></li>
+        <li><span>Ukraine（乌克兰）</span><em class="fn-right">+380</em></li>
+        <li><span>United Arab Emirates（阿联酋）</span><em class="fn-right">+971</em></li>
+        <li><span>United Kingdom（英国）</span><em class="fn-right">+44</em></li>
+        <li><span>United States（美国）</span><em class="fn-right">+1</em></li>
+        <li><span>Venezuela（委内瑞拉）</span><em class="fn-right">+58</em></li>
+        <li><span>Vietnam（越南）</span><em class="fn-right">+84</em></li>
+        <li><span>Virgin Islands（英属维尔京群岛）</span><em class="fn-right">+1284</em></li>
+      </ul>
+    </div>
+</div>
+<!-- 区号弹出层 e -->
+
+<!-- 手机号已注册弹出层 s -->
+<div class="login-pop">
+    <p>{#$langData['siteConfig'][19][681]#}</p>
+    <p>{#$langData['siteConfig'][20][171]#}</p>
+    <div class="login-btn fn-clear"><a href="javascript:;" class="cancel">{#$langData['siteConfig'][6][12]#}</a><a href="login-tel.html" class="confirm">{#$langData['siteConfig'][2][8]#}</a></div>
+</div>
+<!-- 手机号已注册弹出层 e -->
+
+<!-- 注册成功弹出层 s -->
+<div class="success-pop">
+    <img src="{#$templets_skin#}images/success_dui.png" alt="">
+    <p>{#$langData['siteConfig'][20][172]#}</p>
+</div>
+  <!-- 注册成功弹出层 e -->
+
+<div class="mask" id="maskReg"></div>
+
+<div id="popupReg-captcha-mobile"></div>
+
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+{#if $cfg_geetest#}<script type="text/javascript" src="{#$cfg_secureAccess#}static.geetest.com/static/tools/gt.js"></script>{#/if#}
+<script src="{#$templets_skin#}js/bind.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+$(function(){
+
+	$('img').scrollLoading();
+
+});

@@ -1,0 +1,58 @@
+{#if $type == "demand"#}
+{#$type_ = "demand"#}
+{#$ptitle = $langData['siteConfig'][23][49]#}{#* 求租、求购 *#}
+{#elseif $type == "qzu" || $type == "qgou"#}
+{#$type_ = $type#}
+{#$type = "demand"#}
+{#$ptitle = $langData['siteConfig'][23][49]#}{#* 求租、求购 *#}
+{#elseif $type == "sale"#}
+{#$ptitle = $langData['siteConfig'][19][218]#}{#* 二手房 *#}
+{#elseif $type == "zu"#}
+{#$ptitle = $langData['siteConfig'][19][219]#}{#* 租房 *#}
+{#elseif $type == "xzl"#}
+{#$ptitle = $langData['siteConfig'][19][220]#}{#* 写字楼 *#}
+{#elseif $type == "sp"#}
+{#$ptitle = $langData['siteConfig'][19][221]#}{#* 商铺 *#}
+{#elseif $type == "cf"#}
+{#$ptitle = $langData['siteConfig'][19][222]#}{#* 厂房、仓库 *#}
+{#elseif $type == "cw"#}
+{#$ptitle = $langData['siteConfig'][31][7]#}{#* 车位 *#}
+{#/if#}
+<script type="text/javascript">
+	var service = "house";
+	var payReturn = "{#getUrlPath service='member' type='user' template='manage' action='house' dopost=$type#}";
+	var geetest = {#$cfg_geetest#};
+</script>
+<ul class="main-tab">
+	<li class="curr"><a href="javascript:;">{#if $do == "edit"#}{#$langData['siteConfig'][6][4]#}【{#$ptitle#}】{#$langData['siteConfig'][16][26]#}{#else#}{#$langData['siteConfig'][11][0]#}【{#$ptitle#}】{#$langData['siteConfig'][16][26]#}{#/if#}</a></li>{#* 修改-房源-发布 *#}
+	<li><a href="{#getUrlPath service='member' type='user' template='manage' action='house' dopost=$type#}">{#$langData['siteConfig'][23][50]#}</a></li>{#* 我的全部房源 *#}
+</ul>
+
+<div class="w-form">
+	<form name="fabuForm" id="fabuForm" method="post" action="/include/ajax.php?service=house&type={#$type#}&action={#if $do == "edit"#}edit&id={#$id#}{#else#}put{#/if#}" data-url="{#getUrlPath service='member' type='user' template='manage' action='house' dopost=$type#}">
+		{#* 求租、求购 *#}
+		{#if $type == "demand" || $type == "qzu" || $type == "qgou"#}
+
+		{#include file="fabu-house-demand.html"#}
+
+		{#* 其它正常情况 *#}
+		{#else#}
+
+		{#include file="fabu-house-$type.html"#}
+
+		{#/if#}
+
+		<dl class="fn-clear">
+			<dt>&nbsp;</dt>
+			<dd><button class="submit" type="submit" id="submit">{#if $id == 0#}{#$langData['siteConfig'][11][19]#}{#else#}{#$langData['siteConfig'][6][122]#}{#/if#}</button></dd>{#* 立即发布--提交修改 *#}
+		</dl>
+	</form>
+</div>
+
+<script>
+var zjuserMealInfo = '{#$zjuserMealInfo#}';
+var buymealUrl = '{#getUrlPath service='member' type='user' template='house_meallist'#}';
+</script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/publicAddr.js?v={#$cfg_staticVersion#}"></script>
+{#if $cfg_geetest#}<script type="text/javascript" src="{#$cfg_secureAccess#}static.geetest.com/static/tools/gt.js"></script>{#/if#}
+<script src="{#$templets_skin#}js/codetest.js?v={#$cfg_staticVersion#}"></script>

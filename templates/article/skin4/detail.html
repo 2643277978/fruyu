@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_title#} - {#$list_typename#} - {#$article_channelName#} - {#$cfg_webname#}</title>
+<meta name="keywords" content="{#$detail_keywords#}" />
+<meta name="description" content="{#$detail_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/jquery.mCustomScrollbar.min.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/detail.css" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/pace.js"></script> <!-- 页面加载进度 -->
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$article_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+
+	var aid = {#$detail_id#};
+</script>
+</head>
+
+<body>
+<!-- 头部菜单 s -->
+<div class="navwrap">
+	<div class="tnav fn-clear" id="nav">
+		<ul class="navlink">
+			<li><a href="{#$cfg_basehost#}">首页</a></li>
+			{#article action="type" return='type' page="1" pageSize="12"#}
+			{#if $_bindex.type == 12#}
+			<li class="more"><a href="javascript:;">更多<i></i></a>
+				<div class="navmenu">
+					<a href="{#$type.url#}" data-id="{#$type.id#}">{#$type.typename#}</a>
+					{#article action="type" return='type1' page="2" pageSize="12"#}
+					<a href="{#$type1.url#}" data-id="{#$type1.id#}">{#$type1.typename#}</a>
+					{#/article#}
+				</div>
+			</li>
+			{#else#}
+			<li><a href="{#$type.url#}">{#$type.typename#}</a><ul>{#getChannel service="article" action="type" type="{#$type.id#}"#}</ul></li>
+			{#/if#}
+			{#/article#}
+		</ul>
+		<ul class="topbarlink">
+			<li class="mobile"><a href="javascript:;">手机版</a>
+				<div class="pop">
+					<s></s>
+					<p>扫码访问<img src="{#$cfg_basehost#}/include/qrcode.php?data={#$cfg_basehost#}" width="150" height="150" /></p>
+				</div>
+			</li>
+			{#if $userinfo#}
+			<div class="userinfo" id="navLoginAfter">
+				<div id="upic"><a href="{#$member_userDomain#}" target="_blank"><img onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_40.jpg';" src="{#if $userinfo.photo == ""#}{#$cfg_staticPath#}images/noPhoto_40.jpg{#else#}{#changeFileSize url="{#$userinfo.photo#}" type="small"#}{#/if#}" /></a></div>
+				<li><a href="{#$member_userDomain#}" id="uname" target="_blank">{#$userinfo.nickname#}</a></li>
+				{#if $userinfo.message > 0#}
+				<li><a href="{#$member_userDomain#}/message.html" class="fn-hide" target="_blank" id="umsg">消息({#if $userinfo.message > 99#}99+{#else#}{#$userinfo.message#}{#/if#})</a></li>
+				{#/if#}
+				<li><a href="{#$cfg_basehost#}/logout.html" class="logout">安全退出</a></li>
+			</div>
+			{#else#}
+			<div id="navLoginBefore" class="fn-left">
+				<li><a href="javascript:;" id="login">登录</a></li>
+				<li><a href="{#$cfg_basehost#}/register.html">注册</a></li>
+			</div>
+			{#/if#}
+		</ul>
+	</div>
+</div>
+<!-- 头部菜单 e -->
+
+<div class="wrap ad">{#myad id="46"#}</div>
+
+<!-- LOGO s -->
+<div class="wraplogo">
+	<div class="wrap fn-clear">
+		<h2 class="logo"><a href="{#$article_channelDomain#}" title="{#$article_channelName#}"><img src="{#$article_logoUrl#}" alt="{#$article_channelName#}" /></a></h2>
+		<div class="crumbs"><a href="{#$cfg_basehost#}">网站首页</a>&nbsp;>&nbsp;<a href="{#getUrlPath service='article' template='list' typeid="{#$list_id#}"#}">{#$list_typename#}</a>&nbsp;>&nbsp;<a href="{#getUrlPath service='article' template='detail' id=$detail_id#}">{#if $detail_subtitle != ""#}{#$detail_subtitle#}{#else#}{#$detail_title#}{#/if#}</a>&nbsp;>&nbsp;正文</div>
+		<div class="tsearch fn-clear">
+			<form action="{#getUrlPath service='article' template='search'#}" method="post">
+				<input type="text" name="keywords" class="skeyword" placeholder="请输入关键字" value="请输入关键字" onFocus="if(value=='请输入关键字') {value='';this.style.color='#333'}" onBlur="if (value=='') {value='请输入关键字';this.style.color='#888'}" />
+				<input type="submit" id="sBtn" value="搜&nbsp;索" />
+			</form>
+		</div>
+	</div>
+</div>
+<!-- LOGO e -->
+
+<div class="wrap fn-clear">
+	<div class="wmain">
+		<h1 class="h1">{#$detail_title#}</h1>
+		<div class="tit-bar fn-clear">
+			<span>{#$detail_pubdate|date_format:'%Y-%m-%d %H:%M:%S'#}&nbsp;&nbsp;&nbsp;来源：{#if $detail_sourceurl != ""#}<a href="{#$detail_sourceurl#}" target="_blank">{#$detail_source#}</a>{#else#}{#$detail_source#}{#/if#}{#if $detail_writer != ""#}&nbsp;&nbsp;&nbsp;作者：{#$detail_writer#}{#/if#}</span>
+			<a href="#comment" class="review">评论（<strong>{#$detail_common#}</strong>）</a>
+		</div>
+		{#if $detail_description != ""#}<div class="summary">[<strong>摘要</strong>] {#$detail_description#}</div>{#/if#}
+
+		{#if $detail_imglist#}
+		<!-- 图集 s -->
+		<div class="atlas" id="atlasMode">
+			<div class="bpic">
+				<i></i>
+				<img src="{#$detail_imglist[0].path#}" />
+				<a href="javascript:;" class="btn_left" title="点击查看上一张"></a>
+				<a href="javascript:;" class="btn_right" title="点击查看下一张"></a>
+				<a href="javascript:;" class="viewlarge">放大</a>
+			</div>
+			<div class="desc">
+				<span class="cut"><i>1</i>/{#$detail_imglist|@count#}</span>
+				<p>{#$detail_imglist[0].info#}</p>
+			</div>
+			<div class="spic" id="atlasScroll">
+				<ul class="fn-clear">
+					{#foreach from=$detail_imglist key=id item=i#}
+					<li{#if $id == 0#} class="current"{#/if#}><a href="javascript:;"><img src="{#changeFileSize url="{#$i.path#}" type="small"#}" /></a><p class="fn-hide">{#$i.info#}</p></li>
+					{#/foreach#}
+				</ul>
+			</div>
+			{#* <p class="link"><a href="#">娱乐图片中心</a>&nbsp;|&nbsp;<a href="#">查看图集</a></p> *#}
+		</div>
+		<!-- 图集 e -->
+		{#/if#}
+
+		<!-- 正文 s -->
+		<div class="container">
+			{#$detail_body#}
+		</div>
+		<!-- 正文 e -->
+
+		{#$detail_page#}
+
+		<!-- 打赏 s -->
+		{#$rewardCount = 0#}
+		{#$rewardHtml = ''#}
+		{#article action='rewardList' return='reward' aid=$detail_id#}
+		{#if $reward.photo != ""#}
+			{#$photo = $reward.photo#}
+		{#else#}
+			{#$photo = $cfg_staticPath|cat:"images/default_user.jpg"#}
+		{#/if#}
+		{#if $reward.username != ""#}
+			{#$username = $reward.username#}
+		{#else#}
+			{#$username = "匿名"#}
+		{#/if#}
+		{#$rewardHtml = $rewardHtml|cat:'<li><img src="'|cat:$photo|cat:'" alt="'|cat:$username|cat:'" title="'|cat:$username|cat:'" /></li>'#}
+		{#$rewardCount = $rewardCount + 1#}
+		{#/article#}
+		<div class="rewardS">
+		    <div class="rewardS-txt">
+		      <h3>觉得小编写的好，就打赏一个吧~</h3>
+		      <div class="rewardS-support">
+		        <a href="javascript:;" class="money">{#echoCurrency type="symbol"#}打赏支持</a>{#if $rewardCount#}<span class="num">{#$rewardCount#}人支持</span>{#/if#}
+		      </div>
+		    </div>
+			{#if $rewardCount#}
+		    <div class="rewardS-user">
+		      <ul class="fn-clear">
+		        {#$rewardHtml#}
+		      </ul>
+		    </div>
+			{#/if#}
+		</div>
+		<!-- 打赏 e -->
+
+		<div class="keywords">
+			<strong>文章关键词：</strong>
+			{#foreach from=$detail_keywordsList key=id item=i#}
+			<a href="{#getUrlPath service='article' template='detail' id=$detail_id#}">{#$i#}</a>
+			{#/foreach#}
+		</div>
+
+		<!-- 猜你喜欢 s -->
+		<div class="guess">
+			<div class="g-title fn-clear"><h4>猜你喜欢</h4><a href="{#getUrlPath service='article' template='list' typeid="{#$list_id#}"#}" class="more" target="_blank">更多</a></div>
+			<div class="g-main fn-clear">
+				<div class="g-left">
+					{#article action="alist" return="alist" typeid="{#$list_id#}" flag="h" thumb="1" pageSize="2"#}
+					<a href="{#$alist.url#}" target="_blank"><img src="{#$alist.litpic#}" alt="{#$alist.title|strip_tags#}" /><span class="txt">{#$alist.title#}</span><span class="bg"></span></a>
+					{#/article#}
+				</div>
+				<div class="g-right">
+					{#article action="alist" return="alist" typeid="{#$list_id#}" flag="h" thumb="0" pageSize="1"#}
+					<h5><a href="{#$alist.url#}" target="_blank">{#$alist.title#}</a></h5>
+					<p>{#$alist.description#}</p>
+					{#/article#}
+					<ul>
+						{#article action="alist" return="rlist" typeid="{#$list_id#}" flag="r" pageSize="10"#}
+						<li{#if $_bindex.rlist == 6#} class="split"{#/if#}><a href="{#$rlist.url#}" target="_blank">{#$rlist.title#}</a></li>
+						{#/article#}
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- 猜你喜欢 e -->
+
+		<!-- 评论 s -->
+		<a name="comment"></a>
+		<div class="comment">
+			<div class="c-title fn-clear">
+				<h4>精彩评论<small>文明上网理性发言，请遵守<a href="#">新闻评论服务协议</a></small></h4>
+				<a href="javascript:;" class="tnum">共{#$detail_common#}条评论</a>
+			</div>
+			<div class="c-area">
+				<div class="textarea" contenteditable="true" data-type="parent"></div>
+				<div class="c-sub fn-clear">
+					{#if $userinfo#}
+					<div class="np-login">
+						<a href="{#$member_userDomain#}" target="_blank" class="u"><img onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_40.jpg';" src="{#if $userinfo.photo == ""#}{#$cfg_staticPath#}images/noPhoto_40.jpg{#else#}{#changeFileSize url="{#$userinfo.photo#}" type="small"#}{#/if#}" /><span>{#$userinfo.nickname#}</span></a>
+						<a href="{#$cfg_basehost#}/logout.html" class="o logout">安全退出</a>
+					</div>
+					<a href="javascript:;" class="subtn">发表</a>
+					{#else#}
+					<a href="javascript:;" class="subtn login">登录</a>
+					{#/if#}
+				</div>
+			</div>
+			<div class="c-content">
+				<ul class="c-nav fn-clear">
+					<li>全部评论</li>
+					<li class="c-orderby fn-clear"><a href="javascript:;" class="chot" data-id="hot">热度</a><a href="javascript:;" class="ctime active" data-id="time">时间</a></li>
+				</ul>
+				<ul class="c-list" id="commentList" data-page="1">
+					<div class="loading"></div>
+				</ul>
+				<div id="loadMore" class="loading">加载更多</div>
+			</div>
+		</div>
+		<!-- 评论 e -->
+
+		<div class="ad">{#myad id="47"#}</div>
+
+		<!-- 相关阅读 s -->
+		<div class="relatedread">
+			<h5>相关阅读：</h5>
+			<ul>
+				{#article action="alist" return="alist" title="$detail_keywords" pageSize="5"#}
+				<li>·<a href="{#$alist.url#}" target="_blank">{#$alist.title#}</a>{#$alist.pubdate|date_format:"%Y.%m.%d"#}</li>
+				{#/article#}
+			</ul>
+		</div>
+		<!-- 相关阅读 e -->
+
+	</div>
+
+	<div class="wsidebar">
+		<div class="ad">{#myad id="48"#}</div>
+
+		<!-- 热门图片推荐 s -->
+		<div class="picrec">
+			<div class="hdt">
+				<h3>热门图片推荐</h3>
+				<a href="{#getUrlPath service='article' template='list' typeid="10"#}" class="more" target="_blank">更多</a>
+			</div>
+			<div class="hdc">
+				<ul class="fn-clear">
+					{#article action="alist" return="alist" typeid="10" thumb="1" page="1" pageSize="8"#}
+					<li><a href="{#$alist.url#}" target="_blank"><img src="{#$alist.litpic#}" alt="{#$alist.title|strip_tags#}" />{#$alist.title#}</a></li>
+					{#/article#}
+				</ul>
+			</div>
+		</div>
+		<!-- 热门图片推荐 e -->
+
+		<div class="ad">{#myad id="49"#}</div>
+		<div class="ad">{#myad id="50"#}</div>
+
+		<!-- 新闻点击排行 s -->
+		<div class="clickrank">
+			<div class="hdt">
+				<h3>新闻点击排行</h3>
+				<a href="{#$article_channelDomain#}" class="more" target="_blank">更多</a>
+			</div>
+			<div class="hdc">
+				<ul class="pic-list fn-clear">
+					{#article action="alist" return="alist" orderby="2" thumb="1" pageSize="4"#}
+					<li><a href="{#$alist.url#}" target="_blank"><img src="{#$alist.litpic#}" alt="{#$alist.title|strip_tags#}" /><span class="txt">{#$alist.title#}</span><span class="bg"></span></a></li>
+					{#/article#}
+				</ul>
+				<ul class="txt-list">
+					{#article action="alist" return="alist" orderby="2" thumb="0" pageSize="15"#}
+					<li><a href="{#$alist.url#}" target="_blank">{#$alist.title#}</a></li>
+					{#/article#}
+				</ul>
+			</div>
+		</div>
+		<!-- 新闻点击排行 e -->
+
+		<!-- 视频新闻 s -->
+		<div class="video">
+			<div class="hdt">
+				<h3>视频新闻</h3>
+				<a href="{#getUrlPath service='article' template='list' typeid="1"#}" class="more" target="_blank">更多</a>
+			</div>
+			<div class="hdc">
+				<ul>
+					{#article action="alist" return="alist" typeid="1" flag="r" thumb="1" pageSize="4"#}
+					<li>
+						<a href="{#$alist.url#}" target="_blank">
+						  <img src="{#$alist.litpic#}" alt="{#$alist.title|strip_tags#}" />
+						  <i></i><span>{#$alist.title#}</span><p>点击数：{#$alist.click#}</p>
+						</a>
+					</li>
+					{#/article#}
+				</ul>
+			</div>
+		</div>
+		<!-- 视频新闻 e -->
+
+		<!-- 精彩图集 s -->
+		<div class="piclist">
+			<div class="hdt">
+				<h3>精彩图集</h3>
+				<a href="{#getUrlPath service='article' template='list' typeid="15"#}" class="more" target="_blank">更多</a>
+			</div>
+			<div class="hdc">
+				<ul class="fn-clear">
+					{#article action="alist" return="alist" typeid="15" thumb="1" page="1" pageSize="8"#}
+					<li><a href="{#$alist.url#}" target="_blank"><img src="{#$alist.litpic#}" alt="{#$alist.title|strip_tags#}" />{#$alist.title#}</a></li>
+					{#/article#}
+				</ul>
+			</div>
+		</div>
+		<!-- 精彩图集 e -->
+
+	</div>
+
+</div>
+
+<!-- 对联广告 -->
+{#myad id="43"#}
+
+{#include file="footer.html"#}
+
+<script type="text/template" id="replaytemp">
+	<div class="c-area">
+		<div class="textarea" contenteditable="true"></div>
+		<div class="c-sub fn-clear">
+			{#if $userinfo#}
+			<a href="javascript:;" class="subtn">回复</a>
+			{#else#}
+			<a href="javascript:;" class="subtn login">登录</a>
+			{#/if#}
+		</div>
+	</div>
+</script>
+
+<!-- 打赏浮动层 s -->
+<div class="rewardS-mask"></div>
+<div class="rewardS-pay">
+  <div class="rewardS-pay-tit">
+    <a href="javascript:;" class="close fn-right">×</a><h3>打赏支持</h3>
+  </div>
+    <div class="rewardS-pay-box">
+      <div class="rewardS-pay-money">
+        <span>打赏金额 </span><strong class="icon">{#echoCurrency type="symbol"#}</strong>
+        <input type="text" name="" value="5" class="inp" />
+        <ul class="rewardS-pay-select">
+          <li>1{#echoCurrency type="short"#}</li><li>2{#echoCurrency type="short"#}</li><li>5{#echoCurrency type="short"#}</li><li>10{#echoCurrency type="short"#}</li><li>20{#echoCurrency type="short"#}</li><li>50{#echoCurrency type="short"#}</li>
+        </ul>
+      </div>
+      <div class="rewardS-pay-way">
+        <h3>选择支付方式：</h3>
+        <ul class="fn-clear">
+		  {#siteConfig action="payment"#}
+  		  <li{#if $_bindex.row == 1#} class="on"{#/if#} data-type="{#$row.pay_code#}"><a href="javascript:;" class="{#$row.pay_code#}" title="{#$row.pay_name#}"></a><em></em></li>
+  		  {#/siteConfig#}
+        </ul>
+      </div>
+    </div>
+    <div class="rewardS-sumbit">
+      <a href="javascript:;" target="_blank" data-url="{#$cfg_basehost#}/include/ajax.php?service=article&action=reward&aid={#$detail_id#}&amount=$amount&paytype=$paytype">确认支付</a>
+    </div>
+</div>
+<!-- 打赏浮动层 e -->
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.mousewheel.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.mCustomScrollbar.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/detail.js"></script>
+</body>
+</html>

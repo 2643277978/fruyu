@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="utf-8">
+<title>{#$cfg_webname#}</title>
+<meta name="keywords" content="{#$cfg_keywords#}">
+<meta name="description" content="{#$cfg_description#}">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/mobile_touch.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+    var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+</script>
+{#* 微信分享 *#}
+{#$Share_description = {#$cfg_description#}#}
+{#$Share_title = {#'下载APP-'|cat:$cfg_webname#}#}
+{#$Share_img = {#$cfg_app_logo#}#}
+{#$Share_url = {#getUrlPath service='siteConfig' template='mobile'#}#}
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+</head>
+<body>
+
+<div class="logo"><a href="javascript:history.go(-1)" class="close goBack"></a><img src="{#$cfg_app_logo#}" alt=""></div>
+<h3 class="shortname">{#$cfg_appname#}</h3>
+
+<div class="app_box">
+  <ul>
+    {#if $cfg_app_android_download#}<li class="app_android"><a href="javascript:;" data-href="{#$cfg_app_android_download#}" data-yyb="{#$cfg_app_yyb_download#}"><span>Android版下载</span></a></li>{#/if#}
+    {#if $cfg_app_ios_download#}<li class="app_ios"><a href="javascript:;" data-href="{#$cfg_app_ios_download#}"><span>iphone版下载</span></a></li>{#/if#}
+    <li><a href="{#$cfg_basehost#}"><span>H5触屏版</span></a></li>
+  </ul>
+</div>
+
+<div class="tipWarp"><i class="arrow"></i>请点击右上角<br/>选择“浏览器中打开”</div>
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/mobile_touch.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

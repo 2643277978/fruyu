@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{#$cfg_fenxiaoName#}</title>
+    <meta name="keywords" content="{#$article_keywords#}">
+    <meta name="description" content="{#$article_description#}">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fenxiao.css?v={#$cfg_staticVersion#}">
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+    <script>
+        var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$car_channelDomain#}', staticPath = '{#$cfg_staticPath#}', templets_skin = '{#$templets_skin#}';
+    </script>
+</head>
+<body>
+{#include file="../../siteConfig/touch_top.html" pageTitle="{#$cfg_fenxiaoName#}"#}
+
+<div class="top">
+    <div class="info-box fn-clear">
+        <div class="logo fn-left"><img src="{#$userinfo.photo|default:'/static/images/noPhoto_100.jpg'#}" alt=""></div>
+        <div class="info">
+            <p class="name">{#$userinfo.username#}</p>
+            <span class="id-box"><i></i> {#$langData['siteConfig'][35][0]#}ID：{#$from_userid|default:$langData['siteConfig'][13][20]#}</span>{#* 推荐人 / 无 *#}
+        </div>
+
+        <div class="code-box"><a href="{#getUrlPath service="member" type="user" template="fenxiao_code"#}"><i></i><p>{#$langData['siteConfig'][35][1]#}</p></a></div> {#* 推广二维码*#}
+    </div>
+
+    <div class="history">
+        <p class="tit">{#$langData['siteConfig'][35][2]#}</p> {#* 历史成功佣金 *#}
+        <p class="money">{#$totalAmount#}</p>
+    </div>
+
+    <div class="cash-draw">
+        <p class="tit">{#$langData['siteConfig'][19][386]#}</p>{#* 账户余额 *#}
+        <p class="money">{#$userinfo.money#} <a class="btn fn-right" href="{#getUrlPath service='member' type='user' template='withdraw'#}">{#$langData['siteConfig'][16][12]#}</a></p>{#* 提现 *#}
+    </div>
+
+</div>
+
+<div class="nav-box">
+    <ul class="nav">
+        <li><a href="{#getUrlPath service="member" type="user" template="fenxiao_commission"#}">
+            <div class="img-box"><img src="{#$templets_skin#}images/icon_01.png" alt=""></div>
+            <p>{#$langData['siteConfig'][35][3]#}</p>{#* 佣金明细 *#}
+        </a></li>
+        <li><a href="{#getUrlPath service="member" type="user" template="fenxiao_offline"#}">
+            <div class="img-box"><img src="{#$templets_skin#}images/icon_02.png" alt=""></div>
+            <p>{#$langData['siteConfig'][35][4]#}</p>{#* 我的下线 *#}
+        </a>
+        </li>
+    </ul>
+</div>
+
+<script type="text/javascript">
+    var wxconfig = {
+        "appId": '',
+        "timestamp": '',
+        "nonceStr": '',
+        "signature": '',
+        "description": '{#$cfg_fenxiaoName#}',
+        "title": '{#$cfg_fenxiaoName#}',
+        "imgUrl": '{#$cfg_weblogo#}',
+        "link": '{#getUrlPath service='member' type='user' template='fenxiao'#}',
+    };
+
+    document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript" src="{#$templets_skin#}js/publicShare.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

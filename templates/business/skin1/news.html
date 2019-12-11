@@ -1,0 +1,201 @@
+{#include file="d_top.html"#}
+
+    <div class="main">
+      <div id="bc">
+        <div class="wrapper" style=" width:100%;">
+          <div id="bf7" style="display:block; ">
+
+              {#$pageCurr = "news"#}
+              {#include file="d_head.html"#}
+
+          </div>
+          <div id="cc">
+            <div class="w1000">
+              <div id="bf0" class="frame" style="display:block; width:1000px;">
+                <div id="module_25261130" class="module">
+                  <div class="widget nav" style="display:" id="navBar">
+                    <div class="con-box">
+                      <div class="decoration" style="padding:0 0  0 14px;">
+                          <p>当前位置:
+                            <a href="{#getUrlPath service='business' template='list'#}">店铺大全</a>&gt;
+                            <a href="{#getUrlPath service='business' template='detail' id={#$detail_id#}#}">{#$detail_title#}</a>&gt;
+                            <a href="{#getUrlPath service='business' template='news' bid={#$detail_id#}#}">公司资讯</a></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="bfa" class="clearfix  ">
+                <div id="bf1" class="frame" style="display:block; width:232px;">
+
+                    <div id="module_25261145" class="module">
+                      <div class="widget product_category  ">
+                        <div class="con-box">
+                          <div class="zl_bg"></div>
+                          <div class="con-title show_block">
+                            <h2><span>公司资讯</span></h2>
+                          </div>
+                          <div class="zr_bg"></div>
+                          <div class="bf-box_text moduleBoxbg">
+                            <ul class="category" style="text-align:left;">
+                              {#business action="news_type" return="type" uid={#$detail_member['userid']#}#}
+                              <li class="c_t_li clearfix">
+                                <a href="{#$type.url#}" class="cate_title clearfix">
+                                  <span class="cateBg_l fl"></span>
+                                  <span class="cateBg_m fl"><i class="icon_cate_i">{#$type.typename#}</i></span>
+                                  <span class="cateBg_r fl"></span>
+                                </a>
+                              </li>
+                              {#/business#}
+                            </ul>
+                            <div style="clear:both"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div id="module_25261109" class="module">
+                      <!-- 未登陆弹框导入内部样式和js -->
+                      <div class="widget company_files">
+                        <div class="con-box">
+                          <div class="com_dang sj-info moduleBoxbg">
+                            <div class="com_da_T">
+                              <span class="g_com_pdj fl">
+                                <a target='_blank' href="#">
+                                  <img src="{#$templets_skin#}images/b_dpt.png"></a>
+                              </span>
+                              <span class="g_com_span">单品通会员</span></div>
+                            <div class="comBorder">
+                              <div class="sj-line sjDiv1">
+                                <p class="companyname">
+                                  <span>{#$detail_title#}</span>
+                                  <img src="{#$templets_skin#}images/s_tjh.png"></p>
+                              </div>
+                              <div class="sj-line sjDiv2" style="border-bottom:none; padding-bottom: 0px;">
+                                <p class="p_rz clearfix">
+                                  <span class="p_rzL">满意度：</span>
+                                  <span class="p_rzR">{#$detail_rating#}</span></p>
+                                <p class="p_rz clearfix">
+                                  <span class="p_rzL">经营类目：</span>
+                                  <span class="p_rzR">{#$detail_typename#}</span></p>
+                                <p class="p_rz clearfix">
+                                  <span class="p_rzL">营业时间：</span>
+                                  <span class="p_rzR">{#$detail_opentime#}</span></p>
+                                <p class="p_rz clearfix">
+                                  <span class="p_rzL">人均消费：</span>
+                                  <span class="p_rzR">{#$detail_amount#}</span></p>
+                                <p class="p_rz clearfix">
+                                  <span class="p_rzL">停车场：</span>
+                                  <span class="p_rzR">{#$detail_parking#}</span></p>
+                              </div><br />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="module_25261112" class="module">
+                      <div class="widget contactus  ">
+                        <div class="con-box">
+                          <div class="zl_bg"></div>
+                          <div class="con-title show_block">
+                            <h2><span>联系我们</span></h2>
+                          </div>
+                          <div class="zr_bg"></div>
+                          <div class="bf-box_text contact moduleBoxbg">
+                            <div class="contactUl">
+                              <ul>
+                                <li class="picContact clearfix">
+                                  <!-- 初始是默认显示开始2014.12.26 -->
+                                  <!-- 初始是默认显示结束2014.12.26 -->
+                                  <div class="contxt">
+                                    <p>
+                                      <span class="contxtSpan">手&nbsp;机：</span>
+                                      <span class="phoneNumber">
+                                        {#$detail_tel#}
+                                        </span>
+                                    </p>
+                                    <p>
+                                      <span class="contxtSpan">联系我：</span>
+                                      {#if $detail_qq#}<a href="http://wpa.qq.com/msgrd?v=3&uin={#$detail_qq#}&Menu=yes" title="QQ在线交谈" target="_blank"><img src="http://wpa.qq.com/pa?p=2:{#$detail_qq#}:4" /></a>{#/if#}
+                                    </p>
+                                    <!-- 初始是默认显示开始2014.12.26 -->
+                                    <!-- 初始是默认显示结束2014.12.26 --></div>
+                                </li>
+                                <li class="comIntro clearfix">
+                                  <div class="comIntroL">{#$detail_member['company']#}</div>
+                                </li>
+                                <li class="addIntroW">
+                                  <div class="addIntro_div clearfix">
+                                    <div class="addIntroL">
+                                      <ul>
+                                        <li class="addIntro clearfix">
+                                          <span class="addL">区&nbsp;&nbsp;域：</span>
+                                          <span id="detialAddr" class="addR">{#$detail_addrname[0]#} {#$detail_addrname[1]#}</span></li>
+                                        <li class="addIntro clearfix">
+                                          <span class="addL">地&nbsp;&nbsp;址：</span>
+                                          <span id="detialAddr" class="addR">{#$detail_address#}</span></li>
+                                        <li class="addIntro clearfix">
+                                          <span class="addL">公众号：</span>
+                                          <span id="detialAddr" class="addR">{#$detail_wechatname#}({#$detail_wechatcode#})</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="addIntroR">
+                                      <img src="{#$detail_wechatqr#}" width="126" height="126" /></div>
+                                  </div>
+                                  </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div id="bf2" class="frame" style="display:none; width:232px;"></div>
+                <div id="bfb" style="width:758px">
+                  <div id="bf3" class="frame" style="display:block; width:758px;">
+                    <div id="module_25261134" class="module">
+                      <div class="widget article_showcase  ">
+                        <style>#module_25261134 .bf-box_list li{line-height:30px;margin-right:0;} #module_25261134 .bf-box_list li .artDiv-pic{ display:none;} #module_25261134 .article_showcase .bf-box_list{padding:0;margin-right:-30px;} #module_25261134 .company_detail .bf-box_text2{padding:14px;} #module_25261134 .bf-box_list li .article_title{padding-left:10px;background:url({#$templets_skin#}images/infodian.gif) no-repeat left center;} #module_25261134 .bf-box_list li .article_title a{display:block;margin-right:70px;height:24px;overflow:hidden;} #module_25261134 .bf-box_list li .article_title a span{word-break: break-all;word-wrap: break-word;} #module_25261134 .bf-box_list li .article_txt{display:none;} #bf0 #module_25261134 .bf-box_list li,#bf6 #module_25261134 .bf-box_list li{margin-right:30px;} .YH_Class #bfc #module_25261134 .bf-box_list li{width:475px;} .YH_Class .YH_bfc_Class #bf4 #module_25261134 .bf-box_list li,.YH_Class .YH_bfc_Class #bf5 #module_25261134 .bf-box_list li{width:470px;margin-right:30px;}</style>
+                        <div class="con-box">
+                          <div class="zl_bg"></div>
+                          <div class="con-title show_block">
+                            <h2><span>公司资讯</span></h2>
+                          </div>
+                          <div class="zr_bg"></div>
+                          <div class="bf-box_text moduleBoxbg">
+                            <ul class="bf-box_list clearfix">
+
+                              {#business action="news_list" return="list" uid={#$detail_member['userid']#} typeid={#$id#} page={#$page#} pageSize="20"#}
+                              <li class="clearfix">
+                                <p class="article_title">
+                                  <span class="fr"><i class="">{#$list.pubdate|date_format:"%Y-%m-%d"#}</i></span>
+                                  <a target="_blank" href="{#$list.url#}"><span class="txtElps"><strong>{#$list.title#}</strong></span></a>
+                                </p>
+                              </li>
+                              {#/business#}
+
+                            </ul>
+
+                              <!-- 分页 -->
+                          	  <div class="fn-clear">
+                          		{#getPageList service='business' template='news' bid={#$detail_id#} typeid={#$id#} pageType='dynamic' param="{#$pageParam#}&page=#page#"#}
+                          	  </div>
+
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="bfc">
+                    <div id="bf4" class="frame" style="display:none; width:758px;"></div>
+                    <div id="bf5" class="frame" style="display:none; width:758px;"></div>
+                  </div>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <div id="bf6" class="frame" style="display:none; width:1000px;"></div>
+            </div>
+          </div>
+
+{#include file="d_bottom.html"#}

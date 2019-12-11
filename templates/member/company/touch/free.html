@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>体验版商家中心</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/free_3.4.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+<div class="mheader">
+  {#if $userinfo#}
+  <dl class="minfo fn-clear">
+    <dt><a href="{#getUrlPath service='member' type='user' template='profile'#}"><img onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_100.jpg';" src="{#if $userinfo.photo == ""#}{#$cfg_staticPath#}images/noPhoto_100.jpg{#else#}{#changeFileSize url="{#$userinfo.photo#}"#}{#/if#}" /></a></dt>
+    <dd>
+      <h2><a href="{#getUrlPath service='member' type='user' template='profile'#}">{#$userinfo.nickname#}</a></h2>
+      <div class="levelinfo">[{#$businessConfig.trialName#}店铺]于{#$userinfo.busiExpired|date_format:'%Y.%m.%d'#}到期<a href="{#getUrlPath service='member' template='join_renew'#}">续费</a></div>
+    </dd>
+  </dl>
+
+  {#*<a href="javascript:;" class="qr"></a>*#}
+
+  <ul class="account fn-clear">
+    <li><a href="{#getUrlPath service='member' template='pocket'#}"><strong>{#$userinfo.money#}</strong>可用余额/元</a></li>
+    <li><a href="{#getUrlPath service='member' template='pocket'#}"><strong>{#$userinfo.point#}</strong>当前账户积分</a></li>
+    <li><a href="{#getUrlPath service='business' template='allComment' id="{#$userinfo.busiId#}"#}"><strong>{#$totalComment#}</strong>今日评论/条</a></li>
+  </ul>
+
+  {#else#}
+  <div class="nlogin"><a href="{#$cfg_basehost#}/login.html">{#$langData['siteConfig'][2][0]#}/{#$langData['siteConfig'][1][0]#}</a></div>
+  {#/if#}
+</div>
+
+<ul class="nav">
+  <li><a href="{#getUrlPath service='member' template='order'#}"><i class="icon-order"></i>订单</a></li>
+  <li><a href="{#getUrlPath service='member' type='user' template='manage'#}"><i class="icon-manage"></i>管理</a></li>
+  <li><a href="{#getUrlPath service='member' type='user' template='pocket'#}"><i class="icon-account"></i>账户</a></li>
+  <li><a href="{#getUrlPath service='member' type='user' template='collect'#}"><i class="icon-collect"></i>收藏</a></li>
+  <li><a href="{#getUrlPath service='member' type='user' template='qiandao'#}"><i class="icon-qiandao"></i>签到</a></li>
+</ul>
+
+<ul class="snav">
+  <li><a href="{#getUrlPath service='member' type='user' template='business-config'#}">黄页配置</a></li>
+  <li><a href="{#getUrlPath service='business' template='detail' id=$business.id#}">店铺首页</a></li>
+  <li><a href="{#getUrlPath service='member' type='user' template='convert'#}">积分兑换</a></li>
+</ul>
+
+{#if $userinfo.busiState == 1#}
+<dl class="manage">
+  <dt>管理中心<a href="{#getUrlPath service='member' template='appmanage'#}">编辑</a></dt>
+  <dd class="fn-clear">
+  
+    {#if !$showModule#}
+    <!-- 未开通状态 -->
+    <div class="empty">您还未开启任何功能，<a href="{#getUrlPath service='member' template='appmanage'#}">点击进入配置页面>></a></div>
+    {#else#}
+    <!-- 已开通状态 -->
+    {#foreach from=$showModule item=module#}
+    <a href="{#if $module.url#}{#$module.url#}{#else#}###{#/if#}">{#if $module.is_module#}<img src="{#$cfg_staticPath#}images/admin/nav/{#$module.name#}.png?v={#$cfg_staticVersion#}" />{#else#}<img src="{#$cfg_staticPath#}images/business/{#$module.name#}.png" />{#/if#}{#$module.title#}</a>
+    {#/foreach#}
+    {#/if#}
+  </dd>
+</dl>
+{#/if#}
+
+<ul class="link">
+  {#*<li><a href="{#getUrlPath service='member' template='friend'#}"><i class="icon-friend"></i>我的好友</a></li>*#}
+  {#*<li><a href="{#getUrlPath service='member' template='invite'#}"><i class="icon-invite"></i>邀请返利</a></li>*#}
+  <li><a href="{#getUrlPath service='member' template='join_upgrade'#}"><i class="icon-upgrade"></i>升级企业版</a></li>
+  <li><a href="{#getUrlPath service='siteConfig' template='help'#}"><i class="icon-help"></i>帮助中心</a></li>
+  <li class="hotline"><a href="tel:{#$cfg_hotline#}"><i class="icon-tel"></i>网站客服</a></li>
+  <li><a href="{#getUrlPath service='member' type='user' template='security'#}"><i class="icon-security"></i>安全中心</a></li>
+  <li id="appSetting" class="fn-hide"><a href="{#getUrlPath service='member' type='user' template='setting'#}"><i class="icon-setting"></i>系统设置</a></li>
+</ul>
+
+<a href="{#$member_userDomain#}" class="grEnter">个人版</a>
+
+{#include file="../../../siteConfig/touch_bottom_3.4.html" active="member"#}
+<script type="text/javascript" src="{#$templets_skin#}js/free_3.4.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

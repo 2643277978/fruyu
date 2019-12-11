@@ -1,0 +1,263 @@
+{#if {#verifyModuleAuth module='homemaking'#}#}
+
+<script>
+var doact = '{#$do#}';
+</script>
+<div class="w-form">
+	<form name="fabuForm" id="fabuForm" method="post" action="/include/ajax.php?service=homemaking&action={#if $do == "edit"#}edit&id={#$id#}{#else#}put{#/if#}" data-url="{#getUrlPath service='member' template='manage' action='homemaking'#}">
+		<dl class="fn-clear" data-required="1">
+			<dt><span>*</span>{#$langData['homemaking'][8][34]#}：</dt>{#* 联系人 *#}
+			<dd>
+				<input type="text" name="username" class="inp" id="username" size="25" maxlength="20" data-title="{#$langData['homemaking'][8][17]#}" value="{#$detail_username#}" />
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear" data-required="1">
+			<dt><span>*</span>{#$langData['siteConfig'][19][56]#}：</dt>{#* 联系方式 *#}
+			<dd>
+				<input type="text" name="tel" class="inp" id="tel" size="25" maxlength="20" data-title="{#$langData['homemaking'][8][18]#}" value="{#$detail_tel#}" />
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+		<dl class="fn-clear" data-required="1">
+			<dt><span>*</span>{#$langData['siteConfig'][19][27]#}：</dt>
+			<dd id="selAddr">
+				<div class="sel-group" data-title="{#$langData['siteConfig'][20][68]#}">
+					<div class="addrBtn" data-field="addrid" data-ids="{#getPublicParentInfo tab='site_area' id=$detail_addrid split=' '#}" data-id="{#$detail_addrid#}">{#if $detail_addrid#}{#getPublicParentInfo tab='site_area' id=$detail_addrid type='typename' split='/'#}{#else#}{#$langData['siteConfig'][7][2]#}{#/if#}</div>
+				</div>
+				<input type="hidden" name="addrid" id="addrid" value="{#$detail_addrid#}" />
+				<input type="hidden" name="cityid" id="cityid" value="{#$detail_cityid#}" />
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+
+		<dl class="fn-clear">
+			<dt><span>*</span>{#$langData['homemaking'][8][46]#}：</dt>{#* 上传人员相片 *#}
+			<dd class="thumb fn-clear listImgBox">
+				<div class="uploadinp filePicker thumbtn{#if $detail_photo != ""#} fn-hide{#/if#}" id="filePicker1" data-type="thumb"  data-count="1" data-size="{#$thumbSize#}" data-imglist=""><div></div><span></span></div>
+				{#if $detail_photo != ""#}
+				<ul id="listSection1" class="listSection thumblist fn-clear" style="display:inline-block;"><li id="WU_FILE_0_1"><a href='{#$detail_photo#}' target="_blank" title=""><img alt="" src="{#changeFileSize url="$detail_photo" type="small"#}" data-val="{#$detail_photoSource#}"/></a><a class="reupload li-rm" href="javascript:;">{#$langData['siteConfig'][19][176]#}</a></li></ul>
+				{#else#}
+				<ul id="listSection1" class="listSection thumblist fn-clear"></ul>
+				{#/if#}
+				<input type="hidden" name="photo" value="{#$detail_photoSource#}" class="imglist-hidden" id="photo">
+			</dd>
+		</dl>
+
+		<dl class="fn-clear" data-required="1">
+			<dt><span>*</span>{#$langData['homemaking'][8][47]#}：</dt>{#* 年龄 *#}
+			<dd>
+				<input type="text" name="age" class="inp" size="7" id="age" maxlength="7" value="{#$detail_age#}" data-title="{#$langData['homemaking'][8][48]#}" />
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+
+		<dl class="fn-clear">
+			<dt><span>*</span>{#$langData['homemaking'][8][49]#}：</dt>{#* 籍贯 *#}
+			<dd>
+				<select class="chosen-select" id="place" name="place" style="width: auto; min-width: 150px;" data-title="{#$langData['homemaking'][8][50]#}">{#* 请选择籍贯 *#}
+					<option selected="" value="0">{#$langData['siteConfig'][7][2]#}</option>{#* 请选择 *#}
+					{#homemaking action="city" return="city"#}
+					<option value="{#$city.id#}" {#if $detail_place == $city.id#} selected{#/if#}>{#$city.name#}</option>
+					{#/homemaking#}
+				</select>
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+
+		<dl class="fn-clear">
+			<dt><span>*</span>{#$langData['homemaking'][8][51]#}：</dt>{#* 学历 *#}
+			<dd>
+				<select class="chosen-select" id="education" name="education" style="width: auto; min-width: 150px;" data-title="{#$langData['homemaking'][8][51]#}">{#* 请选择学历 *#}
+					<option selected="" value="0">{#$langData['siteConfig'][7][2]#}</option>{#* 请选择 *#}
+					{#homemaking action="homemakingitemList" type="1" return="list"#}
+					<option value="{#$list.id#}" {#if $detail_education == $list.id#} selected{#/if#}>{#$list.typename#}</option>
+					{#/homemaking#}
+				</select>
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+
+		<dl class="fn-clear">
+			<dt>{#$langData['homemaking'][8][53]#}：</dt>{#* 民族 *#}
+			<dd>
+				<select class="chosen-select" id="nation" name="nation" style="width: auto; min-width: 150px;" data-title="{#$langData['homemaking'][8][54]#}">{#* 请选择民族*#}
+					<option selected="" value="0">{#$langData['siteConfig'][7][2]#}</option>{#* 请选择 *#}
+					{#homemaking action="homemakingitemList" type="2" return="list"#}
+					<option value="{#$list.id#}" {#if $detail_nation == $list.id#} selected{#/if#}>{#$list.typename#}</option>
+					{#/homemaking#}
+				</select>
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+
+		<dl class="fn-clear">
+			<dt><span>*</span>{#$langData['homemaking'][8][55]#}：</dt>{#* 从业经验 *#}
+			<dd>
+				<select class="chosen-select" id="experience" name="experience" style="width: auto; min-width: 150px;" data-title="{#$langData['homemaking'][8][56]#}">{#* 请选择从业经验  *#}
+					<option selected="" value="0">{#$langData['siteConfig'][7][2]#}</option>{#* 请选择 *#}
+					{#homemaking action="homemakingitemList" type="3" return="list"#}
+					<option value="{#$list.id#}" {#if $detail_experience == $list.id#} selected{#/if#}>{#$list.typename#}</option>
+					{#/homemaking#}
+				</select>
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+
+		<dl class="fn-clear" data-required="1">
+			<dt>{#$langData['homemaking'][8][57]#}：</dt>{#* 服务户数 *#}
+			<dd>
+				<input type="text" name="servicenums" class="inp" size="7" id="servicenums" maxlength="7" value="{#$detail_servicenums#}" data-title="{#$langData['homemaking'][8][58]#}" />
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+
+		<dl class="fn-clear">
+			<dt><span>*</span>{#$langData['homemaking'][8][93]#}：</dt>{#* 薪资 *#}
+			<dd>
+				<input type="text" name="salary" class="inp" size="7" id="salary" maxlength="7" value="{#$detail_salary#}" data-title="{#$langData['homemaking'][8][94]#}" />
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+
+		<dl class="fn-clear">
+			<dt>{#$langData['homemaking'][2][19]#}：</dt>{#* 工作类型 *#}
+			<dd>
+				<div class="checkbox">
+					{#homemaking action="homemakingitemList" type="5" return="list"#}
+					<label><input type="checkbox" name="nature[]" value="{#$list.id#}" {#if strpos($detail_nature, $list.id)>-1#}checked{#/if#}>{#$list.typename#}</label>
+					{#/homemaking#}
+				</div>
+			</dd>
+		</dl>
+
+		<dl class="fn-clear">
+			<dt>{#$langData['homemaking'][2][20]#}：</dt>{#* 服务内容 *#}
+			<dd>
+				<div class="checkbox">
+					{#homemaking action="homemakingitemList" type="6" return="list"#}
+					<label><input type="checkbox" name="naturedesc[]" value="{#$list.id#}" {#if strpos($detail_naturedesc, $list.id)>-1#} checked{#/if#}>{#$list.typename#}</label>
+					{#/homemaking#}
+				</div>
+			</dd>
+		</dl>
+
+		<dl class="fn-clear">
+			<dt>{#$langData['homemaking'][4][10]#}：</dt>{#* 属性 *#}
+			<dd>
+				<div class="checkbox">
+					<label><input type="checkbox" name="tag[]" value="0" {#if strpos($detail_tag, '0')>-1#}checked{#/if#}>{#$langData['homemaking'][4][11]#}</label>
+					<label><input type="checkbox" name="tag[]" value="1" {#if strpos($detail_tag, '1')>-1#}checked{#/if#}>{#$langData['homemaking'][4][12]#}</label>
+				</div>
+			</dd>
+		</dl>
+
+		<dl class="fn-clear" data-required="1">
+			<dt>{#$langData['homemaking'][2][14]#}：</dt>{#* 做饭能力 *#}
+			<dd>
+				<input class="inp" size="50" type="text" id="cook"  placeholder="{#$langData['homemaking'][5][0]#}" value="{#$detail_cooking#}" name="cooking">
+			</dd>
+		</dl>
+
+		<dl class="fn-clear" data-required="1">
+			<dt>{#$langData['homemaking'][2][15]#}：</dt>{#* 照顾小孩 *#}
+			<dd>
+				<input class="inp" size="50" type="text" id="watchbaby"  placeholder="{#$langData['homemaking'][5][1]#}" value="{#$detail_watchbaby#}" name="watchbaby">
+			</dd>
+		</dl>
+
+		<dl class="fn-clear" data-required="1">
+			<dt>{#$langData['homemaking'][2][16]#}：</dt>{#* 照顾老人 *#}
+			<dd>
+				<input class="inp" size="50" type="text" id="watchold"  placeholder="{#$langData['homemaking'][5][2]#}" value="{#$detail_watchold#}" name="watchold">
+			</dd>
+		</dl>
+
+		<dl class="fn-clear" data-required="1">
+			<dt>{#$langData['homemaking'][2][17]#}：</dt>{#* 照顾宠物 *#}
+			<dd>
+				<input class="inp" size="50" type="text" id="watchcat"  placeholder="{#$langData['homemaking'][5][3]#}" value="{#$detail_watchcat#}" name="watchcat">
+			</dd>
+		</dl>
+
+		<dl class="fn-clear" data-required="1">
+			<dt>{#$langData['homemaking'][2][18]#}：</dt>{#* 其他技能 *#}
+			<dd>
+				<input class="inp" size="50" type="text" id="otherskills"  placeholder="{#$langData['homemaking'][5][4]#}" value="{#$detail_otherskills#}" name="otherskills">
+			</dd>
+		</dl>
+
+		<dl class="fn-clear">
+			<dt>{#$langData['homemaking'][1][30]#}：</dt>{#* 身份证正面照片 *#}
+			<dd class="thumb fn-clear listImgBox">
+				<div class="uploadinp filePicker thumbtn{#if $detail_photo != ""#} fn-hide{#/if#}" id="filePicker1" data-type="thumb"  data-count="1" data-size="{#$thumbSize#}" data-imglist=""><div></div><span></span></div>
+				{#if $detail_photo != ""#}
+				<ul id="listSection1" class="listSection thumblist fn-clear" style="display:inline-block;"><li id="WU_FILE_0_1"><a href='{#$detail_photo#}' target="_blank" title=""><img alt="" src="{#changeFileSize url="$detail_photo" type="small"#}" data-val="{#$detail_photoSource#}"/></a><a class="reupload li-rm" href="javascript:;">{#$langData['siteConfig'][19][176]#}</a></li></ul>
+				{#else#}
+				<ul id="listSection1" class="listSection thumblist fn-clear"></ul>
+				{#/if#}
+				<input type="hidden" name="idcardFront" value="{#$detail_idcardFrontSource#}" id="idcardFront">
+			</dd>
+		</dl>
+
+		<dl class="fn-clear">
+			<dt><span>*</span>{#$langData['homemaking'][8][46]#}：</dt>{#* 身份证反面照片 *#}
+			<dd class="thumb fn-clear listImgBox">
+				<div class="uploadinp filePicker thumbtn{#if $detail_photo != ""#} fn-hide{#/if#}" id="filePicker1" data-type="thumb"  data-count="1" data-size="{#$thumbSize#}" data-imglist=""><div></div><span></span></div>
+				{#if $detail_photo != ""#}
+				<ul id="listSection1" class="listSection thumblist fn-clear" style="display:inline-block;"><li id="WU_FILE_0_1"><a href='{#$detail_photo#}' target="_blank" title=""><img alt="" src="{#changeFileSize url="$detail_photo" type="small"#}" data-val="{#$detail_photoSource#}"/></a><a class="reupload li-rm" href="javascript:;">{#$langData['siteConfig'][19][176]#}</a></li></ul>
+				{#else#}
+				<ul id="listSection1" class="listSection thumblist fn-clear"></ul>
+				{#/if#}
+				<input type="hidden" name="photo" value="{#$detail_photoSource#}" class="imglist-hidden" id="photo">
+			</dd>
+		</dl>
+
+		<dl class="fn-clear">
+			<dt><span>*</span>{#$langData['homemaking'][8][46]#}：</dt>{#* 健康证 *#}
+			<dd class="thumb fn-clear listImgBox">
+				<div class="uploadinp filePicker thumbtn{#if $detail_photo != ""#} fn-hide{#/if#}" id="filePicker1" data-type="thumb"  data-count="1" data-size="{#$thumbSize#}" data-imglist=""><div></div><span></span></div>
+				{#if $detail_photo != ""#}
+				<ul id="listSection1" class="listSection thumblist fn-clear" style="display:inline-block;"><li id="WU_FILE_0_1"><a href='{#$detail_photo#}' target="_blank" title=""><img alt="" src="{#changeFileSize url="$detail_photo" type="small"#}" data-val="{#$detail_photoSource#}"/></a><a class="reupload li-rm" href="javascript:;">{#$langData['siteConfig'][19][176]#}</a></li></ul>
+				{#else#}
+				<ul id="listSection1" class="listSection thumblist fn-clear"></ul>
+				{#/if#}
+				<input type="hidden" name="photo" value="{#$detail_photoSource#}" class="imglist-hidden" id="photo">
+			</dd>
+		</dl>
+
+		<dl class="fn-clear">
+			<dt><span>*</span>{#$langData['homemaking'][8][46]#}：</dt>{#* 厨师证 *#}
+			<dd class="thumb fn-clear listImgBox">
+				<div class="uploadinp filePicker thumbtn{#if $detail_photo != ""#} fn-hide{#/if#}" id="filePicker1" data-type="thumb"  data-count="1" data-size="{#$thumbSize#}" data-imglist=""><div></div><span></span></div>
+				{#if $detail_photo != ""#}
+				<ul id="listSection1" class="listSection thumblist fn-clear" style="display:inline-block;"><li id="WU_FILE_0_1"><a href='{#$detail_photo#}' target="_blank" title=""><img alt="" src="{#changeFileSize url="$detail_photo" type="small"#}" data-val="{#$detail_photoSource#}"/></a><a class="reupload li-rm" href="javascript:;">{#$langData['siteConfig'][19][176]#}</a></li></ul>
+				{#else#}
+				<ul id="listSection1" class="listSection thumblist fn-clear"></ul>
+				{#/if#}
+				<input type="hidden" name="photo" value="{#$detail_photoSource#}" class="imglist-hidden" id="photo">
+			</dd>
+		</dl>
+
+		
+		<dl class="fn-clear">
+			<dt>{#$langData['siteConfig'][19][901]#}：</dt>{#* 保证金 *#}
+			<dd>
+				<div class="checkbox">
+					<label><input type="checkbox" name="flag[]" value="{#$list.id#}" {#if $tag.active#} checked{#/if#}>金牌</label>
+				</div>
+			</dd>
+		</dl>
+		
+		<dl class="fn-clear">
+			<dt>&nbsp;</dt>
+			<dd><button class="submit" id="submit">{#if $id == 0#}{#$langData['siteConfig'][11][19]#}{#else#}{#$langData['siteConfig'][6][122]#}{#/if#}</button></dd>
+		</dl>
+	</form>
+</div>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/calendar/WdatePicker.js?v={#$cfg_staticVersion#}"></script>
+
+{#else#}
+<div class="list" style="padding: 200px 0; text-align: center; font-size: 14px; color: red;">{#$langData['siteConfig'][20][403]#}</div>
+{#/if#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/publicAddr.js?v={#$cfg_staticVersion#}"></script>

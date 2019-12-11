@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$langData['siteConfig'][17][30]#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="/templates/courier/css/mobiscroll.css"/>
+<link rel="stylesheet" type="text/css" href="/templates/courier/css/leMai.css?v={#$cfg_staticVersion#}">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+</head>
+<body>
+<!-- 外卖订单 -->
+<div class="waiMai">
+	<a href="javascript:;" class="kaiGuan xiaoXue{#if $courier_state == 1#} kaiGuan01{#/if#}"><i></i></a>
+	<p>{#$langData['siteConfig'][17][30]#}</p>
+	<a href="/?service=waimai&do=courier&template=logout" class="logout"></a>
+</div>
+
+<!-- 今日外卖战绩 -->
+<div class="todayWai">
+	<div class="zhanJi fn-clear">
+		<span>{#$langData['siteConfig'][17][31]#}</span>
+	</div>
+	<div class="yiuLan fn-clear" style="margin-top: .2rem;">
+		<div class="yiuLan01">
+			<p>{#$langData['waimai'][4][13]|replace:'1':$success#}</p>
+			<span>{#$langData['siteConfig'][9][5]#}</span>
+		</div>
+		<div class="yiuLan01 yiuLan02">
+			<p>{#$langData['waimai'][4][13]|replace:'1':$failed#}</p>
+			<span>{#$langData['siteConfig'][9][6]#}</span>
+		</div>
+	</div>
+	<div class="yiuLan fn-clear" style="margin-top: .6rem;">
+		<div class="yiuLan01">
+			<p>{#$langData['waimai'][4][14]|replace:'1':$amount#}</p>
+			<span>{#$langData['siteConfig'][19][164]#}</span>
+		</div>
+		<div class="yiuLan01 yiuLan02">
+			<p>{#$langData['waimai'][4][14]|replace:'1':$peisong#}</p>
+			<span>{#$langData['siteConfig'][17][32]#}</span>
+		</div>
+	</div>
+</div>
+
+<!-- 外卖订单统计、外卖营业额统计 -->
+<div id="waimaiBtn" class="chosetime">
+	<div class="bgTongji">
+		<div class="part01">
+			<a href="javascript:;" class="fn-clear">
+				<span>{#$langData['siteConfig'][17][33]#}</span>
+				<s><i></i></s>
+			</a>
+		</div>
+	</div>
+</div>
+
+<!-- 开始时间、结束时间 -->
+<div class="timeSelect fn-hide">
+	<div class="bgTongji">
+		<div class="part01 xiaoQi">
+			<a href="javascript:;" class="fn-clear">
+				<label for="test3" class="startT">{#$langData['siteConfig'][17][34]#}</label>
+				<label for="test3" class="endT"><s><i></i></s></label>
+				<input type="text" name="test3" class="stime demo-test-datetime" placeholder="{#$langData['waimai'][4][15]#}">
+			</a>
+		</div>
+		<div class="part01 part02 xiaoQi01">
+			<a href="javascript:;" class="fn-clear">
+				<label for="test2" class="startT">{#$langData['siteConfig'][17][35]#}</label>
+				<label for="test2" class="endT"><s><i></i></s></label>
+				<input type="text" name="test2" class="etime demo-test-datetime" placeholder="{#$langData['waimai'][4][16]#}">
+			</a>
+		</div>
+	</div>
+	<!-- 点击查询 -->
+	<div class="checkTj"><a href="javascript:;">{#$langData['siteConfig'][17][36]#}</a></div>
+</div>
+
+<!-- 今日跑腿战绩 -->
+<div class="todayWai paotui">
+	<div class="zhanJi fn-clear">
+		<span>{#$langData['siteConfig'][17][42]#}</span>
+	</div>
+	<div class="yiuLan fn-clear" style="margin-top: .2rem;">
+		<div class="yiuLan01">
+			<p>{#$langData['waimai'][4][13]|replace:'1':$paotui_success#}</p>
+			<span>{#$langData['siteConfig'][9][5]#}</span>
+		</div>
+		<div class="yiuLan01 yiuLan02">
+			<p>{#$langData['waimai'][4][13]|replace:'1':$paotui_failed#}</p>
+			<span>{#$langData['siteConfig'][9][6]#}</span>
+		</div>
+	</div>
+	<div class="yiuLan fn-clear" style="margin-top: .6rem;">
+		<div class="yiuLan01">
+			<p>{#$langData['waimai'][4][14]|replace:'1':$paotui_amount#}</p>
+			<span>{#$langData['siteConfig'][19][164]#}</span>
+		</div>
+	</div>
+</div>
+
+<!-- 跑腿订单统计、外卖营业额统计 -->
+<div id="paotuiBtn" class="chosetime">
+	<div class="bgTongji">
+		<div class="part01">
+			<a href="javascript:;" class="fn-clear">
+				<span>{#$langData['siteConfig'][17][43]#}</span>
+				<s><i></i></s>
+			</a>
+		</div>
+	</div>
+</div>
+
+<!-- 开始时间、结束时间 -->
+<div class="timeSelect fn-hide">
+	<div class="bgTongji">
+		<div class="part01 xiaoQi">
+			<a href="javascript:;" class="fn-clear">
+				<label for="test3" class="startT">{#$langData['siteConfig'][17][34]#}</label>
+				<label for="test3" class="endT"><s><i></i></s></label>
+				<input type="text" name="test3" class="stime demo-test-datetime" placeholder="{#$langData['waimai'][4][15]#}">
+			</a>
+		</div>
+		<div class="part01 part02 xiaoQi01">
+			<a href="javascript:;" class="fn-clear">
+				<label for="test2" class="startT">{#$langData['siteConfig'][17][35]#}</label>
+				<label for="test2" class="endT"><s><i></i></s></label>
+				<input type="text" name="test2" class="etime demo-test-datetime" placeholder="{#$langData['waimai'][4][16]#}">
+			</a>
+		</div>
+	</div>
+	<!-- 点击查询 -->
+	<div class="checkTj"><a href="javascript:;">{#$langData['siteConfig'][17][36]#}</a></div>
+</div>
+
+
+<div class="bottomFix">
+	<ul class="fn-clear bottomFix01">
+		<li class="maiWai"><a href="/?service=waimai&do=courier&state=3"><i></i><p>{#$langData['waimai'][2][54]#}</p></a></li>
+		<li class="maiWai"><a href="/?service=waimai&do=courier&ordertype=paotui&state=3"><i></i><p>{#$langData['siteConfig'][16][49]#}</p></a></li>
+		<li class="paoTui"><a href="/?service=waimai&do=courier&template=comment"><i></i><p>{#$langData['siteConfig'][19][365]#}</p></a></li>
+		<li class="woDe woDe01"><a href="/?service=waimai&do=courier&template=statistics"><i></i><p>{#$langData['siteConfig'][17][11]#}</p></a></li>
+	</ul>
+</div>
+
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script type="text/javascript" src="/templates/courier/js/drag-loading.js"></script>
+<script  type="text/javascript" src="/templates/courier/js/mobiscroll.js"></script>
+<script  type="text/javascript" src="/templates/courier/js/mobiscroll.datetime.js"></script>
+<script type="text/javascript">
+$(function(){
+	//开工
+	$(".kaiGuan").bind("click", function(){
+		var t = $(this), state = 1, title = "{#$langData['waimai'][4][2]#}";
+		if(t.hasClass("kaiGuan01")){
+			state = 0;
+			title = "{#$langData['waimai'][4][2]#}";
+			t.removeClass("kaiGuan01");
+		}else{
+			t.addClass("kaiGuan01");
+		}
+
+		$('.youqingTixing').html('<i>'+title+'</i>').show();
+		setTimeout(function(){
+			$(".youqingTixing").hide();
+		}, 1000);
+
+		$.ajax({
+            url: '/include/ajax.php?service=waimai&action=updateCourierState',
+            data: {
+				state: state
+            },
+            type: 'get',
+            dataType: 'json',
+            success: function(data){
+				location.reload();
+			}
+		});
+
+	});
+
+
+	//显示时间
+
+	$(".chosetime a").bind("click", function(){
+		var p = $(this).closest('.chosetime'), id = p.attr('id');
+
+		$("#"+id).hide().next(".timeSelect").show();
+	});
+
+	//年月日 时分
+    $('.demo-test-datetime').scroller(
+    	$.extend({preset: 'datetime', stepMinute: 1, dateFormat: 'yyyy-mm-dd'})
+    );
+
+	//查看统计
+	$(".checkTj a").bind("click", function(){
+		var p = $(this).closest(".timeSelect"), stime = p.find(".stime").val(), etime = p.find(".etime").val();
+		var ordertype = '';
+		if(p.prev('.chosetime').attr('id') == 'waimaiBtn'){
+			ordertype = 'waimai';
+		}else{
+			ordertype = 'paotui';
+		}
+		if(stime == "" || etime == ""){
+			alert("{#$langData['waimai'][4][17]#}");
+			return false;
+		}
+
+		location.href = "/?service=waimai&do=courier&template=statisticsHistory&ordertype="+ordertype+"&stime="+stime+"&etime="+etime;
+
+	});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<title>养老服务</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fabu.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/pension.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	var module = 'pension';
+</script>
+</head>
+<body>
+{#$pageTitle = '养老服务'#}
+{#$pageRight = '<a href="javascript:;" class="notMenu"> </a>'#}
+{#include file="top.html"#}
+
+<ul class="link">
+  <li><a href="{#getUrlPath service='member' type='user' template='fabu-pension-elderly'#}"><i class="icon-config-house"></i>老人信息</a></li>
+  <li><a href="{#getUrlPath service='member' type='user' template='pension-apply'#}"><i class="icon-house_yuyue"></i>我的申请</a></li>
+  <li><a href="{#getUrlPath service='member' type='user' template='pension-invite'#}"><i class="icon-house_entrust"></i>邀请记录</a></li>
+  <li><a href="{#getUrlPath service='member' type='user' template='pension-appoint'#}"><i class="icon-house_meallist"></i>我的预约</a></li>
+</ul>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+</body>
+</html>

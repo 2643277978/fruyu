@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$langData['siteConfig'][19][313]#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="/templates/courier/css/dingdanDetail.css?v={#$cfg_staticVersion#}">
+<script src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script>
+var ordertype = '{#$ordertype#}';
+</script>
+</head>
+
+<body>
+<!-- 头部 外卖订单详细头部 -->
+<div class="tongJi jk22">
+	<a href="javascript:;" onclick="history.go(-1);"><i></i></a>
+	<p><span>{#$langData['siteConfig'][19][313]#}</span></p>
+</div>
+<div class="shangPin">
+
+{#if $ordertype != "paotui"#}
+<!-- 外卖 -->
+<!-- 商品信息 -->
+	<div class="shangPinCao">
+		<div class="shangPin01 shangPin02">
+			<div class="shangpInfo fn-clear">
+				<i></i>
+				<span>{#$langData['siteConfig'][16][76]#}</span>
+			</div>
+		</div>
+		<div class="shangPin01">
+			{#foreach from=$detail_food item=food#}
+			<div class="shangpInfo shangPin02 fn-clear">
+				<span class="niuRoubao">{#$food.title#}{#if $food.ntitle != ''#}（{#$food.ntitle#}）{#/if#}</span>
+				<s class="juLi">{#echoCurrency type="symbol"#} {#$food.price * $food.count#}</s>
+				<s>x{#$food.count#}</s>
+			</div>
+			{#/foreach#}
+		</div>
+		<div class="shangPin01">
+			<div class="shangpInfo shangPin02 fn-clear">
+				{#foreach from=$detail_priceinfo item=price#}
+				<s class="amount">{#$price.body#}：<em style="margin-right: 20px;">{#echoCurrency type="symbol"#}{#$price.amount#}</em></s>
+				{#/foreach#}
+			</div>
+		</div>
+		<div class="shangPin01">
+			<div class="shangpInfo shangPin02 fn-clear">
+			{#if $detail_paytype == $langData['siteConfig'][16][51]#}
+				<s class="amount danger">{#$langData['waimai'][4][4]#}：<span>{#echoCurrency type="symbol"#}{#$detail_amount#}</span></s>
+			{#else#}
+				<s class="amount">{#$langData['waimai'][4][5]#}：<span>{#echoCurrency type="symbol"#}{#$detail_amount#}</span></s>
+			{#/if#}
+			</div>
+		</div>
+		<div class="shangPin01">
+			<div class="shangpInfo fn-clear weiLa">
+				<span>{#$langData['siteConfig'][19][705]#}：{#$detail_note#}</span>
+			</div>
+		</div>
+	</div>
+<!-- 商家信息 -->
+	<div class="shangPinCao">
+		<div class="shangPin01 shangPin02">
+			<div class="shangpInfo fn-clear">
+				<i class="yangZhe"></i>
+				<span>{#$langData['siteConfig'][19][708]#}</span>
+			</div>
+		</div>
+		<div class="shangPin01">
+			<div class="shangpInfo shangPin02 fn-clear">
+				<span class="niuRoubao">{#$langData['siteConfig'][19][174]#}：{#$detail_shopname#}</span>
+			</div>
+		</div>
+		<div class="shangPin01">
+			<div class="shangpInfo shangPin02 fn-clear">
+				<a href="javascript:;" data-lng="{#$detail_coordY#}" data-lat="{#$detail_coordX#}" data-title="{#$detail_shopname#}" data-address="{#$detail_shopaddr#}" class="showmap"><i class="juLi02"></i></a>
+				<s class="juLi juLi01">{#$langData['waimai'][1][37]#}：{#$detail_shopaddr#}</s>
+			</div>
+		</div>
+		<div class="shangPin01">
+			<div class="shangpInfo fn-clear">
+				<a href="tel:{#$detail_shoptel#}"><i class="juLi05"></i></a>
+				<s class="juLi juLi01">{#$langData['waimai'][4][6]#}：{#$detail_shoptel#}</s>
+			</div>
+		</div>
+	</div>
+<!-- 买家信息 -->
+	<div class="shangPinCao">
+		<div class="shangPin01 shangPin02">
+			<div class="shangpInfo fn-clear">
+				<i class="yanjie"></i>
+				<span>{#$langData['waimai'][4][7]#}</span>
+			</div>
+		</div>
+		<div class="shangPin01">
+			<div class="shangpInfo shangPin02 fn-clear">
+				<span class="niuRoubao">{#$langData['siteConfig'][19][4]#}：{#$detail_person#}</span>
+			</div>
+		</div>
+		<div class="shangPin01">
+			<div class="shangpInfo shangPin02 fn-clear">
+				<a href="javascript:;" data-lng="{#$detail_lng#}" data-lat="{#$detail_lat#}" data-title="{#$detail_person#}" data-address="{#$detail_address#}" class="showmap"><i class="juLi02"></i></a>
+				<s class="juLi juLi01">{#$langData['siteConfig'][19][9]#}：{#$detail_address#}</s>
+			</div>
+		</div>
+		<div class="shangPin01">
+			<div class="shangpInfo fn-clear">
+				<a href="tel:{#$detail_tel#}"><i class="juLi05"></i></a>
+				<s class="juLi juLi01">{#$langData['siteConfig'][3][1]#}：{#$detail_tel#}</s>
+			</div>
+		</div>
+	</div>
+<!-- 订单信息 -->
+	<div class="shangPinCao">
+		<div class="shangPin01 shangPin02">
+			<div class="shangpInfo fn-clear">
+				<i class="yanjie01"></i>
+				<span>{#$langData['siteConfig'][19][319]#}</span>
+			</div>
+		</div>
+		<div class="bianHao">
+			<p class="num01">{#$langData['siteConfig'][19][50]#}：{#$detail_ordernumstore#}</p>
+			<p>{#$langData['siteConfig'][19][51]#}：{#$detail_pubdate|date_format:"%Y-%m-%d %H:%M:%S"#}</p>
+			<p>{#$langData['waimai'][1][238]#}：
+				{#if $detail_state == 0#}
+				{#$langData['siteConfig'][9][22]#}
+				{#elseif $detail_state == 1#}
+				{#$langData['siteConfig'][6][3]#}
+				{#elseif $detail_state == 2#}
+				{#$langData['siteConfig'][9][11]#}
+				{#elseif $detail_state == 3#}
+				{#$langData['siteConfig'][9][46]#}
+				{#elseif $detail_state == 4#}
+				{#$langData['siteConfig'][16][114]#}
+				{#elseif $detail_state == 5#}
+				{#$langData['siteConfig'][16][115]#}
+				{#elseif $detail_state == 6#}
+				{#$langData['siteConfig'][6][112]#}
+				{#elseif $detail_state == 7#}
+				{#$langData['siteConfig'][9][47]#}
+				{#/if#}
+			</p>
+			<p>{#$langData['siteConfig'][19][52]#}：<span>{#$detail_paytype#}</span></p>
+			{#if $detail_confirmdate#}<p>{#$langData['waimai'][4][8]#}：{#$detail_confirmdate|date_format:"%Y-%m-%d %H:%M:%S"#}</p>{#/if#}
+			{#if $detail_peidate#}<p>{#$langData['siteConfig'][17][26]#}：{#$detail_peidate|date_format:"%Y-%m-%d %H:%M:%S"#}</p>{#/if#}
+			{#if $detail_songdate#}<p>{#$langData['siteConfig'][17][27]#}：{#$detail_songdate|date_format:"%Y-%m-%d %H:%M:%S"#}</p>{#/if#}
+			{#if $detail_okdate#}<p>{#$langData['waimai'][1][226]#}：{#$detail_okdate|date_format:"%Y-%m-%d %H:%M:%S"#}</p>{#/if#}
+			{#if $detail_state == 6 || $detail_state == 7#}<p>{#$langData['waimai'][1][229]#}：{#$detail_failed#}</p>{#/if#}
+		</div>
+	</div>
+{#else#}
+<!-- 跑腿 -->
+<!-- 商品信息 -->
+	<div class="shangPinCao">
+		<div class="shangPin01 shangPin02">
+			<div class="shangpInfo fn-clear">
+				<i></i>
+				<span>{#$langData['siteConfig'][16][76]#}</span>
+			</div>
+		</div>
+		<div class="shangPin01">
+			<div class="shangpInfo shangPin02 fn-clear">
+				<span class="niuRoubao">{#$langData['siteConfig'][16][119]#}：{#$detail_shop#}</span>
+			</div>
+			{#if $detail_type == 2#}
+			<div class="shangpInfo shangPin02 fn-clear">
+				<span class="niuRoubao">{#$langData['siteConfig'][16][120]#}：{#$detail_weight#} kg</span>
+			</div>
+			{#/if#}
+			<div class="shangpInfo shangPin02 fn-clear">
+				<span class="niuRoubao">{#$langData['siteConfig'][17][21]#}：{#if $detail_price != ""#}{#$detail_price|replace:"元":""#}{#echoCurrency type='short'#}{#/if#}</span>
+			</div>
+		</div>
+	</div>
+<!-- 商家信息 -->
+	<div class="shangPinCao">
+		<div class="shangPin01 shangPin02">
+			<div class="shangpInfo fn-clear">
+				<i class="yangZhe"></i>
+				<span>{#$langData['siteConfig'][17][22]#}</span>
+			</div>
+		</div>
+		<div class="shangPin01">
+			{#if $detail_type == 1#}
+			<div class="shangpInfo shangPin02 fn-clear">
+				<span class="niuRoubao">{#$langData['siteConfig'][19][9]#}：{#$detail_buyaddress#}</span>
+			</div>
+			<div class="shangpInfo fn-clear">
+				<span class="niuRoubao">{#$langData['siteConfig'][17][23]#}：{#$langData['siteConfig'][17][47]|replace:'1':$detail_totime#}</span>
+			</div>
+			{#else#}
+			<div class="shangpInfo shangPin02 fn-clear">
+				<span class="niuRoubao">{#$langData['siteConfig'][19][4]#}：{#$detail_getperson#}</span>
+			</div>
+			<div class="shangpInfo shangPin02 fn-clear">
+				<span class="niuRoubao">{#$langData['siteConfig'][17][45]#}：{#if $detail_gettime#}{#$detail_gettime|date_format:"%Y-%m-%d %H:%M:%S"#}{#else#}{#$langData['siteConfig'][17][46]#}{#/if#}</span>
+			</div>
+			<div class="shangpInfo shangPin02 fn-clear">
+				<span class="niuRoubao">{#$langData['siteConfig'][17][23]#}：{#$langData['siteConfig'][17][47]|replace:'1':$detail_totime#}</span>
+			</div>
+			<div class="shangpInfo shangPin02 fn-clear">
+				<a href="javascript:;" data-lng="{#$detail_buylng#}" data-lat="{#$detail_buylat#}" data-title="{#$detail_getperson#}" data-address="{#$detail_buyaddress#}" class="showmap"><i class="juLi02"></i></a>
+				<s class="juLi juLi01">{#$langData['siteConfig'][19][9]#}：{#$detail_buyaddress#}</s>
+			</div>
+			<div class="shangpInfo fn-clear">
+				<a href="tel:{#$detail_gettel#}"><i class="juLi05"></i></a>
+				<s class="juLi juLi01">{#$langData['siteConfig'][3][1]#}：{#$detail_gettel#}</s>
+			</div>
+			{#/if#}
+		</div>
+	</div>
+<!-- 买家信息 -->
+	<div class="shangPinCao">
+		<div class="shangPin01 shangPin02">
+			<div class="shangpInfo fn-clear">
+				<i class="yanjie"></i>
+				<span>{#$langData['siteConfig'][17][24]#}</span>
+			</div>
+		</div>
+		<div class="shangPin01">
+			<div class="shangpInfo shangPin02 fn-clear">
+				<span class="niuRoubao">{#$langData['siteConfig'][19][4]#}：{#$detail_person#}</span>
+			</div>
+		</div>
+		<div class="shangPin01">
+			<div class="shangpInfo shangPin02 fn-clear">
+				<a href="javascript:;" data-lng="{#$detail_lng#}" data-lat="{#$detail_lat#}" data-title="{#$detail_person#}" data-address="{#$detail_address#}" class="showmap"><i class="juLi02"></i></a>
+				<s class="juLi juLi01">{#$langData['siteConfig'][19][9]#}：{#$detail_address#}</s>
+			</div>
+		</div>
+		<div class="shangPin01">
+			<div class="shangpInfo fn-clear">
+				<a href="tel:{#$detail_tel#}"><i class="juLi05"></i></a>
+				<s class="juLi juLi01">{#$langData['siteConfig'][3][1]#}：{#$detail_tel#}</s>
+			</div>
+		</div>
+	</div>
+<!-- 订单信息 -->
+	<div class="shangPinCao">
+		<div class="shangPin01 shangPin02">
+			<div class="shangpInfo fn-clear">
+				<i class="yanjie01"></i>
+				<span>{#$langData['siteConfig'][19][319]#}</span>
+			</div>
+		</div>
+		<div class="bianHao">
+			<p class="num01">{#$langData['siteConfig'][19][50]#}：{#$detail_ordernum#}</p>
+			<p>{#$langData['siteConfig'][19][51]#}：{#$detail_pubdate|date_format:"%Y-%m-%d %H:%M:%S"#}</p>
+			<p>{#$langData['siteConfig'][19][705]#}：{#$detail_note#}</p>
+			<p>{#$langData['siteConfig'][19][711]#}：{#if $detail_type == 1#}{#$langData['siteConfig'][17][16]#}{#else#}{#$langData['siteConfig'][17][17]#}{#/if#}</p>
+			<p>{#$langData['waimai'][1][238]#}：
+				{#if $detail_state == 0#}
+				{#$langData['siteConfig'][9][22]#}
+				{#elseif $detail_state == 1#}
+				{#$langData['siteConfig'][6][3]#}
+				{#elseif $detail_state == 2#}
+				{#$langData['siteConfig'][9][11]#}
+				{#elseif $detail_state == 3#}
+				{#$langData['siteConfig'][9][46]#}
+				{#elseif $detail_state == 4#}
+				{#$langData['siteConfig'][16][114]#}
+				{#elseif $detail_state == 5#}
+				{#$langData['siteConfig'][16][115]#}
+				{#elseif $detail_state == 6#}
+				{#$langData['siteConfig'][6][112]#}
+				{#elseif $detail_state == 7#}
+				{#$langData['siteConfig'][9][47]#}
+				{#/if#}
+			</p>
+			<p>{#$langData['siteConfig'][19][52]#}：<span>{#$detail_paytype#}</span></p>
+			<p>{#$langData['waimai'][4][9]#}：<span>{#echoCurrency type="symbol"#}{#$detail_freight#}</span></p>
+			<p>{#$langData['siteConfig'][17][25]#}：<span>{#echoCurrency type="symbol"#}{#$detail_tip#}</span></p>
+			{#if $detail_confirmdate#}<p>{#$langData['waimai'][4][8]#}：{#$detail_confirmdate|date_format:"%Y-%m-%d %H:%M:%S"#}</p>{#/if#}
+			{#if $detail_peidate#}<p>{#$langData['siteConfig'][17][26]#}：{#$detail_peidate|date_format:"%Y-%m-%d %H:%M:%S"#}</p>{#/if#}
+			{#if $detail_songdate#}<p>{#$langData['siteConfig'][17][27]#}：{#$detail_songdate|date_format:"%Y-%m-%d %H:%M:%S"#}</p>{#/if#}
+			{#if $detail_okdate#}<p>{#$langData['waimai'][1][226]#}：{#$detail_okdate|date_format:"%Y-%m-%d %H:%M:%S"#}</p>{#/if#}
+			{#if $detail_state == 6 || $detail_state == 7#}<p>{#$langData['waimai'][1][229]#}：{#$detail_failed#}</p>{#/if#}
+		</div>
+	</div>
+{#/if#}
+<!-- 设为失败、确认取货、设为成功 -->
+	<div class="lingDian">
+		{#if $detail_state == 4#}<a href="javascript:;" data-state="5" class="lingDian01 lingDian03">{#$langData['waimai'][4][10]#}</a>{#/if#}
+		{#if $detail_state == 5#}<a href="javascript:;" data-state="1" class="lingDian01 lingDian03">{#$langData['siteConfig'][6][108]#}</a>{#/if#}
+	</div>
+</div>
+
+<div class="mapPath">
+	<div id="mapPath"></div>
+	<div class="mapBtn">
+		<button id="closeMap"></button>
+	</div>
+</div>
+
+<!-- 友情提醒 -->
+<div class="youqingTixing"></div>
+
+<script type="text/javascript">
+	var id = {#$detail_id#};
+</script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&ak={#$site_map_key#}&services=&t={#$smarty.now#}"></script>
+<script type="text/javascript">
+$(function(){
+
+	//小地图
+	// $(".showmap").bind("click", function(){
+	// 	var t = $(this), lng = t.data("lng"), lat = t.data("lat");
+	// 	if(lng && lat){
+	// 		$(".mapPath").show();
+	// 		var map = new BMap.Map("mapPath");
+	// 		var mPoint = new BMap.Point(lng, lat);
+	// 		var marker = new BMap.Marker(mPoint);
+	// 		map.centerAndZoom(mPoint, 16);
+	// 		map.addOverlay(marker);
+	// 	}
+	// });
+	//
+	// //关闭大地图
+	// $("#closeMap").bind("click", function(){
+	// 	$(".mapPath").hide();
+	// });
+
+	//注册客户端webview
+    function setupWebViewJavascriptBridge(callback){
+      if(window.WebViewJavascriptBridge){
+        return callback(WebViewJavascriptBridge);
+      }else{
+        document.addEventListener("WebViewJavascriptBridgeReady", function() {
+          return callback(WebViewJavascriptBridge);
+        }, false);
+      }
+
+      if(window.WVJBCallbacks){return window.WVJBCallbacks.push(callback);}
+      window.WVJBCallbacks = [callback];
+      var WVJBIframe = document.createElement("iframe");
+      WVJBIframe.style.display = "none";
+      WVJBIframe.src = "wvjbscheme://__BRIDGE_LOADED__";
+      document.documentElement.appendChild(WVJBIframe);
+      setTimeout(function(){document.documentElement.removeChild(WVJBIframe) }, 0);
+    }
+
+	setupWebViewJavascriptBridge(function(bridge) {
+    	$(".showmap").bind("click", function(){
+			var t = $(this), lng = t.attr("data-lng"), lat = t.attr("data-lat"), title = t.attr("data-title"), address = t.attr("data-address");
+    		if (lat != "" && lng != "") {
+		        bridge.callHandler("skipAppMap", {
+		            "lat": lat,
+		            "lng": lng,
+		            "addrTitle": title,
+		            "addrDetail": address
+		        }, function(responseData) {});
+	        }
+    	})
+    });
+
+
+	//更新状态
+	$(".lingDian03").bind("click", function(){
+		var t = $(this), state = t.attr("data-state");
+		if(t.hasClass("disabled") || !id) return false;
+
+		t.addClass("disabled");
+		$('.youqingTixing').html('<i>'+langData['siteConfig'][7][8]+'...</i>').show();
+
+		$.ajax({
+            url: '/include/ajax.php?service=waimai&action=peisong&ordertype='+ordertype,
+            data: {
+                id: id,
+				state: state
+            },
+            type: 'get',
+            dataType: 'json',
+            success: function(data){
+				if(data && data.state == 100){
+					$('.youqingTixing').html('<i>'+langData['siteConfig'][20][244]+'</i>').show();
+					setTimeout(function(){
+						location.reload();
+					}, 1000);
+				}else{
+					t.removeClass("disabled");
+					$('.youqingTixing').html('<i>'+data.info+'</i>').show();
+					setTimeout(function(){
+						$(".youqingTixing").hide();
+					}, 2000);
+				}
+			},
+			error: function(){
+				t.removeClass("disabled");
+				$('.youqingTixing').html('<i>'+langData['waimai'][4][11]+'</i>').show();
+				setTimeout(function(){
+					$(".youqingTixing").hide();
+				}, 2000);
+			}
+		});
+	});
+});
+</script>
+</body>
+</html>

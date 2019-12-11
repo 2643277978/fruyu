@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$langData['siteConfig'][0][8]#} - {#$cfg_webname#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/security.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+
+	var hideFileUrl = {#$cfg_hideUrl#}, doget = '{#$doget#}', rating = {#$userinfo.security#}, certifyState = {#$userinfo.certifyState#},
+			pageUrl = '{#getUrlPath service='member' template='security'#}',
+			bindPaypwdUrl = '{#getUrlPath service='member' template='security' doget='paypwdEdit'#}',
+			bindPhoneUrl = '{#getUrlPath service='member' template='security' doget='chphone'#}',
+			bindEmailUrl = '{#getUrlPath service='member' template='security' doget='chemail'#}',
+			bindQuestionUrl = '{#getUrlPath service='member' template='security' doget='question'#}';
+	var phoneCheck = {#$userinfo.phoneCheck#}, emailCheck = {#$userinfo.emailCheck#}, questionSet = {#$userinfo.question#};
+</script>
+</head>
+<body>
+
+
+	{#$pageTitle = $langData['siteConfig'][0][8]#}
+  {#$backUrl = "{#getUrlPath service='member'#}"#}
+	{#include file="top.html"#}
+
+  <!-- 列表 s -->
+  <div class="operate">
+    <ul>
+      <li><a href="{#getUrlPath service='member' template='profile'#}"><i class="icon1"></i>基本资料</a></li>
+      <li><a href="{#getUrlPath service='member' template='security-chpassword'#}"><i class="icon2"></i>修改登录密码</a></li>
+      <li><a href="{#getUrlPath service='member' template='security-paypwdEdit'#}"><i class="icon3"></i>设置支付密码</a></li>
+      <li><a href="{#getUrlPath service='member' template='security-shCertify'#}"><i class="icon4"></i>个人实名认证</a></li>
+      <li><a href="{#getUrlPath service='member' template='security-chphone'#}"><i class="icon5"></i>手机认证</a></li>
+      <li><a href="{#getUrlPath service='member' template='security-chemail'#}"><i class="icon6"></i>邮箱认证</a></li>
+      <li><a href="{#getUrlPath service='member' template='security-question'#}"><i class="icon7"></i>安全保护问题</a></li>
+      <li><a href="{#getUrlPath service='member' template='address'#}"><i class="icon8"></i>收货地址管理</a></li>
+      <li><a href="{#getUrlPath service='member' template='connect'#}"><i class="icon9"></i>社交账号关联绑定</a></li>
+      <li><a href="{#getUrlPath service='member' template='loginrecord'#}"><i class="icon10"></i>账号登录记录</a></li>
+    </ul>
+    <a href="{#$cfg_basehost#}/logout.html" class="logout">退出登录</a>
+  </div>
+  <!-- 列表 e -->
+
+
+<script type="text/javascript" src="{#$templets_skin#}js/public.js?v=100"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/security.js?v=5"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$langData['siteConfig'][11][12]#} - {#$cfg_webname#}</title>{#* 管理我发布的信息  *#}
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/manage.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/refreshTop.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fabu-pay.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+
+	var module = '{#$module#}', atpage = 1, totalCount = 0, pageSize = 10, state = '{#$state#}', type = '{#$type#}';
+
+	var editUrl = '{#getUrlPath service="member" type="user" template="fabu" action="$module"#}';
+
+  var statisticsUrl = '{#getUrlPath service="member" type="user" template="statistics" action="$module"#}';
+  {#if in_array('live', $installModuleArr)#}
+  var imgtextUrl = '{#getUrlPath service='member' type='user' template='live_imgtext' param='id='#}';
+  {#/if#}
+</script>
+<style>
+.table {width: 100%; margin-bottom: 20px; display: none;}
+.table-bordered {border-bottom: 1px solid #ddd; border-collapse: separate; border-left: 0; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; }
+.table-bordered, td, th {border-radius: 0!important;}
+.table>thead>tr {color: #707070; font-weight: 400; background: repeat-x #F2F2F2; background-image: -webkit-linear-gradient(top,#f8f8f8 0,#ececec 100%); background-image: -o-linear-gradient(top,#f8f8f8 0,#ececec 100%); background-image: linear-gradient(to bottom,#f8f8f8 0,#ececec 100%); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff8f8f8', endColorstr='#ffececec', GradientType=0); }
+.table th, .table td {padding: 8px; line-height: 30px; text-align: left; vertical-align: top; border-top: 1px solid #ddd; }
+.table input {padding:2px 5px;}
+.table {font-size: 16px;font-weight: bold;}
+</style>
+</head>
+
+<body>
+{#$pageTitle = $langData['siteConfig'][11][12]#}{#* 管理我发布的信息  *#}
+{#include file="top.html"#}
+
+<div class="wrap">
+	<div class="container fn-clear">
+
+		{#include file="sidebar.html"#}
+
+		<div class="main">
+
+			{#include file="manage-$module.html"#}
+
+			<div class="list {#$module#}" id="list"><p class="loading"><img src="{#$cfg_staticPath#}images/ajax-loader.gif" />{#$langData['siteConfig'][20][184]#}...</p></div>{#* 加载中，请稍后 *#}
+			<div class="pagination fn-clear"></div>
+	
+			{#if $module == "article"#}
+			<table class="table table-striped table-bordered table-hover">
+				<thead>
+					<th><input type="text" value="{#$smarty.now|date_format:'%Y-%m'#}" id="month" title="选择月份统计发布量"></th>
+					<th>数量</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td>头条</td>
+						<td id="total0"></td>
+					</tr>
+					<tr>
+						<td>图集</td>
+						<td id="total1"></td>
+					</tr>
+					<tr>
+						<td>视频</td>
+						<td id="total2"></td>
+					</tr>
+					<tr>
+						<td>短视频</td>
+						<td id="total3"></td>
+					</tr>
+				</tbody>
+			</table>
+			{#/if#}
+		</div>
+	</div>
+</div>
+
+{#include file="fabu-pay.html"#}
+{#if $type#}
+{#include file="refreshTop.html" tourl={#getUrlPath service='member' template='manage' type='user' action={#$module#} dopost={#$type#}#} act={#$type#}#}
+{#else#}
+{#include file="refreshTop.html" tourl={#getUrlPath service='member' template='manage' type='user' action={#$module#}#} act="detail"#}
+{#/if#}
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/refreshTop.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/manage-{#$module#}.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/fabu-pay.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

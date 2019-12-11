@@ -1,0 +1,659 @@
+{#$pageTitle = $langData['siteConfig'][26][75]|cat:" - "|cat:$cfg_webname#}
+{#include file="head.html"#}
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}" media="all" />
+</head>
+
+<body>
+{#include file="headSidebar.html"#}
+
+<div class="main">
+
+	<div class="notice">{#$langData['siteConfig'][27][41]#}<a href="#" target="_blank">{#$langData['siteConfig'][26][56]#}</a> <a href="#" target="_blank">{#$langData['siteConfig'][26][57]#}</a><em class="close">&times;</em></div>
+
+	<!-- 基本信息&帐户信息 -->
+	<div class="hline fn-clear">
+		{#if 'balance'|in_array:$cfg_ucenterLinks || $cfg_pointState#}
+		<div class="r">
+			<div class="hitem account">
+				<p>
+					{#if 'balance'|in_array:$cfg_ucenterLinks#}{#$langData['siteConfig'][19][363]#}：<strong title="{#$userinfo.money#}">{#$userinfo.money#}</strong>{#/if#}
+					{#if $cfg_pointState#}{#$cfg_pointName#}：<strong title="{#$userinfo.point#}">{#$userinfo.point#}</strong>{#/if#}
+				</p>
+				{#if 'balance'|in_array:$cfg_ucenterLinks#}
+				<div class="btns fn-clear">
+					{#if 'deposit'|in_array:$cfg_ucenterLinks#}
+					<a href="{#getUrlPath service='member' template='deposit'#}" class="cz">{#$langData['siteConfig'][26][77]#}</a>
+					{#/if#}
+					{#if 'withdraw'|in_array:$cfg_ucenterLinks#}
+					<a href="{#getUrlPath service='member' template='withdraw'#}" class="tx">{#$langData['siteConfig'][19][471]#}</a>
+					{#/if#}
+					{#if 'record'|in_array:$cfg_ucenterLinks#}
+					<a href="{#getUrlPath service='member' template='record'#}" class="link">{#$langData['siteConfig'][19][225]#}</a>
+					{#/if#}
+				</div>
+				{#/if#}
+			</div>
+		</div>
+		{#/if#}
+		<div class="l">
+			<div class="hitem uinfo">
+				<dl class="fn-clear">
+					<dt><a href="{#getUrlPath service='member' template='portrait'#}"><img onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_100.jpg';" src="{#changeFileSize url="{#$userinfo.photo#}"#}" /><span>{#$langData['siteConfig'][6][110]#}</span></a></dt>
+					<dd>
+						<div class="name"><h2>{#$nowHour#}，{#$userinfo.nickname#}</h2>{#if $userinfo.lastlogintime#}<span class="date">{#$langData['siteConfig'][15][9]#}：{#$userinfo.lastlogintime#}</span>{#/if#}</div>
+						<ul class="fn-clear">
+							<li><a href="{#getUrlPath service='member' template='security'#}" class="real{#if $userinfo.certifyState != 1#} disable{#/if#}"><s></s></a></li>
+							<li><a href="{#getUrlPath service='member' template='security'#}" class="mobile{#if $userinfo.phoneCheck == 0#} disable{#/if#}"><s></s></a></li>
+							<li><a href="{#getUrlPath service='member' template='security'#}" class="email{#if $userinfo.emailCheck == 0#} disable{#/if#}"><s></s></a></li>
+						</ul>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+
+	<!-- 待办事项&日期天气 -->
+	<div class="hline fn-clear">
+		<div class="r">
+			<div class="weather-con">
+				<h3>{#$langData['siteConfig'][19][261]#}</h3>
+				<div class="hitem date-weather">
+					<ul class="fn-clear">
+						<li class="d"><strong>{#getMyTime format="%d"#}</strong><p>{#getMyWeek prefix=$langData['siteConfig'][13][48]#}<br />{#getMyTime format="%Y"#}.{#getMyTime format="%m"#}</p></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="hitem gonggao-con">
+				<p>{#$langData['siteConfig'][26][53]#}</p>
+				<ul>
+					{#siteConfig action="notice" return="notice"  pageSize="10"#}
+					<li><a href="{#$notice.url#}" target="_blank" title="{#$notice.title#}"><s></s>{#$notice.title#}</a></li>
+					{#/siteConfig#}
+				</ul>
+			</div>
+
+		</div>
+
+		<div class="l">
+			<h3>{#$langData['siteConfig'][20][586]#}<a href="javascript:;" onclick="window.location.reload();" class="more reload" title="{#$langData['siteConfig'][16][70]#}"><i></i></a></h3>
+			<div class=" module fn-clear">
+
+				{#if 'food'|in_array:$cfg_ucenterLinks#}
+
+				{#* 点餐 *#}
+				{#if $diancan_state#}
+
+				{#$diancanAudit = 0#}
+				{#$diancanGray = 0#}
+				{#business action="diancanOrder" return="list" u="1" pageData="1" pageSize="1"#}
+					{#$diancanAudit = $list['totalAudit']#}
+					{#$diancanGray = $list['totalGray']#}
+				{#/business#}
+				<dl>
+					<dt>{#$langData['siteConfig'][19][439]#} <i></i></dt>
+					<dd><img src="{#$templets_skin#}images/icon/c-b-diancan.png?v={#$cfg_staticVersion#}" /></dd>
+					<dd>
+						<div class="fn-clear item2">
+							<p><a href="{#getUrlPath service='member' template='business-diancan-order' param='state=3'#}">
+									<em class="inline">{#$langData['siteConfig'][9][12]#} {#$diancanAudit|string_format:"%d"#}</a></em>
+							</a></p>
+							<p><a href="{#getUrlPath service='member' template='business-diancan-order' param='state=0'#}">
+									<em class="inline">{#$langData['siteConfig'][9][11]#} {#$diancanGray|string_format:"%d"#}</a></em>
+									{#if $diancanGray#}<i class="m-state"></i>{#/if#}
+							</a></p>
+						</div>
+					</dd>
+				</dl>
+				{#/if#}
+
+				{#* 订座 *#}
+				{#if $dingzuo_state#}
+
+				{#$dingzuoAudit = 0#}
+				{#$dingzuoGray = 0#}
+				{#business action="dingzuoOrder" return="list" u="1" pageData="1" pageSize="1"#}
+					{#$dingzuoAudit = $list['totalAudit']#}
+					{#$dingzuoGray = $list['totalGray']#}
+				{#/business#}
+				<dl>
+					<dt>{#$langData['siteConfig'][19][440]#} <i></i></dt>
+					<dd><img src="{#$templets_skin#}images/icon/c-b-dingzuo.png?v={#$cfg_staticVersion#}" /></dd>
+					<dd>
+						<div class="fn-clear item2">
+							<p><a href="{#getUrlPath service='member' template='business-dingzuo-order' param='state=1'#}">
+									<em class="inline">{#$langData['siteConfig'][9][12]#} {#$dingzuoAudit|string_format:"%d"#}</a></em>
+							</a></p>
+							<p><a href="{#getUrlPath service='member' template='business-dingzuo-order' param='state=0'#}">
+									<em class="inline">{#$langData['siteConfig'][9][11]#} {#$dingzuoGray|string_format:"%d"#}</a></em>
+									{#if $diancanGray#}<i class="m-state"></i>{#/if#}
+							</a></p>
+						</div>
+					</dd>
+				</dl>
+				{#/if#}
+
+				{#* 排队 *#}
+				{#if $paidui_state#}
+
+				{#$paiduiGray = 0#}
+				{#business action="paiduiOrder" return="list" u="1" pageData="1" pageSize="1"#}
+					{#$paiduiGray = $list['totalGray']#}
+				{#/business#}
+				<dl>
+					<dt>{#$langData['siteConfig'][19][441]#} <i></i></dt>
+					<dd><img src="{#$templets_skin#}images/icon/c-b-paidui.png?v={#$cfg_staticVersion#}" /></dd>
+					<dd>
+						<div class="fn-clear item1">
+							<p><a href="{#getUrlPath service='member' template='business-paidui-order'#}">
+									<em class="inline">{#$langData['siteConfig'][7][5]#} {#$paiduiGray|string_format:"%d"#}</a></em>
+									{#if $paiduiGray#}<i class="m-state"></i>{#/if#}
+							</a></p>
+						</div>
+					</dd>
+				</dl>
+				{#/if#}
+
+				{#* 买单 *#}
+				{#if $maidan_state#}
+
+				{#$maidanAudit = 0#}
+				{#business action="maidanOrder" return="list" u="1" pageData="1" pageSize="1"#}
+					{#$maidanAudit = $list['totalAudit']#}
+				{#/business#}
+
+				{#$maidanAudit_ = 0#}
+				{#business action="maidanOrder" return="list" u="1" today="1" pageData="1" pageSize="1"#}
+					{#$maidanAudit_ = $list['totalAudit']#}
+				{#/business#}
+				<dl>
+					<dt>{#$langData['siteConfig'][19][442]#} <i></i></dt>
+					<dd><img src="{#$templets_skin#}images/icon/c-b-maidan.png?v={#$cfg_staticVersion#}" /></dd>
+					<dd>
+						<div class="fn-clear item2">
+							<p><a href="{#getUrlPath service='member' template='business-maidan-order'#}">
+									<em class="inline">{#$langData['siteConfig'][9][0]#} {#$maidanAudit|string_format:"%d"#}</a></em>
+							</a></p>
+							<p><a href="{#getUrlPath service='member' template='business-paidui-order'#}">
+									<em class="inline">{#$langData['siteConfig'][10][39]#} {#$maidanAudit_|string_format:"%d"#}</a></em>
+							</a></p>
+						</div>
+					</dd>
+				</dl>
+				{#/if#}
+
+				{#/if#}
+
+				{#* 模块管理 *#}
+
+				<dl class="custom-nav" style="cursor:pointer;">
+					<dt>{#$langData['siteConfig'][19][472]#} <i></i></dt>
+					<dd><img src="{#$templets_skin#}images/icon/c-module.png?v={#$cfg_staticVersion#}" /></dd>
+					{#*
+					<dd>
+						<div class="fn-clear item2">
+							<p><a href="{#getUrlPath service='member' template='module'#}">
+									<em class="inline">{#$langData['siteConfig'][10][40]#} {#$userOpenModules|count#}</a></em>
+							</a></p>
+							<p><a href="{#getUrlPath service='member' template='module' param='state=0'#}">
+									<em class="inline">{#$langData['siteConfig'][10][41]#} {#$notOpenModules|count#}</a></em>
+							</a></p>
+						</div>
+					</dd>
+					*#}
+				</dl>
+
+
+				{#siteConfig action="siteModule" return="module"#}
+
+					{#* 新闻投稿 *#}
+					{#if $module.code == "article" && {#verifyModuleAuth module='article'#}#}
+
+					{#$articleAudit = 0#}
+					{#$articleGray = 0#}
+					{#$articleRefuse = 0#}
+					{#article action="alist" return="list" u="1" pageData="1" pageSize="1"#}
+						{#$articleAudit = $list['audit']#}
+						{#$articleGray = $list['gray']#}
+						{#$articleRefuse = $list['refuse']#}
+					{#/article#}
+					<dl>
+						<dt>{#$langData['siteConfig'][19][235]#} <i></i></dt>
+						<dd><img src="{#$templets_skin#}images/icon/c-article.png?v={#$cfg_staticVersion#}" /></dd>
+						<dd>
+							<div class="fn-clear item3">
+								<p><a href="{#getUrlPath service='member' template='manage' module='article' param="state=1"#}">
+									<em class="inline">{#$langData['siteConfig'][10][30]#} {#$articleAudit|string_format:"%d"#}</em>
+								</a></p>
+								<p><a href="{#getUrlPath service='member' template='manage' module='article' param="state=0"#}">
+									<em class="inline">{#$langData['siteConfig'][10][31]#} {#$articleGray|string_format:"%d"#}</em>
+								</a></p>
+								<p><a href="{#getUrlPath service='member' template='manage' module='article' param="state=2"#}">
+									<em class="inline">{#$langData['siteConfig'][10][32]#} {#$articleRefuse|string_format:"%d"#}</em>
+									{#if $articleRefuse > 0#}<i class="m-state"></i>{#/if#}
+								</a></p>
+							</div>
+						</dd>
+					</dl>
+
+					{#* 二手信息 *#}
+					{#elseif $module.code == "info" && {#verifyModuleAuth module='info'#}#}
+
+					{#$infoAudit = 0#}
+					{#$infoGray = 0#}
+					{#$infoRefuse = 0#}
+					{#info action="ilist" return="list" u="1" pageData="1" pageSize="1"#}
+						{#$infoAudit = $list['audit']#}
+						{#$infoGray = $list['gray']#}
+						{#$infoRefuse = $list['refuse']#}
+					{#/info#}
+					<dl>
+						<dt>{#$langData['siteConfig'][26][67]#} <i></i></dt>
+						<dd><img src="{#$templets_skin#}images/icon/c-info.png?v={#$cfg_staticVersion#}" /></dd>
+						<dd>
+							<div class="fn-clear item3">
+								<p><a href="{#getUrlPath service='member' template='manage' module='info' param="state=1"#}">
+									<em class="inline">{#$langData['siteConfig'][10][30]#} {#$infoAudit|string_format:"%d"#}</em>
+								</a></p>
+								<p><a href="{#getUrlPath service='member' template='manage' module='info' param="state=0"#}">
+									<em class="inline">{#$langData['siteConfig'][10][31]#} {#$infoGray|string_format:"%d"#}</em>
+								</a></p>
+								<p><a href="{#getUrlPath service='member' template='manage' module='info' param="state=2"#}">
+									<em class="inline">{#$langData['siteConfig'][10][32]#} {#$infoRefuse|string_format:"%d"#}</em>
+									{#if $infoRefuse > 0#}<i class="m-state"></i>{#/if#}
+								</a></p>
+							</div>
+						</dd>
+					</dl>
+
+					{#* 团购 *#}
+					{#elseif $module.code == "tuan" && {#verifyModuleAuth module='tuan'#}#}
+
+					{#$tuanGray = 0#}
+					{#$tuanRefuse = 0#}
+					{#tuan action="tlist" return="list" u="1" pageData="1" pageSize="1"#}
+						{#$tuanGray = $list['gray']#}
+						{#$tuanRefuse = $list['refuse']#}
+					{#/tuan#}
+
+					{#$tuanOngoing = 0#}
+					{#$tuanRefunded = 0#}
+					{#tuan action="orderList" return="list" store="1" pageData="1" pageSize="1"#}
+						{#$tuanOngoing = $list['ongoing']#}
+						{#$tuanRefunded = $list['refunded']#}
+					{#/tuan#}
+					<dl>
+						<dt>{#$langData['siteConfig'][10][36]#} <i></i></dt>
+						<dd><img src="{#$templets_skin#}images/icon/c-tuan.png?v={#$cfg_staticVersion#}" /></dd>
+						<dd>
+							<div class="fn-clear item4">
+								<p><a href="{#getUrlPath service='member' template='manage' module='tuan' param="state=0"#}">
+									<em class="inline">{#$langData['siteConfig'][10][31]#} {#$tuanGray|string_format:"%d"#}</em>
+								</a></p>
+								<p><a href="{#getUrlPath service='member' template='manage' module='tuan' param="state=2"#}">
+									<em class="inline">{#$langData['siteConfig'][10][32]#} {#$tuanRefuse|string_format:"%d"#}</em>
+									{#if $tuanRefuse > 0#}<i class="m-state"></i>{#/if#}
+								</a></p>
+								<p><a href="{#getUrlPath service='member' template='order' action='tuan' param="state=1"#}">
+										<em class="inline">{#$langData['siteConfig'][6][154]#} {#$tuanOngoing|string_format:"%d"#}</a></em>
+										{#if $tuanOngoing > 0#}<i class="m-state"></i>{#/if#}
+								</a></p>
+								<p><a href="{#getUrlPath service='member' template='order' action='tuan' param="state=4"#}">
+										<em class="inline">{#$langData['siteConfig'][9][65]#} {#$tuanRefunded|string_format:"%d"#}</a></em>
+										{#if $tuanRefunded > 0#}<i class="m-state"></i>{#/if#}
+								</a></p>
+							</div>
+						</dd>
+					</dl>
+
+					{#* 商城 *#}
+					{#elseif $module.code == "shop" && {#verifyModuleAuth module='shop'#}#}
+
+					{#$shopGray = 0#}
+					{#$shopRefuse = 0#}
+					{#shop action="slist" return="list" u="1" pageData="1" pageSize="1"#}
+						{#$shopGray = $list['gray']#}
+						{#$shopRefuse = $list['refuse']#}
+					{#/shop#}
+
+					{#$shopOngoing = 0#}
+					{#$shopRefunded = 0#}
+					{#shop action="orderList" return="list" store="1" pageData="1" pageSize="1"#}
+						{#$shopOngoing = $list['ongoing']#}
+						{#$shopRefunded = $list['refunded']#}
+					{#/shop#}
+					<dl>
+						<dt>{#$langData['siteConfig'][16][160]#}  <i></i></dt>
+						<dd><img src="{#$templets_skin#}images/icon/c-shop.png?v={#$cfg_staticVersion#}" /></dd>
+						<dd>
+							<div class="fn-clear item4">
+								<p><a href="{#getUrlPath service='member' template='manage' module='shop' param="state=0"#}">
+									<em class="inline">{#$langData['siteConfig'][10][31]#} {#$shopGray|string_format:"%d"#}</em>
+								</a></p>
+								<p><a href="{#getUrlPath service='member' template='manage' module='shop' param="state=2"#}">
+									<em class="inline">{#$langData['siteConfig'][19][558]#} {#$shopRefuse|string_format:"%d"#}</em>
+									{#if $shopRefuse > 0#}<i class="m-state"></i>{#/if#}
+								</a></p>
+								<p><a href="{#getUrlPath service='member' template='order' action='shop' param="state=1"#}">
+										<em class="inline">{#$langData['siteConfig'][6][154]#} {#$shopOngoing|string_format:"%d"#}</a></em>
+										{#if $shopOngoing > 0#}<i class="m-state"></i>{#/if#}
+								</a></p>
+								<p><a href="{#getUrlPath service='member' template='order' action='shop' param="state=4"#}">
+										<em class="inline">{#$langData['siteConfig'][9][65]#} {#$shopRefunded|string_format:"%d"#}</a></em>
+										{#if $shopRefunded > 0#}<i class="m-state"></i>{#/if#}
+								</a></p>
+							</div>
+						</dd>
+					</dl>
+
+					{#* 房产 *#}
+					{#elseif $module.code == "house" && {#verifyModuleAuth module='house'#}#}
+
+					{#$houseAudit = 0#}
+					{#$houseGray = 0#}
+					{#$houseRefuse = 0#}
+					{#house action="zjUserList" return="list" u="1" comid={#$house_comid#} pageData="1" pageSize="1"#}
+						{#$houseState0 = $list['state0']#}
+						{#$houseState1 = $list['state1']#}
+						{#$houseState2 = $list['state2']#}
+					{#/house#}
+					<dl>
+						<dt>{#$langData['siteConfig'][19][398]#}  <i></i></dt>
+						<dd><img src="{#$templets_skin#}images/icon/c-house.png?v={#$cfg_staticVersion#}" /></dd>
+						<dd>
+							<div class="fn-clear item3">
+								<p><a href="{#getUrlPath service='member' template='house-broker' param="state=1"#}">
+									<em class="inline">{#$langData['siteConfig'][10][30]#} {#$houseState1|string_format:"%d"#}</em>
+								</a></p>
+								<p><a href="{#getUrlPath service='member' template='house-broker' param="state=0"#}">
+									<em class="inline">{#$langData['siteConfig'][10][31]#} {#$houseState0|string_format:"%d"#}</em>
+								</a></p>
+								<p><a href="{#getUrlPath service='member' template='house-broker' param="state=2"#}">
+									<em class="inline">{#$langData['siteConfig'][10][32]#} {#$houseState2|string_format:"%d"#}</em>
+									{#if $houseState2 > 0#}<i class="m-state"></i>{#/if#}
+								</a></p>
+							</div>
+						</dd>
+					</dl>
+
+					{#* 招聘 *#}
+					{#elseif $module.code == "job" && {#verifyModuleAuth module='job'#}#}
+
+					{#$jobState0 = 0#}
+					{#$jobState1 = 0#}
+					{#$jobState2 = 0#}
+					{#job action="post" return="list" com="1" pageData="1" pageSize="1"#}
+						{#$jobState0 = $list['state0']#}
+						{#$jobState1 = $list['state1']#}
+						{#$jobState2 = $list['state2']#}
+					{#/job#}
+
+					{#$jobResume = 0#}
+					{#job action="deliveryList" type="company" return="list" pageData="1" pageSize="1"#}
+						{#$jobResume = $list['state0']#}
+					{#/job#}
+					<dl>
+						<dt>{#$langData['siteConfig'][19][895]#}  <i></i></dt>
+						<dd><img src="{#$templets_skin#}images/icon/c-job.png?v={#$cfg_staticVersion#}" /></dd>
+						<dd>
+							<div class="fn-clear item4">
+								<p><a href="{#getUrlPath service='member' template='post' param="state=1"#}">
+									<em class="inline">{#$langData['siteConfig'][10][30]#} {#$jobState1|string_format:"%d"#}</em>
+								</a></p>
+								<p><a href="{#getUrlPath service='member' template='post' param="state=0"#}">
+									<em class="inline">{#$langData['siteConfig'][10][31]#} {#$jobState0|string_format:"%d"#}</em>
+								</a></p>
+								<p><a href="{#getUrlPath service='member' template='post' param="state=2"#}">
+									<em class="inline">{#$langData['siteConfig'][10][32]#} {#$jobState2|string_format:"%d"#}</em>
+									{#if $jobState2 > 0#}<i class="m-state"></i>{#/if#}
+								</a></p>
+								<p><a href="{#getUrlPath service='member' template='resume' action='job'#}">
+									<em class="inline">{#$langData['siteConfig'][19][766]#} {#$jobResume|string_format:"%d"#}</em>
+									{#if $jobResume > 0#}<i class="m-state"></i>{#/if#}
+								</a></p>
+							</div>
+						</dd>
+					</dl>
+
+					{#* 装修 *#}
+					{#elseif $module.code == "renovation" && {#verifyModuleAuth module='renovation'#}#}
+
+					{#$renovationTeam = 0#}
+					{#renovation action="team" return="list" u="1" pageData="1" pageSize="1"#}
+						{#$renovationTeam = $list['totalCount']#}
+					{#/renovation#}
+
+					{#$renovationRese = 0#}
+					{#renovation action="rese" u="1" return="list" pageData="1" pageSize="1"#}
+						{#$renovationRese = $list['state0']#}
+					{#/renovation#}
+					<dl>
+						<dt>{#$langData['siteConfig'][19][896]#} <i></i></dt>
+						<dd><img src="{#$templets_skin#}images/icon/c-renovation.png?v={#$cfg_staticVersion#}" /></dd>
+						<dd>
+							<div class="fn-clear item2">
+								<p><a href="{#getUrlPath service='member' template='team' action='renovation'#}">
+									<em class="inline">{#$langData['siteConfig'][10][42]#} {#$renovationTeam|string_format:"%d"#}</em>
+								</a></p>
+								<p><a href="{#getUrlPath service='member' template='booking' action='renovation'#}">
+									<em class="inline">{#$langData['siteConfig'][26][80]#} {#$renovationRese|string_format:"%d"#}</em>
+									{#if $renovationRese > 0#}<i class="m-state"></i>{#/if#}
+								</a></p>
+							</div>
+						</dd>
+					</dl>
+
+					{#* 外卖 *#}
+					{#elseif $module.code == "waimai" && {#verifyModuleAuth module='waimai'#}#}
+					<dl id="waimaiOrderObj">
+						<dt>{#$langData['siteConfig'][17][1]#} <i></i></dt>
+						<dd><img src="{#$templets_skin#}images/icon/c-waimai.png?v={#$cfg_staticVersion#}" /></dd>
+						<dd>
+							<div class="fn-clear item4">
+								<p><a href="{#$cfg_basehost#}/wmsj/order/waimaiOrder.php?state=2" target="_blank" id="wmo2">
+									<em class="inline">{#$langData['siteConfig'][9][31]#} <span>0</span></em>
+								</a></p>
+								<p><a href="{#$cfg_basehost#}/wmsj/order/waimaiOrder.php?state=3" target="_blank" id="wmo3">
+									<em class="inline">{#$langData['siteConfig'][9][66]#} <span>0</span></em>
+								</a></p>
+								<p><a href="{#$cfg_basehost#}/wmsj/order/waimaiOrder.php?state=4" target="_blank" id="wmo4">
+									<em class="inline">{#$langData['siteConfig'][9][46]#} <span>0</span></em>
+								</a></p>
+								<p><a href="{#$cfg_basehost#}/wmsj/order/waimaiOrder.php?state=5" target="_blank" id="wmo5">
+									<em class="inline">{#$langData['siteConfig'][16][115]#} <span>0</span></em>
+								</a></p>
+							</div>
+						</dd>
+					</dl>
+
+					{#* 自助建站 *#}
+					{#elseif $module.code == "website" && {#verifyModuleAuth module='website'#}#}
+
+					{#$websiteAudit = 0#}
+					{#website action="guest" return="list" pageData="1" pageSize="1"#}
+						{#$websiteAudit = $list['totalAudit']#}
+					{#/website#}
+					<dl>
+						<dt>{#$langData['siteConfig'][26][68]#} <i></i></dt>
+						<dd><img src="{#$templets_skin#}images/icon/c-website.png?v={#$cfg_staticVersion#}" /></dd>
+						<dd>
+							<div class="fn-clear item1">
+								<p><a href="{#getUrlPath service='member' template='website-guest'#}">
+									<em>{#$langData['siteConfig'][19][848]#}</em> {#$websiteAudit|string_format:"%d"#}
+									{#if $renovationRese > 0#}<i class="m-state"></i>{#/if#}
+								</a></p>
+							</div>
+						</dd>
+					</dl>
+
+					{#* 投票 *#}
+					{#elseif $module.code == "vote" && {#verifyModuleAuth module='vote'#}#}
+
+					{#$voteJoin = 0#}
+					{#vote action="joinList" return="list" pageData="1" pageSize="1"#}
+						{#$voteJoin = $list['totalCount']#}
+					{#/vote#}
+
+					{#$voteAudit = 0#}
+					{#$voteExpire = 0#}
+					{#vote action="vlist" u="1" return="list" pageData="1" pageSize="1"#}
+						{#$voteAudit = $list['audit']#}
+						{#$voteExpire = $list['expire']#}
+					{#/vote#}
+					<dl>
+						<dt>{#$langData['siteConfig'][10][26]#} <i></i></dt>
+						<dd><img src="{#$templets_skin#}images/icon/c-vote.png?v={#$cfg_staticVersion#}" /></dd>
+						<dd>
+							<div class="fn-clear item3">
+								<p><a href="{#getUrlPath service='member' template='vote-join'#}">{#$langData['siteConfig'][10][33]#} {#$voteJoin|string_format:"%d"#}</a></p>
+								<p><a href="{#getUrlPath service='member' template='manage-vote' param='state=1'#}">{#$langData['siteConfig'][15][20]#} {#$voteAudit|string_format:"%d"#}</a></p>
+								<p><a href="{#getUrlPath service='member' template='manage-vote' param='state=2'#}">{#$langData['siteConfig'][19][507]#} {#$voteExpire|string_format:"%d"#}</a></p>
+							</div>
+						</dd>
+					</dl>
+
+					{#* 贴吧 *#}
+					{#elseif $module.code == "tieba" && {#verifyModuleAuth module='tieba'#}#}
+
+					{#$tiebaAudit = 0#}
+					{#$tiebaGray = 0#}
+					{#$tiebaRefuse = 0#}
+					{#tieba action="tlist" return="list" u="1" pageData="1" pageSize="1"#}
+						{#$tiebaAudit = $list['audit']#}
+						{#$tiebaGray = $list['gray']#}
+						{#$tiebaRefuse = $list['refuse']#}
+					{#/tieba#}
+					<dl>
+						<dt>{#$langData['siteConfig'][19][238]#} <i></i></dt>
+						<dd><img src="{#$templets_skin#}images/icon/c-tieba.png?v={#$cfg_staticVersion#}" /></dd>
+						<dd>
+							<div class="fn-clear item3">
+								<p><a href="{#getUrlPath service='member' template='manage' module='tieba' param="state=1"#}">
+									<em class="inline">{#$langData['siteConfig'][10][30]#} {#$tiebaAudit|string_format:"%d"#}</em>
+								</a></p>
+								<p><a href="{#getUrlPath service='member' template='manage' module='tieba' param="state=0"#}">
+									<em class="inline">{#$langData['siteConfig'][10][31]#} {#$tiebaGray|string_format:"%d"#}</em>
+								</a></p>
+								<p><a href="{#getUrlPath service='member' template='manage' module='tieba' param="state=2"#}">
+									<em class="inline">{#$langData['siteConfig'][10][32]#} {#$tiebaRefuse|string_format:"%d"#}</em>
+									{#if $tiebaRefuse > 0#}<i class="m-state"></i>{#/if#}
+								</a></p>
+							</div>
+						</dd>
+					</dl>
+
+					{#* 活动 *#}
+					{#elseif $module.code == "huodong" && {#verifyModuleAuth module='huodong'#}#}
+
+					{#$huodongAudit = 0#}
+					{#$huodongGray = 0#}
+					{#$huodongRefuse = 0#}
+					{#huodong action="hlist" return="list" u="1" pageData="1" pageSize="1"#}
+						{#$huodongAudit = $list['audit']#}
+						{#$huodongGray = $list['gray']#}
+						{#$huodongRefuse = $list['refuse']#}
+					{#/huodong#}
+
+					{#$huodongJoin = 0#}
+					{#huodong action="joinList" return="list" pageData="1" pageSize="1"#}
+						{#$huodongJoin = $list['totalCount']#}
+					{#/huodong#}
+					<dl>
+						<dt>{#$langData['siteConfig'][16][161]#} <i></i></dt>
+						<dd><img src="{#$templets_skin#}images/icon/c-huodong.png?v={#$cfg_staticVersion#}" /></dd>
+						<dd>
+							<div class="fn-clear item4">
+								<p><a href="{#getUrlPath service='member' template='manage' module='huodong' param="state=1"#}">{#$langData['siteConfig'][10][30]#} {#$huodongAudit|string_format:"%d"#}</a></p>
+								<p><a href="{#getUrlPath service='member' template='manage' module='huodong' param="state=0"#}">{#$langData['siteConfig'][10][31]#} {#$huodongGray|string_format:"%d"#}</a></p>
+								<p><a href="{#getUrlPath service='member' template='manage' module='huodong' param="state=2"#}">
+									<em class="inline">{#$langData['siteConfig'][10][32]#} {#$huodongRefuse|string_format:"%d"#}</em>
+									{#if $huodongRefuse > 0#}<i class="m-state"></i>{#/if#}
+								</a></p>
+								<p><a href="{#getUrlPath service='member' template='huodong-join'#}">{#$langData['siteConfig'][10][33]#} {#$huodongJoin|string_format:"%d"#}</a></p>
+							</div>
+						</dd>
+					</dl>
+
+					{#* 汽车门户 *#}
+					{#elseif $module.code == "car" && {#verifyModuleAuth module='car'#}#}
+					{#car action="adviserList" return="list" u="1" comid={#$car_comid#} pageData="1" pageSize="1"#}
+						{#$carState0 = $list['state0']#}
+						{#$carState1 = $list['state1']#}
+						{#$carState2 = $list['state2']#}
+					{#/car#}
+					<dl>
+						<dt>{#$langData['car'][6][43]#} <i></i></dt>
+						<dd><img src="{#$templets_skin#}images/icon/c-info.png?v={#$cfg_staticVersion#}" /></dd>
+						<dd>
+							<div class="fn-clear item3">
+								<p><a href="{#getUrlPath service='member' template='car-broker' param="state=1"#}">
+									<em class="inline">{#$langData['siteConfig'][10][30]#} {#$carState1|string_format:"%d"#}</em>
+								</a></p>
+								<p><a href="{#getUrlPath service='member' template='car-broker' param="state=0"#}">
+									<em class="inline">{#$langData['siteConfig'][10][31]#} {#$carState0|string_format:"%d"#}</em>
+								</a></p>
+								<p><a href="{#getUrlPath service='member' template='car-broker' param="state=2"#}">
+									<em class="inline">{#$langData['siteConfig'][10][32]#} {#$carState2|string_format:"%d"#}</em>
+									{#if $carState2 > 0#}<i class="m-state"></i>{#/if#}
+								</a></p>
+							</div>
+						</dd>
+					</dl>
+
+					{#* 家政 *#}
+					{#elseif $module.code == "homemaking" && {#verifyModuleAuth module='homemaking'#}#}
+
+					{#$homemakingGray = 0#}
+					{#$homemakingRefuse = 0#}
+					{#homemaking action="hList" return="list" u="1" pageData="1" pageSize="1"#}
+						{#$homemakingGray   = $list['state6']#}
+						{#$homemakingRefuse = $list['state8']#}
+					{#/homemaking#}
+
+					{#$homemakingOngoing = 0#}
+					{#$homemakingRefunded = 0#}
+					{#homemaking action="orderList" return="list" store="1" pageData="1" pageSize="1"#}
+						{#$homemakingOngoing = $list['ongoing']#}
+						{#$homemakingRefunded = $list['refunded']#}
+					{#/homemaking#}
+					<dl>
+						<dt>{#$langData['homemaking'][8][26]#} <i></i></dt>
+						<dd><img src="{#$templets_skin#}images/icon/c-tuan.png?v={#$cfg_staticVersion#}" /></dd>
+						<dd>
+							<div class="fn-clear item4">
+								<p><a href="{#getUrlPath service='member' template='manage' module='homemaking' param="state=0"#}">
+									<em class="inline">{#$langData['siteConfig'][10][31]#} {#$homemakingGray|string_format:"%d"#}</em>
+								</a></p>
+								<p><a href="{#getUrlPath service='member' template='manage' module='homemaking' param="state=2"#}">
+									<em class="inline">{#$langData['siteConfig'][10][32]#} {#$homemakingRefuse|string_format:"%d"#}</em>
+									{#if $homemakingRefuse > 0#}<i class="m-state"></i>{#/if#}
+								</a></p>
+								<p><a href="{#getUrlPath service='member' template='order' action='homemaking' param="state=6"#}">
+										<em class="inline">{#$langData['homemaking'][9][93]#} {#$homemakingOngoing|string_format:"%d"#}</a></em>
+										{#if $homemakingOngoing > 0#}<i class="m-state"></i>{#/if#}
+								</a></p>
+								<p><a href="{#getUrlPath service='member' template='order' action='homemaking' param="state=9"#}">
+										<em class="inline">{#$langData['siteConfig'][9][65]#} {#$homemakingRefunded|string_format:"%d"#}</a></em>
+										{#if $homemakingRefunded > 0#}<i class="m-state"></i>{#/if#}
+								</a></p>
+							</div>
+						</dd>
+					</dl>
+
+					{#/if#}
+				{#/siteConfig#}
+
+
+			</div>
+
+		</div>
+	</div>
+
+
+
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

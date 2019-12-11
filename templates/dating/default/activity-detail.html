@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$detail_title#}-相亲活动-{#$dating_title#}</title>
+<meta name="keywords" content="{#$dating_keywords#}" />
+<meta name="description" content="{#$dating_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/hddetail.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$dating_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+  var criticalPoint = 1240, criticalClass = "w1200";
+  $("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+  var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	var id = {#$id#}, lng = '{#$detail_lnglat[0]#}', lat = '{#$detail_lnglat[1]#}', address = '{#$detail_address#}', site_map = "{#$site_map#}";
+</script>
+</head>
+
+<body>
+{#$pageCurr = "activity"#}
+{#include file="top.html"#}
+
+<!-- 活动详情 s -->
+<div class="wrap hd-detail-main">
+	<div class="wrap hdhbox">
+		<p class="bt">{#$detail_title#}</p>
+		<div class="hdb-left">
+			<div class="slideBox">
+				<div class="picFocus">
+					<div class="picbd"><ul><li><a href="{#$detail_litpic#}" target="_blank"><img src="{#$detail_litpic#}" alt="{#$detail_title#}"></a></li></ul></div>
+				</div>
+			</div>
+		</div>
+		<div class="hbd-right">
+			<p>活动时间：<span class="hdtime">{#$detail_btime#}</span></p>
+			<p>报名截止时间：<span class="endtime">{#$detail_deadline|date_format:"%Y-%m-%d %H:%M:%S"#}</span></p>
+			<p class="bgc">人数限制：{#$detail_pcount#}</p>
+			<p class="bgc">活动费用：<span class="price">{#$detail_money#}</span></p>
+			<p class="bgc">活动地点：{#$detail_address#}<a href="javascript:;" id="linkmap">【查看地图】</a></p>
+			<p>特别要求：{#$detail_else#}</p>
+			<div class="hdpeoinfo">
+				<div class="man baomin">已有男士参加报名<span>{#$detail_man#}人</span></div>
+				<div class="wom baomin">已有女士参加报名<span>{#$detail_lady#}人</span></div>
+			</div>
+			<div class="btnbox"></div>
+			<a href="javascript:;" id="joinhd">立即报名</a>
+		</div>
+	</div>
+	<div class="wrap hdbbox">
+		<div class="hdbbox-right">
+			<div class="r-in pinned">
+				<div class="myTab"><ul class="tab-nav fixnav"><li><a href="javascript:;">已参加报名人数</a></li></ul></div>
+				<div class="box">
+					<ul class="tabhead">
+						<li class="active"><a href="javascript:;">女会员</a></li>
+						<li><a href="javascript:;">男会员</a></li>
+					</ul>
+					<div class="tabbody">
+						<div class="tab-panel">
+							<table class="baomin-tb">
+								<thead>
+									<tr><th>昵称</th><th>年龄</th><th>学历</th></tr>
+								</thead>
+								<tbody>
+									{#dating action='activityTake' aid={#$id#} sex=0#}
+									<tr>
+										<td><div><a href="{#getUrlPath service='dating' template='u' id={#$row.uid#}#}" target="_blank">{#$row['uinfo']['nickname']#}</a></div></td>
+										<td class="uagetd">{#$row['uinfo']['age']#}</td>
+										<td><div>{#$row['education']#}</div></td>
+									</tr>
+									{#/dating#}
+								</tbody>
+							</table>
+						</div>
+						<div class="tab-panel">
+							<table class="baomin-tb">
+								<thead>
+									<tr><th>昵称</th><th>年龄</th><th>学历</th></tr>
+								</thead>
+								<tbody>
+									{#dating action='activityTake' aid={#$id#} sex=1#}
+									<tr>
+										<td><div class="uname"><a href="{#getUrlPath service='dating' template='u' id={#$row.uid#}#}" target="_blank">{#$row['uinfo']['nickname']#}</a></div></td>
+										<td class="uagetd">{#$row['uinfo']['age']#}</td>
+										<td><div>{#$row['education']#}</div></td>
+									</tr>
+									{#/dating#}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="hdbbox-left">
+			<div class="pinbox">
+				<div class="myTab pinned">
+					<ul class="tab-nav fixnav">
+						<li class="active"><a href="javascript:;" data-link="#tab-1">活动详情</a></li>
+						<li><a href="javascript:;" data-link="#tab-2">活动地址</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="myTabContent">
+				<div class="tab-pane" id="tab-1">
+					{#$detail_content#}
+				</div>
+				<div class="tab-pane" id="tab-2">
+					<p class="bt">活动地址</p>
+					<p class="addres">活动详细地址：{#$detail_address#}</p>
+					<!--百度地图容器-->
+					<div style="height:550px;border:#ccc solid 1px;" id="dituContent"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 活动详情 e -->
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dialog-4.2.0.js"></script>
+<script type="text/javascript" src="{#$site_map_apiFile#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/xqhdD.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{#$cfg_fenxiaoName#}-{#$langData['siteConfig'][35][4]#}</title>{#* 我的下线 *#}
+    <meta name="keywords" content="{#$article_keywords#}">
+    <meta name="description" content="{#$article_description#}">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fenxiao_offline.css?v={#$cfg_staticVersion#}">
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+</head>
+<body>
+{#include file="../../siteConfig/touch_top.html" pageTitle={#$langData['siteConfig'][35][6]#}#}{#* 我的下线 *#}
+<div class="nav fn-clear"><span class="fn-left filter"><em>{#$langData['siteConfig'][35][15]#}</em> <i></i></span> <span class="fn-right" id="totalCount"></span></div>{#* 按时间倒序 *#}
+
+<div class="choose-box">
+    <ul class="choose-sort">
+        <li class="curr" data-id="">{#$langData['siteConfig'][35][15]#}</li>{#* 按时间倒序 *#}
+        <li data-id="1">{#$langData['siteConfig'][35][16]#}</li>{#* 按时间正序 *#}
+    </ul>
+</div>
+
+<div class="mask mask-hide"></div>
+
+<div class="list-box">
+    <ul></ul>
+    <div class="loading"><span>{#$langData['siteConfig'][20][409]#}</span></div>{#* 正在获取，请稍后 *#}
+</div>
+
+<script>
+    //隐藏APP端右上角菜单
+    setTimeout(function(){
+        setupWebViewJavascriptBridge(function(bridge) {
+            bridge.callHandler('hideAppMenu', {}, function(){});
+        });
+    }, 500);
+</script>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type="text/javascript" src="{#$templets_skin#}js/fenxiao_offline.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+/*图片导航*/
+.sx-tubiao{ height: 6.5em; width:100%; }
+.tubiao{ height: 6.5em; width:100%; background-color: white;box-shadow:5px 1px 2px #f0efed ;}
+.tubiao ul{height: 2.8rem; overflow: hidden;}
+.tubiao li,.convenience li{width: 25%;float: left;text-align: center;}
+.tubiao li a,.convenience li a{display: block;}
+.tubiao li span.icon-circle,.convenience li span.icon-circle{display: block;width: 1.5rem;margin: 0 auto;padding-top: .1rem; padding-bottom: .12rem;}
+.tubiao li span.icon-txt,.convenience li span.icon-txt{font-size: .24rem;}
+.tubiao li span img,.convenience li span img{display: block;height: .85rem;margin: 0 auto;}
+
+/*导航*/
+.hd{position: relative;width: 100%;border-top: 1px solid #f4f4f4;;z-index: 1002;background: #fff;margin-top:10px;}
+.list>.esf-list{display: none;}
+.list>.esf-list:first-child{display: block;}
+.hd_dh{height: .8rem}
+.house-list.show{display: block;}
+.hd>ul{height: .8rem;}
+.hd>ul>li{float: left; padding-left: 20px;width: 6em;height:2em; text-align: center;line-height: 2em;}
+.hd>ul>li:first-child{padding-left: 5px;}
+.hd>ul>li>a>i>span{font-size: 16px;}
+.hd>ul>.active>a>i>span{color: red;}

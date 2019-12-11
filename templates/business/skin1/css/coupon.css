@@ -1,0 +1,57 @@
+
+/*coupon page css*/
+.coupon_info {padding: 0 21px 5px; position: relative;}
+.coupon_info .info_t { float: left; width: 64px; }
+.coupon_info .info_r { float: right; width: 314px;position: relative;z-index:99}
+.coupon_info .info_r_text, .coupon_info .info_r_lengjuan { padding-bottom: 10px;position:static}
+.coupon_info .info_r_text span, .coupon_info .info_r_lengjuan span.a { width: 33px; height: 16px; line-height: 16px; color: #fff; font-size: 12px; font-family: "Microsoft Yahei", 'Hiragino Sans GB'; display: inline-block; padding-left: 5px; background: url(../images/c_icon.png) repeat top center; margin-right: 5px }
+.coupon_info .info_r_text p { display: inline-block; color: #ff0000; height: 16px; line-height: 16px; }
+.coupon_info .info_r_lengjuan a { text-decoration: none }
+.coupon_info .info_r_lengjuan a img{ vertical-align:0}
+.coupon_info .info_r_lengjuan a.blue, .coupon_info .info_r_lengjuan a.orange, .coupon_info .info_r_lengjuan a.red { width: 44px; height: 16px; line-height: 16px; color: #fff; font-size: 12px; font-family: "Microsoft Yahei", 'Hiragino Sans GB'; display: inline-block; text-align: center; margin-right: 5px }
+.coupon_info .info_r_lengjuan a.blue:hover, .coupon_info .info_r_lengjuan a.orange:hover, .coupon_info .info_r_lengjuan a.red:hover { color: #fff; text-decoration: none }
+.coupon_info .info_r_lengjuan a.blue { background: url(../images/c_bluebg.png) repeat top center; }
+.coupon_info .info_r_lengjuan a.orange { background: url(../images/c_orange.png) repeat top center; }
+.coupon_info .info_r_lengjuan a.red { background: url(../images/c_redbgs.png) repeat top center; }
+.coupon_info .info_r_lengjuan a.more { height: 16px; line-height: 16px; color: #0088cc; font-size: 12px; font-family: "Microsoft Yahei", 'Hiragino Sans GB'; display: inline-block; margin-left: 5px; padding-right: 15px; background: url(../images/c_down.png) no-repeat right 4px; position: relative;}
+.coupon_info .info_r_lengjuan a.more s { display:none;position: absolute; width: 19px; height: 11px; left: 2px; top: 25px; background: url(../images/c_up.png) no-repeat top center;}
+/*coupon pop*/
+.position_r{position: relative;}
+.c_mark{background: url(../images/c_baibg.png) repeat top center; position:absolute;left:0; top:0;bottom:0; width:100%; z-index:999999; display:none}
+.coupon_div { position: absolute; left:50%; top: 5px; margin-left:86px; padding-top: 26px;z-index:9999999}
+.coupon_div .cont { width: 390px; padding:0; padding-top: 10px; border: 1px solid #ff6600; background-color: #fff;}
+.coupon_div .cont .cont_height{max-height: 350px; overflow: auto ;}
+.coupon_div .cont .c_abtn{text-align:right;margin:0 14px 5px 0}
+.coupon_div .cont .c_abtn a { display: inline-block; height: 26px; line-height: 26px;padding:0 10px; font-size:14px; background-color: #ff6600; color: #fff; text-align: center;text-decoration: none }
+.coupon_div .cont .c_abtn a:hover { background-color: #ff3300; text-decoration: none }
+.coupon_div .up_arrow { background: url(../images/c_up.png) no-repeat top center; width: 19px; height: 11px; position: absolute; top: 16px; left: 74px; }
+.coupon_div .close { background: url(../images/c_close.png) no-repeat top center; width: 20px; height: 20px; position: absolute; top: 0; right: -2px; cursor: pointer }
+.coupon_div .juan { width: 360px; height: 60px; padding-bottom: 10px; margin: 0 auto;position:relative;}
+.coupon_div .juan.blue { background: url(../images/c_lanbg.png) no-repeat top center; }
+.coupon_div .juan.orange { background: url(../images/c_chengbg.png) no-repeat top center; }
+.coupon_div .juan.red { background: url(../images/c_redbg.png) no-repeat top center; }
+.coupon_div .juan_t { width: 288px; float: left; height: 60px;}
+.coupon_div .juan_a { display: block; width: 40px; float: left; height: 50px; font-size: 18px; color: #fff100; padding: 10px 15px 0 17px; line-height: 110% }
+.coupon_div .juan_a:hover {text-decoration: none}
+.coupon_div .juan_t_l { min-width: 54px;overflow: hidden; height: 50px; font-size: 18px; color: #fff; padding-left: 16px; padding-right: 10px;background: url(../images/f_rmb.png) no-repeat 15px 18px; padding-top: 10px; float: left ;font-family: "Microsoft Yahei",'Hiragino Sans GB';}
+.coupon_div .juan_t_l span { font-size: 36px; font-family: "Arial"; font-weight: bold; vertical-align: -12px; margin-left: 14px;line-height:120%}
+.coupon_div .juan_t_r { padding-top: 12px; height: 48px; margin-left: 80px; font-size: 12px; font-family: "Microsoft Yahei", 'Hiragino Sans GB'; color: #FFF;position: relative /*max-width:166px*/}
+.coupon_div .juan_t_r p { padding-top: 1px;/*width:160px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; */ }
+.coupon_div .juan_t_r p.overh a{ display:inline-block;font-weight: normal;*display:inline;*zoom:1; color:#fff; text-decoration:underline;padding:0 0; vertical-align: -4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.coupon_div .juan_t_r p.overh{ font-weight:bold;}
+.coupon_div .juan_t_r p span{color:#fff100;margin-left:5px;}
+.coupon_div .juan_t_r p span s{ color:#000; font-size:12px; position:absolute;left: 125px;text-decoration:none;display:none;top: 42px;width:150px}
+.coupon_div .juan_a_y { display: none; float: left; background: url(../images/c_receive.png) no-repeat top center; width: 58px; height: 34px; padding: 26px 8px 0 6px; }
+.coupon_div p.juan_a_y {padding: 26px 0 0 0; width: 72px;}
+.coupon_div .juan_a_y:hover {text-decoration: none}
+.coupon_div .juan_a_y span { background: url(../images/c_transparent.png) repeat top center; width: 58px; height: 24px; line-height: 24px; text-align: center; color: #fff100; font-size: 12px; display: none }
+.coupon_div .juan_a_y s { width:72px; height: 24px; text-align:center; display: inline-block; margin-top:10px;  line-height: 24px; text-align: center; color: #fff; font-size: 12px; text-decoration:none;}
+.coupon_div .c_receive .juan_a { display: none }
+.coupon_div .c_receive .juan_a_y { display: block; }
+.coupon_div .c_receive .juan_a_y span { display: block; } 
+.coupon_div .juan_time_ts{position:absolute;left:0;top:0;height:60px;width:100%;background: url(../images/black_80.png) repeat top center;color:#fff;text-align:center;line-height:60px;display:none}
+
+
+
+
+

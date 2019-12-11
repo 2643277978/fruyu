@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="{#$cfg_soft_lang#}">
+    <title>{#$title#}-直播详情</title>
+    <meta name="keywords" content="{#$title#}"/>
+    <meta name="description" content="{#$title#}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" href="{#$templets_skin#}css/fabu-live.css?v={#$cfg_staticVersion#}">
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript" src="{#$templets_skin#}js/mobiscroll.js"></script>
+    <script>
+        var staticPath = '{#$cfg_staticPath#}', templatePath = '{#$templets_skin#}';
+        var masterDomain = '{#$cfg_basehost#}', userDomain = '{#$member_userDomain#}',channelDomain = '{#$cfg_currentHost#}';
+        var streamname='{#$streamname#}',livetime='{#$livetime#}',starttime='{#$starttime#}',liveLimitTime='{#$liveLimitTime#}',webUrl='{#$webUrl#}',litpic='{#$litpic#}',id='{#$id#}',pullUrl="{#$pullUrl#}",title="{#$title#}",pushurl="{#$pushurl#}",flowname="{#$flow#}",wayname="{#$way#}",editUrl = '{#getUrlPath service="member" type="user" template="fabu" action="$module"#}';
+        var pulltype = {#$pulltype#};
+    </script>
+</head>
+<body>
+{#$pageTitle = {#$title#}#}
+{#include file="top.html"#}
+<div class="publish_live">
+   <div class="live_video">
+       <!-- <button class="vrefresh"></button> -->
+       {#if $wayname == '横屏'#}
+       {#$temp = 'h_detail'#}
+       {#else#}
+       {#$temp = 'detail'#}
+       {#/if#}
+       {#if $arcrank == 1#}
+       <a href="{#getUrlPath service='live' template=$temp id="{#$id#}"#}">
+           <div class="vcontent">
+               <img src="{#$templets_skin#}images/live_publish.png" >
+               <p>进入直播</p>
+           </div>
+           <img src="{#$litpic#}" style="height: 3.5rem;width: 100%;">
+       </a>
+       {#else#}
+       <a href="javascript:;">
+           <div class="vcontent">
+               <img src="{#$templets_skin#}images/live_publish.png" >
+               <p>{#if $arcrank == 0#}待审核{#else#}审核失败{#/if#}</p>
+           </div>
+           <img src="{#$litpic#}" style="height: 3.5rem;width: 100%;">
+       </a>
+       {#/if#}
+   </div>
+    <div class="detail_main">
+        <ul class="set_info publish_info">
+            <li><span>直播分类</span><span class="det_right">{#$typename#}</span></li>
+            <li><span>开始时间</span><span class="det_right">{#$ftime#}</span></li>
+            <li><span>浏览人数</span><span class="det_right">{#$click#}</span></li>
+            <li><span>点赞量</span><span class="det_right">{#if $up>=10000#}{#round($up,2)#}万{#else#}{#$up#}{#/if#}</span></li>
+            <li><span>横竖屏</span><span class="det_right">{#$wayname#}</span></li>
+            <li><span>类型</span><span class="det_right">{#$catidtype#}</span></li>
+            <li class="list_box {#if $catid==1#}{#else#}li_pass{#/if#}"><span>密码</span><input type="text" name="lpassword" class="det_right" readonly value="{#$password#}"></li>
+            <li class="list_box {#if $catid==2#}{#else#}li_collect{#/if#}"><span>开始收费</span><span class="det_right">{#$startmoney#} 元</span></li>
+            <li class="list_box {#if $catid==2#}{#else#}li_collect{#/if#}"><span>结束收费</span><span class="det_right">{#$endmoney#} 元</span></li>
+            <li><span>清晰度</span><span class="det_right">{#$flowname#}</span></li>
+            {#if $state!=2#}
+            {#if $pulltype == 1#}
+            <li><span>拉流地址(电脑端)</span><span class="det_right" style="width:60%;">{#$pullurl_pc#}</span></li>
+            <li><span>拉流地址(移动端)</span><span class="det_right" style="width:60%;">{#$pullurl_touch#}</span></li>
+            {#else#}
+            <li><span>推流地址</span><textarea class="det_right tlAddress" readonly>{#$pushurl#}</textarea></li>
+            {#/if#}
+            {#/if#}
+        </ul>
+        {#if $state!=2#}
+        <div class="live_button">
+            {#if $arcrank == 1#}
+            <button class="btn_start">开始直播</button>
+            {#/if#}
+            {#if $state == 1#}
+            <button class="btn_end">结束直播</button>
+            {#/if#}
+        </div>
+        {#/if#}
+    </div>
+    {#if $state!=2#}
+    {#$url={#getUrlPath service="member" type="user" template="fabu" action="$module"#}#}
+    <div class="reset_con"><a href="{#$url#}?id={#$id#}">重新编辑</a></div>
+    {#/if#}
+
+    <div class="down_modal" style="display: none;">
+        <div class="modal_box">
+            <div class="m-close"><img  src="{#$templets_skin#}images/m_close.png"></div>
+            <p>您需下载移动端APP后方可使用</p>
+            <div class="hn_logo"><img  src="{#$cfg_app_logo#}"></div>
+            <h5>{#$cfg_appname#}</h5>
+            <div class="btn-down"><a href="{#getUrlPath service='siteConfig' template='mobile'#}" target="_blank">点击下载</a></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="{#$templets_skin#}js/livedetail.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

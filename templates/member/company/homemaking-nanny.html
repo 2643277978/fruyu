@@ -1,0 +1,44 @@
+{#$pageTitle = $langData['siteConfig'][11][12]|cat:" - "|cat:$cfg_webname#}
+{#include file="head.html"#}
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/manage.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}../css/refreshTop.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript">
+	var module = '{#$module#}', atpage = 1, totalCount = 0, pageSize = 10, state = '{#$state#}', type = '{#$type#}';
+	var editUrl = '{#getUrlPath service="member" template="fabu" action="$module"#}';
+	var modelType = '{#$module#}', state = '{#$state#}', type = '{#$type#}', typeid = {#$typeid#}, uploadType = "thumb";
+	var statisticsUrl = '{#getUrlPath service="member" type="user" template="statistics" action="$module"#}';
+</script>
+</head>
+
+{#$pageCurr = "homemaking_nanny"#}
+
+<body>
+{#include file="headSidebar.html"#}
+
+<div class="main">
+	<div class="nav-tabs fn-clear">
+		<ul class="fn-clear">
+			<li data-id=""><a href="javascript:;">{#$langData['siteConfig'][19][391]#} (<span id="total">0</span>)</a></li>
+			<li data-id="1"><a href="javascript:;">{#$langData['siteConfig'][19][392]#} (<span id="audit">0</span>)</a></li>
+			<li data-id="0"><a href="javascript:;">{#$langData['siteConfig'][9][21]#} (<span id="gray">0</span>)</a></li>
+			<li data-id="2"><a href="javascript:;">{#$langData['siteConfig'][9][35]#} (<span id="refuse">0</span>)</a></li>
+		</ul>
+		<a href="{#getUrlPath service='member' template='fabu' action='homemaking-nanny'#}" class="btn add">{#$langData['homemaking'][8][45]#}</a>
+	</div>
+
+	<div class="container fn-clear">
+		<div class="list homemaking" id="list"></div>
+		<div class="pagination fn-clear" style="display: none;"><div class="pagination-pages fn-clear"></div></div>
+	</div>
+</div>
+
+{#include file="footer.html"#}
+{#if $type#}
+{#include file="../refreshTop.html" tourl={#getUrlPath service='member' template='manage' action={#$module#} dopost={#$type#}#} act={#$type#}#}
+{#else#}
+{#include file="../refreshTop.html" tourl={#getUrlPath service='member' template='manage' action={#$module#}#} act="detail"#}
+{#/if#}
+<script type="text/javascript" src="{#$templets_skin#}../js/refreshTop.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/homemaking-nanny.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

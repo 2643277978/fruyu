@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>{#$siteCityInfo['name']#}{#$sp_seotitle#}商铺{#$pageType#},{#$siteCityInfo['name']#}旺铺{#$pageType#},{#$siteCityInfo['name']#}店铺{#$pageType#},{#$siteCityInfo['name']#}店面{#$pageType#}信息-{#$house_title#}</title>
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/sl.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/estate-list.css?v={#$cfg_staticVersion#}">
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+    <script>
+        var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', cfg_staticPath = '{#$cfg_staticPath#}', staticPath = '{#$cfg_staticPath#}',templets_skin = '{#$templets_skin#}';
+
+        var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+        var addrUrl     = '{#getUrlPath service="house" template="list" typeid="{#$list_id#}" addrid="%addr%" business="%circle%" subway="0" param="{#$skeyword#}"#}';
+        var subwayUrl   = '{#getUrlPath service="house" template="list" typeid="{#$list_id#}" addrid="0" business="0" subway="%subway%" station="%station%" param="{#$skeyword#}"#}';
+        var action = 'spList', detailListId = 'sp-list';
+        var type = '{#$type#}';
+    </script>
+</head>
+<body>
+<div class="container cf">
+    <div id="scroller" class="sp">
+            <!-- header -->
+            {#include file="../../../siteConfig/touch_top.html" pageTitle="商铺写字楼"#}
+            <!-- header e -->
+            <!-- 搜索  -->
+            <form class="search-box" action="" method="get">
+                <div class="search l">
+                    <i></i>
+                    <input type="text" id="search_keyword" placeholder="请输入要搜索的关键字">
+                </div>
+                <div class="search-btn l">
+                    <input type="button" data-role="btn" name="search" id="search_button" value="搜索">
+                </div>
+                <div class="clear"></div>
+            </form>
+            <!-- 搜索 e -->
+            <!-- 图标导航 -->
+            <div class="sx-tubiao ">
+                <div class="tubiao">
+                                <ul>
+                                    <li>
+                                        <a href="{#getUrlPath service=house template=sp#}">
+                                            <span class="icon-circle"><img src="{#$templets_skin#}images/zusp.png"></span>
+                                            <span class="icon-txt">租商铺</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{#getUrlPath service=house template=maisp#}">
+                                            <span class="icon-circle"><img src="{#$templets_skin#}images/maisp.png"></span>
+                                            <span class="icon-txt">买商铺</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{#getUrlPath service=house template=xzl#}">
+                                            <span class="icon-circle"><img src="{#$templets_skin#}images/zuxzl.png"></span>
+                                            <span class="icon-txt">租写字楼</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{#getUrlPath service=house template=maixzl#}">
+                                            <span class="icon-circle"><img src="{#$templets_skin#}images/maixzl.png"></span>
+                                            <span class="icon-txt">买写字楼</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                          </div>
+                    </div>
+            <!-- 图标导航 e -->
+            <!--  横线导航  -->
+                <div class="hd">
+                    <ul class="scroll">
+                        <li class="sl active buysp" data-id="1" ><a href="javascript:;"><i><span>买商铺</span></i></a></li>
+                        <li class="sl zusp"  data-id="0"><a href="javascript:;"><i><span>租商铺</span></i></a></li>
+                        <li class="sl zuxzl"  data-id="1"><a href="javascript:;"><i><span>租写字楼</span></i></a></li>
+                        <li class="sl buyxzl"  data-id="0"><a href="javascript:;"><i><span>买写字楼</span></i></a></li>
+                    </ul>
+                </div>
+            <!-- 横线导航 e -->
+        <div class="list">
+         <div class="maiSp esf-list show" id="sp-list">
+         </div>
+        <div class="zuSp esf-list" id="sp_list">
+        </div>
+        <div class="maiXzl esf-list" id="xzl_list">
+        </div>
+        <div class="zuXzl esf-list" id="xzl-list">
+         </div>
+        </div>
+        <div class="mask"></div>
+    </div>
+</div>
+<script>
+     var atpage = '{#$page#}',
+    totalCount = {#if $pageInfo.totalCount == 0#}0{#else#}{#$pageInfo.totalCount#}{#/if#},
+     totalPage = {#if $pageInfo.totalPage == 0#}0{#else#}{#$pageInfo.totalPage#}{#/if#},
+     pageSize = 20;
+</script>
+<script src="{#$templets_skin#}js/iscroll.js"></script>
+<script src="{#$cfg_staticPath#}js/detail2list.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/sl.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/sp.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/xzl.js?v={#$cfg_staticVersion#}"></script>
+
+ <script type="text/javascript">
+      var wxconfig = {
+        "appId": '{#$wxjssdk_appId#}',
+         "timestamp": '{#$wxjssdk_timestamp#}',
+         "nonceStr": '{#$wxjssdk_nonceStr#}',
+         "signature": '{#$wxjssdk_signature#}',
+          "description": '{#$house_description#}',
+          "title": '{#$siteCityInfo['name']#}{#$sp_seotitle#}写字楼{#$pageType#}',
+          "imgUrl": '{#$house_logoUrl#}',
+          "link": '{#getUrlPath service='house' template='xzl'#}',
+            };
+   document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="{#$cfg_soft_lang#}">
+    <title>{#$langData['marry'][2][0]#}</title>{#*婚嫁频道 *#}
+    <meta name="wap-font-scale" content="no">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/marry.css?v={#$cfg_staticVersion#}">
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+    <script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+</head>
+<body>
+
+{#$pageTitle = "{#$langData['marry'][2][0]#}"#}{#*婚嫁频道 *#}
+{#$pageRight = '<a href="javascript:;" class="notMenu"> </a>'#}
+{#include file="top.html"#}
+<div class="container">
+    <ul class="carlist">
+        <li class="store fn-clear"><a class="fn-clear"  href="{#getUrlPath service='member' template='config-marry'#}">
+            <i class="icon fn-left"><img src="{#$templets_skin#}images/marry/ic_01.png" alt=""></i>
+            <p class="fn-left">{#$langData['marry'][2][1]#}</p>{#*店铺配置 *#}
+            <span class="fn-right"></span>
+        </a></li>
+        {#if $isMarryStore#}
+        {#if in_array(1, $bind_moduleArr)#}
+        <li class=" fn-clear"><a class="fn-clear" href="{#getUrlPath service='member' template='marry-hotel'#}">
+            <i class="icon fn-left"><img src="{#$templets_skin#}images/marry/ic_02.png" alt=""></i>
+            <p class="fn-left">{#$langData['marry'][2][2]#}</p>{#*酒店管理 *#}
+            <span class="fn-right"></span>
+        </a></li>
+        {#/if#}
+        {#if in_array(6, $bind_moduleArr)#}
+        <li class=" fn-clear"><a class="fn-clear" href="{#getUrlPath service='member' template='marry-host'#}">
+            <i class="icon fn-left"><img src="{#$templets_skin#}images/marry/ic_03.png" alt=""></i>
+            <p class="fn-left">{#$langData['marry'][2][3]#}</p>{#*主持人管理 *#}
+            <span class="fn-right"></span>
+        </a></li>
+        {#/if#}
+        {#if in_array(3, $bind_moduleArr)#}
+        <li class=" fn-clear"><a class="fn-clear" href="{#getUrlPath service='member' template='marry-rental'#}">
+            <i class="icon fn-left"><img src="{#$templets_skin#}images/marry/ic_04.png" alt=""></i>
+            <p class="fn-left">{#$langData['marry'][2][4]#}</p>{#*婚车管理 *#}
+            <span class="fn-right"></span>
+        </a></li>
+        {#/if#}
+        {#if in_array(2, $bind_moduleArr)#}
+        <li class=" fn-clear"><a class="fn-clear" href="{#getUrlPath service='member' template='marry-plan'#}">
+            <i class="icon fn-left"><img src="{#$templets_skin#}images/marry/ic_05.png" alt=""></i>
+            <p class="fn-left">{#$langData['marry'][2][5]#}</p>{#*策划管理 *#}
+            <span class="fn-right"></span>
+        </a></li>
+        {#/if#}
+        {#if in_array(4, $bind_moduleArr)#}
+        <li class=" fn-clear"><a class="fn-clear" href="{#getUrlPath service='member' template='marry-planmeal'#}?typeid=1">
+            <i class="icon fn-left"><img src="{#$templets_skin#}images/marry/ic_06.png" alt=""></i>
+            <p class="fn-left">{#$langData['marry'][2][6]#}</p>{#*婚纱摄影 *#}
+            <span class="fn-right"></span>
+        </a></li>
+        {#/if#}
+        {#if in_array(5, $bind_moduleArr)#}
+        <li class=" fn-clear"><a class="fn-clear" href="{#getUrlPath service='member' template='marry-planmeal'#}?typeid=2">
+            <i class="icon fn-left"><img src="{#$templets_skin#}images/marry/ic_07.png" alt=""></i>
+            <p class="fn-left">{#$langData['marry'][2][7]#}</p>{#*摄影跟拍 *#}
+            <span class="fn-right"></span>
+        </a></li>
+        {#/if#}
+        {#if in_array(7, $bind_moduleArr)#}
+        <li class=" fn-clear"><a class="fn-clear" href="{#getUrlPath service='member' template='marry-planmeal'#}?typeid=3">
+            <i class="icon fn-left"><img src="{#$templets_skin#}images/marry/ic_08.png" alt=""></i>
+            <p class="fn-left">{#$langData['marry'][2][8]#}</p>{#*珠宝首饰 *#}
+            <span class="fn-right"></span>
+        </a></li>
+        {#/if#}
+        {#if in_array(8, $bind_moduleArr)#}
+        <li class=" fn-clear"><a class="fn-clear" href="{#getUrlPath service='member' template='marry-planmeal'#}?typeid=4">
+            <i class="icon fn-left"><img src="{#$templets_skin#}images/marry/ic_09.png" alt=""></i>
+            <p class="fn-left">{#$langData['marry'][2][9]#}</p>{#*摄像跟拍 *#}
+            <span class="fn-right"></span>
+        </a></li>
+        {#/if#}
+        {#if in_array(9, $bind_moduleArr)#}
+        <li class=" fn-clear"><a class="fn-clear" href="{#getUrlPath service='member' template='marry-planmeal'#}?typeid=5">
+            <i class="icon fn-left"><img src="{#$templets_skin#}images/marry/ic_10.png" alt=""></i>
+            <p class="fn-left">{#$langData['marry'][2][10]#}</p>{#*新娘跟妆 *#}
+            <span class="fn-right"></span>
+        </a></li>
+        {#/if#}
+        {#if in_array(10, $bind_moduleArr)#}
+        <li class=" fn-clear"><a class="fn-clear" href="{#getUrlPath service='member' template='marry-planmeal'#}?typeid=6">
+            <i class="icon fn-left"><img src="{#$templets_skin#}images/marry/ic_11.png" alt=""></i>
+            <p class="fn-left">{#$langData['marry'][2][11]#}</p>{#*婚纱礼服 *#}
+            <span class="fn-right"></span>
+        </a></li>
+        {#/if#}
+        {#/if#}
+    </ul>
+</div>
+</body>
+</html>

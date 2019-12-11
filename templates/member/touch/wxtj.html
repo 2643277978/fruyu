@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="{#$cfg_soft_lang#}">
+    <title>微信统计</title>
+    <meta name="keywords" content="{#$live_keywords#}"/>
+    <meta name="description" content="{#$live_description#}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/wxtj.css?v={#$cfg_staticVersion#}">
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript" src="{#$templets_skin#}js/mobiscroll.js"></script>
+    <script>
+        var hiddenid="{#$userinfo.userid#}",masterDomain = '{#$cfg_basehost#}',staticPath = '{#$cfg_staticPath#}', templatePath = '{#$templets_skin#}';
+        var imgtextUrl = '{#getUrlPath service='member' type='user' template='live_imgtext' param='id='#}';
+    </script>
+</head>
+<body>
+{#$pageTitle = '微信统计'#}
+{#include file="top.html"#}
+
+<!-- 数据概览 -->
+<div class="sj-all">
+    <h2>数据概览</h2>
+    <div class="sj-top">
+        <ul>
+            <li><a href=""><span class="shareALll">0</span><span class="zi">分享总数</span></a></li>
+            <li><a href=""><span class="reALll">0</span><span class="zi">累计转发次数</span></a></li>
+            <li><a href=""><span class="ylALll">0</span><span class="zi">累计浏览次数</span></a></li>
+            <li><a href=""><span class="visitALll">0</span><span class="zi">累计访客人数</span></a></li>
+            <li><a href=""><span>0</span><span class="zi">电话点击数</span></a></li>
+            <li><a href=""><span>0</span><span class="zi">IM按钮点击数</span></a></li>
+        </ul>
+    </div>
+    <div class="sj-mid">
+        <table>
+            <tbody>
+            <tr>
+                <td>名称</td>
+                <td>分享量</td>
+                <td>浏览量</td>
+                <td>访客量</td>
+                <td>转发量</td>
+            </tr>
+            <tr id="housing" >
+                <th >房源</th>
+            </tr>
+            <tr id="article" >
+                <th >文章</th>
+            </tr>
+            <tr id="poster" >
+                <th >海报</th>
+            </tr>
+            <tr id="businessCard" >
+                <th >名片</th>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- 数据概览 e-->
+<!-- 访客分析 -->
+<div class="fkfx">
+    <h2>访客分析</h2>
+    <div class="fkfx-top">
+        <div class="fkfx-top-left">
+            <span class="fksall">0</span>
+            <span class="fks">累计访客人数</span>
+        </div>
+        <div class="fkfx-top-right">
+            <ul>
+                <li><span>今天新增</span><span class="sz  today">0</span><span class="tx"><span class="inday"></span></span></li>
+                <li ><span>3天内新增</span><span class="sz tDay">0</span><span class="tx"><span class="inthree"></span></span></li>
+                <li ><span>7天内新增</span><span class="sz sDay">0</span><span class="tx"><span class="inseven"></span></span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="ul">
+        <ul>
+            <li><a href="{#getUrlPath service='member' type='user' template='share_people'#}">最近来访记录<span>> </span> </a></li>
+        </ul>
+    </div>
+</div>
+<!-- 访客分析 e-->
+<script type="text/javascript" src="{#$templets_skin#}js/wxtj.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

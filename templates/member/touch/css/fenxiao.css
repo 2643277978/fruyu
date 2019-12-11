@@ -1,0 +1,28 @@
+html{background: #f0f0f2;}
+.top{width: 100%;height: 7rem;background: url("../images/fenxiao_bg.png") no-repeat;background-size: contain;padding: .5rem .24rem 0;box-sizing: border-box;color: #fff;}
+.info-box{position: relative;margin-bottom: .8rem;}
+.info-box .logo{width: 1.14rem;height: 1.14rem;border-radius: 50%;border: .03rem solid #fff;margin-right: .24rem;overflow: hidden;}
+.info-box .logo img{width: 100%;height: 100%;object-fit: cover;}
+.info-box .info p.name{font-size: .34rem;}
+.info-box .info .id-box{display: inline-block;height: .46rem;background: #ff904d;border-radius: .23rem;padding: 0 .21rem;line-height: .46rem;position: absolute;bottom: .1rem;}
+.info-box .info .id-box i{display: inline-block;font-size:.24rem;width: .28rem;height: .32rem;background: url("../images/icon_rom.png") no-repeat;background-size: contain;margin: 0 .06rem -.1rem 0;}
+.info-box .code-box{position: absolute;right: 0;text-align: center;top: .1rem;}
+.info-box .code-box a{color: #fff;}
+.info-box .code-box i{display: inline-block;width: .52rem;height: .5rem;background: url("../images/icon_code.png") no-repeat;background-size: contain;margin-bottom: .08rem;}
+.history{margin-bottom: .5rem;}
+.history .tit,.cash-draw .tit{font-size: .24rem;padding-left: .15rem;}
+.history .money,.cash-draw .money{font-size: .68rem;padding:0 .15rem;font-weight: bold;position: relative;}
+.cash-draw .money .btn{display: inline-block;width: 1.56rem;height: .6rem;border-radius: .3rem;border: .02rem solid #fff;color: #fff;font-size: .32rem;line-height: .6rem;text-align: center;position: absolute;top: .16rem;right: .15rem;}
+
+.nav-box{padding: 0 .24rem;position: relative;top:-.8rem}
+.nav-box ul{display: flex;flex-wrap: nowrap;justify-content: space-between;}
+.nav-box ul li{width: 3.4rem;height: 2rem;border-radius: .1rem;background: #fff;}
+.nav-box ul li {text-align: center}
+.nav-box ul li a{display: inline-block;width: 100%;height: 100%;}
+.nav-box ul li p{font-size: .32rem;color: rgb(64, 64, 64);line-height: 1.25;}
+.nav-box ul li .img-box{margin: .4rem auto .3rem;}
+.nav-box ul li:first-child .img-box{width: .61rem;height: .52rem;overflow: hidden;}
+.nav-box ul li:last-child .img-box{width: .65rem;height:  .55rem;overflow: hidden;}
+.nav-box ul li img{width: 100%;height: 100%;}
+
+

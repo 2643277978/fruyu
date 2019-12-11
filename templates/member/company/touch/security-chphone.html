@@ -1,0 +1,196 @@
+
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/profile.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/psw.css?v={#$cfg_staticVersion#}" media="all" />
+
+  {#$pageTitle = $langData['siteConfig'][3][7]#}
+  {#include file="top.html"#}
+
+  {#if $userinfo.phoneCheck != 1#}
+
+  <div class="editForm" name="editForm">
+		<div class="edit-tip"><p>{#$langData['siteConfig'][20][238]#}</p></div>
+    <dl class="inpbox">
+      <dt><span>{#$langData['siteConfig'][6][129]#}</span></dt>
+      <select id="areaCode" name="areaCode" data-role="none" class="w100">
+        <option value="86"{#if $areaCode == 86#} selected{#/if#}>China（中国大陆）+86</option>
+        <option value="54"{#if $areaCode == 54#} selected{#/if#}>Argentina（阿根廷）+54</option>
+        <option value="61"{#if $areaCode == 61#} selected{#/if#}>Australia（澳大利亚）+61</option>
+        <option value="43"{#if $areaCode == 43#} selected{#/if#}>Austria（奥地利）+43</option>
+        <option value="1242"{#if $areaCode == 1242#} selected{#/if#}>Bahamas（巴哈马）+1242</option>
+        <option value="375"{#if $areaCode == 375#} selected{#/if#}>Belarus（白俄罗斯）+375</option>
+        <option value="32"{#if $areaCode == 32#} selected{#/if#}>Belgium（比利时）+32</option>
+        <option value="501"{#if $areaCode == 501#} selected{#/if#}>Belize（伯利兹）+501</option>
+        <option value="55"{#if $areaCode == 55#} selected{#/if#}>Brazil（巴西）+55</option>
+        <option value="359"{#if $areaCode == 359#} selected{#/if#}>Bulgaria（保加利亚）+359</option>
+        <option value="855"{#if $areaCode == 855#} selected{#/if#}>Cambodia（柬埔寨）+855</option>
+        <option value="1"{#if $areaCode == 1#} selected{#/if#}>Canada（加拿大）+1</option>
+        <option value="56"{#if $areaCode == 56#} selected{#/if#}>Chile（智利）+56</option>
+        <option value="57"{#if $areaCode == 57#} selected{#/if#}>Colombia（哥伦比亚）+57</option>
+        <option value="45"{#if $areaCode == 45#} selected{#/if#}>Denmark（丹麦）+45</option>
+        <option value="20"{#if $areaCode == 20#} selected{#/if#}>Egypt（埃及）+20</option>
+        <option value="372"{#if $areaCode == 372#} selected{#/if#}>Estonia（爱沙尼亚）+372</option>
+        <option value="358"{#if $areaCode == 358#} selected{#/if#}>Finland（芬兰）+358</option>
+        <option value="33"{#if $areaCode == 33#} selected{#/if#}>France（法国）+33</option>
+        <option value="49"{#if $areaCode == 49#} selected{#/if#}>Germany（德国）+49</option>
+        <option value="30"{#if $areaCode == 30#} selected{#/if#}>Greece（希腊）+30</option>
+        <option value="852"{#if $areaCode == 852#} selected{#/if#}>Hong Kong（香港）+852</option>
+        <option value="36"{#if $areaCode == 36#} selected{#/if#}>Hungary（匈牙利）+36</option>
+        <option value="91"{#if $areaCode == 91#} selected{#/if#}>India（印度）+91</option>
+        <option value="62"{#if $areaCode == 62#} selected{#/if#}>Indonesia（印度尼西亚）+62</option>
+        <option value="353"{#if $areaCode == 353#} selected{#/if#}>Ireland（爱尔兰）+353</option>
+        <option value="972"{#if $areaCode == 972#} selected{#/if#}>Israel（以色列）+972</option>
+        <option value="39"{#if $areaCode == 39#} selected{#/if#}>Italy（意大利）+39</option>
+        <option value="81"{#if $areaCode == 81#} selected{#/if#}>Japan（日本）+81</option>
+        <option value="962"{#if $areaCode == 962#} selected{#/if#}>Jordan（约旦）+962</option>
+        <option value="996"{#if $areaCode == 996#} selected{#/if#}>Kyrgyzstan（吉尔吉斯斯坦）+996</option>
+        <option value="370"{#if $areaCode == 370#} selected{#/if#}>Lithuania（立陶宛）+370</option>
+        <option value="352"{#if $areaCode == 352#} selected{#/if#}>Luxembourg（卢森堡）+352</option>
+        <option value="853"{#if $areaCode == 853#} selected{#/if#}>Macau（澳门）+853</option>
+        <option value="60"{#if $areaCode == 60#} selected{#/if#}>Malaysia（马来西亚）+60</option>
+        <option value="960"{#if $areaCode == 960#} selected{#/if#}>Maldives（马尔代夫）+960</option>
+        <option value="52"{#if $areaCode == 52#} selected{#/if#}>Mexico（墨西哥）+52</option>
+        <option value="976"{#if $areaCode == 976#} selected{#/if#}>Mongolia（蒙古）+976</option>
+        <option value="212"{#if $areaCode == 212#} selected{#/if#}>Morocco（摩洛哥）+212</option>
+        <option value="31"{#if $areaCode == 31#} selected{#/if#}>Netherlands（荷兰）+31</option>
+        <option value="64"{#if $areaCode == 64#} selected{#/if#}>New Zealand（新西兰）+64</option>
+        <option value="234"{#if $areaCode == 234#} selected{#/if#}>Nigeria（尼日利亚）+234</option>
+        <option value="47"{#if $areaCode == 47#} selected{#/if#}>Norway（挪威）+47</option>
+        <option value="507"{#if $areaCode == 507#} selected{#/if#}>Panama（巴拿马）+507</option>
+        <option value="51"{#if $areaCode == 51#} selected{#/if#}>Peru（秘鲁）+51</option>
+        <option value="63"{#if $areaCode == 63#} selected{#/if#}>Philippines（菲律宾）+63</option>
+        <option value="48"{#if $areaCode == 48#} selected{#/if#}>Poland（波兰）+48</option>
+        <option value="351"{#if $areaCode == 351#} selected{#/if#}>Portugal（葡萄牙）+351</option>
+        <option value="974"{#if $areaCode == 974#} selected{#/if#}>Qatar（卡塔尔）+974</option>
+        <option value="40"{#if $areaCode == 40#} selected{#/if#}>Romania（罗马尼亚）+40</option>
+        <option value="7"{#if $areaCode == 7#} selected{#/if#}>Russia（俄罗斯）+7</option>
+        <option value="966"{#if $areaCode == 966#} selected{#/if#}>Saudi Arabia（沙特阿拉伯）+966</option>
+        <option value="381"{#if $areaCode == 381#} selected{#/if#}>Serbia（塞尔维亚）+381</option>
+        <option value="248"{#if $areaCode == 248#} selected{#/if#}>Seychelles（塞舌尔）+248</option>
+        <option value="65"{#if $areaCode == 65#} selected{#/if#}>Singapore（新加坡）+65</option>
+        <option value="27"{#if $areaCode == 27#} selected{#/if#}>South Africa（南非）+27</option>
+        <option value="82"{#if $areaCode == 82#} selected{#/if#}>South Korea（韩国）+82</option>
+        <option value="34"{#if $areaCode == 34#} selected{#/if#}>Spain（西班牙）+34</option>
+        <option value="94"{#if $areaCode == 94#} selected{#/if#}>Sri Lanka（斯里兰卡）+94</option>
+        <option value="46"{#if $areaCode == 46#} selected{#/if#}>Sweden（瑞典）+46</option>
+        <option value="41"{#if $areaCode == 41#} selected{#/if#}>Switzerland（瑞士）+41</option>
+        <option value="886"{#if $areaCode == 886#} selected{#/if#}>Taiwan（台湾）+886</option>
+        <option value="66"{#if $areaCode == 66#} selected{#/if#}>Thailand（泰国）+66</option>
+        <option value="216"{#if $areaCode == 216#} selected{#/if#}>Tunisia（突尼斯）+216</option>
+        <option value="90"{#if $areaCode == 90#} selected{#/if#}>Turkey（土耳其）+90</option>
+        <option value="380"{#if $areaCode == 380#} selected{#/if#}>Ukraine（乌克兰）+380</option>
+        <option value="971"{#if $areaCode == 971#} selected{#/if#}>United Arab Emirates（阿联酋）+971</option>
+        <option value="44"{#if $areaCode == 44#} selected{#/if#}>United Kingdom（英国）+44</option>
+        <option value="1"{#if $areaCode == 1#} selected{#/if#}>United States（美国）+1</option>
+        <option value="58"{#if $areaCode == 58#} selected{#/if#}>Venezuela（委内瑞拉）+58</option>
+        <option value="84"{#if $areaCode == 84#} selected{#/if#}>Vietnam（越南）+84</option>
+        <option value="1284"{#if $areaCode == 1284#} selected{#/if#}>Virgin Islands（英属维尔京群岛）+1284</option>
+      </select>
+    </dl>
+    <dl class="inpbox">
+      <dt><span>{#$langData['siteConfig'][3][6]#}：</span></dt>
+      <dd><input type="text" id="phone" name="phone" placeholder="{#$langData['siteConfig'][20][239]#}" autocomplete="off" maxlength="11" onkeyup="value=value.replace(/\D+/ig,'')" /></dd>
+    </dl>
+    <dl class="inpbox">
+      <dt><span>{#$langData['siteConfig'][4][0]#}：</span></dt>
+      <dd><input type="text" class="vdimgck" id="vdimgck" name="vdimgck" placeholder="{#$langData['siteConfig'][20][0]|replace:'1':'6'#}" autocomplete="off" maxlength="6" onkeyup="value=value.replace(/\D+/ig,'')" /><a href="javascript:;" class="verifybtn" id="getPhoneVerify">{#$langData['siteConfig'][4][4]#}</a></dd>
+    </dl>
+  </div>
+
+  <div class="submit">
+      <a href="javascript:;" id="chphone">{#$langData['siteConfig'][6][47]#}</a>
+  </div>
+
+  {#else#}
+
+  <div class="tab">
+    <ul>
+      <li class="curr">{#$langData['siteConfig'][3][3]#}</li>
+      <li>{#$langData['siteConfig'][6][10]#}</li>
+    </ul>
+  </div>
+
+  <div class="main">
+
+    <div class="editForm paypwd" name="editForm">
+
+      <div class="edit-tip"><p>{#$langData['siteConfig'][20][92]#}</p></div>
+      <div class="authenticated">
+        <dl class="inpbox">
+          <dt><span>{#$langData['siteConfig'][6][127]#}</span></dt>
+          <select class="w100 checkway" name="">
+            <option value="">{#$langData['siteConfig'][6][127]#}</option>
+            {#if $userinfo.phoneCheck == 1#}<option value="0">{#$langData['siteConfig'][3][13]#}</option>{#/if#}
+            {#if $userinfo.emailCheck == 1#}<option value="1">{#$langData['siteConfig'][3][14]#}</option>{#/if#}
+            {#if $userinfo.question == 1#}<option value="2">{#$langData['siteConfig'][20][93]#}</option>{#/if#}
+          </select>
+        </dl>
+      </div>
+      <div class="authlist">
+        {#if $userinfo.phoneCheck == 1#}
+        <div class="item item0">
+          <dl class="inpbox">
+            <dt><span>{#$langData['siteConfig'][3][6]#}：</span></dt>
+            <dd class="phoneNumber">{#$userinfo.phoneEncrypt#}</dd>
+          </dl>
+          <dl class="inpbox">
+            <dt><span>{#$langData['siteConfig'][4][0]#}：</span></dt>
+            <dd><input type="text" class="vdimgck" id="vdimgck" name="vdimgck" placeholder="{#$langData['siteConfig'][20][0]|replace:'1':'6'#}" autocomplete="off" maxlength="6" onkeyup="value=value.replace(/\D+/ig,'')" /><a href="javascript:;" class="verifybtn" id="getPhoneAuthVerify">{#$langData['siteConfig'][4][4]#}</a></dd>
+          </dl>
+        </div>
+        {#/if#}
+        {#if $userinfo.emailCheck == 1#}
+        <div class="item item1">
+          <dl class="inpbox">
+            <dt><span>{#$langData['siteConfig'][3][11]#}：</span></dt>
+            <dd>{#$userinfo.emailEncrypt#}</dd>
+          </dl>
+          <dl class="inpbox">
+            <dt><span>{#$langData['siteConfig'][4][0]#}：</span></dt>
+            <dd><input type="text" class="vdimgck" id="vdimgckEmail" name="vdimgck" placeholder="{#$langData['siteConfig'][20][0]|replace:'1':'6'#}" autocomplete="off" maxlength="6" onkeyup="value=value.replace(/\D+/ig,'')" /><a href="javascript:;" class="verifybtn" id="getEmailAuthVerify">{#$langData['siteConfig'][4][5]#}</a></dd>
+          </dl>
+        </div>
+        {#/if#}
+        {#if $userinfo.question == 1#}
+        <div class="item item2">
+          <dl class="inpbox">
+            <dt><span>{#$langData['siteConfig'][19][10]#}：</span></dt>
+            <dd class="sel-group">
+              <em>{#$langData['siteConfig'][20][231]|replace:'1':$question1|replace:'2':$question2#}</em>
+            </dd>
+          </dl>
+          <dl class="inpbox">
+            <dt><span>{#$langData['siteConfig'][19][11]#}：</span></dt>
+            <dd><input type="text" class="answer" id="answer" name="answer" placeholder="{#$langData['siteConfig'][20][102]#}" autocomplete="off" /></dd>
+          </dl>
+        </div>
+        {#/if#}
+      </div>
+      <div class="submit">
+          <a href="javascript:;" class="nextStep" id="chPhoneEdit">{#$langData['siteConfig'][6][32]#}</a>
+      </div>
+    </div>
+
+
+
+  </div>
+
+  {#/if#}
+
+
+
+  <div class="error"></div>
+<div class="phone_msg fn-hide">
+  <div class="box">
+    <div class="bdt"><div class="bdr"></div></div>
+    <a href="javascript:;" class="close">×</a>
+    <div class="content">
+      <p class="info">该手机号码已经注册过会员，确定要将该手机号码绑定到当前登陆账号吗？<br>确定后原账号将解除手机绑定，确认进入下一步？</p>
+      <div class="btns">
+        <a href="javascript:;"class="btn cancel">{#$langData['siteConfig'][6][12]#}</a>
+        <a href="javascript:;"class="btn confirm">{#$langData['siteConfig'][6][1]#}</a>
+      </div>
+    </div>
+  </div>
+  <div class="bg"></div>
+</div>
+<script type="text/javascript" src="{#$templets_skin#}js/security-chphone.js?v={#$cfg_staticVersion#}"></script>

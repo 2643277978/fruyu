@@ -1,0 +1,250 @@
+
+<link href="{#$cfg_staticPath#}css/ui/swiper.min.css" rel="stylesheet" type="text/css" />
+<link href="{#$templets_skin#}css/mobiscroll.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/get-shop.css?v=5">
+<script src="{#$templets_skin#}js/mobiscroll.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/mobiscroll.select.js" type="text/javascript"></script>
+<script>var upType = 'thumb'</script>
+
+
+<div class="scrollbox" id="mainBox">
+  <form name="fabuForm" id="fabuForm" method="post" action="/include/ajax.php?service=shop&action={#if $do == "edit"#}edit&id={#$id#}{#else#}put{#/if#}" data-url="{#getUrlPath service='member' template='manage' action='shop' param='state=0'#}">
+  <input type="hidden" name="litpic" id="litpic" value="{#$detail_litpicSource#}" />
+  <input type="hidden" name="imglist" id="imglist" value="" />
+  <!-- 幻灯片 s -->
+  <div class="slider{#if $id#} active{#/if#}" id="slider">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        {#if $detail_litpic#}
+        <div class="swiper-slide"><div class="thumbnail"><img src="{#$detail_litpic#}" data-val="{#$detail_litpicSource#}"></div></div>
+        {#/if#}
+        {#foreach from=$detail_pics key=k item=i#}
+        <div class="swiper-slide"><div class="thumbnail"><img src="{#$i.path#}" data-val="{#$i.pathSource#}"></div></div>
+        {#/foreach#}
+      </div>
+      <div class="pagination"></div>
+    </div>
+    <div class="img-box">
+      <div id="filePicker1" class="webuploader-container filePicker" data-id="1"></div>
+    </div>
+  </div>
+  <!-- 幻灯片 e -->
+
+  <div class="bgfff">
+    <!-- 商品标题 s -->
+    <div class="ml4r fn-clear">
+      <dl class="inpbox fn-clear" data-required="1">
+        <dt><span><label for="freight"><font color="#f00">*</font>{#$langData['siteConfig'][19][547]#}</label></span></dt>
+        <dd><input type="text" name="title" id="title" placeholder="{#$langData['siteConfig'][27][130]#}" value="{#$detail_title#}" maxlength="50" data-title="{#$langData['siteConfig'][27][130]#}"></dd>
+      </dl>
+    </div>
+    <!-- 商品标题 e -->
+
+    <!-- 类目 s -->
+    <div class="ml4r">
+      <a href="{#getUrlPath service='member' template='shop_type'#}">
+        <dl class="inpbox fn-clear">
+          <dt><span><label for="typeid"><font color="#f00">*</font>{#$langData['siteConfig'][19][393]#}</label></span></dt>
+          <dd class="selgroup"><p>{#$proType#}</p></dd>
+          <input type="hidden" name="typeid" id="typeid" value="{#$typeid#}" />
+          <input type="hidden" name="id" id="id" value="{#$id#}" />
+          <input type="hidden" name="itemid" id="itemid" value="{#$itemid#}" />
+        </dl>
+      </a>
+    </div>
+    <!-- 类目 e -->
+  </div>
+  <!-- 品牌 -->
+  <div class="bgfff mtop">
+    <div class="ml4r">
+  		<div data-role="fieldcontain" class="dom_select">
+  			<label for="typename">{#$langData['siteConfig'][19][563]#}</label>
+        <select id="brand" name="brand" class="demo-select-opt" data-role="none" tabindex="-1">{#$brandOption|replace:"&nbsp;&nbsp;":""|replace:"|--":""#}</select>
+      </div>
+    </div>
+  </div>
+
+  {#if $proItemList != ""#}
+  <div class="graybg" id="proItem">
+    {#$proItemList#}
+  </div>
+  {#/if#}
+
+
+  <div class="bgfff mtop">
+    {#if $storeTypeOption#}
+    <!-- 商品分类 s -->
+    <div class="ml4r" id="storeTypeCon">
+      <dl class="inpbox fn-clear storetype-btn">
+        <dt><span><label>{#$langData['siteConfig'][19][488]#}</label></span></dt>
+        <dd class="selgroup"><p>{#$langData['siteConfig'][20][119]#}</p></dd>
+      </dl>
+    </div>
+    <!-- 商品分类 e -->
+    {#/if#}
+    {#if $specification != ""#}
+    <!-- 商品规格 -->
+    <div class="ml4r">
+      <dl class="inpbox fn-clear guige-btn">
+        <dt><span><label>商品规格</label></span></dt>
+        <dd class="selgroup"><p>请选择商品规格</p></dd>
+      </dl>
+    </div>
+    {#/if#}
+    <!-- 市场价 -->
+    <div class="ml4r">
+      <dl class="inpbox fn-clear" data-required="1">
+        <dt><span><label for="mprice"><font color="#f00">*</font>{#$langData['siteConfig'][19][527]#}</label></span></dt>
+        <dd><input type="text" name="mprice" class="inp" id="mprice" placeholder="{#echoCurrency type='symbol'#}0.00" value="{#$detail_mprice#}" data-title="{#$langData['siteConfig'][27][131]#}"></dd>
+      </dl>
+    </div>
+    <!-- 一口价 -->
+    <div class="ml4r">
+      <dl class="inpbox fn-clear" data-required="1">
+        <dt><span><label for="price"><font color="#f00">*</font>{#$langData['siteConfig'][19][564]#}</label></span></dt>
+        <dd><input type="text" name="price" class="inp" id="price" placeholder="{#echoCurrency type='symbol'#}0.00" value="{#$detail_price#}" data-title="{#$langData['siteConfig'][27][131]#}"></dd>
+      </dl>
+    </div>
+    <!-- 运费模板 -->
+    <div class="ml4r">
+      <dl class="inpbox fn-clear" data-required="1" data-title="{#$langData['shop'][4][72]#}">
+        <dt><span><label for="logistic"><font color="#f00">*</font>{#$langData['siteConfig'][19][452]#}</label></span></dt>
+        <dd><select name="logistic" id="logistic">{#$logisticOption#}</select></dd>
+        <p id="logisticDetail"></p>
+      </dl>
+    </div>
+    <!-- 体积 -->
+    <div class="ml4r">
+      <dl class="inpbox fn-clear">
+        <dt><span><label for="volume">{#$langData['siteConfig'][19][565]#}</label></span></dt>
+        <dd><input type="text" name="volume" class="inp" id="volume" placeholder="m³" value="{#$detail_volume#}"></dd>
+      </dl>
+    </div>
+    <!-- 重量 -->
+    <div class="ml4r">
+      <dl class="inpbox fn-clear">
+        <dt><span><label for="weight">{#$langData['siteConfig'][19][566]#}</label></span></dt>
+        <dd><input type="text" name="weight" class="inp" id="weight" placeholder="kg" value="{#$detail_weight#}"></dd>
+      </dl>
+    </div>
+    <!-- 库存 -->
+    <div class="ml4r">
+      <dl class="inpbox fn-clear" data-required="1">
+        <dt><span><label for="inventory"><font color="#f00">*</font>{#$langData['siteConfig'][19][525]#}</label></span></dt>
+        <dd><input type="text" name="inventory" class="inp" id="inventory" placeholder="{#$langData['shop'][3][1]#}" value="{#$detail_inventory#}" data-title="{#$langData['siteConfig'][27][133]#}"></dd>
+      </dl>
+    </div>
+    <!-- 限购 -->
+    <div class="ml4r">
+      <dl class="inpbox fn-clear" data-required="1">
+        <dt><span><label for="limit"><font color="#f00">*</font>{#$langData['siteConfig'][19][567]#}</label></span></dt>
+        <dd><input type="text" name="limit" class="inp" id="limit" placeholder="{#$langData['shop'][3][1]#}" value="{#$detail_limit#}" data-title="{#$langData['siteConfig'][27][134]#}" value="{#$detail_limit#}"></dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="bgfff mtop">
+    <div class="ml4r">
+      <dl class="inpbox fn-clear describe-btn">
+        <dt><span><label>宝贝描述</label></span></dt>
+        <dd class="selgroup"><p>点击编辑</p></dd>
+      </dl>
+    </div>
+    <!-- <div class="ml4r">
+      <dl class="inpbox fn-clear gz-addr-seladdr">
+        <dt><span><label for="addr">发货地</label></span></dt>
+        <dd class="selgroup"><p><font style="color: #aaa;">请选择</font></p></dd>
+        <input type="hidden" name="addr" id="addr" value="">
+      </dl>
+    </div> -->
+  </div>
+
+  <div class="blank"></div>
+  <textarea name="body" class="fn-hide" id="body" cols="30" rows="10"></textarea>
+
+  <input type="submit" class="fn-hide">
+  <div class="fn-hide" id="storetype_data"></div>
+  </form>
+</div>
+
+
+
+<!-- 修改幻灯片弹出层 s -->
+<div class="layer layer-slider">
+  <div class="slider{#if $id#} active{#/if#}" id="slider1">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        {#if $detail_litpic#}
+        <div class="swiper-slide"><div class="thumbnail"><img src="{#$detail_litpic#}"></div></div>
+        {#/if#}
+        {#foreach from=$detail_pics key=k item=i#}
+        <div class="swiper-slide"><div class="thumbnail"><img src="{#$i.path#}"></div></div>
+        {#/foreach#}
+      </div>
+      <div class="pagination"></div>
+    </div>
+  </div>
+  <div class="container">
+		<div id="drag" class="fn-clear"></div>
+	</div>
+  <div class="confirm"><a href="javascript:;">关闭</a></div>
+</div>
+<!-- 修改幻灯片弹出层 e -->
+
+<!-- 商品规格弹出层 s -->
+{#if $specification != ""#}
+<div class="layer layer-size">
+    <form id="specificationForm" onsubmit="return false;">
+      <div class="standard scrollbox" id="specification">
+        {#$specification#}
+        <input type="hidden" name="" value="" id="price">
+        <div id="speList" class="fn-hide">
+          <dl class="fn-clear">
+            <dt>规格匹配表：</dt>
+            <dd>
+              <div class="speTab"><table><thead></thead><tbody></tbody></table></div>
+              <span class="tip-inline" style="display:inline-block;"><s></s>请补全价格和库存，字段类型为数字！</span>
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <div class="confirm"><a href="javascript:;">确定</a></div>
+    </form>
+</div>
+{#/if#}
+<!-- 商品规格弹出层 e -->
+
+<!-- 宝贝描述弹出层 s -->
+<div class="layer layer-desc">
+  <div class="desc-container scrollbox" contenteditable="true">{#$detail_body#}</div>
+  <div class="desc-footer">
+    <a href="javascript:;" class="addimg filePicker" id="filePicker2" data-id="2">添加图片</a>
+    <a href="javascript:;" class="confirm">完成</a>
+  </div>
+</div>
+<!-- 宝贝描述弹出层 e -->
+
+<!-- 商品分类弹出层 s -->
+{#if $storeTypeOption != ""#}
+<div class="layer layer-storetype">
+  <div class="standard scrollbox" id="storeType">
+    <select name="category[]" id="category" multiple>{#$storeTypeOption#}</select>
+  </div>
+  <div class="confirm"><a href="javascript:;">确定</a></div>
+</div>
+{#/if#}
+<!-- 商品分类弹出层 e -->
+
+
+<div class="footer">
+  <a href="javascript:;" class="fabubtn">立即发布</a>
+</div>
+
+<script type="text/javascript">
+  var specifiVal = {#$specifiVal#}, atlasMax = 5;
+</script>
+
+
+<script src="{#$cfg_staticPath#}js/ui/swiper.min.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/sortable.min.js" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/get-shop.js?v=4"></script>

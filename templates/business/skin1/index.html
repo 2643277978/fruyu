@@ -1,0 +1,1990 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>{#$business_title#}</title>
+<link rel="stylesheet" href="{#$templets_skin#}css/home2018.css" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/huamu.css" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/ai.css">
+<script type="text/javascript" src="{#$templets_skin#}js/jquery.min.js"></script>
+</head>
+<!--顶部-->
+
+<body>
+<div class="widetop" id="head_1">
+    <div class="wideall ">
+  			{#if $userinfo#}
+  			{#$userDomain = $member_userDomain#}
+  			{#if $userinfo.userType == 2#}
+  			{#$userDomain = $member_busiDomain#}
+  			{#/if#}
+        <div class="topleft">
+          <span>您好，欢迎来到{#$cfg_shortname#}！</span>
+          <p class="t_s2"><a href="{#$userDomain#}" target="_blank">{#$userinfo.nickname#}</a><span>|</span><a href="{#$cfg_basehost#}/logout.html" class="logout">退出</a></p>
+        </div>
+  			{#else#}
+        <div class="topleft">
+          <span>您好，欢迎来到{#$cfg_shortname#}！</span>
+          <p class="t_s2"><a href="{#$cfg_basehost#}/login.html">登录</a><span>|</span><a href="{#$cfg_basehost#}/register.html">注册</a></p>
+        </div>
+  			{#/if#}
+        <!--登陆后显示结束-->
+        <div class="topright">
+            <!-- <a class="t_r1" href="javascript:;">手机客户端</a> -->
+            <a href="{#getUrlPath service='member' type='user' template='fabu' action='info'#}">发布分类信息</a>
+            <!-- <a href="#">加入收藏</a> -->
+            <ul class="fa_bu clearfix">
+                <li class="t_r2" style="display: none;"><a href="javascript:;">商家管理</a>
+                    <ul class="clearfix as">
+                    <li>
+                        <a href="#">免费加盟商家</a>
+                    </li>
+                    <li>
+                        <a href="#">商家资料管理</a>
+                    </li>
+                    <li>
+                        <a href="#">认证签约管理</a>
+                    </li>
+                    <li>
+                        <a href="#">商家高级设置</a>
+                    </li>
+                    <li>
+                        <a href="#">评论留言管理</a>
+                    </li>
+                    <li>
+                        <a href="#">发布商品管理</a>
+                    </li>
+                    </ul>
+                </li>
+                <li class="t_r2"><a href="javascript:;">快速发布</a>
+                  <ul class="clearfix as">
+					{#if in_array("article", $installModuleArr)#}<li><a href="{#getUrlPath service='member' type='user' template='fabu' action='article'#}">发布新闻投稿</a></li>{#/if#}
+					{#if in_array("info", $installModuleArr)#}<li><a href="{#getUrlPath service='member' type='user' template='fabu' action='info'#}">发布供求信息</a></li>{#/if#}
+					{#if in_array("house", $installModuleArr)#}<li><a href="{#getUrlPath service='member' type='user' template='fabu' action='house-demand'#}">发布求租信息</a></li>{#/if#}
+					{#if in_array("job", $installModuleArr)#}<li><a href="{#getUrlPath service='member' template='post' param='do=add'#}">发布招聘信息</a></li>{#/if#}
+                  </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="clear"></div>
+
+<div class="HW clearfix">
+  <div class="HW_rtg">
+    <div class="left HW_logo"></div>
+    <div class="left HW_lo">
+      <ul>
+        <li>
+            <a class="a-img" href="{#$userDomain#}" target="_blank"><img src="{#$templets_skin#}images/nav_seller.png" /></a>
+            <a href="{#$userDomain#}" target="_blank">开店铺</a>
+        </li>
+        <li>
+            <a class="a-img" href="{#$userDomain#}" target="_blank"><img src="{#$templets_skin#}images/nav_type.png" /></a>
+            <a href="{#$userDomain#}" target="_blank">发商品</a>
+        </li>
+        <li>
+            <a class="a-img" href="{#$userDomain#}" target="_blank"><img src="{#$templets_skin#}images/qiug.png" /></a>
+            <a href="{#$userDomain#}" target="_blank">发求购</a>
+        </li>
+        <li>
+            <a class="a-img" href="{#$shop_channelDomain#}" target="_blank"><img src="{#$templets_skin#}images/nav_buy.png" /></a>
+            <a href="{#$shop_channelDomain#}" target="_blank">逛商城</a>
+        </li>
+        <li>
+            <a class="a-img" href="#" target="_blank"><img src="{#$templets_skin#}images/maozi.png" /></a>
+            <a href="#" target="_blank">考证书</a>
+        </li>
+        <li>
+            <a class="a-img" href="{#$video_channelDomain#}" target="_blank"><img src="{#$templets_skin#}images/nav_shop.png" /></a>
+            <a href="{#$video_channelDomain#}" target="_blank">看视频</a>
+        </li>
+        <li>
+            <a class="a-img" href="#" target="_blank"><img src="{#$templets_skin#}images/nav_search.png" /></a>
+            <a href="#" target="_blank">找加盟</a>
+        </li>
+        <li>
+            <a class="a-img" href="{#$article_channelDomain#}" target="_blank"><img src="{#$templets_skin#}images/nav_info.png" /></a>
+            <a href="{#$article_channelDomain#}" target="_blank">看资讯</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!--导航-->
+<div class="WM_widemenu" id="head_1200">
+    <ul>
+        <li class="on"><a href="{#$cfg_basehost#}" target="_blank">{#$cfg_shortname#}</a></li>
+        {#if in_array("article", $installModuleArr)#}<li><a href="{#$article_channelDomain#}" target="_blank">艾草新闻</a></li>{#/if#}
+        {#if in_array("info", $installModuleArr)#}<li><a href="{#$info_channelDomain#}" target="_blank">艾草供求</a></li>{#/if#}
+        {#if in_array("job", $installModuleArr)#}<li><a href="{#$job_channelDomain#}" target="_blank">艾草招聘</a></li>{#/if#}
+        {#if in_array("business", $installModuleArr)#}<li><a href="{#$business_channelDomain#}" target="_blank">艾草商家</a></li>{#/if#}
+        {#if in_array("shop", $installModuleArr)#}<li><a href="{#$shop_channelDomain#}" target="_blank">艾草商城</a></li>{#/if#}
+        {#if in_array("tuan", $installModuleArr)#}<li><a href="{#$tuan_channelDomain#}" target="_blank">艾草团购</a></li>{#/if#}
+        {#if in_array("video", $installModuleArr)#}<li><a href="{#$video_channelDomain#}" target="_blank">艾草视频</a></li>{#/if#}
+        {#if in_array("website", $installModuleArr)#}<li><a href="{#$website_channelDomain#}" target="_blank">智能建站</a></li>{#/if#}
+        {#if in_array("huangye", $installModuleArr)#}<li><a href="{#$huangye_channelDomain#}" target="_blank">艾灸黄页</a></li>{#/if#}
+    </ul>
+</div>
+<!--第一层开始-->
+<div class="WT_wraptop">
+    <div class="nav_top clear_fix">
+        <div class="wrap" style="overflow:hidden;">
+            <div class="WT_uso left">
+                <a href="{#$cfg_basehost#}" style="color:#DF3B0A">网站<span>首页</span></a>
+            </div>
+            <div class="WT_us1 clear_fix">
+                <dl>
+                    {#if in_array("article", $installModuleArr)#}
+                    <dt><a href="{#$article_channelDomain#}" target="_blank">新闻</a></dt>
+  									{#article action="type" return="atype" pageSize="5"#}
+                    <dd><a href="{#$atype.url#}" target="_blank">{#$atype.typename#}</a></dd>
+  									{#/article#}
+          					{#/if#}
+                </dl>
+                <dl>
+                    <dt><a href="#" target="_blank">健康</a></dt>
+                    <dd><a href="#" target="_blank">文化</a></dd>
+                    <dd><a href="#" target="_blank">专访</a></dd>
+                    <dd><a href="#" target="_blank">常识</a></dd>
+                    <dd><a href="#" target="_blank">艾疗</a></dd>
+                    <dd><a href="#" target="_blank">养生</a></dd>
+                </dl>
+            </div>
+            <div class="WT_us2 clear_fix">
+                <dl>
+                    {#if in_array("info", $installModuleArr)#}
+                    <dt><a href="{#$info_channelDomain#}" target="_blank">供求</a></dt>
+  									{#info action="type" return="atype" pageSize="2"#}
+                    <dd><a href="{#$atype.url#}" target="_blank">{#$atype.typename#}</a></dd>
+  									{#/info#}
+          					{#/if#}
+                </dl>
+                <dl>
+                    <dt><a href="#" target="_blank">招商</a></dt>
+                    <dd><a href="#" target="_blank">加盟信息</a></dd>
+                    <dd><a href="#" target="_blank">艾草招商</a></dd>
+                </dl>
+            </div>
+            <div class="WT_us3 clear_fix">
+                <dl>
+                    {#if in_array("shop", $installModuleArr)#}
+                    <dt><a href="{#$shop_channelDomain#}" target="_blank">商城</a></dt>
+  									{#shop action="type" return="atype" pageSize="1"#}
+                    <dd><a href="{#$atype.url#}" target="_blank">{#$atype.typename#}</a></dd>
+  									{#/shop#}
+          					{#/if#}
+                </dl>
+                <dl>
+                    <dt><a href="#" target="_blank">商家</a></dt>
+                    <dd><a href="#" target="_blank">艾灸好店</a></dd>
+                </dl>
+            </div>
+            <div class="WT_us11 clear_fix">
+                <dl>
+          					{#if in_array("job", $installModuleArr)#}
+                    <dt><a href="{#$job_channelDomain#}" target="_blank">招聘</a></dt>
+  									<dd><a href="{#getUrlPath service='job' template='zhaopin'#}" target="_blank">最新职位</a></dd>
+  									<dd><a href="{#getUrlPath service='member' type='user' template='job' action='resume'#}" target="_blank">我要找工作</a></dd>
+  									<dd><a href="{#getUrlPath service='job' template='company'#}" target="_blank">企业招聘</a></dd>
+  									<dd><a href="{#getUrlPath service='job' template='resume'#}" target="_blank">最新简历</a></dd>
+          					{#/if#}
+                </dl>
+                <dl>
+                  {#*
+          					{#if in_array("video", $installModuleArr)#}
+                    <dt><a href="{#$video_channelDomain#}" target="_blank">视频</a></dt>
+  									{#video action="type" return="atype" pageSize="4"#}
+                    <dd><a href="{#$atype.url#}" target="_blank">{#$atype.typename#}</a></dd>
+  									{#/video#}
+          					{#/if#}
+                  *#}
+                </dl>
+            </div>
+            <div class="WT_usend clear_fix">
+                <div class="WT_usendl left">
+                    {#if in_array("website", $installModuleArr)#}<span><a href="{#$website_channelDomain#}" target="_blank">建站</a></span>{#/if#}
+                    {#if in_array("huangye", $installModuleArr)#}<span><a href="{#$huangye_channelDomain#}" style="margin-top:5px; " target="_blank">黄页</a></span>{#/if#}
+                </div>
+                <div class="WT_usendl left">
+                    {#if in_array("tuan", $installModuleArr)#}<span><a href="{#$tuan_channelDomain#}" target="_blank">团购</a></span>{#/if#}
+                    {#if in_array("image", $installModuleArr)#}<span><a href="{#$image_channelDomain#}" style="margin-top:5px; " target="_blank">图库</a></span>{#/if#}
+                </div>
+                <div class="WT_usendl left">
+                    <span><a href="#" target="_blank">培训班</a></span>
+                    <span><a href="#" style="margin-top:5px; " target="_blank">留言板</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="wrap clear2017">
+<!-- 代码 开始 -->
+    <div class="focus_inads">
+        <div class="focus_inads_c">
+          <div class="slidewrap">
+            <div class="slide">
+              <div class="bd">
+                <div class="slideobj">
+                  <div class="slideshow-item"><a href="javascript:;" style="cursor:default;">
+                    <img src="{#$templets_skin#}upfile/201721694748786t36t8.jpg"></a><div class="slideinfo"><h3><a href="javascript:;" style="cursor:default;">测试标题</a></h3><p></p><div class="bg"></div></div>
+                  </div>
+                  <div class="slideshow-item"><a href="javascript:;" style="cursor:default;">
+                    <img src="{#$templets_skin#}upfile/02.jpg"></a><div class="slideinfo"><h3><a href="javascript:;" style="cursor:default;">测试标题</a></h3><p></p><div class="bg"></div></div>
+                  </div>
+                  <div class="slideshow-item"><a href="javascript:;" style="cursor:default;">
+                    <img src="{#$templets_skin#}upfile/03.jpg"></a><div class="slideinfo"><h3><a href="javascript:;" style="cursor:default;">测试标题</a></h3><p></p><div class="bg"></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+<!-- 代码 结束 -->
+</div>
+<div class="wrap clear2017">
+    <!--搜搜-->
+    <div class="wrap" style="overflow:hidden; margin-bottom:5px;">
+        <div class="NB_navbottom">
+            <ul>
+                <li class="curr_b"><a href="#" target="_blank"><i></i>热门词</a>：</li>
+                {#siteConfig module="index" action="hotkeywords" return="hotkeywords"#}
+								{#if $_bindex.hotkeywords <= 7#}
+								<a href="{#$hotkeywords.href#}"{#if $hotkeywords.target == 0#} target="_blank"{#/if#}>{#$hotkeywords.keyword#}</a>
+								{#/if#}
+								{#/siteConfig#}
+            </ul>
+        <form>
+            <div class="NB_kuan"><input type="text" name="txt" placeholder="艾灸加盟"></div>
+            <!--搜索框-->
+            <div class="NB_an"><input type="submit" value="" /></div>
+            <!--搜索按钮-->
+        </form>
+        </div>
+    </div>
+    <!--搜搜-->
+</div>
+<div class="wrap b101"></div>
+<!--主内容区开始-->
+<div class="wrap cf">
+    <div class="sy_focus">
+        <div class="sy_focus_c">
+            <div class="NR_tempWrap" style="overflow: hidden; position: relative; width: 423px">
+              <div class="slideobj">
+                <div class="slideshow-item"><a href="javascript:;" style="cursor:default;">
+                  <img src="{#$templets_skin#}upfile/2016121124150875degi5.jpg"></a><div class="slideinfo"><h3><a href="javascript:;" style="cursor:default;">测试标题</a></h3><p></p><div class="bg"></div></div>
+                </div>
+                <div class="slideshow-item"><a href="javascript:;" style="cursor:default;">
+                  <img src="{#$templets_skin#}upfile/20161211217915t2657.jpg"></a><div class="slideinfo"><h3><a href="javascript:;" style="cursor:default;">测试标题</a></h3><p></p><div class="bg"></div></div>
+                </div>
+                <div class="slideshow-item"><a href="javascript:;" style="cursor:default;">
+                  <img src="{#$templets_skin#}upfile/2016121123114578i4izv.jpg"></a><div class="slideinfo"><h3><a href="javascript:;" style="cursor:default;">测试标题</a></h3><p></p><div class="bg"></div></div>
+                </div>
+                <div class="slideshow-item"><a href="javascript:;" style="cursor:default;">
+                  <img src="{#$templets_skin#}upfile/20161211239177341ivhv.jpg"></a><div class="slideinfo"><h3><a href="javascript:;" style="cursor:default;">测试标题</a></h3><p></p><div class="bg"></div></div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <ul class="point"></ul>
+    </div>
+    <!---左上幻灯-E-->
+    <!--行业头条-S-->
+    <div class="TT_toutiao">
+        <div class="TT_syhot">
+          {#article action="alist" return="alist1" flag="h" pageSize="2"#}
+          <a href="{#$alist1.url#}" target="_blank" title="{#$alist1.title#}">{#$alist1.title#}</a>
+          <p>
+            {#$alist1.description|truncate:50#}<a title="{#$alist1.title#}" href="{#$alist1.url#}" target="_blank">[详细]</a>
+          </p>
+          {#/article#}
+        </div>
+        <!--缔尚大师广告-E-->
+        <div class="clr GW_grow420">
+            <ul class="GW_tg420x50">
+                <li><a href="#" target="_blank"><img alt="缔尚大师铝墙面"  src="{#$templets_skin#}upfile/151053681.jpg" /></a></li>
+            </ul>
+        </div>
+        <!--缔尚大师广告-E-->
+        <ul class="HL_syhotlist cf">
+          {#article action="alist" return="alist2" flag="h" pageSize="6"#}
+          {#if $_bindex.alist2 > 2#}
+          <li class="cf"><i class="HL_dianyw">·</i><a href="{#$alist2.url#}" target="_blank" title="{#$alist2.title#}">{#$alist2.title#}</a></li>
+          {#/if#}
+          {#/article#}
+        </ul>
+    </div>
+    <!--行业头条-E-->
+    <dl class="PG_paihang cf">
+        <dt class="cf STate_pub">
+          <a class="on" href="#" target="_blank">站内公告</a>
+          <a class="" href="#" target="_blank">最新认证企业</a>
+        </dt>
+        <dd class="cf range">
+          <ul>
+            {#article action="alist" return="alist2" pageSize="10" page="1"#}
+            <li>
+              <i class="red bold"> &bull;</i>
+              <a href="{#$alist2.url#}" target="_blank" title="{#$alist2.title#}">{#$alist2.title#}</a>
+              <div class="PG_paihanghover">
+                <a class="ck" href="#" target="_blank"></a>
+                <a class="jm" href="#" target="_blank"></a>
+              </div>
+            </li>
+            {#/article#}
+          </ul>
+        </dd>
+        <dd class="cf" style="display: none;">
+          <ul>
+            {#article action="alist" return="alist2" pageSize="10" page="2"#}
+            <li>
+              <i class="red bold"> &bull;</i>
+              <a href="{#$alist2.url#}" target="_blank" title="{#$alist2.title#}">{#$alist2.title#}</a>
+              <div class="PG_paihanghover">
+                <a class="ck" href="#" target="_blank"></a>
+                <a class="jm" href="#" target="_blank"></a>
+              </div>
+            </li>
+            {#/article#}
+          </ul>
+          <!--已优化-->
+        </dd>
+    </dl>
+    <!--已优化-->
+    <!--首页品牌排行榜-E-->
+</div>
+<!--新闻跟踪-->
+<div class="wrap b102"></div>
+<div class="wrap">
+    <div class="NT_newstit">
+      <ul><li><h2>新闻跟踪</h2></li></ul>
+      <dd><span>Industry Focus</span><i></i></dd>
+    </div>
+    <div class="clear2017">
+    <!--新闻跟踪-->
+        <div class="NL_newsleft">
+          <div class="FT_newslefttit"><h3>中医要闻</h3><a class="more" href="{#getUrlPath service='article' template='list' typeid="31"#}" title="行业聚焦">更多</a></div>
+          <ul class="FT_newsleftlsit">
+  					{#article action="alist" return="alist" typeid="31" pageSize="8"#}
+            <li class="clear2017">
+                <i class="dian">·</i>
+                <a href="{#$alist.url#}" target="_blank" title="{#$alist.title#}">{#$alist.title#}</a>
+            </li>
+  					{#/article#}
+          </ul>
+        </div>
+        <div class="SC_specialc">
+            <div class="SC_newslistjd">
+                <ul class="clear2017 SC_jd">
+                    <li class="on"><a  href="{#getUrlPath service='article' template='list' typeid="32"#}" target="_blank">行业新闻</a></li>
+                    <li><a class="" href="{#getUrlPath service='article' template='list' typeid="33"#}" target="_blank">企业动态</a></li>
+                    <li><a class="" href="{#getUrlPath service='article' template='list' typeid="53"#}" target="_blank">市场活动</a></li>
+                    <li><a class="" href="{#getUrlPath service='article' template='list' typeid="34"#}" target="_blank">品牌营销</a></li>
+                </ul>
+                <div class="FT_newsleftlsit clear2017">
+                  <ul>
+                    {#article action="alist" return="alist" typeid="32" pageSize="8"#}
+                    <li class="clear2017">
+                        <i class="dian">·</i>
+                        <a href="{#$alist.url#}" target="_blank" title="{#$alist.title#}">{#$alist.title#}</a>
+                    </li>
+                    {#/article#}
+                  </ul>
+                </div>
+                <div class="FT_newsleftlsit clear2017" style="display: none;">
+                  <ul>
+                    {#article action="alist" return="alist" typeid="33" pageSize="8"#}
+                    <li class="clear2017">
+                        <i class="dian">·</i>
+                        <a href="{#$alist.url#}" target="_blank" title="{#$alist.title#}">{#$alist.title#}</a>
+                    </li>
+                    {#/article#}
+                  </ul>
+                </div>
+                <div class="FT_newsleftlsit clear2017" style="display: none;">
+                  <ul>
+                    {#article action="alist" return="alist" typeid="53" pageSize="8"#}
+                    <li class="clear2017">
+                        <i class="dian">·</i>
+                        <a href="{#$alist.url#}" target="_blank" title="{#$alist.title#}">{#$alist.title#}</a>
+                    </li>
+                    {#/article#}
+                  </ul>
+                </div>
+                <div class="FT_newsleftlsit clear2017" style="display: none;">
+                  <ul>
+                    {#article action="alist" return="alist" typeid="34" pageSize="8"#}
+                    <li class="clear2017">
+                        <i class="dian">·</i>
+                        <a href="{#$alist.url#}" target="_blank" title="{#$alist.title#}">{#$alist.title#}</a>
+                    </li>
+                    {#/article#}
+                  </ul>
+                </div>
+            </div>
+        </div>
+    <!--推荐图文 -->
+        <div class="NR_newsright">
+          {#article action="alist" return="alist" typeid="9" thumb="1" pageSize="4"#}
+          <div class="NR_newsimg left">
+            <a href="{#$alist.url#}" target="_blank" title="{#$alist.title#}">
+            <img alt="{#$alist.title#}" src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$alist.litpic#}" type="o_large"#}"></a>
+          </div>
+          <div class="NR_newstext left">
+            <div class="NR_way">
+              <a href="{#$alist.url#}" target="_blank" title="{#$alist.title#}">{#$alist.title#}</a>
+              <p class="NR_date">日期：{#$alist.pubdate|date_format:'%Y-%m-%d'#}</p>
+              <p class="NR_num">{#$alist.click#}</p>
+            </div>
+          </div>
+          {#/article#}
+        </div>
+    <!--推荐图文 -->
+    </div>
+</div>
+<!--高端专访-->
+<div class="wrap clear2017">
+    <div class="NL_newsleft">
+        <div class="FT_newslefttit clear2017">
+          <h3>高端访谈</h3><a class="more" href="{#getUrlPath service='article' template='list' typeid="95"#}" target="_blank" title="高端专访">更多</a>
+        </div>
+        <div class="NL_jmMeeting">
+          <ul>
+            {#article action="alist" return="alist" typeid="95" thumb="1" pageSize="2"#}
+            <li>
+              <a href="{#$alist.url#}" target="_blank" title="{#$alist.title#}"><img alt="{#$alist.title#}" src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$alist.litpic#}" type="o_large"#}" /></a>
+              <h4><a href="{#$alist.url#}" target="_blank">{#$alist.title#}</a></h4>
+              <p>{#$alist1.description|truncate:50#}<span><a href="{#$alist.url#}" target="_blank">[详请]</a></span></p>
+            </li>
+            {#/article#}
+          </ul>
+        </div>
+        <ul class="FT_newsleftlsitzf clear2017">
+          {#article action="alist" return="blist" typeid="95" pageSize="8"#}
+          {#if $_bindex.blist > 2#}
+          <li class="clear2017">
+            <i class="dian_zf">·</i>
+            <a href="{#$blist.url#}" target="_blank" title="{#$blist.title#}">{#$blist.title#}</a>
+          </li>
+          {#/if#}
+          {#/article#}
+        </ul>
+    </div>
+    <!--高端专访结束-->
+    <!--行业专题开始-->
+    <div class="SC_specialc">
+        <div class="FT_newslefttit FT_mb20 clear2017">
+            <h3>艾灸养生</h3>
+            <span class="FT_specialtit">
+                <a href="#" target="_blank" title="艾灸常识">艾灸常识</a>|
+                <a href="#" target="_blank" title="艾灸疗法">艾灸疗法</a>|
+                <a href="#" target="_blank" title="艾灸养生">艾灸养生</a>|
+                <a href="#" target="_blank" title="中医艾灸">中医艾灸</a>
+            </span>
+            <a class="more" href="{#getUrlPath service='article' template='list' typeid="1"#}" target="_blank" title="">更多</a>
+        </div>
+        <div>
+          <div class="FT_specialphotott">
+            <ul>
+              {#article action="alist" return="alist" typeid="1" thumb="1" pageSize="2"#}
+              <li>
+                <a href="{#$alist.url#}" target="_blank" title="{#$alist.title#}">
+                  <img alt="{#$alist.title#}" src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$alist.litpic#}" type="o_large"#}">
+                  <span>{#$alist.title#}</span>
+                </a>
+              </li>
+              {#/article#}
+            </ul>
+          </div>
+            <ul class="SL_speciallist clear2017">
+              {#article action="alist" return="clist" typeid="1" pageSize="8"#}
+              {#if $_bindex.clist > 2#}
+              <li class="clear2017">
+                <i class="dian_zt">·</i>
+                <a href="{#$clist.url#}" target="_blank" title="{#$clist.title#}">{#$clist.title#}</a>
+              </li>
+              {#/if#}
+              {#/article#}
+            </ul>
+        </div>
+    </div>
+    <!--行业专题结束-->
+    <!--微直播-->
+    <div class="NR_newsright">
+        <div class="FT_newslefttit clear2017">
+          <h3>中医艾灸</h3>
+          <a class="more" href="{#getUrlPath service='article' template='list' typeid="97"#}" target="_blank" title="中医艾灸">更多</a>
+        </div>
+        <div class="NR_jczlive">
+          <div class="NR_livehot NR_tempWrap">
+            <ul>
+              {#article action="alist" return="alist" typeid="97" thumb="1" pageSize="1"#}
+              <li>
+                <a href="{#$alist.url#}" target="_blank" title="{#$alist.title#}">
+                  <img alt="{#$alist.title#}" src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$alist.litpic#}" type="o_large"#}">
+                  <span>{#$alist.title#}</span>
+                </a>
+              </li>
+              {#/article#}
+            </ul>
+          </div>
+          <ul>
+            <div class="NR_livelist">
+              {#article action="alist" return="dlist" typeid="97" pageSize="4"#}
+              {#if $_bindex.dlist > 1#}
+              <ul>
+                <div><h4><a href="{#$dlist.url#}" target="_blank" title="{#$dlist.title#}">{#$dlist.title|truncate:20#}</a></h4></div>
+                <div class="clear2017 NR_goddness"><span>{#$dlist.pubdate|date_format:'%Y-%m-%d'#}</span><a href="{#$dlist.url#}" class="NR_detail">【详情】</a></div>
+              </ul>
+              {#/if#}
+              {#/article#}
+            </div>
+          </ul>
+        </div>
+    </div>
+<!--微直播-E-->
+</div>
+<!--再出发-->
+  <div class="wrap b102"></div>
+  <!--企业频道-->
+  <div class="wrap clear_fix">
+    <div class="LT_listtitlenews clear_fix">
+     <dt>
+      <a href="{#$info_channelDomin#}" target="_blank" title="艾草信息栏目">艾草供求</a>
+     </dt>
+     <dd>
+      <a href="#" target="_blank">产品供应</a>
+      <a href="#" target="_blank">产品采购</a>
+      <a href="#" target="_blank">项目合作</a>
+      <a href="#" target="_blank">艾草加工</a>
+     </dd>
+     <span class="LT_rightcom"><a href="{#$info_channelDomin#}" target="_blank">更多&gt;</a></span>
+    </div>
+  </div>
+  <div class="wrap clear_fix">
+   <div class="LT_comtitilel">
+    <div class="LT_comtitiletit clear_fix">
+     <h2 class="left">最新艾草供求信息</h2>
+    </div>
+    <div class="LT_comvip clear2017 LT_settopcom">
+     <ul>
+      <table cellpadding="0" cellspacing="0" style="border-collapse: collapse;">
+       <tbody>
+        <tr>
+         <td>
+            {#info action="ilist" return="ilist" orderby="1" pageSize="22"#}
+            <li style="width:410px;">
+              <a href="{#$ilist.typeurl#}" style="color:#078838">【{#$ilist.typename#}】</a>
+              <a href="{#$ilist.url#}" title="{#$ilist.title#}" target="_blank">{#$ilist.title#}</a>
+            </li>
+					  {#/info#}
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </ul>
+    </div>
+   </div>
+   <!--人才招聘-->
+   <div class="CJ_compilejobr">
+    <div class="CJ_compilejob">
+     <div class="CJ_cytitilec clear_fix">
+      <h2 class="left">竟价排行<span class="CJ_tltlespan"></span></h2>
+      <span class="CJ_rightj"><a href="{#$info_channelDomin#}" target="_blank" title="">更多&gt;</a></span>
+     </div>
+     <ul>
+      {#info action="ilist" return="ilist" orderby="1" rec="1" pageSize="11"#}
+      <li><span>• <a href="{#$ilist.url#}" title="{#$ilist.title#}" target="_blank">{#$ilist.title#}</a> </span> </li>
+      {#/info#}
+     </ul>
+    </div>
+   </div>
+   <!--人才招聘-->
+  </div>
+  <!--企业频道-->
+  <div class="wrap clear_fix">
+   <div class="LB_listtitleb clear_fix">
+    <div>
+     <a href="{#getUrlPath service='business' template='list'#}" target="_blank">商城品牌</a>
+    </div>
+    <ul>
+     {#business action="type" return="type"#}
+     <a href="{#getUrlPath service='business' template='list' param="typeid={#$type.id#}"#}" target="_blank" title="{#$type.typename#}">{#$type.typename#}</a>
+     {#/business#}
+    </ul>
+    <span class="right_brand">加入VIP热线：13333-668-533</span>
+   </div>
+  </div>
+  <div class="wrap" style="margin-top:10px; ">
+   <div class="index_brand brand_tj">
+    <a href="{#getUrlPath service='business' template='list'#}" target="_blank" title="艾草品牌榜"><img src="{#$templets_skin#}upfile/sinbo_vip_com.jpg" /></a>
+    <div class="index_brand_img clear2017">
+     <div>
+      {#business action="blist" return="blist" page="1" pageSize="30"#}
+      <li>
+          <a href="{#$blist.url#}" target="_blank" title="{#$blist.title#}">
+            <img alt="{#$blist.title#}" src="{#$blist.logo#}" />
+            <p>{#$blist.title#}</p>
+          </a>
+      </li>
+      {#/business#}
+     </div>
+    </div>
+    <div class="BJ_brandjctrl">
+     <a class="prev"></a>
+     <a class="next"></a>
+    </div>
+   </div>
+  </div>
+  <!--再出发-->
+  <!--企业频道-->
+  <div class="wrap clear_fix">
+    <div class="LT_listtitlenews clear_fix">
+     <dt>
+      <a href="#" target="_blank">企业频道</a>
+     </dt>
+     <dd>
+      <a href="#" target="_blank">艾草制品</a>
+      <a href="#" target="_blank">艾灸培训</a>
+      <a href="#" target="_blank">艾草厂商</a>
+      <a href="#" target="_blank">艾灸养生馆</a>
+      <a href="#" target="_blank">商务服务</a>
+     </dd>
+     <span class="LT_rightcom"><a href="#" target="_blank">更多&gt;</a></span>
+    </div>
+  </div>
+  <div class="wrap clear_fix">
+   <div class="LT_comtitilel">
+    <div class="LT_comtitiletit clear_fix">
+     <h2 class="left">艾草诚信企业</h2>
+    </div>
+    <div class="LT_comvip clear2017 LT_settopcom">
+     <ul>
+      <table cellpadding="0" cellspacing="0" style="border-collapse: collapse;">
+       <tbody>
+        <tr>
+         <td>
+             <li style="width:420px;">
+                 <a href="#" style="color:#078838 " >【官网认证】</a>
+                 <a href="#">{#$cfg_shortname#}企业演示</a>
+                 <span class="LT_spanbackJhcompany">认证</span>
+                 <span class="LT_spanbackJhcompany1">诚信</span>
+                 <a class="b1" href="#" target="_blank">加盟</a>
+             </li>
+             <li style="width:420px;">
+                 <a href="#" style="color:#078838 " >【官网认证】</a>
+                 <a href="#">{#$cfg_shortname#}企业演示</a>
+                 <span class="LT_spanbackJhcompany">认证</span>
+                 <span class="LT_spanbackJhcompany1">诚信</span>
+                 <a class="b1" href="#" target="_blank">加盟</a>
+             </li>
+             <li style="width:420px;">
+                 <a href="#" style="color:#078838 " >【官网认证】</a>
+                 <a href="#">{#$cfg_shortname#}企业演示</a>
+                 <span class="LT_spanbackJhcompany">认证</span>
+                 <span class="LT_spanbackJhcompany1">诚信</span>
+                 <a class="b1" href="#" target="_blank">加盟</a>
+             </li>
+             <li style="width:420px;">
+                 <a href="#" style="color:#078838 " >【官网认证】</a>
+                 <a href="#">{#$cfg_shortname#}企业演示</a>
+                 <span class="LT_spanbackJhcompany">认证</span>
+                 <span class="LT_spanbackJhcompany1">诚信</span>
+                 <a class="b1" href="#" target="_blank">加盟</a>
+             </li>
+             <li style="width:420px;">
+                 <a href="#" style="color:#078838 " >【官网认证】</a>
+                 <a href="#">{#$cfg_shortname#}企业演示</a>
+                 <span class="LT_spanbackJhcompany">认证</span>
+                 <span class="LT_spanbackJhcompany1">诚信</span>
+                 <a class="b1" href="#" target="_blank">加盟</a>
+             </li>
+             <li style="width:420px;">
+                 <a href="#" style="color:#078838 " >【官网认证】</a>
+                 <a href="#">{#$cfg_shortname#}企业演示</a>
+                 <span class="LT_spanbackJhcompany">认证</span>
+                 <span class="LT_spanbackJhcompany1">诚信</span>
+                 <a class="b1" href="#" target="_blank">加盟</a>
+             </li>
+             <li style="width:420px;">
+                 <a href="#" style="color:#078838 " >【官网认证】</a>
+                 <a href="#">{#$cfg_shortname#}企业演示</a>
+                 <span class="LT_spanbackJhcompany">认证</span>
+                 <span class="LT_spanbackJhcompany1">诚信</span>
+                 <a class="b1" href="#" target="_blank">加盟</a>
+             </li>
+             <li style="width:420px;">
+                 <a href="#" style="color:#078838 " >【官网认证】</a>
+                 <a href="#">{#$cfg_shortname#}企业演示</a>
+                 <span class="LT_spanbackJhcompany">认证</span>
+                 <span class="LT_spanbackJhcompany1">诚信</span>
+                 <a class="b1" href="#" target="_blank">加盟</a>
+             </li>
+             <li style="width:420px;">
+                 <a href="#" style="color:#078838 " >【官网认证】</a>
+                 <a href="#">{#$cfg_shortname#}企业演示</a>
+                 <span class="LT_spanbackJhcompany">认证</span>
+                 <span class="LT_spanbackJhcompany1">诚信</span>
+                 <a class="b1" href="#" target="_blank">加盟</a>
+             </li>
+             <li style="width:420px;">
+                 <a href="#" style="color:#078838 " >【官网认证】</a>
+                 <a href="#">{#$cfg_shortname#}企业演示</a>
+                 <span class="LT_spanbackJhcompany">认证</span>
+                 <span class="LT_spanbackJhcompany1">诚信</span>
+                 <a class="b1" href="#" target="_blank">加盟</a>
+             </li>
+             <li style="width:420px;">
+                 <a href="#" style="color:#078838 " >【官网认证】</a>
+                 <a href="#">{#$cfg_shortname#}企业演示</a>
+                 <span class="LT_spanbackJhcompany">认证</span>
+                 <span class="LT_spanbackJhcompany1">诚信</span>
+                 <a class="b1" href="#" target="_blank">加盟</a>
+             </li>
+             <li style="width:420px;">
+                 <a href="#" style="color:#078838 " >【官网认证】</a>
+                 <a href="#">{#$cfg_shortname#}企业演示</a>
+                 <span class="LT_spanbackJhcompany">认证</span>
+                 <span class="LT_spanbackJhcompany1">诚信</span>
+                 <a class="b1" href="#" target="_blank">加盟</a>
+             </li>
+             <li style="width:420px;">
+                 <a href="#" style="color:#078838 " >【官网认证】</a>
+                 <a href="#">{#$cfg_shortname#}企业演示</a>
+                 <span class="LT_spanbackJhcompany">认证</span>
+                 <span class="LT_spanbackJhcompany1">诚信</span>
+                 <a class="b1" href="#" target="_blank">加盟</a>
+             </li>
+             <li style="width:420px;">
+                 <a href="#" style="color:#078838 " >【官网认证】</a>
+                 <a href="#">{#$cfg_shortname#}企业演示</a>
+                 <span class="LT_spanbackJhcompany">认证</span>
+                 <span class="LT_spanbackJhcompany1">诚信</span>
+                 <a class="b1" href="#" target="_blank">加盟</a>
+             </li>
+             <li style="width:420px;">
+                 <a href="#" style="color:#078838 " >【官网认证】</a>
+                 <a href="#">{#$cfg_shortname#}企业演示</a>
+                 <span class="LT_spanbackJhcompany">认证</span>
+                 <span class="LT_spanbackJhcompany1">诚信</span>
+                 <a class="b1" href="#" target="_blank">加盟</a>
+             </li>
+             <li style="width:420px;">
+                 <a href="#" style="color:#078838 " >【官网认证】</a>
+                 <a href="#">{#$cfg_shortname#}企业演示</a>
+                 <span class="LT_spanbackJhcompany">认证</span>
+                 <span class="LT_spanbackJhcompany1">诚信</span>
+                 <a class="b1" href="#" target="_blank">加盟</a>
+             </li>
+             <li style="width:420px;">
+                 <a href="#" style="color:#078838 " >【官网认证】</a>
+                 <a href="#">{#$cfg_shortname#}企业演示</a>
+                 <span class="LT_spanbackJhcompany">认证</span>
+                 <span class="LT_spanbackJhcompany1">诚信</span>
+                 <a class="b1" href="#" target="_blank">加盟</a>
+             </li>
+             <li style="width:420px;">
+                 <a href="#" style="color:#078838 " >【官网认证】</a>
+                 <a href="#">{#$cfg_shortname#}企业演示</a>
+                 <span class="LT_spanbackJhcompany">认证</span>
+                 <span class="LT_spanbackJhcompany1">诚信</span>
+                 <a class="b1" href="#" target="_blank">加盟</a>
+             </li>
+             <li style="width:420px;">
+                 <a href="#" style="color:#078838 " >【官网认证】</a>
+                 <a href="#">{#$cfg_shortname#}企业演示</a>
+                 <span class="LT_spanbackJhcompany">认证</span>
+                 <span class="LT_spanbackJhcompany1">诚信</span>
+                 <a class="b1" href="#" target="_blank">加盟</a>
+             </li>
+             <li style="width:420px;">
+                 <a href="#" style="color:#078838 " >【官网认证】</a>
+                 <a href="#">{#$cfg_shortname#}企业演示</a>
+                 <span class="LT_spanbackJhcompany">认证</span>
+                 <span class="LT_spanbackJhcompany1">诚信</span>
+                 <a class="b1" href="#" target="_blank">加盟</a>
+             </li>
+             <li style="width:420px;">
+                 <a href="#" style="color:#078838 " >【官网认证】</a>
+                 <a href="#">{#$cfg_shortname#}企业演示</a>
+                 <span class="LT_spanbackJhcompany">认证</span>
+                 <span class="LT_spanbackJhcompany1">诚信</span>
+                 <a class="b1" href="#" target="_blank">加盟</a>
+             </li>
+             <li style="width:420px;">
+                 <a href="#" style="color:#078838 ">【官网认证】</a>
+                 <a href="#">{#$cfg_shortname#}企业演示</a>
+                 <span class="LT_spanbackJhcompany">认证</span>
+                 <span class="LT_spanbackJhcompany1">诚信</span>
+                 <a class="b1" href="#" target="_blank">加盟</a>
+             </li>
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </ul>
+    </div>
+   </div>
+   <!--人才招聘-->
+   <div class="CJ_compilejobr">
+    <div class="CJ_compilejob">
+     <div class="CJ_cytitilec clear_fix">
+      <h2 class="left">艾草招聘<span class="CJ_tltlespan"></span></h2>
+      <span class="CJ_rightj"><a href="#" target="_blank" title="人才招聘">更多&gt;</a></span>
+     </div>
+     <ul>
+      {#job action="company" return="company" pageSize="5"#}
+      <li>
+          <span>•
+              <a href="{#$company.url#}" target="_blank">{#$company.title#}</a>
+          </span> •
+          {#job action="post" return="post" pageSize="1" company="{#$company.id#}"#}
+          <a href="{#$post.url#}#jobDetail" target="_blank" title="艾">
+            <font color="#FD8000">{#$post.title#}</font>
+          </a>
+          {#/job#}
+      </li>
+      {#/job#}
+     </ul>
+    </div>
+    <div class="CN_compilen">
+     <div class="CJ_cytitilec clear_fix">
+      <h2 class="left">招商资讯<span class="CJ_tltlespan"></span></h2>
+      <span class="CJ_rightj"><a href="#" target="_blank" title="招商资讯">更多&gt;</a></span>
+     </div>
+     <ul>
+      <ul>
+       <li><a href="#" target="_blank">投资中医艾灸养生馆有没有发展前景</a></li>
+       <li><a href="#" target="_blank">开一家艾灸养生馆需要投资多少钱?</a></li>
+       <li><a href="#" target="_blank">投资中医艾灸养生馆有没有发展前景</a></li>
+       <li><a href="#" target="_blank">开一家艾灸养生馆需要投资多少钱?</a></li>
+       <li><a href="#" target="_blank">投资中医艾灸养生馆有没有发展前景</a></li>
+      </ul>
+     </ul>
+    </div>
+   </div>
+   <!--人才招聘-->
+  </div>
+  <!--企业频道-->
+  <!--推荐品牌-->
+  <div class="wrap b102"></div>
+  <div class="wrap clear2017">
+   <div class="ST_selltit">
+    <ul>
+     <h3>产品&amp;展会</h3>
+    </ul>
+    <dd>
+     <span>Products and Exhibition</span>
+     <i class="cpzh"></i>
+    </dd>
+   </div>
+   <div class="ST_otherleft" id="selltit">
+    <div class="ST_othertitcp">
+      <i></i>
+      <h3>产品展台</h3>
+      <span class="ST_othertitwnews">
+        <a class="on" href="{#getUrlPath service='shop' template='list' typeid="1"#}">官方自营</a>
+        <a href="{#getUrlPath service='shop' template='list' typeid="2"#}">艾草制品</a>
+        <a href="{#getUrlPath service='shop' template='list' typeid="3"#}">家具器材</a>
+        <a href="{#getUrlPath service='shop' template='list' typeid="4"#}">艾灸周边</a>
+        <a class="over" href="{#getUrlPath service='shop' template='list' typeid="5"#}">健康养生</a>
+      </span>
+    <a class="more" href="{#$shop_channelDomin#}">更多</a>
+    </div>
+    <div class="h10"></div>
+    <div class="sell_left">
+      <ul>
+				{#shop action="slist" return="slist" pageSize="10" thumb="1" typeid="1"#}
+        <li>
+          <a href="{#$slist.url#}" target="_blank" title="{#$slist.title#}">
+            <img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$slist.litpic#}" type="o_large"#}" />
+            <span>{#$slist.title#}</span>
+          </a>
+        </li>
+				{#/shop#}
+      </ul>
+     <ul style="display:none">
+ 				{#shop action="slist" return="slist" pageSize="10" thumb="1" typeid="2"#}
+         <li>
+           <a href="{#$slist.url#}" target="_blank" title="{#$slist.title#}">
+             <img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$slist.litpic#}" type="o_large"#}" />
+             <span>{#$slist.title#}</span>
+           </a>
+         </li>
+ 				{#/shop#}
+     </ul>
+     <ul style="display:none">
+       {#shop action="slist" return="slist" pageSize="10" thumb="1" typeid="3"#}
+        <li>
+          <a href="{#$slist.url#}" target="_blank" title="{#$slist.title#}">
+            <img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$slist.litpic#}" type="o_large"#}" />
+            <span>{#$slist.title#}</span>
+          </a>
+        </li>
+       {#/shop#}
+     </ul>
+     <ul style="display:none">
+       {#shop action="slist" return="slist" pageSize="10" thumb="1" typeid="4"#}
+        <li>
+          <a href="{#$slist.url#}" target="_blank" title="{#$slist.title#}">
+            <img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$slist.litpic#}" type="o_large"#}" />
+            <span>{#$slist.title#}</span>
+          </a>
+        </li>
+       {#/shop#}
+      </ul>
+      <ul style="display:none">
+       {#shop action="slist" return="slist" pageSize="10" thumb="1" typeid="5"#}
+        <li>
+          <a href="{#$slist.url#}" target="_blank" title="{#$slist.title#}">
+            <img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$slist.litpic#}" type="o_large"#}" />
+            <span>{#$slist.title#}</span>
+          </a>
+        </li>
+       {#/shop#}
+     </ul>
+    </div>
+   </div>
+   <div class="OR_otherright">
+    <div class="FT_newslefttit clear2017">
+     <h3>行业展会</h3>
+     <a class="more" href="{#getUrlPath service='shop' template='list' typeid="226"#}" target="_blank">更多</a>
+    </div>
+    <div class="EL_exhibitleft">
+      {#shop action="slist" return="slist" pageSize="4" typeid="226"#}
+      <ul>
+        <li><h4><a href="{#$slist.url#}" target="_blank">{#$slist.title|truncate:35#}</a></h4></li>
+        <li>
+          <h5>发布日期：{#$slist.pubdate|date_format:'%m-%d'#}</h5>
+          <span><a href="{#$slist.url#}" target="_blank">[详细]</a></span>
+        </li>
+      </ul>
+      {#/shop#}
+    </div>
+   </div>
+  </div>
+  <div class="wrap b102"></div>
+  <div class="wrap">
+   <div class="NT_newstit">
+    <ul>
+     <h2>招商加盟</h2>
+    </ul>
+    <dd>
+     <span>INVESTMENT</span>
+     <i class="zsjm"></i>
+    </dd>
+   </div>
+   <div class="info_zs">
+    <div class="clear2017">
+     <dl class="IZ_infozsleft">
+      <dt></dt>
+     </dl>
+     <div class="IZ_infozsc">
+      <div class="IZ_infozsjoin clear2017">
+       <div></div>
+       <ul>
+        <p>作为艾草行业招商加盟官方媒体平台，{#$cfg_shortname#}已为<span>3657</span>位意向代理商精准推荐优质艾草品牌。火爆招商进行时，今日已有<span>&nbsp;127&nbsp;</span>位代理商成功提交代理信息！</p>
+       </ul>
+      </div>
+      <div class="line"></div>
+      <form class="info_zs_form">
+       <div class="clear2017">
+            <dt> 姓名 </dt>
+            <dd> <input id="company" name="post[company]" placeholder="请输入姓名" style="width:115px; " type="text" /> <s> * </s> </dd>
+            <dt> 手机 </dt>
+            <dd> <input id="mobile" name="post[mobile]" placeholder="请输入手机号" style="width:115px; " type="text" /> <s> * </s> </dd>
+            <dt> 品牌 </dt>
+            <dd>
+                <select class="input" type="text">
+                    <option value="">请选择品牌</option>
+                    <option value="习艾堂">习艾堂</option>
+                </select>
+            </dd>
+        </div>
+       <p>
+            <span>代理区域</span>
+            <select class="please_s"><option>请选择</option></select>
+            <select class="please_s"><option>请选择</option></select>
+            <select class="please_s"><option>请选区/县</option></select>
+        </p>
+        <button class="info_Button">马上提交，离财富更进一步</button>
+      </form>
+     </div>
+     <!--招商专题-->
+     <div class="IS_infospecialtt">
+      <div class="IS_infospecialttphoto">
+       <a href="#">
+           <span>招商专场</span>
+           <h5>2017开年大型招商会</h5>
+           <i></i>
+           <img src="{#$templets_skin#}upfile/123818241.jpg" />
+       </a>
+      </div>
+      <div class="IS_infospecialttdate">
+       <ul>
+        <li>距离结束还有</li>
+        <dd id="showendtime6704">
+         <i>25</i>天
+         <i>12</i>小时
+         <i>15</i>分
+         <i>15</i>秒
+        </dd>
+       </ul>
+       <div class="IS_infospecialttrt">
+        <span id="agentzt_num_258">已有<i> 98</i>人参与</span>
+        <a href="/house/" target="_blank" title="加盟">我要报名</a>
+       </div>
+      </div>
+     </div>
+     <!--招商专题-->
+    </div>
+    <ul class="JL_joinlist clear2017" id="Scroll43">
+     <table>
+      <tbody>
+       <tr>
+        <td>
+        <li>
+            <span class="JL_fr JL_fgray">预算：10万</span>
+            <p>
+                <a href="#">想代理艾灸产品开个微信商城</a>
+                <br />
+            </p>
+        </li>
+        <li>
+            <span class="JL_fr JL_fgray">预算：23万</span>
+            <p>
+                <a href="#">想代理艾灸产品开个微信商城</a>
+                <br />
+            </p>
+        </li>
+        <li>
+            <span class="JL_fr JL_fgray">预算：10万</span>
+            <p>
+                <a href="#">我想代理习艾堂的一款产品</a>
+                <br />
+            </p>
+        </li>
+        <li>
+            <span class="JL_fr JL_fgray">预算：23万</span>
+            <p>
+                <a href="#">我想代理习艾堂的一款产品</a>
+                <br />
+            </p>
+        </li>
+        <li>
+            <span class="JL_fr JL_fgray">预算：10万</span>
+            <p>
+                <a href="#">我想代理习艾堂的一款产品</a>
+                <br />
+            </p>
+        </li>
+        <li>
+            <span class="JL_fr JL_fgray">预算：23万</span>
+            <p>
+                <a href="#">我想代理习艾堂的一款产品可以吗</a>
+                <br />
+            </p>
+        </li>
+        <li>
+            <span class="JL_fr JL_fgray">预算：10万</span>
+            <p>
+                <a href="#">想代理艾灸产品开个微信商城</a>
+                <br />
+            </p>
+        </li>
+        <li>
+            <span class="JL_fr JL_fgray">预算：23万</span>
+            <p>
+                <a href="#">我想代理习艾堂的一款产品可以吗</a>
+                <br />
+            </p>
+        </li>
+        <li>
+            <span class="JL_fr JL_fgray">预算：10万</span>
+            <p>
+                <a href="#">我想代理习艾堂的一款产品</a>
+                <br />
+            </p>
+        </li>
+        <li>
+            <span class="JL_fr JL_fgray">预算：23万</span>
+            <p>
+                <a href="#">想代理艾灸产品开个微信商城</a>
+                <br />
+            </p>
+        </li>
+        <li>
+            <span class="JL_fr JL_fgray">预算：10万</span>
+            <p>
+                <a href="#">我想代理习艾堂的一款产品</a>
+                <br />
+            </p>
+        </li>
+        <li>
+            <span class="JL_fr JL_fgray">预算：23万</span>
+            <p>
+                <a href="#">我想代理习艾堂的一款产品</a>
+                <br />
+            </p>
+        </li>
+        <li>
+            <span class="JL_fr JL_fgray">预算：10万</span>
+            <p>
+                <a href="#">想代理艾灸产品开个微信商城</a>
+                <br />
+            </p>
+        </li>
+        <li>
+            <span class="JL_fr JL_fgray">预算：23万</span>
+            <p>
+                <a href="#">我想代理习艾堂的一款产品</a>
+                <br />
+            </p>
+        </li>
+        <li>
+            <span class="JL_fr JL_fgray">预算：10万</span>
+            <p>
+                <a href="#">我想代理习艾堂的一款产品</a>
+                <br />
+            </p>
+        </li>
+        <li>
+            <span class="JL_fr JL_fgray">预算：23万</span>
+            <p>
+                <a href="#">想代理艾灸产品开个微信商城</a>
+                <br />
+            </p>
+        </li>
+        <li>
+            <span class="JL_fr JL_fgray">预算：10万</span>
+            <p>
+                <a href="#">我想代理习艾堂的一款产品</a>
+                <br />
+            </p>
+        </li>
+        <li>
+            <span class="JL_fr JL_fgray">预算：23万</span>
+            <p>
+                <a href="#">我想代理习艾堂的一款产品</a>
+                <br />
+            </p>
+        </li>
+        </td>
+       </tr>
+      </tbody>
+     </table>
+    </ul>
+    <!--艾草招商推荐-->
+    <ul class="IV_infovip clear2017 ">
+     <div class="carousel" data-event="scroll" data-mum="5">
+      <a href="#" class="prev"></a>
+      <div class="IV_milist">
+       <ul>
+        <li>
+            <a href="#"><img src="{#$templets_skin#}upfile/2017212103614958va385_300x240.jpg" />
+            </a>
+            <dl class="clear2017">
+                <dt>
+                 最低投资：待定
+                  <br />{#$cfg_shortname#}官方推荐
+                </dt>
+                <dd>
+                  <a href="#" target="_blank">加盟</a>
+                </dd>
+            </dl>
+        </li>
+        <li>
+             <a href="#" target="_blank">
+                <img src="{#$templets_skin#}upfile/2016123125141609j02vj_300x240.jpg" />
+             </a>
+             <dl class="clear2017">
+              <dt>
+               最低投资：
+               <font color="#FD0206"><strong>1 万</strong></font>{#echoCurrency type='short'#}
+               <br /> {#$cfg_shortname#} 官方推荐
+              </dt>
+              <dd>
+               <a href="#" target="_blank">加盟</a>
+              </dd>
+             </dl>
+         </li>
+        <li>
+             <a href="#" target="_blank">
+                <img src="{#$templets_skin#}upfile/2016112614723234e6uec_300x240.jpg" />
+             </a>
+             <dl class="clear2017">
+              <dt>
+               最低投资：
+               <font color="#FD0206"><strong>25 万</strong></font>{#echoCurrency type='short'#}
+               <br /> {#$cfg_shortname#} 官方推荐
+              </dt>
+              <dd>
+               <a href="#" target="_blank">加盟</a>
+              </dd>
+             </dl>
+         </li>
+        <li>
+             <a href="#" target="_blank">
+                <img src="{#$templets_skin#}upfile/20161126103939359k4k0b_300x240.jpg" />
+             </a>
+             <dl class="clear2017">
+              <dt>
+               最低投资：
+               <font color="#FD0206"><strong>5 万</strong></font>{#echoCurrency type='short'#}
+               <br /> {#$cfg_shortname#} 官方推荐
+              </dt>
+              <dd>
+               <a href="#" target="_blank">加盟</a>
+              </dd>
+             </dl>
+         </li>
+        <li>
+            <a href="#"><img src="{#$templets_skin#}upfile/2017212103614958va385_300x240.jpg" />
+            </a>
+            <dl class="clear2017">
+                <dt>
+                 最低投资：待定
+                  <br />{#$cfg_shortname#}官方推荐
+                </dt>
+                <dd>
+                  <a href="#" target="_blank">加盟</a>
+                </dd>
+            </dl>
+        </li>
+        <li>
+             <a href="#" target="_blank">
+                <img src="{#$templets_skin#}upfile/2016123125141609j02vj_300x240.jpg" />
+             </a>
+             <dl class="clear2017">
+              <dt>
+               最低投资：
+               <font color="#FD0206"><strong>1 万</strong></font>{#echoCurrency type='short'#}
+               <br /> {#$cfg_shortname#} 官方推荐
+              </dt>
+              <dd>
+               <a href="#" target="_blank">加盟</a>
+              </dd>
+             </dl>
+         </li>
+        <li>
+             <a href="#" target="_blank">
+                <img src="{#$templets_skin#}upfile/2016112614723234e6uec_300x240.jpg" />
+             </a>
+             <dl class="clear2017">
+              <dt>
+               最低投资：
+               <font color="#FD0206"><strong>25 万</strong></font>{#echoCurrency type='short'#}
+               <br /> {#$cfg_shortname#} 官方推荐
+              </dt>
+              <dd>
+               <a href="#" target="_blank">加盟</a>
+              </dd>
+             </dl>
+         </li>
+        <li>
+             <a href="#" target="_blank">
+                <img src="{#$templets_skin#}upfile/20161126103939359k4k0b_300x240.jpg" />
+             </a>
+             <dl class="clear2017">
+              <dt>
+               最低投资：
+               <font color="#FD0206"><strong>5 万</strong></font>{#echoCurrency type='short'#}
+               <br /> {#$cfg_shortname#} 官方推荐
+              </dt>
+              <dd>
+               <a href="#" target="_blank">加盟</a>
+              </dd>
+             </dl>
+         </li>
+       </ul>
+      </div>
+      <a class="next" href="javascript:"></a>
+     </div>
+    </ul>
+    <!--艾草招商推荐-->
+   </div>
+  </div>
+  <!--艾草十大品牌-->
+  <div class="wrap clear_fix">
+   <dl class="MT_top10brand">
+    <dt>
+     <h2>十大品牌榜</h2>
+    </dt>
+    <dd>
+     <span>Ten big brands</span>
+     <i></i>
+    </dd>
+   </dl>
+   <div class="w2015">
+    <a href="#" style="margin-top:30px; "><img border="0" src="{#$templets_skin#}upfile/sy_vip.jpg" /></a>
+    <!-- <script src="{#$templets_skin#}js/sally.min.js" type="text/javascript"></script> -->
+    <dl class="MT_mtab" data-event="tab" data-type="hover">
+     <dt>
+      <ul class="MT_msortnav">
+       <li class="active"><a href="#">消费者喜爱十大品牌</a></li>
+       <li><a href="#">公信力十大品牌</a></li>
+       <li><a href="#">原创设计金奖</a></li>
+       <li><a href="#">行业领袖奖</a></li>
+      </ul>
+     </dt>
+     <dd class="active" style="width:1030px;">
+      <div class="MT_top10brandimg MT_top10brandlist ">
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/2016121173652140851ch_120x60.jpg" />
+                <p>{#$cfg_shortname#}企业</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/20161128193031328387g3_120x60.jpg" />
+                <p>{#$cfg_shortname#}商城</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/2016121173652140851ch_120x60.jpg" />
+                <p>{#$cfg_shortname#}企业</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/20161128193031328387g3_120x60.jpg" />
+                <p>{#$cfg_shortname#}商城</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/2016121173652140851ch_120x60.jpg" />
+                <p>{#$cfg_shortname#}企业</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/20161128193031328387g3_120x60.jpg" />
+                <p>{#$cfg_shortname#}商城</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/2016121173652140851ch_120x60.jpg" />
+                <p>{#$cfg_shortname#}企业</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/20161128193031328387g3_120x60.jpg" />
+                <p>{#$cfg_shortname#}商城</p>
+           </a>
+       </li>
+      <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/2016121173652140851ch_120x60.jpg" />
+                <p>{#$cfg_shortname#}企业</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/20161128193031328387g3_120x60.jpg" />
+                <p>{#$cfg_shortname#}商城</p>
+           </a>
+       </li>
+      </div>
+      <span class="MT_top10span"><b>简介</b>：随着居民人均GDP的增长以及对于生活质量的不断追求，艾草在厨电市场所占份额不断扩大，在此背景下，由{#$cfg_shortname#}主办的消费者喜爱十大品牌源于对终端市场的调查和投票 ，经过大众评审和专业审核相结合的方式对消费者喜爱十大品牌进行评选的活动。</span>
+     </dd>
+     <dd style="width:1030px;">
+      <div class="MT_top10brandimg MT_top10brandlist ">
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/20161128193031328387g3_120x60.jpg" />
+                <p>{#$cfg_shortname#}商城</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/2016121173652140851ch_120x60.jpg" />
+                <p>{#$cfg_shortname#}企业</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/20161128193031328387g3_120x60.jpg" />
+                <p>{#$cfg_shortname#}商城</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/2016121173652140851ch_120x60.jpg" />
+                <p>{#$cfg_shortname#}企业</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/20161128193031328387g3_120x60.jpg" />
+                <p>{#$cfg_shortname#}商城</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/2016121173652140851ch_120x60.jpg" />
+                <p>{#$cfg_shortname#}企业</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/20161128193031328387g3_120x60.jpg" />
+                <p>{#$cfg_shortname#}商城</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/2016121173652140851ch_120x60.jpg" />
+                <p>{#$cfg_shortname#}企业</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/20161128193031328387g3_120x60.jpg" />
+                <p>{#$cfg_shortname#}商城</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/2016121173652140851ch_120x60.jpg" />
+                <p>{#$cfg_shortname#}企业</p>
+           </a>
+       </li>
+      </div>
+      <span class="MT_top10span"><b>简介</b>：以市场为基础，以公信为标准，艾草市场的发展得到了建材行业广泛的认可，创新独特的产品设计，耐心优质的企业服务，以跨越式的速度在惊人成长，艾草十大公信力品牌的评选是对市场的见证和行业的记录。</span>
+     </dd>
+     <dd style="width:1030px;">
+      <div class="MT_top10brandimg MT_top10brandlist ">
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/2016121173652140851ch_120x60.jpg" />
+                <p>{#$cfg_shortname#}企业</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/20161128193031328387g3_120x60.jpg" />
+                <p>{#$cfg_shortname#}商城</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/2016121173652140851ch_120x60.jpg" />
+                <p>{#$cfg_shortname#}企业</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/20161128193031328387g3_120x60.jpg" />
+                <p>{#$cfg_shortname#}商城</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/2016121173652140851ch_120x60.jpg" />
+                <p>{#$cfg_shortname#}企业</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/20161128193031328387g3_120x60.jpg" />
+                <p>{#$cfg_shortname#}商城</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/2016121173652140851ch_120x60.jpg" />
+                <p>{#$cfg_shortname#}企业</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/20161128193031328387g3_120x60.jpg" />
+                <p>{#$cfg_shortname#}商城</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/2016121173652140851ch_120x60.jpg" />
+                <p>{#$cfg_shortname#}企业</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/20161128193031328387g3_120x60.jpg" />
+                <p>{#$cfg_shortname#}商城</p>
+           </a>
+       </li>
+      </div>
+      <span class="MT_top10span"><b>简介</b>：任何一个行业的启蒙、发展都需要长时间的积累和沉淀，而在这多{#echoCurrency type='short'#}化、市场竞争无比激烈的环境下成绩优异并突出的品牌所展示的行业领军者的大将风范也变得尤为明显，这也足以奠定品牌在行业中的领袖地位。行业领袖奖旨在评选行业内起领导性作用的艾草品牌。</span>
+     </dd>
+     <dd style="width:1030px;">
+      <div class="MT_top10brandimg MT_top10brandlist ">
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/20161128193031328387g3_120x60.jpg" />
+                <p>{#$cfg_shortname#}商城</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/2016121173652140851ch_120x60.jpg" />
+                <p>{#$cfg_shortname#}企业</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/20161128193031328387g3_120x60.jpg" />
+                <p>{#$cfg_shortname#}商城</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/2016121173652140851ch_120x60.jpg" />
+                <p>{#$cfg_shortname#}企业</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/20161128193031328387g3_120x60.jpg" />
+                <p>{#$cfg_shortname#}商城</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/2016121173652140851ch_120x60.jpg" />
+                <p>{#$cfg_shortname#}企业</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/20161128193031328387g3_120x60.jpg" />
+                <p>{#$cfg_shortname#}商城</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/2016121173652140851ch_120x60.jpg" />
+                <p>{#$cfg_shortname#}企业</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/20161128193031328387g3_120x60.jpg" />
+                <p>{#$cfg_shortname#}商城</p>
+           </a>
+       </li>
+       <li>
+           <a href="#"><img src="{#$templets_skin#}upfile/2016121173652140851ch_120x60.jpg" />
+                <p>{#$cfg_shortname#}企业</p>
+           </a>
+       </li>
+      </div>
+      <span class="MT_top10span"><b>简介</b>：以市场为基础，以公信为标准，艾草市场的发展得到了建材行业广泛的认可，创新独特的产品设计，耐心优质的企业服务，以跨越式的速度在惊人成长，艾草十大公信力品牌的评选是对市场的见证和行业的记录。</span>
+     </dd>
+    </dl>
+   </div>
+  </div>
+  <!--再出发-->
+  <div class="wrap clear_fix">
+   <div style=" width:840px; float:left;">
+    <div class="LT_listtitle">
+     <dl>
+      <dt>
+       <a href="{#$video_channelDomain#}">艾草视频</a>
+      </dt>
+      <dd>
+       <a href="#">高端访谈</a>
+       <a href="#">艾灸养生</a>
+       <a href="#">艾灸理疗</a>
+      </dd>
+     </dl>
+     <span class="LT_rightcom"><a href="{#$video_channelDomain#}">更多&gt;</a></span>
+    </div>
+    <div class="LT_listtextzcf left clear_fix">
+     <ul>
+      {#video action="alist" return="alist11" flag="h" pageSize="1"#}
+      <div class="bot">
+       <i class="LT_tag ">热门<em class="tragl"></em></i>
+       <a href="{#$alist11.url#}" target="_blank">{#$alist11.title#}</a>
+      </div>
+      {#/video#}
+      {#video action="alist" return="alist11" pageSize="7"#}
+      <li>
+        <a href="{#$alist11.url#}" target="_blank">{#$alist11.title#}</a>
+        <span class="LT_spanbackJhvod">视频</span>
+      </li>
+      {#/video#}
+     </ul>
+    </div>
+    <div class="list_img right">
+     <!--list_img right-->
+     <div class="LB_listimgbig">
+      <a href="#">
+       <div class="LB_ivideo">
+        <img height="220" src="{#$templets_skin#}upfile/12-10-24-11-1.png" width="315" />
+        <div class="bfbtn"></div>
+       </div></a>
+      <p><a>勇气+眼光=选择，火星一号成就了不一般的他</a></p>
+     </div>
+    </div>
+   </div>
+   <!--艾草视频-->
+   <div class="CV_compilevideo">
+    <!--compile-->
+    <div class="CV_contentrighttitlenews clear_fix">
+     <h2 class="left">视频专区<span class="CJ_tltlespan"></span></h2>
+     <span class="right_andy">
+        <a href="#">更多&gt;</a>
+     </span>
+    </div>
+    {#video action="alist" return="valist" thumb="1" pageSize="1"#}
+    <div class="NV_newsrightvod">
+     <div class="NR_newsimgvod left">
+      <a href="{#$valist.url#}" target="_blank"><img height="75" src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$valist.litpic#}" type="o_large"#}" width="100" /></a>
+     </div>
+     <div class="NR_newstextvod left">
+      <dt>
+       <a href="{#$valist.url#}" target="_blank">{#$valist.title#}</a>
+       <p class="d">日期：{#$valist.pubdate|date_format:'%m-%d'#}</p>
+       <p class="e">{#$valist.click#}</p>
+      </dt>
+     </div>
+    </div>
+    {#/video#}
+    <ul>
+      {#video action="alist" return="valist" pageSize="6"#}
+      <li><span class="CV_jdname"><a href="{#$valist.url#}" target="_blank">{#$valist.title#}</a></span></li>
+      {#/video#}
+    </ul>
+   </div>
+   <!--艾草视频-->
+  </div>
+  <!--再出发-->
+  <!--艾草效果图-->
+  <div class="wrap clear2017">
+   <div class="PT_phototit clear2017">
+    <ul class="phototit">
+     <h3>艾草图库</h3>
+    </ul>
+    <li class="phototit"><span>Design Sketch</span><a class="more" href="{#$image_channelDomain#}">更多&gt;&gt;</a></li>
+   </div>
+   <div class="h10"></div>
+   <div class="photo_l sina_g sinbo_l sinbo_t sinbo_an">
+    <div>
+      <ul class="slider_s">
+     		{#image action='alist' return='ialist' flag='r' pageSize='6' thumb="1"#}
+        <li>
+          <a href="{#$ialist.url#}" target="_blank">
+            <img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$ialist.litpic#}" type="o_large"#}" />
+            <span style="font-size:18px;">{#$ialist.title#}</span>
+          </a>
+        </li>
+    		{#/image#}
+      </ul>
+    </div>
+    <span class="photo_focus_left photo_left_btn"></span>
+    <span class="photo_focus_right photo_right_btn"></span>
+   </div>
+   <div class="PR_photorightx clear2017">
+    <ul>
+  		{#image action='alist' return='ialist' pageSize='6' thumb="1"#}
+      <li>
+        <a href="{#$ialist.url#}" target="_blank">
+          <img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$ialist.litpic#}" type="o_large"#}" />
+          <span class="PR_zxtxt">{#$ialist.title#}</span>
+          <div class="PR_photorightxtit"><u>{#$ialist.title#}</u></div>
+        </a>
+      </li>
+  		{#/image#}
+    </ul>
+   </div>
+  </div>
+  <!--艾草周边-->
+  <div class="h10"></div>
+  <div class="wrap clear2017">
+   <div class="ST_otherleft clear2017" id="jczcs">
+    <div class="OT_othertitcx">
+     <i></i>
+     <h3>健康养生</h3>
+     <span class="OT_othertitw">
+         <a class="on" href="#">中医艾灸</a>
+         <a href="#">艾灸疗法</a>
+         <a href="#">艾灸常识</a>
+         <a class="over" href="#">艾灸养生</a>
+     </span>
+     <a class="more" href="#" >更多</a>
+    </div>
+    <div class="h10"></div>
+    <!--行业相关-->
+    <div class="jczcsli" style="display: block">
+      {#article action="alist" return="falist1" thumb="1" typeid="98" pageSize="2"#}
+      <div class="OT_jczcsphoto clear2017">
+        <ul>
+          <a href="{#$falist1.url#}" target="_blank"><img class="lazy" src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$falist1.litpic#}" type="o_large"#}" /></a>
+        </ul>
+        <li>
+          <h4><a href="{#$falist1.url#}" target="_blank">{#$falist1.title#}</a></h4>
+          <p>{#$falist1.title#}<a class="right" href="{#$alist1.url#}" target="_blank">[详细]</a></p>
+        </li>
+      </div>
+      {#/article#}
+      <ul class="OT_jczcsphotolist clear2017">
+        {#article action="alist" return="falist1" typeid="98" pageSize="12"#}
+        {#if $_bindex.falist1 > 2#}
+        <li class="clear2017">
+          <i class="dian">&middot;</i>
+          <a href="{#$falist1.url#}" target="_blank">{#$falist1.title#}</a>
+          <span class="newsdate">{#$falist1.pubdate|date_format:'%m-%d'#}</span>
+        </li>
+        {#/if#}
+        {#/article#}
+      </ul>
+    </div>
+    <!--产品测评-->
+    <div class="jczcsli" style="display: none">
+      {#article action="alist" return="falist2" thumb="1" typeid="99" pageSize="2"#}
+      <div class="OT_jczcsphoto clear2017">
+        <ul>
+          <a href="{#$falist2.url#}" target="_blank"><img class="lazy" src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$falist2.litpic#}" type="o_large"#}" /></a>
+        </ul>
+        <li>
+          <h4><a href="{#$falist2.url#}" target="_blank">{#$falist2.title#}</a></h4>
+          <p>{#$falist2.title#}<a class="right" href="{#$alist1.url#}" target="_blank">[详细]</a></p>
+        </li>
+      </div>
+      {#/article#}
+      <ul class="OT_jczcsphotolist clear2017">
+        {#article action="alist" return="falist2" typeid="99" pageSize="12"#}
+        {#if $_bindex.falist2 > 2#}
+        <li class="clear2017">
+          <i class="dian">&middot;</i>
+          <a href="{#$falist2.url#}" target="_blank">{#$falist2.title#}</a>
+          <span class="newsdate">{#$falist2.pubdate|date_format:'%m-%d'#}</span>
+        </li>
+        {#/if#}
+        {#/article#}
+      </ul>
+    </div>
+    <!--产品导购-->
+    <div class="jczcsli" style="display: none">
+      {#article action="alist" return="falist3" thumb="1" typeid="102" pageSize="2"#}
+      <div class="OT_jczcsphoto clear2017">
+        <ul>
+          <a href="{#$falist3.url#}" target="_blank"><img class="lazy" src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$falist3.litpic#}" type="o_large"#}" /></a>
+        </ul>
+        <li>
+          <h4><a href="{#$falist3.url#}" target="_blank">{#$falist3.title#}</a></h4>
+          <p>{#$falist3.title#}<a class="right" href="{#$alist1.url#}" target="_blank">[详细]</a></p>
+        </li>
+      </div>
+      {#/article#}
+      <ul class="OT_jczcsphotolist clear2017">
+        {#article action="alist" return="falist3" typeid="102" pageSize="12"#}
+        {#if $_bindex.falist3 > 2#}
+        <li class="clear2017">
+          <i class="dian">&middot;</i>
+          <a href="{#$falist3.url#}" target="_blank">{#$falist3.title#}</a>
+          <span class="newsdate">{#$falist3.pubdate|date_format:'%m-%d'#}</span>
+        </li>
+        {#/if#}
+        {#/article#}
+      </ul>
+    </div>
+    <!--集成水槽-->
+    <div class="jczcsli" style="display: none">
+      {#article action="alist" return="falist4" thumb="1" typeid="101" pageSize="2"#}
+      <div class="OT_jczcsphoto clear2017">
+        <ul>
+          <a href="{#$falist4.url#}" target="_blank"><img class="lazy" src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url="{#$falist4.litpic#}" type="o_large"#}" /></a>
+        </ul>
+        <li>
+          <h4><a href="{#$falist4.url#}" target="_blank">{#$falist4.title#}</a></h4>
+          <p>{#$falist4.title#}<a class="right" href="{#$alist1.url#}" target="_blank">[详细]</a></p>
+        </li>
+      </div>
+      {#/article#}
+      <ul class="OT_jczcsphotolist clear2017">
+        {#article action="alist" return="falist4" typeid="101" pageSize="12"#}
+        {#if $_bindex.falist4 > 2#}
+        <li class="clear2017">
+          <i class="dian">&middot;</i>
+          <a href="{#$falist4.url#}" target="_blank">{#$falist4.title#}</a>
+          <span class="newsdate">{#$falist4.pubdate|date_format:'%m-%d'#}</span>
+        </li>
+        {#/if#}
+        {#/article#}
+      </ul>
+    </div>
+   </div>
+   <div class="OR_otherright">
+    <div class="FT_newslefttit clear2017">
+     <h3>艾草黄页</h3>
+     <a class="more" href="{#$huangye_channelDomain#}" target="_blank">更多</a>
+    </div>
+    <div class="know_hot">
+     <ul>
+   		{#huangye action="ilist" return="hlist" pageSize="1"#}
+      <h4><a href="{#$hlist.url#}" target="_blank"><font color="#F50400">{#$hlist.title#}</font> {#$hlist.tel#}</a></h4>
+      {#/huangye#}
+     </ul>
+    </div>
+    <ul class="know_list clear2017">
+  		{#huangye action="ilist" return="hlist" pageSize="8"#}
+      {#if $_bindex.hlist > 1#}
+      <li class="clear2017">
+        <i class="know">&middot;</i><a href="{#$hlist.url#}" target="_blank">{#$hlist.title#} {#$hlist.tel#}</a>
+      </li>
+      {#/if#}
+      {#/huangye#}
+    </ul>
+   </div>
+  </div>
+  <!--行业展会-->
+  <div class="wrap clear_fix" style=" margin-top:10px; margin-bottom:0px;">
+   <div class="clr row1200">
+    <ul class="TP_top1200x60">
+     <li><a href="#"><img height="55" src="{#$templets_skin#}upfile/2016122144416468ukhfa.jpg" width="1200" /></a></li>
+    </ul>
+   </div>
+  </div>
+  <div class="clear_fix TP_linksdiv">
+   <div class="TP_links" id="TP_linksbox">
+    <p><a href="javascript:;">友情链接</a> <a href="#" target="_blank">点击申请</a></p>
+    <div style="display:block;">
+     <ul>
+       {#siteConfig action="friendLink" return="flink" module="siteConfig"#}<li><a href="{#$flink.sitelink#}" target="_blank">{#$flink.sitename#}</a></li>{#/siteConfig#}
+     </ul>
+    </div>
+   </div>
+  </div>
+  <div class="footer clear2017">
+   <dl>
+    <dt></dt>
+    <dd>
+     <div class="footer-c1 clear2017">
+      <ul class="footer-lm">
+       <li><h3>新手指南</h3></li>
+       <li><a href="#">新用户注册</a></li>
+       <li><a href="#">账户登录</a></li>
+       <li><a href="#">找回密码</a></li>
+      </ul>
+      <ul class="footer-lm">
+       <li><h3>商务服务</h3></li>
+       <li><a href="#">招商服务</a></li>
+       <li><a href="#">广告服务</a></li>
+       <li><a href="#">仲景认证</a></li>
+       <li><a href="#">代售代购</a></li>
+      </ul>
+      <ul class="footer-lm">
+       <li><h3>网站服务</h3></li>
+       <li><a href="#">关于我们</a></li>
+       <li><a href="#">网站留言</a></li>
+       <li><a href="#">联系我们</a></li>
+      </ul>
+      <ul class="footer-lm">
+       <li><h3>其他内容</h3></li>
+       <li><a href="#">版权声明</a></li>
+       <li><a href="#">使用协议</a></li>
+       <li><a href="#">隐私条款</a></li>
+      </ul>
+      <ul class="footer-ewm">
+       <li><h3>手机登录</h3></li>
+       <li><img src="{#$cfg_basehost#}/include/qrcode.php?data={#$cfg_basehost#}" width="100" /></li>
+      </ul>
+      <ul class="footer-ewm">
+       <li><h3>关注官方微信</h3></li>
+       <li><img src="{#$cfg_weixinQr#}" width="100" /></li>
+      </ul>
+     </div>
+     <div class="footer-c2">
+      {#$cfg_powerby#}
+      <p>在线客服：<a href="#">1258095920</a>&nbsp;&nbsp;、&nbsp;&nbsp;<a href="#" target="_blank">193388523</a></p>
+     </div>
+    </dd>
+   </dl>
+  </div>
+  <div class="pp-footer">
+   <ul class="BT_backtopbox" id="hm_backtop">
+    <li id="BT_appqrcode">
+         <a class="BT_backlink BT_appqrcode" href="javascript:void(0);">
+            <s class="alpha"></s>
+         </a>
+         <div class="backbox" style="display: none;">
+          <div class="bk qrcode">
+           <p><img src="{#$cfg_weixinQr#}"  class="picc" /></p>
+          </div>
+         </div>
+     </li>
+    <li id="weixin_qrcode">
+        <a class="BT_backlink weixin_qrcode" href="javascript:void(0);">
+          <s class="alpha"></s>
+        </a>
+         <div class="backbox" style="display:none;">
+              <div class="bk service">
+                   <div class="bktext BT_kefutit">
+                        <div class="BT_iconrightkefu  pingtai"></div> 平台客服
+                   </div>
+                   <ul style="background:#fff">
+                        <li>
+                            <a href="#">
+                            <img src="{#$templets_skin#}images/icon-qq.png" />艾草网小强 13333685333</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                            <img src="{#$templets_skin#}images/icon-qq.png" />艾草网小刘 18503773187</a>
+                        </li>
+                   </ul>
+                   <div class="bktext BT_kefutit">
+                        <div class="BT_iconrightkefu  jiaoyi"></div> 交易客服
+                   </div>
+                   <ul style="background:#fff">
+                        <li>
+                            <a href="#">
+                            <img src="{#$templets_skin#}images/icon-qq.png" />艾草网小强 13333685333</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                            <img src="{#$templets_skin#}images/icon-qq.png" />艾草网小刘 18503773187</a>
+                        </li>
+                   </ul>
+                   <div class="bktext BT_kefutit">
+                        <div class="BT_iconrightkefu  caiwu"></div> 培训客服
+                   </div>
+                   <ul style="background:#fff">
+                    <li>
+                        <a href="#">
+                        <img src="{#$templets_skin#}images/icon-qq.png" />艾灸师培训认证 </a>
+                    </li>
+                   </ul>
+                   <div class="bktext BT_kefutit" style="border:none;background:#fff;">
+                        <div class="BT_iconrightkefu  zongji"></div> 总机：13333-668-533
+                   </div>
+              </div>
+         </div>
+     </li>
+    <li id="contactlink">
+         <a class="BT_backlink CL_contacttel" href="javascript:void(0);">
+            <s class="alpha"></s>
+         </a>
+         <div class="backbox" style="display: none;">
+              <div class="bk CL_contacttel">
+                   <div class="bktext BT_kefutit" style="background-color:#fff;">
+                        <div class="BT_iconrightkefu  daishou"></div> 代购代售
+                   </div>
+                   <ul style="background:#fff">
+                    <li>
+                        <a href="#">
+                        <img src="{#$templets_skin#}images/icon-qq.png" />艾草网小强 13333685333</a>
+                    </li>
+                    <li>
+                        <a href="#">
+                        <img src="{#$templets_skin#}images/icon-qq.png" />艾草网小刘 18503773187</a>
+                    </li>
+                   </ul>
+              </div>
+         </div>
+     </li>
+    <li>
+         <a class="BT_backlink sideservice" href="javascript:void(0);">
+            <s class="alpha"></s>
+         </a>
+         <div class="backbox" style="display: none;">
+              <div class="bk qrcode" style="padding:0 10px;">
+                   <div class="bktext BT_kefutit" style="background-color:#fff;">
+                        <div class="BT_iconrightkefu  daili"></div> 加盟代理商
+                   </div>
+                   <ul style="background:#fff">
+                        <li>
+                            <a href="#">
+                            <img src="{#$templets_skin#}images/icon-qq.png" />艾草网渠道 13333685333</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                            <img src="{#$templets_skin#}images/icon-qq.png" />艾草网渠道 18503773187</a>
+                        </li>
+                   </ul>
+              </div>
+         </div>
+     </li>
+    <li id="goto-top">
+         <a class="BT_backlink backtop" href="#">
+             <s class="alpha"></s>
+             <span></span>
+        </a>
+    </li>
+   </ul>
+</div>
+<script type="text/javascript" src="{#$templets_skin#}js/jquery.superslide.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.scroll.loading.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/ai.js?v=8"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/wlm.js"></script>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<div class="w-form">
+	<form name="fabuForm" id="fabuForm" method="post" action="/include/ajax.php?service=vote&action={#if $do == "edit"#}edit&id={#$id#}{#else#}put{#/if#}" data-url="{#getUrlPath service='member' type='user' template='manage' action='vote'#}">
+		<dl class="fn-clear">
+			<dt><span></span>{#$langData['siteConfig'][19][892]#}：</dt>
+			<dd>
+				<select class="chosen-select" id="cityid" name="cityid" style="width: auto; min-width: 150px;" data-title="{#$langData['siteConfig'][20][585]#}">
+					<option selected="" value="0">请选择</option>
+					{#siteConfig action="siteCity" return="city"#}
+					<option value="{#$city.cityid#}" {#if $detail_cityid == $city.cityid#} selected{#/if#}>{#$city.name#}</option>
+					{#/siteConfig#}
+				</select>
+				<span class="tip-inline"></span>
+			</dd>
+		</dl>
+        <dl class="fn-clear">
+            <dt><span></span>投票标题：</dt>
+            <dd>
+                <input type="text" name="title" id="title" class="title" value="{#$detail_title#}" placeholder="请输入标题">
+            </dd>
+        </dl>
+        <dl class="fn-clear">
+            <dt><span></span>投票海报：</dt>
+            <dd class="hb fn-clear">
+                <img src="{#if $id#}{#changeFileSize url="{#$detail_litpic#}" type="middle"#}{#else#}{#$cfg_staticPath#}images/placeholder_img.png{#/if#}" id="hbImg" />
+                <div class="hb-r">
+                    <div class="fn-clear">
+                        <div class="add-hb">
+                            <span>{#if $id#}修改海报{#else#}添加海报{#/if#}</span>
+                            <input type="file" accept=".gif,.jpeg,.jpg,.png" id="Filedata" name="Filedata" />
+                        </div>
+                        <a href="javascript:;" class="del-hb" id="delHb"{#if $id && $detail_litpic#} style="display: block;"{#/if#}>删除海报</a>
+                    </div>
+                    <p>温馨提示：图片尺寸建议为：750*450</p>
+                    <input type="hidden" name="litpic" id="litpic"{#if $id#} value="{#$detail_litpicSource#}"{#/if#} />
+                </div>
+            </dd>
+        </dl>
+        <dl class="fn-clear">
+            <dt><span></span>投票介绍：</dt>
+            <dd>
+                <textarea name="description" id="description" rows="3" placeholder="请输入一段文字说明...">{#$detail_description#}</textarea>
+            </dd>
+        </dl>
+
+        <dl class="fn-clear">
+            <dt><span></span>投票选项：</dt>
+            <dd>
+		<div class="groupList" id="groupList">
+			{#if $detail_body#}
+			{#foreach from=$detail_body key=k item=q_cfg#}
+			{#$xuan_count = 0#}
+			<div class="item {#if $detail_state != 2 && !$detail_join#}normal{#/if#} {#if $q_cfg.s_dire == 0#}vertical{#else#}horizontal{#/if#}">
+				<div class="result">
+					<div class="title"><span class="px">{#$k+1#}</span>.<span class="tit">{#$q_cfg.title#}</span><span class="type">[{#if $q_cfg.q_type#}多选题{#else#}单选题{#/if#}]</span></div>
+					<div class="body fn-clear">
+						<div class="xuan_row fn-clear">
+							{#foreach from=$q_cfg.xuan key=x_k item=x_cfg#}
+							<div class="xuan"{#if $q_cfg.s_dire#} style="float:left;width:{#1/$q_cfg.s_dire*100#}%;"{#/if#}>
+								<div class="txt">
+									<span class="count">{#if $q_cfg.s_count#}0票 {#/if#}{#if $q_cfg.s_ratio#}(0%){#/if#}</span>
+									<label for="" class="choose"><i class="icon icon_{#if $q_cfg.q_type#}check{#else#}radio{#/if#}"></i>{#$x_cfg.txt#}</label>
+								</div>
+								<div class="pic">{#if $x_cfg.imgturl#}<img src="{#$x_cfg.imgturl#}" alt="">{#/if#}</div>
+							</div>
+							{#$xuan_count = $xuan_count + 1#}
+
+							{#if $q_cfg.s_dire && (($x_k+1) % $q_cfg.s_dire) == 0#}
+							</div>
+							<div class="xuan_row fn-clear">
+							{#/if#}
+							{#/foreach#}
+						</div>
+					</div>
+				</div>
+				<div class="edit">
+					<div class="title_con">
+						<span class="tp">标题</span><input type="text" class="title" value="{#$q_cfg.title#}" placeholder="请输入题目内容">
+					</div>
+					<ul class="xuan_con">
+						{#foreach from=$q_cfg.xuan key=x_k item=x_cfg#}
+						<li class="fn-clear">
+							<span class="tp"><i class="icon icon_move"></i></span>
+							<div class="xuan_m fn-clear">
+								<div class="xuan_inp">
+									<input type="text" class="xuan_txt" value="{#$x_cfg.txt#}" placeholder="选项">
+									{#if $x_cfg.imgturl#}
+									<div class="pic has">
+										<div class="img">
+											<img src="{#$x_cfg.imgturl#}" alt="">
+											<div class="img_big">
+												<img src="{#$x_cfg.imgturl#}" alt="">
+												<a href="javascript:;" class="del"><i class="icon icon_del3"></i></a>
+												<em><s></s></em>
+											</div>
+										</div>
+										<div class="upbtn"><i class="icon icon_pic"></i></div>
+										<input type="file" name="Filedata" value="" class="fn-hide Filedata" id="Filedata_{#$k#}_{#$x_k#}">
+										<input type="hidden" name="pic" value="{#$x_cfg.img#}" class="fn-hide pic_val">
+									</div>
+									{#else#}
+									<div class="pic">
+										<div class="img"></div>
+										<div class="upbtn"><i class="icon icon_pic"></i></div>
+										<input type="file" name="Filedata" value="" class="fn-hide Filedata" id="Filedata_{#$k#}_{#$x_k#}">
+										<input type="hidden" name="pic" value="" class="fn-hide pic_val">
+									</div>
+									{#/if#}
+								</div>
+								<div class="xuan_btns">
+									<a href="javascript:;" class="icon icon_del2 xuan_del" title="删除"></a>
+									<a href="javascript:;" class="icon icon_up xuan_up"{#if $x_k == 0#} style="display:none;"{#/if#} title="上移"></a>
+									<a href="javascript:;" class="icon icon_down xuan_down"{#if $x_k + 1 == $xuan_count#} style="display:none;"{#/if#} title="下移"></a>
+									<a href="javascript:;" class="icon icon_add xuan_add" title="新增"></a>
+								</div>
+							</div>
+						</li>
+						{#/foreach#}
+					</ul>
+					<a href="javascript:;" class="editComplete">完成编辑</a>
+				</div>
+				<div class="g-btns fn-clear">
+					<div class="g-btns-left fn-hide">
+						<a href="javascript:;" class="show_count_number{#if $q_cfg.s_count#} active{#/if#}"><i class="icon icon_check"></i>显示投票数</a>
+						<a href="javascript:;" class="show_count_ratio{#if $q_cfg.s_ratio#} active{#/if#}"><i class="icon icon_check"></i>显示百分比</a>
+						<a href="javascript:;" class="direction togg" data-id="{#$q_cfg.s_dire|default: 0#}">
+							<span>{#if !$q_cfg.s_dire#}纵向排列{#else#}1行{#$q_cfg.s_dire#}列{#/if#}</span><i class="sj_up"></i><i class="sj_down"></i>
+							<ul class="more">
+								<li data-id="0">纵向排列</li>
+								<li data-id="2">1行2列</li>
+								<li data-id="3">1行3列</li>
+								<li data-id="4">1行4列</li>
+							</ul>
+						</a>
+						<a href="javascript:;" class="g_type togg{#if $q_cfg.q_type#} active{#/if#}" data-id="{#$q_cfg.q_type|default: 0#}">
+							<span>{#if $q_cfg.q_type#}多选题{#else#}单选题{#/if#}</span>
+							<i class="sj_up"></i><i class="sj_down"></i>
+							<ul class="more">
+								<li data-id="0">单选题</li>
+								<li data-id="1">多选题</li>
+							</ul>
+						</a>
+					</div>
+					<div class="g-btns-right">
+						<a href="javascript:;" class="edit"><i class="icon icon_edit"></i>编辑</a>
+						<a href="javascript:;" class="copy"><i class="icon icon_copy"></i>复制</a>
+						<a href="javascript:;" class="down"><i class="icon icon_down2"></i>下移</a>
+						<a href="javascript:;" class="up"><i class="icon icon_up2"></i>上移</a>
+						<a href="javascript:;" class="gotop"><i class="icon icon_top"></i>最前</a>
+						<a href="javascript:;" class="gobottom"><i class="icon icon_bottom"></i>最后</a>
+						<a href="javascript:;" class="del"><i class="icon icon_del1"></i>删除</a>
+					</div>
+				</div>
+			</div>
+			{#/foreach#}
+			{#else#}
+			<div class="item horizontal editing">
+				<div class="result">
+					<div class="title"><span class="px">1</span>.<span class="tit"></span><span class="type">[单选题]</span></div>
+					<div class="body fn-clear"></div>
+				</div>
+				<div class="edit">
+					<div class="title_con">
+						<span class="tp">标题</span><input type="text" class="title" value="" placeholder="请输入题目内容">
+					</div>
+					<ul class="xuan_con">
+						<li class="fn-clear">
+							<span class="tp"><i class="icon icon_move"></i></span>
+							<div class="xuan_m fn-clear">
+								<div class="xuan_inp">
+									<input type="text" class="xuan_txt" value="" placeholder="选项">
+									<div class="pic">
+										<div class="img"></div>
+										<div class="upbtn"><i class="icon icon_pic"></i></div>
+										<input type="file" name="Filedata" value="" class="fn-hide Filedata" id="Filedata_0">
+										<input type="hidden" name="pic" value="" class="fn-hide pic_val">
+									</div>
+								</div>
+								<div class="xuan_btns">
+									<a href="javascript:;" class="icon icon_del2 xuan_del" title="删除"></a>
+									<a href="javascript:;" class="icon icon_up xuan_up" style="display:none;" title="上移"></a>
+									<a href="javascript:;" class="icon icon_down xuan_down" style="" title="下移"></a>
+									<a href="javascript:;" class="icon icon_add xuan_add" title="新增"></a>
+								</div>
+							</div>
+						</li>
+						<li class="fn-clear">
+							<span class="tp"><i class="icon icon_move"></i></span>
+							<div class="xuan_m fn-clear">
+								<div class="xuan_inp">
+									<input type="text" class="xuan_txt" value="" placeholder="选项">
+									<div class="pic">
+										<div class="img"></div>
+										<div class="upbtn"><i class="icon icon_pic"></i></div>
+										<input type="file" name="Filedata" value="" class="fn-hide Filedata" id="Filedata_1">
+										<input type="hidden" name="pic" value="" class="fn-hide pic_val">
+									</div>
+								</div>
+								<div class="xuan_btns">
+									<a href="javascript:;" class="icon icon_del2 xuan_del" title="删除"></a>
+									<a href="javascript:;" class="icon icon_up xuan_up" style="" title="上移"></a>
+									<a href="javascript:;" class="icon icon_down xuan_down" style="display:none;" title="下移"></a>
+									<a href="javascript:;" class="icon icon_add xuan_add" title="新增"></a>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<a href="javascript:;" class="editComplete">完成编辑</a>
+				</div>
+				<div class="g-btns fn-clear">
+					<div class="g-btns-left fn-hide">
+						<a href="javascript:;" class="show_count_number"><i class="icon icon_check"></i>显示投票数</a>
+						<a href="javascript:;" class="show_count_ratio"><i class="icon icon_check"></i>显示百分比</a>
+						<a href="javascript:;" class="direction togg" data-id="0">
+							<span>纵向排列</span><i class="sj_up"></i><i class="sj_down"></i>
+							<ul class="more">
+								<li data-id="0">纵向排列</li>
+								<li data-id="2">&nbsp;&nbsp;1行2列</li>
+								<li data-id="3">&nbsp;&nbsp;1行3列</li>
+								<li data-id="4">&nbsp;&nbsp;1行4列</li>
+							</ul>
+						</a>
+						<a href="javascript:;" class="g_type togg" data-id="0">
+							<span>{#if $q_cfg.q_type#}多选题{#else#}单选题{#/if#}</span>
+							<i class="sj_up"></i><i class="sj_down"></i>
+							<ul class="more">
+								<li data-id="0">单选题</li>
+								<li data-id="1">多选题</li>
+							</ul>
+						</a>
+					</div>
+					<div class="g-btns-right">
+						<a href="javascript:;" class="edit"><i class="icon icon_edit"></i>编辑</a>
+						<a href="javascript:;" class="copy"><i class="icon icon_copy"></i>复制</a>
+						<a href="javascript:;" class="down"><i class="icon icon_down2"></i>下移</a>
+						<a href="javascript:;" class="up"><i class="icon icon_up2"></i>上移</a>
+						<a href="javascript:;" class="gotop"><i class="icon icon_top"></i>最前</a>
+						<a href="javascript:;" class="gobottom"><i class="icon icon_bottom"></i>最后</a>
+						<a href="javascript:;" class="del"><i class="icon icon_del1"></i>删除</a>
+					</div>
+				</div>
+			</div>
+			{#/if#}
+		</div>
+		{#if $detail_state != 2 && !$detail_join#}
+		<a href="javascript:;" class="addNew">新建选项</a>
+		{#/if#}
+</dd>
+</dl>
+		{#if $detail_state == 2#}
+		<input type="submit" class="submit" value="投票已结束" disabled>
+		{#elseif $detail_join != 0#}
+		<input type="submit" class="submit" value="投票已有答卷，无法修改" disabled>
+		{#else#}
+		<input type="submit" class="submit" value="发布">
+		{#/if#}
+	</form>
+</div>
+
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dragsort-0.5.1.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.ajaxFileUpload.js"></script>

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$langData['siteConfig'][0][7]#} - {#$cfg_webname#}</title>{#* 会员中心 *#}
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/index.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#};
+
+	var money = {#$userinfo.money#}, freeze = {#$userinfo.freeze#}, point = {#$userinfo.point#};
+</script>
+</head>
+
+<body>
+{#include file="top.html"#}
+
+
+<div class="wrap">
+	<div class="container fn-clear">
+
+		{#include file="sidebar.html"#}
+
+		<div class="main">
+
+			<!-- 会员基本信息 s -->
+			<div class="banner"{#if $bannerUrl#} style="background-image: url('{#$bannerUrl#}');"{#/if#}>
+				<a href="javascript:;" class="conbg" id="customBanner" title="{#$langData['siteConfig'][19][254]#}">{#$langData['siteConfig'][19][254]#}</a>{#* 自定义封面背景图片 *#}
+				<dl class="uinfo">
+					<dt>
+						<a href="{#getUrlPath service='member' type='user' template='portrait'#}">
+							<img onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_100.jpg';" src="{#if $userinfo.photo == ""#}{#$cfg_staticPath#}images/noPhoto_100.jpg{#else#}{#changeFileSize url="{#$userinfo.photo#}"#}{#/if#}" />
+							<span>{#$langData['siteConfig'][6][110]#}</span>{#* 上传头像 *#}
+						</a>
+					</dt>
+					<dd>
+						<div class="name">
+							<h2><span>{#$nowHour#}，{#$userinfo.nickname#}{#if $userinfo.level#}<font title="{#$langData['siteConfig'][19][733]#}：{#$userinfo.expired|date_format:"%Y-%m-%d %H:%M:%S"#}">【{#$userinfo.levelName#}】</font>{#/if#}</span></h2>{#* 到期时间 *#}
+							{#if $userinfo['userType'] == 1 || !$userinfo#}<a href="{#getUrlPath service='member' type='user' template='upgrade'#}" class="qiye" target="_blank">{#$langData['siteConfig'][16][113]#}</a>{#/if#}{#* 会员升级 *#}
+						</div>
+						<ul class="fn-clear">
+							<li><a href="{#if $userinfo.certifyState != 1#}{#getUrlPath service='member' type='user' template='security' doget='chCertify'#}{#else#}{#getUrlPath service='member' type='user' template='security' doget='shCertify'#}{#/if#}" title="{#$langData['siteConfig'][19][255]#}" class="real{#if $userinfo.certifyState != 1#} disable{#/if#}"><s></s></a></li>{#* 实名认证 *#}
+							<li><a href="{#getUrlPath service='member' type='user' template='security' doget='chphone'#}" title="{#$langData['siteConfig'][3][7]#}" class="mobile{#if $userinfo.phoneCheck == 0#} disable{#/if#}"><s></s></a></li>{#* 手机认证 *#}
+							<li><a href="{#getUrlPath service='member' type='user' template='security' doget='chemail'#}" title="{#$langData['siteConfig'][3][10]#}" class="email{#if $userinfo.emailCheck == 0#} disable{#/if#}"><s></s></a></li>{#* 邮箱认证 *#}
+						</ul>
+					</dd>
+				</dl>
+				<div class="bot">
+					{#if $userinfo.lastlogintime#}
+					<div class="l">{#$langData['siteConfig'][15][9]#}：{#$userinfo.lastlogintime#}&nbsp;&nbsp;&nbsp;&nbsp;{#$userinfo.lastloginipaddr#}&nbsp;&nbsp;&nbsp;&nbsp;<a href="{#getUrlPath service='member' type='user' template='loginrecord'#}">{#$langData['siteConfig'][6][52]#}>></a></div>{#* 最近一次登录--查看更多  *#}
+					{#else#}
+					<div class="l"><a href="{#getUrlPath service='member' type='user' template='loginrecord'#}">{#$langData['siteConfig'][19][682]#}</a></div>{#* 查看登录记录 *#}
+					{#/if#}
+					{#$level = "{#$langData['siteConfig'][13][1]#}"#}{#* 高 *#}
+					{#$text = "{#$langData['siteConfig'][6][53]#}"#}{#* 点击查看 *#}
+					{#$cla = "l1"#}
+					{#if $userinfo.security < 100 && $userinfo.security > 40#}
+						{#$level = "{#$langData['siteConfig'][13][2]#}"#}{#* 中 *#}
+						{#$text = "{#$langData['siteConfig'][6][54]#}"#}{#* 立即提升 *#}
+						{#$cla = "l2"#}
+					{#elseif $userinfo.security <= 40#}
+						{#$level = "{#$langData['siteConfig'][13][3]#}"#}{#* 低 *#}
+						{#$text = "{#$langData['siteConfig'][6][54]#}"#}
+						{#$cla = "l2"#}
+					{#/if#}
+					<div class="r">{#$langData['siteConfig'][19][257]#}：{#$level#}<a href="{#getUrlPath service='member' type='user' template='security'#}" class="{#$cla#}">{#$text#}</a></div>{#* 安全等级 *#}
+					{#if $cfg_qiandao_state#}<a href="{#getUrlPath service='member' type='user' template='qiandao'#}" class="jifen">{#$langData['siteConfig']['22'][109]#}</a>{#/if#}{#* 签到送积分 *#}
+				</div>
+			</div>
+			<!-- 会员基本信息 e -->
+
+			<!-- 资产 s -->
+			<div class="acc-info fn-clear">
+				{#if 'balance'|in_array:$cfg_ucenterLinks#}
+				<div class="info-con">{#$langData['siteConfig'][15][14]#} <span>{#echoCurrency type='symbol'#} <b>{#$userinfo.money + $userinfo.freeze#}</b></span></div>{#* 账户总额 *#}
+				<div class="info-con">{#$langData['siteConfig'][19][258]#} <span>{#echoCurrency type='symbol'#} <b>{#$userinfo.money#}</b></span></div>{#* 可用余额 *#}
+				<div class="info-con">{#$langData['siteConfig'][19][229]#} <span>{#echoCurrency type='symbol'#} <b>{#$userinfo.freeze#}</b></span></div>{#* 冻结金额 *#}
+				{#/if#}
+				{#if $cfg_pointState#}<div class="info-con">{#$langData['siteConfig'][19][683]#}{#$cfg_pointName#} <span><b>{#$userinfo.point#}</b>{#if in_array("integral", $installModuleArr)#}<a href="{#$integral_channelDomain#}" target="_blank" class="d">{#$langData['siteConfig'][15][15]#}</a>{#/if#}</span></div>{#/if#}
+			</div>{#* 账户 - 兑换 *#}
+			<!-- 资产 e -->
+
+			<!-- 模块集合 s -->
+			<div class="modules">
+				<ul class="fn-clear">
+
+					{#if (in_array("tuan", $installModuleArr) && {#verifyModuleAuth module='tuan' type='userCenter'#}) || (in_array("shop", $installModuleArr) && {#verifyModuleAuth module='shop' type='userCenter'#}) || in_array("integral", $installModuleArr)#}
+
+                    {#if 'order'|in_array:$cfg_ucenterLinks#}
+
+					{#$orderModuleCount = 0#}
+
+					{#* 团购订单 *#}
+					{#if in_array("tuan", $installModuleArr) && {#verifyModuleAuth module='tuan' type='userCenter'#}#}
+						{#$tuanOrderCount = 0#}
+
+						{#tuan action="orderList" return="list" pageData="1" pageSize="1"#}
+						{#$tuanOrderCount = $list['totalCount']#}
+						{#/tuan#}
+
+						{#$orderModuleCount = $orderModuleCount + 1#}
+
+					{#/if#}
+
+					{#* 商城订单 *#}
+					{#if in_array("shop", $installModuleArr) && {#verifyModuleAuth module='shop' type='userCenter'#}#}
+						{#$shopOrderCount = 0#}
+
+						{#shop action="orderList" return="list" pageData="1" pageSize="1"#}
+						{#$shopOrderCount = $list['totalCount']#}
+						{#/shop#}
+
+						{#$orderModuleCount = $orderModuleCount + 1#}
+					{#/if#}
+
+					{#* 积分商城订单 *#}
+					{#if in_array("integral", $installModuleArr)#}
+						{#$integralOrderCount = 0#}
+
+						{#integral action="orderList" return="list" pageData="1" pageSize="1"#}
+						{#$integralOrderCount = $list['totalCount']#}
+						{#/integral#}
+
+						{#$orderModuleCount = $orderModuleCount + 1#}
+					{#/if#}
+
+					{#if $orderModuleCount#}
+					<li class="li-1">
+						<div class="m-content" >
+							<img src="{#$templets_skin#}images/icon/m-order.png?v={#$cfg_staticVersion#}" /><h5>{#$langData['siteConfig'][10][4]#}</h5>{#* 我的订单 *#}
+							<div class="fn-clear item{#$orderModuleCount#}">
+								{#if in_array("tuan", $installModuleArr) && {#verifyModuleAuth module='tuan' type='userCenter'#}#}
+								<p><a href="{#getUrlPath service='member' type='user' template='order' module='tuan'#}">{#$langData['siteConfig'][16][46]#} {#$tuanOrderCount|string_format:"%d"#}</a></p>{#* 团购 *#}
+								{#/if#}
+								{#if in_array("shop", $installModuleArr) && {#verifyModuleAuth module='shop' type='userCenter'#}#}
+								<p><a href="{#getUrlPath service='member' type='user' template='order' module='shop'#}">{#$langData['siteConfig'][16][47]#} {#$shopOrderCount|string_format:"%d"#}</a></p>{#* 商城 *#}
+								{#/if#}
+								{#if in_array("integral", $installModuleArr)#}
+								<p><a href="{#getUrlPath service='member' type='user' template='order' module='integral'#}">{#$cfg_pointName#} {#$integralOrderCount|string_format:"%d"#}</a></p>
+								{#/if#}
+							</div>
+						</div>
+						<div class="cover c1"></div>
+					</li>
+					{#/if#}
+					{#/if#}
+					{#/if#}
+
+					{#* 消息 *#}
+					{#$messageCount = 0#}
+					{#$messageRead = 0#}
+					{#member action="message" return="list" pageSize="1"#}
+					{#/member#}
+					{#$messageCount = $pageInfo['totalCount']#}
+					{#$messageRead = $pageInfo['read']#}
+					<li class="li-2">
+						<div class="m-content"><img src="{#$templets_skin#}images/icon/m-message.png?v={#$cfg_staticVersion#}" /><h5>{#$langData['siteConfig'][10][19]#}</h5>
+							<div class="fn-clear item3">
+								<p><a href="{#getUrlPath service='member' type='user' template='message'#}">{#$langData['siteConfig'][9][0]#} {#$messageCount|string_format:"%d"#}</a></p>{#* 我的消息 *#}
+								<p><a href="{#getUrlPath service='member' type='user' template='message' param="state=1"#}">{#$langData['siteConfig'][9][8]#} {#$messageRead|string_format:"%d"#}</a></p>{#* 已读 *#}
+								<p><a href="{#if $userinfo.message > 0#}{#getUrlPath service='member' type='user' template='message' param="state=0"#}{#else#}{#getUrlPath service='member' type='user' template='message'#}{#/if#}">
+									<em class="inline">{#$langData['siteConfig'][9][7]#} {#$userinfo.message|string_format:"%d"#}</em>{#* 未读 *#}
+									{#if $userinfo.message > 0#}<i class="m-state"></i>{#/if#}
+								</a></p>
+							</div>
+						</div>
+						<div class="cover c2"></div>
+					</li>
+
+					{#* 收藏 *#}
+					{#$collectCount = 0#}
+					{#member action="collectList" return="collectList" pageSize="1"#}
+					{#/member#}
+                    {#if $collectList#}
+					    {#$collectCount = $pageInfo['totalCount']#}
+                    {#/if#}
+					<li class="li-3">
+						<div class="m-content">
+							<img src="{#$templets_skin#}images/icon/m-collect.png?v={#$cfg_staticVersion#}" /><h5>{#$langData['siteConfig'][10][9]#}</h5>{#* 我的收藏 *#}
+							<div class="fn-clear item1">
+								<p><a href="{#getUrlPath service='member' type='user' template='collect'#}">{#$langData['siteConfig'][19][311]#} {#$collectCount|string_format:"%d"#}</a></p>{#* 数量 *#}
+							</div>
+						</div>
+						<div class="cover c3"></div>
+					</li>
+
+					{#siteConfig action="siteModule" return="module"#}
+
+						{#* 新闻投稿 *#}
+						{#if $module.code == 'article' && {#verifyModuleAuth module='article' type='userCenter'#}#}
+
+							{#$articleAudit = 0#}
+							{#$articleGray = 0#}
+							{#$articleRefuse = 0#}
+							{#article action="alist" return="list" u="1" pageData="1" pageSize="1"#}
+								{#$articleAudit = $list['audit']#}
+								{#$articleGray = $list['gray']#}
+								{#$articleRefuse = $list['refuse']#}
+							{#/article#}
+							<li class="li-4">
+								<div class="m-content">
+									<img src="{#$templets_skin#}images/icon/m-article.png?v={#$cfg_staticVersion#}" /><h5>{#$langData['siteConfig'][19][269]#}</h5>
+									<div class="fn-clear item3">{#* 新闻投稿 *#}
+										<p><a href="{#getUrlPath service='member' type='user' template='manage' module='article' param="state=1"#}">
+											<em class="inline">{#$langData['siteConfig'][10][30]#} {#$articleAudit|string_format:"%d"#}</em>
+										</a></p>{#* 已审 *#}
+										<p><a href="{#getUrlPath service='member' type='user' template='manage' module='article' param="state=0"#}">
+											<em class="inline">{#$langData['siteConfig'][10][31]#} {#$articleGray|string_format:"%d"#}</em>{#* 待审 *#}
+										</a></p>
+										<p><a href="{#getUrlPath service='member' type='user' template='manage' module='article' param="state=2"#}">
+											<em class="inline">{#$langData['siteConfig'][10][32]#} {#$articleRefuse|string_format:"%d"#}</em>{#* 拒审 *#}
+											{#if $articleRefuse > 0#}<i class="m-state"></i>{#/if#}
+										</a></p>
+									</div>
+								</div>
+								<div class="cover c4"></div>
+							</li>
+
+						{#* 二手信息 *#}
+						{#elseif $module.code == 'info' && {#verifyModuleAuth module='info' type='userCenter'#}#}
+
+							{#$infoAudit = 0#}
+							{#$infoGray = 0#}
+							{#$infoRefuse = 0#}
+							{#info action="ilist" return="list" u="1" pageData="1" pageSize="1"#}
+								{#$infoAudit = $list['audit']#}
+								{#$infoGray = $list['gray']#}
+								{#$infoRefuse = $list['refuse']#}
+							{#/info#}
+							<li class="li-8">
+								<div class="m-content">
+									<img src="{#$templets_skin#}images/icon/m-info.png?v={#$cfg_staticVersion#}" /><h5>{#$langData['siteConfig'][16][18]#}</h5>{#* 二手信息 *#}
+									<div class="fn-clear item3">
+										<p><a href="{#getUrlPath service='member' type='user' template='manage' module='info' param="state=1"#}">
+											<em class="inline">{#$langData['siteConfig'][10][30]#} {#$infoAudit|string_format:"%d"#}</em>{#* 已审 *#}
+										</a></p>
+										<p><a href="{#getUrlPath service='member' type='user' template='manage' module='info' param="state=0"#}">{#* 待审 *#}
+											<em class="inline">{#$langData['siteConfig'][10][31]#} {#$infoGray|string_format:"%d"#}</em>
+										</a></p>
+										<p><a href="{#getUrlPath service='member' type='user' template='manage' module='info' param="state=2"#}">
+											<em class="inline">{#$langData['siteConfig'][10][32]#} {#$infoRefuse|string_format:"%d"#}</em>{#* 拒审 *#}
+											{#if $infoRefuse > 0#}<i class="m-state"></i>{#/if#}
+										</a></p>
+									</div>
+								</div>
+								<div class="cover c8"></div>
+							</li>
+
+						{#* 房产 *#}
+						{#elseif $module.code == 'house' && {#verifyModuleAuth module='house' type='userCenter'#}#}
+
+							{#$houseSale = 0#}
+							{#house action="saleList" u="1" return="list" pageData="1" pageSize="1"#}
+								{#$houseSale = $list['totalCount']#}
+							{#/house#}
+
+							{#$houseZu = 0#}
+							{#house action="zuList" u="1" return="list" pageData="1" pageSize="1"#}
+								{#$houseZu = $list['totalCount']#}
+							{#/house#}
+
+							{#$houseXzl = 0#}
+							{#house action="xzlList" u="1" return="list" pageData="1" pageSize="1"#}
+								{#$houseXzl = $list['totalCount']#}
+							{#/house#}
+
+							{#$houseSp = 0#}s
+							{#house action="spList" u="1" return="list" pageData="1" pageSize="1"#}
+								{#$houseSp = $list['totalCount']#}
+							{#/house#}
+							<li class="li-10">
+								<div class="m-content"><a href="{#getUrlPath service='member' type='user'  action='config-house'#}"><img src="{#$templets_skin#}images/icon/m-house.png?v={#$cfg_staticVersion#}" /><h5>{#$langData['siteConfig'][10][22]#}</h5>{#* 我的房产 *#}</a>
+									<div class="fn-clear item4">
+										<p><a href="{#getUrlPath service='member' type='user' template='manage' action='house-sale'#}">{#$langData['siteConfig'][19][218]#} {#$houseSale|string_format:"%d"#}</a></p>{#* 二手房 *#}
+										<p><a href="{#getUrlPath service='member' type='user' template='manage' action='house-zu'#}">{#$langData['siteConfig'][19][219]#} {#$houseZu|string_format:"%d"#}</a></p>{#* 租房 *#}
+										<p><a href="{#getUrlPath service='member' type='user' template='manage' action='house-xzl'#}">{#$langData['siteConfig'][19][220]#} {#$houseXzl|string_format:"%d"#}</a></p>{#* 写字楼 *#}
+										<p><a href="{#getUrlPath service='member' type='user' template='manage' action='house-sp'#}">{#$langData['siteConfig'][19][221]#} {#$houseSp|string_format:"%d"#}</a></p>{#* 商铺 *#}
+									</div>
+								</div>
+								<div class="cover c10"></div>
+							</li>
+
+						{#* 招聘 *#}
+						{#elseif $module.code == 'job' && {#verifyModuleAuth module='job' type='userCenter'#}#}
+
+							{#$jobCollect = 0#}
+							{#member action="collectList" module="job" temp="job" return="list" pageData="1" pageSize="1"#}
+								{#$jobCollect = $list['totalCount']#}
+							{#/member#}
+
+							{#$jobDelivery = 0#}
+							{#job action="deliveryList" type="person" return="list" pageData="1" pageSize="1"#}
+								{#$jobDelivery = $list['totalCount']#}
+							{#/job#}
+
+							{#$jobInvitation = 0#}
+							{#job action="invitationList" type="person" state="0" return="list" pageData="1" pageSize="1"#}
+								{#$jobInvitation = $list['totalCount']#}
+							{#/job#}
+							<li class="li-6">
+								<div class="m-content">
+									<img src="{#$templets_skin#}images/icon/m-job.png?v={#$cfg_staticVersion#}" /><h5>{#$langData['siteConfig'][19][765]#}</h5>{#* 招聘求职 *#}
+									<div class="fn-clear item3">
+										<p><a href="{#getUrlPath service='member' type='user' template='job' action='collections'#}">{#$langData['siteConfig'][19][240]#} {#$jobCollect|string_format:"%d"#}</a></p>{#* 收藏 *#}
+										<p><a href="{#getUrlPath service='member' type='user' template='job' action='delivery'#}">{#$langData['siteConfig'][15][16]#} {#$jobDelivery|string_format:"%d"#}</a></p>{#* 投递 *#}
+										<p><a href="{#getUrlPath service='member' type='user' template='job' action='invitation'#}">
+											<em class="inline">{#$langData['siteConfig'][19][767]#} {#$jobInvitation|string_format:"%d"#}</em>{#* 邀请 *#}
+											{#if $jobInvitation > 0#}<i class="m-state"></i>{#/if#}
+										</a></p>
+									</div>
+								</div>
+								<div class="cover c6"></div>
+							</li>
+
+						{#* 贴吧 *#}
+						{#elseif $module.code == 'tieba' && {#verifyModuleAuth module='tieba' type='userCenter'#}#}
+
+							{#$tiebaAudit = 0#}
+							{#$tiebaGray = 0#}
+							{#$tiebaRefuse = 0#}
+							{#tieba action="tlist" return="list" u="1" pageData="1" pageSize="1"#}
+								{#$tiebaAudit = $list['audit']#}
+								{#$tiebaGray = $list['gray']#}
+								{#$tiebaRefuse = $list['refuse']#}
+							{#/tieba#}
+							<li class="li-7">
+								<div class="m-content">
+									<img src="{#$templets_skin#}images/icon/m-tieba.png?v={#$cfg_staticVersion#}" /><h5>{#$langData['siteConfig'][19][238]#}</h5>
+									<div class="fn-clear item3">{#* 贴吧贴子 *#}
+										<p><a href="{#getUrlPath service='member' type='user' template='manage' module='tieba' param="state=1"#}">
+											<em class="inline">{#$langData['siteConfig'][10][30]#} {#$tiebaAudit|string_format:"%d"#}</em>{#* 已审 *#}
+										</a></p>
+										<p><a href="{#getUrlPath service='member' type='user' template='manage' module='tieba' param="state=0"#}">
+											<em class="inline">{#$langData['siteConfig'][10][31]#} {#$tiebaGray|string_format:"%d"#}</em>{#* 待审 *#}
+										</a></p>
+										<p><a href="{#getUrlPath service='member' type='user' template='manage' module='tieba' param="state=2"#}">
+											<em class="inline">{#$langData['siteConfig'][10][32]#} {#$tiebaRefuse|string_format:"%d"#}</em>{#* 拒审 *#}
+											{#if $tiebaRefuse > 0#}<i class="m-state"></i>{#/if#}
+										</a></p>
+									</div>
+								</div>
+								<div class="cover c7"></div>
+							</li>
+
+						{#* 同城活动 *#}
+						{#elseif $module.code == 'huodong' && {#verifyModuleAuth module='huodong' type='userCenter'#}#}
+
+							{#$huodongAudit = 0#}
+							{#$huodongGray = 0#}
+							{#$huodongRefuse = 0#}
+							{#huodong action="hlist" return="list" u="1" pageData="1" pageSize="1"#}
+								{#$huodongAudit = $list['audit']#}
+								{#$huodongGray = $list['gray']#}
+								{#$huodongRefuse = $list['refuse']#}
+							{#/huodong#}
+
+							{#$huodongJoin = 0#}
+							{#huodong action="joinList" return="list" pageData="1" pageSize="1"#}
+								{#$huodongJoin = $list['totalCount']#}
+							{#/huodong#}
+							<li class="li-5">
+								<div class="m-content"><img src="{#$templets_skin#}images/icon/m-huodong.png?v={#$cfg_staticVersion#}" /><h5>{#$langData['siteConfig'][10][3]#}</h5>{#* 我的活动 *#}
+									<div class="fn-clear item4">
+										<p><a href="{#getUrlPath service='member' type='user' template='manage' module='huodong' param="state=1"#}">{#$langData['siteConfig'][10][30]#} {#$huodongAudit|string_format:"%d"#}</a></p>{#* 已审 *#}
+										<p><a href="{#getUrlPath service='member' type='user' template='manage' module='huodong' param="state=0"#}">{#$langData['siteConfig'][10][31]#} {#$huodongGray|string_format:"%d"#}</a></p>{#* 待审 *#}
+										<p><a href="{#getUrlPath service='member' type='user' template='manage' module='huodong' param="state=2"#}">
+											<em class="inline">{#$langData['siteConfig'][10][32]#} {#$huodongRefuse|string_format:"%d"#}</em>{#* 拒审 *#}
+											{#if $huodongRefuse > 0#}<i class="m-state"></i>{#/if#}
+										</a></p>
+										<p><a href="{#getUrlPath service='member' type='user' template='huodong-join'#}">{#$langData['siteConfig'][10][33]#} {#$huodongJoin|string_format:"%d"#}</a></p>{#* 参与 *#}
+									</div>
+								</div>
+								<div class="cover c5"></div>
+							</li>
+
+						{#* 投票 *#}
+						{#elseif $module.code == 'vote' && {#verifyModuleAuth module='vote' type='userCenter'#}#}
+
+							{#$voteJoin = 0#}
+							{#vote action="joinList" return="list" pageData="1" pageSize="1"#}
+								{#$voteJoin = $list['totalCount']#}
+							{#/vote#}
+
+							{#$voteAudit = 0#}
+							{#$voteExpire = 0#}
+							{#vote action="vlist" u="1" return="list" pageData="1" pageSize="1"#}
+								{#$voteAudit = $list['audit']#}
+								{#$voteExpire = $list['expire']#}
+							{#/vote#}
+							<li class="li-11">
+								<div class="m-content"><img src="{#$templets_skin#}images/icon/m-vote.png?v={#$cfg_staticVersion#}" /><h5>{#$langData['siteConfig'][10][26]#}</h5>
+									<div class="fn-clear item3">
+										<p><a href="{#getUrlPath service='member' type='user' template='vote-join'#}">{#$langData['siteConfig'][10][33]#} {#$voteJoin|string_format:"%d"#}</a></p>{#* 参与 *#}
+										<p><a href="{#getUrlPath service='member' type='user' template='manage-vote' param='state=1'#}">{#$langData['siteConfig'][15][20]#} {#$voteAudit|string_format:"%d"#}</a></p>{#* 进行中 *#}
+										<p><a href="{#getUrlPath service='member' type='user' template='manage-vote' param='state=2'#}">{#$langData['siteConfig'][19][507]#} {#$voteExpire|string_format:"%d"#}</a></p>{#* 已结束 *#}
+									</div>
+								</div>
+								<div class="cover c11"></div>
+							</li>
+
+						{#* 直播 *#}
+						{#elseif $module.code == 'live' && {#verifyModuleAuth module='live' type='userCenter'#}#}
+
+							{#$liveState0 = 0#}
+							{#$liveState1 = 0#}
+							{#$liveState2 = 0#}
+							{#live action="alive" u="1" state="0" return="list" pageData="1" pageSize="1"#}
+								{#$liveState0 = $list['totalCount']#}
+							{#/live#}
+							{#live action="alive" u="1" state="1" return="list" pageData="1" pageSize="1"#}
+								{#$liveState1 = $list['totalCount']#}
+							{#/live#}
+							{#live action="alive" u="1" state="2" return="list" pageData="1" pageSize="1"#}
+								{#$liveState2 = $list['totalCount']#}
+							{#/live#}
+							<li class="li-12">
+								<div class="m-content"><img src="{#$templets_skin#}images/icon/m-live.png?v={#$cfg_staticVersion#}" /><h5>{#$langData['siteConfig'][15][23]#}</h5>{#* 已结束 *#}
+									<div class="fn-clear item3">
+										<p><a href="{#getUrlPath service='member' type='user' template='manage' action='live'#}">{#$langData['siteConfig'][15][21]#} {#$liveState0|string_format:"%d"#}</a></p>{#* 未开始 *#}
+										<p><a href="{#getUrlPath service='member' type='user' template='manage' action='live'#}">{#$langData['siteConfig'][15][22]#} {#$liveState1|string_format:"%d"#}</a></p>{#* 直播中 *#}
+										<p><a href="{#getUrlPath service='member' type='user' template='manage' action='live'#}">{#$langData['siteConfig'][19][507]#} {#$liveState2|string_format:"%d"#}</a></p>{#* 已结束 *#}
+									</div>
+								</div>
+								<div class="cover c12"></div>
+							</li>
+							
+						{#* 汽车门户 *#}
+						{#elseif $module.code == 'car' && {#verifyModuleAuth module='car' type='userCenter'#}#}
+
+							{#$carAudit = 0#}
+							{#$carGray = 0#}
+							{#$carRefuse = 0#}
+							{#car action="car" return="list" u="1" pageData="1" pageSize="1"#}
+								{#$carAudit = $list['audit']#}
+								{#$carGray = $list['gray']#}
+								{#$carRefuse = $list['refuse']#}
+							{#/car#}
+							<li class="li-8">
+								<div class="m-content">
+									<img src="{#$templets_skin#}images/icon/m-info.png?v={#$cfg_staticVersion#}" /><h5>{#$langData['car'][6][43]#}</h5>{#* 汽车门户 *#}
+									<div class="fn-clear item3">
+										<p><a href="{#getUrlPath service='member' type='user' template='manage' module='car' param="state=1"#}">
+											<em class="inline">{#$langData['siteConfig'][10][30]#} {#$carAudit|string_format:"%d"#}</em>{#* 已审 *#}
+										</a></p>
+										<p><a href="{#getUrlPath service='member' type='user' template='manage' module='car' param="state=0"#}">{#* 待审 *#}
+											<em class="inline">{#$langData['siteConfig'][10][31]#} {#$carGray|string_format:"%d"#}</em>
+										</a></p>
+										<p><a href="{#getUrlPath service='member' type='user' template='manage' module='car' param="state=2"#}">
+											<em class="inline">{#$langData['siteConfig'][10][32]#} {#$carRefuse|string_format:"%d"#}</em>{#* 拒审 *#}
+											{#if $infoRefuse > 0#}<i class="m-state"></i>{#/if#}
+										</a></p>
+									</div>
+								</div>
+								<div class="cover c8"></div>
+							</li>
+
+						{#/if#}
+
+					{#/siteConfig#}
+
+				</ul>
+			</div>
+			<!-- 模块集合 e -->
+
+		</div>
+	</div>
+</div>
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
+
+</body>
+</html>

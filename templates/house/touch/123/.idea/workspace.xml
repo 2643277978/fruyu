@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/loupan-detail.html" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a8dfa5bf-4cb8-44bc-92a9-6c7e46a8b766" name="Default Changelist" comment="" />
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/loupan.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="336">
+              <caret line="157" column="30" selection-start-line="157" selection-start-column="20" selection-end-line="157" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sp-detail.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="366">
+              <caret line="257" column="47" selection-start-line="257" selection-start-column="41" selection-end-line="257" selection-end-column="47" />
+              <folding>
+                <element signature="e#7222#7228#0" expanded="true" />
+                <element signature="e#7228#7234#0" expanded="true" />
+                <element signature="e#7234#7240#0" expanded="true" />
+                <element signature="e#7240#7246#0" expanded="true" />
+                <element signature="e#7246#7252#0" expanded="true" />
+                <element signature="e#7252#7258#0" expanded="true" />
+                <element signature="e#7258#7264#0" expanded="true" />
+                <element signature="e#7264#7270#0" expanded="true" />
+                <element signature="e#7475#7481#0" expanded="true" />
+                <element signature="e#7481#7487#0" expanded="true" />
+                <element signature="e#7487#7493#0" expanded="true" />
+                <element signature="e#7493#7499#0" expanded="true" />
+                <element signature="e#7499#7505#0" expanded="true" />
+                <element signature="e#7505#7511#0" expanded="true" />
+                <element signature="e#7511#7517#0" expanded="true" />
+                <element signature="e#7517#7523#0" expanded="true" />
+                <element signature="e#7588#7594#0" expanded="true" />
+                <element signature="e#7594#7600#0" expanded="true" />
+                <element signature="e#7600#7606#0" expanded="true" />
+                <element signature="e#7606#7612#0" expanded="true" />
+                <element signature="e#7612#7618#0" expanded="true" />
+                <element signature="e#7618#7624#0" expanded="true" />
+                <element signature="e#7624#7630#0" expanded="true" />
+                <element signature="e#7630#7636#0" expanded="true" />
+                <element signature="e#7700#7706#0" expanded="true" />
+                <element signature="e#7706#7712#0" expanded="true" />
+                <element signature="e#7712#7718#0" expanded="true" />
+                <element signature="e#7718#7724#0" expanded="true" />
+                <element signature="e#7724#7730#0" expanded="true" />
+                <element signature="e#7730#7736#0" expanded="true" />
+                <element signature="e#7736#7742#0" expanded="true" />
+                <element signature="e#7742#7748#0" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#li#0;n#ul#0;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#8520#8524#0" expanded="true" />
+                <element signature="e#8857#8863#0" expanded="true" />
+                <element signature="e#8863#8869#0" expanded="true" />
+                <element signature="e#8870#8876#0" expanded="true" />
+                <element signature="e#8876#8882#0" expanded="true" />
+                <element signature="e#10562#10568#0" expanded="true" />
+                <element signature="e#10673#10679#0" expanded="true" />
+                <element signature="e#10787#10793#0" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#p#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#p#1;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/sp-detail.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="127">
+              <caret line="144" column="12" selection-start-line="144" selection-start-column="12" selection-end-line="146" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/loupan-detail.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="326">
+              <caret line="155" column="34" lean-forward="true" selection-start-line="155" selection-start-column="34" selection-end-line="155" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/loupan-detail.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/sale.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2340">
+              <folding>
+                <element signature="n#style#0;n#ul#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#ul#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>单价</find>
+      <find>returnPhone</find>
+      <find>desk</find>
+      <find>wmsj_login</find>
+      <find>im_ip</find>
+      <find>house-box</find>
+      <find>phone_frame</find>
+      <find>phone_cuo</find>
+      <find>building_phone</find>
+      <find>buil</find>
+      <find>build</find>
+      <find>bui</find>
+      <find>call_phone</find>
+    </findStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/text.html" />
+        <option value="$PROJECT_DIR$/js/phone.js" />
+        <option value="$PROJECT_DIR$/../../../member/touch/login.html" />
+        <option value="$PROJECT_DIR$/sp-detail.html" />
+        <option value="$PROJECT_DIR$/js/sp-detail.js" />
+        <option value="$PROJECT_DIR$/js/xzl-detail.js" />
+        <option value="$PROJECT_DIR$/js/loupan.js" />
+        <option value="$PROJECT_DIR$/css/estate-list.css" />
+        <option value="$PROJECT_DIR$/js/loupan-detail.js" />
+        <option value="$PROJECT_DIR$/loupan-detail.html" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-130" />
+    <option name="y" value="52" />
+    <option name="width" value="1340" />
+    <option name="height" value="708" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="123" type="b2602c69:ProjectViewProjectNode" />
+              <item name="123" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="123" type="b2602c69:ProjectViewProjectNode" />
+              <item name="123" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\gs\dengyunlong_26dj_bak_20191029\templates\house\touch\123\js" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a8dfa5bf-4cb8-44bc-92a9-6c7e46a8b766" name="Default Changelist" comment="" />
+      <created>1573091575789</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1573091575789</updated>
+      <workItem from="1573091577077" duration="27162000" />
+      <workItem from="1573205358797" duration="6724000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="33886000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1376" height="744" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14424515" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14424515" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/js/jquery-1.10.1.min.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sp.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../member/touch/js/pubjs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1869">
+          <caret line="7" column="7" lean-forward="true" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../static/js/core/touchScale.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-11850">
+          <caret line="7" column="6" lean-forward="true" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../member/touch/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5700">
+          <caret line="190" column="8" selection-start-line="190" selection-start-column="8" selection-end-line="190" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/phone.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es5.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="940" column="4" selection-start-line="940" selection-start-column="4" selection-end-line="940" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/xzl-detail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="245" column="29" selection-start-line="245" selection-start-column="29" selection-end-line="245" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/text.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="501">
+          <caret line="58" column="56" selection-start-line="58" selection-start-column="56" selection-end-line="58" selection-end-column="113" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/estate-list.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="52" column="27" lean-forward="true" selection-start-line="52" selection-start-column="27" selection-end-line="52" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/loupan.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="523" column="68" selection-start-line="523" selection-start-column="68" selection-end-line="523" selection-end-column="68" />
+          <folding>
+            <element signature="n#style#0;n#ul#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ul#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/loupan-detail.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/sale.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2340">
+          <folding>
+            <element signature="n#style#0;n#ul#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ul#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loupan.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="157" column="30" selection-start-line="157" selection-start-column="20" selection-end-line="157" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/sp-detail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="144" column="12" selection-start-line="144" selection-start-column="12" selection-end-line="146" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sp-detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="257" column="47" selection-start-line="257" selection-start-column="41" selection-end-line="257" selection-end-column="47" />
+          <folding>
+            <element signature="e#7222#7228#0" expanded="true" />
+            <element signature="e#7228#7234#0" expanded="true" />
+            <element signature="e#7234#7240#0" expanded="true" />
+            <element signature="e#7240#7246#0" expanded="true" />
+            <element signature="e#7246#7252#0" expanded="true" />
+            <element signature="e#7252#7258#0" expanded="true" />
+            <element signature="e#7258#7264#0" expanded="true" />
+            <element signature="e#7264#7270#0" expanded="true" />
+            <element signature="e#7475#7481#0" expanded="true" />
+            <element signature="e#7481#7487#0" expanded="true" />
+            <element signature="e#7487#7493#0" expanded="true" />
+            <element signature="e#7493#7499#0" expanded="true" />
+            <element signature="e#7499#7505#0" expanded="true" />
+            <element signature="e#7505#7511#0" expanded="true" />
+            <element signature="e#7511#7517#0" expanded="true" />
+            <element signature="e#7517#7523#0" expanded="true" />
+            <element signature="e#7588#7594#0" expanded="true" />
+            <element signature="e#7594#7600#0" expanded="true" />
+            <element signature="e#7600#7606#0" expanded="true" />
+            <element signature="e#7606#7612#0" expanded="true" />
+            <element signature="e#7612#7618#0" expanded="true" />
+            <element signature="e#7618#7624#0" expanded="true" />
+            <element signature="e#7624#7630#0" expanded="true" />
+            <element signature="e#7630#7636#0" expanded="true" />
+            <element signature="e#7700#7706#0" expanded="true" />
+            <element signature="e#7706#7712#0" expanded="true" />
+            <element signature="e#7712#7718#0" expanded="true" />
+            <element signature="e#7718#7724#0" expanded="true" />
+            <element signature="e#7724#7730#0" expanded="true" />
+            <element signature="e#7730#7736#0" expanded="true" />
+            <element signature="e#7736#7742#0" expanded="true" />
+            <element signature="e#7742#7748#0" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#li#0;n#ul#0;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#8520#8524#0" expanded="true" />
+            <element signature="e#8857#8863#0" expanded="true" />
+            <element signature="e#8863#8869#0" expanded="true" />
+            <element signature="e#8870#8876#0" expanded="true" />
+            <element signature="e#8876#8882#0" expanded="true" />
+            <element signature="e#10562#10568#0" expanded="true" />
+            <element signature="e#10673#10679#0" expanded="true" />
+            <element signature="e#10787#10793#0" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#p#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#p#1;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/loupan-detail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loupan-detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="155" column="34" lean-forward="true" selection-start-line="155" selection-start-column="34" selection-end-line="155" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

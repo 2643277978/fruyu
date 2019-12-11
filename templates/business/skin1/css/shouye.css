@@ -1,0 +1,416 @@
+.m-sign {
+	height:120px;
+}
+.minHeight {
+	min-height:120px;
+}
+.m-sign .clogo {
+	float:left;
+	display:none;
+}
+.m-sign .cname {
+	float:left;
+	font-family:黑体;
+	font-size:26px;
+	font-weight:;
+	font-style:;
+	color:;
+	cursor:text;
+}
+.companyTitle-isDisplay {
+	display:block;
+}
+#bf0 .tb-wrap_r {
+	width:650px;
+	margin:14px 0 14px 12px;
+}
+#bf1 .tb-wrap_r,#bf2 .tb-wrap_r {
+	display:none;
+}
+#bf1 .content-xx,#bf2 .content-xx {
+	display:none;
+}
+#bf1 .tb-wrap_l,#bf2 .tb-wrap_l {
+	width:210px;
+	overflow:hidden;
+	margin:14px 2px 0 2px;
+}
+#bf1 .content-xx .tab img {
+	max-width:170px;
+}
+#bf3 .tb-wrap_r {
+	width:404px;
+	margin:14px 0 14px 22px;
+}
+#bf3 .content-xx .tab img {
+	max-width:170px;
+}
+#bf4 .tb-wrap_r,#bf5 .tb-wrap_r {
+	display:none;
+}
+#bf4 .content-xx,#bf5 .content-xx {
+	display:none;
+}
+#bf4 .tb-wrap_l,#bf5 .tb-wrap_l {
+	width:210px;
+	overflow:hidden;
+	margin:14px 2px 0 2px;
+}
+#bf6 .tb-wrap_r {
+	width:650px;
+	margin:14px 0 14px 12px;
+}
+/*图片居左显示只需更换以下1句样式*/ .company_profile .bf-box_pic .picFloat {
+	float:left;
+	/*margin-right:14px;
+	*/
+}
+/* 移动模块 公司简介时样式 */ #bf1 .bf-box_pic .picFloat,#bf2 .bf-box_pic .picFloat {
+	margin-left:0;
+	margin-bottom:10px;
+}
+#bf4 .bf-box_pic .picFloat,#bf5 .bf-box_pic .picFloat {
+	margin-bottom:10px;
+}
+/* 产品橱窗 大图*/ #module_25261113 .m_pro_sign {
+	padding:10px 0 6px;
+}
+#module_25261113 .product-box .imgbox {
+	width:230px;
+	height:230px;
+}
+#module_25261113 .product-box .imgbox span {
+	height:230px;
+	width:230px;
+	*font-size:230px;
+}
+#module_25261113 .product-box .imgbox span a {
+	width:230px;
+}
+#module_25261113 .product-box .imgbox span a img {
+	width:expression(this.width > 230 && this.width > this.height ? 230:true);
+	height:expression(this.height > 230 ? 230:true);
+	max-height:230px;
+	max-width:230px;
+}
+#bf0 #module_25261113 .product-box_all,#bf6 #module_25261113 .product-box_all {
+	padding-top:14px;
+}
+#bf0 #module_25261113 .product-box,#bf6 #module_25261113 .product-box {
+	margin:0 0 0 14px;
+	width:232px;
+}
+#bf0 #module_25261113 .product-box .imgbox,#bf6 #module_25261113 .product-box .imgbox {
+	width:230px;
+	height:230px;
+}
+#bf1 #module_25261113 .bf-box_right,#bf2 #module_25261113 .bf-box_right {
+	margin-left:14px;
+}
+#bf1 #module_25261113 .product-box,#bf2 #module_25261113 .product-box {
+	width:212px;
+	margin-left:9px;
+	margin-bottom:9px;
+}
+#bf1 #module_25261113 .product-box .imgbox,#bf2 #module_25261113 .product-box .imgbox {
+	width:210px;
+	height:210px;
+}
+#bf1 #module_25261113 .product-box .imgbox span,#bf2 #module_25261113 .product-box .imgbox span {
+	height:210px;
+	width:210px;
+	*font-size:210px;
+}
+#bf1 #module_25261113 .product-box .imgbox span a,#bf2 #module_25261113 .product-box .imgbox span a {
+	width:210px;
+}
+#bf1 #module_25261113 .product-box .imgbox span a img,#bf2 #module_25261113 .product-box .imgbox span a img {
+	width:expression(this.width > 210 && this.width > this.height ? 210:true);
+	height:expression(this.height > 210 ? 210:true);
+	max-height:210px;
+	max-width:210px;
+}
+#bf3 #module_25261113 .product-box_all {
+	padding-top:17px;
+}
+#bf3 #module_25261113 .product-box {
+	width:232px;
+	margin-left:15px;
+}
+#bf3 #module_25261113 .product-box .imgbox {
+	width:230px;
+	height:230px;
+}
+#bfc #module_25261113 .product-box {
+	width:352px;
+	margin-left:10px;
+}
+#bfc #module_25261113 .product-box .imgbox {
+	width:350px;
+	height:350px;
+}
+#bfc #module_25261113 .product-box .imgbox span {
+	height:350px;
+	width:350px;
+	*font-size:350px;
+}
+#bfc #module_25261113 .product-box .imgbox span a {
+	width:350px;
+}
+#bfc #module_25261113 .product-box .imgbox span a img {
+	width:expression(this.width > 350 && this.width > this.height ? 350:true);
+	height:expression(this.height > 350 ? 350:true);
+	vertical-align:middle;
+	max-height:350px;
+	max-width:350px;
+}
+.bfa-column_3 #bfb #module_25261113 .product-box {
+	margin-left:17px;
+	margin-bottom:0;
+}
+.bfa-column_3 #bfc #module_25261113 .product-box_all {
+	padding-top:19px;
+}
+.bfa-column_3 #bfc #module_25261113 .product-box {
+	width:212px;
+	margin-left:19px;
+}
+.bfa-column_3 #bfc #module_25261113 .product-box .imgbox {
+	width:210px;
+	height:210px;
+}
+.bfa-column_3 #bfc #module_25261113 .product-box .imgbox span {
+	height:210px;
+	width:210px;
+	*font-size:210px;
+}
+.bfa-column_3 #bfc #module_25261113 .product-box .imgbox span a {
+	width:210px;
+}
+.bfa-column_3 #bfc #module_25261113 .product-box .imgbox span a img {
+	width:expression(this.width > 210 && this.width > this.height ? 210:true);
+	height:expression(this.height > 210 ? 210:true);
+	vertical-align:middle;
+	max-height:210px;
+	max-width:210px;
+}
+.bfa-column_3 .company_detail ul.m-comul {
+	width:245px;
+}
+.bfa-column_3 .company_detail ul.m-comul li {
+	width:245px;
+}
+.YH_Class #bf3 #module_25261113 .product-box_all {
+	padding-top:14px;
+}
+.YH_Class #bf3 #module_25261113 .product-box {
+	margin-left:14px;
+}
+.YH_Class #bfc #module_25261113 .product-box {
+	width:232px;
+	margin-left:10px;
+}
+.YH_Class #bfc #module_25261113 .product-box .imgbox {
+	width:230px;
+	height:230px;
+}
+.YH_Class #bfc #module_25261113 .product-box .imgbox span {
+	height:230px;
+	width:230px;
+	*font-size:230px;
+}
+.YH_Class #bfc #module_25261113 .product-box .imgbox span a {
+	width:230px;
+}
+.YH_Class #bfc #module_25261113 .product-box .imgbox span a img {
+	width:expression(this.width > 230 && this.width > this.height ? 230:true);
+	height:expression(this.height > 230 ? 230:true);
+	vertical-align:middle;
+	max-height:230px;
+	max-width:230px;
+}
+.YH_Class .YH_bfc_Class #bf4 #module_25261113 .product-box,.YH_Class .YH_bfc_Class #bf5 #module_25261113 .product-box {
+	margin-left:14px;
+}
+.YH_Class .YH_bfc_Class #module_25261113 .product-box_all {
+	padding-top:14px;
+}
+/* 产品橱窗 大图*/ #module_25261114 .m_pro_sign {
+	padding:10px 0 6px;
+}
+#module_25261114 .product-box .imgbox {
+	width:230px;
+	height:230px;
+}
+#module_25261114 .product-box .imgbox span {
+	height:230px;
+	width:230px;
+	*font-size:230px;
+}
+#module_25261114 .product-box .imgbox span a {
+	width:230px;
+}
+#module_25261114 .product-box .imgbox span a img {
+	width:expression(this.width > 230 && this.width > this.height ? 230:true);
+	height:expression(this.height > 230 ? 230:true);
+	max-height:230px;
+	max-width:230px;
+}
+#bf0 #module_25261114 .product-box_all,#bf6 #module_25261114 .product-box_all {
+	padding-top:14px;
+}
+#bf0 #module_25261114 .product-box,#bf6 #module_25261114 .product-box {
+	margin:0 0 0 14px;
+	width:232px;
+}
+#bf0 #module_25261114 .product-box .imgbox,#bf6 #module_25261114 .product-box .imgbox {
+	width:230px;
+	height:230px;
+}
+#bf1 #module_25261114 .bf-box_right,#bf2 #module_25261114 .bf-box_right {
+	margin-left:14px;
+}
+#bf1 #module_25261114 .product-box,#bf2 #module_25261114 .product-box {
+	width:212px;
+	margin-left:9px;
+	margin-bottom:9px;
+}
+#bf1 #module_25261114 .product-box .imgbox,#bf2 #module_25261114 .product-box .imgbox {
+	width:210px;
+	height:210px;
+}
+#bf1 #module_25261114 .product-box .imgbox span,#bf2 #module_25261114 .product-box .imgbox span {
+	height:210px;
+	width:210px;
+	*font-size:210px;
+}
+#bf1 #module_25261114 .product-box .imgbox span a,#bf2 #module_25261114 .product-box .imgbox span a {
+	width:210px;
+}
+#bf1 #module_25261114 .product-box .imgbox span a img,#bf2 #module_25261114 .product-box .imgbox span a img {
+	width:expression(this.width > 210 && this.width > this.height ? 210:true);
+	height:expression(this.height > 210 ? 210:true);
+	max-height:210px;
+	max-width:210px;
+}
+#bf3 #module_25261114 .product-box_all {
+	padding-top:17px;
+}
+#bf3 #module_25261114 .product-box {
+	width:232px;
+	margin-left:15px;
+}
+#bf3 #module_25261114 .product-box .imgbox {
+	width:230px;
+	height:230px;
+}
+#bfc #module_25261114 .product-box {
+	width:352px;
+	margin-left:10px;
+}
+#bfc #module_25261114 .product-box .imgbox {
+	width:350px;
+	height:350px;
+}
+#bfc #module_25261114 .product-box .imgbox span {
+	height:350px;
+	width:350px;
+	*font-size:350px;
+}
+#bfc #module_25261114 .product-box .imgbox span a {
+	width:350px;
+}
+#bfc #module_25261114 .product-box .imgbox span a img {
+	width:expression(this.width > 350 && this.width > this.height ? 350:true);
+	height:expression(this.height > 350 ? 350:true);
+	vertical-align:middle;
+	max-height:350px;
+	max-width:350px;
+}
+.bfa-column_3 #bfb #module_25261114 .product-box {
+	margin-left:17px;
+	margin-bottom:0;
+}
+.bfa-column_3 #bfc #module_25261114 .product-box_all {
+	padding-top:19px;
+}
+.bfa-column_3 #bfc #module_25261114 .product-box {
+	width:212px;
+	margin-left:19px;
+}
+.bfa-column_3 #bfc #module_25261114 .product-box .imgbox {
+	width:210px;
+	height:210px;
+}
+.bfa-column_3 #bfc #module_25261114 .product-box .imgbox span {
+	height:210px;
+	width:210px;
+	*font-size:210px;
+}
+.bfa-column_3 #bfc #module_25261114 .product-box .imgbox span a {
+	width:210px;
+}
+.bfa-column_3 #bfc #module_25261114 .product-box .imgbox span a img {
+	width:expression(this.width > 210 && this.width > this.height ? 210:true);
+	height:expression(this.height > 210 ? 210:true);
+	vertical-align:middle;
+	max-height:210px;
+	max-width:210px;
+}
+.bfa-column_3 .company_detail ul.m-comul {
+	width:245px;
+}
+.bfa-column_3 .company_detail ul.m-comul li {
+	width:245px;
+}
+.YH_Class #bf3 #module_25261114 .product-box_all {
+	padding-top:14px;
+}
+.YH_Class #bf3 #module_25261114 .product-box {
+	margin-left:14px;
+}
+.YH_Class #bfc #module_25261114 .product-box {
+	width:232px;
+	margin-left:10px;
+}
+.YH_Class #bfc #module_25261114 .product-box .imgbox {
+	width:230px;
+	height:230px;
+}
+.YH_Class #bfc #module_25261114 .product-box .imgbox span {
+	height:230px;
+	width:230px;
+	*font-size:230px;
+}
+.YH_Class #bfc #module_25261114 .product-box .imgbox span a {
+	width:230px;
+}
+.YH_Class #bfc #module_25261114 .product-box .imgbox span a img {
+	width:expression(this.width > 230 && this.width > this.height ? 230:true);
+	height:expression(this.height > 230 ? 230:true);
+	vertical-align:middle;
+	max-height:230px;
+	max-width:230px;
+}
+.YH_Class .YH_bfc_Class #bf4 #module_25261114 .product-box,.YH_Class .YH_bfc_Class #bf5 #module_25261114 .product-box {
+	margin-left:14px;
+}
+.YH_Class .YH_bfc_Class #module_25261114 .product-box_all {
+	padding-top:14px;
+}
+@charset "utf-8";
+	/* CSS Document */ /*图片显示不能删除*/ #module_25261116 .photobox {
+	display:block;
+}
+#cc .picList li.big {
+	border-bottom:none;
+}
+#copyrightBar p {
+	text-align:center;
+}
+#copyrightBar .nav {
+	display:block;
+}
+.fullScreenFrame {
+position: relative; width: 1532px; height: 360px; margin: 0px auto; overflow: hidden;
+}

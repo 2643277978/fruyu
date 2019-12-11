@@ -1,0 +1,39 @@
+<div class="footer {#$theme#}">
+  <div class="wrap">
+    {#if $module#}
+    <div class="friendlink">
+      <h5>友情链接</h5>
+      <ul class="fn-clear">
+        {#siteConfig action="friendLink" return="flink" module=$module#}
+        <li><a href="{#$flink.sitelink#}" target="_blank" title="{#$flink.sitename#}">{#$flink.sitename#}</a></li>
+        {#/siteConfig#}
+      </ul>
+    </div>
+    {#/if#}
+    <div class="help fn-clear">
+      <div class="helplist">
+        <dl>
+          <dt>关于我们</dt>
+          {#siteConfig action="singel" pageSize="4"#}
+          <dd><a href="{#getUrlPath service='siteConfig' template='about' id={#$row.id#}#}" target="_blank">{#$row.title#}</a></dd>
+          {#/siteConfig#}
+          <dd><a href="{#getUrlPath service='siteConfig' template='feedback'#}" target="_blank">意见反馈</a></dd>
+        </dl>
+        {#siteConfig action='helpsType' return='type' pageSize="5"#}
+        <dl>
+          <dt>{#$type.typename#}<s></s></dt>
+          {#siteConfig action='helpsType' type={#$type.id#} return='type1' pageSize="5"#}
+          <dd><a href="{#getUrlPath service='siteConfig' template='help' id={#$type1.id#}#}" target="_blank" title="{#$type1.typename#}">{#$type1.typename#}</a></dd>
+          {#/siteConfig#}
+        </dl>
+        {#/siteConfig#}
+      </div>
+      <div class="qr">
+        <div class="qr-img"><img src="{#$cfg_basehost#}/include/qrcode.php?data={#$cfg_basehost#}" />移动版</div>
+        {#if $cfg_weixinQr#}<div class="qr-img"><img src="{#$cfg_weixinQr#}" />微信公众号</div>{#/if#}
+      </div>
+    </div>
+    <div class="copyright">{#$cfg_powerby#}</div>
+    <div class="statisticscode">{#$cfg_statisticscode#}</div>
+  </div>
+</div>

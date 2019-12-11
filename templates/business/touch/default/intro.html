@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$detail_title#}-{#$business_title#}</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_basehost#}/static/css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/detail.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script type="text/javascript">
+  var pageData = {
+    title: '{#$detail_title#}',
+    address: '{#$detail_address#}',
+    lnglat: '{#$detail_lnglat#}',
+    mapType: '{#$site_map#}',
+    cityName: '{#$siteCityInfo['name']#}',
+    mapKey: '{#$site_map_key#}'
+  };
+  var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+</script>
+</head>
+
+<body>
+
+  {#$pageCurr = "intro"#}
+  {#include file="top.html"#}
+
+  <div class="swiper-container" id="swiper-container2" style="width:100%;">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="homepage">
+          <!-- 相册 -->
+          {#if $detail_pics#}
+          <div class="pic-box">
+            <a href="{#getUrlPath service='business' template='albums' bid={#$detail_id#}#}">
+              <img src="{#$detail_pics[0]['pic']#}" alt="{#$detail_title#}">
+              <div class="pic-total"><i class="icon-pic"></i><span class="pic-num">{#$langData['siteConfig'][18][12]#}</span></div>
+            </a>
+          </div>
+          {#/if#}
+          <!-- 相册 end-->
+
+          <!-- 公司详情 -->
+          <div class="wrapper">
+            <div class="shop-info">
+              <h3>{#$detail_title#}</h3>
+              <div class="star fn-clear">
+                <s><em style="width:{#$detail_rating#}"></em></s><span>{#$detail_rating#}</span>
+              </div>
+              <p class="per"><span>{#$detail_typename#}</span><span>{#$langData['siteConfig'][22][6]#}{#$detail_amount#}{#echoCurrency type='short'#}</span></p>
+            </div>
+            <a href="javascript:;" target="_blank" class="item-a appMapBtn"><i class="icon-local"></i><span class="item-info">{#$detail_address#}</span><i class="icon-right"></i></a>
+            <a href="tel:{#$detail_tel#}" class="item-a"><i class="icon-phone"></i><span class="item-info">{#$detail_tel#}</span><i class="icon-right"></i></a>
+          </div>
+          <!-- 公司详情 end-->
+
+          <div class="shop-service">
+            {#if $detail_store['waimai']#}
+            <a href="{#getUrlPath service='waimai' template='shop' id=$detail_store['waimai']#}" class="shop-dian">
+              <i><img src="{#$templets_skin#}images/waimai.png"></i>
+              <span>{#$langData['siteConfig'][16][48]#}</span>
+            </a>
+            {#/if#}
+            {#if $detail_diancan_state#}
+            <a href="{#getUrlPath service='business' template='diancan' id=$detail_id#}" class="shop-dian">
+              <i><img src="{#$templets_skin#}images/feature1.png"></i>
+              <span>{#$langData['siteConfig'][16][5]#}</span>
+            </a>
+            {#/if#}
+            {#if $detail_dingzuo_state#}
+            <a href="{#getUrlPath service='business' template='dingzuo-online' id=$detail_id#}" class="shop-dian">
+              <i><img src="{#$templets_skin#}images/feature2.png"></i>
+              <span>{#$langData['siteConfig'][16][6]#}</span>
+            </a>
+            {#/if#}
+            {#if $detail_paidui_state#}
+            <a href="{#getUrlPath service='business' template='paidui' id=$detail_id#}" class="shop-dian">
+              <i><img src="{#$templets_skin#}images/feature3.png"></i>
+              <span>{#$langData['siteConfig'][16][7]#}</span>
+            </a>
+            {#/if#}
+            {#if $detail_maidan_state#}
+            <a href="{#getUrlPath service='business' template='maidan' id=$detail_id#}" class="shop-dian">
+              <i><img src="{#$templets_skin#}images/feature4.png"></i>
+              <span>{#$langData['siteConfig'][16][8]#}</span>
+            </a>
+            {#/if#}
+          </div>
+
+          {#if $detail_store['tuan']#}
+          <!-- 活动 -->
+          <div class="wrapper shop-act">
+            <div class="shop-tuan">
+              <ul class="tuan-list">
+        				{#tuan action="tlist" return="tuan" store=$detail_store['tuan']#}
+                <li>
+                  <a href="{#$tuan.url#}" class="item-a">
+                    <i class="tuan">{#$langData['siteConfig'][22][7]#}</i>
+                    <div class="img-box"><img src="{#changeFileSize url={#$tuan.litpic#} type='middle'#}"></div>
+                    <div class="img-txt">
+                      <h3>{#$tuan.title#}</h3>
+                      <p><span class="price">{#$tuan.price#}</span><span class="mprice">{#echoCurrency type='symbol'#}{#$tuan.market#}</span></p>
+                    </div>
+                    <div class="sale">
+                      <span class="grey">{#$langData['siteConfig'][19][518]#}{#$tuan.sale#}</span>
+                    </div>
+                  </a>
+                </li>
+        				{#/tuan#}
+              </ul>
+              {#if $pageInfo.totalCount > 4#}
+              <div class="list-more">
+                <span>{#$langData['siteConfig'][18][13]|replace:'1':($pageInfo.totalCount - 4)#}</span>
+              </div>
+              <div class="list-back">
+                <span>{#$langData['siteConfig'][22][8]#}</span>
+              </div>
+              {#/if#}
+            </div>
+          </div>
+          <!-- 活动 end-->
+          {#/if#}
+
+          <!-- 商户信息 -->
+          <div class="wrapper shop-detail">
+            <div class="info-tit">
+              <a href="javascript:;"><span>{#$langData['siteConfig'][18][14]#}</span></a>
+            </div>
+            <div class="info-txt">
+              <div class="info-brief">
+                <dl>
+                  <dt>{#$langData['siteConfig'][18][15]#}：</dt>
+                  <dd>{#$detail_opentime#}</dd>
+                </dl>
+                <dl>
+                  <dt>{#$langData['siteConfig'][18][16]#}：</dt>
+                  <dd>{#$detail_parking#}</dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+          <!-- 商户信息 end-->
+        </div>
+      </div>
+      <div class="swiper-slide intro">
+        <ul class="intro-tab fn-clear">
+          {#business action="introList" uid={#$detail_id#}#}
+          <li{#if $intro_id == $row.id#} class="curr"{#/if#}><a href="{#$row.url#}">{#$row.title#}</a></li>
+    		  {#/business#}
+        </ul>
+        <div class="intro-content">
+          <p class="intro-tit">{#$intro_title#}</p>
+          <div class="intro-info">
+            {#$intro_body#}
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide news">
+        <div class="newList">
+    			<ul>
+            {#business action="news_list" return="list" uid={#$detail_id#}#}
+    				<li>
+    					<a href="{#$list.url#}">
+    						<div class="news-txt">
+    							<h3>{#$list.title#}</h3>
+    							<p class="news-time fn-clear"><span class="fn-left">{#$list.pubdate|date_format:"%Y-%m-%d"#}</span><span class="fn-right">{#$langData['siteConfig'][19][394]#}：{#$list.click#}</span></p>
+    						</div>
+              </a>
+    				</li>
+            {#/business#}
+    			</ul>
+    		</div>
+      </div>
+      <div class="swiper-slide">
+        <div class="video">
+          {#business action="video_list" return="list" uid={#$detail_id#}#}
+          <div class="video-box">
+            <h3>{#$list.title#}</h3>
+            <div class="video-wrap" style="background:url('{#changeFileSize url="{#$list.litpic#}" type="middle"#}') no-repeat; background-size: cover;">
+              <div class="bg"><a href="{#$list.url#}"></a></div>
+            </div>
+          </div>
+          {#/business#}
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="overall">
+          <ul>
+            {#business action="panor_list" return="list" uid={#$detail_id#} typeid={#$id#} page={#$page#} pageSize="20"#}
+            <li>
+              <a href="{#$list.url#}">
+                <div class="view-box">
+                  <img src="{#changeFileSize url="{#$list.litpic#}" type="middle"#}">
+                  <span class="condition">{#$langData['siteConfig'][22][9]#}</span>
+                  <div class="view-tit"><p class="view-brief">{#$list.title#}</p></div>
+                </div>
+              </a>
+            </li>
+            {#/business#}
+          </ul>
+        </div>
+      </div>
+      {#if $detail_store['shop']#}
+      <div class="swiper-slide">
+        <div class="goods">
+          <ul class="fn-clear">
+            {#shop action="slist" return="shop" store=$detail_store['shop'] pageSize="10"#}
+            <li>
+              <a href="{#$shop.url#}">
+                <div class="goods-img">
+                  <img src="{#changeFileSize url={#$shop.litpic#} type='middle'#}">
+                </div>
+                <div class="goods-txt">
+                  <h3>{#$shop.title#}</h3>
+                  <p><span class="price">{#echoCurrency type='symbol'#}{#$shop.price#}</span><span class="mprice">{#echoCurrency type='symbol'#}{#$shop.mprice#}</span><span class="cart fn-right"></span></p>
+                </div>
+              </a>
+            </li>
+      			{#/shop#}
+          </ul>
+        </div>
+      </div>
+      {#/if#}
+      {#if $detail_store['house']#}
+      <div class="swiper-slide">
+        <div class="house">
+          <ul>
+            {#house action="saleList" return="sale" comid={#$detail_store['house']#}#}
+            <li>
+              <a href="{#$sale.url#}" class="fn-clear">
+                <div class="house-img fn-left">
+                  <img src="{#changeFileSize url={#$sale.litpic#} type='large'#}">
+                </div>
+                <div class="house-txt">
+                  <h3>{#$sale.community#}</h3>
+                  <p class="area"><span>{#$sale.addr[0]#}</span><span>{#$sale.addr[1]#}</span><span>{#$sale.address#}</span></p>
+                  <p class="hx"><span>{#$sale.room#}</span><span>{#$sale.area#}㎡</span><em class="fn-right price"><i>{#$sale.price#}</i>{#$langData['siteConfig'][13][27]#}</em></p>
+                  <p class="tag">
+                    {#foreach from=$sale.flags item=flag key=key#}
+    								<span class="t{#$key#}">{#$flag#}</span>
+    								{#/foreach#}
+                  </p>
+                </div>
+              </a>
+            </li>
+  					{#/house#}
+          </ul>
+        </div>
+      </div>
+      {#/if#}
+      {#if $detail_store['house']#}
+      <div class="swiper-slide">
+        <div class="house">
+          <ul>
+            {#house action="zuList" return="zu" comid={#$detail_store['house']#}#}
+            <li>
+              <a href="{#$zu.url#}" class="fn-clear">
+                <div class="house-img fn-left">
+                  <img src="{#changeFileSize url={#$zu.litpic#} type='large'#}">
+                </div>
+                <div class="house-txt">
+                  <h3>{#$zu.title#}</h3>
+                  <p class="area"><span>{#$zu.addr[0]#}</span><span>{#$zu.addr[1]#}</span><span>{#$zu.address#}</span></p>
+                  <p class="hx"><span>{#$zu.room#}</span><span>{#$zu.area#}㎡</span><em class="fn-right price"><i>{#$zu.price#}</i>{#echoCurrency type='short'#}/{#$langData['siteConfig'][13][18]#}</em></p>
+                  <p class="tag"><span class="t0">{#$zu.rentype#}</span><span class="t1">{#$zu.zhuangxiu#}</span><span class="t2">{#$zu.bno#}/{#$zu.floor#}{#$langData['siteConfig'][13][12]#}</span><span class="t3">{#$zu.direction#}</span></p>
+                </div>
+              </a>
+            </li>
+  					{#/house#}
+          </ul>
+        </div>
+      </div>
+      {#/if#}
+      {#if $detail_store['job']#}
+      <div class="swiper-slide">
+        <div class="job">
+          <ul>
+            {#job action="post" return="post" company={#$detail_store['job']#}#}
+            <li>
+              <a href="{#$post.url#}#jobDetail">
+                <div class="job-tit">
+                  <h3>{#$post.title#}</h3>
+                  <span class="job-time">{#$post.timeUpdate#}</span>
+                </div>
+                <div class="job-wage">
+                  <span>{#$post.salary#}</span>
+                </div>
+                <div class="job-area">
+                  <span class="job-province">{#$post.addr[0]#}</span><em>|</em>
+                  <span class="job-local">{#$post.addr[1]#}</span>
+                </div>
+                <div class="job-tag">
+                  <span>{#$post.educational#}</span><span>{#$post.experience#}</span>
+                </div>
+              </a>
+            </li>
+            {#/job#}
+          </ul>
+        </div>
+      </div>
+      {#/if#}
+    </div>
+  </div>
+
+  <div class="mask"></div>
+  {#* 微信分享 *#}
+  {#$Share_description = {#$business_description#}#}
+  {#$Share_title = {#$detail_title#}#}
+  {#$Share_img = {#$detail_logo#}#}
+  {#$Share_url = {#getUrlPath service="business" template="detail" id=$detail_id#}#}
+  {#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_share.html"#}
+
+
+
+<script src='{#$templets_skin#}js/swiper.min.js'></script>
+<script src="{#$templets_skin#}js/detail.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

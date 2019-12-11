@@ -1,0 +1,14 @@
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/top1.html"#}
+<div class="head fn-clear wrap">
+	<h1 class="logo"><a href="{#$info_channelDomain#}" title="{#$info_channelName#}"><img src="{#$info_logoUrl#}" alt="{#$info_channelName#}" /></a></h1>
+	<div class="search">
+		<form name="search" method="post" action="{#getUrlPath service='info' template='list'#}">
+			<input name="keywords" type="text" class="txt_search" id="search_keyword" value="{#$keywords#}" autocomplete="off" x-webkit-speech="" x-webkit-grammar="builtin:translate" placeholder="搜索你想要的..." data-role="input" />
+			<input data-role="btn" name="search" id="search_button" type="submit" value="" class="btn-s" />
+		</form>
+	</div>
+	<div class="edit fn-clear">
+		<a href="{#getUrlPath service='member' type='user' template='fabu' action='info'#}" target="_blank" class="btn-post">发布信息</a>
+		<a href="{#getUrlPath service='member' type='user' template='manage' action='info'#}" target="_blank" class="btn-edit">修改信息</a>
+	</div>
+</div>

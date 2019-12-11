@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>聊天</title>
+		<meta name="wap-font-scale" content="no">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no,viewport-fit=cover">		
+		<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+		<link rel="stylesheet" href="{#$templets_skin#}css/chat.css?v={#$cfg_staticVersion#}" />
+		<link rel="stylesheet" href="{#$templets_skin#}css/chooseDate.css?v={#$cfg_staticVersion#}" />
+		<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+		<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+		<script>
+			var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$article_channelDomain#}';
+			var staticPath = '{#$cfg_staticPath#}',templets_skin = '{#$templets_skin#}';
+			var site_map = "baidu",pageData={};
+		</script>
+	</head>
+	<body>
+		<!--头部s-->
+		<!--<div class="im-head">
+			<a href="javascript:history.go(-1);" class="im-back_btn"></a>
+			<span>聊天记录</span>
+		</div>-->
+		{#include file="../../../siteConfig/touch_top.html" pageTitle="聊天记录"#}  {#*  聊天记录   *#}
+		<div class="im-date_chose" style="display: none;">
+			<span><input type="text" readonly="readonly" id="chosedate" placeholder="请选择日期" value="2019-05-22"></span>
+		</div>
+		<!--头部e-->
+		<div class="im-chat_content_box im-chat_record">
+			<div class="im-chat_content">
+				{#*
+				<!--链接s-->
+				<a href="#" class="im-Linkbox fn-clear">
+					<div class="im_left">
+						<img src="{#$templets_skin#}/upfile/img.png" />
+					</div>
+					<div class="im-pro_text">
+						<h3>小米Max3 智能手机 6GB+128GB 黑色 骁龙处理器 全网通4G手机双卡双待</h3>
+						<p><em>￥</em>1100.00</p>
+					</div>
+				</a>
+				<!--链接e-->
+			<!--	<input type="file" accept="image/*" capture="camera">-->
+				<!--时间-->
+				<p class="im-msg_time">11-14 13:22:22</p>
+				<!--此处是文字消息s-->
+				<div class="im-to_other fn-clear">
+					<div class="im-m_head">
+						<img src="{#$templets_skin#}/upfile/img.png" />
+					</div>
+					<div class="im-m_content">
+						<div class="im-text_msg">
+							哈哈哈这是哈哈哈<img src="{#$templets_skin#}images/emot/baidu/i_f01.png" />
+						</div>
+					</div>
+				</div>
+				
+				<div class="im-from_other fn-clear">
+					<div class="im-m_head">
+						<img src="{#$templets_skin#}/upfile/img.png" />
+					</div>
+					<div class="im-m_content">
+						<div class="im-text_msg">
+							哈哈哈这是哈哈哈<img src="{#$templets_skin#}images/emot/baidu/i_f01.png" />这是哈
+							
+						</div>
+					</div>
+				</div>
+				<!--此处是文字消息e-->
+				<!--此处是视频消息s-->
+				<div class="im-to_other fn-clear">
+					<div class="im-m_head">
+						<img src="{#$templets_skin#}/upfile/img.png" />
+					</div>
+					<div class="im-m_content im-file_content">
+						<div class="im-video_msg">
+							<img src="{#$templets_skin#}/upfile/img_1.png" />
+							<i>1:03</i>
+						</div>
+					</div>
+				</div>
+				<!--此处是视频消息e-->
+				<p class="im-msg_time">11-14 13:22:22</p>
+				<!--此处是图片消息的样式s-->
+				<div class="im-from_other fn-clear">
+					<div class="im-m_head">
+						<img src="{#$templets_skin#}/upfile/img.png" />
+					</div>
+					<div class="im-m_content im-file_content">
+						<div class="im-img_msg">
+							<img src="{#$templets_skin#}/upfile/img_1.png" />
+						</div>
+					</div>
+				</div>
+				<!--此处是图片消息的样式s-->
+				
+				<!--此处是红包消息s-->
+				<div class="im-to_other fn-clear">
+					<div class="im-m_head">
+						<img src="{#$templets_skin#}/upfile/img.png" />
+					</div>
+					<div class="im-m_content im-hb_content">
+						<div class="im-hb">
+							<h2>恭喜发财，大吉大利</h2>
+							<p>领取红包</p>
+						</div>
+						<div class="im-hb_type"><span>普通红包</span></div>
+					</div>
+				</div>
+				<div class="im-from_other fn-clear">
+					<div class="im-m_head">
+						<img src="{#$templets_skin#}/upfile/img.png" />
+					</div>
+					<div class="im-m_content im-hb_content">
+						<div class="im-hb_null im-hb">
+							<h2>恭喜发财，大吉大利</h2>
+							<p>红包已领取</p>
+						</div>
+						<div class="im-hb_type"><span>普通红包</span></div>
+					</div>
+				</div>
+				<div class="im-msg_tip im-hb_tip"><p>你领取了厍萧的红包</p></div>
+				<!--此处是红包消息e-->
+				<!--语音消息s-->
+				<div class="im-to_other fn-clear">
+					<div class="im-m_head">
+						<img src="{#$templets_skin#}/upfile/img.png" />
+					</div>
+					<div class="im-m_content im-s_content">
+						<div class="im-speak_msg"><em>23"</em></div>
+					</div>
+				</div>
+				<div class="im-from_other fn-clear">
+					<div class="im-m_head">
+						<img src="{#$templets_skin#}/upfile/img.png" />
+					</div>
+					<div class="im-m_content im-s_content">
+						<div class="im-speak_msg"><em>23"</em></div>
+					</div>
+				</div>
+				<!--语音消息e-->
+				
+				<!--位置消息s-->
+				<div class="im-to_other fn-clear">
+					<div class="im-m_head">
+						<img src="{#$templets_skin#}/upfile/img.png" />
+					</div>
+					<div class="im-m_content im-post_content">
+						<div class="im-post_text">
+							<h2>领汇广场（吴中区苏州大道东）</h2>
+							<p>苏州市领汇广场（吴中区苏州大道东298号）</p>
+						</div>
+						<div class="im-area_show">
+							<img src="{#$templets_skin#}/upfile/area1.jpg" />
+						</div>
+					</div>
+				</div>
+				<!--位置消息e-->
+				<!--推荐好友s-->
+				<div class="im-to_other fn-clear">
+					<div class="im-m_head">
+						<img src="{#$templets_skin#}/upfile/img.png" />
+					</div>
+					<div class="im-m_content im-recf_content">
+						<dl>
+							<dt>推荐好友</dt>
+							<dd class="fn-clear">
+								<div class="im-recf_head">
+									<img src="{#$templets_skin#}upfile/img.png"/>
+									<i class="level"><img src="{#$templets_skin#}upfile/vip_icon.png"></i>
+								</div>
+								<div class="im-recf_info">
+									<h2>广州加氏迈通信设</h2>
+									<p>ID：23561124</p>
+								</div>
+							</dd>
+						</dl>
+					</div>
+				</div>
+				<!--推荐好友e-->
+				*#}
+			</div>
+			<!--大图查看s-->
+			{#include file="../../../siteConfig/bigimg_1.2.html"#}
+			<!--大图查看e-->
+		</div>
+		{#include file="_hb.html"#}  {#* 发红包-红包详情   *#}
+		<script type="text/javascript" src="{#$templets_skin#}js/jquery.bigImage_1.2.js?v={#$cfg_staticVersion#}" ></script>
+		<script src="{#$templets_skin#}js/chooseDate.js?v={#$cfg_staticVersion#}"></script>
+		<script src="{#$templets_skin#}js/Myfunc.js?v={#$cfg_staticVersion#}"></script>
+		<script src="{#$templets_skin#}js/Map_position.js?v={#$cfg_staticVersion#}"></script>
+		<script src="{#$templets_skin#}js/record_chat.js?v={#$cfg_staticVersion#}"></script>
+		<script src="{#$templets_skin#}js/getlist.js?v={#$cfg_staticVersion#}"></script>
+	</body>
+</html>

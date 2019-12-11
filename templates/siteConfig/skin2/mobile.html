@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="utf-8">
+<title>{#$cfg_webname#}</title>
+<meta name="keywords" content="{#$cfg_keywords#}">
+<meta name="description" content="{#$cfg_description#}">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css">
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/ui/idangerous.swiper.min.css">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/mobile.css">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.9.0.min.js"></script>
+</head>
+<body>
+
+<div class="swiper-container">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide slide1">
+      <div class="wrap">
+        <div class="header fn-clear">
+          <div class="logo"><a href="{#$cfg_basehost#}" class="fn-clear"><img src="{#$cfg_weblogo#}" alt=""><p>{#$cfg_shortname#}</p></a></div>
+          <div class="nav fn-clear">
+            <a href="{#$cfg_basehost#}" class="active">网站首页</a>
+            <a href="{#$member_userDomain#}" target="_blank">会员中心</a>
+            <a href="{#getUrlPath service='siteConfig' template='about'#}" target="_blank">关于我们</a>
+            <a href="{#getUrlPath service='siteConfig' template='help'#}" target="_blank">帮助中心</a>
+          </div>
+        </div>
+      </div>
+      <div class="slideBox1">
+        <div class="img-left">
+          <img src="{#$templets_skin#}images/slider1_img.png" alt="" class="slide1_img1">
+        </div>
+      </div>
+      <div class="wrap">
+        <div class="txt-right fn-right">
+          <p class="title">地方生活门户网</p>
+          <p class="subtit">移动端全新升级</p>
+          <div class="codebox fn-clear">
+            <div class="link fn-left">
+              <a href="{#$cfg_app_android_download#}" class="link-android"><span>安卓下载</span></a>
+              <a href="{#$cfg_app_ios_download#}" class="link-ios"><span>iphone下载</span></a>
+            </div>
+            <div class="code fn-right"><img src="{#$cfg_basehost#}/include/qrcode.php?data={#getUrlPath service='siteConfig' template='mobile'#}" alt=""></div>
+          </div>
+        </div>
+      </div>
+      <a href="javascript:;" class="swiper-button-next next-page"></a>
+    </div>
+    <div class="swiper-slide slide2">
+      <div class="contain2">
+        <div class="slideBox2">
+          <div class="img-left">
+            <img src="{#$templets_skin#}images/slider2_img.png" alt="" class="slide2-img1">
+            <img src="{#$templets_skin#}images/slider2_tag1.png" alt="" class="slide2-img2">
+            <img src="{#$templets_skin#}images/slider2_tag2.png" alt="" class="slide2-img3">
+            <img src="{#$templets_skin#}images/slider2_tag3.png" alt="" class="slide2-img4">
+          </div>
+        </div>
+        <div class="wrap">
+          <div class="txt-right fn-right">
+            <p class="title">社区新升级</p>
+            <div class="txtbox">
+              <p class="subtit subtit1">支持语音秒发</p>
+              <p class="subtit subtit2">小视频拍摄长达30秒</p>
+              <p class="subtit subtit3">新增帖子打赏功能</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-slide slide3">
+      <div class="contain2">
+        <div class="wrap">
+          <div class="txt-left fn-left">
+            <p class="title">二手市场</p>
+            <div class="txtbox">
+              <p class="subtit subtit1">闲置二手物品竞价推广</p>
+              <p class="subtit subtit2">免费发布二手信息</p>
+              <p class="subtit subtit3">同城圈</p>
+            </div>
+          </div>
+        </div>
+        <div class="slideBox3">
+          <div class="img-right">
+            <img src="{#$templets_skin#}images/slider3_img.png" alt="" class="slide3-img1">
+            <img src="{#$templets_skin#}images/slider3_tag1.png" alt="" class="slide3-img2">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-slide slide4">
+      <div class="wrap">
+        <p class="title">生活门户功能一网打尽</p>
+        <ul class="siteModule fn-clear">
+          {#siteConfig action="siteModule" return="module"#}
+          <li><img src="{#$templets_skin#}images/{#$module.code#}1.png" alt=""><p>{#$module.name#}</p></li>
+          {#/siteConfig#}
+          <li><img src="{#$templets_skin#}images/zhe1.png" alt=""><p>五折卡</p></li>
+          <li><img src="{#$templets_skin#}images/travel1.png" alt=""><p>旅游</p></li>
+          <li><img src="{#$templets_skin#}images/live1.png" alt=""><p>直播</p></li>
+          <li><img src="{#$templets_skin#}images/taxi1.png" alt=""><p>打车</p></li>
+        </ul>
+      </div>
+    </div>
+    <div class="swiper-slide slide5">
+      <div class="contain5">
+        <div class="wrap">
+          <div class="slideBox5">
+            <div class="img-left">
+              <img src="{#$templets_skin#}images/slider5_img1.png" alt="" class="slide5-img1">
+            </div>
+          </div>
+          <div class="txt-right fn-right">
+            <p class="title">房产分类更全面</p>
+            <div class="txtbox">
+              <p class="subtit">总有一款适合你</p>
+            </div>
+            <div class="icon_box">
+              <div class="icon_item icon_1"><img src="{#$templets_skin#}images/slider5_tag1.png" alt=""><p>二手房</p></div>
+              <div class="icon_item icon_2"><img src="{#$templets_skin#}images/slider5_tag3.png" alt=""><p>租房</p></div>
+              <div class="icon_item icon_3"><img src="{#$templets_skin#}images/slider5_tag2.png" alt=""><p>商铺</p></div>
+              <div class="icon_item icon_4"><img src="{#$templets_skin#}images/slider5_tag4.png" alt=""><p>写字楼</p></div>
+              <div class="icon_item icon_5"><img src="{#$templets_skin#}images/slider5_tag5.png" alt=""><p>厂房</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-slide slide6">
+      <div class="contain6">
+        <div class="wrap">
+          <div class="txt-left fn-left">
+            <p class="title">便民工具</p>
+            <div class="txtbox">
+              <p class="subtit">让出行  更方便</p>
+            </div>
+            <div class="plane"><img src="{#$templets_skin#}images/slider6_img2.png" alt=""></div>
+            <div class="icon_box fn-clear">
+              <div class="icon_item"><img src="{#$templets_skin#}images/slider6_tag1.png" alt=""><p>火车票</p></div>
+              <div class="icon_item"><img src="{#$templets_skin#}images/slider6_tag2.png" alt=""><p>汽车票</p></div>
+              <div class="icon_item"><img src="{#$templets_skin#}images/slider6_tag3.png" alt=""><p>水费</p></div>
+              <div class="icon_item"><img src="{#$templets_skin#}images/slider6_tag4.png" alt=""><p>电费</p></div>
+              <div class="icon_item"><img src="{#$templets_skin#}images/slider6_tag5.png" alt=""><p>天然气</p></div>
+              <div class="icon_item"><img src="{#$templets_skin#}images/slider6_tag6.png" alt=""><p>话费充值</p></div>
+              <div class="icon_item"><img src="{#$templets_skin#}images/slider6_tag7.png" alt=""><p>流量充值</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="slideBox6">
+          <div class="img-right">
+            <img src="{#$templets_skin#}images/slider6_img1.png" alt="" class="slide6-img1">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-slide slide7">
+      <div class="wrap">
+        <div class="slideBox7">
+          <div class="img-left">
+            <img src="{#$templets_skin#}images/slider7_img1.png" alt="" class="slide7-img1">
+            <img src="{#$templets_skin#}images/slider7_img2.png" alt="" class="slide7-img2">
+            <img src="{#$templets_skin#}images/slider7_img3.png" alt="" class="slide7-img3">
+          </div>
+          <div class="txt-right fn-right">
+            <p class="title">约播&nbsp;&nbsp;&nbsp;让你我更亲近</p>
+            <div class="txtbox">
+              <p class="subtit subtit1">直播打赏</p>
+              <p class="subtit subtit2">秒拍视频段子</p>
+              <p class="subtit subtit3">线上及线下发起邀约</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="javascript:;" class="bonus"><img src="{#$templets_skin#}images/slider7_tag1.png" alt=""></a>
+      <div class="footer">
+        <p>Copyright © 2017 苏州酷曼软件技术有限公司. All rights reserved.</p>
+        <p>苏ICP备130474</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="pagination"></div>
+
+<script src="{#$cfg_staticPath#}js/ui/idangerous.swiper.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/mobile.js"></script>
+</body>
+</html>

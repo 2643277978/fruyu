@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{#$langData['siteConfig'][24][0]#} - {#$cfg_webname#}</title>{#* 信息举报 *#}
+<meta name="keywords" content="{#$cfg_keywords#}" />
+<meta name="description" content="{#$cfg_description#}" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/complain.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+  var module = '{#$module#}', dopost = '{#$dopost#}', aid = '{#$aid#}';
+</script>
+</head>
+
+<body>
+<form class="form" action="" method="post">
+  <input type="hidden" value="{#$commonid#}" id="commonid" name="commonid"/>
+  <dl class="fn-clear">
+    <dt>{#$langData['siteConfig'][24][1]#}：</dt>{#* 举报类型 *#}
+    <dd class="fn-clear">
+      <select name="type" id="type" data-title="{#$langData['siteConfig'][24][2]#}">{#* 请选择举报类型 *#}
+        <option value="">{#$langData['siteConfig'][7][2]#}</option>{#* 请稍候 *#}
+        {#if $module == "article"#}
+        <option value="{#$langData['siteConfig'][24][3]#}">{#$langData['siteConfig'][24][3]#}</option>{#* 垃圾广告 *#}
+        <option value="{#$langData['siteConfig'][24][4]#}">{#$langData['siteConfig'][24][4]#}</option>{#* 色情淫秽 *#}
+        <option value="{#$langData['siteConfig'][24][5]#}">{#$langData['siteConfig'][24][5]#}</option>{#* 政治反动 *#}
+        <option value="{#$langData['siteConfig'][24][6]#}">{#$langData['siteConfig'][24][6]#}</option>{#* 钓鱼诈骗 *#}
+        <option value="{#$langData['siteConfig'][24][7]#}">{#$langData['siteConfig'][24][7]#}</option>{#* 网络敲诈 *#}
+        <option value="{#$langData['siteConfig'][24][8]#}">{#$langData['siteConfig'][24][8]#}</option>{#* 内容侵权 *#}
+        <option value="{#$langData['siteConfig'][19][201]#}">{#$langData['siteConfig'][19][201]#}</option>{#* 其他 *#}
+        {#elseif $module == "info"#}
+        <option value="{#$langData['siteConfig'][24][9]#}">{#$langData['siteConfig'][24][9]#}</option>{#* 冒用电话 *#}
+        <option value="{#$langData['siteConfig'][24][10]#}">{#$langData['siteConfig'][24][10]#}</option>{#* 虚假信息 *#}
+        <option value="{#$langData['siteConfig'][24][11]#}">{#$langData['siteConfig'][24][11]#}</option>{#* 违法信息 *#}
+        <option value="{#$langData['siteConfig'][24][12]#}">{#$langData['siteConfig'][24][12]#}</option>{#* 服务糟糕 *#}
+        <option value="{#$langData['siteConfig'][24][13]#}">{#$langData['siteConfig'][24][13]#}</option>{#* 骗子信息 *#}
+        <option value="{#$langData['siteConfig'][24][14]#}">{#$langData['siteConfig'][24][14]#}</option>{#* 虚假电话 *#}
+        <option value="{#$langData['siteConfig'][19][201]#}">{#$langData['siteConfig'][19][201]#}</option>{#* 其他 *#}
+        {#elseif $module == "house"#}
+        <option value="{#$langData['siteConfig'][24][15]#}">{#$langData['siteConfig'][24][15]#}</option> {#* 房源已交易 *#}
+        <option value="{#$langData['siteConfig'][24][16]#}">{#$langData['siteConfig'][24][16]#}</option> {#* 中介冒充个人 *#}
+        <option value="{#$langData['siteConfig'][24][17]#}">{#$langData['siteConfig'][24][17]#}</option> {#* 图片或内容含微信等联系方式 *#}
+        <option value="{#$langData['siteConfig'][24][18]#}">{#$langData['siteConfig'][24][18]#}</option> {#* 虚假(如房源、价格等虚假) *#}
+        <option value="{#$langData['siteConfig'][24][19]#}">{#$langData['siteConfig'][24][19]#}</option> {#* 诈骗（如提前收取各类费用等） *#}
+        <option value="{#$langData['siteConfig'][24][20]#}">{#$langData['siteConfig'][24][20]#}</option> {#* 涉黄违法 *#}
+        <option value="{#$langData['siteConfig'][24][21]#}">{#$langData['siteConfig'][24][21]#}</option> {#* 电话虚假(如空号、无人接听) *#}
+        <option value="{#$langData['siteConfig'][24][22]#}">{#$langData['siteConfig'][24][22]#}</option> {#* 房源无法带看 *#}
+        <option value="{#$langData['siteConfig'][24][23]#}">{#$langData['siteConfig'][24][23]#}</option> {#* 图片与实际不符 *#}
+        <option value="{#$langData['siteConfig'][24][24]#}">{#$langData['siteConfig'][24][24]#}</option> {#* 价格与实际差异较大 *#}
+        <option value="{#$langData['siteConfig'][24][25]#}">{#$langData['siteConfig'][24][25]#}</option> {#* 房源不在该小区 *#}
+        <option value="{#$langData['siteConfig'][19][201]#}">{#$langData['siteConfig'][19][201]#}</option>{#* 其他 *#}
+        {#elseif $module == "job"#}
+        <option value="{#$langData['siteConfig'][24][21]#}">{#$langData['siteConfig'][24][21]#}</option>{#* 电话虚假(如空号、无人接听) *#}
+        <option value="{#$langData['siteConfig'][24][26]#}">{#$langData['siteConfig'][24][26]#}</option>{#* 非法收费（培训费、介绍费等） *#}
+        <option value="{#$langData['siteConfig'][24][27]#}">{#$langData['siteConfig'][24][27]#}</option>{#* 职位虚假（薪资、工作地点等） *#}
+        <option value="{#$langData['siteConfig'][24][27]#}">{#$langData['siteConfig'][24][27]#}</option>{#* 职位虚假（薪资、工作地点等） *#}
+        <option value="{#$langData['siteConfig'][24][28]#}">{#$langData['siteConfig'][24][28]#}</option>{#* 招聘刷单刷钻人员 *#}
+        <option value="{#$langData['siteConfig'][24][29]#}">{#$langData['siteConfig'][24][29]#}</option>{#* 职介冒充直招 *#}
+        <option value="{#$langData['siteConfig'][24][30]#}">{#$langData['siteConfig'][24][30]#}</option> {#* 招生培训信息（非招聘） *#}
+        <option value="{#$langData['siteConfig'][19][201]#}">{#$langData['siteConfig'][19][201]#}</option>{#* 其他 *#}
+        {#elseif $module == "dating"#}
+        <option value="{#$langData['siteConfig'][24][31]#}">{#$langData['siteConfig'][24][31]#}</option>{#* 盗用他人的照片做为自己的照片 *#}
+        <option value="{#$langData['siteConfig'][24][32]#}">{#$langData['siteConfig'][24][32]#}</option>{#* 该用户的个人档案里含有不恰当（色情淫秽）的信息 *#}
+        <option value="{#$langData['siteConfig'][24][33]#}">{#$langData['siteConfig'][24][33]#}</option>{#* 该用户对我很粗鲁无礼/辱骂我 *#}
+        <option value="{#$langData['siteConfig'][24][34]#}">{#$langData['siteConfig'][24][34]#}</option>{#* 该用户散布垃圾信息 *#}
+        <option value="{#$langData['siteConfig'][24][35]#}">{#$langData['siteConfig'][24][35]#}</option>{#* 该用户是酒托/饭托/诈骗犯 *#}
+        <option value="{#$langData['siteConfig'][19][201]#}">{#$langData['siteConfig'][19][201]#}</option>{#* 其他 *#}
+        {#elseif $module == "tieba"#}
+        <option value="{#$langData['siteConfig'][24][36]#}">{#$langData['siteConfig'][24][36]#}</option>{#* 广告垃圾 *#}
+        <option value="{#$langData['siteConfig'][24][37]#}">{#$langData['siteConfig'][24][37]#}</option>{#* 政治有害类 *#}
+        <option value="{#$langData['siteConfig'][24][38]#}">{#$langData['siteConfig'][24][38]#}</option>{#* 暴恐类 *#}
+        <option value="{#$langData['siteConfig'][24][39]#}">{#$langData['siteConfig'][24][39]#}</option>{#* 淫秽色情类 *#}
+        <option value="{#$langData['siteConfig'][24][40]#}">{#$langData['siteConfig'][24][40]#}</option>{#* 头像、签名档 *#}
+        <option value="{#$langData['siteConfig'][24][41]#}">{#$langData['siteConfig'][24][41]#}</option>{#* 赌博类 *#}
+        <option value="{#$langData['siteConfig'][24][42]#}">{#$langData['siteConfig'][24][42]#}</option>{#* 私服外挂类 *#}
+        <option value="{#$langData['siteConfig'][24][43]#}">{#$langData['siteConfig'][24][43]#}</option>{#* 诈骗类 *#}
+        <option value="{#$langData['siteConfig'][24][44]#}">{#$langData['siteConfig'][24][44]#}</option>{#* 违规内容 *#}
+        <option value="{#$langData['siteConfig'][24][45]#}">{#$langData['siteConfig'][24][45]#}</option>{#* 恶意灌水 *#}
+        <option value="{#$langData['siteConfig'][24][46]#}">{#$langData['siteConfig'][24][46]#}</option>{#* 重复发帖 *#}
+        <option value="{#$langData['siteConfig'][24][47]#}">{#$langData['siteConfig'][24][47]#}</option>{#* 其他有害类 *#}
+        {#elseif $module == "huodong"#}
+        <option value="{#$langData['siteConfig'][24][48]#}">{#$langData['siteConfig'][24][48]#}</option>{#* 联系电话虚假 *#}
+        <option value="{#$langData['siteConfig'][24][49]#}">{#$langData['siteConfig'][24][49]#}</option>{#* 骗子信息（酒托、饭托、色情服务等） *#}
+        <option value="{#$langData['siteConfig'][24][50]#}">{#$langData['siteConfig'][24][50]#}</option>{#* 虚假、违法信息 *#}
+        <option value="{#$langData['siteConfig'][19][201]#}">{#$langData['siteConfig'][19][201]#}</option>{#* 其他 *#}
+        {#elseif $module == "video"#}
+        <option value="{#$langData['siteConfig'][24][51]#}">{#$langData['siteConfig'][24][51]#}</option>{#* 无法播放 *#}
+        <option value="{#$langData['siteConfig'][24][52]#}">{#$langData['siteConfig'][24][52]#}</option>{#* 播放卡 *#}
+        <option value="{#$langData['siteConfig'][24][53]#}">{#$langData['siteConfig'][24][53]#}</option>{#* 画面和声音有问题 *#}
+        <option value="{#$langData['siteConfig'][24][54]#}">{#$langData['siteConfig'][24][54]#}</option>{#* 不良内容 *#}
+        <option value="{#$langData['siteConfig'][24][55]#}">{#$langData['siteConfig'][24][55]#}</option>{#* 侵权投诉 *#}
+        <option value="{#$langData['siteConfig'][19][201]#}">{#$langData['siteConfig'][19][201]#}</option>{#* 其他 *#}
+        {#elseif $module == "huangye"#}
+        <option value="{#$langData['siteConfig'][24][56]#}">{#$langData['siteConfig'][24][56]#}</option>{#* 电话被冒用 *#}
+        <option value="{#$langData['siteConfig'][24][57]#}">{#$langData['siteConfig'][24][57]#}</option>{#* 企业被冒用 *#}
+        <option value="{#$langData['siteConfig'][24][58]#}">{#$langData['siteConfig'][24][58]#}</option>{#* 虚假、违法信息 *#}
+        <option value="{#$langData['siteConfig'][24][59]#}">{#$langData['siteConfig'][24][59]#}</option>{#* 侵权投诉 *#}
+        <option value="{#$langData['siteConfig'][19][201]#}">{#$langData['siteConfig'][19][201]#}</option>{#* 其他 *#}
+        {#elseif $module == "image"#}
+        <option value="{#$langData['siteConfig'][24][60]#}">{#$langData['siteConfig'][24][60]#}</option>{#* 色情暴力 *#}
+        <option value="{#$langData['siteConfig'][24][61]#}">{#$langData['siteConfig'][24][61]#}</option>{#* 政治反动 *#}
+        <option value="{#$langData['siteConfig'][24][62]#}">{#$langData['siteConfig'][24][62]#}</option>{#* 原图无法显示 *#}
+        <option value="{#$langData['siteConfig'][24][63]#}">{#$langData['siteConfig'][24][63]#}</option>{#* 与查询内容不符 *#}
+        <option value="{#$langData['siteConfig'][24][64]#}">{#$langData['siteConfig'][24][64]#}</option>{#* 侵权投诉 *#}
+        <option value="{#$langData['siteConfig'][19][201]#}">{#$langData['siteConfig'][19][201]#}</option>{#* 其他 *#}
+        {#elseif $module == "live"#}
+        <option value="{#$langData['siteConfig'][24][31]#}">{#$langData['siteConfig'][24][31]#}</option>{#* 盗用他人的照片做为自己的照片 *#}
+        <option value="{#$langData['siteConfig'][24][32]#}">{#$langData['siteConfig'][24][32]#}</option>{#* 该用户的个人档案里含有不恰当（色情淫秽）的信息 *#}
+        <option value="{#$langData['siteConfig'][24][33]#}">{#$langData['siteConfig'][24][33]#}</option>{#* 该用户对我很粗鲁无礼/辱骂我 *#}
+        <option value="{#$langData['siteConfig'][24][34]#}">{#$langData['siteConfig'][24][34]#}</option>{#* 该用户散布垃圾信息 *#}
+        <option value="{#$langData['siteConfig'][24][35]#}">{#$langData['siteConfig'][24][35]#}</option>{#* 该用户是酒托/饭托/诈骗犯 *#}
+        <option value="{#$langData['siteConfig'][19][201]#}">{#$langData['siteConfig'][19][201]#}</option>{#* 其他 *#}
+        {#elseif $module == "tuan"#}
+        <option value="{#$langData['siteConfig'][24][9]#}">{#$langData['siteConfig'][24][9]#}</option>{#* 冒用电话 *#}
+        <option value="{#$langData['siteConfig'][24][10]#}">{#$langData['siteConfig'][24][10]#}</option>{#* 虚假信息 *#}
+        <option value="{#$langData['siteConfig'][24][11]#}">{#$langData['siteConfig'][24][11]#}</option>{#* 违法信息 *#}
+        <option value="{#$langData['siteConfig'][24][12]#}">{#$langData['siteConfig'][24][12]#}</option>{#* 服务糟糕 *#}
+        <option value="{#$langData['siteConfig'][24][13]#}">{#$langData['siteConfig'][24][13]#}</option>{#* 骗子信息 *#}
+        <option value="{#$langData['siteConfig'][24][14]#}">{#$langData['siteConfig'][24][14]#}</option>{#* 虚假电话 *#}
+        <option value="{#$langData['siteConfig'][19][201]#}">{#$langData['siteConfig'][19][201]#}</option>{#* 其他 *#}
+        {#/if#}
+      </select>
+      <span class="tip-inline"></span>
+    </dd>
+  </dl>
+  <dl class="fn-clear">
+    <dt>{#$langData['siteConfig'][24][65]#}：</dt>{#*补充说明*#}
+    <dd class="fn-clear">
+      <textarea name="desc" id="desc" placeholder="{#$langData['siteConfig'][20][467]#}" maxlength="200"></textarea>{#*请详细说明举报原因，字数在10~200之间。*#}
+      <span class="tip-inline"></span>
+    </dd>
+  </dl>
+  <dl>
+    <dt>{#$langData['siteConfig'][19][424]#}：</dt>{#* 联系方式 *#}
+    <dd class="fn-clear">
+      <input type="text" class="inp" size="21" name="phone" id="phone" autocomplete="off" data-title="{#$langData['siteConfig'][20][412]#}" />
+      <span class="tip-inline"></span>
+    </dd>
+  </dl>
+  <dl>
+    <dt>{#$langData['siteConfig'][4][0]#}：</dt>{#* 验证码 *#}
+    <dd class="fn-clear">
+      <input type="text" class="inp" maxlength="4" size="6" name="vdimgck" id="vdimgck" autocomplete="off" data-title="{#$langData['siteConfig'][20][176]#}" />{#* 请输入验证码 *#}
+      <img src="/include/vdimgck.php" title="{#$langData['siteConfig'][24][66]#}" id="verifycode" />{#* 看不清？点击换一张 *#}
+      <span class="tip-inline"></span>
+    </dd>
+  </dl>
+  <dl class="fn-clear">
+    <dt>&nbsp;</dt>
+    <dd><button id="submit">{#$langData['siteConfig'][6][151]#}</button></dd>{#* 提交 *#}
+  </dl>
+</form>
+
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/complain.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

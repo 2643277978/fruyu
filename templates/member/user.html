@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{#$nickname#}{#$langData['siteConfig'][23][95]#} - {#$cfg_webname#}</title>{#* 的主页 *#}
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}../member/css/login.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" href="{#$templets_skin#}css/user.css">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', cookiePre = '{#$cfg_cookiePre#}', staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, uid = {#$id#};
+	var atpage = 1, totalCount = 0, pageSize = 15, nowStamp = 0;
+</script>
+</head>
+
+<body class="w1200">
+{#include file="../siteConfig/top1.html"#}
+{#include file="user_top.html"#}
+
+	<div class="main_right">
+		<div class="main_box article_box" style="display: block"></div>
+		<div class="main_box tieba_box"></div>
+		<div class="main_box info_box"></div>
+		<div class="main_box house_box">
+			<div class="house_nav">
+				<ul class="fn-clear">
+					<li class="HN_bc" data-action="saleList">{#$langData['siteConfig'][19][218]#}</li>{#* 二手房 *#}
+					<li data-action="zuList">{#$langData['siteConfig'][19][219]#}</li>{#* 租房 *#}
+					<li data-action="xzlList">{#$langData['siteConfig'][19][220]#}</li>{#* 写字楼 *#}
+					<li data-action="spList">{#$langData['siteConfig'][19][221]#}</li>{#* 商铺 *#}
+					<li data-action="cfList">{#$langData['siteConfig'][19][222]#}</li>{#* 厂房、仓库 *#}
+				</ul>
+			</div>
+			<div class="house_list"></div>
+		</div>
+		<div class="main_box huodong_box"></div>
+		<div class="main_box live_box"></div>
+		<div class="pagination"></div>
+	</div>
+
+{#include file="user_footer.html"#}

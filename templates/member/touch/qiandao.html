@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<title>{#$langData['siteConfig'][22][133]#}</title>
+<link rel="stylesheet" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/qiandao.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, state = '{#$state#}', todayQiandao = {#$todayQiandao#};
+	var currentYear = {#$smarty.now|date_format:"%Y"#}, currentMonth = {#$smarty.now|date_format:"%m"#}, currentDay = {#$smarty.now|date_format:"%d"#};
+	var cfg_qiandao_buqianState = {#$cfg_qiandao_buqianState#}, cfg_qiandao_buqianPrice = {#$cfg_qiandao_buqianPrice#};
+</script>
+</head>
+
+<body>
+<div class="Top">
+	<div class="SignLead fn-clear">
+		<div class="back"><a href="javascript:history.go(-1)" class="goBack"></a></div>
+		<div class="SignTitle">{#$langData['siteConfig'][22][133]#}</div>
+	</div>
+	<div class="SignBox">
+		<ul class="fn-clear">
+			<li class="Continuous"><p>{#$langData['siteConfig']['22'][111]#}</p><span><em>{#$totalLianqian#}</em>{#$langData['siteConfig']['13'][6]#}</span></li>
+			<li class="mid_box"><div class="Personal"><img onerror="javascript:this.src='{#$cfg_staticPath#}images/noPhoto_100.jpg';" src="{#if $userinfo.photo == ""#}{#$cfg_staticPath#}images/noPhoto_100.jpg{#else#}{#changeFileSize url="{#$userinfo.photo#}" type="middle"#}{#/if#}" /></div><p>{#$userinfo.nickname#}</p><span><b id="totalPoint" style="font-weight: 500;">{#$userinfo.point#}</b>{#$cfg_pointName#}</span></li>
+			<li class="AllDay"><p>{#$langData['siteConfig']['22'][112]#}</p><span><em>{#$totalQiandao#}</em>{#$langData['siteConfig']['13'][6]#}</span></li>
+		</ul>
+		<div class="Rules"><a href="javascript:;">{#$langData['siteConfig'][22][110]#}</a></div>
+		<div class="ClickSign{#if $todayQiandao#} disabled{#/if#}">{#if $todayQiandao#}{#$langData['siteConfig']['22'][124]#}{#else#}{#$langData['siteConfig']['22'][113]#}{#/if#}</div>
+	</div>
+</div>
+<div id="calendar"></div>
+<div class="wraning">{#$langData['siteConfig']['22'][116]#}</div>
+
+<div class="disk"></div>
+<div class="SuccessBox QianBox">
+	<div class="SuccessLead">{#$langData['siteConfig']['22'][117]#}</div>
+	<div class="SuccessDay"></div>
+	<div class="SuccessIcon"></div>
+	<p></p>
+	<div class="close"></div>
+</div>
+
+{#if $cfg_qiandao_buqianState#}
+<div class="flower"></div>
+<div class="SureBox">
+	<div class="Surelead">{#$langData['siteConfig']['21'][5]#}</div>
+	<p>{#$langData['siteConfig'][22][128]#}{#$cfg_qiandao_buqianPrice#}{#$cfg_pointName#}，{#$langData['siteConfig'][22][129]#}</p>
+	<ul class="fn-clear">
+		<li class="cancle">{#$langData['siteConfig']['6'][12]#}</li>
+		<li class="sure">{#$langData['siteConfig']['6'][1]#}</li>
+	</ul>
+</div>
+{#/if#}
+
+<div class="RulesBox">
+	<div class="RuleLead">{#$langData['siteConfig']['22'][110]#}</div>
+	<div class="RuleNote">
+		{#$cfg_qiandao_note#}
+	</div>
+	<div class="close"></div>
+</div>
+
+<script type="text/javascript" src="{#$cfg_basehost#}/include/json.php?action=lang"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/qiandao.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

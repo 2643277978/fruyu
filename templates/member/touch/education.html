@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<title>{#$langData['education'][0][12]#}</title>  {#*教育培训 *#}
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fabu.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/education.css?v={#$cfg_staticVersion#}">
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js"></script>
+<script src="{#$templets_skin#}js/public.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', staticPath = '{#$cfg_staticPath#}';
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	var module = 'education';
+</script>
+</head>
+<body>
+{#$pageTitle = {#$langData['education'][0][12]#}#}  {#*教育培训 *#}
+{#$pageRight = '<a href="javascript:;" class="notMenu"> </a>'#}
+{#include file="top.html"#}
+
+<ul class="link">
+  {#if $userinfo.userType==2#}
+  {#*公司配置 *#}
+  <li><a href="{#getUrlPath service='member' template='config-education'#}"><i class="icon-config-house"></i>{#$langData['education'][0][41]#}</a></li>
+  {#/if#}
+  {#*课程管理 *#}
+  <li><a href="{#getUrlPath service='member' type='user' template='manage-education'#}"><i class="icon-house_yuyue"></i>{#$langData['education'][4][8]#}</a></li>
+  {#*发布课程 *#}
+  <li><a href="{#getUrlPath service='member' type='user' template='fabu-education-courses'#}"><i class="icon-house_entrust"></i>{#$langData['education'][4][15]#}</a></li>
+  {#if $isEducationStore#}
+  {#*教师管理 *#}
+  <li><a href="{#getUrlPath service='member' template='education-teacher'#}"><i class="icon-house_meallist"></i>{#$langData['education'][4][43]#}</a></li>
+  {#/if#}
+  {#*报名管理 *#}
+  <li><a href="{#getUrlPath service='member' type='user' template='education-order'#}"><i class="icon-deu1"></i>{#$langData['education'][1][42]#}</a></li>
+  {#*家教信息 *#}
+  <li><a href="{#getUrlPath service='member' type='user' template='fabu-education-tutor'#}"><i class="icon-house_manage"></i>{#$langData['education'][4][45]#}</a></li>
+  {#if $isEducationTutor#}
+  {#*预约管理 *#}
+  <li><a href="{#getUrlPath service='member' type='user' template='education-yuyue'#}"><i class="icon-house_put"></i>{#$langData['education'][4][46]#}</a></li>
+  {#*授课设置 *#}
+  <li><a href="{#getUrlPath service='member' type='user' template='fabu-education-setup'#}"><i class="icon-edu2"></i>{#$langData['education'][4][41]#}</a></li>
+  {#/if#}
+</ul>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+</body>
+</html>

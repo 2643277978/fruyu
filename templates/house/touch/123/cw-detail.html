@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+{#$pageType = "出租"#}
+{#if $detail_type == 1#}
+{#$pageType = "出售"#}
+{#elseif $detail_type == 2#}
+{#$pageType = "转让"#}
+{#/if#}
+<title>{#$detail_title#}-{#$siteCityInfo['name']#}车位{#$pageType#}网</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/cv-detail.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/swiper.min.css">
+<link rel='stylesheet' href='{#$cfg_staticPath#}css/ui/photoswipe.css?v={#$cfg_staticVersion#}'>
+<link rel='stylesheet' href='{#$cfg_staticPath#}css/ui/photoswipe-default-skin.css?v={#$cfg_staticVersion#}'>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+    var pageData = {
+		title: '{#$detail_community#}',
+		address: '{#$detail_address#}',
+		lat: '{#$detail_latitude#}',
+		lng: '{#$detail_longitude#}',
+		mapType: '{#$site_map#}',
+		cityName: '{#$siteCityInfo['name']#}',
+		mapKey: '{#$site_map_key#}',
+		title: '{#$detail_title#}'
+	};
+	var page_type = 'cw';
+	var JubaoConfig = {
+		"module" : 'house',
+		"action" : 'cw',
+		"id" : '{#$detail_id#}',
+		"desc": '{#$mbody#}',
+		"title": '{#$detail_title#}',
+		"imgUrl": '{#$detail_litpic#}',
+		"link": '{#getUrlPath service='house'  template='cw-detail' id={#$detail_id#}#}',
+	};
+	var detail_video='{#$detail_video#}';
+	var cookiePre = '{#$cfg_cookiePre#}';
+</script>
+</head>
+
+<body>
+
+{#include file="../../../siteConfig/touch_top.html" pageTitle="车位"#}
+<div class="container zf">
+	<!-- 视频图片轮播 s-->
+	<div class="topSwiper">
+		<div class="swiper-container">
+	          <div class="swiper-wrapper">
+	          	  {#if $detail_qj_file#}
+	          	  <div class="swiper-slide panorama-box">
+	              	<img src="{#$detail_litpic#}" width="100%" height="100%">
+	              	<div class="imgplay"><img src="{#$templets_skin#}images/vr.gif" alt=""></div>
+	              </div>
+	              {#/if#}
+	              {#if $detail_video#}
+	              <div class="swiper-slide video-box">
+	              	<img src="{#$detail_litpic#}" width="100%" height="100%">
+	              	<div class="imgplay"><img src="{#$templets_skin#}images/viplay.png" alt=""></div>
+	              </div>
+	              {#/if#}
+	              {#foreach from=$detail_imglist item=img#}
+	              <div class="swiper-slide"><img src="{#$img.path#}" width="100%" height="100%"></div>
+	              {#/foreach#}
+
+	          </div>
+	          <div class="swiper-pagination"></div>
+	    </div>
+	    <div class="markBox">
+	    	{#if $detail_qj_file#}<a href="javascript:;" class="pmark panorama">全景</a>{#/if#}
+			{#if $detail_video#}<a href="javascript:;" class="pmark video">视频</a>{#/if#}
+			{#if $detail_imglist#}<a href="javascript:;" class="pmark picture">图片</a>{#/if#}
+		</div>
+	</div>
+	<!-- 视频图片轮播 e-->
+
+<!-- 视频图片弹出层 s-->
+	<div class="videoModal">
+		<div class="swiper-container">
+			  <i class="vClose"></i>
+	          <div class="swiper-wrapper">
+	          		{#if $detail_qj_file#}
+		            <div class="swiper-slide">
+	                    {#if $detail_qj_type == 0#}
+	                        <iframe src="{#$cfg_basehost#}/include/360panorama.php?f={#$detail_qj_file#}"></iframe>
+	                    {#* iframe *#}
+	                    {#elseif $detail_qj_type == 1#}
+	                        <iframe src="{#$detail_qj_file#}"></iframe>
+	                    {#/if#}
+		            </div>
+		            {#/if#}
+		            {#if $detail_video#}
+		            <div class="swiper-slide"><video width="100%" height="100%" controls preload="meta" x5-video-player-type="h5" x5-playsinline playsinline webkit-playsinline  x5-video-player-fullscreen="true" id="video" src="{#$detail_video#}"  poster="{#$detail_litpic#}"></video></div>
+		            {#/if#}
+		            {#foreach from=$detail_imglist item=img#}
+                    <div class="swiper-slide"><img src="{#$img.path#}" / ></div>
+                    {#/foreach#}
+	          </div>
+	          <div class="swiper-pagination"></div>
+		<i class="vClose"></i>
+        <div class="swiper-wrapper">
+        	{#if $detail_qj_file#}
+        	<div class="swiper-slide">
+        		{#* h5 *#}
+					{#if $detail_qj_type == 0#}
+						<iframe src="{#$cfg_basehost#}/include/360panorama.php?f={#$detail_qj_file#}"></iframe>
+					{#* iframe *#}
+					{#elseif $detail_qj_type == 1#}
+						<iframe src="{#$detail_qj_file#}"></iframe>
+					{#/if#}
+      		</div>
+				{#/if#}
+          {#if $detail_video#}
+        	<div class="swiper-slide"><video width="100%" height="100%" controls preload="meta" x5-video-player-type="h5" x5-playsinline playsinline webkit-playsinline  x5-video-player-fullscreen="true" id="video" src="{#$detail_video#}"  poster="{#$detail_litpic#}"></video></div>
+        	{#/if#}
+        	{#foreach from=$detail_imglist item=img#}
+				<div class="swiper-slide"><img src="{#$img.path#}" / ></div>
+				{#/foreach#}
+        </div>
+        <div class="swiper-pagination"></div>
+	    </div>
+	</div>
+	<!-- 视频图片弹出层 e-->
+
+
+	<div class="basic">
+		<div class="zf_title">
+
+			<div class="title">{#$detail_title#}</div>
+			{#if $detail_type==1#}
+			<div class="price">{#($detail_price/$detail_area)|string_format:"%.2f"#}万/㎡</div>
+			{#elseif $detail_type==0#}
+			<div class="price">{#($detail_price/$detail_area)|string_format:"%.2f"#}元/㎡·月</div>
+			{#elseif $detail_type==2#}
+			<div class="price">转让费：{#$detail_transfer#}万</div>
+			{#/if#}
+			<div class="txt"><span>{#$detail_pubdate|date_format:"%Y.%m.%d"#}</span><span>{#$detail_click#}浏览</span><span class="jubao HN_Jubao">举报</span><span class="fenxiang HN_PublicShare">分享</span></div>
+			<div class="classification">
+				<div><p>{#$detail_area#}平</p><p>面积</p></div><div>
+					<p>
+					{#if $detail_price>0#}
+					{#if $detail_type==1#}
+						{#$detail_price#} 万元
+					{#else#}
+						{#$detail_price#} 元/月
+					{#/if#}
+					{#else#}
+					面议
+					{#/if#}
+					</p>
+					<p>报价</p></div><div><p>{#$detail_proprice#}</p><p>物业费</p></div>
+			</div>
+			<a href="https://api.map.baidu.com/marker?location={#$detail_latitude#},{#$detail_longitude#}&title={#$detail_title#}&content={#foreach from=$detail_latitude item=addr#}{#$addr#}{#/foreach#}{#$detail_address#}&output=html" target="_blank" class="zf_address appMapBtn">{#foreach from=$detail_addr item=addr#}{#$addr#}{#/foreach#}{#$detail_address#}</a>
+		</div>
+		<div class="information fn-clear">
+			<div class="im_img"><img src="{#$detail_user['photo']#}"></div>
+			{#if $detail_usertype == 1#}
+			<div class="im_name"><p><span>{#$detail_username#}</span>
+				{#if $detail_user['certify'] == 1#}<i class="rz_01"></i>{#/if#}
+				{#if $detail_user['flag'] == 1#}<i class="rz_02"></i>{#/if#}
+				</p><p>{#if $detail_user.zjcomId#}{#$detail_user.zjcomName#}{#else#}{#/if#}</p></div>
+			<div class="im_icon">
+				{#if $detail_user.qq#}<span class="im_qq"></span>{#/if#}
+				{#if $detail_user.wxQr#}<span class="im_wx"></span>{#/if#}
+				<span class="im_iphone"></span>
+			</div>
+			{#else#}
+			<div class="im_name"><p><span>{#$detail_username#}</span></p><!--<p>{#$detail_contact#}</p> --></div>
+            <div class="im_icon"><span class="im_iphone cw"></span></div>
+            {#/if#}
+		</div>
+	</div>
+
+	<!-- 房源信息 -->
+	<div class="housing">
+		<p class="classify_title">房源信息</p>
+		<div class="mode fn-clear">
+			<div><span>类&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</span><span>车位{#$pageType#}</span></div>
+			<div><span>车位类型：</span><span>{#$detail_protype#}车库</span></div>
+			<div><span>付款方式：</span><span>{#$detail_paytype#}</span></div>
+			<div><span>起&nbsp;&nbsp;租&nbsp;&nbsp;期：</span><span>{#$detail_mintime#}个月</span></div>
+		</div>
+		<div class="housing_txt">
+			{#$detail_note#}
+		</div>
+	</div>
+
+	<!-- 位置周边 -->
+	<div class="zhoubian">
+		<div class="classify_title">交通位置</div>
+		<div class="periphery">
+		    <ul class="nav-wrapper"></ul>
+		    <div class="map-container">
+		        <div class="map-wrapper" id="map-wrapper" data-lng="{#$detail_longitude#}" data-lat="{#$detail_latitude#}"></div>
+		    </div>
+		</div>
+		<a href="javascript:;" class="btn-all appMapBtn" target="_blank">查看全部配套 > </a>
+	</div>
+
+	<!-- 周边推荐 -->
+	<div class="periphery">
+		<div class="periphery_title">周边推荐</div>
+		<ul class="fn-clear">
+			{#house action=cwList addrid=$detail_addrid pageSize=4 return="cw"#}
+		    <li class="fn-clear">
+		    	<a href="{#$cw.url#}" title="{#$cw.title#}">
+		      <div class="rleft"><img src="{#$cw.litpic#}"onerror="javascript:this.src='/static/images/404.jpg';" alt=""></div>
+		      <div class="rright">
+		        <div class="rtitle fn-clear">{#if $cw.isbid#}<i></i>{#/if#}<p>{#$cw.title#}</p>{#if $cw.qj#}<em class="quanjing">全景</em>{#/if#}</div>
+		        <div class="comment fn-clear"><span>{#$cw.area#}平|{#$cw.protype#}</span></div>
+		        <p class="addr"><span class="addrdet">{#$cw.address#}</span>
+		        	{#if $cw.price>0#}
+	        		{#if $cw.type==1#}
+			        <span class="addr_right">{#$cw.price#}万</span>
+			        {#else#}
+					<span class="addr_right">{#$cw.price#}元/月</span>
+			        {#/if#}
+		        	{#else#}
+					<span class="addr_right">面议</span>
+			     	{#/if#}
+		        	</p>
+		      </div>
+		      </a>
+		    </li>
+		    {#/house#}
+		  </ul>
+	</div>
+
+	<!-- 底部 -->
+	<div class="bottom-fixed-container">
+		<div class="follow-wrapper">
+			{#if $detail_collect#}
+            <i class="follow-icon active"></i><div class="text-follow">收藏</div>
+            {#else#}
+			<i class="follow-icon"></i><div class="text-follow">收藏</div>
+            {#/if#}
+        </div>
+        <div class="big-wrapper">
+            <a href="{#getUrlPath service=house template=yuyue param="type=cw&id={#$detail_id#}"#}" class="button post_ulog"><i></i>预约看房</a>
+            <a href="tel:{#$detail_user.phone#}" class="button call_phone cw"><i></i>电话咨询</a>
+        </div>
+	</div>
+
+</div>
+
+<div class="desk"></div>
+<!-- 微信弹框 -->
+{#if $detail_user.wxQr#}
+<div class="wx_frame">
+	<p class="ewm_title">微信中长按识别二维码</p>
+	<div class="ewm"><img src="{#$detail_user.wxQr#}"></div>
+	<p class="ewm_txt">扫一扫上面的二维码图案，加微信客服</p>
+	<i class="wx_cuo"></i>
+</div>
+{#/if#}
+<!-- qq -->
+{#if $detail_user.qq#}
+<div class="qq_frame">
+	<i class="qq_icon"></i>
+	<p>{#$detail_user.qq#}</p>
+	<i class="qq_cuo"></i>
+</div>
+{#/if#}
+<!-- 电话 -->
+<div class="phone_frame">
+	<i class="phone_icon"></i>
+	{#if $detail_usertype == 1#}
+    <p>{#$detail_user.phone#}</p><a href="tel:{#$detail_user.phone#}">立即拨打</a>
+    {#else#}
+    <p>{#$detail_contact#}</p><a href="tel:{#$detail_contact#}">立即拨打</a>
+    {#/if#}
+	<i class="phone_cuo"></i>
+</div>
+
+<script src="{#$templets_skin#}js/swiper.min.js"></script>
+<script src="{#$cfg_staticPath#}js/publicOpenMap.js?v={#$cfg_staticVersion#}"></script>
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
+<script src="{#$templets_skin#}js/cw-detail.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/map.js?v={#$cfg_staticVersion#}"></script>
+
+<script type="text/javascript">
+	var wxconfig = {
+		"appId": '{#$wxjssdk_appId#}',
+		"timestamp": '{#$wxjssdk_timestamp#}',
+		"nonceStr": '{#$wxjssdk_nonceStr#}',
+		"signature": '{#$wxjssdk_signature#}',
+		"description": '{#$mbody#}',
+		"title": '{#$detail_title#}',
+		"imgUrl": '{#$detail_litpic#}',
+		"link": '{#getUrlPath service='house'  template='cw-detail' id={#$detail_id#}#}',
+	};
+	document.write(unescape("%3Cscript src='{#$cfg_staticPath#}js/publicShare.js?v="+~(-new Date())+"'type='text/javascript'%3E%3C/script%3E"));
+</script>
+</body>
+</html>
+</body>
+</html>

@@ -1,0 +1,49 @@
+.main{font-size: 14px;}
+.banner{background: #08bfff url(../images/reward_bg.png) center center no-repeat; border-radius: 4px; padding: 35px 43px; color: #fff; margin-bottom: 20px;}
+.banner .photo{float: left; margin-right: 30px;}
+.banner .photo a{display: block; box-shadow: 0 0 11px 3px #19a8d8; border-radius: 100%;}
+.banner .photo a img{display: block; width: 95px; height: 95px; border: 3px solid #fff; border-radius: 100%;}
+.banner .name{font-size: 18px; padding-top: 15px;}
+.banner .name a, .banner .name a:hover{color: #fff;}
+.banner .name .level{border: 1px solid #fff; padding: 2px 5px; border-radius: 2px; margin-left: 20px; font-size: 16px;}
+.banner .uinfo {padding-top: 16px;}
+.banner .uinfo li {float: left;}
+.banner .uinfo li a {color: #fff; display: block; padding: 0 12px 0 0;}
+.banner .uinfo li a s {display: block; margin: 0 auto 4px; width: 30px; height: 29px; background-image: url('../images/certIcon.png'); -webkit-transition: all .2s linear; -moz-transition: all .2s linear; transition: all .2s linear;}
+.banner .uinfo li a:hover s {-webkit-transform: translate(0,-3px) scale(1.2); -moz-transform: translate(0,-3px) scale(1.2); -o-transform: translate(0,-3px) scale(1.2); transform: translate(0,-3px) scale(1.2);}
+.banner .uinfo li a.disable s {background-position: -30px 0;}
+.banner .uinfo li a.real s {background-position: 0 -29px;}
+.banner .uinfo li a.real.disable s {background-position: -30px -29px;}
+.banner .uinfo li a.email s {background-position: 0 -58px;}
+.banner .uinfo li a.email.disable s {background-position: -30px -58px;}
+.banner .uinfo li a.save s {background-position: 0 -87px;}
+.banner .uinfo li a.save.disable s {background-position: -30px -87px;}
+.banner .uinfo li a.pay s {background-position: 0 -116px;}
+.banner .uinfo li a.pay.disable s {background-position: -30px -116px;}
+.banner .uinfo li a.question s {background-position: 0 -145px;}
+.banner .uinfo li a.question.disable s {background-position: -30px -145px;}
+.banner .yue{font-size: 16px; text-align: right; margin-top: 27px;}
+.banner .yue .count{font-size: 22px; font-weight: normal;}
+
+.tips{color: #a3a3a3; margin: 25px 0 20px;}
+.gray{color: #a3a3a3;}
+.countBox li{float: left; border-right: 1px solid #e3e3e3; width: 231px; text-align: center; font-size: 16px; padding: 7px 0;}
+.w1200 .countBox li{width: 298px;}
+.countBox li.br{border-right: 0;}
+.countBox li .gray{margin-bottom: 12px;}
+.countBox li .f20{font-size: 24px;}
+
+.title{width: 155px; margin: 30px auto;}
+.title font{display: block; float: left; font-size: 44px; line-height: 24px; margin: 0 15px;}
+.title span{display: block; float: left; font-size: 18px;}
+
+.record{width: 100%; text-align: center;}
+.record thead{background: #f5f5f5;}
+.record thead th{text-align: center; padding: 15px 0;}
+.record tbody tr{border-bottom: 1px solid #f5f5f5;}
+.record tbody tr:hover{background: #ecf5fc;}
+.record tbody td{padding: 15px 0;}
+
+.empty {text-align: center; line-height: 300px;}
+.loading {height: 300px; line-height: 300px;}
+.loading img {display: inline-block; vertical-align: middle; margin-right: 5px;}

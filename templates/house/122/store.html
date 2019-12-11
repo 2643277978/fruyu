@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<title>{#$siteCityInfo['name']#}{#$addrname#}中介公司{#$actname#}信息-{#$house_title#}</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/zj.css?v={#$cfg_staticVersion#}" media="all" />
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}',templets_skin = '{#$templets_skin#}';
+
+	var criticalPoint = 1240, criticalClass = "w1200";
+	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+
+	var addrid=0, atpage = 1, pageSize = 20, totalCount = 0;
+</script>
+</head>
+
+<body class="w1200">
+{#include file="../../siteConfig/top1.html"#}
+
+{#$pageCurr = 'store'#}
+{#include file="top.html"#}
+<div class="wrap">
+	<div class="crumb fn-clear">
+		<div class="location">
+			<a href="{#$house_channelDomain#}">首页</a> > <a href="{#getUrlPath service='house' template='store'#}">中介公司</a>
+		</div>
+	</div>
+	<div class="filter">
+		<dl class="t-fi fn-clear">
+			<dt>位置</dt>
+			<dd class="fn-clear">
+				<div class="pos-item fn-clear">
+					<a data-id="0" href="javascript:;" class="curr">不限</a>
+					{#house action="addr" return='addr'#}
+					<a data-id="{#$addr.id#}" href="javascript:;">{#$addr.typename#}<s></s></a>
+					{#/house#}
+				</div>
+			</dd>
+			<div class="area">
+				<div class="pos-sub-item  fn-clear">
+
+				</div>
+			</div>
+		</dl>
+		<dl class="fi-state fn-clear">
+			<dt>已选条件</dt>
+			<dd class="fn-clear"></dd>
+			<span class="btn_clear">清空条件</span>
+		</dl>
+	</div>
+</div>
+
+<div class="wrap totalCount">
+	共找到 <b>23</b> 个符合条件的中介公司
+</div>
+
+<div class="wrap fn-clear">
+	<div class="sidebar">
+      	<div class="SearchBox">
+			<form action="{#getUrlPath service='house' template='store'#}" method="get">
+				<input type="search" placeholder="搜中介..." id="keywords" name="keywords" class="inp"/>
+				<input type="submit" value="搜索" class="submit">
+			</form>
+		</div>
+		<a href="{#getUrlPath service=member type=user template=enter_house#}" class="btnRz">我要入驻中介公司</a>
+		<div class="lp_box">
+			<div class="lp_title">最新入驻中介</div>
+			<ul>
+				{#house action="zjComList" return="zjlist" orderby="1" page="1" pageSize="5"#}
+				<li>
+					<a href="{#$zjlist.url#}" class="fn-clear">
+						<div class="newImg fn-left">
+							<img src="{#changeFileSize url="{#$zjlist.litpic#}" type="small"#}" alt="">
+						</div>
+						<div class="newInfo fn-left">
+							<h4>{#$zjlist.title#}</h4>
+							<p>{#$zjlist.addrName[1]#} {#$zjlist.addrName[2]#}</p>
+						</div>
+					</a>
+				</li>
+				{#/house#}
+			</ul>
+		</div>
+		<div class="lp_box adbox">
+			{#myad title="房产_模板六_电脑端_中介公司"#}
+		</div>
+		<div class="lp_box">
+			<div class="lp_title">房产资讯</div>
+			<ul class="lp_news">
+				{#house action="news" return="list" page="1" pageSize="8"#}
+				<li><a href="{#$list.url#}"><em>•</em>{#$list.title#}</a></li>
+				{#/house#}
+			</ul>
+		</div>
+
+	</div>
+	<div class="main_con">
+		<div class="m-t fn-clear">
+			<ul>
+				<li data-id="" class="curr"><a href="javascript:;">默认排序</a></li>
+				<li data-type="time" data-id="1" class="ob"><a href="javascript:;">创建时间<s></s></a></li>
+				<li data-type="nums" data-id="3" class="ob"><a href="javascript:;">房源数量<s></s></a></li>
+			</ul>
+		</div>
+		<div class="lplist">
+			<ul></ul>
+		</div>
+		<div class="pagination fn-clear"></div>
+	</div>
+</div>
+
+
+
+{#include file="footer.html"#}
+<script>var type = '{#$type#}', totalCount = {#$pageInfo.totalCount|string_format:"%d"#}, totalPage = {#$pageInfo.totalPage|string_format:"%d"#}, atPage = {#$page#}, pageUrl = '{#getUrlPath service="house" template="zj" addrid={#$addrid#} business={#$business#} type={#$type#} act={#$act#} keywords={#$keywords#} page="%page%"#}';</script>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/publicAddr.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/zj.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

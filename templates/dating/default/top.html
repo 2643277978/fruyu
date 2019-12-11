@@ -1,0 +1,22 @@
+{#include file="../../siteConfig/top1.html"#}
+
+<div class="header">
+	<div class="wrap fn-clear">
+		<h1 class="logo"><a href="{#$dating_channelDomain#}" title="{#$dating_channelName#}"><img src="{#$dating_logoUrl#}" alt="{#$dating_channelName#}" /></a></h1>
+		<div class="service">
+			<s></s>全国免费咨询热线<h3>{#$dating_hotline#}</h3>
+		</div>
+	</div>
+</div>
+
+<!-- 导航 s -->
+<div class="nav">
+	<ul class="wrap fn-clear">
+		<li{#if $pageCurr == "index"#} class="curr"{#/if#}><a href="{#$dating_channelDomain#}">交友首页</a></li>
+		<li{#if $pageCurr == "my"#} class="curr"{#/if#}><a href="{#getUrlPath service='dating' template='my'#}">我的交友</a></li>
+		<li{#if $pageCurr == "search"#} class="curr"{#/if#}><a href="{#getUrlPath service='dating' template='search'#}">爱情搜索</a></li>
+		<li{#if $pageCurr == "activity"#} class="curr"{#/if#}><a href="{#getUrlPath service='dating' template='activity'#}">相亲活动</a></li>
+		<li{#if $pageCurr == "story"#} class="curr"{#/if#}><a href="{#getUrlPath service='dating' template='story'#}">秀恩爱</a></li>
+	</ul>
+</div>
+<!-- 导航 e -->

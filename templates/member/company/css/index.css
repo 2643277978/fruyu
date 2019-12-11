@@ -1,0 +1,84 @@
+.main .l {position: relative; overflow: hidden;}
+.main .r {float: right; width: 385px; margin-left: 25px;}
+.main .hline h3 {margin-top: 5px; font-size: 14px; color: #333; line-height: 30px;}
+.main .hline h3 .more {display: inline-block; font-size: 12px; margin: -2px 0 0 10px; width: 12px; height: 12px; vertical-align: middle; background: url(../images/glyphicons-halflings.png) no-repeat; background-position: -241px -25px; filter: alpha(opacity=60); -moz-opacity: 0.6; -khtml-opacity: 0.6; opacity: 0.6;}
+.main .hitem {background-color: #fff; border-bottom: 3px solid #e3e4e8;}
+
+/* 帐户信息 */
+.account {padding: 23px 25px;}
+.account p {padding-top: 8px; line-height: 40px; color: #959596; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.account p strong {font-size: 22px; color: #0032ff; font-weight: 500; padding-right: 25px;}
+.account .btns {padding-top: 20px;}
+.account .btns a {float: left; line-height: 30px; padding: 0 25px; color: #fff; margin-right: 20px;}
+.account .btns .cz {background-color: #6393ff;}
+.account .btns a:hover.cz {background-color: #6386f2; text-decoration: none;}
+.account .btns .tx {background-color: #5cd8ca;}
+.account .btns a:hover.tx {background-color: #5cd0c2; text-decoration: none;}
+.account .btns .link {color: #0088cc; margin: 0; padding: 0 10px;}
+
+/* 会员基本信息 */
+.hline .uinfo {padding: 22px 25px; overflow: hidden;}
+.hline .uinfo dl {height: 104px;}
+.hline .uinfo dt {float: left;}
+.hline .uinfo dt a {display: block; position: relative;}
+.hline .uinfo dt, .hline .uinfo dt a, .hline .uinfo dt a img {width: 100px; height: 100px; overflow: hidden;}
+.hline .uinfo dt a span {position: absolute; z-index: 2; left: 0; right: 0; bottom: -20px; height: 20px; line-height: 20px; text-align: center; font-size: 12px; color: #fff; background-color: #3e3f40; -webkit-transition: all .2s linear; -moz-transition: all .2s linear; transition: all .2s linear; filter: alpha(opacity=70); -moz-opacity: 0.7; -khtml-opacity: 0.7; opacity: 0.7;}
+.hline .uinfo dt a:hover span {bottom: 0;}
+.hline .uinfo dd {position: relative; overflow: hidden; padding-left: 25px;}
+.hline .uinfo dd .name {height: 27px; line-height: 27px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.hline .uinfo dd .name h2 {float: left; font-size: 16px;color:#333;}
+.hline .uinfo dd .name .date {float: right; color: #a6a6a6;}
+
+/* 会员认证信息 */
+.hline .uinfo ul {padding-top: 20px;  width: 150%;}
+.hline .uinfo li {float: left;}
+.hline .uinfo li a {position: relative; color: #545454; display: block; margin-right: 10px;}
+.hline .uinfo li a s {display: block; margin: 0 auto 4px; width: 24px; height: 24px; overflow: hidden; -webkit-transition: all .2s linear; -moz-transition: all .2s linear; transition: all .2s linear;}
+.hline .uinfo li a.disable:before {position: absolute; z-index: 3; left: 15px; top: -5px; content: "!"; color: #fff; background-color: #d53838; font-weight: 700; text-align: center; line-height: 15px; width: 16px; height: 16px; border-radius: 50%;}
+.hline .uinfo li a.mobile s { background: url('../images/c-mobile.png') no-repeat center;}
+.hline .uinfo li a.real s {background: url('../images/c-real.png') no-repeat center;}
+.hline .uinfo li a.email s {background: url('../images/c-email.png') no-repeat center;}
+
+
+/* 日期&天气 */
+.date-weather {padding: 35px 0 20px; margin-bottom: -3px;}
+.date-weather li {float: left; width: 190px; height: 150px; text-align: center; font-size: 18px; color: #333;}
+.date-weather li.d {border-right: 1px solid #ececec;}
+.date-weather li.d strong {display: block; color: #ef5734; font-size: 60px; line-height: 55px; margin-bottom: 25px;}
+.date-weather li.weather1 .date, .date-weather li.weather1 .wind {display: none;}
+.date-weather li.weather1 .pic, .date-weather li.weather1 .weather {display: block;}
+.date-weather li.weather1 .pic {margin-bottom: 9px;}
+.date-weather li.weather1 .pic img {height: 63px; margin: 0 5px;}
+
+/* 待办事项 */
+.main .module {margin: 5px 0; width: 102%; overflow: hidden;}
+.main .module dl{float: left;text-align: center; width: 270px;padding:20px 18px 15px; height: 120px;background: #fff; border: 1px solid #fff; margin: 0 20px 20px 0;}
+.main .module dl:hover {background-color: #fafafa; border-color: #f1f1f1; text-decoration: none;}
+.main .module dt {position:relative;font-size: 14px;  text-align: center;}
+.main .module dt i {display: none;position:absolute;right: 0;  top: 0;width: 20px;height:20px;background: url(../images/icon/c-right.png) no-repeat center;}
+.main .module dd:last-child {position: relative; height: auto;}
+.main .module dd img {margin: 13px auto; display: block; width: 50px; height: 55px;}
+.main .module dd > div{margin-top: 10px;}
+
+.main .module dd .inline {display: block; overflow: hidden; text-overflow: ellipsis;  white-space: nowrap;}
+
+.main .module dd > div p{float: left; font-size:12px; border-right:solid 1px #eee;}
+.main .module dd > div.item1 p{width: 100%;}
+.main .module dd > div.item2 p{width: 48%; margin: 0 .6%;}
+.main .module dd > div.item3 p{width: 31%; margin: 0 .6%;}
+.main .module dd > div.item4 p{width: 23%; margin: 0 .6%;}
+.main .module dd > div p:last-child{border:none;}
+.main .module dd .add{width: 120px;height: 30px;  line-height:30px;margin:0 auto;color:#a0a0a0;border:solid 1px #a0a0a0;border-radius: 2px;}
+.main .module dd .add:hover{color:#347df6;border:solid 1px #347df6;}
+.main .module h5 {font-size: 18px; color: #4d4d4d; margin-top: 23px;}
+.main .module p {font-size: 14px; color: #999; position: relative;}
+.main .module p .m-state{ display: block;  position: absolute;  top:-14px  ;right: 50%; margin-right: -5px; width: 20px;height: 20px;  background: url(../images/icon/m-tip.png) no-repeat right; }
+.main .module p span{position: relative;margin-right: 5px; }
+
+/*站内公告*/
+.gonggao-con{  background: #fff;  border:solid 1px #eee;  margin-top: 20px;  }
+.gonggao-con p{height: 42px;font-size:14px;color:#fff;line-height: 42px;padding:0 20px;background: #b7bbc8;}
+.gonggao-con ul{  padding:20px;  }
+.gonggao-con ul li{  color: #a0a0a0; font-size: 14px; line-height: 30px;width: 360px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.gonggao-con ul li:before{ content:'•' ;font-size:12px;margin-right:5px;color: #a0a0a0; }
+.gonggao-con ul li a:hover{ color:#347df6;}

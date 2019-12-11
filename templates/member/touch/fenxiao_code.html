@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{#$langData['siteConfig'][35][1]#}</title>{#* 推广二维码 *#}
+    <meta name="keywords" content="{#$article_keywords#}">
+    <meta name="description" content="{#$article_description#}">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/fenxiao_code.css?v={#$cfg_staticVersion#}">
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+    <script>
+        //如果没有菜单内容，则隐藏APP端右上角菜单
+        if (device.indexOf('huoniao') > -1 && ($('.dropnav').size() == 0 || $('#navlist').size() == 0)) {
+            setTimeout(function(){
+                setupWebViewJavascriptBridge(function(bridge) {
+                    bridge.callHandler('hideAppMenu', {}, function(){});
+                });
+            }, 500);
+        }
+    </script>
+</head>
+<body>
+{#include file="../../siteConfig/touch_top.html" pageTitle={#$langData['siteConfig'][35][1]#}#}{#* 推广二维码 *#}
+<div class="container">
+    <div class="top">
+        <div class="code-box">
+            <div class="code-img"><img src="/include/qrcode.php?data={#$cfg_basehost#}?fromShare={#$userinfo.userid#}" alt=""></div>
+            <p>{#$langData['siteConfig'][35][17]#}</p>{#* 打开手机扫一扫 *#}
+        </div>
+    </div>
+    <div class="btn-box"> <a class="btn" href="{#getUrlPath service="member" type="user" template="fenxiao_code_poster"#}">{#$langData['siteConfig'][35][18]#}</a></div>{#* 生成专属海报 *#}
+    <div class="content">
+        <p>{#$cfg_fenxiaoNote|replace:"\n\r":'</p><p>'|replace:"\n":'</p><p>'#}</p>
+    </div>
+
+</div>
+</body>
+</html>

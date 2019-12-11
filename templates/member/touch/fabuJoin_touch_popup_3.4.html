@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="{#$cfg_soft_lang#}">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<title>发布入驻</title>
+<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" href="{#$templets_skin#}css/fabuJoin_touch_popup_3.4.css?v={#$cfg_staticVersion#}">
+<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/mobileSelect.css?v={#$cfg_staticVersion#}">
+<link href="{#$templets_skin#}css/mobiscroll.css?v={#$cfg_staticVersion#}" rel="stylesheet" type="text/css" />
+<script src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+  var masterDomain = '{#$cfg_basehost#}';
+  var templets = '{#$templets_skin#}';
+  var geetest = {#$cfg_geetest#};
+  var cookiePre = '{#$cfg_cookiePre#}';
+  var audioSrc = {
+    refresh: '{#$cfg_staticPath#}audio/refresh.mp3',
+    tap: '{#$cfg_staticPath#}audio/tap.mp3',
+    cancel: '{#$cfg_staticPath#}audio/cancel.mp3',
+  }
+  var price1 = {#json_encode($busiConfig.trialCost)#};
+  var price2 = {#json_encode($busiConfig.trialCost)#};
+  var typeList = {#json_encode($typeList)#};
+  var has_joinBusiness = {#$has_joinBusiness|default:0#};
+</script>
+</head>
+
+<body>
+
+  <div class="postBox">
+    <div class="tabHead">
+      <ul class="fn-clear">
+        {#if $has_joinBusiness || ($is_ios_app && $cfg_ios_shelf)#}
+        <li class="active" style="float:none;width:100%;">
+          <a href="javascript:;" id="fabuInfo">信息发布</a>
+        </li>
+        {#else#}
+        <li class="active">
+          <a href="javascript:;" id="fabuInfo">信息发布</a>
+        </li>
+        <li>
+          <a href="javascript:;" id="rzshop">入驻店铺</a>
+        </li>
+        {#/if#}
+      </ul>
+    </div>
+    <div class="tabContent showMain fn-clear">
+      {#*
+      <div class="tableft">
+        <ul>
+          <li class="curr">发布推荐</li>
+          <li>文章投稿</li>
+          <li>论坛贴子</li>
+          <li>二手信息</li>
+          <li>招聘求职</li>
+          <li>房源租售</li>
+          <li>婚恋交友</li>
+        </ul>
+      </div>
+      *#}
+      <div class="tabright">
+        <div class="tabBox show">
+          {#*<div class="tabtitle"><h4>发布推荐</h4></div>*#}
+          <div class="tabcon">
+            <ul class="fn-clear tab_ul1">
+
+                {#$house = ''#}
+                {#$job = ''#}
+                {#siteConfig action="siteModule" return="module"#}
+
+
+                {#if $module.code == 'house' && {#verifyModuleAuth module='house' type='userCenter'#}#}
+                  {#$house = 1#}
+                {#/if#}
+
+                {#if $module.code == 'job' && {#verifyModuleAuth module='job' type='userCenter'#}#}
+                  {#$job = 1#}
+                {#/if#}
+
+                {#if $module.code == 'article' && {#verifyModuleAuth module='article' type='userCenter'#}#}
+                <li>
+                    <a href="{#getUrlPath service='member' type='user' template='fabu-article'#}" target="_parent">
+                        <img src="{#$module.icon#}" alt="">
+                        <p>投稿</p>
+                    </a>
+                </li>
+                {#/if#}
+
+                {#if $module.code == 'info' && {#verifyModuleAuth module='info' type='userCenter'#}#}
+                <li>
+                    <a href="{#getUrlPath service='member' type='user' template='info'#}#Stype" target="_parent">
+                        <img src="{#$module.icon#}" alt="">
+                        <p>二手</p>
+                    </a>
+                </li>
+                {#/if#}
+
+                {#if $module.code == 'tuan' && {#verifyModuleAuth module='tuan' type='userCenter'#}#}
+                <li>
+                    <a href="{#getUrlPath service='member' template='fabu' action='tuan'#}" target="_parent">
+                        <img src="{#$module.icon#}" alt="">
+                        <p>团购</p>
+                    </a>
+                </li>
+                {#/if#}
+
+                {#if $module.code == 'tieba' && {#verifyModuleAuth module='tieba' type='userCenter'#}#}
+                <li>
+                    <a href="{#getUrlPath service='tieba' template='fabu'#}" class="postTieba" target="_parent">
+                        <img src="{#$module.icon#}" alt="">
+                        <p>帖子</p>
+                    </a>
+                </li>
+                {#/if#}
+
+
+                {#if $module.code == 'huodong' && {#verifyModuleAuth module='huodong' type='userCenter'#}#}
+                <li>
+                    <a href="{#getUrlPath service='huodong' template='fabu'#}" target="_parent">
+                        <img src="{#$module.icon#}" alt="">
+                        <p>活动</p>
+                    </a>
+                </li>
+                {#/if#}
+
+                {#if $module.code == 'live' && {#verifyModuleAuth module='live' type='userCenter'#}#}
+                <li>
+                    <a href="{#getUrlPath service='member' type='user' template='fabu' action='live'#}" target="_parent">
+                        <img src="{#$module.icon#}" alt="">
+                        <p>直播</p>
+                    </a>
+                </li>
+                {#/if#}
+
+                {#if $module.code == 'dating' &&  {#verifyModuleAuth module='dating' type='userCenter'#}#}
+                <li>
+                    <a href="{#getUrlPath service='dating' template='my'#}" target="_parent">
+                        <img src="{#$module.icon#}" alt="">
+                        <p>我的交友</p>
+                    </a>
+                </li>
+                {#/if#}
+
+                {#if $module.code == 'car' && {#verifyModuleAuth module='car' type='userCenter'#}#}
+                <li>
+                    <a href="{#getUrlPath service='member' type='user' template='fabu' action='car'#}" target="_parent">
+                        <img src="{#$module.icon#}" alt="">
+                        <p>二手车</p>
+                    </a>
+                </li>
+                {#/if#}
+
+                {#/siteConfig#}
+
+
+            </ul>
+            <!--房产 s-->
+            {#if $house#}
+            <ul class="fn-clear tab_ul2">
+              <li>
+                    <a href="{#getUrlPath service='member' type='user' template='fabu-house-sale'#}" target="_parent">
+                        <img src="{#$templets_skin#}images/fabuJoin_touch_popup_3.4/f_icon1.png" alt="">
+                        <p>二手房</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{#getUrlPath service='member' type='user' template='fabu-house-zu'#}" target="_parent">
+                        <img src="{#$templets_skin#}images/fabuJoin_touch_popup_3.4/f_icon2.png" alt="">
+                        <p>出租房</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{#getUrlPath service='member' type='user' template='fabu-house-xzl'#}" target="_parent">
+                        <img src="{#$templets_skin#}images/fabuJoin_touch_popup_3.4/f_icon3.png" alt="">
+                        <p>写字楼</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{#getUrlPath service='member' type='user' template='fabu-house-sp'#}" target="_parent">
+                        <img src="{#$templets_skin#}images/fabuJoin_touch_popup_3.4/f_icon4.png" alt="">
+                        <p>商铺</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{#getUrlPath service='member' type='user' template='fabu-house-xzl'#}" target="_parent">
+                        <img src="{#$templets_skin#}images/fabuJoin_touch_popup_3.4/f_icon5.png" alt="">
+                        <p>厂房仓库</p>
+                    </a>
+                </li>
+            </ul>
+            {#/if#}
+            <!--房产 e-->
+
+            <!--招聘 s-->
+            {#if $job#}
+            <ul class="fn-clear tab_ul3">
+                <li>
+                    <a href="{#getUrlPath service='member' type='user' template='job-resume'#}" target="_parent">
+                        <img src="{#$templets_skin#}images/fabuJoin_touch_popup_3.4/j_icon1.png" alt="">
+                        <p>简历</p>
+                    </a>
+                </li>
+                {#if $userinfo.userType == 2#}
+                <li>
+                    <a href="{#getUrlPath service='member' template='post' param='do=add'#}" target="_parent">
+                        <img src="{#$templets_skin#}images/fabuJoin_touch_popup_3.4/j_icon4.png" alt="">
+                        <p>职位</p>
+                    </a>
+                </li>
+                {#/if#}
+                <li>
+                    <a href="{#getUrlPath service='job' template='sentence' param='type=0'#}#fabu" target="_parent">
+                        <img src="{#$templets_skin#}images/fabuJoin_touch_popup_3.4/j_icon2.png" alt="">
+                        <p>快速招聘</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{#getUrlPath service='job' template='sentence' param='type=1'#}#fabu" target="_parent">
+                        <img src="{#$templets_skin#}images/fabuJoin_touch_popup_3.4/j_icon3.png" alt="">
+                        <p>快速求职</p>
+                    </a>
+                </li>
+
+            </ul>
+            {#/if#}
+            <!--招聘 e-->
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="tabContent shop ">
+
+      {#if $busiConfig.trialState || $busiConfig.enterpriseState#}
+
+      <form action="{#$cfg_basehost#}/include/ajax.php?service=member&action=joinBusiness" id="shopForm">
+        <input type="hidden" name="areaCode" id="areaCode" value="86">
+        <!-- <input type="hidden" name="type" id="type" value="0"> -->
+        <input type="hidden" name="cost" id="cost" value="0">
+        <input type="hidden" name="typeid" id="typeid" value="{#$detail.typeid|default:0#}">
+        <dl class="tabArea">
+          <dt>国家/地区</dt>
+          <dd> <span class="spCode"> <em class="areaCodeLab">+86</em> <i class="Iright"></i></span></dd>
+        </dl>
+        <dl>
+          <dt>输入手机号码</dt>
+          <dd>
+            <input type="number" pattern="\d*" class="inp telphone" name="phone" id="tel" value="{#$detail.phone#}" oninput="">
+            <span class="inpClose"><i class="inpClear"></i></span>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt>输入验证码</dt>
+          <dd>
+            <input type="number" pattern="\d*" class="inp" name="yzm" value="">
+            <a href="javascript:;" class="btnYzm disabled ">发送验证码</a>
+          </dd>
+        </dl>
+        <dl>
+          <dt>输入联系人</dt>
+          <dd>
+            <input type="text" class="inp cname" name="name" value="{#$detail.name#}">
+          </dd>
+        </dl>
+        <dl class="shopManage">
+          <dt>选择经营类目</dt>
+          <dd>
+            <div id="shopManage_">
+                <select id="shopManage" class="demo-test-select">
+                    <optgroup label="请选择">
+                        <option value="">请选择</option>
+                    </optgroup>
+                    {#business action="type" return="type"#}
+                    <optgroup label="{#$type.typename#}">
+                        {#business action="type" type={#$type.id#} return="t"#}
+                        <option value="{#$t.id#}">{#$t.typename#}</option>
+                        {#/business#}
+                    </optgroup>
+                    {#/business#}
+                </select>
+                {#$detail.typeArr#}
+            </div>
+            <span class="spCode"><i class="Idown"></i></span>
+          </dd>
+        </dl>
+        <dl class="vision">
+          <dd>
+            <div class="radio radioBox fn-clear" data-title="请选择版本">
+              {#if !$busiConfig.trialState#}
+              <label class="disabled" data-title="暂停入驻">
+                <div class="check-left">
+                  <input type="radio" name="type" value="1" disabled>
+                  <span class="checkbox-icon-round"></span>
+                </div>
+                <a href="javascript:;">{#$busiConfig.trialName#}</a>
+              </label>
+              {#else#}
+              <label>
+                <div class="check-left">
+                  <input type="radio" name="type" value="1"{#if $busiConfig.enterpriseState == 0#} checked="checked"{#/if#}>
+                  <span class="checkbox-icon-round"></span>
+                </div>
+                <a href="javascript:;">{#$busiConfig.trialName#}</a>
+              </label>
+              {#/if#}
+              {#if !$busiConfig.enterpriseState#}
+              <label class="disabled" data-title="暂停入驻">
+                <div class="check-left">
+                  <input type="radio" name="type" value="2" disabled>
+                  <span class="checkbox-icon-round"></span>
+                </div>
+                <a href="javascript:;">{#$busiConfig.enterpriseName#}</a>
+              </label>
+              {#else#}
+              <label>
+                <div class="check-left">
+                  <input type="radio" name="type" value="2" checked="checked">
+                  <span class="checkbox-icon-round"></span>
+                </div>
+                <a href="javascript:;">{#$busiConfig.enterpriseName#}</a>
+              </label>
+              {#/if#}
+            </div>
+          </dd>
+        </dl>
+
+         <dl class="agreeBox">
+          <dd>
+            <label for=""><input type="checkbox" class="agree"><span></span>我已阅读并同意</label><a href="{#getUrlPath service='siteConfig' template='protocol' title='商家入驻服务协议'#}" target="_blank">《商家入驻服务协议》</a>
+          </dd>
+
+           </dl>
+        <div class="btnBox">
+          <input type="submit" class="btnSubmit disabled" value="提交申请">
+        </div>
+
+      </form>
+
+      {#else#}
+
+      <p class="join_disab">抱歉，平台暂时关闭了商家入驻</p>
+
+      {#/if#}
+
+      <!-- 店铺功能比较 -->
+      <div class="compareBox">
+        <div class="comTitle">
+          店铺功能比较
+        </div>
+        <div class="tableBox">
+          <div class="tabTitleBox fn-clear">
+            <p class="tIntro">功能介绍</p>
+            <p class="ttrial">{#$busiConfig.trialName#}</p>
+            <p class="tcompany">{#$busiConfig.enterpriseName#}</p>
+          </div>
+          {#foreach from=$busiConfig.joinAuth item=auth key=k#}
+          {#if $k == "module" || $k == "store"#}
+            {#foreach from=$auth item=s_auth key=s_k#}
+            <div class="tabConBox fn-clear">
+              <p class="tIntro"><span class="tit">{#$s_auth.title#}</span> <i class="baseIcon"></i></p>
+              <p class="ttrial"> <span class="hasIcon"><img src="{#$templets_skin#}images/fabuJoin_touch_popup_3.4/{#if $s_auth.type1#}hasIcon{#else#}noIcon{#/if#}.png" alt=""></span></p>
+              <p class="tcompany"> <span class="hasIcon"><img src="{#$templets_skin#}images/fabuJoin_touch_popup_3.4/{#if $s_auth.type2#}hasIcon{#else#}noIcon{#/if#}.png" alt=""></span></p>
+              <div class="note fn-hide">{#$s_auth.note#}</div>
+            </div>
+            {#/foreach#}
+          {#else#}
+            <div class="tabConBox fn-clear">
+              <p class="tIntro"><span class="tit">{#$auth.title#}</span> <i class="baseIcon"></i></p>
+              <p class="ttrial"> <span class="hasIcon"><img src="{#$templets_skin#}images/fabuJoin_touch_popup_3.4/{#if $auth.type1#}hasIcon{#else#}noIcon{#/if#}.png" alt=""></span></p>
+              <p class="tcompany"> <span class="hasIcon"><img src="{#$templets_skin#}images/fabuJoin_touch_popup_3.4/{#if $auth.type2#}hasIcon{#else#}noIcon{#/if#}.png" alt=""></span></p>
+              <div class="note fn-hide">{#$auth.note#}</div>
+            </div>
+          {#/if#}
+          {#/foreach#}
+        </div>
+      </div>
+
+      <!-- 联系网站客服 -->
+      <div class="contactBox">
+        <h4>联系网站客服</h4>
+        <ul class="fn-clear">
+          {#if $cfg_server_tel#}
+          <li class="ctTel">
+            <img src="{#$templets_skin#}images/fabuJoin_touch_popup_3.4/kf-tel.png" alt="">
+            <p>{#$cfg_server_tel[0]#}</p>
+          </li>
+          {#/if#}
+          {#if $cfg_server_qq#}
+          <li class="ctQq">
+            <img src="{#$templets_skin#}images/fabuJoin_touch_popup_3.4/kf-qq.png" alt="">
+            <p>{#$cfg_server_qq[0]#}</p>
+          </li>
+          {#/if#}
+          {#if $cfg_server_wx#}
+          <li class="ctWx">
+            <img src="{#$templets_skin#}images/fabuJoin_touch_popup_3.4/kf-wx.png" alt="">
+            <p>{#$cfg_server_wx#}</p>
+          </li>
+          {#/if#}
+        </ul>
+      </div>
+    </div>
+    <div class="closeBox">
+      <a href="javascript:;"><i class="goBack"></i></a>
+    </div>
+  </div>
+
+
+<!-- 区号弹出层 s -->
+<div class="layer">
+  <div class="layer_search"><p>国籍/地区</p><em class="layer_close"><span class="inpClose"><i class="inpClear"></i></span></em></div>
+  <div class="layer_list" id="layer_list">
+    <ul>
+      <li><span>China（中国大陆）</span><em class="fn-right">+86</em></li>
+      <li><span>Hong Kong（香港）</span><em class="fn-right">+852</em></li>
+      <li><span>Macau（澳门）</span><em class="fn-right">+853</em></li>
+      <li><span>Taiwan（台湾）</span><em class="fn-right">+886</em></li>
+      <li><span>Argentina（阿根廷）</span><em class="fn-right">+54</em></li>
+      <li><span>Australia（澳大利亚）</span><em class="fn-right">+61</em></li>
+      <li><span>Austria（奥地利）</span><em class="fn-right">+43</em></li>
+      <li><span>Bahamas（巴哈马）</span><em class="fn-right">+1242</em></li>
+      <li><span>Belarus（白俄罗斯）</span><em class="fn-right">+375</em></li>
+      <li><span>Belgium（比利时）</span><em class="fn-right">+32</em></li>
+      <li><span>Belize（伯利兹）</span><em class="fn-right">+501</em></li>
+      <li><span>Brazil（巴西）</span><em class="fn-right">+55</em></li>
+      <li><span>Bulgaria（保加利亚）</span><em class="fn-right">+359</em></li>
+      <li><span>Cambodia（柬埔寨）</span><em class="fn-right">+855</em></li>
+      <li><span>Canada（加拿大）</span><em class="fn-right">+1</em></li>
+      <li><span>Chile（智利）</span><em class="fn-right">+56</em></li>
+      <li><span>Colombia（哥伦比亚）</span><em class="fn-right">+57</em></li>
+      <li><span>Denmark（丹麦）</span><em class="fn-right">+45</em></li>
+      <li><span>Egypt（埃及）</span><em class="fn-right">+20</em></li>
+      <li><span>Estonia（爱沙尼亚）</span><em class="fn-right">+372</em></li>
+      <li><span>Finland（芬兰）</span><em class="fn-right">+358</em></li>
+      <li><span>France（法国）</span><em class="fn-right">+33</em></li>
+      <li><span>Germany（德国）</span><em class="fn-right">+49</em></li>
+      <li><span>Greece（希腊）</span><em class="fn-right">+30</em></li>
+      <li><span>Hungary（匈牙利）</span><em class="fn-right">+36</em></li>
+      <li><span>India（印度）</span><em class="fn-right">+91</em></li>
+      <li><span>Indonesia（印度尼西亚）</span><em class="fn-right">+62</em></li>
+      <li><span>Ireland（爱尔兰）</span><em class="fn-right">+353</em></li>
+      <li><span>Israel（以色列）</span><em class="fn-right">+972</em></li>
+      <li><span>Italy（意大利）</span><em class="fn-right">+39</em></li>
+      <li><span>Japan（日本）</span><em class="fn-right">+81</em></li>
+      <li><span>Jordan（约旦）</span><em class="fn-right">+962</em></li>
+      <li><span>Kyrgyzstan（吉尔吉斯斯坦）</span><em class="fn-right">+996</em></li>
+      <li><span>Lithuania（立陶宛）</span><em class="fn-right">+370</em></li>
+      <li><span>Luxembourg（卢森堡）</span><em class="fn-right">+352</em></li>
+      <li><span>Malaysia（马来西亚）</span><em class="fn-right">+60</em></li>
+      <li><span>Maldives（马尔代夫）</span><em class="fn-right">+960</em></li>
+      <li><span>Mexico（墨西哥）</span><em class="fn-right">+52</em></li>
+      <li><span>Mongolia（蒙古）</span><em class="fn-right">+976</em></li>
+      <li><span>Morocco（摩洛哥）</span><em class="fn-right">+212</em></li>
+      <li><span>Netherlands（荷兰）</span><em class="fn-right">+31</em></li>
+      <li><span>New Zealand（新西兰）</span><em class="fn-right">+64</em></li>
+      <li><span>Nigeria（尼日利亚）</span><em class="fn-right">+234</em></li>
+      <li><span>Norway（挪威）</span><em class="fn-right">+47</em></li>
+      <li><span>Panama（巴拿马）</span><em class="fn-right">+507</em></li>
+      <li><span>Peru（秘鲁）</span><em class="fn-right">+51</em></li>
+      <li><span>Philippines（菲律宾）</span><em class="fn-right">+63</em></li>
+      <li><span>Poland（波兰）</span><em class="fn-right">+48</em></li>
+      <li><span>Portugal（葡萄牙）</span><em class="fn-right">+351</em></li>
+      <li><span>Qatar（卡塔尔）</span><em class="fn-right">+974</em></li>
+      <li><span>Romania（罗马尼亚）</span><em class="fn-right">+40</em></li>
+      <li><span>Russia（俄罗斯）</span><em class="fn-right">+7</em></li>
+      <li><span>Saudi Arabia（沙特阿拉伯）</span><em class="fn-right">+966</em></li>
+      <li><span>Serbia（塞尔维亚）</span><em class="fn-right">+381</em></li>
+      <li><span>Seychelles（塞舌尔）</span><em class="fn-right">+248</em></li>
+      <li><span>Singapore（新加坡）</span><em class="fn-right">+65</em></li>
+      <li><span>South Africa（南非）</span><em class="fn-right">+27</em></li>
+      <li><span>South Korea（韩国）</span><em class="fn-right">+82</em></li>
+      <li><span>Spain（西班牙）</span><em class="fn-right">+34</em></li>
+      <li><span>Sri Lanka（斯里兰卡）</span><em class="fn-right">+94</em></li>
+      <li><span>Sweden（瑞典）</span><em class="fn-right">+46</em></li>
+      <li><span>Switzerland（瑞士）</span><em class="fn-right">+41</em></li>
+      <li><span>Thailand（泰国）</span><em class="fn-right">+66</em></li>
+      <li><span>Tunisia（突尼斯）</span><em class="fn-right">+216</em></li>
+      <li><span>Turkey（土耳其）</span><em class="fn-right">+90</em></li>
+      <li><span>Ukraine（乌克兰）</span><em class="fn-right">+380</em></li>
+      <li><span>United Arab Emirates（阿联酋）</span><em class="fn-right">+971</em></li>
+      <li><span>United Kingdom（英国）</span><em class="fn-right">+44</em></li>
+      <li><span>United States（美国）</span><em class="fn-right">+1</em></li>
+      <li><span>Venezuela（委内瑞拉）</span><em class="fn-right">+58</em></li>
+      <li><span>Vietnam（越南）</span><em class="fn-right">+84</em></li>
+      <li><span>Virgin Islands（英属维尔京群岛）</span><em class="fn-right">+1284</em></li>
+    </ul>
+  </div>
+</div>
+<!-- 区号弹出层 e -->
+<div class="mask" id="maskReg"></div>
+
+<div id="popupReg-captcha-mobile"></div>
+
+<!-- 提交申请信息成功弹出层 s -->
+<div class="tipBox sucBox tipBox-hide">
+    <div class="suleft"><i></i></div>
+    <div class="suright">
+      <h5>操作成功！</h5>
+      <p>请耐心等待...</p>
+      <i class="btn-close"><img src="{#$templets_skin#}images/fabuJoin_touch_popup_3.4/tclose.png" alt=""></i>
+    </div>
+ </div>
+<!-- 提交申请信息成功弹出层 e-->
+
+
+<!-- 服务协议弹出层 s-->
+<div class="modal-public m-server" tabindex="-1" role="dialog">
+    <div class="bgCover"></div>
+
+    <div class="modal-main">
+      <div class="top">商家入驻服务协议<span class="bClose"> <i></i></span>
+      </div>
+      <div class="main">{#$busiConfig['agreement']#}</div>
+
+    </div>
+</div>
+<!-- 服务协议弹出层 e-->
+
+<!-- 基础信息弹出层 s-->
+<div class="modal-public m-baseInfo" tabindex="-1" role="dialog">
+    <div class="bgCover"></div>
+    <div class="modal-main">
+      <div class="top"><span class="tit"></span><span class="bClose"> <i></i></span>
+      </div>
+      <div class="main"></div>
+    </div>
+</div>
+<!-- 基础信息弹出层 e-->
+
+<!-- 企业版入驻选择 s-->
+<div class="modal-public m-ruzhu" tabindex="-1" role="dialog">
+    <div class="bgCover"></div>
+    <div class="modal-main">
+        <div class="close">
+            <img src="{#$templets_skin#}images/fabuJoin_touch_popup_3.4/rzClose.png" alt="">
+        </div>
+        {#if $busiConfig.trialState && $busiConfig.trialCost#}
+        <ul class="price_1" data-type="1">
+          {#foreach from=$busiConfig.trialCost item=item key=k#}
+            <li{#if $k + 1 == count($busiConfig.trialCost)#} class="curr"{#/if#} data-price="{#$item.price#}">
+                <h4>入驻{#$item.time#}{#if $item.type == "day"#}天{#elseif $item.type == "month"#}个月{#else#}年{#/if#} {#if $item.label#}<s>{#$item.label#}</s>{#/if#} <em>{#echoCurrency type='symbol'#}  <b>{#$item.price#}</b></em></h4>
+                {#if $item.point#}<p>可返{#$item.point#}{#$cfg_pointName#}</p>{#/if#}
+                 <span class="bgSelect"></span>
+            </li>
+          {#/foreach#}
+        </ul>
+        {#/if#}
+        {#if $busiConfig.enterpriseState && $busiConfig.enterpriseCost#}
+        <ul class="price_2" data-type="2">
+          {#foreach from=$busiConfig.enterpriseCost item=item key=k#}
+            <li{#if $k + 1 == count($busiConfig.enterpriseCost)#} class="curr"{#/if#} data-price="{#$item.price#}">
+                <h4>入驻{#$item.time#}{#if $item.type == "day"#}天{#elseif $item.type == "month"#}个月{#else#}年{#/if#} {#if $item.label#}<s>{#$item.label#}</s>{#/if#} <em>{#echoCurrency type='symbol'#}  <b>{#$item.price#}</b></em></h4>
+                {#if $item.point#}<p>可返{#$item.point#}{#$cfg_pointName#}</p>{#/if#}
+                 <span class="bgSelect"></span>
+            </li>
+          {#/foreach#}
+        </ul>
+        {#/if#}
+        <a href="javascript:;" class="btn-pay">支付</a>
+    </div>
+</div>
+<!-- 企业版入驻选择 e-->
+
+{#if $cfg_server_tel#}
+<!-- 电话弹出层 s-->
+<div class="modal-public m-telphone" tabindex="-1" role="dialog">
+
+    <div class="bgCover"></div>
+    <div class="modal-main">
+      <div class="topline">
+      <div class="lline"></div>
+      <div class="rline"></div>
+    </div>
+        <div class="close">
+            <img src="{#$templets_skin#}images/fabuJoin_touch_popup_3.4/close.png" alt="">
+        </div>
+        <h3>联系商家</h3>
+        {#foreach from=$cfg_server_tel item=tel#}
+        <p class="fn-clear"><a href="tel:{#$tel#}">{#$tel#}</a></p>
+        {#/foreach#}
+    </div>
+</div>
+<!-- 电话弹出层 e-->
+{#/if#}
+
+{#if $cfg_server_qq#}
+<!-- qq弹出层 s-->
+<div class="modal-public m-qq" tabindex="-1" role="dialog">
+    <div class="bgCover"></div>
+    <div class="modal-main">
+      <div class="topline">
+      <div class="lline"></div>
+      <div class="rline"></div>
+    </div>
+        <div class="close">
+            <img src="{#$templets_skin#}images/fabuJoin_touch_popup_3.4/close.png" alt="">
+        </div>
+        <h3>qq</h3>
+        {#foreach from=$cfg_server_qq item=qq#}
+        <p class="fn-clear"><a href="mqq://im/chat?chat_type=wpa&uin={#$qq#}&version=1&src_type=web&web_src={#$cfg_basehost#}">{#$qq#}</a></p>
+        {#/foreach#}
+    </div>
+</div>
+<!-- 电话弹出层 e-->
+{#/if#}
+
+{#if $cfg_server_wx#}
+<!-- 微信弹出层 s-->
+<div class="modal-public m-wx" tabindex="-1" role="dialog">
+    <div class="bgCover"></div>
+    <div class="modal-main">
+      <div class="topline">
+      <div class="lline"></div>
+      <div class="rline"></div>
+    </div>
+        <div class="close">
+            <img src="{#$templets_skin#}images/fabuJoin_touch_popup_3.4/close.png" alt="">
+        </div>
+        <div class="weixin">
+            <h4>微信中长按识别二维码</h4>
+            <img src="{#$cfg_server_wxQr#}" alt="">
+            <h5>扫一扫  加客服</h5>
+        </div>
+    </div>
+</div>
+<!-- 微信弹出层 e-->
+{#/if#}
+
+{#if $cfg_geetest#}<script type="text/javascript" src="{#$cfg_secureAccess#}static.geetest.com/static/tools/gt.js"></script>{#/if#}
+<script src="{#$templets_skin#}js/jquery.smartScroll.js?v={#$cfg_staticVersion#}"></script>
+<script type='text/javascript' src='{#$cfg_basehost#}/include/json.php?action=lang'></script>
+<script src="{#$templets_skin#}js/mobiscroll.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script src="{#$templets_skin#}js/mobiscroll.select.js?v={#$cfg_staticVersion#}" type="text/javascript"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/fabuJoin_touch_popup_3.4.js?v={#$cfg_staticVersion#}"></script>
+
+</body>
+</html>

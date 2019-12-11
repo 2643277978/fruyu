@@ -1,0 +1,479 @@
+<div class="header {#$headTheme#}">
+	{#if $pageLeft != ""#}
+	{#$pageLeft#}
+	{#else#}
+	<div class="header-l"><a href="javascript:history.go(-1)" class="goBack"></a></div>
+	{#/if#}
+	<div class="header-address">
+		<span>{#$pageTitle#}</span>
+	</div>
+	<div class="header-search">
+		{#if $pageRight != ""#}
+		{#$pageRight#}
+		{#else#}
+		<a href="javascript:;" class="dropnav"></a>
+		{#/if#}
+	</div>
+</div>
+
+<div class="navBox_4" id="navBox_4">
+	<div class="boxall_nav">
+		<!--便捷导航s-->
+		<div class="pub-fast_nav" id="fast_nav">
+			<h2>全局导航<i class="close_btn"></i></h2>
+			<ul>
+				<li class="">
+					<a href="{#$cfg_basehost#}">
+						<i><img src="{#$cfg_staticPath#}/images/top_fast1.png"/></i>
+						<p>首页</p>
+					</a>
+				</li>
+				<li class="message_num">
+					<a href="{#$member_userDomain#}/message.html">
+						<i><img src="{#$cfg_staticPath#}/images/top_fast2.png"/></i>
+						<p>消息</p>
+					</a>
+				</li>
+				<li class="">
+					<a href="{#$member_userDomain#}">
+						<i><img src="{#$cfg_staticPath#}/images/top_fast3.png"/></i>
+						<p>会员中心</p>
+					</a>
+				</li>
+				<li class="HN_PublicShare" style="display: block !important;">
+					<a class="fx">
+						<i><img src="{#$cfg_staticPath#}/images/top_fast5.png"/></i>
+						<p>分享</p>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!--便捷导航e-->
+		<div class="navlist_4" id="navlist_4">
+			<ul class="clearfix fn-clear">
+				<li ><a href="https://apps.apple.com/cn/app/%E6%88%BF%E5%A6%82%E7%8E%89/id1489305385">
+					<span class="imgbox"><img src="{#$cfg_basehost#}/static/images/admin/nav/down.png?v={#$cfg_staticVersion#}" ></span><span >ios下载</span>
+				</a></li>
+				<li ><a href="{#$cfg_basehost#}/release/fangruyu-android_v1.0.apk">
+					<span class="imgbox"><img src="{#$cfg_basehost#}/static/images/admin/nav/down.png?v={#$cfg_staticVersion#}" ></span><span >android下载</span>
+				</a></li>
+				{#if in_array("shop", $installModuleArr)#}<li><a href="{#getUrlPath service='shop' template='cart'#}"><span class="imgbox"><img src="{#$cfg_basehost#}/static/images/admin/nav/shop_car.png?v={#$cfg_staticVersion#}" class=""></span><span class="txtbox">{#$langData['siteConfig'][22][12]#}</span></a></li>{#/if#}
+				{#siteConfig action="siteModule" return="module" type="1"#}
+				{#if $module.code != "special" && $module.code != "website"#}
+				<!--<li>-->
+					<!--<a data-name="{#$module.name#}" data-code="{#$module.code#}" href="{#$module.url#}"{#if $module.target#} target="_blank"{#/if#}>-->
+						<!--<span class="imgbox"><img src="{#$module.icon#}"></span>-->
+						<!--<span class="txtbox" style="{#if $module.color#} color: {#$module.color#};{#/if#}{#if $module.bold#} font-weight: 700;{#/if#}">{#$module.name#}</span>-->
+					<!--</a>-->
+				<!--</li>-->
+				{#/if#}
+				{#/siteConfig#}
+				<!-- 分享 s -->
+				<!--<li class="HN_PublicShare"><a href="javascript:;"><span class="imgbox"><img src="{#$cfg_basehost#}/static/images/admin/nav/share.png?v={#$cfg_staticVersion#}" class="nav_23"></span><span class="txtbox">{#$langData['siteConfig'][6][166]#}</span></a></li>-->
+				<!-- 分享 e -->
+				<!-- 举报 s -->
+				<li class="HN_Jubao"><a href="javascript:;"><span class="imgbox"><img src="{#$cfg_basehost#}/static/images/admin/nav/jubao.png?v={#$cfg_staticVersion#}" class="nav_23"></span><span class="txtbox">{#$langData['siteConfig'][6][30]#}</span></a></li>
+				<!-- 举报 e -->
+			</ul>
+		</div>
+		<i class="w_bg"></i>
+	</div>
+	<div class="bg" id="shearBg"></div>
+</div>
+
+
+<!-- 举报 s -->
+<div class="JubaoBox">
+	<a href="javascript:;" class="JuClose"></a>
+	<div class="JuSelect">
+		<p>信息虚假违法</p>
+		<ul class="fn-clear Jubao-article">
+			<li>垃圾广告</li>
+			<li>色情淫秽</li>
+			<li>政治反动</li>
+			<li>钓鱼诈骗</li>
+			<li>网络敲诈</li>
+			<li>内容侵权</li>
+			<li>其他</li>
+		</ul>
+		<ul class="fn-clear Jubao-info">
+			<li>冒用电话</li>
+			<li>虚假信息</li>
+			<li>违法信息</li>
+			<li>服务糟糕</li>
+			<li>骗子信息</li>
+			<li>虚假电话</li>
+			<li>其他</li>
+		</ul>
+		<ul class="fn-clear Jubao-house">
+			<li>房源已交易</li>
+			<li>中介冒充个人</li>
+			<li>图片或内容含微信等联系方式</li>
+			<li>虚假(如房源、价格等虚假)</li>
+			<li>诈骗（如提前收取各类费用等）</li>
+			<li>涉黄违法</li>
+			<li>电话虚假(如空号、无人接听)</li>
+			<li>房源无法带看</li>
+			<li>图片与实际不符</li>
+			<li>价格与实际差异较大</li>
+			<li>房源不在该小区</li>
+			<li>其他</li>
+		</ul>
+		<ul class="fn-clear Jubao-job">
+			<li>电话虚假(如空号、无人接听)</li>
+			<li>非法收费（培训费、介绍费等）</li>
+			<li>职位虚假（薪资、工作地点等）</li>
+			<li>涉黄违法</li>
+			<li>招聘刷单刷钻人员</li>
+			<li>职介冒充直招</li>
+			<li>招生培训信息（非招聘）</li>
+			<li>其他</li>
+		</ul>
+		<ul class="fn-clear Jubao-dating">
+			<li>盗用他人的照片做为自己的照片</li>
+			<li>该用户的个人档案里含有不恰当（色情淫秽）的信息</li>
+			<li>该用户对我很粗鲁无礼/辱骂我</li>
+			<li>该用户散布垃圾信息</li>
+			<li>该用户是酒托/饭托/诈骗犯</li>
+			<li>其他</li>
+		</ul>
+		<ul class="fn-clear Jubao-tieba">
+			<li>广告垃圾</li>
+			<li>政治有害类</li>
+			<li>暴恐类</li>
+			<li>淫秽色情类</li>
+			<li>头像、签名档</li>
+			<li>赌博类</li>
+			<li>私服外挂类</li>
+			<li>诈骗类</li>
+			<li>违规内容</li>
+			<li>恶意灌水</li>
+			<li>重复发帖</li>
+			<li>其他有害类</li>
+		</ul>
+		<ul class="fn-clear Jubao-huodong">
+			<li>联系电话虚假</li>
+			<li>骗子信息（酒托、饭托、色情服务等）</li>
+			<li>虚假、违法信息</li>
+			<li>其他</li>
+		</ul>
+		<ul class="fn-clear Jubao-video">
+			<li>无法播放</li>
+			<li>播放卡</li>
+			<li>画面和声音有问题</li>
+			<li>不良内容</li>
+			<li>侵权投诉</li>
+			<li>其他</li>
+		</ul>
+		<ul class="fn-clear Jubao-huangye">
+			<li>电话被冒用</li>
+			<li>企业被冒用</li>
+			<li>虚假、违法信息</li>
+			<li>侵权投诉</li>
+			<li>其他</li>
+		</ul>
+		<ul class="fn-clear Jubao-image">
+			<li>色情暴力</li>
+			<li>政治反动</li>
+			<li>原图无法显示</li>
+			<li>与查询内容不符</li>
+			<li>侵权投诉</li>
+			<li>其他</li>
+		</ul>
+		<ul class="fn-clear Jubao-live">
+			<li>盗用他人的照片做为自己的照片</li>
+			<li>该用户的个人档案里含有不恰当（色情淫秽）的信息</li>
+			<li>该用户对我很粗鲁无礼/辱骂我</li>
+			<li>该用户散布垃圾信息</li>
+			<li>该用户是酒托/饭托/诈骗犯</li>
+			<li>其他</li>
+		</ul>
+		<ul class="fn-clear Jubao-business">
+			<li>电话被冒用</li>
+			<li>企业被冒用</li>
+			<li>虚假、违法信息</li>
+			<li>侵权投诉</li>
+			<li>其他</li>
+		</ul>
+	</div>
+	<div class="JuRemark">
+		<p class="JubaoBox-tit">备注说明<em>(0-100字)</em></p>
+		<textarea name="" rows="2" placeholder="请简明扼要的阐述您的理由，以便工作人员更好的判断。" maxlength="100"></textarea>
+	</div>
+	<div class="JubaoBox-contact">
+		<p class="JubaoBox-tit"><span>*</span>联系方式</p>
+		<dl class="fn-clear">
+			<dt class="fn-left">手机号</dt>
+			<dd class="fn-left"><input type="text" name="" placeholder="请输入手机号" id="JubaoTel"></dd>
+		</dl>
+	</div>
+	<a href="javascript:;" class="JubaoBox-submit">提交</a>
+</div>
+<!-- 举报 e -->
+
+<div class="JuError">请选择举报类型</div>
+<div class="JuMask"></div>
+
+<script src="{#$cfg_basehost#}/static/js/ui/iscroll.js" type="text/javascript"></script>
+
+<script>
+	var cookiePre = '{#$cfg_cookiePre#}';
+	var user_member  =  '{#$member_userDomain#}'
+	$(function(){
+		var cookie = $.cookie("HN_float_hide");
+		if($("#navlist_4").size() > 0){
+		  var myscroll_nav = new iScroll("navlist_4", {vScrollbar: false});
+		  $('.header-search .dropnav').click(function(){
+		    var a = $(this), header = a.closest('.header');
+		    if(!header.hasClass('open')) {
+	          toggleDragRefresh('off');
+		      header.addClass('open');
+		      $('.btmMenu').hide();
+		      $('.fixFooter').hide();
+		      $('#navBox_4').css({'top':'0', 'bottom':'0'}).show();
+					var device = navigator.userAgent;
+		      if (device.indexOf('huoniao_iOS') > -1) {
+		        // $('#navBox').css({'top':'calc(0.9rem + 20px)', 'bottom':'0'});
+		        $('#navBox_4').css({'top':'0', 'bottom':'0'});
+		      }
+		      $('#navBox_4 .bg').css({'height':'100%','opacity':1});
+		      myscroll_nav.refresh();
+		    }else {
+	          toggleDragRefresh('on');
+		      header.removeClass('open');
+		      closeShearBox();
+		    }
+		  })
+
+	    }
+		$('#navBox_4 .close_btn,#shearBg').click(function(){
+			closeShearBox()
+		});
+		$('#navlist_4 li').click(function(){
+	        setTimeout(function(){
+	            closeShearBox();
+	        }, 500);
+	    });
+		function closeShearBox(){
+		    $('.fixFooter').show();
+		    $('.header').removeClass('open');
+		    $('#navBox_4').hide();
+		    $('#navBox_4 .bg').css({'height':'0','opacity':0});
+		  }
+		});
+		//获取消息数目
+		function getnum(){
+			$.ajax({
+		       url: '/include/ajax.php?service=member&action=message&type=tongji&im=1',
+		       type: "GET",
+		       dataType: "json",
+		       timeout: 3000,
+		       success: function (data) {
+			       var html = [];
+			       if(data.state == 100){
+			       	var info = data.info.pageInfo;
+			       	var count = info.im + info.unread + info.upunread + info.commentunread ;
+			       	$('.message_num').find('em').remove();
+			       	if(count<=99 && count>0){
+			       		$('.message_num').find('a i').prepend('<em>'+count+'</em>');
+			       		$('.dropnav').html('<em></em>')
+			       	}else if(count>99){
+			       		$('.message_num').find('a i').prepend('<em>99+</em>');
+			       		$('.dropnav').html('<em></em>')
+			       	}
+
+			       }
+		       },
+		       error: function(){
+		         $('.loading').html('<span>请求出错请刷新重试</span>');  //请求出错请刷新重试
+		       }
+		    });
+		}
+		var userid;
+		if(cookiePre){
+			userid = $.cookie(cookiePre+"login_user");
+		}
+		if(userid == null || userid == " "){
+           console.log('登录之后可以查看新消息')
+		}else{
+			setInterval(getnum,5000)
+		}
+</script>
+<script src="{#$templets_skin#}js/mui.min.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/mui.zoom.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/mui.previewimage.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript">
+	$(".fx").click(function () {
+		var userid;
+		if(cookiePre){
+			userid = $.cookie(cookiePre+"login_user");
+		}
+		if(userid == null || userid == " "){
+			location.href="{#$cfg_basehost#}/login.html"
+		}else{
+		    shareHref();
+		}
+	});
+    // $(function () {
+    var desc = JubaoConfig.desc;
+    var link = JubaoConfig.link;
+    var title = JubaoConfig.title;
+    var imgUrl= JubaoConfig.imgUrl;
+    var type;
+    // var type=1;
+    // var aid;
+    var aid = JubaoConfig.id;
+    if(aid == ""){
+		aid = "";
+	}else {
+		aid = JubaoConfig.id
+	}
+    var name = JubaoConfig.action;
+    if (name == "loupan") {
+        type = 1;
+    } else if (name == "sale") {
+        type = 2;
+    } else if (name == "zu") {
+        type = 3;
+    } else if (name == "sp") {
+        type = 4;
+    } else if (name == "xzl") {
+        type = 5;
+    } else if (name == "cf") {
+        type = 6;
+    }else {
+    	type="";
+	}
+    var serverid = "1";
+	// var url ="/include/ajax.php?service=member&action=wxShare&aid=" + aid + "&type=" + type +"&serverid=" +serverid+ "&description=" + desc + "&link=" + link ;
+	// console.log(url);
+    mui.init({
+        swipeBack:true //启用右滑关闭功能
+    });
+    var Intent = null,
+        File = null,
+        Uri = null,
+        main = null;
+    var shares = null;
+    var shareImageUrl = '';
+    mui.plusReady(function() {
+        updateSerivces();
+        if (plus.os.name == "Android") {
+            Intent = plus.android.importClass("android.content.Intent");
+            File = plus.android.importClass("java.io.File");
+            Uri = plus.android.importClass("android.net.Uri");
+            main = plus.android.runtimeMainActivity();
+        }
+    });
+
+    /**
+     * 更新分享服务
+     */
+    function updateSerivces() {
+        plus.share.getServices(function(s) {
+            shares = {};
+            for (var i in s) {
+                var t = s[i];
+                shares[t.id] = t;
+            }
+            outSet("获取分享服务列表成功");
+        }, function(e) {
+            outSet("获取分享服务列表失败：" + e.message);
+        });
+    }
+    /**
+     * 分享操作
+     */
+    function shareAction(id, ex) {
+        var s = null;
+        if (!id || !(s = shares[id])) {
+            outLine("无效的分享服务！");
+            return;
+        }
+        if (s.authenticated) {
+            outSet("---已授权---");
+            shareMessage(s, ex);
+        } else {
+            outSet("---未授权---");
+            s.authorize(function() {
+                shareMessage(s, ex);
+            }, function(e) {
+                outLine("认证授权失败");
+            });
+        }
+    }
+    /**
+     * 发送分享消息
+     */
+    function shareMessage(s, ex) {
+        var msg = {
+            href: link+ '?ori=wxShare',
+            title:title,
+            content:desc,
+            thumbs: imgUrl,
+            pictures: imgUrl,
+            extra: {
+                scene: ex
+            }
+        };
+		$.ajax({
+			url: "/include/ajax.php?service=member&action=wxShare&aid=" + aid + "&type=" + type +"&serverid=" +serverid+ "&description=" + desc + "&link=" + link ,
+			type: "get",
+			datatype: "jsonp",
+			success: function () {
+				// alert("分享成功");
+				s.send(msg, function() {
+					outLine("分享成功!");
+				}, function(e) {
+					outLine("分享失败!");
+				});
+			}
+		})//end ajax
+    }
+    /**
+     * 分享按钮点击事件
+     */
+    function shareHref() {
+        var ids = [{
+                id: "weixin",
+                ex: "WXSceneSession"  /*微信好友*/
+            }, {
+                id: "weixin",
+                ex: "WXSceneTimeline" /*微信朋友圈*/
+            }, {
+                id: "qq"   /*QQ好友*/
+            },{
+                id: "sinaweibo"  /*新浪微博*/
+            }],
+            bts = [{
+                title: "发送给微信好友"
+            }, {
+                title: "分享到微信朋友圈"
+            }, {
+                title: "分享到QQ"
+            }, {
+                title: "分享到新浪微博"
+            }];
+          plus.nativeUI.actionSheet({
+                cancel: "取消",
+                buttons: bts
+            },
+            function(e) {
+                var i = e.index;
+                if (i > 0) {
+                    shareAction(ids[i - 1].id, ids[i - 1].ex);
+                }
+            }
+        );
+    }
+    // 控制台输出日志
+    function outSet(msg) {
+        console.log(msg);
+    }
+    // 界面弹出吐司提示
+    function outLine(msg) {
+        mui.toast(msg);
+    }
+
+ // })
+</script>

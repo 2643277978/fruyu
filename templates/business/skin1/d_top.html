@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{#$detail_title#}-{#$business_title#}</title>
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css" media="all" />
+    <link rel="stylesheet" href="{#$templets_skin#}../../siteConfig/default/css/index_public.css?v=1" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/base_2.css" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/browse.min.css" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/dialog.min.css" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/top_v3.0.css" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/site_rz.css">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/coupon.css" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/home_coupon.css" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/skin_2.css" id="skinFile" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/shouye.css" id="skinFile" />
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="{#$templets_skin#}js/jquery.lazyload.min.js"></script>
+    <script type="text/javascript" src="{#$templets_skin#}js/machine.js"></script>
+    <script type="text/javascript" src="{#$templets_skin#}js/jq.Slide.js"></script>
+    <script type="text/javascript" src="{#$templets_skin#}js/simplyScroll.min.js"></script>
+    <script type="text/javascript" src="{#$templets_skin#}js/jquery.artDialog.source.min.js"></script>
+    <script type="text/javascript" src="{#$templets_skin#}js/top.js"></script>
+    <script type="text/javascript" src="{#$templets_skin#}js/gotop.min.js"></script>
+    <!-- 图片橱窗滚动插件 -->
+    <script type="text/javascript" src="{#$templets_skin#}js/jquery.SuperSlide.min.js"></script>
+    <script type="text/javascript" src="{#$templets_skin#}js/piwik.js"></script>
+    <script type="text/javascript">
+    	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$business_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+    </script>
+  </head>
+
+  <body>
+    <div class="c_mark"></div>
+    <div class="coupon_div" style="display:none"></div>
+    {#include file="../../siteConfig/top1.html"#}
+    <!--未登陆 end-->
+
+    <div id="bg">
+    <!-- piwik统计 -->
