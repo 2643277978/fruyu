@@ -85,9 +85,13 @@ $(function(){
 					}else {
 						has=rtConfig.topDeposit.availableCoins;
 					}
+					if($(".topType label:eq(0)").hasClass("checked")){
+					    count=rtConfig.topNormal[0].price;
+                    }else {
+                        count=parseInt(rtConfig.topPlan[0].all)+parseInt(rtConfig.topPlan[1].all)+parseInt(rtConfig.topPlan[2].all)+parseInt(rtConfig.topPlan[3].all)+parseInt(rtConfig.topPlan[4].all)+parseInt(rtConfig.topPlan[5].all)+parseInt(rtConfig.topPlan[6].all);
+                    }
 					name = langData['siteConfig'][19][762];//置顶
 					jinbi="个";
-					count=parseInt(rtConfig.topPlan[0].all)+parseInt(rtConfig.topPlan[1].all)+parseInt(rtConfig.topPlan[2].all)+parseInt(rtConfig.topPlan[3].all)+parseInt(rtConfig.topPlan[4].all)+parseInt(rtConfig.topPlan[5].all)+parseInt(rtConfig.topPlan[6].all);
 					info = langData['siteConfig'][30][68]+name+langData['siteConfig'][30][69]+'<font color="#ff6600">'+has+'</font>'+jinbi+'<br>'+langData['siteConfig'][30][70]+'<font style="color:#f60;">'+count+'</font>'+jinbi;
 					//您是经纪人，已购买套餐<br>剩余---次数共-----次---当前操作需要消耗----次
 				}
