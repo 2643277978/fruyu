@@ -85,13 +85,20 @@ $(function(){
 					}else {
 						has=rtConfig.topDeposit.availableCoins;
 					}
-					if($('.topType label:eq(0)').is('.checked')){
-					    count=rtConfig.topNormal[0].price;
-                    }else if($('.topType label:eq(1)').is('.checked')) {
-                        count=parseInt(rtConfig.topPlan[0].all)+parseInt(rtConfig.topPlan[1].all)+parseInt(rtConfig.topPlan[2].all)+parseInt(rtConfig.topPlan[3].all)+parseInt(rtConfig.topPlan[4].all)+parseInt(rtConfig.topPlan[5].all)+parseInt(rtConfig.topPlan[6].all);
-                    }
+					// if($('.topType label:eq(0)').hasClass('.checked')){
+					//     count=rtConfig.topNormal[0].price;
+                    // }else if($('.topType label:eq(1)').hasClass('.checked')) {
+                    //     count=parseInt(rtConfig.topPlan[0].all)+parseInt(rtConfig.topPlan[1].all)+parseInt(rtConfig.topPlan[2].all)+parseInt(rtConfig.topPlan[3].all)+parseInt(rtConfig.topPlan[4].all)+parseInt(rtConfig.topPlan[5].all)+parseInt(rtConfig.topPlan[6].all);
+                    // }
+					$('.topType label:eq(0)').click(function () {
+						count=rtConfig.topNormal[0].price;
+					});
+					$('.topType label:eq(1)').click(function () {
+						count=parseInt(rtConfig.topPlan[0].all)+parseInt(rtConfig.topPlan[1].all)+parseInt(rtConfig.topPlan[2].all)+parseInt(rtConfig.topPlan[3].all)+parseInt(rtConfig.topPlan[4].all)+parseInt(rtConfig.topPlan[5].all)+parseInt(rtConfig.topPlan[6].all);
+					});
+					count=parseInt(rtConfig.topPlan[0].all)+parseInt(rtConfig.topPlan[1].all)+parseInt(rtConfig.topPlan[2].all)+parseInt(rtConfig.topPlan[3].all)+parseInt(rtConfig.topPlan[4].all)+parseInt(rtConfig.topPlan[5].all)+parseInt(rtConfig.topPlan[6].all);
+					console.log($('.topType label'));
 					console.log($('.topType label:eq(0)'));
-					console.log($('.topType label:eq(1)'));
 					name = langData['siteConfig'][19][762];//置顶
 					jinbi="个";
 					info = langData['siteConfig'][30][68]+name+langData['siteConfig'][30][69]+'<font color="#ff6600">'+has+'</font>'+jinbi+'<br>'+langData['siteConfig'][30][70]+'<font style="color:#f60;">'+Math.round(count)+'</font>'+jinbi;
