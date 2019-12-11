@@ -92,7 +92,7 @@ $(function(){
                     }
 					console.log(count);
 					console.log(rtConfig.topNormal[0].price);
-					console.log(rtConfig.topNormal[0].price.toFixed(2));
+					console.log(Math.round(count));
 					name = langData['siteConfig'][19][762];//置顶
 					jinbi="个";
 					info = langData['siteConfig'][30][68]+name+langData['siteConfig'][30][69]+'<font color="#ff6600">'+has+'</font>'+jinbi+'<br>'+langData['siteConfig'][30][70]+'<font style="color:#f60;">'+count+'</font>'+jinbi;
