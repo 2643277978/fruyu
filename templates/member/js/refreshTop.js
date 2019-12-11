@@ -91,11 +91,9 @@ $(function(){
 					//您是经纪人，已购买套餐<br>剩余---次数共-----次---当前操作需要消耗----次
 				}
 
-
-
 				if(type == 'topping'){
 					info = info.replace(/次/g, langData['siteConfig'][13][60]);//天
-                    if(has >= count){
+                    if(has >= need){
                         btn.attr('href', 'javascript:;').text(name);
                     }else{
                         btn.attr('href', href).text(langData['siteConfig'][30][71]);//升级套餐
@@ -126,18 +124,18 @@ $(function(){
 
 				if(type == "refresh"){
 					$('.freeRefresh, .normalRefresh, .rtPayObj').addClass('hide_impt');
-					// this.update_zjuser_btn(type, 1);
-					$('.house_zjuser_choose').show().children('li').click(function(){
-						var t = $(this), index = t.index();
-						t.addClass('curr').siblings().removeClass('curr');
-						if(index == 1){
-							that_.update_zjuser_btn(type, 1);
-							$('#refreshTopForm #type').val('refresh');
-						}else{
-							$('.rtSmartPackage li.curr').click();
-							$('#refreshTopForm #type').val('smartRefresh');
-						}
-					})
+					this.update_zjuser_btn(type, 1);
+					// $('.house_zjuser_choose').show().children('li').click(function(){
+					// 	var t = $(this), index = t.index();
+					// 	t.addClass('curr').siblings().removeClass('curr');
+					// 	if(index == 1){
+					// 		that_.update_zjuser_btn(type, 1);
+					// 		$('#refreshTopForm #type').val('refresh');
+					// 	}else{
+					// 		$('.rtSmartPackage li.curr').click();
+					// 		$('#refreshTopForm #type').val('smartRefresh');
+					// 	}
+					// })
 				}
 				else{
 					// $('.rtPayObj').addClass('hide_impt');
@@ -707,10 +705,9 @@ $(function(){
 		}
 	});
 	$('#refreshTopForm').submit(function(e){
-		if(check_zjuser){
+		// if(check_zjuser){
 			e.preventDefault();
 			$('.rtBody .paySubmit').addClass('disabled');
-
 			$.ajax({
 				url: masterDomain + '/include/ajax.php',
 				type : 'post',
@@ -719,7 +716,11 @@ $(function(){
 				success: function(data){
 					$('.rtBody .paySubmit').removeClass('disabled');
 					if(data && data.state == 100){
-						$('.zjuser_info').html(data.info);
+						if(check_zjuser){
+							$('.zjuser_info').html(data.info);
+						}else {
+							alert(data.info)
+						}
 						setTimeout(function(){
 							location.reload();
 						}, 1000)
@@ -732,7 +733,7 @@ $(function(){
 					$('.rtBody .paySubmit').removeClass('disabled');
 				}
 			})
-		}
+		// }
 	})
 
 	//查看计划置顶详情

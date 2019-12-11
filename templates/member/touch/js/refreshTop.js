@@ -673,7 +673,7 @@ $(function(){
 
 
   $('#refreshTopForm').submit(function(e){
-    if(check_zjuser){
+    // if(check_zjuser){
       e.preventDefault();
       $('.rtBody .paySubmit').addClass('disabled');
 
@@ -685,7 +685,11 @@ $(function(){
         success: function(data){
           $('.rtBody .paySubmit').removeClass('disabled');
           if(data && data.state == 100){
-            $('.zjuser_info').html(data.info);
+			  if(check_zjuser){
+				  $('.zjuser_info').html(data.info);
+			  }else {
+				  alert(data.info)
+			  }
             setTimeout(function(){
               location.reload();
             }, 1000)
@@ -698,7 +702,7 @@ $(function(){
           $('.rtBody .paySubmit').removeClass('disabled');
         }
       })
-    }
+    // }
   })
 
   // 点击遮罩层
