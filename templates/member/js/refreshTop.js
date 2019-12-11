@@ -719,7 +719,8 @@ $(function(){
 						if(check_zjuser){
 							$('.zjuser_info').html(data.info);
 						}else {
-							alert(data.info)
+							$('.zjuser_info').show();
+							$('.zjuser_info').html(data.info);
 						}
 						setTimeout(function(){
 							location.reload();

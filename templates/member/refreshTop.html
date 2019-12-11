@@ -149,6 +149,7 @@
     </div>
     <!-- 置顶 e -->
 
+
     <!-- 支付 s -->
     <div class="rtPayObj fn-hide">
       {#if $userinfo.money > 0#}
@@ -187,10 +188,10 @@
       <a href="javascript:;" class="paySubmit" style="display: none;">{#$langData['siteConfig'][19][327]#}</a>{#* 支付 *#}
     </div>
     <!-- 支付 e -->
-
     <!-- 经纪人提交刷新 -->
     <p class="zjuser_info">{#$langData['siteConfig'][32][45]#}</p>{#* 您是经纪人 *#}
     <a href="javascript:;" data-url="{#getUrlPath service='member' type='user' template='house_meallist'#}" class="paySubmit zjuser_tj" id="zjuser_refresh" >{#$langData['siteConfig'][16][70]#}</a>{#* 刷新 *#}
+
 
   </div>
 </div>
