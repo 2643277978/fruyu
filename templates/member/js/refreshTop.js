@@ -258,8 +258,8 @@ $(function(){
 
 				// 房产经纪人操作
 				if(check_zjuser){
-					$('.topType label:eq(0)').hide();
-					$('.topType label:eq(1)').click();
+					// $('.topType label:eq(0)').hide();
+					$('.topType label').click();
 					$('.rtTopping .topPlan').show().children('dl:eq(1)').hide();
 					$('.rtTopping .topNormal').hide();
 					$('#refreshTopForm #type').val('toppingPlan');
