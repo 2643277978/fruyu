@@ -85,9 +85,9 @@ $(function(){
 					}else {
 						has=rtConfig.topDeposit.availableCoins;
 					}
-					if($('.topType label:eq(0)').hasClass('.checked')){
+					if(topNormal){
 					    count=rtConfig.topNormal[0].price.parseInt(2);
-                    }else if($('.topType label:eq(1)').hasClass('.checked')) {
+                    }else if(topPlan) {
                         count=parseInt(rtConfig.topPlan[0].all)+parseInt(rtConfig.topPlan[1].all)+parseInt(rtConfig.topPlan[2].all)+parseInt(rtConfig.topPlan[3].all)+parseInt(rtConfig.topPlan[4].all)+parseInt(rtConfig.topPlan[5].all)+parseInt(rtConfig.topPlan[6].all);
                     }
 					name = langData['siteConfig'][19][762];//置顶
