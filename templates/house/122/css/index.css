@@ -192,7 +192,7 @@ html,body{background-color: #f5f5f7;}
 .esfbox .midbox{margin-left:20px;float: left;width: 895px;}
 .esfbox .midbox ul li{background: #fff;width: 285px;height: 380px;float:left;margin-right:20px;-webkit-transition: all .3s ease-in-out; -moz-transition: all .3s ease-in-out; transition: all .3s ease-in-out;margin-bottom: 20px;}
 .esfbox .midbox ul li:nth-child(3n){margin-right: 0;}
-.esfbox .midbox ul li:nth-child(4),.esfbox .midbox ul li:nth-child(5),.esfbox .midbox ul li:nth-child(6){margin-bottom: 0;}
+/*.esfbox .midbox ul li:nth-child(4),.esfbox .midbox ul li:nth-child(5),.esfbox .midbox ul li:nth-child(6){margin-bottom: 0;}*/
 .esfbox .midbox ul li:hover{box-shadow: 0px 3px 13px 0px rgba(0, 0, 0, 0.07);}
 .esfbox .midbox ul li a{display: block;}
 .esfbox .midbox ul li .imgbox{width: 285px;height: 230px;overflow: hidden;position: relative;}

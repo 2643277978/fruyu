@@ -240,7 +240,6 @@ $(function(){
 						}
 
 					}
-
 					g_conf.loupanData = loupanData;
 					init.doNext(type);
 
@@ -415,19 +414,19 @@ $(function(){
 			}else{
 
 				//楼盘集合
-				if(zoom - g_conf.minZoom == 3){
+				if(zoom - g_conf.minZoom ==2){
 
 					data = init.getVisarea(g_conf.loupanData);
 					init.createBubble(data, bubbleTemplate[2], 2, bubbleTemplate.moreTpl);
 
 				//只显示楼盘名称
-				}else if(zoom - g_conf.minZoom >= 4){
+				}else if(zoom - g_conf.minZoom >=3){
 
 					data = init.getVisarea(g_conf.loupanData);
 					init.createBubble(data, bubbleTemplate[3], 2, bubbleTemplate.moreTpl);
 
 					//显示楼盘名称、类型、价格
-					zoom >= 16 ? $(".bubble-2").addClass("clicked") : $(".bubble-2").removeClass("clicked");
+					zoom >= 6 ? $(".bubble-2").addClass("clicked") : $(".bubble-2").removeClass("clicked");
 				}
 
 			}
@@ -448,8 +447,6 @@ $(function(){
 				max_latitude: a.lat
 			}
 		}
-
-
 		//提取可视区域内的数据
 		,getVisarea: function(data){
 			data = data || [];
@@ -481,10 +478,8 @@ $(function(){
 			$.each(data,	function(e, o) {
 				var bubbleLabel, r = [];
 				if(more){
-
 					o.priceTpl = '<span class="price">' + o.average_price ? (o.average_price + '</span><i>' + (o.ptype == 1 ? echoCurrency('short')+"/m²" : ("万"+echoCurrency('short')+"/套")) + '</i>') : "价格待定</span>";
 					o.moreTpl = init.replaceTpl(more, o);
-
 				}
 
 				bubbleLabel = new BMap.Label(init.replaceTpl(temp, o), {
@@ -525,7 +520,7 @@ $(function(){
 			if(isClickHx) return false;
 
 			//可视区域内楼盘数量
-			// $(".lcount strong").html(data.length);
+			$(".lcount strong").html(data.length);
 
 			if(data.length == 0){
 				$(".loupan-list").html('<p class="empty">很抱歉，没有找到合适的房源，请重新查找</p>');
@@ -920,7 +915,7 @@ $(function(){
 			4 : '<div class="bubble bubble-4" data-disabled="1" data-longitude="${longitude}" data-latitude="${latitude}" data-id="${loupan_id}"><span class="close">&times;</span><a href="${url}" target="_blank"><div class="bubble-inner clear"><p class="tle">周边信息</p><div class="around-container"><p class="around-li li-first"  data-type="超市" style="background-position: 0 -2px;">超市：<span>0</span>家</p><p class="around-li" data-type="公交" style="background-position: 0 -56px;">公交：<span>0</span>站</p><p class="around-li"  data-type="学校" style="background-position: 0 -20px;">学校：<span>0</span>所</p><p class="around-li"  data-type="银行" style="background-position: 0 -74px;">银行：<span>0</span>家</p><p class="around-li"  data-type="医院" style="background-position: 0 -38px;">医院：<span>0</span>所</p><p class="around-li li-last"  data-type="休闲" style="background-position: 0 -92px;">休闲：<span>0</span>家</p></div><i class="arrow"><i class="arrow-i"></i></i></div></a><p class="cycle"></p></div>',
 
 			//楼盘价格
-			moreTpl: '<p class="num"><span class="house-type">${house_type}</span>均价${priceTpl}<span class="gt">&gt;</span></p>'
+			moreTpl: '<a href="${url}"><p class="num">${resblock_name}&nbsp;<span class="house-type">${house_type}</span>均价${priceTpl}<span class="gt">&gt;</span></p></a>'
 		}
 
 		//列表模板

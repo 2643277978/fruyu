@@ -11,7 +11,7 @@ html, body {height: 100%;}
 .choose-tab{position: fixed; top: .91rem; left: 0; right: 0; border-bottom: 1px solid #f4f4f4; z-index: 11; background: #fff;}
 .huoniao_iOS .choose-tab{top:0;}
 .choose-tab li{width: 20%; font-size: .3rem; float: left;text-align: center;position: relative;padding: .2rem 0;}
-.choose-tab li a{display: block;border-right: 1px solid #f4f4f4;height: .4rem;line-height: .4rem;font-size: 14px;text-align: center;color: #565c67!important;padding: 0 6px;}
+.choose-tab li a{display: block;border-right: 1px solid #f4f4f4;height: .4rem;line-height: .4rem;font-size: 14px;text-align: center;color: white!important;padding: 0 6px;}
 .choose-tab li span{position: relative;display: inline-block;height: .4rem;line-height: .4rem;max-width: 85%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;padding-right: .26rem;font-size: .25rem;}
 .choose-tab li span:after{content: '';position: absolute;width: 0;height: 0;border-style: solid;border-width: .08rem;border-color: #cccfd8 transparent transparent transparent;right: 0;top: 50%;margin-top: -2px;}
 .choose-tab li.active a span{color: #ff6666;}
@@ -76,15 +76,15 @@ html, body {height: 100%;}
 .bubble-2 .cycle {background-color: #4285f4; border-radius: 50%; width: 20px; height: 20px; border: 1px solid #1658c4; position: absolute; left: 50%; margin-left: -10px; bottom: 6px;}
 .bubble-2.clicked .bubble-wrap {display: block;}
 
-.bubble-3 {height: 28px; line-height: 28px; cursor: pointer; text-align: center;}
-.bubble-3 .num {padding: 0 6px; display: inline-block; background-color: #4285f4; border-radius: 2px; border: 1px solid #4285f4; min-width: 40px; -webkit-transition: all .15s ease-in-out; -moz-transition: all .15s ease-in-out; -o-transition: all .15s ease-in-out; transition: all .15s ease-in-out; font-style: normal;}
-.bubble-3 .name {height: 30px; color: #333; position: absolute; z-index: -1; line-height: 30px; -webkit-transition: all .15s ease-in-out; -moz-transition: all .15s ease-in-out; -o-transition:all .15s ease-in-out; transition: all .15s ease-in-out;}
-.bubble-3 .name-des {background-color: #fff; display: inline-block; padding: 0 6px; border-radius: 0 3px 3px 0; box-shadow: 0 2px 2px rgba(0,0,0,0.2); font-style: normal;}
-.bubble-3 .name-des a {color: #333}
-.bubble-3 .name-des a:hover {text-decoration: underline;}
-.arrow-up {opacity: .9999; zoom: 1;}
-.arrow-up,.arrow {border: 6px solid transparent; border-top-color: #4285f4; border-top-width: 8px; display: block; width: 0; height: 0; margin: 0 auto; -webkit-transition: all .15s ease-in-out; -moz-transition: all .15s ease-in-out; -o-transition: all .15s ease-in-out; transition: all .15s ease-in-out;}
-.arrow {border-top-color: #4285f4; margin-left: -6px; margin-top: -9px; position: relative;}
+/*.bubble-3 {height: 28px; line-height: 28px; cursor: pointer; text-align: center;}*/
+/*!*.bubble-3 .num {padding: 0 6px; display: inline-block; background-color: #4285f4; border-radius: 2px; border: 1px solid #4285f4; min-width: 40px; -webkit-transition: all .15s ease-in-out; -moz-transition: all .15s ease-in-out; -o-transition: all .15s ease-in-out; transition: all .15s ease-in-out; font-style: normal;}*!*/
+/*.bubble-3 .name {height: 30px; color: #333; position: absolute; z-index: -1; line-height: 30px; -webkit-transition: all .15s ease-in-out; -moz-transition: all .15s ease-in-out; -o-transition:all .15s ease-in-out; transition: all .15s ease-in-out;}*/
+/*.bubble-3 .name-des {background-color: #fff; display: inline-block; padding: 0 6px; border-radius: 0 3px 3px 0; box-shadow: 0 2px 2px rgba(0,0,0,0.2); font-style: normal;}*/
+/*.bubble-3 .name-des a {color: #333}*/
+/*.bubble-3 .name-des a:hover {text-decoration: underline;}*/
+/*.arrow-up {opacity: .9999; zoom: 1;}*/
+/*.arrow-up,.arrow {border: 6px solid transparent; border-top-color: #4285f4; border-top-width: 8px; display: block; width: 0; height: 0; margin: 0 auto; -webkit-transition: all .15s ease-in-out; -moz-transition: all .15s ease-in-out; -o-transition: all .15s ease-in-out; transition: all .15s ease-in-out;}*/
+/*.arrow {border-top-color: #4285f4; margin-left: -6px; margin-top: -9px; position: relative;}*/
 
 
 

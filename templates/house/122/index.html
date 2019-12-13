@@ -99,7 +99,7 @@
 	</div>
 
 	<ul class="ulbox fn-clear">
-		{#house action=loupanList pageSize=12 return=list#}
+		{#house action=loupanList pageSize=8 return=list#}
 		<li>
 			<a href="{#$list.url#}" target="_blank">
 				<div class="imgbox">
@@ -414,7 +414,7 @@
 		</div>
 		<div class="midbox">
 			<ul class="fn-clear">
-				{#house action=saleList pageSize=6 return=sale#}
+				{#house action=saleList pageSize=9 return=sale#}
 				<li>
 					<a href="{#$sale.url#}" target="_blank">
 						<div class="imgbox">
@@ -561,7 +561,7 @@
 		</div>
 		<div class="midbox">
 			<ul class="fn-clear">
-				{#house action="zuList" return="zu" type={#$type#} pageSize="6"#}
+				{#house action="zuList" return="zu" type={#$type#} pageSize="9"#}
 				<li>
 					<a href="{#$zu.url#}" target="_blank">
 						<div class="imgbox">

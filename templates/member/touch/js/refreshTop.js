@@ -704,7 +704,7 @@ $(function(){
         }
       })
     // }
-  })
+  });
 
   // 点击遮罩层
   $('.refreshTopMask').on('click',function(){

@@ -67,10 +67,10 @@ html, body {height: 100%;}
 .bubble-2 {color: #333;}
 .bubble-2 .bubble-wrap {position: absolute; bottom: 28px; left: -10px; text-align: left; z-index: 10;}
 .bubble-2:hover .bubble-wrap, .bubble-2.hover .bubble-wrap {display: block;}
-.bubble-2 .bubble-inner {padding: 4px 0; background-color: #fff; border-radius: 2px; box-shadow: 0 10px 8px 0 rgba(0,0,0,0.1);}
+.bubble-2 .bubble-inner {padding: 4px 0; background-color: red; border-radius: 2px; box-shadow: 0 10px 8px 0 rgba(0,0,0,0.1);}
 .bubble-2 .bubble-inner p {padding: 2px 10px;}
 .bubble-2 .bubble-inner .name {height: 20px; line-height: 20px; font-weight: 800;}
-.bubble-2 .bubble-inner .num {height: 20px; line-height: 20px; position: relative; z-index: 2;}
+.bubble-2 .bubble-inner .num {height: 20px; line-height: 20px; position: relative; z-index: 2;color: white;}
 .bubble-2 .bubble-inner .house-type {font-weight: 800; margin-right: 6px;}
 .bubble-2 .bubble-inner .price {font-family: Tahoma; color: #de1e30; margin-left: 2px; margin-right: 2px; font-weight: 800;}
 .bubble-2 .bubble-inner i {font-style: normal;}
@@ -81,7 +81,7 @@ html, body {height: 100%;}
 .bubble-2.clicked .bubble-wrap {display: block;}
 
 .bubble-3 .bubble-wrap {display: block;}
-.bubble-3 .bubble-wrap .name {font-size: 12px; font-weight: 700; text-align: center; background-color: #fff; text-indent: 0;}
+.bubble-3 .bubble-wrap .name {font-size: 12px; font-weight: 700; text-align: center; background-color: red; text-indent: 0;color: white}
 /*.bubble-3 .bubble-wrap .num {display: none;}*/
 .bubble-3:hover .num, .bubble-3.clicked .num, .bubble-3.hover .num {display: block;}
 .bubble-3:hover .name,.bubble-3.clicked .name, .bubble-3.hover .name {text-align: left;}

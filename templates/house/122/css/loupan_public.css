@@ -7,7 +7,7 @@
 .mod-banner {width: 100%;height: 600px;overflow: hidden;position: relative;}
 .mod-banner .filter-bg {-webkit-filter: blur(8px);-moz-filter: blur(8px);filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius="3");filter: blur(8px);background-size: cover;background-position: center 0;background-repeat: no-repeat;}
 .mod-banner .filter-bg,.mod-banner .opacity-bg {position: absolute;top: 0;left: 0;width: 100%;height: 100%;z-index: 0;}
-.mod-banner .filter-bg img,.mod-banner .opacity-bg img{width:100%;height:100%;display:block;}
+.mod-banner .filter-bg img,.mod-banner .opacity-bg img,.banner-box img{width:100%;height:100%;display:block;}
 .mod-banner .opacity-bg {background-color: #000;opacity: .4;filter: alpha(opacity=40)}
 .mod-banner .crumb {height: 35px;margin: 15px auto 0;position: relative;z-index: 100;padding:0;border-bottom:none;}
 .mod-banner .crumb .cl {font-size: 14px;height: 35px;line-height: 35px;color:#fff;}
