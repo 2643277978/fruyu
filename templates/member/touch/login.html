@@ -31,7 +31,7 @@
     <form class="" action="" method="post">
       <input type="hidden" name="areaCode" id="areaCode" value="86">
 
-      <div class="litem">
+      <div class="litem fn-hide">
         <div class="inpbox">
           <dl class="fn-clear">
             <dt class="fn-left"><i class="icon icon-user"></i></dt>
@@ -53,7 +53,7 @@
       </div>
 
       {#if $cfg_smsLoginState#}
-      <div class="litem sms fn-hide">
+      <div class="litem sms ">
         <div class="inpbox phone">
           <dl class="fn-clear">
             <dt class="fn-left"><label>+86</label></dt>
@@ -70,7 +70,7 @@
       {#/if#}
       <!-- <div class="error"><span>{#$langData['siteConfig'][20][165]#}</span></div> -->
       <input type="submit" name="submit" value="{#$langData['siteConfig'][2][0]#}" class="submit">
-      {#if strstr($redirectUrl, "wmsj") === false#}{#if $cfg_smsLoginState#}<span class="smsLogin">短信验证码登录</span>{#/if#}{#/if#}
+      {#if strstr($redirectUrl, "wmsj") === false#}{#if $cfg_smsLoginState#}<span class="smsLogin">用户密码登录</span>{#/if#}{#/if#}
     </form>
     {#if strstr($redirectUrl, "wmsj") === false#}
     <div class="othertype fn-hide">

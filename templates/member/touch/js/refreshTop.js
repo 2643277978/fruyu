@@ -102,9 +102,10 @@ $(function(){
 			}else {
 				has=rtConfig.topDeposit.availableCoins;
 			}
+			name = '置顶';
 			info = '您是经纪人，已购买套餐<br>剩余'+name+'次数共<font color="#ff6600">'+has+'</font>次<br>当前操作需要消耗<font style="color:#f60;">'+Math
 				.floor(need)+'</font>次';
-          name = '置顶';
+
 		}
 
         if(type == 'topping'){

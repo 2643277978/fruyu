@@ -16,6 +16,7 @@
 
 	var hideFileUrl = {#$cfg_hideUrl#};
 	var pointRatio = {#$cfg_pointRatio#}, pointName = '{#$cfg_pointName#}';
+	var userinfo={#$userinfo.point#};
 </script>
 </head>
 <body>
@@ -48,7 +49,7 @@
         <p class="tit">{#$langData['siteConfig'][19][259]#}</p>
         <p class="count">{#$userinfo.freeze#}</p>
       </div>
-			{#if $cfg_pointState#}
+		{#if $cfg_pointState#}
       <div class="item">
         <p class="tit">{#$langData['siteConfig'][19][683]#}{#$cfg_pointName#}</p>
         <p class="count">{#$userinfo.point#}</p>
@@ -87,11 +88,9 @@
 			{#if 'withdraw'|in_array:$cfg_ucenterLinks#}
       <!--<li><a href="{#getUrlPath service='member' type='user' template='withdraw_log'#}"><i class="icon6"></i>{#$langData['siteConfig'][19][294]#}</a></li>-->
 			{#/if#}
-
 			{#if 'record'|in_array:$cfg_ucenterLinks#}
       <li><a href="{#getUrlPath service='member' type='user' template='record'#}"><i class="icon7"></i>{#$langData['siteConfig'][19][226]#}</a></li>
 			{#/if#}
-
         {#if 'reward'|in_array:$cfg_ucenterLinks#}
         <li><a href="{#getUrlPath service='member' type='user' template='reward'#}"><i class="icon8"></i>{#$langData['siteConfig'][19][233]#}</a></li>
         {#/if#}
