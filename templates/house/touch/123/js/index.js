@@ -31,7 +31,6 @@ $(function(){
 		  lng = data.lng, lat = data.lat;
 		  getloupanList();
 		}
-
 		function getloupanList(){
 			//楼盘
 			$.ajax({
@@ -129,7 +128,7 @@ $(function(){
 								html.push('<span class="area">'+list[i].room+'</span><span class="area">'+list[i].area+'平米</span><em>'+price+'</em>');
 
 								html.push('</div>');
-								html.push('<p class="addr">'+list[i].distances+'<span class="addr_ess">'+list[i].addr[3]+'</span></p>');
+								html.push('<p class="addr">'+list[i].community+'<span class="addr_ess">'+list[i].addr[2]+'</span></p>');
 
 							html.push('</div>');
 							html.push('</a>');
@@ -210,7 +209,6 @@ $(function(){
 
     // banner轮播图
     new Swiper('.banner .swiper-container', {pagination: '.banner .pagination',loop: true,grabCursor: true,paginationClickable: true,autoplay:2000});
-
     // 滑动导航
     var t = $('.tcInfo .swiper-wrapper');
     var swiperNav = [], mainNavLi = t.find('li');

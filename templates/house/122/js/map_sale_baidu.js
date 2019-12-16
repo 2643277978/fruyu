@@ -56,8 +56,6 @@ $(function(){
 
 			//初始加载
 			init.getSaleData("tilesloaded");
-
-
 			map.addEventListener("zoomend", function() {
 				init.updateOverlays("zoom");
 			});
@@ -69,54 +67,43 @@ $(function(){
 			//气泡点击  区域
 			$("#"+g_conf.mapWrapper).on("click", ".bubble-1", function() {
 
-				var t = $(this), zoom = map.getZoom(),
-					newView = {
-						lng: parseFloat(t.attr("data-longitude")),
-						lat: parseFloat(t.attr("data-latitude")),
-						typ: zoom + 1
-					};
+				var t = $(this),
+				newView = {
+					lng: parseFloat(t.attr("data-longitude")),
+					lat: parseFloat(t.attr("data-latitude")),
+					typ: g_conf.minZoom + 3
+				};
 				newView.lng && newView.lat ? map.centerAndZoom(new BMap.Point(newView.lng, newView.lat), newView.typ) : map.setZoom(newView.typ);
 
 
-				//楼盘
-			}).on("click", ".bubble-2", function(e) {
+			//气泡点击  商圈
+			}).on("click", ".bubble-2", function(){
 
 				var t = $(this),
-					newView = {
-						lng: parseFloat(t.attr("data-longitude")),
-						lat: parseFloat(t.attr("data-latitude")),
-						typ: 15
-					};
-				newView.lng && newView.lat ? (map.setCenter(new BMap.Point(newView.lng, newView.lat)), t.addClass("clicked")) : map.setZoom(newView.typ);
+				newView = {
+					lng: parseFloat(t.attr("data-longitude")),
+					lat: parseFloat(t.attr("data-latitude")),
+					typ: g_conf.minZoom + 5
+				};
+				newView.lng && newView.lat ? map.centerAndZoom(new BMap.Point(newView.lng, newView.lat), newView.typ) : map.setZoom(newView.typ);
+
+				init.getSaleData("community");
+
+
+			//气泡点击 小区
+			}).on("click", ".bubble-3", function(e) {
+
+				var t = $(this), id = t.attr("data-id");
+				ids = id;
+
+				$(".clicked").parent().removeClass("label-clicked");
+				$(".clicked").removeClass("clicked");
+				t.addClass("clicked");
+				t.parent().addClass("label-clicked");
+
+				init.mosaicSaleList();
 
 			});
-			// 	.on("click", ".bubble-2", function(){
-			//
-			// 	var t = $(this),
-			// 	newView = {
-			// 		lng: parseFloat(t.attr("data-longitude")),
-			// 		lat: parseFloat(t.attr("data-latitude")),
-			// 		typ: g_conf.minZoom + 5
-			// 	};
-			// 	newView.lng && newView.lat ? map.centerAndZoom(new BMap.Point(newView.lng, newView.lat), newView.typ) : map.setZoom(newView.typ);
-			//
-			// 	init.getSaleData("community");
-			//
-			//
-			// //气泡点击 小区
-			// }).on("click", ".bubble-3", function(e) {
-			//
-			// 	var t = $(this), id = t.attr("data-id");
-			// 	ids = id;
-			//
-			// 	$(".clicked").parent().removeClass("label-clicked");
-			// 	$(".clicked").removeClass("clicked");
-			// 	t.addClass("clicked");
-			// 	t.parent().addClass("label-clicked");
-			//
-			// 	init.mosaicSaleList();
-			//
-			// });
 
 
 			//自定义滚动条
@@ -141,9 +128,9 @@ $(function(){
 				callbacks: {
 					//到达底部加载下一页
 					onTotalScroll: function(){
-						zuPage++;
+						salePage++;
 						isNewList = false;
-						init.getzuPageList(zuPageData);
+						init.getSalePageList();
 					}
 				}
 			});
@@ -165,20 +152,17 @@ $(function(){
 			list.css({"height": sidebarHeight - foHeight - lcountHeight + "px"});
 			list.mCustomScrollbar("update");
 		}
-
-
 		//获取区域及楼盘信息
 		,getSaleData: function(type){
 
-			// var visBounds = init.getBounds();
-			// var boundsArr = [];
-			// boundsArr.push('min_latitude='+visBounds['min_latitude']);
-			// boundsArr.push('max_latitude='+visBounds['max_latitude']);
-			// boundsArr.push('min_longitude='+visBounds['min_longitude']);
-			// boundsArr.push('max_longitude='+visBounds['max_longitude']);
+			var visBounds = init.getBounds();
+			var boundsArr = [];
+			boundsArr.push('min_latitude='+visBounds['min_latitude']);
+			boundsArr.push('max_latitude='+visBounds['max_latitude']);
+			boundsArr.push('min_longitude='+visBounds['min_longitude']);
+			boundsArr.push('max_longitude='+visBounds['max_longitude']);
 
-			// var data = boundsArr.join("&")+"&keywords="+encodeURIComponent(g_conf.keywords)+(g_conf.filter.length > 0 ? "&"+g_conf.filter.join("&") : "")+"&orderby="+g_conf.orderby;
-			var data ="&keywords="+encodeURIComponent(g_conf.keywords)+(g_conf.filter.length > 0 ? "&"+g_conf.filter.join("&") : "")+"&orderby="+g_conf.orderby;
+			var data = boundsArr.join("&")+"&keywords="+encodeURIComponent(g_conf.keywords)+(g_conf.filter.length > 0 ? "&"+g_conf.filter.join("&") : "")+"&orderby="+g_conf.orderby;
 
 			//页面打开就请求获取区域数据
 			if(!type || type == "tilesloaded" || type == ""){
@@ -201,52 +185,19 @@ $(function(){
 								districtData[i]['longitude'] = list[i].longitude;
 								districtData[i]['latitude'] = list[i].latitude;
 								districtData[i]['house_count'] = list[i].count;
-								districtData[i]['avg_unit_price'] = list[i].price;
+								districtData[i]['min_price_total'] = list[i].price;
+								districtData[i]['avg_unit_price'] = list[i].unitprice;
 							}
 
 						}
 
 						g_conf.districtData = districtData;
-						init.doNext(type);
+						init.updateOverlays(type);
 
 					}
 				});
 
-				$.ajax({
-					"url": g_conf.urlPath[5],
-					"data": data,
-					"dataType": "JSONP",
-					"async": false,
-					"success": function(data){
-						var saleDate = [];
-						if(data && data.state == 100){
-							total_count = data.info.pageInfo.totalCount;
-							var _list = data.info.list;
-							for(var i = 0; i < _list.length; i++){
-								saleDate[i] = [];
-								saleDate[i]['zu_id'] = _list[i].id;
-								saleDate[i]['longitude'] = _list[i].longitude;
-								saleDate[i]['latitude'] = _list[i].latitude;
-								saleDate[i]['title'] = _list[i].title;
-								saleDate[i]['frame_room'] = _list[i].room;
-								saleDate[i]['frame_orientation'] = _list[i].direction;
-								saleDate[i]['house_area'] = _list[i].area;
-								saleDate[i]['price_total'] = _list[i].price;
-								saleDate[i]['tags'] = _list[i].flags;
-								saleDate[i]['list_picture_url'] = _list[i].litpic;
-								saleDate[i]['community_id'] = _list[i].communityid;
-								saleDate[i]['community_name'] = _list[i].community;
-								saleDate[i]['href'] = _list[i].url;
-								saleDate[i]['house_type'] = _list[i].protype;
-								saleDate[i]['house_picture_count'] = _list[i].imgCount;
-								saleDate[i]['update'] = _list[i].timeUpdate+"更新";
-							}
-						}
-						g_conf.saleDate = saleDate;
-						init.doNext(type);
-					}
-				});
-				//type为bizcircle(商圈)时，请求商圈信息
+			//type为bizcircle(商圈)时，请求商圈信息
 			}else if(type == "bizcircle"){
 
 				if(g_conf.bizcircle.length == 0){
@@ -268,7 +219,8 @@ $(function(){
 									bizcircleData[i]['longitude'] = list[i].longitude;
 									bizcircleData[i]['latitude'] = list[i].latitude;
 									bizcircleData[i]['house_count'] = list[i].count;
-									bizcircleData[i]['avg_unit_price'] = list[i].price;
+									bizcircleData[i]['min_price_total'] = list[i].price;
+									bizcircleData[i]['avg_unit_price'] = list[i].unitprice;
 								}
 
 							}
@@ -284,7 +236,7 @@ $(function(){
 					init.createBubble(data, bubbleTemplate[2], 2);
 				}
 
-				//type为community(小区)时间，请求小区信息，根据地图当前可视范围进行筛选
+			//type为community(小区)时间，请求小区信息，根据地图当前可视范围进行筛选
 			}else if(type == "community"){
 
 				$.ajax({
@@ -305,12 +257,11 @@ $(function(){
 								saleData[i]['longitude'] = list[i].longitude;
 								saleData[i]['latitude'] = list[i].latitude;
 								saleData[i]['house_count'] = list[i].count;
-								saleData[i]['avg_unit_price'] = list[i].price;
+								saleData[i]['min_price_total'] = list[i].price;
+								saleData[i]['avg_unit_price'] = list[i].unitprice;
 								saleData[i]['href'] = list[i].url;
 							}
-
 						}
-
 						g_conf.saleData = saleData;
 						data = init.getVisarea(g_conf.saleData);
 						init.createBubble(data, bubbleTemplate[3], 2);
@@ -322,12 +273,6 @@ $(function(){
 
 		}
 
-		//加载完成执行下一步
-		,doNext: function(type){
-			if(g_conf.districtData && g_conf.saleDate){
-				init.updateOverlays(type);
-			}
-		}
 
 
 		//更新地图状态
@@ -338,41 +283,26 @@ $(function(){
 			}
 
 			var zoom = map.getZoom(), data = [];
-
 			//区域集合
-			if(zoom - g_conf.minZoom <= 1){
-
+			if(zoom - g_conf.minZoom <= 2){
 				data = init.getVisarea(g_conf.districtData);
 				init.createBubble(data, bubbleTemplate[1], 1);
-
 			}else{
-				//楼盘集合
-				if(zoom - g_conf.minZoom ==1){
-
-					data = init.getVisarea(g_conf.saleDate);
-					console.log(data);
-					init.createBubble(data, bubbleTemplate[2], 2, bubbleTemplate.moreTpl);
-
-					//只显示楼盘名称
-				}else if(zoom - g_conf.minZoom >=3){
-
-					data = init.getVisarea(g_conf.saleDate);
-					init.createBubble(data, bubbleTemplate[3], 2, bubbleTemplate.moreTpl);
-
-					//显示楼盘名称、类型、价格
-					zoom >= 6 ? $(".bubble-2").addClass("clicked") : $(".bubble-2").removeClass("clicked");
+				//商圈集合
+				if(zoom - g_conf.minZoom <= 3){
+					init.getSaleData("bizcircle");
+				//小区集合
+				}else if(zoom - g_conf.minZoom > 3){
+					init.getSaleData("community");
 				}
 
 			}
-
 		}
-
-
 		//获取地图可视区域范围
 		,getBounds: function(){
 			var e = map.getBounds(),
-				t = e.getSouthWest(),
-				a = e.getNorthEast();
+			t = e.getSouthWest(),
+			a = e.getNorthEast();
 			return {
 				min_longitude: t.lng,
 				max_longitude: a.lng,
@@ -380,24 +310,22 @@ $(function(){
 				max_latitude: a.lat
 			}
 		}
-
-
 		//提取可视区域内的数据
 		,getVisarea: function(data){
 			data = data || [];
 			var areaData = [],
-				visBounds = init.getBounds(),
-				n = {
-					min_longitude: parseFloat(visBounds.min_longitude),
-					max_longitude: parseFloat(visBounds.max_longitude),
-					min_latitude: parseFloat(visBounds.min_latitude),
-					max_latitude: parseFloat(visBounds.max_latitude)
-				};
+					visBounds = init.getBounds(),
+					n = {
+						min_longitude: parseFloat(visBounds.min_longitude),
+						max_longitude: parseFloat(visBounds.max_longitude),
+						min_latitude: parseFloat(visBounds.min_latitude),
+						max_latitude: parseFloat(visBounds.max_latitude)
+					};
 
 			$.each(data, function(e, a) {
 				var i = a.length ? a[0] : a,
-					l = parseFloat(i.longitude),
-					r = parseFloat(i.latitude);
+				l = parseFloat(i.longitude),
+				r = parseFloat(i.latitude);
 				l <= n.max_longitude && l >= n.min_longitude && r <= n.max_latitude && r >= n.min_latitude && areaData.push(a)
 			});
 
@@ -406,18 +334,16 @@ $(function(){
 
 
 		//创建地图气泡
-		,createBubble: function(data, temp, resize,more){
+		,createBubble: function(data, temp, resize){
 
 			init.cleanBubble();
 
-			// ids = 0;
+			ids = 0;
+
 			$.each(data,	function(e, o) {
 				var bubbleLabel, r = [];
-				o.avg_price = (o.avg_unit_price/1).toFixed(0);
-				if(more){
-					o.priceTpl = '<span class="price">' + o.price_total ? (o.price_total + '</span><i>' +"万"+  echoCurrency('short') + '</i>') : "价格待定</span>";
-					o.moreTpl = init.replaceTpl(more, o);
-				}
+				o.avg_price = (o.avg_unit_price/10000).toFixed(1);
+
 				bubbleLabel = new BMap.Label(init.replaceTpl(temp, o), {
 					position: new BMap.Point(o.longitude, o.latitude),
 					offset: bubbleMapSize[resize]()
@@ -437,9 +363,8 @@ $(function(){
 				//ids.push(o.id);
 
 			});
-			//区域集合时统计数据为楼盘的数量
-			data = resize == 1 ? init.getVisarea(g_conf.saleDate) : data;
-			init.mosaicSaleList(data);
+
+			init.mosaicSaleList();
 
 		}
 
@@ -450,20 +375,13 @@ $(function(){
 
 
 		//获取并拼接侧栏列表
-		,mosaicSaleList: function(data){
-
-			//可视区域内楼盘数量
-			$(".lcount strong").html(data.length);
-
-			if(data.length == 0){
-				$(".sale-list").html('<p class="empty">很抱歉，没有找到合适的房源，请重新查找</p>');
-				return;
-			}
+		,mosaicSaleList: function(){
 
 			isNewList = true;
-			zuPage = 1;
+			salePage = 1;
 
-			init.getzuPageList(data);
+			init.getSalePageList();
+
 			//鼠标经过
 			list.delegate(".list-item", "mouseover", function(){
 
@@ -490,41 +408,115 @@ $(function(){
 
 
 		//获取指定分页的房源列表
-		,getzuPageList: function(data){
+		,getSalePageList: function(){
 
-			zuPageData=data;
-
-			var index = zuPage * 10;
-			var allPage = Math.ceil(zuPageData.length/10);
-			var prevIndex = (zuPage - 1) * 10;
-
-			//到达最后一页中止
-			if(zuPage > allPage){
-				zuPage--;
-				return;
-			}
-
-			var zuList=[];
-			var newData = zuPageData.slice(prevIndex, prevIndex + 10);
-			console.log(newData);
-			$.each(newData, function(i, d){
-				d.priceTpl = d.price_total ? '<strong>'+d.price_total+'</strong>'+ '万元' : '<strong>价格待定</strong>';
-				zuList.push(init.replaceTpl(listTemplate.roomlist, d));
-			});
 
 			if(isNewList){
-				list.mCustomScrollbar("scrollTo","top");
-				$(".sale-list").html(zuList.join(""));
+				$(".sale-list").html('<p class="loading">加载中...</p>');
 			}else{
-				$(".sale-list").append(zuList.join(""));
+				$(".sale-list").append('<p class="loading-min">加载中...</p>');
 			}
-
 			list.mCustomScrollbar("update");
+
+			var visBounds = init.getBounds();
+			var boundsArr = [];
+			boundsArr.push('min_latitude='+visBounds['min_latitude']);
+			boundsArr.push('max_latitude='+visBounds['max_latitude']);
+			boundsArr.push('min_longitude='+visBounds['min_longitude']);
+			boundsArr.push('max_longitude='+visBounds['max_longitude']);
+
+			var data = boundsArr.join("&")+"&keywords="+encodeURIComponent(g_conf.keywords)+(g_conf.filter.length > 0 ? "&"+g_conf.filter.join("&") : "")+"&orderby="+g_conf.orderby+"&community="+ids+"&page="+salePage+"&pageSize=10";
+			var total_count = 0, datalist = [];
+
+			$.ajax({
+				"url": g_conf.urlPath[5],
+				"data": data,
+				"dataType": "JSONP",
+				"async": false,
+				"success": function(data){
+					var saleData = [];
+					if(data && data.state == 100){
+						total_count = data.info.pageInfo.totalCount;
+						var _list = data.info.list;
+						for(var i = 0; i < _list.length; i++){
+							datalist[i] = [];
+							datalist[i]['id'] = _list[i].id;
+							datalist[i]['title'] = _list[i].title;
+							datalist[i]['frame_room'] = _list[i].room;
+							datalist[i]['frame_orientation'] = _list[i].direction;
+							datalist[i]['house_area'] = _list[i].area;
+							datalist[i]['price_total'] = _list[i].price;
+							datalist[i]['tags'] = _list[i].flags;
+							datalist[i]['list_picture_url'] = _list[i].litpic;
+							datalist[i]['community_id'] = _list[i].communityid;
+							datalist[i]['community_name'] = _list[i].community;
+							datalist[i]['href'] = _list[i].url;
+							datalist[i]['house_picture_count'] = _list[i].imgCount;
+						}
+
+						var index = salePage * 10;
+						var allPage = Math.ceil(total_count/10);
+						var prevIndex = (salePage - 1) * 10;
+
+						$(".sale-list .loading, .sale-list .loading-min").remove();
+						list.mCustomScrollbar("update");
+
+						//可视区域内房源数量
+						$(".lcount strong").html(total_count);
+
+						if(total_count == 0){
+							$(".sale-list").html('<p class="empty">很抱歉，没有找到合适的房源，请重新查找</p>');
+							list.mCustomScrollbar("update");
+							return;
+						}
+
+						//到达最后一页中止
+						if(salePage > allPage){
+							salePage--;
+							return;
+						}
+
+						var saleList = [];
+						$.each(datalist, function(i, d){
+
+							//标签
+							var tags = [];
+							$.each(d.tags, function(index, tag){
+								if(index < 3){
+									tags.push('<span class="tag'+index+'">'+tag+'</span>');
+								}
+							});
+							d.tagsContent = tags.join("");
+
+							saleList.push(init.replaceTpl(listTemplate.roomlist, d));
+						});
+
+
+						if(isNewList){
+							list.mCustomScrollbar("scrollTo","top");
+							$(".sale-list").html(saleList.join(""));
+						}else{
+							$(".sale-list").append(saleList.join(""));
+						}
+
+						list.mCustomScrollbar("update");
+
+					//没有数据
+					}else{
+						$(".lcount strong").html(0);
+						$(".sale-list").html('<p class="empty">很抱歉，没有找到合适的房源，请重新查找</p>');
+						list.mCustomScrollbar("update");
+					}
+				}
+			});
+
+
 		}
 
 
 		//加载搜索
 		,search: function(){
+
 			$("#skey").autocomplete({
 				source: function(request, response) {
 					$.ajax({
@@ -597,7 +589,7 @@ $(function(){
 			//售价滑块
 			$("#sjObj").slider({
 				range: true,
-				step: 100,
+				step: 10,
 				min: g_conf.sjMin,
 				max: g_conf.sjMax,
 				values: [g_conf.sjMin, g_conf.sjMax],
@@ -606,6 +598,20 @@ $(function(){
 				}
 			});
 			init.setSjRange([g_conf.sjMin, g_conf.sjMax]);
+
+			//面积滑块
+			$("#mjObj").slider({
+				range: true,
+				step: 10,
+				min: g_conf.mjMin,
+				max: g_conf.mjMax,
+				values: [g_conf.mjMin, g_conf.mjMax],
+				slide: function(event, ui) {
+					init.setMjRange(ui.values);
+				}
+			});
+			init.setMjRange([g_conf.mjMin, g_conf.mjMax]);
+
 
 			//显示筛选条件
 			$(".f-o li:eq(0)").bind("click", function(){
@@ -629,13 +635,24 @@ $(function(){
 
 		//设置售价范围
 		,setSjRange: function(val){
-			var minTxt = maxTxt = echoCurrency('short'), min = val[0], max = val[1];
+			var minTxt = maxTxt = "万", min = val[0], max = val[1];
 
 			$("#sjObj").slider({values: [min, max]});
 
 			minTxt = min == g_conf.sjMin ? "" : minTxt;
 			maxTxt = max == 0 ? "" : (max == g_conf.sjMax ? maxTxt + "以上" : maxTxt);
 			$("#sjTxt").text(min + minTxt + " - " + max + maxTxt);
+		}
+
+		//设置面积范围
+		,setMjRange: function(val){
+			var minTxt = maxTxt = "平米", min = val[0], max = val[1];
+
+			$("#mjObj").slider({values: [min, max]});
+
+			minTxt = min == g_conf.mjMin ? "" : minTxt;
+			maxTxt = max == 0 ? "" : (max == g_conf.mjMax ? maxTxt + "以上" : maxTxt);
+			$("#mjTxt").text(min + minTxt + " - " + max + maxTxt);
 		}
 
 		//清空所选
@@ -651,6 +668,7 @@ $(function(){
 				});
 
 				init.setSjRange([g_conf.sjMin, g_conf.sjMax]);
+				init.setMjRange([g_conf.mjMin, g_conf.mjMax]);
 			});
 
 		}
@@ -669,12 +687,22 @@ $(function(){
 
 				var sjMin = $("#sjObj").slider("values", 0), sjMax = $("#sjObj").slider("values", 1);
 				if(sjMin != 0 || sjMax != g_conf.sjMax){
-					filterTitle.push(sjMin + "-" + sjMax + echoCurrency('short'));
+					filterTitle.push(sjMin + "-" + sjMax + "万");
 				}
 				filterData['price'] = [sjMin, sjMax];
 				if(sjMin != 0 || sjMax != g_conf.sjMax){
-					filter.push('price'+"="+(sjMin == 0 ? 0 : sjMin/100)+","+(sjMax == g_conf.sjMax ? "": sjMax/100));
+					filter.push('price'+"="+(sjMin == 0 ? 0 : sjMin)+","+(sjMax == g_conf.sjMax ? "": sjMax));
 				}
+
+				var mjMin = $("#mjObj").slider("values", 0), mjMax = $("#mjObj").slider("values", 1);
+				if(mjMin != 0 || mjMax != g_conf.mjMax){
+					filterTitle.push(mjMin + "-" + mjMax + "平米");
+				}
+				filterData['area'] = [mjMin, mjMax];
+				if(mjMin != 0 || mjMax != g_conf.mjMax){
+					filter.push('area'+"="+(mjMin == 0 ? 0 : mjMin)+","+(mjMax == g_conf.mjMax ? "": mjMax));
+				}
+				//filter.push('area'+"="+mjMin+","+mjMax);
 
 				$(".filter dl").each(function(i){
 					var t = $(this);
@@ -728,6 +756,7 @@ $(function(){
 					}
 
 					init.setSjRange([price[0], price[1]]);
+					init.setMjRange([area[0], area[1]]);
 
 				}
 
@@ -807,25 +836,13 @@ $(function(){
 		,bubbleTemplate = {
 
 			//区域
-			1 : '<div class="bubble bubble-1" data-longitude="${longitude}" data-latitude="${latitude}" data-id="${zu_id}"><p class="name" title="${name}区">${name}区</p><p class="num">${avg_price}'+echoCurrency('short')+'/月</p><p><span class="count">${house_count}</span>套</p></div>',
-
-			//只显示楼盘
-			2 : '<div class="bubble bubble-2" data-longitude="${longitude}" data-latitude="${latitude}" data-id="${zu_id}"><div class="bubble-wrap"><div class="bubble-inner"><p class="name" title="${community_name}">${community_name}</p>${moreTpl}</div><i class="arrow"><i class="arrow-i"></i></i></div><p class="cycle"></p></div>',
-
-			//楼盘、价格及类型
-			3 : '<div class="bubble bubble-2 bubble-3" data-longitude="${longitude}" data-latitude="${latitude}" data-id="${zu_id}"><div class="bubble-wrap"><div class="bubble-inner"><p class="name" title="${community_name}">${community_name}</p>${moreTpl}</div><i class="arrow"><i class="arrow-i"></i></i></div><p class="cycle"></p></div>',
+			1 : '<div class="bubble bubble-1" data-longitude="${longitude}" data-latitude="${latitude}" data-id="${id}"><p class="name" title="${name}区">${name}区</p><p class="num">${avg_price}万</p><p><span class="count">${house_count}</span>套</p></div>',
 
 			//区域
-			4 : '<div class="bubble " data-longitude="${longitude}" data-latitude="${latitude}" data-id="${id}"><p class="name" title="${name}区">${name}区</p><p class="num">${avg_price}'+echoCurrency('short')+'/月</p><p><span class="count">${house_count}</span>套</p></div>',
+			2 : '<div class="bubble bubble-1 bubble-2" data-longitude="${longitude}" data-latitude="${latitude}" data-id="${id}"><p class="name" title="${name}区">${name}区</p><p class="num">${avg_price}万</p><p><span class="count">${house_count}</span>套</p></div>',
 
 			//小区
-			5 : '<p class=" bubble-2 bubble-3 bubble" data-longitude="${longitude}" data-latitude="${latitude}" data-id="${id}"><i class="num">${house_count}套</i><span class="name"><i class="name-des"><a href="${href}" target="_blank">${name}</a></i></span><i class="arrow-up"><i class="arrow"></i><i></p>',
-
-			//周边信息
-			6 : '<div class="bubble bubble-4" data-disabled="1" data-longitude="${longitude}" data-latitude="${latitude}" data-id="${id}"><span class="close">&times;</span><a href="${url}" target="_blank"><div class="bubble-inner clear"><p class="tle">周边信息</p><div class="around-container"><p class="around-li li-first"  data-type="超市" style="background-position: 0 -2px;">超市：<span>0</span>家</p><p class="around-li" data-type="公交" style="background-position: 0 -56px;">公交：<span>0</span>站</p><p class="around-li"  data-type="学校" style="background-position: 0 -20px;">学校：<span>0</span>所</p><p class="around-li"  data-type="银行" style="background-position: 0 -74px;">银行：<span>0</span>家</p><p class="around-li"  data-type="医院" style="background-position: 0 -38px;">医院：<span>0</span>所</p><p class="around-li li-last"  data-type="休闲" style="background-position: 0 -92px;">休闲：<span>0</span>家</p></div><i class="arrow"><i class="arrow-i"></i></i></div></a><p class="cycle"></p></div>',
-
-			//楼盘价格
-			moreTpl: '<p class="num">${community_name}<span class="house-type"></span>均价${priceTpl}<span class="gt">&gt;</span></p>',
+			3 : '<p class="bubble-3 bubble" data-longitude="${longitude}" data-latitude="${latitude}" data-id="${id}"><i class="num">${avg_price}万</i><span class="name"><i class="name-des"><a href="${href}" target="_blank">${name}&nbsp;&nbsp;${house_count}套</a></i></span><i class="arrow-up"><i class="arrow"></i><i></p>'
 
 		}
 
@@ -833,7 +850,7 @@ $(function(){
 		,listTemplate = {
 
 			//楼盘列表
-			roomlist: '<div class="list-item"><a href="${href}" target="_blank" title="${title}" data-community="${community_id}"><div class="item-aside"><img src="${list_picture_url}"onerror="javascript:this.src=\'/static/images/404.jpg\';"><div class="item-btm"><span class="item-img-icon"><i class="i-icon-arrow"></i><i class="i-icon-dot"></i></span><span>${house_picture_count}</span></div></div><div class="item-main"><p class="item-tle">${title}</p><p class="item-des"><span>${frame_room}</span><span data-origin="${house_area}">${house_area}㎡</span><span>朝${frame_orientation}</span><span class="item-side">${price_total}<span>'+echoCurrency('short')+'/月</span></span></p><p class="item-community"><span class="item-exact-com">${community_name}</span><em>${update}</em></p></div></a></div>'
+			roomlist: '<div class="list-item"><a href="${href}" target="_blank" title="${title}" data-community="${community_id}"><div class="item-aside"><img src="${list_picture_url}"><div class="item-btm"><span class="item-img-icon"><i class="i-icon-arrow"></i><i class="i-icon-dot"></i></span><span>${house_picture_count}</span></div></div><div class="item-main"><p class="item-tle">${title}</p><p class="item-des"><span>${frame_room}</span><span data-origin="${house_area}">${house_area}㎡</span><span>朝${frame_orientation}</span><span class="item-side">${price_total}<span>万</span></span></p><p class="item-community"><span class="item-exact-com">${community_name}</span></p><p class="item-tag-wrap">${tagsContent}</p></div></a></div>'
 
 		}
 
@@ -849,13 +866,11 @@ $(function(){
 		}
 
 		,isNewList = false   //是否为新列表
-		,zuPage = 1        //楼盘数据当前页
-		,saleChooseData    //查看户型的楼盘数据
-		,zuPageData;      //当前可视范围内的楼盘
+		,salePage = 1        //楼盘数据当前页
+		,saleChooseData;     //查看户型的楼盘数据
 
 	g_conf.districtData = [];
 	g_conf.bizcircle = [];
-	g_conf.saleDate = [];
 	g_conf.saleData = [];
 
 	init.createMap();
