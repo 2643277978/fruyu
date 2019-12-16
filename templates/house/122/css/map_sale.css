@@ -156,7 +156,7 @@ html, body {height: 100%;}
 .item-main .item-tle {font-size: 14px; color: #262626; font-weight: 800; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; line-height: 1.5;}
 .item-main .item-des {white-space: nowrap; position: relative; line-height: 1.84;}
 .item-main .item-des span {margin-right: 5px;}
-.item-main .item-des .item-side {margin-right: 0; font-size: 16px; position: absolute; right: 0; bottom: -3px; color: #e4393c; font-weight: 800; font-family: tahoma;}
+.item-main .item-des .item-side {margin-right: 0; font-size: 16px; position: absolute; bottom: -3px; color: #e4393c; font-weight: 800; font-family: tahoma;}
 .item-main .item-des .item-side span {font-size: 12px; font-weight: normal; margin-left: 2px; margin-right: 0;}
 .item-main .item-tag-wrap span {display: inline-block; border: 1px solid; margin-right: 6px; padding: 1px 6px 2px; margin-top: 7px; line-height: 15px;}
 .item-main .item-tag-wrap .tag0 {color: #2973b3;}
