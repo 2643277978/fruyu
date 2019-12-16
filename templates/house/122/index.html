@@ -414,7 +414,7 @@
 		</div>
 		<div class="midbox">
 			<ul class="fn-clear">
-				{#house action=saleList pageSize=9 return=sale#}
+				{#house action=saleList pageSize=9 type={#$type#} return=sale#}
 				<li>
 					<a href="{#$sale.url#}" target="_blank">
 						<div class="imgbox">
@@ -432,16 +432,11 @@
 				{#/house#}
 			</ul>
 		</div>
-		
 	</div>
-	
 </div>
 <!-- 优选二手房 e-->
 
-
-
 <!-- 质享出租房 e-->
-
 <div class="mainbox wrap fn-clear esfbox">
 	<div class="leader">
 		<h2>质享出租房</h2>
