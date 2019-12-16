@@ -170,7 +170,6 @@ $(function(){
 		data = form.serialize();
 
 		t.addClass("disabled").html(langData['siteConfig'][6][35]+"...");  //提交中
-		console.log(data)
 		$.ajax({
 			url: action,
 			data: data + "&cityid="+cityid,
@@ -178,9 +177,7 @@ $(function(){
 			dataType: "json",
 			success: function (data) {
 				if(data && data.state == 100){
-
 					fabuPay.check(data, url, t);
-
 				}else{
 					$.dialog.alert(data.info);
 					t.removeClass("disabled").html(langData['siteConfig'][11][19]);//立即发布

@@ -153,7 +153,6 @@ $(function(){
 		data = form.serialize();
 
 		t.addClass("disabled").html(langData['siteConfig'][6][35]+"...");   //提交中
-		console.log(data)
 		
 		$.ajax({
 			url: action,
