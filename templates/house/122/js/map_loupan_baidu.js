@@ -70,15 +70,15 @@ $(function(){
 			$("#"+g_conf.mapWrapper).on("click", ".bubble-1", function() {
 
 				var t = $(this), zoom = map.getZoom(),
-				newView = {
-					lng: parseFloat(t.attr("data-longitude")),
-					lat: parseFloat(t.attr("data-latitude")),
-					typ: zoom + 1
-				};
+					newView = {
+						lng: parseFloat(t.attr("data-longitude")),
+						lat: parseFloat(t.attr("data-latitude")),
+						typ: zoom + 1
+					};
 				newView.lng && newView.lat ? map.centerAndZoom(new BMap.Point(newView.lng, newView.lat), newView.typ) : map.setZoom(newView.typ);
 
 
-			//户型
+				//户型
 			}).on("click", ".bubble-2 .bubble-inner", function(){
 
 				var t = $(this).closest(".bubble"), id = Number(t.attr("data-id"));
@@ -88,19 +88,19 @@ $(function(){
 
 
 
-			//楼盘
+				//楼盘
 			}).on("click", ".bubble-2", function(e) {
 
 				var t = $(this),
-				newView = {
-					lng: parseFloat(t.attr("data-longitude")),
-					lat: parseFloat(t.attr("data-latitude")),
-					typ: 15
-				};
+					newView = {
+						lng: parseFloat(t.attr("data-longitude")),
+						lat: parseFloat(t.attr("data-latitude")),
+						typ: 15
+					};
 				newView.lng && newView.lat ? (map.setCenter(new BMap.Point(newView.lng, newView.lat)), t.addClass("clicked")) : map.setZoom(newView.typ);
 
 
-			//关闭周边信息
+				//关闭周边信息
 			}).on("click", ".bubble-4 .close", function(){
 
 				init.closeHx();
@@ -111,11 +111,11 @@ $(function(){
 			//楼盘点击事件
 			list.delegate("dl", "click", function(){
 				var e = $(this),
-						t = {
-							lng: parseFloat(e.attr("data-lng")),
-							lat: parseFloat(e.attr("data-lat")),
-							typ: 15
-						};
+					t = {
+						lng: parseFloat(e.attr("data-lng")),
+						lat: parseFloat(e.attr("data-lat")),
+						typ: 15
+					};
 
 				isClickHx = true;
 				t.lng && t.lat ? map.centerAndZoom(new BMap.Point(t.lng, t.lat), t.typ) : map.setZoom(t.typ);
@@ -389,7 +389,7 @@ $(function(){
 			localSearch.searchNearby(
 				["超市", "学校", "医院", "公交", "银行", "休闲"],
 				new BMap.Point(Math.max(loupanChooseData.longitude, loupanChooseData.latitude), Math.min(loupanChooseData.longitude, loupanChooseData.latitude)),
-			1000);
+				1000);
 
 		}
 
@@ -407,31 +407,40 @@ $(function(){
 			var zoom = map.getZoom(), data = [];
 
 			//区域集合
-			if(zoom - g_conf.minZoom <= 2){
+			if(zoom - g_conf.minZoom <= 1){
+
 				data = init.getVisarea(g_conf.districtData);
 				init.createBubble(data, bubbleTemplate[1], 1);
+
 			}else{
+
 				//楼盘集合
-				if(zoom - g_conf.minZoom == 1){
+				if(zoom - g_conf.minZoom ==1 ){
+
 					data = init.getVisarea(g_conf.loupanData);
 					init.createBubble(data, bubbleTemplate[2], 2, bubbleTemplate.moreTpl);
-				//只显示楼盘名称
-				} else if(zoom - g_conf.minZoom >= 1){
+
+					//只显示楼盘名称
+				}else if(zoom - g_conf.minZoom >= 1){
+
 					data = init.getVisarea(g_conf.loupanData);
 					init.createBubble(data, bubbleTemplate[3], 2, bubbleTemplate.moreTpl);
+
 					//显示楼盘名称、类型、价格
-					zoom >= 10 ? $(".bubble-2").addClass("clicked") : $(".bubble-2").removeClass("clicked");
+					zoom >= 13 ? $(".bubble-2").addClass("clicked") : $(".bubble-2").removeClass("clicked");
 				}
 
 			}
+
+
 		}
 
 
 		//获取地图可视区域范围
 		,getBounds: function(){
 			var e = map.getBounds(),
-			t = e.getSouthWest(),
-			a = e.getNorthEast();
+				t = e.getSouthWest(),
+				a = e.getNorthEast();
 			return {
 				min_longitude: t.lng,
 				max_longitude: a.lng,
@@ -445,18 +454,18 @@ $(function(){
 		,getVisarea: function(data){
 			data = data || [];
 			var areaData = [],
-					visBounds = init.getBounds(),
-					n = {
-						min_longitude: parseFloat(visBounds.min_longitude),
-						max_longitude: parseFloat(visBounds.max_longitude),
-						min_latitude: parseFloat(visBounds.min_latitude),
-						max_latitude: parseFloat(visBounds.max_latitude)
-					};
+				visBounds = init.getBounds(),
+				n = {
+					min_longitude: parseFloat(visBounds.min_longitude),
+					max_longitude: parseFloat(visBounds.max_longitude),
+					min_latitude: parseFloat(visBounds.min_latitude),
+					max_latitude: parseFloat(visBounds.max_latitude)
+				};
 
 			$.each(data, function(e, a) {
 				var i = a.length ? a[0] : a,
-				l = parseFloat(i.longitude),
-				r = parseFloat(i.latitude);
+					l = parseFloat(i.longitude),
+					r = parseFloat(i.latitude);
 				l <= n.max_longitude && l >= n.min_longitude && r <= n.max_latitude && r >= n.min_latitude && areaData.push(a)
 			});
 
@@ -571,8 +580,8 @@ $(function(){
 			var loupanList = [];
 			var newData = loupanPageData.slice(prevIndex, prevIndex + 10);
 			$.each(newData, function(i, d){
-					d.priceTpl = d.average_price ? '<strong>'+d.average_price+'</strong>'+(d.ptype == 1 ? '元/m²' : '万元/套') : '<strong>价格待定</strong>';
-					loupanList.push(init.replaceTpl(listTemplate.building, d));
+				d.priceTpl = d.average_price ? '<strong>'+d.average_price+'</strong>'+(d.ptype == 1 ? '元/m²' : '万元/套') : '<strong>价格待定</strong>';
+				loupanList.push(init.replaceTpl(listTemplate.building, d));
 			});
 
 
@@ -905,26 +914,26 @@ $(function(){
 			2 : '<div class="bubble bubble-2" data-longitude="${longitude}" data-latitude="${latitude}" data-id="${loupan_id}"><div class="bubble-wrap"><div class="bubble-inner"><p class="name" title="${resblock_name}">${resblock_name}</p>${moreTpl}</div><i class="arrow"><i class="arrow-i"></i></i></div><p class="cycle"></p></div>',
 
 			//楼盘、价格及类型
-			3 : '<div class="bubble bubble-2 bubble-3" data-longitude="${longitude}" data-latitude="${latitude}" data-id="${loupan_id}"><div class="bubble-wrap"><div class="bubble-inner"><p class="name" title="${resblock_name}">${resblock_name}</p>${moreTpl}</div><i class="arrow"><i class="arrow-i"></i></i></div><p class="cycle"></p></div>',
+			3 : '<div class="bubble bubble-2 bubble-3" data-longitude="${longitude}" data-latitude="${latitude}" data-id="${loupan_id}"><div class="bubble-wrap"><div class="bubble-inner"><p class="name" title="${resblock_name}"></p>${moreTpl}</div><i class="arrow"><i class="arrow-i"></i></i></div><p class="cycle"></p></div>',
 
 			//周边信息
 			4 : '<div class="bubble bubble-4" data-disabled="1" data-longitude="${longitude}" data-latitude="${latitude}" data-id="${loupan_id}"><span class="close">&times;</span><a href="${url}" target="_blank"><div class="bubble-inner clear"><p class="tle">周边信息</p><div class="around-container"><p class="around-li li-first"  data-type="超市" style="background-position: 0 -2px;">超市：<span>0</span>家</p><p class="around-li" data-type="公交" style="background-position: 0 -56px;">公交：<span>0</span>站</p><p class="around-li"  data-type="学校" style="background-position: 0 -20px;">学校：<span>0</span>所</p><p class="around-li"  data-type="银行" style="background-position: 0 -74px;">银行：<span>0</span>家</p><p class="around-li"  data-type="医院" style="background-position: 0 -38px;">医院：<span>0</span>所</p><p class="around-li li-last"  data-type="休闲" style="background-position: 0 -92px;">休闲：<span>0</span>家</p></div><i class="arrow"><i class="arrow-i"></i></i></div></a><p class="cycle"></p></div>',
 
 			//楼盘价格
-			moreTpl: '<p class="num"><span class="house-type">${house_type}</span>均价${priceTpl}<span class="gt">&gt;</span></p>'
+			moreTpl: '<p class="num">${resblock_name}&nbsp;<span class="house-type">${house_type}</span>${priceTpl}<span class="gt">&gt;</span></p>'
 		}
 
 		//列表模板
 		,listTemplate = {
 
 			//楼盘列表
-			building: '<dl class="fn-clear"data-id="${loupan_id}"data-lng="${longitude}"data-lat="${latitude}"title="${resblock_name}"><dt><img src="${cover_pic}"onerror="javascript:this.src=\'/static/images/404.jpg\';"/></dt><dd><h2>${resblock_name}</h2><p>${loupan_addr}</p><p>${house_type}</p><p class="price">均价${priceTpl}</p></dd></dl>',
+			building: '<dl class="fn-clear"data-id="${loupan_id}"data-lng="${longitude}"data-lat="${latitude}"title="${resblock_name}"><dt><img src="${cover_pic}"/></dt><dd><h2>${resblock_name}</h2><p>${loupan_addr}</p><p>${house_type}</p><p class="price">均价${priceTpl}</p></dd></dl>',
 
 			//户型楼盘信息
-			longpanOnly: '<a href="javascript:;"class="closehx"title="关闭户型">&times;</a><dl class="loupan fn-clear"title="${resblock_name}"><a href="${url}"target="_blank"><dt><img src="${cover_pic}"onerror="javascript:this.src=\'/static/images/404.jpg\';"></dt><dd><h2>${resblock_name}</h2><p>${loupan_addr}</p><p>${house_type}</p><p class="price">均价${priceTpl}</p></dd></a></dl><p class="hcount">共有<strong>${hxcount}</strong>个户型</p><div class="con"><div class="hx-list">${hx}</div></div>',
+			longpanOnly: '<a href="javascript:;"class="closehx"title="关闭户型">&times;</a><dl class="loupan fn-clear"title="${resblock_name}"><a href="${url}"target="_blank"><dt><img src="${cover_pic}"></dt><dd><h2>${resblock_name}</h2><p>${loupan_addr}</p><p>${house_type}</p><p class="price">均价${priceTpl}</p></dd></a></dl><p class="hcount">共有<strong>${hxcount}</strong>个户型</p><div class="con"><div class="hx-list">${hx}</div></div>',
 
 			//户型列表
-			hxlist: '<dl class="fn-clear"><a href="${url}"target="_blank"><dt><img src="${frame_pic}"onerror="javascript:this.src=\'/static/images/404.jpg\';"/><span>${frame_name}</span></dt><dd><h3>${room_num} ${build_area}㎡ 朝${direction}</h3><p>${note}</p></dd></a></dl>'
+			hxlist: '<dl class="fn-clear"><a href="${url}"target="_blank"><dt><img src="${frame_pic}"/><span>${frame_name}</span></dt><dd><h3>${room_num} ${build_area}㎡ 朝${direction}</h3><p>${note}</p></dd></a></dl>'
 		}
 
 		//气泡样式

@@ -57,7 +57,7 @@ html, body {height: 100%;}
 
 
 /* 商圈气泡 */
-.bubble-2 {background-color: #4285f4; background-color: rgba(66,133,244,0.9); box-shadow: 0 2px 2px rgba(0,0,0,0.2); border-radius: 50%; overflow: hidden; width: 78px; height: 78px; line-height: 1.6;}
+.bubble-2 {border-radius: 50%; overflow: hidden; width: 78px; height: 78px; line-height: 1.6;}
 .bubble-2 .name {font-size: 12px; margin-top: 13px;}
 .bubble-2 .count {font-size: 12px; font-weight: 500; font-family: tahoma;}
 
@@ -69,7 +69,7 @@ html, body {height: 100%;}
 .bubble-3 .name-des {background-color: #fff; display: inline-block; padding: 0 6px; border-radius: 0 3px 3px 0; box-shadow: 0 2px 2px rgba(0,0,0,0.2); font-style: normal;}
 .bubble-3 .name-des a {color: #333; white-space: nowrap;}
 .bubble-3 .name-des a:hover {text-decoration: underline;}
-.bubble-3:hover .num,.bubble-3.clicked .num,.bubble-3.hovered .num {background-color: #de1e30; border-color: #de1e30; color: #fff; border-top-right-radius: 0; border-bottom-right-radius: 0;}
+.bubble-3:hover .num,.bubble-3.clicked .num,.bubble-3.hovered .num {background-color: #f46b6b; border-color: #f46b6b; color: #fff; border-top-right-radius: 0; border-bottom-right-radius: 0;}
 .bubble-3:hover .name,.bubble-3.clicked .name,.bubble-3.hovered .name {visibility: visible; opacity: 1;}
 .bubble-3:hover .arrow-up,.bubble-3.clicked .arrow-up,.bubble-3.hovered .arrow-up {border-top-color: #de1e30;}
 .bubble-3:hover .arrow,.bubble-3.clicked .arrow,.bubble-3.hovered .arrow {border-top-color: #de1e30;}

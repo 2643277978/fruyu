@@ -391,6 +391,15 @@ $(function(){
 							datalist[i]['frame_orientation'] = _list[i].direction;
 							datalist[i]['house_area'] = _list[i].area;
 							datalist[i]['price_total'] = _list[i].price;
+							if(_list[i].type==1){
+								datalist[i]['price_total'] = _list[i].price+'万元';
+								datalist[i]['type'] = '出售';
+							}else {
+								datalist[i]['price_total'] = _list[i].price+'元/月';
+								datalist[i]['type'] = '出租';
+							}
+							datalist[i]['loupan'] = _list[i].loupan;
+							datalist[i]['zhuangxiu'] = _list[i].zhuangxiu;
 							datalist[i]['tags'] = _list[i].flags;
 							datalist[i]['list_picture_url'] = _list[i].litpic;
 							datalist[i]['community_id'] = _list[i].communityid;
@@ -729,7 +738,7 @@ $(function(){
 		,listTemplate = {
 
 			//楼盘列表
-			roomlist: '<div class="list-item"><a href="${href}" target="_blank" title="${title}" data-community="${community_id}"><div class="item-aside"><img src="${list_picture_url}"><div class="item-btm"><span class="item-img-icon"><i class="i-icon-arrow"></i><i class="i-icon-dot"></i></span><span>${house_picture_count}</span></div></div><div class="item-main"><p class="item-tle">${title}</p><p class="item-des"><span>${frame_room}</span><span data-origin="${house_area}">${house_area}㎡</span><span>朝${frame_orientation}</span><span class="item-side">${price_total}<span>'+echoCurrency('short')+'/月</span></span></p><p class="item-community"><span class="item-exact-com">${community_name}</span><em>${update}</em></p></div></a></div>'
+			roomlist: '<div class="list-item"><a href="${href}" target="_blank" title="${title}" data-community="${community_id}"><div class="item-aside"><img src="${list_picture_url}"><div class="item-btm"><span class="item-img-icon"><i class="i-icon-arrow"></i><i class="i-icon-dot"></i></span><span></span></div></div><div class="item-main"><p class="item-tle">${title}</p><p class="item-des"><span>${loupan}</span>|<span data-origin="${house_area}">${house_area}㎡</span>|<span>${zhuangxiu}</span><span class="item-side">${price_total}<span></span></span></p><p class="item-community"><span class="item-exact-com">${type}</span><em>${update}</em></p></div></a></div>'
 
 		}
 
