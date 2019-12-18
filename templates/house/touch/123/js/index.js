@@ -1,4 +1,20 @@
 $(function(){
+	if(navigator.userAgent.match(/mobile/i)) {
+		// top.location='http://m.baidu.com/';
+	}
+});
+
+// var u = navigator.userAgent;
+// $(".topDownload a").attr("herf" ,"void");
+// console.log( $(".topDownload a"));
+// if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) {//安卓手机
+//
+// } else if (u.indexOf('iPhone') > -1) {//苹果手机
+// 	alert("苹果手机");
+// } else if (u.indexOf('Windows Phone') > -1) {//winphone手机
+// 	alert("winphone手机");
+// }
+$(function(){
 	noReadMessage();
     //获取未读信息
     function noReadMessage(){

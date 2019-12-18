@@ -1,4 +1,40 @@
 $(function() {
+	//获取url的参数（区域）
+	var currUrl=window.location.href;
+	currUrl = currUrl.substring(currUrl.indexOf("?"),currUrl.length);
+	var canshu=currUrl=currUrl.replace('?', ' ');
+	var addEare=currUrl%100000;//二级区域
+	var add=parseInt(currUrl)-parseInt(addEare);
+	add=add/100000;//一级区域 end
+
+	//url是否有值
+	function checkCs() {
+		$.ajax({
+			url: "/include/ajax.php?service=house&action=addr&type="+add,
+			type: "GET",
+			dataType: "json",
+			success: function (data) {
+				if(data && data.state == 100){
+					var list = [], info = data.info,name;
+					for(var i = 0; i < info.length; i++){
+						if(info[i].id==addEare){
+							name=info[i].typename
+						}
+					}
+					$('.tab-addrid span').html(name);
+					$('.choose-local').hide();
+					$('.mask').hide();
+					$('.choose li').removeClass('active');
+					$('.white').hide();
+					$('.tab-addrid').attr('data-id',addEare);
+				}
+			}
+		});
+		getList();
+	}
+	if(addEare){
+		checkCs();
+	}
 
 	var device = navigator.userAgent, isClick = true;
 	$('#sp-list').css('min-height', $(window).height() - $('.footer').height());
@@ -222,6 +258,7 @@ $(function() {
 			isClick = true;
 
 			$('.tab-addrid').attr('data-id','').find('span').text('不限');
+			addEare="";
 			getList(1);
 		}
 	})
@@ -238,10 +275,10 @@ $(function() {
 		$('.choose-local').hide();
 		$('.mask').hide();
 		$('.choose li').removeClass('active');
-		$('.white').hide()
+		$('.white').hide();
 		$('.tab-addrid').attr('data-id',id);
 		isClick = true;
-
+		addEare="";
 		getList(1);
 	})
 
@@ -376,10 +413,15 @@ $(function() {
 		$('.choose li').each(function(){
 			var obj = $(this),cls = obj.attr('class'),field = cls.split('-')[1];
 			var val = obj.attr('data-id');
+			// console.log(val);
 			if(val){
 				data.push(field+"="+val);
 			}
 		})
+		if(addEare){
+			var field="addrid";
+			data.push(field +'=' +addEare);
+		}
 
 
 		//更新筛选条件

@@ -414,7 +414,7 @@
 		</div>
 		<div class="midbox">
 			<ul class="fn-clear">
-				{#house action="saleList" return="sale" type={#$type#} pageSize="9"#}
+				{#house action=saleList return=sale  pageSize=9#}
 				<li>
 					<a href="{#$sale.url#}" target="_blank">
 						<div class="imgbox">
@@ -556,7 +556,7 @@
 		</div>
 		<div class="midbox">
 			<ul class="fn-clear">
-				{#house action="zuList" return="zu" type={#$type#} pageSize="9"#}
+				{#house action="zuList"  return="zu" type={#$type#} pageSize="9"#}
 				<li>
 					<a href="{#$zu.url#}" target="_blank">
 						<div class="imgbox">

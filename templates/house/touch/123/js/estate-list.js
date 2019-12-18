@@ -1,4 +1,39 @@
 $(function() {
+	//获取url的参数（区域）
+	var currUrl=window.location.href;
+	currUrl = currUrl.substring(currUrl.indexOf("?"),currUrl.length);
+	var canshu=currUrl=currUrl.replace('?', ' ');
+	var addEare=currUrl%100000;//二级区域
+	var add=parseInt(currUrl)-parseInt(addEare);
+	add=add/100000;//一级区域 end
+
+	//url是否有值
+	function checkCs() {
+		$.ajax({
+			url: "/include/ajax.php?service=house&action=addr&type="+add,
+			type: "GET",
+			dataType: "json",
+			success: function (data) {
+				if(data && data.state == 100){
+					var list = [], info = data.info,name;
+					for(var i = 0; i < info.length; i++){
+						if(info[i].id==addEare){
+							name=info[i].typename
+						}
+					}
+					$(".tab-area").attr("data-type", "area");
+					$(".tab-area").attr("data-area",add);
+					$(".tab-area").attr("data-business", addEare);
+					$('.tab-area span').html(name);
+				}
+			}
+		});
+		getList(1)
+	}
+	if(addEare){
+		checkCs()
+	}
+
 	var device = navigator.userAgent, isClick = true;
 	$('#house-list').css('min-height', $(window).height() - $('.footer').height());
 
@@ -185,6 +220,7 @@ $(function() {
 
 	var myscroll3 = new iScroll("scroll-third", {vScrollbar: false});
 	$('#area-box li').click(function() {
+		addEare="";
 		if($(this).index() == 0) {
 			chooseNormal();
 			return false;
@@ -259,6 +295,7 @@ $(function() {
 		isClick = true;
 
 		$(".tab-area").removeAttr("data-type");
+		addEare="";
 		getList(1);
 	};
 
@@ -459,6 +496,13 @@ $(function() {
 		}else if(areaType == "subway"){
 			subway = Number(tabArea.attr("data-subway"));
 			station = Number(tabArea.attr("data-station"));
+		}
+		if(addEare){
+			addrid = add;
+			business = addEare;
+			if(business){
+				addrid = business;
+			}
 		}
 		data.push("addrid="+addrid);
 		data.push("subway="+subway);

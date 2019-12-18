@@ -1,5 +1,50 @@
 $(function () {
-
+    //获取url的参数（区域）
+    var currUrl=window.location.href;
+    currUrl = currUrl.substring(currUrl.indexOf("?"),currUrl.length);
+    var canshu=currUrl=currUrl.replace('?', ' ');
+    var addEare=currUrl%100000;//二级区域
+    var add=parseInt(currUrl)-parseInt(addEare);
+    add=add/100000;//一级区域 end
+    function checkCs() {
+        var html=[];
+        var id =add,
+            t = $(' .pos-item').find('a[data-id='+id+']'),
+            i = t.index(),
+            txt=t.text();
+        if(t.hasClass('disabled')) return;
+        t.addClass('curr').siblings().removeClass('curr');
+        $('.area .pos-sub-item').html('<a href="javascript:;" class="all curr">不限</a>');
+        if (t.hasClass("all")) {
+            $('.area').hide();
+        }else{
+            $.ajax({
+                url: "/include/ajax.php?service=house&action=addr&type=" + id,
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    if (data && data.state == 100) {
+                        var list = [],
+                            info = data.info;
+                        list.push('<a href="javascript:;"  data-area="' + id +
+                            '" data-business="0" class="">不限</a>');
+                        for (var i = 0; i < info.length; i++) {
+                            var cla=info[i].id==addEare?"curr":"";
+                            list.push('<a href="javascript:;" data-area="' + add + '" data-business="' + info[i].id + '"  class='+cla+'>' +
+                                info[i].typename + '</a>');
+                        }
+                        $('.area .pos-sub-item').html(list.join(""));
+                        $('.area').show();
+                    }
+                }
+            });
+        }
+    }
+    if(addEare){
+        checkCs()
+    }else {
+        checkFilter()
+    }
     $("img").scrollLoading();
 
     $('.lplist').delegate('.codebox', 'hover', function (event) {
@@ -58,6 +103,9 @@ $(function () {
 
               curr = $('.pos-sub-item .curr');
               index = curr.index();
+                if(addEare){
+                    html.push('<a href="javascript:;" title="'+title+'" class="selected-info" data-group="'+g+'" data-level="2" data-type="addrid" data-id="'+addEare+'"><span></span><i class="idel"></i></a>');
+                }
               if(index > 0){
                 txt = curr.text();
                 id = curr.attr("data-business");
@@ -172,6 +220,7 @@ $(function () {
     $('.t-fi .pos-item').delegate('a', 'click', function(event) {
         var t = $(this),index = t.index(),id = t.attr("data-id");
         t.addClass('curr').siblings().removeClass('curr');
+        addEare="";add="";
         $('.area .pos-sub-item').html('<a href="javascript:;" class="all curr">不限</a>');
         if ($(this).hasClass("all")) {
             $('.area').hide();
