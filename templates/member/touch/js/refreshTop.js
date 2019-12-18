@@ -89,7 +89,7 @@ $(function(){
 
         zjuser_meal = rtConfig.zjuserMeal.meal;
 
-        var has = 0, count, name,info,li=$('.rtToppingType li').attr('data-type');
+        var has = 0, count, name,info;
         if(type == 'refresh'){
           count = rtConfig.zjuserMeal.meal.refresh;
           name = '刷新';
@@ -105,7 +105,6 @@ $(function(){
 			name = '置顶';
 			info = '您是经纪人，已购买套餐<br>剩余'+name+'次数共<font color="#ff6600">'+has+'</font>次<br>当前操作需要消耗<font style="color:#f60;">'+Math
 				.floor(need)+'</font>次';
-
 		}
 
         if(type == 'topping'){
@@ -278,7 +277,6 @@ $(function(){
 
         // 房产经纪人操作
         if(check_zjuser){
-        	$('#refreshTopForm #type').val('toppingPlan');
           $('.rtToppingType li').click();
           // $('.rtToppingType li:eq(0)').hide();
           $('.rtToppingPlan .rtToppingPlan').hide();

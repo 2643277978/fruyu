@@ -1,20 +1,42 @@
-$(function(){
-	if(navigator.userAgent.match(/mobile/i)) {
-		// top.location='http://m.baidu.com/';
-	}
-});
 
-// var u = navigator.userAgent;
-// $(".topDownload a").attr("herf" ,"void");
-// console.log( $(".topDownload a"));
-// if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) {//安卓手机
-//
-// } else if (u.indexOf('iPhone') > -1) {//苹果手机
-// 	alert("苹果手机");
-// } else if (u.indexOf('Windows Phone') > -1) {//winphone手机
-// 	alert("winphone手机");
-// }
 $(function(){
+	//下载app
+	if(navigator.userAgent.match(/mobile/i)) {
+		var u = navigator.userAgent, uLower = u.toLowerCase();
+		var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //g
+			isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),//ios终端
+			iPhone= u.indexOf('iPhone') > -1,
+			iPad= u.indexOf('iPad') > -1,
+			isWx= u.indexOf('MicroMessenger') > -1,
+			isMiniProgram= uLower.indexOf('miniprogram') > -1,
+			isWb= u.indexOf('Weibo') > -1;
+		$(".btnOpen").click(function () {
+			if(isIOS||iPad||iPhone){
+				window.location.href = "";
+				window.setTimeout(function(){
+					window.location.href = "https://apps.apple.com/cn/app/%E6%88%BF%E5%A6%82%E7%8E%89/id1489305385";//打开ios app下载地址
+				},2000)
+			}
+			if(isAndroid){
+				window.location.href = "";
+				window.setTimeout(function(){
+					window.location.href = "https://www.fruyu.com/release/fangruyu-android_v1.0.apk";//打开安卓app下载地址
+				},2000)
+			}
+		});
+		$(".btnOpenInApp").click(function () {
+			if(isIOS||iPad||iPhone){
+				window.location.href = "https://apps.apple.com/cn/app/%E6%88%BF%E5%A6%82%E7%8E%89/id1489305385";
+			}
+			if(isAndroid){
+				window.location.href = "https://www.fruyu.com/release/fangruyu-android_v1.0.apk";
+			}
+		});
+	}else {
+		$(".down").css("display","none");
+	}
+
+
 	noReadMessage();
     //获取未读信息
     function noReadMessage(){
