@@ -5,7 +5,7 @@ $(function(){
 
 	if(zjuserMealInfo != ''){
 		$.dialog.confirm(zjuserMealInfo, function(){
-			location.href = buymealUrl;
+			// location.href = buymealUrl;
 		})
 	}
 
@@ -58,7 +58,6 @@ $(function(){
 			success: function (data) {
 				if(data && data.state == 100){
 					var list = data.info, html = [];
-
 					html.push('<div class="sel-group">');
 					html.push('<button class="sel" type="button">'+langData['siteConfig'][22][96]+'<span class="caret"></span></button>');   //不限
 					html.push('<ul class="sel-menu">');

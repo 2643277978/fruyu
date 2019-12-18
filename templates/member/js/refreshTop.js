@@ -118,7 +118,7 @@ $(function(){
 			var rtConfig = refreshTopConfig.config;
 
 			// 房产模块、经纪人、后台配置了经纪人套餐
-			if(refreshTopModule == 'house' && rtConfig.zjuserMeal.iszjuser == "1" && rtConfig.zjuserMeal.meal_check.state != 101){
+			if( rtConfig.zjuserMeal.iszjuser == "1" && rtConfig.zjuserMeal.meal_check.state != 101){
 				check_zjuser = true;
 				$('.refreshTopPopup').addClass('check_zjuser');
 
@@ -206,11 +206,6 @@ $(function(){
 				}else{
 					$('.rtRefresh .rtTab li:eq(0)').hide();
 				}
-
-				if(check_zjuser){
-					
-				}
-
 			//置顶业务
 			}else if(type == 'topping'){
 
@@ -259,7 +254,6 @@ $(function(){
 					$('.topType label').click();
 					$('.rtTopping .topPlan').show().children('dl:eq(1)').hide();
 					$('.rtTopping .topNormal').hide();
-					$('#refreshTopForm #type').val('toppingPlan');
 				}else {
                     $(".rtBody .paySubmit").hide();
                 }

@@ -168,7 +168,6 @@ $(function(){
 
 		var form = $("#fabuForm"), action = form.attr("action"), url = form.attr("data-url");
 		data = form.serialize();
-
 		t.addClass("disabled").html(langData['siteConfig'][6][35]+"...");  //提交中
 		$.ajax({
 			url: action,

@@ -34,7 +34,6 @@ $(function(){
 			t.siblings("input[type=hidden]").val(id);
 			hline.removeClass().addClass("tip-inline success").html("<s></s>");
 			t.addClass("curr").siblings("span").removeClass("curr");
-
 			if(dl.data('type') == '360qj'){
 	      $('#qj_0, #qj_1').hide();
   	    $('#qj_' + t.data('id')).show();
@@ -126,9 +125,7 @@ $(function(){
 
 			//验证码
 			}else if(name == "vdimgck"){
-
 				hline.removeClass().addClass("tip-inline loading").html("<s></s>");
-
 				$.ajax({
 					url: "/include/ajax.php?service=siteConfig&action=checkVdimgck&code="+t.val(),
 					type: "GET",

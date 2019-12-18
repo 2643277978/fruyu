@@ -145,7 +145,6 @@ $(function(){
 			success: function (data) {
 				if(data && data.state == 100){
 					fabuPay.check(data, url, t);
-
 				}else{
 					$.dialog.alert(data.info);
 					t.removeClass("disabled").html(langData['siteConfig'][11][19]);  //立即发布
@@ -158,8 +157,6 @@ $(function(){
 				$("#verifycode").click();
 			}
 		});
-
-
 	});
 
 });
