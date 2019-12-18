@@ -3,11 +3,11 @@ if(id != 0) istit = true;
 
 $(function(){
 
-	if(zjuserMealInfo != ''){
-		$.dialog.confirm(zjuserMealInfo, function(){
-			// location.href = buymealUrl;
-		})
-	}
+	// if(zjuserMealInfo != ''){
+	// 	$.dialog.confirm(zjuserMealInfo, function(){
+	// 		// location.href = buymealUrl;
+	// 	})
+	// }
 
 	var init = {
 		//树形递归分类
