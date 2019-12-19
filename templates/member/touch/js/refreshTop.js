@@ -68,6 +68,7 @@ $(function(){
 			refreshTopID = aid;
 			rtConfig = refreshTopConfig.config;
 			$('#refreshTopForm #type').val(type == 'refresh' ? 'smartRefresh' : type);
+			$('#refreshTopForm #type').val(type == 'topping'? 'toppingPlan':type);
 			$('#refreshTopForm #act').val(act);
 			$('#refreshTopForm #aid').val(aid);
 			$('#refreshTopForm #useBalance').val(userTotalBalance > 0 ? 1 : 0);
@@ -236,10 +237,10 @@ $(function(){
 				$('.rtTopping .topTit').html(title);
 
 				// //初始化默认选中普通刷新
-				// $('.rtToppingType li').removeClass('curr');
-				// $('.rtToppingType li:eq(0)').addClass('curr');
-				// $('.rtToppingPlan').show();
-				// $('.rtToppingNormal').show();
+				$('.rtToppingType li').removeClass('curr');
+				$('.rtToppingType li:eq(1)').addClass('curr');
+				$('.rtToppingPlan').hide();
+				$('.rtToppingNormal').show();
 
 				topNormal = rtConfig.topNormal;  //普通置顶
 				topPlan = rtConfig.topPlan;  //计划置顶
@@ -502,19 +503,23 @@ $(function(){
 				refreshTopAmount = refreshTopPayAmount = parseFloat(topNormal[rtTopNormalIndex].price);
 				$('#refreshTopForm #amount').val(refreshTopAmount);
 				$('#refreshTopForm #config').val(rtTopNormalIndex);
-				refreshTopFunc.update_zjuser_btn("topping",refreshTopAmount);
+				if(check_zjuser){
+					refreshTopFunc.update_zjuser_btn("topping",refreshTopAmount);
+				}
 				refreshTopFunc.calculationPayPrice();
 			}else{
 				$('.rtToppingPlan').show();
 				$('.rtToppingNormal').hide();
 				$('#refreshTopForm #type').val('toppingPlan');
-				if(topPlan.length>0){
-					for(var i=0;i<topPlan.length;i++){
-						refreshTopAmount=refreshTopPayAmount+=parseFloat(topPlan[i].all);
+				if(check_zjuser){
+					if(topPlan.length>0){
+						for(var i=0;i<topPlan.length;i++){
+							refreshTopAmount=refreshTopPayAmount+=parseFloat(topPlan[i].all);
+						}
 					}
+					refreshTopFunc.update_zjuser_btn("topping",refreshTopAmount);
 				}
 				refreshTopFunc.toppingPlan();
-				refreshTopFunc.update_zjuser_btn("topping",refreshTopAmount);
 			}
 
 		}
