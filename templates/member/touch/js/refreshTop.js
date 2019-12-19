@@ -512,6 +512,7 @@ $(function(){
 				$('.rtToppingNormal').hide();
 				$('#refreshTopForm #type').val('toppingPlan');
 				if(check_zjuser){
+					refreshTopAmount=0;
 					if(topPlan.length>0){
 						for(var i=0;i<topPlan.length;i++){
 							refreshTopAmount+=parseFloat(topPlan[i].all);
