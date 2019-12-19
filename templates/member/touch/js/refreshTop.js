@@ -40,7 +40,7 @@ $(function(){
 			//初始加载配置信息，包括会员相关信息
 			$.ajax({
 				type: "POST",
-				url: "/include/ajax.php",
+				url: masterDomain +"/include/ajax.php",
 				dataType: "json",
 				data: {
 					'service': 'siteConfig',
@@ -156,8 +156,8 @@ $(function(){
           })
         }
         else{
-          this.update_zjuser_btn(type, 7);
-			$('#zjuser_refresh').show();
+			// this.update_zjuser_btn(type, 7);
+			// $('#zjuser_refresh').show();
 			$('.rtSett').hide();
 			$('.rtToppingPlan .rtToppingPlan').addClass('hide_impt');
         }
@@ -235,11 +235,11 @@ $(function(){
 
 				$('.rtTopping .topTit').html(title);
 
-				//初始化默认选中普通刷新
-				$('.rtToppingType li').removeClass('curr');
-				$('.rtToppingType li:eq(0)').addClass('curr');
-				$('.rtToppingPlan').hide();
-				$('.rtToppingNormal').show();
+				// //初始化默认选中普通刷新
+				// $('.rtToppingType li').removeClass('curr');
+				// $('.rtToppingType li:eq(0)').addClass('curr');
+				// $('.rtToppingPlan').show();
+				// $('.rtToppingNormal').show();
 
 				topNormal = rtConfig.topNormal;  //普通置顶
 				topPlan = rtConfig.topPlan;  //计划置顶
@@ -279,7 +279,7 @@ $(function(){
         if(check_zjuser){
           $('.rtToppingType li').click();
           // $('.rtToppingType li:eq(0)').hide();
-          $('.rtToppingPlan .rtToppingPlan').hide();
+          // $('.rtToppingPlan .rtToppingPlan').hide();
           $('.house_zjuser_choose').hide();
           $('#zjuser_refresh').show();
         }
@@ -289,7 +289,6 @@ $(function(){
 			//余额选项
 
 			if(userTotalBalance){
-				 rtConfig = refreshTopConfig.config;
 				var rtUseBalance = userTotalBalance > refreshTopAmount ? parseFloat(refreshTopAmount).toFixed(2) : userTotalBalance.toFixed(2);
                refreshTopPayAmount = (refreshTopAmount - rtUseBalance).toFixed(2);
 				$('.rtBody .reduce-yue').text(rtUseBalance);
@@ -303,7 +302,10 @@ $(function(){
 				}
 				  $('.rtBody .pay-total').text(lastPrice);
 			}
-			refreshTopFunc.calculationPayPrice();
+			if(!check_zjuser){
+				refreshTopFunc.calculationPayPrice();
+
+			}
 
 			//显示浮动窗口
       		$('body').addClass('bodyFixed');
@@ -329,9 +331,9 @@ $(function(){
 
 		//价格业务，判断是否显示支付
 		calculationPayPrice: function(){
-			if(!check_zjuser){
 			var rtConfig = refreshTopConfig.config;
-			if(refreshTopAmount){
+			if(!check_zjuser){
+		     	if(refreshTopAmount){
         $('.rtBody .rtSett, .rtBody .paySubmit').show();
 				var rtUseBalance = userTotalBalance > refreshTopAmount ? parseFloat(refreshTopAmount).toFixed(2) : userTotalBalance.toFixed(2);
 				var rtTotalPay = parseFloat(refreshTopAmount).toFixed(2);
@@ -345,20 +347,22 @@ $(function(){
 		    }else{
 					$('#refreshTopForm #useBalance').val(0);
 		    }
-               refreshTopPayAmount = parseFloat(rtTotalPay).toFixed(2);
+               // refreshTopPayAmount = parseFloat(rtTotalPay).toFixed(2);
 				// $('.rtBody .pay-total').text(refreshTopPayAmount);
 				var total=rtConfig.topDeposit.availableCoins;
-				var lastPrice;
+				// var lastPrice;
 				total=rtConfig.topDeposit.availableCoins;
 				if(parseInt(total)-parseInt(refreshTopAmount)<0){
-					lastPrice=Math.abs(parseInt(total)-parseInt(refreshTopAmount));
+					refreshTopPayAmount=Math.abs(parseInt(total)-parseInt(refreshTopAmount));
 				}else {
-					lastPrice=parseInt(total)-parseInt(refreshTopAmount);
+					refreshTopPayAmount=parseInt(total)-parseInt(refreshTopAmount);
 				}
-				$('.rtBody .pay-total').text(lastPrice);
+				$('.rtBody .pay-total').text(refreshTopPayAmount);
 			}else{
         $('.rtBody .rtSett, .rtBody .paySubmit').hide();
 			}
+			// }else {
+			//
 			}
 		},
 
@@ -390,16 +394,14 @@ $(function(){
 
 					if(rtPlanSelected[week]){
 						refreshTopAmount += topPlan[week][rtPlanSelected[week]];
-						refreshTopPayAmount += topPlan[week][rtPlanSelected[week]];
+						// refreshTopPayAmount += topPlan[week][rtPlanSelected[week]];
 					}
 				}
 
 				//将配置信息写入表单
 				$('#refreshTopForm #amount').val(refreshTopAmount);
 				$('#refreshTopForm #config').val(beganDate+'|'+endDate+'|'+rtPlanSelected.join(','));
-
 				refreshTopFunc.calculationPayPrice();
-
 			}
 
 		}
@@ -500,8 +502,8 @@ $(function(){
 				refreshTopAmount = refreshTopPayAmount = parseFloat(topNormal[rtTopNormalIndex].price);
 				$('#refreshTopForm #amount').val(refreshTopAmount);
 				$('#refreshTopForm #config').val(rtTopNormalIndex);
-				refreshTopFunc.calculationPayPrice();
 				refreshTopFunc.update_zjuser_btn("topping",refreshTopAmount);
+				refreshTopFunc.calculationPayPrice();
 			}else{
 				$('.rtToppingPlan').show();
 				$('.rtToppingNormal').hide();
@@ -551,7 +553,6 @@ $(function(){
       var endDate = $('#topPlanEndObj').val();
 
       var diffDays = parseInt(getRtDays(beganDate, endDate));
-      console.log(diffDays)
       if(diffDays < 6){
         var endDate_ = getRtDate(beganDate, 6);
         $('#topPlanEndObj').val(endDate_);
@@ -677,7 +678,7 @@ $(function(){
       $('.rtBody .paySubmit').addClass('disabled');
 
       $.ajax({
-        url: '/include/ajax.php',
+        url: masterDomain +'/include/ajax.php',
         type : 'post',
         data: $(this).serialize(),
         dataType: 'json',

@@ -135,16 +135,18 @@ $(function(){
   //刷新
   objId.delegate('.refresh', 'click', function(){
     var t = $(this), par = t.closest(".item"), id = par.attr("data-id"), title = par.attr("data-title");
-    if(!t.hasClass('disabled')){
+    // if(!t.hasClass('disabled')){
       refreshTopFunc.init('refresh', 'house', type, id, t, title);
-    }
+    // }
   });
 
 
   //置顶
   objId.delegate('.topping', 'click', function(){
     var t = $(this), par = t.closest(".item"), id = par.attr("data-id"), title = par.attr("data-title");
-    refreshTopFunc.init('topping', 'house', type, id, t, title);
+      // if(!t.hasClass('disabled')){
+          refreshTopFunc.init('topping', 'house', type, id, t, title);
+      // }
   });
 
 
