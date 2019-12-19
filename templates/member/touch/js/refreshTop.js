@@ -514,7 +514,8 @@ $(function(){
 				if(check_zjuser){
 					if(topPlan.length>0){
 						for(var i=0;i<topPlan.length;i++){
-							refreshTopAmount=refreshTopPayAmount+=parseFloat(topPlan[i].all);
+							refreshTopAmount+=parseFloat(topPlan[i].all);
+							refreshTopPayAmount+=parseFloat(topPlan[i].all);
 						}
 					}
 					refreshTopFunc.update_zjuser_btn("topping",refreshTopAmount);
