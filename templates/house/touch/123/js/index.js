@@ -39,12 +39,26 @@ $(function(){
 	document.addEventListener("plusready", function(){
 		$(".down").css("display","none");
 	}, false);
-	wx.miniProgram.getEnv(function(res) {
-		if (res.miniProgram) {
-// 走在小程序的逻辑
-			$(".down").css("display","none");
-		}
-	})
+// 	wx.miniProgram.getEnv(function(res) {
+// 		if (res.miniProgram) {
+// // 走在小程序的逻辑
+// 			$(".down").css("display","none");
+// 		}
+// 	});
+	var xiding = $(".down");
+	var chtop = parseInt(xiding.offset().top);
+	// $(window).on("scroll", function() {
+	// 	var thisa = $(this);
+	// 	var st = thisa.scrollTop();
+	// 	if (st >= chtop) {
+	// 		$(".down").addClass('top');
+	// 		if (device.indexOf('huoniao_iOS') > -1) {
+	// 			$(".down").addClass('padTop20');
+	// 		}
+	// 	} else {
+	// 		$(".down").removeClass('top padTop20');
+	// 	}
+	// });
 	// if(navigator.userAgent.match(/mobile/i)) {
 	// 	$(".down").css("display","none");
 	// }else {

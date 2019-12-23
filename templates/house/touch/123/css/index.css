@@ -4,8 +4,8 @@ html{background: #f8f8f8;padding-bottom: constant(safe-area-inset-bottom);paddin
 
 /*下载app部分*/
 .down{height: 100px;}
-/*.top{position: fixed;top: 0;right: 0;left: 0;background: #fff;width: 100%;}*/
-.down .topDownload{height: 100px;background:url("../images/top_back.jpg");opacity: 0.8 }
+.top{position: fixed;top: 0;right: 0;left: 0;background: #fff;width: 100%; z-index: 100}
+.down .topDownload{height: 100px;background:url("../images/top_back.jpg");opacity: 0.8;}
 .down .topDownload .top_content{height: 100px}
 .down .topDownload .top_content .open_title{float:left;width:50%;height: 30px;font-size: 20px;margin-left:10%;color: #1f2326;font-weight: 700;vertical-align: middle;margin-top: 30px;position: relative}
 .down .topDownload .top_content .open_title span{margin-left: 5px;display: inline-block;height: 30px;line-height: 30px;position: absolute;}
