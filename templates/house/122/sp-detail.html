@@ -146,7 +146,7 @@
 				<span class="sp_pri">{#if $detail_price > 0#}<b>{#$detail_price|string_format:"%0.0f"#}</b>元/月{#else#}<b>价格面议</b>{#/if#}</span>
 			</div>
 			<div class="c_r fn-right" >
-				<span>{#if $detail_price > 0#}<b>{#($detail_price / $detail_area)#}</b>元/m²•月{#else#}<b>价格面议</b>{#/if#}</span>
+				<span>{#if $detail_price > 0#}<b>{#($detail_price / $detail_area).toFixed(2)#}</b>元/m²•月{#else#}<b>价格面议</b>{#/if#}</span>
 				<span class="c_small">不含物业费，具体信息请咨询经纪人</span>
 			</div>
 		</div>
@@ -158,7 +158,7 @@
 				<span class="sp_pri">{#if $detail_price > 0#}<b>{#$detail_price|string_format:"%0.0f"#}</b>万{#else#}<b>价格面议</b>{#/if#}</span>
 			</div>
 			<div class="c_r fn-right" >
-				<span>{#if $detail_price > 0#}<b>{#($detail_price / $detail_area)|string_format:"%0.0f"#}</b>元/m²{#else#}<b>价格面议</b>{#/if#}</span>
+				<span>{#if $detail_price > 0#}<b>{#($detail_price / $detail_area).toFixed(2)#}</b>元/m²{#else#}<b>价格面议</b>{#/if#}</span>
 				<span class="c_small">不含物业费，具体信息请咨询经纪人</span>
 			</div>
 		</div>
