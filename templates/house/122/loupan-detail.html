@@ -288,7 +288,7 @@
 <!-- 楼盘相册 e-->
 
 
-<!-- 沙盘看房 s -->
+<!--&lt;!&ndash; 沙盘看房 s &ndash;&gt;-->
 <!--<div class="wrap shapan"  id="shapan">-->
 	<!--<div class="lpTop fn-clear">沙盘看房</div>-->
 	<!--<div class="shapanBox fn-clear">-->
@@ -363,7 +363,7 @@
 		<!--<div class="empty">暂无沙盘</div>-->
 		<!--{#/if#}-->
 <!--</div>-->
-<!--&lt;!&ndash; 沙盘看房 e &ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash; 沙盘看房 e &ndash;&gt;&ndash;&gt;-->
 
 
 
@@ -396,23 +396,23 @@
 
 
 <!-- 视频看房 s -->
-<!--<div class="wrap quanjing" id="video">-->
-	<!--<div class="lpTop fn-clear">视频看房</div>-->
-	<!--{#if $detail_video#}-->
-	<!--<div class="qjbox">-->
-		<!--{#* 本地 *#}-->
-		<!--{#if $detail_video.videotype == 0#}-->
-			<!--<iframe src="/include/videoPreview.php?f={#$detail_video.videourl#}" frameborder="0"></iframe>-->
-		<!--{#* 第三方 *#}-->
-		<!--{#elseif $detail_video.videotype == 1#}-->
-			<!--<iframe src="{#$detail_video.videourl#}" frameborder="0" allowfullscreen="true"></iframe>-->
-		<!--{#/if#}-->
+<div class="wrap quanjing" id="video">
+	<div class="lpTop fn-clear">视频看房</div>
+	{#if $detail_video#}
+	<div class="qjbox">
+		{#* 本地 *#}
+		{#if $detail_video.videotype == 0#}
+			<iframe src="/include/videoPreview.php?f={#$detail_video.videourl#}" frameborder="0"></iframe>
+		{#* 第三方 *#}
+		{#elseif $detail_video.videotype == 1#}
+			<iframe src="{#$detail_video.videourl#}" frameborder="0" allowfullscreen="true"></iframe>
+		{#/if#}
 
-	<!--</div>-->
-	<!--{#else#}-->
-	<!--<div class="empty">暂无视频</div>-->
-	<!--{#/if#}-->
-<!--</div>-->
+	</div>
+	{#else#}
+	<div class="empty">暂无视频</div>
+	{#/if#}
+</div>
 <!-- 全景看房 e -->
 
 

@@ -146,7 +146,7 @@
 				<span class="sp_pri">{#if $detail_price > 0#}<b>{#$detail_price|string_format:"%0.0f"#}</b>元/月{#else#}<b>价格面议</b>{#/if#}</span>
 			</div>
 			<div class="c_r fn-right" >
-				<span>{#if $detail_price > 0#}<b>{#($detail_price / $detail_area)|string_format:"%0.0f"#}</b>元/m²•月{#else#}<b>价格面议</b>{#/if#}</span>
+				<span>{#if $detail_price > 0#}<b>{#($detail_price / $detail_area)#}</b>元/m²•月{#else#}<b>价格面议</b>{#/if#}</span>
 				<span class="c_small">不含物业费，具体信息请咨询经纪人</span>
 			</div>
 		</div>
@@ -209,7 +209,7 @@
 			{#if $detail_usertype == 1#}
 			<div class="topbox">
 				<div class="l">
-					<a href="{#$detail_user.url#}" target="_blank"><img src="{#$detail_user['photo']#}" alt="{#$detail_user['nickname']#}"></a>
+					<a href="{#$detail_user.url#}" target="_blank"><img src="{#$detail_user['photo']#}" onerror="javascript:this.src='/static/images/noPhoto_100.jpg';" alt="{#$detail_user['nickname']#}"></a>
 				</div>
 				<div class="r">
 					<h4><a href="{#$detail_user.url#}" target="_blank">{#$detail_user['nickname']#}</a><span class="tip">{#if $detail_user.zjcomId#}{#$detail_user.zjcomName#}{#else#}{#/if#}</span></h4>
