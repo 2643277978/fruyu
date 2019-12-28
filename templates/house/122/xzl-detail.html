@@ -89,12 +89,11 @@
 				<a href="javascript:;">
 					{#* h5 *#}
 					{#if $detail_qj_type == 0#}
-						<iframe src="{#$cfg_basehost#}/include/360panorama.php?f={#$detail_qj_file#}"></iframe>
+					<iframe src="{#$cfg_basehost#}/include/360panorama.php?f={#$detail_qj_file#}"></iframe>
 
 					{#* iframe *#}
 					{#elseif $detail_qj_type == 1#}
-						<iframe src="{#$detail_qj_file#}"></iframe>
-
+					<iframe src="{#$detail_qj_file#}"></iframe>
 					{#/if#}
 				</a>
 			</li>
@@ -124,11 +123,16 @@
 	</div>
 	{#else#}
 	<div class="xzl_slide">
-		<ul class="album"><li><a href="javascript:;"><i></i><img src="{#$detail_litpic|default:"/static/images/blank.gif"#}" alt=""></a></li></ul>
+		<ul class="album">
+			<li><a href="javascript:;"><i></i><img src="{#$detail_litpic|default:"/static/images/blank.gif"#}"  alt=""></a></li>
+		</ul>
 		<div class="pageState"></div>
 		<div class="thumb">
 			<div class="plist">
-				<ul><li><a href="javascript:;"><i></i><img src="{#$detail_litpic|replace:"large":"small"|default:"/static/images/blank.gif"#}" alt="{#$detail_title#}"></a></li></ul>
+				<ul>
+					<li><a href="javascript:;"><i></i><img src="{#$detail_litpic|replace:"large":"small"|default:"/static/images/blank.gif"#}" alt="{#$detail_title#}"></a>
+					</li>
+				</ul>
 			</div>
 			<a href="javascript:;" class="sprev"><i></i></a>
 			<a href="javascript:;" class="snext"><i></i></a>
