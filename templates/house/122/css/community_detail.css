@@ -102,6 +102,14 @@
 
 .con_head{width: 350px;height: 46px;line-height: 46px;padding-left:15px;font-size:22px;color:#1a1c21;font-weight:bold;border-left:solid 4px #f1370b;margin:12px 0 20px;background: -moz-linear-gradient( 0deg, rgb(245,245,247) 0%, rgb(245,245,247,0) 100%);background: -webkit-linear-gradient( 0deg, rgb(245,245,247) 0%, rgb(245,245,247,0) 100%);background: -ms-linear-gradient( 0deg, rgb(245,245,247) 0%, rgb(245,245,247,0) 100%);}
 
+/* 价格走势 */
+.record-house .record_box{width: 100%;table-layout: fixed;font-size: 14px;margin-top: 28px;}
+.record-house .record_box th{padding-top: 14px;padding-bottom: 14px;font-weight: bold;text-align: center;font-size: 15px;border-bottom: 2px solid #f1370b;}
+.record-house .record_body td{padding-top: 14px;padding-bottom: 14px;text-align: center;color: #878787;}
+.record-house .record_body tr{border-bottom: 1px solid #efefef;}
+.record-house .record-more{margin-top: 20px;}
+.record-house .record-more a{line-height: 44px;height:44px;background:rgba(246,246,246,1);border-radius:1px;font-size: 14px;text-align:center;color: #333;display: block;}
+
 /* 户型 */
 .hxcon .con_head{margin:40px 0 30px;}
 .hxcon .tab_content{display: block!important;}

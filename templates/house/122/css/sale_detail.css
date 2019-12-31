@@ -128,6 +128,13 @@
 
 .empty {display: block; text-align: center; line-height: 200px; font-size: 16px; font-weight: 700;}
 
+/* 价格走势 */
+.record-house .record_box{width: 100%;table-layout: fixed;font-size: 14px;margin-top: 28px;}
+.record-house .record_box th{padding-top: 14px;padding-bottom: 14px;font-weight: bold;text-align: center;font-size: 15px;border-bottom: 2px solid #f1370b;}
+.record-house .record_body td{padding-top: 14px;padding-bottom: 14px;text-align: center;color: #878787;}
+.record-house .record_body tr{border-bottom: 1px solid #efefef;}
+.record-house .record-more{margin-top: 20px;}
+.record-house .record-more a{line-height: 44px;height:44px;background:rgba(246,246,246,1);border-radius:1px;font-size: 14px;text-align:center;color: #333;display: block;}
 
  /*全景看房&&视频看房*/
 .quanjing .qjbox{width: 1200px;height: 680px;background-color: #1e1d1d;}

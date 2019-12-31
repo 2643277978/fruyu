@@ -12,6 +12,7 @@
 <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
 <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/zu_detail.css?v={#$cfg_staticVersion#}" media="all" />
 <script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+ <script src="https://how2j.cn/study/js/chartjs/2.8.0/chart.min.js"></script>
 <script type="text/javascript">
 	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
 
@@ -229,7 +230,6 @@
 					</div>
 				</div>
 			</div>
-
 			{#/if#}
 		</div>
 	</div>
@@ -242,6 +242,7 @@
 			<div class="wrap">
 				<ul>
 					<li class="curr"><a href="javascript:;">房源信息</a></li>
+					<li><a href="javascript:;">价格走势</a></li>
 					<li><a href="javascript:;">周边配套</a></li>
 					<li><a href="javascript:;">设施配套</a></li>
 					<!--<li><a href="javascript:;">全景看房</a></li>-->
@@ -259,6 +260,17 @@
 		</div>
 	</div>
 
+    <!-- 价格走势 s-->
+    <div class="wrap" id="zoushi">
+        <h2 class="sub-title"><span>{#$detail_community#}小区价格走势</span></h2>
+        <div class="content" >
+            <p style="margin-top: 50px;">出租：</p>
+            <canvas id="saleChart"></canvas>
+            <p style="margin-top: 50px;">商圈出租：</p>
+            <canvas  id="sqChart"></canvas>
+        </div>
+    </div>
+    <!-- 价格走势 e-->
 	<!-- 周边配套 s-->
 	<div class="wrap">
 		<h2 class="sub-title"><span>周边配套</span></h2>
@@ -418,7 +430,120 @@
 	</div>
 </div>
 <div class="popup_bg"></div>
+<script>
+    var data=JSON.parse('{#$detail_price_trend#}');
+    if(data!==null){
+        let sale=data.出租;
+        let sq=data.商圈出租;
+        //出租
+        var arr2 = [];
+        for (let i in sale) {
+            // var o = {};
+            // o[i] = chushou[i];
+            // arr.push(o)
+            arr2.push(sale[i]);
+        }
+        let name2=[];
+        for (let i in sale) {
+            var o = {};
+            var t={i};
+            o[i] = sale[i];
+            name2.push(t);
+        }
+        //商圈出租
+        var arr1 = [];
+        for (let i in sq) {
+            // var o = {};
+            // o[i] = chushou[i];
+            // arr.push(o)
+            arr1.push(sq[i]);
+        }
+        let name1=[];
+        for (let i in sq) {
+            var o = {};
+            var t={i};
+            o[i] = sq[i];
+            name1.push(t);
+        }
 
+        function datasta(bdata,a){
+            let aData=[];
+            var obj = eval(a);
+            for(var i=0;i<obj.length;i++){
+                aData.push(obj[i][1]);
+            }
+            bdata=aData;
+            return bdata;
+        }
+        let rData;
+        $(document).ready(function(){
+            //价格走势
+            var ctx1 = document.getElementById('saleChart').getContext('2d');
+            var ctx2 = document.getElementById('sqChart').getContext('2d');
+            function tubiao(a,rName,rData,tName,tData,sName,sData,fName,fData) {
+                var myChart = new Chart(a, {
+                    type: 'line',
+                    data: {
+                        labels: ['1月', '2月', '3月', '4月', '5月', '6月','7月','8月','9月','10月','11月','11月'],
+                        datasets: [
+                            {
+                                label: rName,
+                                data: rData,
+                                borderColor:'blue',
+                                backgroundColor:'skyBlue',
+                                borderWidth: 1,
+                                fill: false,
+                            },
+                            {
+                                label: tName,
+                                data: tData,
+                                borderColor:'red',
+                                backgroundColor:'pink',
+                                borderWidth: 1,
+                                fill: false,
+                            },
+                            {
+                                label: sName,
+                                data: sData,
+                                borderColor:'green',
+                                backgroundColor:'green',
+                                borderWidth: 1,
+                                fill: false,
+                            },
+                            {
+                                label: fName,
+                                data: fData,
+                                borderColor: "orange",
+                                backgroundColor: "grey",
+                                borderWidth: 1,
+                                fill: false,
+                            },
+                        ]
+                    },
+                    option:{
+                        tooltips: {
+                            mode: 'nearest',
+                            intersect: false,
+                            // callbacks: {
+                            // 	label: function(tooltipItem, myData) {
+                            // 		var label = myData.datasets[tooltipItem.datasetIndex].label || '';
+                            // 		if (label) {
+                            // 			label += '的数值是: '+'元/m';
+                            // 		}
+                            // 		label += parseFloat(tooltipItem.value).toFixed(2);
+                            // 		return label;
+                            // 	}
+                            // },
+                        },
+                    }
+
+                });
+            }
+            tubiao(ctx1,name1[0].i,datasta(rData,arr1[0]),name1[1].i,datasta(rData,arr1[1]),name1[2].i,datasta(rData,arr1[2]),name1[3].i,datasta(rData,arr1[3]));
+            tubiao(ctx2,name2[0].i,datasta(rData,arr2[0]),name2[1].i,datasta(rData,arr2[1]),name2[2].i,datasta(rData,arr2[2]),name2[3].i,datasta(rData,arr2[3]));
+        });
+    }
+</script>
 <script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.qrcode.min.js"></script>
 <script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
 <script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.slides.1.1.1.js"></script>

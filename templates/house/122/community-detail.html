@@ -12,6 +12,7 @@
 <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v=1" media="all" />
 <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/community_detail.css?v=1" media="all" />
 <script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script src="https://how2j.cn/study/js/chartjs/2.8.0/chart.min.js"></script>
 <script type="text/javascript">
 	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
 	var criticalPoint = 1240, criticalClass = "w1200";
@@ -30,6 +31,8 @@
 		url: '{#$pageUrl#}'
 	};
 	var site_map = "{#$site_map#}";
+	// var list1 = "{#$detail_price_trend#}";
+	// var ll=jQuery.parseJSON({#$detail_price_trend#})
 </script>
 </head>
 
@@ -132,31 +135,31 @@
 			<div class="gwlistbox">
 				<div class="listmore"><a href="javascript:;"></a></div>
 				
-				<ul class="gwlist fn-clear">
-					{#foreach from=$detail_zjUserList item=zj key=k#}
-					<li{#if $k > 2#} class="fn-hide"{#/if#}>
-						<div class="topbox">
-							<div class="l">
-								<a href="{#$zj.url#}" target="_blank"><img src="{#$zj.photo#}" alt="{#$zj.nickname#}"></a>
-							</div>
-							<div class="r">
-								<h4><a href="{#$zj.url#}" target="_blank">{#$zj.nickname|mb_substr:0:4:'utf8'#}</a></h4>
-								<span class="tip">{#$zj.zjcom|mb_substr:0:4:'utf8'#}</span>
-							</div>
-						</div>
-						
-						<div class="telbox">
-							<a href="javascript:;"><i></i> 获取电话</a>
-							<div class="tel-down">
-								<s></s>
-								<p><b>{#$zj.phone#}</b></p>
-							</div>
-						</div>
-						
-					</li>
-					{#/foreach#}
-					</li>
-				</ul>
+				<!--<ul class="gwlist fn-clear">-->
+					<!--{#foreach from=$detail_zjUserList item=zj key=k#}-->
+					<!--<li{#if $k > 2#} class="fn-hide"{#/if#}>-->
+						<!--<div class="topbox">-->
+							<!--<div class="l">-->
+								<!--<a href="{#$zj.url#}" target="_blank"><img src="{#$zj.photo#}" alt="{#$zj.nickname#}"></a>-->
+							<!--</div>-->
+							<!--<div class="r">-->
+								<!--<h4><a href="{#$zj.url#}" target="_blank">{#$zj.nickname|mb_substr:0:4:'utf8'#}</a></h4>-->
+								<!--<span class="tip">{#$zj.zjcom|mb_substr:0:4:'utf8'#}</span>-->
+							<!--</div>-->
+						<!--</div>-->
+						<!---->
+						<!--<div class="telbox">-->
+							<!--<a href="javascript:;"><i></i> 获取电话</a>-->
+							<!--<div class="tel-down">-->
+								<!--<s></s>-->
+								<!--<p><b>{#$zj.phone#}</b></p>-->
+							<!--</div>-->
+						<!--</div>-->
+						<!---->
+					<!--</li>-->
+					<!--{#/foreach#}-->
+					<!--</li>-->
+				<!--</ul>-->
 
 				<div class="morelist init">
 
@@ -172,6 +175,8 @@
 <div class="wrap community-nav">
 	<ul>
 		<li{#if $communityNav == 1#} class="curr"{#/if#}><a href="{#$pageUrl#}">小区首页</a></li>
+		<li><a href="{#$pageUrl#}#zoushi">价格走势</a></li>
+		<li><a href="{#$pageUrl#}#success">成交记录</a></li>
 		<li{#if $communityNav == 2#} class="curr"{#/if#}><a href="{#getUrlPath service='house' template='community-hx' id={#$detail_id#}#}">户型</a></li>
 		<li{#if $communityNav == 3#} class="curr"{#/if#}><a href="{#getUrlPath service='house' template='community-album' id={#$detail_id#}#}">小区相册</a></li>
 		<li{#if $communityNav == 4#} class="curr"{#/if#}><a href="{#getUrlPath service='house' template='community-sale' id={#$detail_id#}#}">出售房源({#$detail_total_sale#})</a></li>
@@ -229,6 +234,60 @@
 		</div>
 	</div>
 </div>
+<!-- 价格走势 s-->
+<div class="wrap" id="zoushi">
+	<h2 class="c-tit">{#$detail_title#}价格走势</h2>
+	<div class="c-info around" >
+		<p>出售：</p>
+		<canvas id="myChart"></canvas>
+		<p style="margin-top: 50px;">出租：</p>
+		<canvas id="saleChart"></canvas>
+		<p style="margin-top: 50px;">商圈出租：</p>
+		<canvas  id="sqChart"></canvas>
+	</div>
+</div>
+<!-- 价格走势 e-->
+<!-- 成交记录 s-->
+<div class="wrap" id="success">
+	<h2 class="c-tit">{#$detail_title#}成交记录</h2>
+	<div class="record-house" >
+		<table class="record_box">
+			<thead>
+			<tr>
+				<th>成交价</th>
+				<th>成交单价</th>
+				<th>成交时间</th>
+				<th>地区</th>
+				<th>类型</th>
+				<th>数据来源</th>
+			</tr>
+			</thead>
+			<tbody class="record_body">
+			{#foreach from=$detail_tradeList item=cj key=k#}
+			<tr>
+				<td>{#$cj.tradeprice#}万</td>
+				<td>{#$cj.unitprice#}元/㎡</td>
+				<td>{#$cj.tradetime#}</td>
+				<td>{#$cj.area#}</td>
+				<td>{#$cj.type#}</td>
+				<td>{#$cj.source#}</td>
+			</tr>
+			{#/foreach#}
+			</tbody>
+		</table>
+		<div class="record-more">
+			<a class="web-sensors"
+					sensors-element_type="跳转按钮"
+					sensors-element_name="more_clinch_button"
+					sensors-element_class_name="文字按钮"
+					sensors-element_content="查看更多"
+					sensors-element_target_page="community_detail_clinch"
+					target="_blank"
+					href="">查看更多</a>
+		</div>
+	</div>
+</div>
+<!-- 成交记录 e-->
 <!-- {#$detail_title#}二手房 s-->
 <div class="wrap salebox fn-clear">
 	<h2 class="c-tit">{#$detail_title#}二手房 <a href="{#getUrlPath service='house' template='community-sale' id={#$detail_id#}#}" class="more">全部出售房源 ></a></h2>
@@ -334,6 +393,138 @@
 
 
 {#include file="footer.html"#}
+<script>
+	var data=JSON.parse('{#$detail_price_trend#}');
+	let chushou=data.出售;
+	let sale=data.出租;
+	let sq=data.商圈出租;
+	//出售
+	var arr = [];
+	for (let i in chushou) {
+		// var o = {};
+		// o[i] = chushou[i];
+		// arr.push(o)
+		arr.push(chushou[i]);
+	}
+	let name=[];
+	for (let i in chushou) {
+		var o = {};
+		var t={i};
+		o[i] = chushou[i];
+		name.push(t)
+
+	}
+	//出租
+	var arr2 = [];
+	for (let i in sale) {
+		// var o = {};
+		// o[i] = chushou[i];
+		// arr.push(o)
+		arr2.push(sale[i]);
+	}
+	let name2=[];
+	for (let i in sale) {
+		var o = {};
+		var t={i};
+		o[i] = sale[i];
+		name2.push(t);
+	}
+	//商圈出租
+	var arr1 = [];
+	for (let i in sq) {
+		// var o = {};
+		// o[i] = chushou[i];
+		// arr.push(o)
+		arr1.push(sq[i]);
+	}
+	let name1=[];
+	for (let i in sq) {
+		var o = {};
+		var t={i};
+		o[i] = sq[i];
+		name1.push(t);
+	}
+
+	function datasta(bdata,a){
+		let aData=[];
+		var obj = eval(a);
+		for(var i=0;i<obj.length;i++){
+			aData.push(obj[i][1]);
+		}
+		bdata=aData;
+		return bdata;
+	}
+	let rData;
+	$(document).ready(function(){
+		//价格走势
+		var ctx = document.getElementById('myChart').getContext('2d');
+		var ctx1 = document.getElementById('saleChart').getContext('2d');
+		var ctx2 = document.getElementById('sqChart').getContext('2d');
+		function tubiao(a,rName,rData,tName,tData,sName,sData,fName,fData) {
+			var myChart = new Chart(a, {
+				type: 'line',
+				data: {
+					labels: ['1月', '2月', '3月', '4月', '5月', '6月','7月','8月','9月','10月','11月','11月'],
+					datasets: [
+						{
+							label: rName,
+							data: rData,
+							borderColor:'blue',
+							backgroundColor:'skyBlue',
+							borderWidth: 1,
+							fill: false,
+							scaleLabel : "<%=value/100000000%>元",
+						},
+						{
+							label: tName,
+							data: tData,
+							borderColor:'red',
+							backgroundColor:'pink',
+							borderWidth: 1,
+							fill: false,
+						},
+						{
+							label: sName,
+							data: sData,
+							borderColor:'green',
+							backgroundColor:'green',
+							borderWidth: 1,
+							fill: false,
+						},
+						{
+							label: fName,
+							data: fData,
+							borderColor: "orange",
+							backgroundColor: "grey",
+							borderWidth: 1,
+							fill: false,
+						},
+					]
+				},
+				option:{
+					tooltips: {
+						mode: 'index',
+						intersect: false,
+						// callbacks: {
+						// 	label: function(tooltipItem, myData) {
+						// 		var label = myData.datasets[tooltipItem.datasetIndex].label || '';
+						// 		if (label) {
+						// 			label += '的数值是: '+'元/m';
+						// 		}
+						// 		label += parseFloat(tooltipItem.value).toFixed(2);
+						// 		return label;
+						// 	}
+						// },
+					},
+				}
+
+			});
+		}
+		tubiao(ctx,name[0].i,datasta(rData,arr[0]),name[1].i,datasta(rData,arr[1]),name[2].i,datasta(rData,arr[2]),name[3].i,datasta(rData,arr[3]));
+		tubiao(ctx1,name1[0].i,datasta(rData,arr1[0]),name1[1].i,datasta(rData,arr1[1]),name1[2].i,datasta(rData,arr1[2]),name1[3].i,datasta(rData,arr1[3]));
+		tubiao(ctx2,name2[0].i,datasta(rData,arr2[0]),name2[1].i,datasta(rData,arr2[1]),name2[2].i,datasta(rData,arr2[2]),name2[3].i,datasta(rData,arr2[3]));
+	});
+</script>
 <script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.qrcode.min.js"></script>
 <script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
 <script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dialog-4.2.0.js"></script>

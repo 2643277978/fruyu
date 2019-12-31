@@ -1,4 +1,5 @@
 $(function(){
+
 	//小区顾问
 	var c_id=pageData.id;
 	$.ajax({
@@ -108,4 +109,5 @@ $(function(){
 	      height: 300
 	    });
 	});
+
 })

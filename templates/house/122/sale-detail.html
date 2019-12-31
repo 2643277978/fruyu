@@ -12,6 +12,7 @@
 <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
 <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/sale_detail.css?v={#$cfg_staticVersion#}" media="all" />
 <script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script src="https://how2j.cn/study/js/chartjs/2.8.0/chart.min.js"></script>
 <script type="text/javascript">
 	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
 
@@ -19,7 +20,7 @@
 	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
 
 	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
-	var longitude = '{#$detail_longitude#}', latitude = '{#$detail_latitude#}', resblockName = '{#$detail_community#}';
+	var longitude = '{#$detail_longitude#}', latitude = '{#$detail_latitude#}', resblockName = '{#$detail_community#}',cid='{#$detail_communityid#}';
 	var pageData = {id: '{#$detail_id#}', panName: '{#$detail_community#}', address: '{#$detail_address#}', lat: '{#$detail_latitude#}', lng: '{#$detail_longitude#}'};
 
 	var site_map = "{#$site_map#}";
@@ -246,7 +247,9 @@
 				<ul>
 					<li class="curr"><a href="javascript:;">房源信息</a></li>
 					<li><a href="javascript:;">小区简介</a></li>
-					<!--<li><a href="javascript:;">周边配套</a></li>-->
+					<li><a href="javascript:;">小区价格走势</a></li>
+					<li><a href="javascript:;">小区成交记录</a></li>
+					<li><a href="javascript:;">周边配套</a></li>
 					<!--<li><a href="javascript:;">全景看房</a></li>-->
 					<li><a href="javascript:;">视频看房</a></li>
 					<li><a href="javascript:;">附近房源</a></li>
@@ -301,34 +304,87 @@
 	</div>
 	<!-- 小区简介 e -->
 
+	<!-- 小区价格走势 s -->
+	<div class="wrap">
+		<h2 class="sub-title"><span>{#$detail_community#}小区价格走势</span></h2>
+        <div class="c-info around" >
+            <p>出售：</p>
+            <canvas id="myChart"></canvas>
+        </div>
+	</div>
+	<!-- 小区价格走势 e -->
+
+	<!-- 小区成交记录 s -->
+	<div class="wrap">
+		<h2 class="sub-title"><span>{#$detail_community#}小区成交记录</span></h2>
+		<div class="record-house" >
+			<table class="record_box">
+				<thead>
+				<tr>
+					<th>成交价</th>
+					<th>成交单价</th>
+					<th>成交时间</th>
+					<th>地区</th>
+					<th>类型</th>
+					<th>数据来源</th>
+				</tr>
+				</thead>
+				<tbody class="record_body">
+				{#foreach from=$detail_tradeList item=cj key=k#}
+				<tr>
+					<td>{#$cj.tradeprice#}万</td>
+					<td>{#$cj.unitprice#}元/㎡</td>
+					<td>{#$cj.tradetime#}</td>
+					<td>{#$cj.area#}</td>
+					<td>{#$cj.type#}</td>
+					<td>{#$cj.source#}</td>
+				</tr>
+				{#/foreach#}
+				</tbody>
+			</table>
+			<div class="record-more">
+				<a
+						class="web-sensors"
+						sensors-element_type="跳转按钮"
+						sensors-element_name="more_clinch_button"
+						sensors-element_class_name="文字按钮"
+						sensors-element_content="查看更多"
+						sensors-element_target_page="community_detail_clinch"
+						target="_blank"
+						href="">查看更多</a>
+			</div>
+		</div>
+	</div>
+	<!-- 小区成交记录 e -->
+
 	<!-- 周边配套 s-->
-	<!--<div class="wrap">-->
-		<!--<h2 class="sub-title"><span>周边配套</span></h2>-->
-		<!--<div class="content">-->
-			<!--<div class="aroundContainer">-->
-                <!--<div class="aroundMap" id="map"></div>-->
-                <!--<div class="tabBox">-->
-                    <!--<ul class="aroundType">-->
-                        <!--<li class="LOGCLICK" data-log_evtid='10242'  data-bl="traffic" data-key="地铁站,公交站" data-index="subway,bus" data-length="10,10">交通</li>-->
-                        <!--<li class="LOGCLICK" data-log_evtid='10242'  data-bl="education" data-key="幼儿园,小学,中学,大学"-->
-                                <!--data-index="kindergarten,primary-school,middle-school,University"-->
-                                <!--data-length="10,10,10,10"-->
-                           <!--&gt;教育</li>-->
-                        <!--<li class="LOGCLICK" data-log_evtid='10242'  data-bl="medical" data-key="医院,药店" data-index="hospital,pharmacy" data-length="10,10">医疗</li>-->
-                        <!--<li class="LOGCLICK" data-log_evtid='10242'  data-bl="shopping" data-key="商场,超市,市场" data-index="mall,supermarket,market" data-length="10,10,10">购物</li>-->
-                        <!--<li class="LOGCLICK" data-log_evtid='10242'  data-bl="life" data-key="银行,ATM,餐厅,咖啡馆" data-index="bank,atm,restaurant,coffee" data-length="10,10,10,10">生活</li>-->
-                        <!--<li class="LOGCLICK" data-log_evtid='10242'  data-bl="entertainment" data-key="公园,电影院,健身房,体育馆" data-index="park,cinema,gym,sport" data-length="10,10,10,10">娱乐</li>-->
-                    <!--</ul>-->
-                    <!--<div class="itemTagBox"></div>-->
-                    <!--<div class="aroundList" id="mapListContainer"></div>-->
-                    <!--<div class="loading">-->
-                        <!--<img src="{#$templets_skin#}images/loading.gif" class="loadingImg">-->
-                        <!--<span class="loadingText">努力加载中...</span>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-		<!--</div>-->
-	<!--</div>-->
+	<div class="wrap">
+		<h2 class="sub-title"><span>周边配套</span></h2>
+		<div class="content">
+			<div class="aroundContainer">
+                <div class="aroundMap" id="map"></div>
+                <div class="tabBox">
+                    <ul class="aroundType">
+                        <li class="LOGCLICK" data-log_evtid='10242'  data-bl="traffic" data-key="地铁站,公交站" data-index="subway,bus" data-length="10,10">交通</li>
+                        <li class="LOGCLICK" data-log_evtid='10242'  data-bl="education" data-key="幼儿园,小学,中学,大学"
+                                data-index="kindergarten,primary-school,middle-school,University"
+                                data-length="10,10,10,10"
+                           >教育</li>
+                        <li class="LOGCLICK" data-log_evtid='10242'  data-bl="medical" data-key="医院,药店" data-index="hospital,pharmacy" data-length="10,10">医疗</li>
+                        <li class="LOGCLICK" data-log_evtid='10242'  data-bl="shopping" data-key="商场,超市,市场" data-index="mall,supermarket,market" data-length="10,10,10">购物</li>
+                        <li class="LOGCLICK" data-log_evtid='10242'  data-bl="life" data-key="银行,ATM,餐厅,咖啡馆" data-index="bank,atm,restaurant,coffee" data-length="10,10,10,10">生活</li>
+                        <li class="LOGCLICK" data-log_evtid='10242'  data-bl="entertainment" data-key="公园,电影院,健身房,体育馆" data-index="park,cinema,gym,sport" data-length="10,10,10,10">娱乐</li>
+                    </ul>
+                    <div class="itemTagBox"></div>
+                    <div class="aroundList" id="mapListContainer"></div>
+                    <div class="loading">
+                        <img src="{#$templets_skin#}images/loading.gif" class="loadingImg">
+                        <span class="loadingText">努力加载中...</span>
+                    </div>
+                </div>
+            </div>
+		</div>
+	</div>
 	<!-- 周边配套 e -->
 	
 	<!-- 全景看房 s -->
@@ -441,6 +497,100 @@
 <div class="popup_bg"></div>
 
 {#include file="footer.html"#}
+<script>
+    var data=JSON.parse('{#$detail_price_trend#}');
+    //出售
+    var arr = [];
+    for (let i in data) {
+        // var o = {};
+        // o[i] = chushou[i];
+        // arr.push(o)
+        arr.push(data[i]);
+    }
+    let name=[];
+    for (let i in data) {
+        var o = {};
+        var t={i};
+        o[i] = data[i];
+        name.push(t)
+
+    }
+    function datasta(bdata,a){
+        let aData=[];
+        var obj = eval(a);
+        for(var i=0;i<obj.length;i++){
+            aData.push(obj[i][1]);
+        }
+        bdata=aData;
+        return bdata;
+    }
+    let rData;
+    $(document).ready(function(){
+        //价格走势
+        var ctx = document.getElementById('myChart').getContext('2d');
+        function tubiao(a,rName,rData,tName,tData,sName,sData,fName,fData) {
+            var myChart = new Chart(a, {
+                type: 'line',
+                data: {
+                    labels: ['1月', '2月', '3月', '4月', '5月', '6月','7月','8月','9月','10月','11月','11月'],
+                    datasets: [
+                        {
+                            label: rName,
+                            data: rData,
+                            borderColor:'blue',
+                            backgroundColor:'skyBlue',
+                            borderWidth: 1,
+                            fill: false,
+                            scaleLabel : "<%=value/100000000%>元",
+                        },
+                        {
+                            label: tName,
+                            data: tData,
+                            borderColor:'red',
+                            backgroundColor:'pink',
+                            borderWidth: 1,
+                            fill: false,
+                        },
+                        {
+                            label: sName,
+                            data: sData,
+                            borderColor:'green',
+                            backgroundColor:'green',
+                            borderWidth: 1,
+                            fill: false,
+                        },
+                        {
+                            label: fName,
+                            data: fData,
+                            borderColor: "orange",
+                            backgroundColor: "grey",
+                            borderWidth: 1,
+                            fill: false,
+                        },
+                    ]
+                },
+                option:{
+                    tooltips: {
+                        mode: 'nearest',
+                        intersect: false,
+                        // callbacks: {
+                        // 	label: function(tooltipItem, myData) {
+                        // 		var label = myData.datasets[tooltipItem.datasetIndex].label || '';
+                        // 		if (label) {
+                        // 			label += '的数值是: '+'元/m';
+                        // 		}
+                        // 		label += parseFloat(tooltipItem.value).toFixed(2);
+                        // 		return label;
+                        // 	}
+                        // },
+                    },
+                }
+
+            });
+        }
+        tubiao(ctx,name[0].i,datasta(rData,arr[0]),name[1].i,datasta(rData,arr[1]),name[2].i,datasta(rData,arr[2]),name[3].i,datasta(rData,arr[3]));
+    });
+</script>
 <script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.qrcode.min.js"></script>
 <script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
 <script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.slides.1.1.1.js"></script>
