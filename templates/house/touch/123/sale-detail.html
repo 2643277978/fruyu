@@ -371,18 +371,18 @@
             name.push(t)
         }
         console.log(arr[3]);
+        console.log(arr[3][10][1]);
+        console.log(arr[3][11][1]);
         function datasta(bdata,a){
             let aData=[];
             var obj = eval(a);
             for(var i=0;i<obj.length;i++){
                 aData.push(obj[i][1]);
-                console.log(obj[11][1]);
             }
             bdata=aData;
             return bdata;
         }
         let rData;
-        console.log(rData);
         $(document).ready(function(){
             //价格走势
             var ctx = document.getElementById('myChart').getContext('2d');
