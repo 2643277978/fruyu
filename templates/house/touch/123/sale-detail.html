@@ -383,7 +383,11 @@
 
         let rData;
         var dd=datasta(rData,arr[3]);
-        console.log(dd);
+        console.log(dd[11]);
+        var cz=Number(dd[11])-Number(dd[10]);
+        console.log(cz);
+        var zf=number(cz/number(dd[10]))*100+'%';
+        console.log(zf);
         $(document).ready(function(){
             //价格走势
             var ctx = document.getElementById('myChart').getContext('2d');
