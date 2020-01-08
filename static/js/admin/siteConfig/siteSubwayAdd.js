@@ -273,5 +273,28 @@ $(function(){
 			};
 		});
 	});
-
+	//地铁站点定位
+	$(".stationmap").click(function(){
+		var citys = provinceid;
+		if(countyid)    citys = countyid;
+		if(cityid)  citys = cityid;
+		var lnglat = $(this).data("lng") + "," + $(this).data("lat");
+		var dom = $(this);
+		$.dialog({
+			id: "markDitu",
+			title: "标注地图位置<small>（请点击/拖动图标到正确的位置，再点击底部确定按钮。）</small>",
+			content: 'url:/api/map/mark.php?mod=siteConfig&lnglat='+lnglat+"&city="+citys,
+			width: 800,
+			height: 500,
+			max: true,
+			ok: function(){
+				var doc = $(window.parent.frames["markDitu"].document),
+					lng = doc.find("#lng").val(),
+					lat = doc.find("#lat").val();
+				dom.attr('data-lng', lng);
+				dom.attr('data-lat', lat);
+			},
+			cancel: true
+		});
+	});
 });
