@@ -201,7 +201,7 @@
                 <div class="txt_left">
                     <p><span>小区均价</span><span >{#$detail_unitprice#}元/平</span></p>
                     {#if $detail_price_trend #}
-                    <p><span>增&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;幅</span><span class="zf"></span></p>
+                    <p><span>增&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;幅</span><span ></span></p>
                     {#/if#}
                     <p><span>建筑面积</span><span>{#$detail_communityDetail.buildarea#}m²</span></p>
                     <p><span>竣工时间</span><span>{#$detail_communityDetail.opendate|date_format:"%Y-%m"#}</span></p>
@@ -229,8 +229,9 @@
             </div>
             <a href="javascript:;" class="btn-all appMapBtn" target="_blank">查看全部配套 > </a>
         </div>
-        {#if $detail_communityid#}
+
         <!-- 价格走势 -->
+        {#if $detail_price_trend #}
         <div class="periphery">
             <div class="periphery_title">价格走势</div>
             <div class="c-info around" >
@@ -381,7 +382,6 @@
         }
         let rData;
 
-        $(".zf").text("-1.0%");
         $(document).ready(function(){
             //价格走势
             var ctx = document.getElementById('myChart').getContext('2d');

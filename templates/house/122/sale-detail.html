@@ -377,7 +377,7 @@
 		</div>
 	</div>
 	<!-- 小区配套 e -->
-
+	{#if $detail_price_trend#}
 	<!-- 小区价格走势 s -->
 	<div class="wrap zoushi">
 		<h2 class="sub-title"><span>{#$detail_community#}小区价格走势</span></h2>
@@ -386,8 +386,9 @@
             <canvas id="myChart"></canvas>
         </div>
 	</div>
+	{#/if#}
 	<!-- 小区价格走势 e -->
-
+	{#if $detail_tradeList#}
 	<!-- 小区成交记录 s -->
 	<div class="wrap jilu">
 		<h2 class="sub-title"><span>{#$detail_community#}小区成交记录</span></h2>
@@ -428,6 +429,7 @@
 			</div>
 		</div>
 	</div>
+	{#/if#}
 	<!-- 小区成交记录 e -->
 
 	<!-- 周边配套 s-->

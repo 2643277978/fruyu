@@ -317,7 +317,9 @@
 		</div>
 	</div>
 	{#/if#}
+
     <!-- 价格走势 s-->
+	{#if $detail_price_trend#}
     <div class="wrap" id="zoushi">
         <h2 class="sub-title"><span>{#$detail_community#}小区价格走势</span></h2>
         <div class="content" >
@@ -327,6 +329,7 @@
             <canvas  id="sqChart"></canvas>
         </div>
     </div>
+	{#/if#}
     <!-- 价格走势 e-->
 	<!-- 周边配套 s-->
 	<div class="wrap">
