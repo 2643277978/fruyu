@@ -376,12 +376,13 @@
             var obj = eval(a);
             for(var i=0;i<obj.length;i++){
                 aData.push(obj[i][1]);
+                console.log(obj[11][1]);
             }
             bdata=aData;
             return bdata;
         }
         let rData;
-
+        console.log(rData);
         $(document).ready(function(){
             //价格走势
             var ctx = document.getElementById('myChart').getContext('2d');
