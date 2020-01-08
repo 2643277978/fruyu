@@ -383,12 +383,9 @@
 
         let rData;
         var dd=datasta(rData,arr[3]);
-        console.log(dd[11]);
         var cz=Number(dd[11])-Number(dd[10]);
-        console.log(cz);
         var bl=Number(cz/Number(dd[10]))*100;
         var zf=bl.toFixed(2)+"%";
-        console.log(zf);
         $("#zfl").html(zf);
         $(document).ready(function(){
             //价格走势
