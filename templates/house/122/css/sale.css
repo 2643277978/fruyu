@@ -106,7 +106,9 @@ body,html{background-color: #fff;}
 .main .hirig .btn_sc i.isc{background: url(../images/icon_sc.png) no-repeat center center;}
 .main .hirig .btn_sc.btn_ysc i.isc{background: url(../images/icon_ysc.png) no-repeat center center;}
 .main .hirig .btn_share i.ishare{background: url(../images/icon_share.png) no-repeat center center;}
-
+/*地铁*/
+.lpinf select{border: 1px solid #d3d4de;box-shadow: 2px 2px 3px #d3d4de;color: #797a82;font-size: 14px;height: 30px;margin-top: 10px;}
+.lpinf select option{color: #797a82; font-size: 14px;height: 35px;}
 .main .lplist li:hover .hinf{display: block;}
 
 

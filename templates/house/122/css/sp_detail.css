@@ -71,6 +71,9 @@
 .param .txt_other dl{overflow: hidden;padding:5px 0;}
 .comAdd dd span{max-width: 310px;  float: left;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 .comAdd dd a{color:#4884ff;margin-left: 10px;float: left;}
+/* 地铁 */
+.txt_other dl select{border: 1px solid #d3d4de;box-shadow: 2px 2px 3px #d3d4de;color: #2e323b;font-size: 14px;height: 30px;}
+.txt_other dl select option{color: #2e323b; font-size: 14px;min-height: 35px;display: inline-block}
 /*负责人*/
 .manager{padding:35px 0;}
 .manager .topbox{overflow: hidden;}

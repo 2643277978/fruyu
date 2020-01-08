@@ -611,11 +611,15 @@ $(function() {
 								   html.push('<dd class="com">');
 								   html.push('<em>'+list[i].community+'</em>');
 								   html.push('</dd>')
-									html.push('<dd class="item-type-1 item-type_zu" style="margin-top: 5px;">');
-									html.push('<em>'+list[i].rentype+'</em>');
+								  if(list[i].subway != "" && list[i].subway ){
+									html.push('<dd class="zu_subway">');
 									html.push('<select>');
-									html.push('<option>地铁</option>');
+									for (var j=0;j<list[i].subway.length;j++){
+										html.push('<option value="">轻轨'+ list[i].subway[j].line+''+ list[i].subway[j].station+'地铁站</option>');
+									}
 									html.push('</select>');
+									html.push('</dd>');
+								  }
 								  // html.push('<em style="float: right">该小区'+list[i].bno+'套在租</em>');
 									html.push('</dd>')
 

@@ -500,6 +500,15 @@ $(function() {
 	                           	}
 
 								html.push('<dd class="item-type-1 sp-item-type-1 fn-clear"><em>'+list[i].address+'</em><em class="r">'+elevatortxt+'</em></dd>');
+								if(list[i].subway != "" && list[i].subway ){
+									html.push('<dd class="zu_subway">');
+									html.push('<select>');
+									for (var j=0;j<list[i].subway.length;j++){
+										html.push('<option value="">轻轨'+ list[i].subway[j].line+''+ list[i].subway[j].station+'地铁站</option>');
+									}
+									html.push('</select>');
+									html.push('</dd>');
+								}
 								html.push('</dl>')
 								html.push('</div>')
 								html.push('<div class="clear"></div>')

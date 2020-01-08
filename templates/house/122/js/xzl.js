@@ -579,23 +579,27 @@ $(function(){
 
                         html.push('</div>');
                         html.push('<p class="lpinf">[' + d.addr[d.addr.length - 1] + ']  ' + d.address + '</p>');
-                        // if(d.type==0){
-                        //     html.push('<p class="lpinf">该楼盘有'+ +'套在租</p>');
-                        // }else {
-                        //     html.push('<p class="lpinf">该楼盘有'+ +'套在售</p>');
-                        // }
+                        if(d.subway!="" && d.subway){
+                            html.push('<p class="lpinf">');
+                            html.push('<select>');
+                            for (var i=0;i<d.subway.length;i++){
+                                html.push('<option>轻轨'+d.subway[i].line+''+ d.subway[i].station+'站</option>');
+                            }
+                            html.push('</select>');
+                            html.push('</p>');
+                        }
                         if (d.proprice > 0) {
                             html.push('<p class="lpinf">物业费：' + d.proprice + '元/m²/月</p>');
                         }
                         html.push('<div class="lpinf hinf fn-clear">');
                         html.push('<div class="hilef fn-left">');
-                        if (d.usertype == 1) {
-                            html.push('<span><i class="iname"></i> ' + d.nickname + '</span>');
+                        // if (d.usertype == 1) {
+                        //     html.push('<span><i class="iname"></i> ' + d.nickname + '</span>');
                             // html.push('<span><i class="itel"></i> ' + d.userPhone + '</span>');
-                        } else {
-                            html.push('<span><i class="iname"></i> ' + d.username + '</span>');
+                        // } else {
+                        //     html.push('<span><i class="iname"></i> ' + d.username + '</span>');
                             // html.push('<span><i class="itel"></i> ' + d.contact + '</span>');
-                        }
+                        // }
                         html.push('</div>');
                         html.push('<div class="hirig fn-right">');
                         if (d.collect) {

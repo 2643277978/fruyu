@@ -121,6 +121,16 @@
 			<div class="classification">
 				<div><p>{#$detail_room#}室{#$detail_hall#}厅{#$detail_guard#}卫</p><p>户型</p></div><div><p>{#$detail_area#}㎡</p><p>面积</p></div><div><p>{#$detail_direction#}</p><p>朝向</p></div><div><p>{#$detail_rentype#}</p><p>类型</p></div>
 			</div>
+			{#if $detail_subway #}
+			<div class="subway">
+				<p>附近轻轨：</p>
+				<select name="" id="">
+					{#foreach from=$detail_subway item=sub#}
+					<option value="{#$sub#}">轻轨{#$sub.line#}{#$sub.station#}站</option>
+					{#/foreach#}
+				</select>
+			</div>
+			{#/if#}
        <a href="https://api.map.baidu.com/marker?location={#$detail_latitude#},{#$detail_longitude#}&title={#$detail_title#}&content={#foreach from=$detail_latitude item=addr#}{#$addr#}{#/foreach#}{#$detail_address#}&output=html" target="_blank" class="zf_address appMapBtn">{#foreach from=$detail_addr item=addr#}{#$addr#}{#/foreach#}{#$detail_address#}</a>
 		</div>
 		<div class="information usertype{#$detail_usertype#} fn-clear">

@@ -555,12 +555,15 @@ $(function() {
 								html.push('<em class="l">'+list[i].community+'</em><em class="r">均价 '+list[i].unitprice+'元/平</em>');
 
 								html.push('</dd>');
-								html.push('<dd class="zu_subway">');
-								html.push('<select>');
-								html.push('<option value="">XX地铁站</option>');
-								html.push('</select>');
-								// html.push('<span>该小区'+ +'套在售</span>');
-								html.push('</dd>');
+								if(list[i].subway != "" && list[i].subway ){
+									html.push('<dd class="zu_subway">');
+									html.push('<select>');
+									for (var j=0;j<list[i].subway.length;j++){
+										html.push('<option value="">轻轨'+ list[i].subway[j].line+''+ list[i].subway[j].station+'地铁站</option>');
+									}
+									html.push('</select>');
+									html.push('</dd>');
+								}
 								html.push('</dl>');
 								html.push('</div>');
 								html.push('</a>');

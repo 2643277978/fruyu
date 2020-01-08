@@ -28,6 +28,10 @@ body{position: relative;}
 .zu_top .choose-box>ul>li>a>img{display: inline-block;height: .45rem}
 .zu_top .choose-more-condition>ul>li>a>img{display: inline-block;height: .45rem}
 
+/*地铁*/
+.zu_subway{margin-top: 5px;}
+.zu_subway select{border: 1px solid #d3d4de;box-shadow: 2px 2px 3px #d3d4de;color: #797a82;font-size: 14px;}
+.zu_subway select option{color: #797a82; font-size: 14px;}
 /*选择*/
 .choose_, .choose{height: 0.8rem;border-bottom: 1px solid #e8e8e8;background: #fff;}
 .choose_ li, .choose li{width: 25%;font-size: .3rem;float: left;text-align: center;position: relative;padding: .2rem 0;}
@@ -119,8 +123,7 @@ vertical-align: middle;
 .house-item dd.xq-item-area em span{
 	    color: #f35712;
 }
-.house-item .zu_subway{margin-top: 5px;}
-.house-item .zu_subway span{float: right}
+
 .house-item dd.sp_item-area .price_unit{color: #f35712!important;}
 .esf-list .house-item dd.item-area em{margin-right: .2rem;}
 .house-item dd.item-area .proportion{color: #a0a0a0;font-size: .24rem;margin-left: .1rem;}

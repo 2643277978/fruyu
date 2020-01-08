@@ -164,10 +164,21 @@
 			<div><span>进&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;深：</span><span>{#$detail_jinshen#}米</span></div>
 			<div><span>层&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高：</span><span>{#$detail_cenggao#}米</span></div>
 			<div><span>付款方式：</span><span>{#$detail_paytype#}</span></div>
+			{#if $detail_subway #}
+			<div class="subway"><span>附&nbsp;近&nbsp;轻&nbsp;轨：</span><span>
+				<select name="" id="">
+					{#foreach from=$detail_subway item=sub#}
+					<option value="{#$sub#}">轻轨{#$sub.line#}{#$sub.station#}站</option>
+					{#/foreach#}
+				</select>
+			</span></div>
+			{#/if#}
 		</div>
+		{#if $detail_subway #}
 		<div class="housing_txt">
 			{#$detail_note#}
 		</div>
+		{#/if#}
 	</div>
 
 	<!-- 设施配套 -->

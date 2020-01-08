@@ -184,13 +184,16 @@
 							{#/house#}
 						</ul>
 					</div>
-					<ul class="checklist">                            
-						<li><s class="checkbox cjs{#if in_array('0', $flagArr)#} checked{#/if#}" data-id="0"><i></i></s>急售</li>
-						<li><s class="checkbox cms{#if in_array('1', $flagArr)#} checked{#/if#}" data-id="1"><i></i></s>免税</li>
-						<li><s class="checkbox cbus{#if in_array('2', $flagArr)#} checked{#/if#}" data-id="2"><i></i></s>公交/地铁</li>
-						<li><s class="checkbox cxq{#if in_array('3', $flagArr)#} checked{#/if#}" data-id="3"><i></i></s>校区房</li>
-						<li><s class="checkbox cbus{#if in_array('4', $flagArr)#} checked{#/if#}" data-id="4"><i></i></s>满五年</li>
-						<li><s class="checkbox cxq{#if in_array('5', $flagArr)#} checked{#/if#}" data-id="5"><i></i></s>推荐</li>
+					<ul class="checklist">
+						{#house action="item" return="item" type=$proertypid#}
+						<li><s class="checkbox {#if in_array('{#$item.id#}', $flagArr)#} checked{#/if#} " data-id="{#$item.id#}"><i></i></s>{#$item.typename#}</li>
+						{#/house#}
+<!--						<li><s class="checkbox cjs{#if in_array('0', $flagArr)#} checked{#/if#}" data-id="0"><i></i></s>急售</li>-->
+<!--						<li><s class="checkbox cms{#if in_array('1', $flagArr)#} checked{#/if#}" data-id="1"><i></i></s>免税</li>-->
+<!--						<li><s class="checkbox cbus{#if in_array('2', $flagArr)#} checked{#/if#}" data-id="2"><i></i></s>公交/地铁</li>-->
+<!--						<li><s class="checkbox cxq{#if in_array('3', $flagArr)#} checked{#/if#}" data-id="3"><i></i></s>校区房</li>-->
+<!--						<li><s class="checkbox cbus{#if in_array('4', $flagArr)#} checked{#/if#}" data-id="4"><i></i></s>满五年</li>-->
+<!--						<li><s class="checkbox cxq{#if in_array('5', $flagArr)#} checked{#/if#}" data-id="5"><i></i></s>推荐</li>-->
 					</ul>
 					
 				</dd>

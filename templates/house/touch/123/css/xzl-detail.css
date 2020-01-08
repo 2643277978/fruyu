@@ -259,7 +259,10 @@ padding: .4rem .24rem;
     padding: .3rem 0;
     line-height: .46rem;
 }
-
+/*地铁*/
+.housing .mode .subway{width: 100%;}
+.housing .mode .subway span:last-child{max-width:4.2rem}
+.housing .mode .subway span:last-child>select{height: 30px;box-shadow: 2px 3px 3px #919191;border: 1px solid #919191}
 
 
 /*楼盘详情*/

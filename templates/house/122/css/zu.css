@@ -115,8 +115,9 @@ input[type="checkbox"]:checked::before{content: "\2713";background-color: #fff;p
 .main .left_neirong>.lzu{margin-top: 6px; width: 160px; display: inline-block;float: left}
 .main .left_neirong>.lzu>p{font-size: 14px; color: #0a0a0a;margin-top: 5px;}
 .main .left_neirong>.ldt{width: 130px;display: inline-block;cursor: pointer; margin-top: 10px;}
-.main .left_neirong>.ldt>select{padding-right: 1.8rem;color: #afbac0;font-size: 1rem;border: 1px solid #9fa1ab;outline: none; appearance:none;-webkit-appearance:none; background: url("../images/select.jpg") no-repeat right center transparent;}
-.main .left_neirong>.ldt>select>option:hover{background-color: #f1370b;color: white}
+/*地铁*/
+.lpinf select{border: 1px solid #d3d4de;box-shadow: 2px 2px 3px #d3d4de;color: #797a82;font-size: 14px;height: 30px;margin-top: 10px;}
+.lpinf select option{color: #797a82; font-size: 14px;height: 35px;}
 
 
 

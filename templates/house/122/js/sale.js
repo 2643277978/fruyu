@@ -666,15 +666,15 @@ $(function () {
                         html.push('<span>' + d.room + '</span><em>|</em><span>' + d.area + '㎡</span>');
                         html.push('<em>|</em>');
 
-                        // if (d.buildage > 0) {
-                        //     html.push('<span>' + d.buildage + '年' + (d.buildage < 100 ? '代' : '') + '</span>');
-                        //     html.push('<em>|</em>');
-                        // }
-                        //
-                        // if (d.direction) {
-                        //     html.push('<span>' + d.direction + '</span>');
-                        //     html.push('<em>|</em>');
-                        // }
+                        if (d.buildage > 0) {
+                            html.push('<span>' + d.buildage + '年' + (d.buildage < 100 ? '代' : '') + '</span>');
+                            html.push('<em>|</em>');
+                        }
+
+                        if (d.direction) {
+                            html.push('<span>' + d.direction + '</span>');
+                            html.push('<em>|</em>');
+                        }
                         // if (d.bno > 0 && d.floor > 0) {
                         //     html.push('<span>' + d.bno + '/' + d.floor + '层</span>');
                         //     html.push('<em>|</em>');
@@ -702,6 +702,15 @@ $(function () {
                         html.push('<div class="sp_r fn-right">' + d.unitprice + ' 元/㎡</div>');
                         html.push('</div>');
                         html.push('<p class="lpinf">[' + d.addr[d.addr.length - 1] + ']  ' + d.address + '</p>');
+                        if(d.subway!=""){
+                            html.push('<p class="lpinf">');
+                            html.push('<select>');
+                            for (var i=0;i<d.subway.length;i++){
+                                html.push('<option>轻轨'+d.subway[i].line+''+ d.subway[i].station+'站</option>');
+                            }
+                            html.push('</select>');
+                            html.push('</p>');
+                        }
                         html.push('<div class="lpinf hinf fn-clear">');
                         /*html.push('<div class="hilef fn-left">');
 

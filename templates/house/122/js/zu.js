@@ -636,18 +636,15 @@ $(function () {
                         html.push('<div class="sp_r fn-right">' + (huoniao.transTimes(d.pubdate, 2)) + '更新</div>');
                         html.push('</div>');
                         html.push('<p class="lpinf">[' + d.addr[d.addr.length - 1] + ']  ' + d.address + '</p>');
-                        html.push('<div class="left_neirong">');
-                        // html.push('<div class="lzu">');
-                        // html.push('<p class="xzu">同小区在租'+ d.bno +'套</p>');
-                        // html.push('<p class="szu">同商圈在租'+ d.bno +'套</p>');
-                        // html.push('</div>');
-                        html.push('<div class="ldt">');
-                        html.push('<select>');
-                        html.push('<option value="">地铁</option>');
-                        html.push('<option value="">叫你看电视</option>');
-                        html.push('</select>');
-                        html.push('</div>');
-                        html.push('</div>');
+                        if(d.subway!=""){
+                            html.push('<p class="lpinf">');
+                            html.push('<select>');
+                            for (var i=0;i<d.subway.length;i++){
+                                html.push('<option>轻轨'+d.subway[i].line+''+ d.subway[i].station+'站</option>');
+                            }
+                            html.push('</select>');
+                            html.push('</p>');
+                        }
                         html.push('<div class="lpinf hinf fn-clear">');
                         /*html.push('<div class="hilef fn-left">');
                         if (d.usertype == 1) {

@@ -123,6 +123,16 @@
                         <p>物业费</p>
                     </div>
                 </div>
+                {#if $detail_subway #}
+                <div class="subway">
+                    <p>附近轻轨：</p>
+                    <select name="" id="">
+                        {#foreach from=$detail_subway item=sub#}
+                        <option value="{#$sub#}">轻轨{#$sub.line#}{#$sub.station#}站</option>
+                        {#/foreach#}
+                    </select>
+                </div>
+                {#/if#}
                 <a href="javascript:;" target="_blank" class="zf_address appMapBtn">{#foreach from=$detail_addr item=addr#}{#$addr#}{#/foreach#}{#$detail_address#}</a>
             </div>
             <div class="information usertype{#$detail_usertype#} fn-clear">
@@ -169,7 +179,7 @@
                 </div>
                 <div><span>朝&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;向：</span><span>{#$detail_direction#}&nbsp;</span>
                 </div>
-                <div><span>楼&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;层：</span><span>{#if $detail_bno ==0 #}低层{#elseif $detail_bno ==200#}中层 {#elseif $detail_bno ==201#}高层{#else#}{#$detail_bno#}{#/if#}层（共{#$detail_floor#}层）</span>
+                <div><span>楼&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;层：</span><span>{#if $detail_bno ==0 #}低层{#elseif $detail_bno ==200#}中层 {#elseif $detail_bno ==201#}高层{#else#}{#$detail_bno#}{#/if#}（共{#$detail_floor#}层）</span>
                 </div>
                 <div><span>装&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;修：</span><span>{#$detail_zhuangxiu#}&nbsp;</span>
                 </div>
@@ -183,12 +193,16 @@
             <div class="housing_txt">{#$detail_note#}</div>
         </div>
         <!-- 楼盘详情 -->
-        {#if $detail_communityid#}
+        {#if $detail_communityid #}
         <div class="recommend">
             <div class="recommend_title fn-clear"><span>{#$detail_community#}</span><a href="{#getUrlPath service=house template='community-detail' id=$detail_communityid#}">小区详情&gt;</a>
             </div>
             <div class="recommend_txt fn-clear">
                 <div class="txt_left">
+                    <p><span>小区均价</span><span >{#$detail_unitprice#}元/平</span></p>
+                    {#if $detail_price_trend #}
+                    <p><span>增&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;幅</span><span class="zf"></span></p>
+                    {#/if#}
                     <p><span>建筑面积</span><span>{#$detail_communityDetail.buildarea#}m²</span></p>
                     <p><span>竣工时间</span><span>{#$detail_communityDetail.opendate|date_format:"%Y-%m"#}</span></p>
                     <p><span>容&nbsp;&nbsp;积&nbsp;&nbsp;率</span><span>{#$detail_communityDetail.rongji#}</span></p>
@@ -354,8 +368,8 @@
             var t={i};
             o[i] = data[i];
             name.push(t)
-
         }
+        console.log(arr);
         function datasta(bdata,a){
             let aData=[];
             var obj = eval(a);
@@ -366,6 +380,8 @@
             return bdata;
         }
         let rData;
+
+        $(".zf").text("-1.0%");
         $(document).ready(function(){
             //价格走势
             var ctx = document.getElementById('myChart').getContext('2d');

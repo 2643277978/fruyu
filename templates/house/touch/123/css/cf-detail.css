@@ -62,6 +62,25 @@ width: 25%;
 	color: #9fa0ab;
 	    padding-top: .1rem;
 }
+.zf_title .subway{
+    padding: .3rem 0;
+    border-bottom: 1px solid #eeeeee;
+}
+.zf_title .subway p{
+    display: inline-block;
+    width: 80px;
+    height: 20px;
+    margin-left: 20px;
+    font-size: 14px;
+}
+.zf_title .subway select{
+    height: 30px;
+    font-size: 14px;
+    /*border: 1px solid #9fa0ab;*/
+    border: none;
+    box-shadow: 2px 2px 3px #9fa0ab;
+    color: #9fa0ab;
+}
 .zf_title .zf_address{
     display: block;
     padding: .3rem .3rem .3rem 0;

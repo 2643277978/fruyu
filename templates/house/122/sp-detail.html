@@ -200,61 +200,73 @@
 				<!-- <dl><dt>剩余租期</dt><dd>6个月</dd></dl> -->
 			</div>
 			<div class="txt_other">
+				{#if $detail_subway #}
+				<dl><dt>附近轻轨</dt><dd>
+					<select name="" id="">
+						{#foreach from=$detail_subway item=dt key=k#}
+						<option value={#$dt#}>轻轨{#$dt.line#}{#$dt.station#}站</option>
+						{#/foreach#}
+					</select>
+				</dd></dl>
+				{#/if#}
 				<dl class="comAdd"><dt>详细地址</dt><dd><span>{#foreach from=$detail_addr item=addr#}
 			{#$addr#}
 			{#/foreach#} {#$detail_address#}</span> <a href="#map" id="amap">地图</a></dd></dl>
 			</div>
 		</div>
 		<div class="manager">
-			{#if $detail_usertype == 1#}
+			<!--		判断是不是会员 detail_usertype==1 就是会员 否则不是	-->
+<!--			<div class="topbox">-->
+<!--				<div class="l">-->
+<!--					<a href="{#$detail_user.url#}" target="_blank"><img src="{#$detail_user['photo']#}" onerror="javascript:this.src='/static/images/noPhoto_100.jpg';" alt="{#$detail_user['nickname']#}"></a>-->
+<!--				</div>-->
+<!--				<div class="r">-->
+<!--					<h4><a href="{#$detail_user.url#}" target="_blank">{#$detail_user['nickname']#}</a><span class="tip">{#if $detail_user.zjcomId#}{#$detail_user.zjcomName#}{#else#}{#/if#}</span></h4>-->
+<!--					<p>{#if $detail_user['certify'] == 1#}<i class="isf" title="身份认证"></i>{#/if#}{#if $detail_user['flag'] == 1#}<i class="imp" title="名片认证"></i>{#/if#}</p>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--			-->
+<!--			<div class="manbox fn-clear">-->
+<!--				&lt;!&ndash;<a href="javascript:;" class="btnTel"><i></i> {#$detail_user.phone#}</a>&ndash;&gt;-->
+<!--				<div class="mobile_kf_mid  fn-clear">-->
+<!--					<div class="mk_lef fn-left">-->
+<!--						<div id="sj"></div>-->
+<!--					</div>-->
+<!--					<div class="mk_rig fn-right">-->
+<!--						<span>扫</span>-->
+<!--						<span>码</span>-->
+<!--						<span>联</span>-->
+<!--						<span>系</span>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--				{#if $detail_user.wx || $detail_user.wxQr#}-->
+<!--				<a href="javascript:;" class="btnWx"><i></i> 获取微信-->
+<!--					<div class="mbox wechat">-->
+<!--						<s></s>-->
+<!--						{#if $detail_user.wxQr#}<div class="qrcode"><img src="{#$detail_user.wxQr#}" alt=""></div>{#/if#}-->
+<!--						{#if $detail_user.wx#}<p><i class="iwx"></i><span>{#$detail_user.wx#}</span></p>{#/if#}-->
+<!--					</div>-->
+<!--				</a>-->
+<!--				{#/if#}-->
+<!--				{#if $detail_user.qq || $detail_user.qqQr#}-->
+<!--				<a href="javascript:;" class="btnQq"><i></i> 获取QQ-->
+<!--					<div class="mbox qq">-->
+<!--						<s></s>-->
+<!--						{#if $detail_user.qqQr#}<div class="qrcode"><img src="{#$detail_user.qqQr#}" alt=""></div>{#/if#}-->
+<!--						{#if $detail_user.qq#}<p><i class="iqq"></i><span>{#$detail_user.qq#}</span></p>{#/if#}-->
+<!--					</div>-->
+<!--				</a>-->
+<!--				{#/if#}-->
+<!--			</div>-->
+
+<!--			-->
+
 			<div class="topbox">
 				<div class="l">
-					<a href="{#$detail_user.url#}" target="_blank"><img src="{#$detail_user['photo']#}" onerror="javascript:this.src='/static/images/noPhoto_100.jpg';" alt="{#$detail_user['nickname']#}"></a>
+					<a href="{#$detail_user.url#}" target="_blank"><img src="{#$detail_user['photo']#}" onerror="javascript:this.src='/static/images/noPhoto_100.jpg';"  alt="{#$detail_user['username']#}"></a>
 				</div>
 				<div class="r">
-					<h4><a href="{#$detail_user.url#}" target="_blank">{#$detail_user['nickname']#}</a><span class="tip">{#if $detail_user.zjcomId#}{#$detail_user.zjcomName#}{#else#}{#/if#}</span></h4>
-					<p>{#if $detail_user['certify'] == 1#}<i class="isf" title="身份认证"></i>{#/if#}{#if $detail_user['flag'] == 1#}<i class="imp" title="名片认证"></i>{#/if#}</p>
-				</div>
-			</div>
-			
-			<div class="manbox fn-clear">
-				<!--<a href="javascript:;" class="btnTel"><i></i> {#$detail_user.phone#}</a>-->
-				<div class="mobile_kf_mid  fn-clear">
-					<div class="mk_lef fn-left">
-						<div id="sj"></div>
-					</div>
-					<div class="mk_rig fn-right">
-						<span>扫</span>
-						<span>码</span>
-						<span>联</span>
-						<span>系</span>
-					</div>
-				</div>
-				{#if $detail_user.wx || $detail_user.wxQr#}
-				<a href="javascript:;" class="btnWx"><i></i> 获取微信
-					<div class="mbox wechat">
-						<s></s>
-						{#if $detail_user.wxQr#}<div class="qrcode"><img src="{#$detail_user.wxQr#}" alt=""></div>{#/if#}
-						{#if $detail_user.wx#}<p><i class="iwx"></i><span>{#$detail_user.wx#}</span></p>{#/if#}
-					</div>
-				</a>
-				{#/if#}
-				{#if $detail_user.qq || $detail_user.qqQr#}
-				<a href="javascript:;" class="btnQq"><i></i> 获取QQ
-					<div class="mbox qq">
-						<s></s>
-						{#if $detail_user.qqQr#}<div class="qrcode"><img src="{#$detail_user.qqQr#}" alt=""></div>{#/if#}
-						{#if $detail_user.qq#}<p><i class="iqq"></i><span>{#$detail_user.qq#}</span></p>{#/if#}
-					</div>
-				</a>
-				{#/if#}
-			</div>
-
-			{#else#}
-
-			<div class="topbox">
-				<div class="r">
-					<h4>{#$detail_username#}</h4>
+					<h4>{#$detail_username#}<span class="tip">{#if $detail_usercompany#}{#$detail_usercompany#}{#else#}暂无公司{#/if#}</span></h4>
 				</div>
 			</div>
 
@@ -273,7 +285,6 @@
 				</div>
 			</div>
 
-			{#/if#}
 		</div>
 	</div>
 	
@@ -335,11 +346,11 @@
 		<div class="content">
 			{#$detail_note#}
 		</div>
-		{#if $detail_type == 0#}
-		<dl><dt>挂牌房源:</dt><dd><a href="{#getUrlPath service='house' template='xzl' type={#$detail_type#} addrid={#$detail_areaid#} business={#$detail_addrid#}#}">本区域在租商铺{#$detail_total_zu#}套</a> <a href="{#getUrlPath service='house' template='xzl' type={#$detail_type#} addrid={#$detail_areaid#} business={#$detail_addrid#}#}">本商圈在租商铺{#$detail_total_zu#}套</a></dd></dl>
-		{#else if $detail_type == 1#}
-		<dl><dt>挂牌房源</dt><dd><a href="{#getUrlPath service='house' template='xzl' type={#$detail_type#} addrid={#$detail_areaid#} business={#$detail_addrid#}#}">本区域在售商铺{#$detail_total_sale#}套</a><a href="{#getUrlPath service='house' template='xzl' type={#$detail_type#} addrid={#$detail_areaid#} business={#$detail_addrid#}#}">本商圈在售商铺{#$detail_total_sale#}套</a></dd></dl>
-		{#/if#}
+<!--		{#if $detail_type == 0#}-->
+<!--		<dl><dt>挂牌房源:</dt><dd><a href="{#getUrlPath service='house' template='xzl' type={#$detail_type#} addrid={#$detail_areaid#} business={#$detail_addrid#}#}">本区域在租商铺{#$detail_total_zu#}套</a> <a href="{#getUrlPath service='house' template='xzl' type={#$detail_type#} addrid={#$detail_areaid#} business={#$detail_addrid#}#}">本商圈在租商铺{#$detail_total_zu#}套</a></dd></dl>-->
+<!--		{#else if $detail_type == 1#}-->
+<!--		<dl><dt>挂牌房源</dt><dd><a href="{#getUrlPath service='house' template='xzl' type={#$detail_type#} addrid={#$detail_areaid#} business={#$detail_addrid#}#}">本区域在售商铺{#$detail_total_sale#}套</a><a href="{#getUrlPath service='house' template='xzl' type={#$detail_type#} addrid={#$detail_areaid#} business={#$detail_addrid#}#}">本商圈在售商铺{#$detail_total_sale#}套</a></dd></dl>-->
+<!--		{#/if#}-->
 	</div>
 	<!-- 房源信息 e-->
 
