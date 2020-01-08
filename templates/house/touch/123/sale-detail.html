@@ -371,8 +371,6 @@
             name.push(t)
         }
         console.log(arr[3]);
-        console.log(arr[3][10][1]);
-        console.log(arr[3][11][1]);
         function datasta(bdata,a){
             let aData=[];
             var obj = eval(a);
@@ -382,7 +380,10 @@
             bdata=aData;
             return bdata;
         }
+
         let rData;
+        var dd=datasta(rData,arr[3]);
+        console.log(dd);
         $(document).ready(function(){
             //价格走势
             var ctx = document.getElementById('myChart').getContext('2d');
