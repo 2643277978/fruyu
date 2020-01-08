@@ -76,6 +76,7 @@ width: 25%;
 .zf_title .subway select{
     height: 30px;
     font-size: 14px;
+    background-color: white;
     /*border: 1px solid #9fa0ab;*/
     border: none;
     box-shadow: 2px 2px 3px #9fa0ab;
