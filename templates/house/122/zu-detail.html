@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
 <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/zu_detail.css?v={#$cfg_staticVersion#}" media="all" />
 <script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
- <script src="https://how2j.cn/study/js/chartjs/2.8.0/chart.min.js"></script>
+<script src="https://how2j.cn/study/js/chartjs/2.8.0/chart.min.js"></script>
 <script type="text/javascript">
 	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
 
@@ -21,7 +21,7 @@
 
 	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
 
-  var longitude = '{#$detail_longitude#}', latitude = '{#$detail_latitude#}', resblockName = '{#$detail_community#}';
+  var longitude = '{#$detail_longitude#}', latitude = '{#$detail_latitude#}', resblockName = '{#$detail_community#}',cid='{#$detail_communityid#}';
 	var pageData = {id: '{#$detail_id#}', panName: '{#$detail_community#}', address: '{#$detail_address#}', lat: '{#$detail_latitude#}', lng: '{#$detail_longitude#}'};
 
 	var site_map = "{#$site_map#}";
@@ -143,7 +143,7 @@
 		<div class="intro_box">
 			<div class="inbox">
 				<p>{#$detail_room#}室{#$detail_hall#}厅{#$detail_guard#}卫</p>
-				<span>{#$detail_bno#}/{#$detail_floor#}层</span>
+				<span>{#if $detail_bno ==0 #}低层{#elseif $detail_bno ==200#}中层 {#elseif $detail_bno ==201#}高层{#else#}{#$detail_bno#}{#/if#}/{#$detail_floor#}层</span>
 			</div>
 			<div class="inbox">
 				<p>{#$detail_rentype#}</p>
@@ -158,9 +158,15 @@
 			<div class="txt_other">
 				<dl><dt>建筑类型</dt><dd>{#if $detail_protype#}{#$detail_protype#}{#else#}不详{#/if#}</dd></dl>
 				<dl><dt>小区名称</dt><dd>{#$detail_community#}</dd></dl>
+				<dl><dt>有无电梯</dt><dd>{#if $detail_elevator ==0 #}无{#else#}有{#/if#}</dd></dl>
+				<dl><dt>该小区在租</dt><dd>{#$detail_total_zu#}套</dd></dl>
 				<dl class="comAdd"><dt>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址</dt><dd><span>{#foreach from=$detail_addr item=addr#}
 			{#$addr#}
 			{#/foreach#} {#$detail_address#}</span> <a href="#map" id="amap">地图</a></dd></dl>
+				<dl><dt>附近轻轨</dt><dd><select style="width: 150px;">
+					<option value ="volvo">Volvo</option>
+					<option value ="saab">Saab</option>
+				</select></dd></dl>
 			</div>
 		</div>
 		<div class="manager">
@@ -241,7 +247,9 @@
 		<div class="fixnav">
 			<div class="wrap">
 				<ul>
-					<li class="curr"><a href="javascript:;">房源信息</a></li>
+					<li class="curr"><a href="javascript:;">房源基础信息</a></li>
+					<li ><a href="javascript:;">房源信息</a></li>
+					<li ><a href="javascript:;">小区配套</a></li>
 					<li><a href="javascript:;">价格走势</a></li>
 					<li><a href="javascript:;">周边配套</a></li>
 					<li><a href="javascript:;">设施配套</a></li>
@@ -254,12 +262,52 @@
 	</div>
 
 	<div class="wrap">
+		<h2 class="sub-title"><span>房源基础信息</span></h2>
+		<div class="content">
+			<h3 class="moneyH">{#if $detail_price > 0#}<b>{#$detail_price#} </b>{#echoCurrency type='short'#}/月{#else#}<b>面议</b>{#/if#}<span>{#$detail_paytype#}</span></h3>
+			<div class="jcxx">
+				<dl><dt>户型：</dt><dd>{#$detail_room#}室{#$detail_hall#}厅{#$detail_guard#}卫</dd></dl>
+				<dl><dt>楼层：</dt><dd>{#if $detail_bno ==0 #}低层{#elseif $detail_bno ==200#}中层 {#elseif $detail_bno ==201#}高层{#else#}{#$detail_bno#}{#/if#}/{#$detail_floor#}层</dd></dl>
+				<dl><dt>小区：</dt><dd>{#$detail_community#}</dd></dl>
+				<dl><dt>面积：</dt><dd>{#$detail_area#}平米</dd></dl>
+				<dl><dt>装修：</dt><dd>{#if $detail_zhuangxiu#}{#$detail_zhuangxiu#}{#else#}装修情况不详{#/if#}</dd></dl>
+				<dl><dt>要求：</dt><dd></dd></dl>
+				<dl><dt>朝向：</dt><dd>{#if $detail_direction#}朝{#$detail_direction#}{#else#}朝向不详{#/if#}</dd></dl>
+				<dl><dt>类型：</dt><dd>{#if $detail_protype#}{#$detail_protype#}{#else#}不详{#/if#}</dd></dl>
+				<dl><dt>出租类型：</dt><dd>{#$detail_rentype#}</dd></dl>
+				<dl><dt>轻轨站：</dt><dd></dd></dl>
+			</div>
+		</div>
+	</div>
+
+	<div class="wrap">
 		<h2 class="sub-title"><span>房源信息</span></h2>
 		<div class="content">
 			{#$detail_note#}
 		</div>
 	</div>
 
+	{#if $detail_communityid #}
+	<div class="wrap">
+		<h2 class="sub-title"><span>小区配套</span></h2>
+		<div class="content xiaoqu">
+				<div class="sheshi">
+					<dl><dt>小区:</dt><dd>{#$detail_community#}</dd></dl>
+					<dl><dt>供水:</dt><dd>{#$detail_communityDetail.aroundConfig.water#}</dd></dl>
+					<dl><dt>供暖:</dt><dd>{#$detail_communityDetail.aroundConfig.heat#}</dd></dl>
+					<dl><dt>供电:</dt><dd>{#$detail_communityDetail.aroundConfig.power#}</dd></dl>
+					<dl><dt>燃气:</dt><dd>{#$detail_communityDetail.aroundConfig.gas#}</dd></dl>
+					<dl><dt>通讯设备:</dt><dd>{#$detail_communityDetail.aroundConfig.newsletter#}</dd></dl>
+					<dl><dt>电梯服务:</dt><dd>{#$detail_communityDetail.aroundConfig.elevator#}</dd></dl>
+					<dl><dt>安全管理:</dt><dd>{#$detail_communityDetail.aroundConfig.safe#}</dd></dl>
+					<dl><dt>卫生服务:</dt><dd>{#$detail_communityDetail.aroundConfig.clean#}</dd></dl>
+					<dl><dt>停车位:</dt><dd>{#$detail_communityDetail.aroundConfig.parknum#}个车位</dd></dl>
+					<dl><dt>小区入口:</dt><dd>{#$detail_communityDetail.aroundConfig.entrance#}</dd></dl>
+				</div>
+<!--			<dl><dt>挂牌房源</dt><dd><a href="">本小区在租房源{#$detail_total_zu#}套</a> <a href="">本商圈在租房源{#$detail_total_zu#}套</a> <a href="">本区域在租房源{#$detail_total_zu#}套</a></dd></dl>-->
+		</div>
+	</div>
+	{#/if#}
     <!-- 价格走势 s-->
     <div class="wrap" id="zoushi">
         <h2 class="sub-title"><span>{#$detail_community#}小区价格走势</span></h2>

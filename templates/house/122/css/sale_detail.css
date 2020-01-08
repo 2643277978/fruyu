@@ -127,7 +127,23 @@
 
 
 .empty {display: block; text-align: center; line-height: 200px; font-size: 16px; font-weight: 700;}
-
+/* 小区配套 */
+.xiaoqu dl{width: 1200px;}
+.xiaoqu dl>dt{width: 80px; display: inline-block;float: left;}
+.xiaoqu dl>dd>a{margin-left: 10px;border-bottom: 1px solid #9fa0ab}
+.sheshi>dl{width: 250px;height: 20px;display: inline-block;font-size: 14px;margin-top: 8px;}
+.sheshi>dl>dt{width: 70px;height: 20px;float: left;font-weight: bold}
+/* 小区基本信息*/
+.c-info {padding: 0 0 50px; font-size: 16px; line-height: 2em;color:#2e323b;}
+.c-info .detail {width: 100%; border-left: 1px solid #eee; border-bottom: 1px solid #eee;}
+.c-info .detail td {width: 50%; padding: 10px 20px; line-height: 1.5em; border-top: 1px solid #eee; border-right: 1px solid #eee;}
+.c-info dl {padding: 5px 10px;}
+.c-info dt {float: left; width: 110px; text-align: right; margin-right: 5px;}
+.c-info dd {position: relative; overflow: hidden;}
+.c-info dd a {display: inline-block; border-bottom: 1px dotted #ccc;}
+.c-info dd a:hover {text-decoration: none;}
+.c-info p {padding: 0 10px;}
+#peitao .around{margin-top:0;}
 /* 价格走势 */
 .record-house .record_box{width: 100%;table-layout: fixed;font-size: 14px;margin-top: 28px;}
 .record-house .record_box th{padding-top: 14px;padding-bottom: 14px;font-weight: bold;text-align: center;font-size: 15px;border-bottom: 2px solid #f1370b;}

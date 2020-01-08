@@ -666,25 +666,38 @@ $(function () {
                         html.push('<span>' + d.room + '</span><em>|</em><span>' + d.area + '㎡</span>');
                         html.push('<em>|</em>');
 
-                        if (d.buildage > 0) {
-                            html.push('<span>' + d.buildage + '年' + (d.buildage < 100 ? '代' : '') + '</span>');
-                            html.push('<em>|</em>');
+                        // if (d.buildage > 0) {
+                        //     html.push('<span>' + d.buildage + '年' + (d.buildage < 100 ? '代' : '') + '</span>');
+                        //     html.push('<em>|</em>');
+                        // }
+                        //
+                        // if (d.direction) {
+                        //     html.push('<span>' + d.direction + '</span>');
+                        //     html.push('<em>|</em>');
+                        // }
+                        // if (d.bno > 0 && d.floor > 0) {
+                        //     html.push('<span>' + d.bno + '/' + d.floor + '层</span>');
+                        //     html.push('<em>|</em>');
+                        // }
+                        if(d.floor >0){
+                            if(0<=d.bno<10 ){
+                                html.push('<span>低层</span>');
+                                html.push('<em>|</em>');
+                            }else if(10<=d.bno<15 || d.bno ==200){
+                                html.push('<span>中层</span>');
+                                html.push('<em>|</em>');
+                            }else if(d.bno>15 || d.bno ==201){
+                                html.push('<span>高层</span>');
+                                html.push('<em>|</em>');
+                            }
                         }
 
-                        if (d.direction) {
-                            html.push('<span>' + d.direction + '</span>');
-                            html.push('<em>|</em>');
-                        }
-                        if (d.bno > 0 && d.floor > 0) {
-                            html.push('<span>' + d.bno + '/' + d.floor + '层</span>');
-                            html.push('<em>|</em>');
-                        }
                         if (d.elevator == 1) {
                             html.push('<span>有电梯</span>');
                             html.push('<em>|</em>');
                         }
-                        html.pop();
 
+                        html.pop();
                         html.push('</div>');
                         html.push('<div class="sp_r fn-right">' + d.unitprice + ' 元/㎡</div>');
                         html.push('</div>');

@@ -15,12 +15,14 @@
 <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
 <script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
 <script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+    <script src="https://how2j.cn/study/js/chartjs/2.8.0/chart.min.js"></script>
 <script type="text/javascript">
     var masterDomain = '{#$cfg_basehost#}',
         channelDomain = '{#$house_channelDomain#}',
         staticPath = '{#$cfg_staticPath#}';
     var pageData = {id: {#$detail_id#}, panName: '{#$detail_community#}', address: '{#$detail_address#}', lat: '{#$detail_latitude#}', lng: '{#$detail_longitude#}',mapType: '{#$site_map#}',cityName: '{#$siteCityInfo['name']#}',mapKey: '{#$site_map_key#}', title: '{#$detail_title#}'};
     var page_type = 'sale';
+    var cid='{#$detail_communityid#}'
     var JubaoConfig = {
 		"module" : 'house',
 		"action" : 'sale',
@@ -104,14 +106,14 @@
             <div class="zf_title">
                 <div class="title">{#$detail_title#}</div>
                 <div class="price">{#if $detail_price > 0#}{#$detail_price#}万{#else#}价格面议{#/if#}{#if $detail_unitprice > 0#}<span>{#$detail_unitprice#}{#echoCurrency type='short'#}/㎡</span>{#/if#}</div>
-                <div class="txt"><span>{#$detail_pubdate|date_format:"%Y.%m.%d"#}</span><span>{#$detail_click#}浏览</span><span>{#if $detail_usertype == 0#}个人{#else#}中介{#/if#}</span><span class="jubao HN_Jubao">举报</span>
+                <div class="txt"><span>{#$detail_pubdate|date_format:"%Y.%m.%d"#}</span><span>{#$detail_click#}浏览</span><span class="jubao HN_Jubao">举报</span>
                 </div>
                 <div class="classification">
                     <div>
                         <p>{#$detail_area|string_format:"%d"#}㎡</p>
                         <p>面积</p>
                     </div><div>
-                        <p>{#$detail_bno#}/{#$detail_floor#}层</p>
+                        <p>{#if $detail_bno ==0 #}低层{#elseif $detail_bno ==200#}中层 {#elseif $detail_bno ==201#}高层{#else#}{#$detail_bno#}{#/if#}/{#$detail_floor#}层</p>
                         <p>楼层</p>
                     </div><div>
                         <p>{#$detail_zhuangxiu#}</p>
@@ -159,13 +161,23 @@
         <div class="housing">
             <p class="classify_title">房源信息</p>
             <div class="mode fn-clear">
-                <div><span>物&nbsp;&nbsp;业&nbsp;&nbsp;费：</span><span>{#$detail_communityDetail.proprice#}&nbsp;</span>
+                <div><span>单&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价：</span><span>{#$detail_unitprice#}{#echoCurrency type='short'#}/㎡&nbsp;</span>
+                </div>
+                <div><span>面&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;积：</span><span>{#$detail_area|string_format:"%d"#}㎡&nbsp;</span>
+                </div>
+                <div><span>房&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型：</span><span>{#$detail_room#}&nbsp;</span>
+                </div>
+                <div><span>朝&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;向：</span><span>{#$detail_direction#}&nbsp;</span>
+                </div>
+                <div><span>楼&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;层：</span><span>{#if $detail_bno ==0 #}低层{#elseif $detail_bno ==200#}中层 {#elseif $detail_bno ==201#}高层{#else#}{#$detail_bno#}{#/if#}层（共{#$detail_floor#}层）</span>
+                </div>
+                <div><span>装&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;修：</span><span>{#$detail_zhuangxiu#}&nbsp;</span>
                 </div>
                 <div><span>类&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型：</span><span>{#$detail_protype#}&nbsp;</span>
                 </div>
-                <div><span>小&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区：</span><span>{#$detail_community#}&nbsp;</span>
-                </div>
                 <div><span>年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;代：</span><span>{#if $detail_buildage#}{#$detail_buildage#}年{#/if#}&nbsp;</span>
+                </div>
+                <div><span>小&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区：</span><span>{#$detail_community#}&nbsp;</span>
                 </div>
             </div>
             <div class="housing_txt">{#$detail_note#}</div>
@@ -203,6 +215,16 @@
             </div>
             <a href="javascript:;" class="btn-all appMapBtn" target="_blank">查看全部配套 > </a>
         </div>
+        {#if $detail_communityid#}
+        <!-- 价格走势 -->
+        <div class="periphery">
+            <div class="periphery_title">价格走势</div>
+            <div class="c-info around" >
+                <p>出售：</p>
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+        {#/if#}
         <!-- 周边推荐 -->
         <div class="periphery">
             <div class="periphery_title">周边推荐</div>
@@ -315,5 +337,101 @@
 <script src="{#$cfg_staticPath#}js/publicOpenMap.js?v={#$cfg_staticVersion#}"></script>
 {#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
 <script src="{#$templets_skin#}js/cw-detail.js?v={#$cfg_staticVersion#}"></script>
+<script>
+    var data=JSON.parse('{#$detail_price_trend#}');
+    if(data){
+        //出售
+        var arr = [];
+        for (let i in data) {
+            // var o = {};
+            // o[i] = chushou[i];
+            // arr.push(o)
+            arr.push(data[i]);
+        }
+        let name=[];
+        for (let i in data) {
+            var o = {};
+            var t={i};
+            o[i] = data[i];
+            name.push(t)
+
+        }
+        function datasta(bdata,a){
+            let aData=[];
+            var obj = eval(a);
+            for(var i=0;i<obj.length;i++){
+                aData.push(obj[i][1]);
+            }
+            bdata=aData;
+            return bdata;
+        }
+        let rData;
+        $(document).ready(function(){
+            //价格走势
+            var ctx = document.getElementById('myChart').getContext('2d');
+            function tubiao(a,rName,rData,tName,tData,sName,sData,fName,fData) {
+                var myChart = new Chart(a, {
+                    type: 'line',
+                    data: {
+                        labels: ['1月', '2月', '3月', '4月', '5月', '6月','7月','8月','9月','10月','11月','12月'],
+                        datasets: [
+                            {
+                                label: rName,
+                                data: rData,
+                                borderColor:'skyBlue',
+                                backgroundColor:'skyBlue',
+                                borderWidth: 1,
+                                fill: false,
+                                scaleLabel : "<%=value/100000000%>元",
+                            },
+                            {
+                                label: tName,
+                                data: tData,
+                                borderColor:'pink',
+                                backgroundColor:'pink',
+                                borderWidth: 1,
+                                fill: false,
+                            },
+                            {
+                                label: sName,
+                                data: sData,
+                                borderColor:'green',
+                                backgroundColor:'green',
+                                borderWidth: 1,
+                                fill: false,
+                            },
+                            {
+                                label: fName,
+                                data: fData,
+                                borderColor: "orange",
+                                backgroundColor: "orange",
+                                borderWidth: 1,
+                                fill: false,
+                            },
+                        ]
+                    },
+                    option:{
+                        tooltips: {
+                            mode: 'nearest',
+                            intersect: false,
+                            // callbacks: {
+                            // 	label: function(tooltipItem, myData) {
+                            // 		var label = myData.datasets[tooltipItem.datasetIndex].label || '';
+                            // 		if (label) {
+                            // 			label += '的数值是: '+'元/m';
+                            // 		}
+                            // 		label += parseFloat(tooltipItem.value).toFixed(2);
+                            // 		return label;
+                            // 	}
+                            // },
+                        },
+                    }
+
+                });
+            }
+            tubiao(ctx,name[0].i,datasta(rData,arr[0]),name[1].i,datasta(rData,arr[1]),name[2].i,datasta(rData,arr[2]),name[3].i,datasta(rData,arr[3]));
+        });
+    }
+</script>
 </body>
 </html>

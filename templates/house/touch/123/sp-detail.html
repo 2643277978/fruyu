@@ -111,7 +111,7 @@
 			{#elseif $detail_type==2#}
 			<div class="price">{#if $detail_transfer>0#}转让费：{#$detail_transfer#}万{#/if#}{#if $detail_proprice>0#}<span class="price_l">(含物业费)</span>{#/if#}</div>
 			{#/if#}
-			<div class="txt"><span>{#$detail_pubdate|date_format:"%Y.%m.%d"#}</span><span>{#$detail_click#}浏览</span><span class="jubao HN_Jubao">举报</span><span class="fenxiang HN_PublicShare">分享</span></div>
+			<div class="txt"><span>{#$detail_pubdate|date_format:"%Y.%m.%d"#}</span><span>{#$detail_click#}浏览</span><span class="jubao HN_Jubao">举报</span></div>
 			<div class="classification">
 
 				<div><p>{#$detail_area|string_format:"%d"#}㎡</p><p>面积</p></div><div>
@@ -156,6 +156,7 @@
 		<p class="classify_title">房源信息</p>
 
 		<div class="mode fn-clear">
+			<div><span>商&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;圈：</span><span>{#$detail_addr[2]#}</span></div>
 			<div><span>类&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型：</span><span>{#$detail_protype#}</span></div>
 			<div><span>经营状态：</span><span>{#$detail_operating_state#}</span></div>
 			<div><span>经营行业：</span><span>{#$detail_industry[0]#}</span></div>

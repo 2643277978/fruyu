@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1ea7807c-f28c-426e-af70-ee6174fd7562" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../house/122/community-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/../house/122/community-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/122/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../house/122/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/122/css/loupan_public.css" beforeDir="false" afterPath="$PROJECT_DIR$/../house/122/css/loupan_public.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/122/css/map_loupan.css" beforeDir="false" afterPath="$PROJECT_DIR$/../house/122/css/map_loupan.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/122/css/map_sale.css" beforeDir="false" afterPath="$PROJECT_DIR$/../house/122/css/map_sale.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/122/css/map_zu.css" beforeDir="false" afterPath="$PROJECT_DIR$/../house/122/css/map_zu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/122/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../house/122/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/122/js/cf.js" beforeDir="false" afterPath="$PROJECT_DIR$/../house/122/js/cf.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/122/js/community.js" beforeDir="false" afterPath="$PROJECT_DIR$/../house/122/js/community.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/122/js/loupan.js" beforeDir="false" afterPath="$PROJECT_DIR$/../house/122/js/loupan.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/122/js/map_cf_baidu.js" beforeDir="false" afterPath="$PROJECT_DIR$/../house/122/js/map_cf_baidu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/122/js/map_loupan_baidu.js" beforeDir="false" afterPath="$PROJECT_DIR$/../house/122/js/map_loupan_baidu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/122/js/map_sale_baidu.js" beforeDir="false" afterPath="$PROJECT_DIR$/../house/122/js/map_sale_baidu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/122/js/map_sp_baidu.js" beforeDir="false" afterPath="$PROJECT_DIR$/../house/122/js/map_sp_baidu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/122/js/map_xzl_baidu.js" beforeDir="false" afterPath="$PROJECT_DIR$/../house/122/js/map_xzl_baidu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/122/js/map_zu_baidu.js" beforeDir="false" afterPath="$PROJECT_DIR$/../house/122/js/map_zu_baidu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/122/js/sale.js" beforeDir="false" afterPath="$PROJECT_DIR$/../house/122/js/sale.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/122/js/sp.js" beforeDir="false" afterPath="$PROJECT_DIR$/../house/122/js/sp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/122/js/xzl.js" beforeDir="false" afterPath="$PROJECT_DIR$/../house/122/js/xzl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/122/js/zu.js" beforeDir="false" afterPath="$PROJECT_DIR$/../house/122/js/zu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/122/loupan_top.html" beforeDir="false" afterPath="$PROJECT_DIR$/../house/122/loupan_top.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/122/map-cf.html" beforeDir="false" afterPath="$PROJECT_DIR$/../house/122/map-cf.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/122/map-loupan.html" beforeDir="false" afterPath="$PROJECT_DIR$/../house/122/map-loupan.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/122/map-sale.html" beforeDir="false" afterPath="$PROJECT_DIR$/../house/122/map-sale.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/122/map-sp.html" beforeDir="false" afterPath="$PROJECT_DIR$/../house/122/map-sp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/122/map-xzl.html" beforeDir="false" afterPath="$PROJECT_DIR$/../house/122/map-xzl.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/122/map-zu.html" beforeDir="false" afterPath="$PROJECT_DIR$/../house/122/map-zu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/122/map.html" beforeDir="false" afterPath="$PROJECT_DIR$/../house/122/map.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/touch/123/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../house/touch/123/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/touch/123/css/map-loupan.css" beforeDir="false" afterPath="$PROJECT_DIR$/../house/touch/123/css/map-loupan.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/touch/123/css/map-zu.css" beforeDir="false" afterPath="$PROJECT_DIR$/../house/touch/123/css/map-zu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/touch/123/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../house/touch/123/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/touch/123/js/cf.js" beforeDir="false" afterPath="$PROJECT_DIR$/../house/touch/123/js/cf.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/touch/123/js/estate-list.js" beforeDir="false" afterPath="$PROJECT_DIR$/../house/touch/123/js/estate-list.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/touch/123/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../house/touch/123/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/touch/123/js/loupan.js" beforeDir="false" afterPath="$PROJECT_DIR$/../house/touch/123/js/loupan.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/touch/123/js/map-sale-baidu.js" beforeDir="false" afterPath="$PROJECT_DIR$/../house/touch/123/js/map-sale-baidu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/touch/123/js/map-zu-baidu.js" beforeDir="false" afterPath="$PROJECT_DIR$/../house/touch/123/js/map-zu-baidu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/touch/123/js/sale.js" beforeDir="false" afterPath="$PROJECT_DIR$/../house/touch/123/js/sale.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/touch/123/js/sp.js" beforeDir="false" afterPath="$PROJECT_DIR$/../house/touch/123/js/sp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/touch/123/js/xzl.js" beforeDir="false" afterPath="$PROJECT_DIR$/../house/touch/123/js/xzl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/touch/123/loupan-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/../house/touch/123/loupan-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/touch/123/map-sale.html" beforeDir="false" afterPath="$PROJECT_DIR$/../house/touch/123/map-sale.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/touch/123/map-zu.html" beforeDir="false" afterPath="$PROJECT_DIR$/../house/touch/123/map-zu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/touch/123/sale.html" beforeDir="false" afterPath="$PROJECT_DIR$/../house/touch/123/sale.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../house/touch/123/zu.html" beforeDir="false" afterPath="$PROJECT_DIR$/../house/touch/123/zu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deposit.html" beforeDir="false" afterPath="$PROJECT_DIR$/deposit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/fabu-house-cf.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/fabu-house-cf.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/fabu-house-cw.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/fabu-house-cw.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/fabu-house-sale.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/fabu-house-sale.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/fabu-house-sp.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/fabu-house-sp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/fabu-house-xzl.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/fabu-house-xzl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/fabu-house-zu.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/fabu-house-zu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/fabu-house.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/fabu-house.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/fabu-pay.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/fabu-pay.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/fabu.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/fabu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/refreshTop.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/refreshTop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/refreshTop.html" beforeDir="false" afterPath="$PROJECT_DIR$/refreshTop.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/touch/css/wxtj.css" beforeDir="false" afterPath="$PROJECT_DIR$/touch/css/wxtj.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/touch/js/house.js" beforeDir="false" afterPath="$PROJECT_DIR$/touch/js/house.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/touch/js/refreshTop.js" beforeDir="false" afterPath="$PROJECT_DIR$/touch/js/refreshTop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/touch/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/touch/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/touch/pocket.html" beforeDir="false" afterPath="$PROJECT_DIR$/touch/pocket.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/touch/refreshTop.html" beforeDir="false" afterPath="$PROJECT_DIR$/touch/refreshTop.html" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/touch/js/refreshTop.js" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="455" />
+    <option name="y" value="36" />
+    <option name="width" value="935" />
+    <option name="height" value="650" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="member" type="b2602c69:ProjectViewProjectNode" />
+              <item name="member" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="member" type="b2602c69:ProjectViewProjectNode" />
+              <item name="member" type="462c0819:PsiDirectoryNode" />
+              <item name="touch" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="member" type="b2602c69:ProjectViewProjectNode" />
+              <item name="member" type="462c0819:PsiDirectoryNode" />
+              <item name="touch" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="D:/vuexm" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1ea7807c-f28c-426e-af70-ee6174fd7562" name="Default Changelist" comment="" />
+      <created>1576752598183</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1576752598183</updated>
+      <workItem from="1576752599372" duration="2219000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="2219000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1376" height="744" extended-state="6" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24962631" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/touch/js/refreshTop.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="521" column="58" selection-start-line="521" selection-start-column="58" selection-end-line="521" selection-end-column="58" />
+          <folding>
+            <element signature="n#style#0;n#font#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#font#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

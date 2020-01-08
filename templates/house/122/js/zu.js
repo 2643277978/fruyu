@@ -612,8 +612,18 @@ $(function () {
                             html.push('<span>' + d.zhuangxiu + '</span>');
                             html.push('<em>|</em>');
                         }
-                        if (d.bno > 0 && d.floor > 0) {
-                            html.push('<span>' + d.bno + '/' + d.floor + '层</span>');
+                        // if (d.bno > 0 && d.floor > 0) {
+                        //     html.push('<span>' + d.bno + '/' + d.floor + '层</span>');
+                        //     html.push('<em>|</em>');
+                        // }
+                        if(0<=d.bno<10 ){
+                            html.push('<span>低层</span>');
+                            html.push('<em>|</em>');
+                        }else if(10<=d.bno<15 || d.bno ==200){
+                            html.push('<span>中层</span>');
+                            html.push('<em>|</em>');
+                        }else if(d.bno>15 || d.bno ==201){
+                            html.push('<span>高层</span>');
                             html.push('<em>|</em>');
                         }
                         if (d.elevator == 1) {
@@ -626,6 +636,18 @@ $(function () {
                         html.push('<div class="sp_r fn-right">' + (huoniao.transTimes(d.pubdate, 2)) + '更新</div>');
                         html.push('</div>');
                         html.push('<p class="lpinf">[' + d.addr[d.addr.length - 1] + ']  ' + d.address + '</p>');
+                        html.push('<div class="left_neirong">');
+                        // html.push('<div class="lzu">');
+                        // html.push('<p class="xzu">同小区在租'+ d.bno +'套</p>');
+                        // html.push('<p class="szu">同商圈在租'+ d.bno +'套</p>');
+                        // html.push('</div>');
+                        html.push('<div class="ldt">');
+                        html.push('<select>');
+                        html.push('<option value="">地铁</option>');
+                        html.push('<option value="">叫你看电视</option>');
+                        html.push('</select>');
+                        html.push('</div>');
+                        html.push('</div>');
                         html.push('<div class="lpinf hinf fn-clear">');
                         /*html.push('<div class="hilef fn-left">');
                         if (d.usertype == 1) {

@@ -376,7 +376,21 @@ $(function() {
 		isClick = true;
 		getList(1);
 	})
-
+   //整租
+	$(".zzu").click(function () {
+		var id=	$(this).attr('data-id');
+		getList(1,id);
+	})
+	//合租
+	$(".hezu").click(function () {
+		var id=	$(this).attr('data-id');
+		getList(1,id);
+	});
+	//个人
+	$(".geren").click(function () {
+		var id=	$(this).attr('data-id');
+		getList(1,"",id)
+	});
 	// 搜索
 	$('.search-box').submit(function(e){
 		e.preventDefault();
@@ -434,7 +448,6 @@ $(function() {
 			}
 		}
 	});
-
 	var lng = '', lat = '';
 	//初始加载
 	if($.isEmptyObject(detailList.getLocalStorage()['extraData']) || !detailList.isBack()){
@@ -458,7 +471,7 @@ $(function() {
 	}
 
 	//数据列表
-	function getList(tr){
+	function getList(tr,a,b){
 
 		isload = true;
 
@@ -519,6 +532,9 @@ $(function() {
 		if(type != ""){
 			data.push("typeid="+type);
 			data.push("type="+type);
+		}else if(b){
+			data.push("typeid="+b);
+			data.push("type="+b);
 		}
 
 		//更新筛选条件
@@ -528,6 +544,9 @@ $(function() {
 				data.push(type+"="+val);
 			}
 		});
+		if(a){
+			data.push("rentype="+a);
+		}
 
 		data.push("page="+atpage);
 
@@ -574,7 +593,7 @@ $(function() {
 
 									//区域
 									html.push('<dd class="item-area">');
-									html.push('<em>'+list[i].rentype+'</em>');
+									// html.push('<em>'+list[i].rentype+'</em>');
 									html.push('<em>'+list[i].room+'</em><em>'+list[i].area+'㎡</em>');
 
 									//价格
@@ -588,9 +607,16 @@ $(function() {
 									html.push('</span>');
 
 									html.push('</dd>');
-
-									html.push('<dd class="item-type-1 item-type_zu">');
-									html.push('<em>'+list[i].distances+'</em><em>'+list[i].community+'</em>');
+										//小区
+								   html.push('<dd class="com">');
+								   html.push('<em>'+list[i].community+'</em>');
+								   html.push('</dd>')
+									html.push('<dd class="item-type-1 item-type_zu" style="margin-top: 5px;">');
+									html.push('<em>'+list[i].rentype+'</em>');
+									html.push('<select>');
+									html.push('<option>地铁</option>');
+									html.push('</select>');
+								  // html.push('<em style="float: right">该小区'+list[i].bno+'套在租</em>');
 									html.push('</dd>')
 
 									html.push('</dl>')

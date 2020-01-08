@@ -37,6 +37,9 @@
 .community-detail .com_slide .plist li s.svr{display: block;width: 36px;height: 36px;position: absolute;top:50%;left:50%;margin-top:-18px;margin-left:-18px;background:url(../images/small_vr.png) no-repeat center center;background-size: cover;z-index: 999;}
 
 
+/* 设施配套 */
+.sheshi>dl{width: 250px;height: 20px;display: inline-block;font-size: 14px;margin-top: 8px;}
+.sheshi>dl>dt{width: 70px;height: 20px;float: left;font-weight: bold}
 /* 说明 */
 .com_info{float: left;width: 430px;}
 .com_info .cprice{padding-bottom: 20px;border-bottom: solid 1px #e8e8e8;}

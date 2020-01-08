@@ -479,7 +479,7 @@ $(function () {
             data: data.join("&"),
             dataType: "jsonp",
             success: function (data) {
-                if (data.state == 100) {
+                if (data.state==100) {
                     var list = data.info.list,
                         html = [],
                         pageInfo = data.info.pageInfo;
@@ -550,19 +550,24 @@ $(function () {
                         }
                         html.push('</div>');
                         html.push('<p class="lpinf">[' + d.addr[d.addr.length - 1] + ']  ' + d.address + '</p>');
+                        // if(d.type == 0){
+                        //     html.push('<p class="lpinf">本楼还有' +  + '套在租</p>')
+                        // }else if(d.type==1) {
+                        //     html.push('<p class="lpinf">本楼还有' +  + '套在售</p>')
+                        // }
                         if (d.proprice > 0) {
                             html.push('<p class="lpinf">物业费：' + d.proprice + '元/m²/月</p>');
                         }
                         html.push('<div class="lpinf hinf fn-clear">');
-                        /*html.push('<div class="hilef fn-left">');
+                       html.push('<div class="hilef fn-left">');
                         if (d.usertype == 1) {
                             html.push('<span><i class="iname"></i> ' + d.nickname + '</span>');
-                            html.push('<span><i class="itel"></i> ' + d.userPhone + '</span>');
+                            // html.push('<span><i class="itel"></i> ' + d.userPhone + '</span>');
                         } else {
                             html.push('<span><i class="iname"></i> ' + d.username + '</span>');
-                            html.push('<span><i class="itel"></i> ' + d.contact + '</span>');
+                            // html.push('<span><i class="itel"></i> ' + d.contact + '</span>');
                         }
-                        html.push('</div>');*/
+                        html.push('</div>');
                         html.push('<div class="hirig fn-right">');
                         if (d.collect) {
                             html.push('<a href="javascript:;" class="btn_sc btn_ysc"><i class="isc"></i> 已收藏</a>');

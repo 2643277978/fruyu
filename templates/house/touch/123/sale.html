@@ -35,16 +35,30 @@
 	<div id="scroller">
 		{#include file="../../../siteConfig/touch_top.html" pageTitle="二手房源"#}
 		<form class="search-box" action="" method="get">
-			<div class="search l">
+			<div class="search l" style="width: 77%">
 				<i></i>
 				<input type="text" id="search_keyword" class="txt_search" value="{#$keywords#}" autocomplete="off" placeholder="请输入要搜索的关键字">
 			</div>
-			<div class="search-btn l">
+			<div class="search-btn l" style="width: 20%">
 				<input type="button" data-role="btn" name="search" id="search_button" class="btn-s" value="搜索">
 			</div>
-			<div class="search_map r"><a href="{#getUrlPath service='house' template='map' action='sale' #}"><img src="{#$templets_skin#}images/map_icon.png"><p>地图找房</p></a></div>
+<!--			<div class="search_map r"><a href="{#getUrlPath service='house' template='map' action='sale' #}"><img src="{#$templets_skin#}images/map_icon.png"><p>地图找房</p></a></div>-->
 			<div class="clear"></div>
 		</form>
+		<div class="zu_top">
+			<div class="choose-box">
+				<ul>
+					<li><a href="{#getUrlPath service='house' template='community'#}"><img src="{#$templets_skin#}images/commity.png" alt="">
+						<p>找小区</p></a></li>
+					<li><a href="{#getUrlPath service='house' template='map' action='sale' #}"><img src="{#$templets_skin#}images/map.png" alt="">
+						<p>地图找房</p></a></li>
+					<li><a href="{#getUrlPath service='house' template="calculator" do="sy" #}"><img src="{#$templets_skin#}images/cfj.png" alt="">
+						<p>查房价</p></a></li>
+					<li><a href="{#getUrlPath service="member" type="user" template="fabu-house-sale"#}"><img src="{#$templets_skin#}images/maif.png" alt="">
+						<p>我要卖房</p></a></li>
+				</ul>
+			</div>
+		</div>
 		<div class="choose-box-blank">
 			<div class="choose-box">
 				<ul class="choose">

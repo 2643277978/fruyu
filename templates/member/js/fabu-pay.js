@@ -109,7 +109,7 @@ var fabuPay = {
     }else{
       // 付费
       if(data.info.amount > 0){
-        fabuPay.show(data);
+        // fabuPay.show(data);
         return;
       }
     }

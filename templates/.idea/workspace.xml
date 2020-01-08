@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="004b61ea-2c34-49a1-b67c-a954c3bf9ba2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../sql.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../admin/house/houseCfAdd.php" beforeDir="false" afterPath="$PROJECT_DIR$/../admin/house/houseCfAdd.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../admin/house/houseSaleAdd.php" beforeDir="false" afterPath="$PROJECT_DIR$/../admin/house/houseSaleAdd.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../admin/house/houseSpAdd.php" beforeDir="false" afterPath="$PROJECT_DIR$/../admin/house/houseSpAdd.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../admin/house/houseXzlAdd.php" beforeDir="false" afterPath="$PROJECT_DIR$/../admin/house/houseXzlAdd.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../admin/house/houseZuAdd.php" beforeDir="false" afterPath="$PROJECT_DIR$/../admin/house/houseZuAdd.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api/handlers/house.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/../api/handlers/house.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/js/ui/jquery.dialog-4.2.0.js" beforeDir="false" afterPath="$PROJECT_DIR$/../static/js/ui/jquery.dialog-4.2.0.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/community-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/community-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/css/community_detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/css/community_detail.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/css/loupan_public.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/css/loupan_public.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/css/map_loupan.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/css/map_loupan.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/css/map_sale.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/css/map_sale.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/css/map_zu.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/css/map_zu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/css/sale_detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/css/sale_detail.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/css/sp_detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/css/sp_detail.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/css/xzl.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/css/xzl.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/css/xzl_detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/css/xzl_detail.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/css/zu.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/css/zu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/css/zu_detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/css/zu_detail.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/js/cf.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/js/cf.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/js/community-detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/js/community-detail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/js/community.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/js/community.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/js/loupan.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/js/loupan.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/js/map_cf_baidu.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/js/map_cf_baidu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/js/map_loupan_baidu.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/js/map_loupan_baidu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/js/map_sale_baidu.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/js/map_sale_baidu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/js/map_sp_baidu.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/js/map_sp_baidu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/js/map_xzl_baidu.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/js/map_xzl_baidu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/js/map_zu_baidu.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/js/map_zu_baidu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/js/public.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/js/public.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/js/sale.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/js/sale.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/js/sp.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/js/sp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/js/xzl.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/js/xzl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/js/xzl_detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/js/xzl_detail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/js/zu.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/js/zu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/loupan-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/loupan-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/loupan_top.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/loupan_top.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/map-cf.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/map-cf.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/map-loupan.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/map-loupan.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/map-sale.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/map-sale.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/map-sp.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/map-sp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/map-xzl.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/map-xzl.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/map-zu.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/map-zu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/map.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/map.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/sale-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/sale-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/sp-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/sp-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/sp.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/sp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/xzl-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/xzl-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/xzl.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/xzl.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/zu-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/zu-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/zu.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/zu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/touch/123/css/estate-list.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/css/estate-list.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/touch/123/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/touch/123/css/map-loupan.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/css/map-loupan.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/touch/123/css/map-zu.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/css/map-zu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/touch/123/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/touch/123/js/cf.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/js/cf.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/touch/123/js/estate-list.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/js/estate-list.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/touch/123/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/touch/123/js/loupan.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/js/loupan.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/touch/123/js/map-sale-baidu.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/js/map-sale-baidu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/touch/123/js/map-zu-baidu.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/js/map-zu-baidu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/touch/123/js/sale.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/js/sale.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/touch/123/js/sp.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/js/sp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/touch/123/js/xzl.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/js/xzl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/touch/123/loupan-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/loupan-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/touch/123/map-sale.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/map-sale.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/touch/123/map-zu.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/map-zu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/touch/123/sale-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/sale-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/touch/123/sale.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/sale.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/touch/123/sp-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/sp-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/touch/123/xzl-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/xzl-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/touch/123/xzl.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/xzl.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/touch/123/zu-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/zu-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/touch/123/zu.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/zu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/member/deposit.html" beforeDir="false" afterPath="$PROJECT_DIR$/member/deposit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/member/js/fabu-house-cf.js" beforeDir="false" afterPath="$PROJECT_DIR$/member/js/fabu-house-cf.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/member/js/fabu-house-cw.js" beforeDir="false" afterPath="$PROJECT_DIR$/member/js/fabu-house-cw.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/member/js/fabu-house-sale.js" beforeDir="false" afterPath="$PROJECT_DIR$/member/js/fabu-house-sale.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/member/js/fabu-house-sp.js" beforeDir="false" afterPath="$PROJECT_DIR$/member/js/fabu-house-sp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/member/js/fabu-house-xzl.js" beforeDir="false" afterPath="$PROJECT_DIR$/member/js/fabu-house-xzl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/member/js/fabu-house-zu.js" beforeDir="false" afterPath="$PROJECT_DIR$/member/js/fabu-house-zu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/member/js/fabu-house.js" beforeDir="false" afterPath="$PROJECT_DIR$/member/js/fabu-house.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/member/js/fabu-pay.js" beforeDir="false" afterPath="$PROJECT_DIR$/member/js/fabu-pay.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/member/js/fabu.js" beforeDir="false" afterPath="$PROJECT_DIR$/member/js/fabu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/member/js/refreshTop.js" beforeDir="false" afterPath="$PROJECT_DIR$/member/js/refreshTop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/member/refreshTop.html" beforeDir="false" afterPath="$PROJECT_DIR$/member/refreshTop.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/member/touch/css/wxtj.css" beforeDir="false" afterPath="$PROJECT_DIR$/member/touch/css/wxtj.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/member/touch/js/fabu-house-xzl.js" beforeDir="false" afterPath="$PROJECT_DIR$/member/touch/js/fabu-house-xzl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/member/touch/js/house.js" beforeDir="false" afterPath="$PROJECT_DIR$/member/touch/js/house.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/member/touch/js/refreshTop.js" beforeDir="false" afterPath="$PROJECT_DIR$/member/touch/js/refreshTop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/member/touch/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/member/touch/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/member/touch/pocket.html" beforeDir="false" afterPath="$PROJECT_DIR$/member/touch/pocket.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/member/touch/refreshTop.html" beforeDir="false" afterPath="$PROJECT_DIR$/member/touch/refreshTop.html" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1W0BE6GpUEdW0UK9kJvLCDweSRD" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="editor.config.ad.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="http.proxy" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\2019.11.13\dengyunlong_26dj_dev\templates\house\122" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="004b61ea-2c34-49a1-b67c-a954c3bf9ba2" name="Default Changelist" comment="" />
+      <created>1576736615681</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1576736615681</updated>
+      <workItem from="1576736616924" duration="13139000" />
+      <workItem from="1576806046349" duration="245000" />
+      <workItem from="1576837078949" duration="6478000" />
+      <workItem from="1576891385069" duration="62000" />
+      <workItem from="1577081963858" duration="829000" />
+      <workItem from="1577267845461" duration="3641000" />
+      <workItem from="1577505269115" duration="436000" />
+      <workItem from="1577508559496" duration="20561000" />
+      <workItem from="1577668305716" duration="19546000" />
+      <workItem from="1577754436187" duration="1954000" />
+      <workItem from="1577757106686" duration="11123000" />
+      <workItem from="1577778050119" duration="9872000" />
+      <workItem from="1577927562410" duration="18158000" />
+      <workItem from="1578021469351" duration="2592000" />
+      <workItem from="1578036873911" duration="2785000" />
+      <workItem from="1578272759497" duration="1773000" />
+      <workItem from="1578274748444" duration="17000" />
+      <workItem from="1578277981670" duration="156000" />
+      <workItem from="1578278177535" duration="112000" />
+      <workItem from="1578278313222" duration="26595000" />
+      <workItem from="1578359306785" duration="31211000" />
+      <workItem from="1578447065015" duration="2248000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

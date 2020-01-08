@@ -10,6 +10,11 @@ body,html{background-color: #fff;}
 .checklist li{float: left; margin: 5px 30px 10px 0;height: 23px;line-height: 23px;}
 .checklist .checkbox {position: relative; display: inline-block; width: 9px; height: 9px; vertical-align: -1px; margin-right: 15px; border: 1px solid #d3d5de; background-color: #f2f3f7; cursor: pointer;}
 .checklist .checkbox.checked i {display: block;width:5px;height: 5px;background: #f1370b;position: absolute; top:50%;left:50%;margin-top: -2.5px;margin-left:-2.5px;}
+/*其他*/
+input[type="checkbox"]{width:13px;height:13px;display: inline-block;text-align: center;vertical-align: middle; line-height: 18px;position: relative;}
+input[type="checkbox"]::before{content: "";position: absolute;top: 0;left: 0;background: #fff;width: 100%;height: 100%;border: 1px solid #d9d9d9}
+input[type="checkbox"]:checked::before{content: "\2713";background-color: #fff;position: absolute;top: 0;left: 0;width:100%;border: 1px solid #e50232;color:#e50232;font-size: 14px;font-weight: bold;}
+.fn-clear label{margin-left: 6px;width: 50px;height: 20px;line-height: 23px;display: inline-block;}
 /*价格*/
 .filter .spbox{margin:0;}
 .filter .inpbox{float: left;}
@@ -92,7 +97,7 @@ body,html{background-color: #fff;}
 .main .lplist li .infobox p.lpinf{max-width: 400px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 .main .lplist li .infobox .lpinf em{font-size: 12px;color:#d3d4de;margin: 0 7px;}
 .main .lplist li .infobox .lpinf .sp_r{color:#9fa1ab;}
-.main .lplist li .infobox .hinf{display: none;position: absolute;bottom: 40px;left:10px;right: 10px;-webkit-transition:all .3s ease-in-out;-moz-transition:all .3s ease-in-out;transition:all .3s ease-in-out;-webkit-animation: bottomFadeIn .3s ease-out;-moz-animation: bottomFadeIn .3s ease-out;animation: bottomFadeIn .3s ease-out;}
+.main .lplist li .infobox .hinf{display: none;position: absolute;bottom: 40px;right: 10px;width:150px;-webkit-transition:all .3s ease-in-out;-moz-transition:all .3s ease-in-out;transition:all .3s ease-in-out;-webkit-animation: bottomFadeIn .3s ease-out;-moz-animation: bottomFadeIn .3s ease-out;animation: bottomFadeIn .3s ease-out;}
 .main .lplist li .infobox .hilef span{margin-right: 30px;font-weight: bold;}
 .main .lplist li .infobox .lpinf span i{display: inline-block;width: 16px;height: 16px;vertical-align: middle;margin-right: 5px;margin-top: -4px;}
 .main .lplist li .infobox .lpinf span i.iname{background:url(../images/icon_inf.png) no-repeat center center;background-size: cover;}
@@ -107,6 +112,11 @@ body,html{background-color: #fff;}
 .main .hirig .btn_share i.ishare{background: url(../images/icon_share.png) no-repeat center center;}
 
 .main .lplist li:hover .hinf{display: block;}
+.main .left_neirong>.lzu{margin-top: 6px; width: 160px; display: inline-block;float: left}
+.main .left_neirong>.lzu>p{font-size: 14px; color: #0a0a0a;margin-top: 5px;}
+.main .left_neirong>.ldt{width: 130px;display: inline-block;cursor: pointer; margin-top: 10px;}
+.main .left_neirong>.ldt>select{padding-right: 1.8rem;color: #afbac0;font-size: 1rem;border: 1px solid #9fa1ab;outline: none; appearance:none;-webkit-appearance:none; background: url("../images/select.jpg") no-repeat right center transparent;}
+.main .left_neirong>.ldt>select>option:hover{background-color: #f1370b;color: white}
 
 
 

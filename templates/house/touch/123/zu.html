@@ -45,6 +45,20 @@
 			<div class="search_map r"><a href="{#getUrlPath service='house' template='map' action='zu'#}"><img src="{#$templets_skin#}images/map_icon.png"><p>地图找房</p></a></div>
 			<div class="clear"></div>
 		</form>
+		<div class="zu_top">
+			<div class="choose-box">
+				<ul>
+					<li class="zzu" data-id="1"><a href="javascript:;"><img src="{#$templets_skin#}images/commity.png" alt="">
+						<p>整租</p></a></li>
+					<li class="hezu" data-id="2"><a href="javascript:;"><img src="{#$templets_skin#}images/hezu.png" alt="">
+						<p>合租</p></a></li>
+					<li class="geren" data-id="1"><a href="javascript:;"><img src="{#$templets_skin#}images/geren.png" alt="">
+						<p>个人房源</p></a></li>
+					<li><a href="{#getUrlPath service="member" type="user" template="fabu-house-zu"#}"><img src="{#$templets_skin#}images/maif.png" alt="">
+						<p>发布</p></a></li>
+				</ul>
+			</div>
+		</div>
 		<div class="choose-box-blank">
 			<div class="choose-box">
 				<ul class="choose">
@@ -124,13 +138,13 @@
 								<li data-id="0"><a href="javascript:;">五居以上</a></li>
 							</ul>
 						</div>
-						<div class="choose-more-condition tab-rentype" data-type="rentype">
-							<h3>整租/合租</h3>
-							<ul>
-								<li data-id="1"><a href="javascript:;">整租</a></li>
-								<li data-id="2"><a href="javascript:;">合租</a></li>
-							</ul>
-						</div>
+<!--						<div class="choose-more-condition tab-rentype" data-type="rentype">-->
+<!--							<h3>整租/合租</h3>-->
+<!--							<ul>-->
+<!--								<li data-id="1"><a href="javascript:;">整租</a></li>-->
+<!--								<li data-id="2"><a href="javascript:;">合租</a></li>-->
+<!--							</ul>-->
+<!--						</div>-->
 					</div>
 					<div class="reset">重置</div>
 					<div class="confirm">确认</div>

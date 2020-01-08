@@ -285,7 +285,8 @@
 		<div class="fixnav">
 			<div class="wrap">
 				<ul>
-					<li class="curr"><a href="javascript:;">房源信息</a></li>
+					<li class="curr"><a href="javascript:;">房源基础信息</a></li>
+					<li ><a href="javascript:;">房源信息</a></li>
 					<li><a href="javascript:;">设施配套</a></li>
 					<!--<li><a href="javascript:;">周边配套</a></li>-->
 					<!--<li><a href="javascript:;">全景看房</a></li>-->
@@ -297,12 +298,48 @@
 		</div>
 	</div>
 
+	<!-- 房源基础信息 s-->
+	<div class="wrap">
+		<h2 class="sub-title"><span>房源基础信息</span></h2>
+		<div class="content">
+			<div class="jcxx">
+				{#if $detail_type == 0#}
+				{#$day_price = $detail_price / 30#}
+				<dl><dt>日租：</dt>{#if $detail_price > 0#}<dd>{#$day_price|string_format:"%0.0f"#}{#echoCurrency type='short'#}/m²•日</dd>{#else#}<dd>面议</dd>{#/if#}</dl>
+				<dl><dt>月租：</dt><dd>{#if $detail_price > 0#}<dd>{#$detail_price|string_format:"%0.0f"#} {#echoCurrency type='short'#}/m²•月</dd>{#else#}<dd>面议</dd>{#/if#}</dd></dl>
+				{#else#}
+
+				{#/if#}
+				<dl><dt>面积：</dt><dd>{#$detail_area#}平米</dd></dl>
+				<dl><dt>付款方式：</dt><dd>{#if $detail_paytype#}{#$detail_paytype#}{#else#}不详{#/if#}</dd></dl>
+				<dl><dt>类型：</dt><dd>{#$detail_protype#}</dd></dl>
+				<dl><dt>性质：</dt><dd>商铺新盘</dd></dl>
+				<dl><dt>楼层：</dt><dd>{#if $detail_bno ==0 #}低层{#elseif $detail_bno ==200#}中层 {#elseif $detail_bno ==201#}高层{#else#}{#$detail_bno#}{#/if#}/{#$detail_floor#}层</dd></dl>
+				<dl><dt>装修：</dt><dd>{#if $detail_zhuangxiu#}{#$detail_zhuangxiu#}{#else#}装修情况不详{#/if#}</dd></dl>
+				<dl><dt>商铺：</dt><dd>{#$detail_title#}</dd></dl>
+				<dl><dt>楼盘：</dt><dd>{#$detail_loupan#}</dd></dl>
+				<dl><dt>地址：</dt><dd>{#$detail_address#}</dd></dl>
+				<dl><dt>相关费用：</dt><dd>面议</dd></dl>
+			</div>
+		</div>
+	</div>
+
 	<!-- 房源信息 s-->
 	<div class="wrap">
 		<h2 class="sub-title"><span>房源信息</span></h2>
+		{#if $detail_config#}
+		{#foreach from=$detail_config item=cj key=k#}
+		<span class="config">{#$cj#}</span>
+		{#/foreach#}
+		{#/if#}
 		<div class="content">
 			{#$detail_note#}
 		</div>
+		{#if $detail_type == 0#}
+		<dl><dt>挂牌房源:</dt><dd><a href="{#getUrlPath service='house' template='xzl' type={#$detail_type#} addrid={#$detail_areaid#} business={#$detail_addrid#}#}">本区域在租商铺{#$detail_total_zu#}套</a> <a href="{#getUrlPath service='house' template='xzl' type={#$detail_type#} addrid={#$detail_areaid#} business={#$detail_addrid#}#}">本商圈在租商铺{#$detail_total_zu#}套</a></dd></dl>
+		{#else if $detail_type == 1#}
+		<dl><dt>挂牌房源</dt><dd><a href="{#getUrlPath service='house' template='xzl' type={#$detail_type#} addrid={#$detail_areaid#} business={#$detail_addrid#}#}">本区域在售商铺{#$detail_total_sale#}套</a><a href="{#getUrlPath service='house' template='xzl' type={#$detail_type#} addrid={#$detail_areaid#} business={#$detail_addrid#}#}">本商圈在售商铺{#$detail_total_sale#}套</a></dd></dl>
+		{#/if#}
 	</div>
 	<!-- 房源信息 e-->
 
@@ -320,33 +357,33 @@
 	<!-- 设施配套 s-->
 
 	<!-- 周边配套 s-->
-	<!--<div class="wrap">-->
-		<!--<h2 class="sub-title"><span>周边配套</span></h2>-->
-		<!--<div class="content">-->
-          <!--<div class="aroundContainer">-->
-				<!--<div class="aroundMap" id="map"></div>-->
-		    	<!--<div class="tabBox">-->
-			    	<!--<ul class="aroundType">-->
-					    <!--<li class="LOGCLICK" data-log_evtid='10242'  data-bl="traffic" data-key="地铁站,公交站" data-index="subway,bus" data-length="10,10">交通</li>-->
-					    <!--<li class="LOGCLICK" data-log_evtid='10242'  data-bl="education" data-key="幼儿园,小学,中学,大学"-->
-					            <!--data-index="kindergarten,primary-school,middle-school,University"-->
-					            <!--data-length="10,10,10,10"-->
-					       <!--&gt;教育</li>-->
-					    <!--<li class="LOGCLICK" data-log_evtid='10242'  data-bl="medical" data-key="医院,药店" data-index="hospital,pharmacy" data-length="10,10">医疗</li>-->
-					    <!--<li class="LOGCLICK" data-log_evtid='10242'  data-bl="shopping" data-key="商场,超市,市场" data-index="mall,supermarket,market" data-length="10,10,10">购物</li>-->
-					    <!--<li class="LOGCLICK" data-log_evtid='10242'  data-bl="life" data-key="银行,ATM,餐厅,咖啡馆" data-index="bank,atm,restaurant,coffee" data-length="10,10,10,10">生活</li>-->
-					    <!--<li class="LOGCLICK" data-log_evtid='10242'  data-bl="entertainment" data-key="公园,电影院,健身房,体育馆" data-index="park,cinema,gym,sport" data-length="10,10,10,10">娱乐</li>-->
-			    	<!--</ul>-->
-		      		<!--<div class="itemTagBox"></div>-->
-		      		<!--<div class="aroundList" id="mapListContainer"></div>-->
-		      		<!--<div class="loading">-->
-		        		<!--<img src="{#$templets_skin#}images/loading.gif" class="loadingImg">-->
-		        		<!--<span class="loadingText">努力加载中...</span>-->
-					<!--</div>-->
-				<!--</div>-->
-			<!--</div>-->
-		<!--</div>-->
-	<!--</div>-->
+	<div class="wrap">
+		<h2 class="sub-title"><span>周边配套</span></h2>
+		<div class="content">
+          <div class="aroundContainer">
+				<div class="aroundMap" id="map"></div>
+		    	<div class="tabBox">
+			    	<ul class="aroundType">
+					    <li class="LOGCLICK" data-log_evtid='10242'  data-bl="traffic" data-key="地铁站,公交站" data-index="subway,bus" data-length="10,10">交通</li>
+					    <li class="LOGCLICK" data-log_evtid='10242'  data-bl="education" data-key="幼儿园,小学,中学,大学"
+					            data-index="kindergarten,primary-school,middle-school,University"
+					            data-length="10,10,10,10"
+					       >教育</li>
+					    <li class="LOGCLICK" data-log_evtid='10242'  data-bl="medical" data-key="医院,药店" data-index="hospital,pharmacy" data-length="10,10">医疗</li>
+					    <li class="LOGCLICK" data-log_evtid='10242'  data-bl="shopping" data-key="商场,超市,市场" data-index="mall,supermarket,market" data-length="10,10,10">购物</li>
+					    <li class="LOGCLICK" data-log_evtid='10242'  data-bl="life" data-key="银行,ATM,餐厅,咖啡馆" data-index="bank,atm,restaurant,coffee" data-length="10,10,10,10">生活</li>
+					    <li class="LOGCLICK" data-log_evtid='10242'  data-bl="entertainment" data-key="公园,电影院,健身房,体育馆" data-index="park,cinema,gym,sport" data-length="10,10,10,10">娱乐</li>
+			    	</ul>
+		      		<div class="itemTagBox"></div>
+		      		<div class="aroundList" id="mapListContainer"></div>
+		      		<div class="loading">
+		        		<img src="{#$templets_skin#}images/loading.gif" class="loadingImg">
+		        		<span class="loadingText">努力加载中...</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- 周边配套 e -->
 
 	<!-- 全景看房 s -->
@@ -380,7 +417,12 @@
 			<iframe src="/include/videoPreview.php?f={#$detail_video#}" frameborder="0"></iframe>
 		</div>
 		{#else#}
-		<div class="empty">暂无视频</div>
+<!--		<div class="empty">暂无视频</div>-->
+		<style>
+			.quanjing{
+				display: none;
+			}
+		</style>
 		{#/if#}
 	</div>
 	<!-- 全景看房 e -->

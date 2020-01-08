@@ -103,6 +103,21 @@
 .sub-nav li.curr a {background-color: #f1370b; color: #fff;}
 
 
+/* 小区配套 */
+.xiaoqu dl{width: 1200px;}
+.xiaoqu dl>dt{width: 80px; display: inline-block;float: left;}
+.xiaoqu dl>dd>a{margin-left: 10px;border-bottom: 1px solid #9fa0ab}
+.sheshi>dl{width: 250px;height: 20px;display: inline-block;font-size: 14px;margin-top: 8px;}
+.sheshi>dl>dt{width: 70px;height: 20px;float: left;font-weight: bold}
+/* 房源基础信息 */
+.content>.moneyH>b{font-size: 30px;}
+.content>.moneyH{color: #f1370b;}
+.content>.moneyH>span{color: #9fa0ab;font-size: 12px;}
+.content .jcxx{width: 1200px;height: 100px;}
+.content .jcxx>dl{width: 400px;height: 30px;display: inline-block;float: left}
+.content .jcxx>dl>dt{float: left;width: 80px;display: inline-block}
+.content .jcxx>dd{float: left;}
+
 /* 内容 */
 .sub-title {margin:50px auto 30px;height: 30px; line-height: 30px;font-size: 22px;font-weight: bold;color:#1a1c21;}
 .content {font-size: 16px; line-height: 32px;color:#2e323b;position: relative;}

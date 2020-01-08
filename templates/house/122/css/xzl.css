@@ -53,6 +53,10 @@
 .sidebar .lp_box ul li p span.sr{float: right;font-size: 12px;color:#9fa1ab;}
 .sidebar .lp_box .lp_news a{font-size: 14px;color:#58595e;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 .sidebar .lp_box .lp_news a em{color:#878891;margin-right: 8px;}
+.sidebar .lp_box .app{width: 231px;height: 180px;border: 1px solid #ebebed;}
+.sidebar .lp_box .app img{width: 100px;height: 100px;margin-top: 15px}
+.sidebar .lp_box .app .appan{width: 100px;height: 150px;float: left;margin-left: 5px;}
+.sidebar .lp_box .app .appios{width:100px; height:100px; float:right;margin-left: 5px; margin-right: 5px;}
 /* 内容 */
 .main_con {float: left; width: 716px;}
 .w1200 .main_con {width: 916px;}

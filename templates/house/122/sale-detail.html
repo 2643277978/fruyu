@@ -24,11 +24,14 @@
 	var pageData = {id: '{#$detail_id#}', panName: '{#$detail_community#}', address: '{#$detail_address#}', lat: '{#$detail_latitude#}', lng: '{#$detail_longitude#}'};
 
 	var site_map = "{#$site_map#}";
+	var aa = "{#$detail_areaid#}";//区域
+	var bb = "{#$detail_addrid#}";//商圈
 
 	var userinfo = {
 		phoneCheck : {#$userinfo.phoneCheck|default:0#}
 	}
 	var geetest = {#$cfg_geetest#};
+
 </script>
 </head>
 
@@ -87,7 +90,6 @@
 					{#* h5 *#}
 					{#if $detail_qj_type == 0#}
 						<iframe src="{#$cfg_basehost#}/include/360panorama.php?f={#$detail_qj_file#}"></iframe>
-
 					{#* iframe *#}
 					{#elseif $detail_qj_type == 1#}
 						<iframe src="{#$detail_qj_file#}"></iframe>
@@ -145,7 +147,7 @@
 		<div class="intro_box">
 			<div class="inbox">
 				<p>{#$detail_room#}室{#$detail_hall#}厅{#$detail_guard#}卫</p>
-				<span>{#$detail_bno#}/{#$detail_floor#}层</span>
+				<span>{#if $detail_bno ==0 #}低层{#elseif $detail_bno ==200#}中层 {#elseif $detail_bno ==201#}高层{#else#}{#$detail_bno#}{#/if#}/{#$detail_floor#}层</span>
 			</div>
 			<div class="inbox">
 				<p>{#if $detail_directionid > 0#}{#$detail_direction#}{#else#}朝向不详{#/if#}</p>
@@ -160,6 +162,7 @@
 			<div class="txt_other">
 				<dl><dt>建筑类型</dt><dd>{#$detail_protype#}</dd></dl>
 				<dl><dt>小区名称</dt><dd>{#$detail_community#}</dd></dl>
+				<dl><dt>该小区有</dt><dd>{#$detail_total_sale#}套在售</dd></dl>
 				<dl class="comAdd"><dt>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址</dt><dd><span>{#foreach from=$detail_addr item=addr#}
 			{#$addr#}
 			{#/foreach#}
@@ -247,6 +250,7 @@
 				<ul>
 					<li class="curr"><a href="javascript:;">房源信息</a></li>
 					<li><a href="javascript:;">小区简介</a></li>
+					<li><a href="javascript:;">小区配套</a></li>
 					<li><a href="javascript:;">小区价格走势</a></li>
 					<li><a href="javascript:;">小区成交记录</a></li>
 					<li><a href="javascript:;">周边配套</a></li>
@@ -269,33 +273,73 @@
 		<h2 class="sub-title"><span>小区简介</span></h2>
 		<div class="content">
 			{#if $detail_communityid#}
-			<div class="com_intro">
-				<dl class="cpri"><dt>小区均价</dt><dd>{#if $detail_communityDetail.price > 0#}<b>{#$detail_communityDetail.price#}</b> 元/㎡{#else#}<b>面议</b>{#/if#}</dd></dl>
-				<dl><dt>竣工时间</dt><dd>{#$detail_communityDetail.opendate|date_format:"%Y-%m-%d"#}</dd></dl>
-				<dl><dt>容  积  率</dt><dd>{#$detail_communityDetail.rongji#}</dd></dl>
-				<dl><dt>绿  化  率</dt><dd>{#$detail_communityDetail.green#}</dd></dl>
-				<dl><dt>物业公司</dt><dd>{#if $detail_communityDetail.property > 0#}{#$detail_communityDetail.property#}{#else#}不详{#/if#}</dd></dl>
-				<dl><dt>物业费用</dt><dd>{#if $detail_communityDetail.proprice > 0#}{#$detail_communityDetail.proprice#}{#else#}不详{#/if#}</dd></dl>
-			</div>
-			<div class="com_inf">
-				<a href="{#getUrlPath service=house template='community-detail' id=$detail_communityid#}" class="c_detail" target="_blank">查看小区详情</a>
-				{#house action="albumList" act="community" loupanid={#$detail_communityid#} pageSize="1000"#}
-				{#if $_bindex.row < 5#}
-				<div class="inf_box">
-					<p>{#$row.title#}{#if $_bindex.row == 4#}<!-- <a href="{#getUrlPath service=house template='community-detail' id=$detail_communityid#}" target="_blank">查看小区详情</a> -->{#/if#}</p>
-					<div class="imgbox">
-						{#foreach from=$row.imglist item=img key=k#}
-						{#if $k == 0#}
-						<a href="{#$img.path#}" target="_blank">
-							<img src="{#$img.path|replace:"large":"small"#}" alt="{#$img.info#}">
-						</a>
-						{#/if#}
-						{#/foreach#}
-						{#if !$row.imglist#}<div class="empty">抱歉，该相册暂无照片！</div>{#/if#}
-					</div>
-				</div>
-				{#/if#}
-				{#/house#}
+			<!--<div class="com_intro">-->
+				<!--<dl class="cpri"><dt>小区均价</dt><dd>{#if $detail_communityDetail.price > 0#}<b>{#$detail_communityDetail.price#}</b> 元/㎡{#else#}<b>面议</b>{#/if#}</dd></dl>-->
+				<!--<dl><dt>竣工时间</dt><dd>{#$detail_communityDetail.opendate|date_format:"%Y-%m-%d"#}</dd></dl>-->
+				<!--<dl><dt>容  积  率</dt><dd>{#$detail_communityDetail.rongji#}</dd></dl>-->
+				<!--<dl><dt>绿  化  率</dt><dd>{#$detail_communityDetail.green#}</dd></dl>-->
+				<!--<dl><dt>物业公司</dt><dd>{#if $detail_communityDetail.property > 0#}{#$detail_communityDetail.property#}{#else#}不详{#/if#}</dd></dl>-->
+				<!--<dl><dt>物业费用</dt><dd>{#if $detail_communityDetail.proprice > 0#}{#$detail_communityDetail.proprice#}{#else#}不详{#/if#}</dd></dl>-->
+			<!--</div>-->
+			<!--<div class="com_inf">-->
+				<!--<a href="{#getUrlPath service=house template='community-detail' id=$detail_communityid#}" class="c_detail" target="_blank">查看小区详情</a>-->
+				<!--{#house action="albumList" act="community" loupanid={#$detail_communityid#} pageSize="1000"#}-->
+				<!--{#if $_bindex.row < 5#}-->
+				<!--<div class="inf_box">-->
+					<!--<p>{#$row.title#}{#if $_bindex.row == 4#}&lt;!&ndash; <a href="{#getUrlPath service=house template='community-detail' id=$detail_communityid#}" target="_blank">查看小区详情</a> &ndash;&gt;{#/if#}</p>-->
+					<!--<div class="imgbox">-->
+						<!--{#foreach from=$row.imglist item=img key=k#}-->
+						<!--{#if $k == 0#}-->
+						<!--<a href="{#$img.path#}" target="_blank">-->
+							<!--<img src="{#$img.path|replace:"large":"small"#}" alt="{#$img.info#}">-->
+						<!--</a>-->
+						<!--{#/if#}-->
+						<!--{#/foreach#}-->
+						<!--{#if !$row.imglist#}<div class="empty">抱歉，该相册暂无照片！</div>{#/if#}-->
+					<!--</div>-->
+				<!--</div>-->
+				<!--{#/if#}-->
+				<!--{#/house#}-->
+			<!--</div>-->
+			<div class="c-info">
+				<table class="detail">
+					<tr>
+						<td>小区名称：{#$detail_community#}</td>
+						<td>建筑面积：{#$detail_communityDetail.buildarea#}㎡</td>
+					</tr>
+					<tr>
+						<td>所在区域：{#$detail_addr[$detail_addr|count-3]#} {#$detail_addr[$detail_addr|count-2]#} {#$detail_addr[$detail_addr|count-1]#}</td>
+						<td>占地面积：{#$detail_communityDetail.planarea#}</td>
+					</tr>
+					<tr>
+						<td>小区地址：{#$detail_address#}</td>
+						<td>邮政编码：{#$detail_communityDetail.post#}</td>
+					</tr>
+					<tr>
+						<td>开&nbsp;发&nbsp;&nbsp;商：{#$detail_communityDetail.kfs#}</td>
+						<td>规则户数：{#$detail_communityDetail.planhouse#}户</td>
+					</tr>
+					<tr>
+						<td>物业公司：{#$detail_communityDetail.property#}</td>
+						<td>产权年限：{#$detail_communityDetail.buildage#}</td>
+					</tr>
+					<tr>
+						<td>物业类型：{#if $detail_communityDetail.property > 0#}{#$detail_communityDetail.property#}{#else#}不详{#/if#}</td>
+						<td>竣工时间：{#$detail_communityDetail.opendate|date_format:"%Y-%m-%d"#}</td>
+					</tr>
+					<tr>
+						<td>物业费用：{#if $detail_communityDetail.proprice > 0#}{#$detail_communityDetail.proprice#}{#else#}不详{#/if#}</td>
+						<td>车位数量：{#$detail_communityDetail.parknum#}</td>
+					</tr>
+					<tr>
+						<td>物业电话：{#$detail_communityDetail.protel#}</td>
+						<td>容&nbsp;积&nbsp;&nbsp;率：{#$detail_communityDetail.rongji#}</td>
+					</tr>
+					<tr>
+						<td>物业地址：{#$detail_communityDetail.proaddr#}</td>
+						<td>绿&nbsp;化&nbsp;&nbsp;率：{#$detail_communityDetail.green#}</td>
+					</tr>
+				</table>
 			</div>
 			{#else#}
 			<div class="empty">暂无相关信息</div>
@@ -304,8 +348,30 @@
 	</div>
 	<!-- 小区简介 e -->
 
+	<!-- 小区配套 s -->
+	<div class="wrap peitao">
+		<h2 class="sub-title"><span>小区配套</span></h2>
+		<div class="content xiaoqu">
+			<div class="sheshi">
+				<dl><dt>小区:</dt><dd>{#$detail_community#}</dd></dl>
+				<dl><dt>供水:</dt><dd>{#$detail_communityDetail.aroundConfig.water#}</dd></dl>
+				<dl><dt>供暖:</dt><dd>{#$detail_communityDetail.aroundConfig.heat#}</dd></dl>
+				<dl><dt>供电:</dt><dd>{#$detail_communityDetail.aroundConfig.power#}</dd></dl>
+				<dl><dt>燃气:</dt><dd>{#$detail_communityDetail.aroundConfig.gas#}</dd></dl>
+				<dl><dt>通讯设备:</dt><dd>{#$detail_communityDetail.aroundConfig.newsletter#}</dd></dl>
+				<dl><dt>电梯服务:</dt><dd>{#$detail_communityDetail.aroundConfig.elevator#}</dd></dl>
+				<dl><dt>安全管理:</dt><dd>{#$detail_communityDetail.aroundConfig.safe#}</dd></dl>
+				<dl><dt>卫生服务:</dt><dd>{#$detail_communityDetail.aroundConfig.clean#}</dd></dl>
+				<dl><dt>停车位:</dt><dd>{#$detail_communityDetail.aroundConfig.parknum#}个车位</dd></dl>
+				<dl><dt>小区入口:</dt><dd>{#$detail_communityDetail.aroundConfig.entrance#}</dd></dl>
+			</div>
+<!--			<dl><dt>挂牌房源</dt><dd><a href="">本小区在租房源{#$detail_total_zu#}套</a> <a href="">本商圈在租房源{#$detail_total_zu#}套</a> <a href="">本区域在租房源{#$detail_total_zu#}套</a></dd></dl>-->
+		</div>
+	</div>
+	<!-- 小区配套 e -->
+
 	<!-- 小区价格走势 s -->
-	<div class="wrap">
+	<div class="wrap zoushi">
 		<h2 class="sub-title"><span>{#$detail_community#}小区价格走势</span></h2>
         <div class="c-info around" >
             <p>出售：</p>
@@ -315,13 +381,13 @@
 	<!-- 小区价格走势 e -->
 
 	<!-- 小区成交记录 s -->
-	<div class="wrap">
+	<div class="wrap jilu">
 		<h2 class="sub-title"><span>{#$detail_community#}小区成交记录</span></h2>
 		<div class="record-house" >
 			<table class="record_box">
 				<thead>
 				<tr>
-					<th>成交价</th>
+					<th>成交总价</th>
 					<th>成交单价</th>
 					<th>成交时间</th>
 					<th>地区</th>
@@ -332,8 +398,8 @@
 				<tbody class="record_body">
 				{#foreach from=$detail_tradeList item=cj key=k#}
 				<tr>
-					<td>{#$cj.tradeprice#}万</td>
-					<td>{#$cj.unitprice#}元/㎡</td>
+					<td>{#$cj.tradeprice#}</td>
+					<td>{#$cj.unitprice#}</td>
 					<td>{#$cj.tradetime#}</td>
 					<td>{#$cj.area#}</td>
 					<td>{#$cj.type#}</td>
@@ -343,8 +409,7 @@
 				</tbody>
 			</table>
 			<div class="record-more">
-				<a
-						class="web-sensors"
+				<a class="web-sensors"
 						sensors-element_type="跳转按钮"
 						sensors-element_name="more_clinch_button"
 						sensors-element_class_name="文字按钮"
@@ -368,8 +433,7 @@
                         <li class="LOGCLICK" data-log_evtid='10242'  data-bl="traffic" data-key="地铁站,公交站" data-index="subway,bus" data-length="10,10">交通</li>
                         <li class="LOGCLICK" data-log_evtid='10242'  data-bl="education" data-key="幼儿园,小学,中学,大学"
                                 data-index="kindergarten,primary-school,middle-school,University"
-                                data-length="10,10,10,10"
-                           >教育</li>
+                                data-length="10,10,10,10">教育</li>
                         <li class="LOGCLICK" data-log_evtid='10242'  data-bl="medical" data-key="医院,药店" data-index="hospital,pharmacy" data-length="10,10">医疗</li>
                         <li class="LOGCLICK" data-log_evtid='10242'  data-bl="shopping" data-key="商场,超市,市场" data-index="mall,supermarket,market" data-length="10,10,10">购物</li>
                         <li class="LOGCLICK" data-log_evtid='10242'  data-bl="life" data-key="银行,ATM,餐厅,咖啡馆" data-index="bank,atm,restaurant,coffee" data-length="10,10,10,10">生活</li>
@@ -416,7 +480,12 @@
 			<iframe src="/include/videoPreview.php?f={#$detail_video#}" frameborder="0"></iframe>
 		</div>
 		{#else#}
-		<div class="empty">暂无视频</div>
+		<style>
+			.quanjing{
+				display: none;
+			}
+		</style>
+		<!--<div class="empty">暂无视频</div>-->
 		{#/if#}
 	</div>
 	<!-- 视频看房 e -->
@@ -497,100 +566,6 @@
 <div class="popup_bg"></div>
 
 {#include file="footer.html"#}
-<script>
-    var data=JSON.parse('{#$detail_price_trend#}');
-    //出售
-    var arr = [];
-    for (let i in data) {
-        // var o = {};
-        // o[i] = chushou[i];
-        // arr.push(o)
-        arr.push(data[i]);
-    }
-    let name=[];
-    for (let i in data) {
-        var o = {};
-        var t={i};
-        o[i] = data[i];
-        name.push(t)
-
-    }
-    function datasta(bdata,a){
-        let aData=[];
-        var obj = eval(a);
-        for(var i=0;i<obj.length;i++){
-            aData.push(obj[i][1]);
-        }
-        bdata=aData;
-        return bdata;
-    }
-    let rData;
-    $(document).ready(function(){
-        //价格走势
-        var ctx = document.getElementById('myChart').getContext('2d');
-        function tubiao(a,rName,rData,tName,tData,sName,sData,fName,fData) {
-            var myChart = new Chart(a, {
-                type: 'line',
-                data: {
-                    labels: ['1月', '2月', '3月', '4月', '5月', '6月','7月','8月','9月','10月','11月','11月'],
-                    datasets: [
-                        {
-                            label: rName,
-                            data: rData,
-                            borderColor:'blue',
-                            backgroundColor:'skyBlue',
-                            borderWidth: 1,
-                            fill: false,
-                            scaleLabel : "<%=value/100000000%>元",
-                        },
-                        {
-                            label: tName,
-                            data: tData,
-                            borderColor:'red',
-                            backgroundColor:'pink',
-                            borderWidth: 1,
-                            fill: false,
-                        },
-                        {
-                            label: sName,
-                            data: sData,
-                            borderColor:'green',
-                            backgroundColor:'green',
-                            borderWidth: 1,
-                            fill: false,
-                        },
-                        {
-                            label: fName,
-                            data: fData,
-                            borderColor: "orange",
-                            backgroundColor: "grey",
-                            borderWidth: 1,
-                            fill: false,
-                        },
-                    ]
-                },
-                option:{
-                    tooltips: {
-                        mode: 'nearest',
-                        intersect: false,
-                        // callbacks: {
-                        // 	label: function(tooltipItem, myData) {
-                        // 		var label = myData.datasets[tooltipItem.datasetIndex].label || '';
-                        // 		if (label) {
-                        // 			label += '的数值是: '+'元/m';
-                        // 		}
-                        // 		label += parseFloat(tooltipItem.value).toFixed(2);
-                        // 		return label;
-                        // 	}
-                        // },
-                    },
-                }
-
-            });
-        }
-        tubiao(ctx,name[0].i,datasta(rData,arr[0]),name[1].i,datasta(rData,arr[1]),name[2].i,datasta(rData,arr[2]),name[3].i,datasta(rData,arr[3]));
-    });
-</script>
 <script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.qrcode.min.js"></script>
 <script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
 <script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.slides.1.1.1.js"></script>
@@ -599,5 +574,101 @@
 <script type="text/javascript" src="{#$templets_skin#}js/sale_detail.js?v={#$cfg_staticVersion#}"></script>
 <script type="text/javascript" src="{#$site_map_apiFile#}"></script>
 <script type="text/javascript" src="{#$templets_skin#}js/map.js?v={#$cfg_staticVersion#}"></script>
+<script>
+	var data=JSON.parse('{#$detail_price_trend#}');
+	if(data){
+		//出售
+		var arr = [];
+		for (let i in data) {
+			// var o = {};
+			// o[i] = chushou[i];
+			// arr.push(o)
+			arr.push(data[i]);
+		}
+		let name=[];
+		for (let i in data) {
+			var o = {};
+			var t={i};
+			o[i] = data[i];
+			name.push(t)
+
+		}
+		function datasta(bdata,a){
+			let aData=[];
+			var obj = eval(a);
+			for(var i=0;i<obj.length;i++){
+				aData.push(obj[i][1]);
+			}
+			bdata=aData;
+			return bdata;
+		}
+		let rData;
+		$(document).ready(function(){
+			//价格走势
+			var ctx = document.getElementById('myChart').getContext('2d');
+			function tubiao(a,rName,rData,tName,tData,sName,sData,fName,fData) {
+				var myChart = new Chart(a, {
+					type: 'line',
+					data: {
+						labels: ['1月', '2月', '3月', '4月', '5月', '6月','7月','8月','9月','10月','11月','12月'],
+						datasets: [
+							{
+								label: rName,
+								data: rData,
+								borderColor:'blue',
+								backgroundColor:'skyBlue',
+								borderWidth: 1,
+								fill: false,
+								scaleLabel : "<%=value/100000000%>元",
+							},
+							{
+								label: tName,
+								data: tData,
+								borderColor:'red',
+								backgroundColor:'pink',
+								borderWidth: 1,
+								fill: false,
+							},
+							{
+								label: sName,
+								data: sData,
+								borderColor:'green',
+								backgroundColor:'green',
+								borderWidth: 1,
+								fill: false,
+							},
+							{
+								label: fName,
+								data: fData,
+								borderColor: "orange",
+								backgroundColor: "grey",
+								borderWidth: 1,
+								fill: false,
+							},
+						]
+					},
+					option:{
+						tooltips: {
+							mode: 'nearest',
+							intersect: false,
+							// callbacks: {
+							// 	label: function(tooltipItem, myData) {
+							// 		var label = myData.datasets[tooltipItem.datasetIndex].label || '';
+							// 		if (label) {
+							// 			label += '的数值是: '+'元/m';
+							// 		}
+							// 		label += parseFloat(tooltipItem.value).toFixed(2);
+							// 		return label;
+							// 	}
+							// },
+						},
+					}
+
+				});
+			}
+			tubiao(ctx,name[0].i,datasta(rData,arr[0]),name[1].i,datasta(rData,arr[1]),name[2].i,datasta(rData,arr[2]),name[3].i,datasta(rData,arr[3]));
+		});
+	}
+</script>
 </body>
 </html>

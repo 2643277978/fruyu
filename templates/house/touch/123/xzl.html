@@ -14,6 +14,7 @@
 	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', staticPath = '{#$cfg_staticPath#}', templets_skin = '{#$templets_skin#}';
 	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
 	var action = 'xzlList', detailListId = 'xzl-list';
+	var aa='{#$siteCityInfo['name']#}'
 	var JubaoConfig = {
 		"module" : 'house',
 		"action" : 'xzl',
@@ -41,6 +42,20 @@
 			</div>
 			<div class="clear"></div>
 		</form>
+		{#if $siteCityInfo['name'] =="重庆" #}
+		<div class="xzl_top">
+			<div class="xzlli">
+				<ul>
+					<li><a href="{#$house_channelDomain#}/xzl?34903414">观音桥写字楼出租</a></li>
+					<li><a href="{#$house_channelDomain#}/xzl?35245164">南坪写字楼出租</a></li>
+					<li><a href="{#$house_channelDomain#}/xzl?34745177">解放碑写字楼出租</a></li>
+					<li><a href="{#$house_channelDomain#}/xzl?35603536">新牌坊写字楼出租</a></li>
+					<li><a href="{#$house_channelDomain#}/xzl?34703391">大坪写字楼出租</a></li>
+					<li><a href="{#$house_channelDomain#}/xzl?35103445">杨家坪写字楼出租</a></li>
+				</ul>
+			</div>
+		</div>
+		{#/if#}
 		<div class="choose-box-blank">
 			<div class="choose-box">
 				<ul class="choose">

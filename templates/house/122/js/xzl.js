@@ -553,16 +553,25 @@ $(function(){
                             html.push('<span>' + d.zhuangxiu + '</span>');
                             html.push('<em>|</em>');
                         }
-                        if (d.bno > 0 && d.floor > 0) {
-                            html.push('<span>' + d.bno + '/' + d.floor + '层</span>');
-                            html.push('<em>|</em>');
+                        if( d.floor > 0){
+                            if (0 <= d.bno <10) {
+                                html.push('<span>低层/' + d.floor + '层</span>');
+                                html.push('<em>|</em>');
+                            }else if(10 < d.bno < 15 || d.bno == 200){
+                                html.push('<span>中层/' + d.floor + '层</span>');
+                                html.push('<em>|</em>');
+                            }else if(d.bno > 15|| d.bno == 201){
+                                html.push('<span>高层/' + d.floor + '层</span>');
+                                html.push('<em>|</em>');
+                            }
                         }
+
                         html.pop();
                         html.push('</div>');
 
                         if (d.type == 0) {
                             if(d.price > 0){
-                                html.push('<div class="sp_r fn-right">'+d.price+' 元/月</div>');
+                                html.push('<div class="sp_r fn-right">'+d.price*d.area+' 元/月</div>');
                             }
                         }else{
                           html.push('<div class="sp_r fn-right">'+(d.price / d.area).toFixed(2)+' 万/m²</div>');
@@ -570,19 +579,24 @@ $(function(){
 
                         html.push('</div>');
                         html.push('<p class="lpinf">[' + d.addr[d.addr.length - 1] + ']  ' + d.address + '</p>');
+                        // if(d.type==0){
+                        //     html.push('<p class="lpinf">该楼盘有'+ +'套在租</p>');
+                        // }else {
+                        //     html.push('<p class="lpinf">该楼盘有'+ +'套在售</p>');
+                        // }
                         if (d.proprice > 0) {
                             html.push('<p class="lpinf">物业费：' + d.proprice + '元/m²/月</p>');
                         }
                         html.push('<div class="lpinf hinf fn-clear">');
-                        /*html.push('<div class="hilef fn-left">');
+                        html.push('<div class="hilef fn-left">');
                         if (d.usertype == 1) {
                             html.push('<span><i class="iname"></i> ' + d.nickname + '</span>');
-                            html.push('<span><i class="itel"></i> ' + d.userPhone + '</span>');
+                            // html.push('<span><i class="itel"></i> ' + d.userPhone + '</span>');
                         } else {
                             html.push('<span><i class="iname"></i> ' + d.username + '</span>');
-                            html.push('<span><i class="itel"></i> ' + d.contact + '</span>');
+                            // html.push('<span><i class="itel"></i> ' + d.contact + '</span>');
                         }
-                        html.push('</div>');*/
+                        html.push('</div>');
                         html.push('<div class="hirig fn-right">');
                         if (d.collect) {
                             html.push('<a href="javascript:;" class="btn_sc btn_ysc"><i class="isc"></i> 已收藏</a>');

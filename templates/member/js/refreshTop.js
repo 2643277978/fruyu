@@ -291,6 +291,7 @@ $(function(){
 		//价格业务，判断是否显示支付
 		calculationPayPrice: function(){
 			if(!check_zjuser){
+				console.log(refreshTopAmount)
 				if(refreshTopAmount){
 					var rtUseBalance = userTotalBalance > refreshTopAmount ? refreshTopAmount.toFixed(2) : userTotalBalance.toFixed(2);
 					var rtTotalPay = refreshTopAmount.toFixed(2);
@@ -360,7 +361,6 @@ $(function(){
 				//将配置信息写入表单
 				$('#refreshTopForm #amount').val(refreshTopAmount);
 				$('#refreshTopForm #config').val(beganDate+'|'+endDate+'|'+rtPlanSelected.join(','));
-
 				refreshTopFunc.calculationPayPrice();
 
 			}
@@ -702,6 +702,7 @@ $(function(){
 		// if(check_zjuser){
 			e.preventDefault();
 			$('.rtBody .paySubmit').addClass('disabled');
+
 			$.ajax({
 				url: masterDomain + '/include/ajax.php',
 				type : 'post',

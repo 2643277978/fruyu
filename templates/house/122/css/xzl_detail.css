@@ -46,6 +46,9 @@
 .xzl-detail .xzl_slide .plist li s.splay{display: block;width: 30px;height: 30px;position: absolute;top:50%;left:50%;margin-top:-15px;margin-left:-15px;background:url(../images/small_play.png) no-repeat center center;background-size: cover;z-index: 999;}
 .xzl-detail .xzl_slide .plist li s.svr{display: block;width: 36px;height: 36px;position: absolute;top:50%;left:50%;margin-top:-18px;margin-left:-18px;background:url(../images/small_vr.png) no-repeat center center;background-size: cover;z-index: 999;}
 
+/* 特色 */
+.config{display: inline-block;width: 60px;height: 20px;line-height: 20px;border: 1px solid red;text-align: center;font-size: 12px;margin-bottom: 10px;}
+
 /* 说明 */
 .param{float: left;width: 430px;}
 .param .cprice{padding-bottom: 20px;border-bottom: solid 1px #e8e8e8;}
@@ -68,6 +71,19 @@
 .param .txt_other dl{overflow: hidden;padding:5px 0;}
 .comAdd dd span{max-width: 310px;  float: left;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 .comAdd dd a{color:#4884ff;margin-left: 10px;float: left;}
+/* 房源基础信息 */
+.content>.moneyH>b{font-size: 30px;}
+.content>.moneyH{color: #f1370b;}
+.content>.moneyH>span{color: #9fa0ab;font-size: 12px;}
+.content .jcxx{width: 1200px;height: 100px;}
+.content .jcxx>dl{width: 400px;height: 30px;display: inline-block;float: left}
+.content .jcxx>dl>dt{float: left;width: 80px;display: inline-block}
+.content .jcxx>dd{float: left;}
+/*房源信息*/
+.wrap>dl{width: 1200px;margin-top: 10px;}
+.wrap>dl>dt{width: 80px;display: inline-block;height: 20px;font-size: 16px;float: left}
+.wrap>dl a{font-size: 16px;color:#f1370b;margin-left: 10px;display: inline-block }
+
 /*负责人*/
 .manager{padding:35px 0;}
 .manager .topbox{overflow: hidden;}
@@ -92,7 +108,13 @@
 .mbox p i.iqq{background:url(../images/icon_qq.png) no-repeat center center;background-size: cover;}
 .manbox a.btnWx:hover .mbox.wechat,.manbox a.btnQq:hover .mbox.qq{display: block;}
 .manbox a.btnWx:hover,.manbox a.btnQq:hover{background-color: #fff;}
-
+/*楼盘图片*/
+.photo{height: auto;}
+.photo .imgul{width: 1200px;height: 600px;}
+.photo .imgul ul{width: 1200px;height: 600px;}
+.photo .imgul ul>li{width: 260px;height: 260px;float: left;margin-left: 15px;margin-top: 15px;}
+.photo .imgul ul>li>.min{width: 260px;height: 260px;}
+.photo .imgul ul>li>.max{width: 100%;height: 100%;}
 /* 导航 */
 .sub-nav {position: relative; z-index: 100; height: 45px; margin-top: 30px;}
 .sub-nav .wrap {position: relative; height: 43px;line-height: 43px; border-top: 2px solid #f1370b;background-color: #f7f7f7;}

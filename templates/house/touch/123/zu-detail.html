@@ -12,7 +12,8 @@
 <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
 <link rel="stylesheet" href="{#$templets_skin#}css/swiper.min.css">
 <script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
-<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+	<script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+	<script src="https://how2j.cn/study/js/chartjs/2.8.0/chart.min.js"></script>
 <script type="text/javascript">
 	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
 
@@ -27,6 +28,7 @@
 		mapType: '{#$site_map#}',
 		cityName: '{#$siteCityInfo['name']#}',
 		mapKey: '{#$site_map_key#}',
+		cid:'{#$detail_communityid#}'
 	};
 	var page_type = 'zu';
 
@@ -115,7 +117,7 @@
 		<div class="zf_title">
 			<div class="title">{#$detail_title#}</div>
 			<div class="price">{#if $detail_price > 0#}{#$detail_price#}{#echoCurrency type='short'#}/月{#else#}面议{#/if#}</div>
-			<div class="txt"><span>{#$detail_pubdate|date_format:"%Y.%m.%d"#}</span><span>{#$detail_click#}浏览</span><span>{#if $detail_usertype == 0#}个人{#else#}中介{#/if#}</span><span class="jubao HN_Jubao">举报</span></div>
+			<div class="txt"><span>{#$detail_pubdate|date_format:"%Y.%m.%d"#}</span><span>{#$detail_click#}浏览</span><span class="jubao HN_Jubao">举报</span></div>
 			<div class="classification">
 				<div><p>{#$detail_room#}室{#$detail_hall#}厅{#$detail_guard#}卫</p><p>户型</p></div><div><p>{#$detail_area#}㎡</p><p>面积</p></div><div><p>{#$detail_direction#}</p><p>朝向</p></div><div><p>{#$detail_rentype#}</p><p>类型</p></div>
 			</div>
@@ -185,7 +187,18 @@
 		</div>
 		<a href="javascript:;" class="btn-all appMapBtn" target="_blank">查看全部配套 > </a>
 	</div>
-
+	{#if $detail_communityid !==0 #}
+	<!-- 价格走势 -->
+	<div class="periphery">
+		<div class="periphery_title">价格走势</div>
+		<div class="content" >
+			<p style="margin-top: 50px;margin-left: 10px;">出租：</p>
+			<canvas id="saleChart"></canvas>
+			<p style="margin-top: 50px;margin-left: 10px;">商圈出租：</p>
+			<canvas  id="sqChart"></canvas>
+		</div>
+	</div>
+	{#/if#}
 	<!-- 周边推荐 -->
 	<div class="periphery">
 		<div class="periphery_title">周边推荐</div>
@@ -221,7 +234,7 @@
     </div>
     <div class="big-wrapper">
 		<!--<a href="{#getUrlPath service=house template=yuyue param="type=zu&id={#$detail_id#}"#}" class="button post_ulog"><i></i>预约看房</a> <a href="tel:{#if $detail_usertype == 1#}{#$detail_user.phone#}{#else#}{#$detail_contact#}{#/if#}" class="button call_phone"><i></i>电话咨询</a> -->
-		<a href="{#$member_userDomain#}/im/chat-{#$detail_userid#}.html" class="button post_news"><i></i>微聊</a>
+		<a class="button post_news"  data-id="{#$detail_userid#}" ><i></i>微聊</a>
 		<!--<a href="{#$member_userDomain#}/message.html" class="button post_news"><i></i>微聊</a>-->
 		<a href="javascript;" data-item="{#$detail_id#}" data-type="zu" data-id="{#$detail_userid#}"  class="button call_phone"><i></i>电话咨询</a>
     </div>
@@ -296,7 +309,120 @@
 
 <script src="{#$templets_skin#}js/zu-detail.js?v={#$cfg_staticVersion#}"></script>
 <!--<script src="https://github.com/dcloudio/plusto/blob/master/share/plusShare.js" type="text/javascript" charset="utf-8"></script>-->
+<script>
+	var data=JSON.parse('{#$detail_price_trend#}');
+	if(data!==null){
+		let sale=data.出租;
+		let sq=data.商圈出租;
+		//出租
+		var arr2 = [];
+		for (let i in sale) {
+			// var o = {};
+			// o[i] = chushou[i];
+			// arr.push(o)
+			arr2.push(sale[i]);
+		}
+		let name2=[];
+		for (let i in sale) {
+			var o = {};
+			var t={i};
+			o[i] = sale[i];
+			name2.push(t);
+		}
+		//商圈出租
+		var arr1 = [];
+		for (let i in sq) {
+			// var o = {};
+			// o[i] = chushou[i];
+			// arr.push(o)
+			arr1.push(sq[i]);
+		}
+		let name1=[];
+		for (let i in sq) {
+			var o = {};
+			var t={i};
+			o[i] = sq[i];
+			name1.push(t);
+		}
 
+		function datasta(bdata,a){
+			let aData=[];
+			var obj = eval(a);
+			for(var i=0;i<obj.length;i++){
+				aData.push(obj[i][1]);
+			}
+			bdata=aData;
+			return bdata;
+		}
+		let rData;
+		$(document).ready(function(){
+			//价格走势
+			var ctx1 = document.getElementById('saleChart').getContext('2d');
+			var ctx2 = document.getElementById('sqChart').getContext('2d');
+			function tubiao(a,rName,rData,tName,tData,sName,sData,fName,fData) {
+				var myChart = new Chart(a, {
+					type: 'line',
+					data: {
+						labels: ['1月', '2月', '3月', '4月', '5月', '6月','7月','8月','9月','10月','11月','11月'],
+						datasets: [
+							{
+								label: rName,
+								data: rData,
+								borderColor:'blue',
+								backgroundColor:'skyBlue',
+								borderWidth: 1,
+								fill: false,
+							},
+							{
+								label: tName,
+								data: tData,
+								borderColor:'red',
+								backgroundColor:'pink',
+								borderWidth: 1,
+								fill: false,
+							},
+							{
+								label: sName,
+								data: sData,
+								borderColor:'green',
+								backgroundColor:'green',
+								borderWidth: 1,
+								fill: false,
+							},
+							{
+								label: fName,
+								data: fData,
+								borderColor: "orange",
+								backgroundColor: "grey",
+								borderWidth: 1,
+								fill: false,
+							},
+						]
+					},
+					option:{
+						tooltips: {
+							mode: 'nearest',
+							intersect: false,
+							// callbacks: {
+							// 	label: function(tooltipItem, myData) {
+							// 		var label = myData.datasets[tooltipItem.datasetIndex].label || '';
+							// 		if (label) {
+							// 			label += '的数值是: '+'元/m';
+							// 		}
+							// 		label += parseFloat(tooltipItem.value).toFixed(2);
+							// 		return label;
+							// 	}
+							// },
+						},
+					}
+
+				});
+			}
+			tubiao(ctx1,name1[0].i,datasta(rData,arr1[0]),name1[1].i,datasta(rData,arr1[1]),name1[2].i,datasta(rData,arr1[2]),name1[3].i,datasta(rData,arr1[3]));
+			tubiao(ctx2,name2[0].i,datasta(rData,arr2[0]),name2[1].i,datasta(rData,arr2[1]),name2[2].i,datasta(rData,arr2[2]),name2[3].i,datasta(rData,arr2[3]));
+		});
+	}
+</script>
 
 </body>
 </html>

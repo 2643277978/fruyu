@@ -23,6 +23,9 @@
 .sp-detail .sp_slide .sprev, .sp-detail .sp_slide .snext {position: absolute; top:0;  height: 82px; width: 30px; line-height: 82px; overflow: hidden;background: rgba(0,0,0,.77);}
 .pageState{position: absolute;bottom: 102px;right: 20px;height: 30px;line-height: 30px;text-align: center;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;font-size: 16px;color:#fff;z-index: 9;}
 
+/*特色*/
+.config{display: inline-block;width: 60px;height: 20px;line-height: 20px;border: 1px solid red;text-align: center;font-size: 12px;margin-bottom: 10px;}
+
 /*手机看房*/
 .mobile_kf_mid{width:104px;height:90px;display: inline-block; -webkit-box-shadow: 0 3px 5px rgba(0,0,0,.13);-moz-box-shadow: 0 3px 5px rgba(0,0,0,.13);box-shadow: 0 3px 5px rgba(0,0,0,.13);-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;overflow: hidden;}
 .mobile_kf_mid .mk_lef{padding:5px;background-color:#fff;}
@@ -107,6 +110,19 @@
 /* 内容 */
 .sub-title {margin:50px auto 30px;height: 30px; line-height: 30px;font-size: 22px;font-weight: bold;color:#1a1c21;}
 .content {font-size: 16px; line-height: 32px;color:#2e323b;position: relative;}
+/* 房源基础信息 */
+.content>.moneyH>b{font-size: 30px;}
+.content>.moneyH{color: #f1370b;}
+.content>.moneyH>span{color: #9fa0ab;font-size: 12px;}
+.content .jcxx{width: 1200px;height: 100px;}
+.content .jcxx>dl{width: 400px;height: 30px;display: inline-block;float: left}
+.content .jcxx>dl>dt{float: left;width: 80px;display: inline-block}
+.content .jcxx>dd{float: left;}
+/*房源信息*/
+.wrap>dl{width: 1200px;margin-top: 10px;}
+.wrap>dl>dt{width: 80px;display: inline-block;height: 20px;font-size: 16px;float: left}
+.wrap>dl a{font-size: 16px;color:#f1370b;margin-left: 10px;display: inline-block }
+
 /*小区简介*/
 .content .com_intro{width:240px;height:160px;margin-right: 20px;}
 .content .com_intro dl{line-height: 29px;height: 29px;font-size: 14px;overflow: hidden;}

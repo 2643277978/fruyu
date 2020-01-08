@@ -401,9 +401,7 @@ $('.sub_btn').bind('click',function(){
         dataType: "json",
         success: function (data) {
             if(data && data.state == 100){
-
             	fabuPay.check(data, url, $('.sub_btn'));
-
             }else{
             	alert(data.info);
             	$('.sub_btn').removeClass("disabled").html(langData['siteConfig'][11][19]);

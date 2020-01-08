@@ -18,6 +18,15 @@ body{position: relative;}
 .search-box .search_map p{color: #f1370b;font-size: .2rem;}
 
 .container {padding-bottom: 1rem;}
+.zu_top{width: 100%;height: 60px;}
+.zu_top>.choose-box{width: 100%;height: 60px}
+.zu_top>.choose-more-condition{width: 100%;height: 60px}
+.zu_top .choose-box>ul{width: 100%;height: 60px;margin-top: 8px;}
+.zu_top .choose-more-condition>ul{width: 100%;height: 60px;margin-top: 8px;}
+.zu_top .choose-box>ul>li{float: left; width: 65px;display: inline-block;text-align: center;margin-left: 20px;}
+.zu_top .choose-more-condition>ul>li{float: left; width: 65px;display: inline-block;text-align: center;margin-left: 20px;}
+.zu_top .choose-box>ul>li>a>img{display: inline-block;height: .45rem}
+.zu_top .choose-more-condition>ul>li>a>img{display: inline-block;height: .45rem}
 
 /*选择*/
 .choose_, .choose{height: 0.8rem;border-bottom: 1px solid #e8e8e8;background: #fff;}
@@ -26,9 +35,19 @@ body{position: relative;}
 .sp .choose_ li,.xzl .choose_ li,.cf .choose_ li, .sp .choose li,.xzl .choose li,.cf .choose li{width: 20%;}
 .rent .choose_ li, .rent .choose li{width: 50%;}
 
+/*最顶上*/
+.xzl_top{width: 100%;height: 80px;}
+.xzl_top .xzlli{width: 100%;height: 80px;}
+.xzl_top .xzlli>ul{width: 100%;height: 80px;text-align: center}
+.xzl_top .xzlli>ul>li{width: 100px;height: 30px;float: left;margin-top: 10px;margin-left: 15px;line-height: 30px; }
+.xzl_top .xzlli>ul>li>a{font-size: 10px;}
+.xzl_top .xzlli>ul>li:first-child{margin-top: 0px; }
+.xzl_top .xzlli>ul>li:nth-child(2){margin-top: 0px; }
+.xzl_top .xzlli>ul>li:nth-child(3){margin-top: 0px; }
+/*.xzl_top .xzlli>ul>li>a{color: white;}*/
 /*房屋信息列表*/
 .house-box{padding: .2rem;}
-.house-item .house-img{width: 1.92rem;height: 1.46rem;margin-right: .2rem;position: relative;}
+.house-item .house-img{width: 1.92rem;height: 2rem;margin-right: .2rem;position: relative;}
 .house-item .house-img img{width: 100%;height: 100%}
 .house-item .house-img .play_img{background: url(../images/play_icon.png) no-repeat center;background-size: .5rem;display: inline-block;width: .5rem;height: .5rem;position: absolute;top: 50%;margin-top: -.25rem;left: 50%;margin-left: -.25rem;}
 .house-item .house-img .VR_img{background: url(../images/VR_icon.png) no-repeat center;background-size: .5rem;display: inline-block;width: .5rem;height: .5rem;position: absolute;bottom: .1rem;left: .1rem;}
@@ -53,8 +72,8 @@ body{position: relative;}
 .house-item dl{width: 60%;}
 .house-item dt{font-size: .3rem;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;height: .46rem;line-height: .46rem;}
 .house-item dt .set_top{background: url(../images/topIcon.png) no-repeat center;background-size: .6rem;display: inline-block;width: .6rem;height: .46rem;vertical-align: middle;margin-right: .1rem;}
-.house-item dt em{vertical-align: middle;font-weight: bold;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 2.1rem;display: inline-block;}
-.house-item dt em.sp_title{    max-width: 4.1rem;}
+.house-item dt em{vertical-align: middle;font-weight: bold;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 2.8rem;display: inline-block;}
+.house-item dt em.sp_title{ }
 .house-item dt span{vertical-align: middle;font-size: .2rem;height: .34rem;display: inline-block;padding: 0 .1rem;color: #fff;line-height: .38rem;margin-left: .1rem;}
 .house-item dt span.label_01{background: #bed7fa;}
 .house-item dt span.label_02{background: #f1ba25;}
@@ -100,6 +119,8 @@ vertical-align: middle;
 .house-item dd.xq-item-area em span{
 	    color: #f35712;
 }
+.house-item .zu_subway{margin-top: 5px;}
+.house-item .zu_subway span{float: right}
 .house-item dd.sp_item-area .price_unit{color: #f35712!important;}
 .esf-list .house-item dd.item-area em{margin-right: .2rem;}
 .house-item dd.item-area .proportion{color: #a0a0a0;font-size: .24rem;margin-left: .1rem;}

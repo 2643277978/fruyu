@@ -554,12 +554,17 @@ $(function() {
 								html.push('<dd class="item-type-1 fn-clear">');
 								html.push('<em class="l">'+list[i].community+'</em><em class="r">均价 '+list[i].unitprice+'元/平</em>');
 
-								html.push('</dd>')
-
-								html.push('</dl>')
-								html.push('</div>')
-								html.push('<div class="clear"></div>')
-								html.push('</a>')
+								html.push('</dd>');
+								html.push('<dd class="zu_subway">');
+								html.push('<select>');
+								html.push('<option value="">XX地铁站</option>');
+								html.push('</select>');
+								// html.push('<span>该小区'+ +'套在售</span>');
+								html.push('</dd>');
+								html.push('</dl>');
+								html.push('</div>');
+								html.push('</a>');
+								html.push('<div class="clear"></div>');
 								html.push('</div>')
 
 
