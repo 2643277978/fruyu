@@ -126,10 +126,10 @@
 				<p>附近轻轨：</p>
 				<select name="" id="">
 					{#foreach from=$detail_subway item=sub#}
-					{#if $dt.distance>10000 #}
-					<option value={#$dt#}>{#$dt.line#}{#$dt.station#}</option>
+					{#if $sub.distance>10000 || $sub.distance=="infinite" #}
+					<option value={#$dt#}>{#$sub.line#}{#$sub.station#}</option>
 					{#else#}
-					<option value={#$dt#}>{#$dt.line#}{#$dt.station#}{#$dt.distance#}米</option>
+					<option value={#$dt#}>{#$sub.line#}{#$sub.station#}{#$sub.distance#}米</option>
 					{#/if#}
 					{#/foreach#}
 				</select>

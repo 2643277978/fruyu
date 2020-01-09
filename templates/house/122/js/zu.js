@@ -642,9 +642,9 @@ $(function () {
                             for (var i=0;i<d.subway.length;i++){
 
                                 if(isFinite(Number(d.subway[i].distance))){
-                                    html.push('<option>'+d.subway[i].line+''+ d.subway[i].station+'</option>');
-                                }else {
                                     html.push('<option>'+d.subway[i].line+''+ d.subway[i].station+''+ d.subway[i].distance+'米</option>');
+                                }else {
+                                    html.push('<option>'+d.subway[i].line+''+ d.subway[i].station+'</option>');
                                 }
 
                             }
