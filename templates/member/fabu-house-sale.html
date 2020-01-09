@@ -173,11 +173,6 @@
 	<dt>{#$langData['siteConfig'][19][95]#}：</dt>{#* 特色 *#}
 	<dd>
 		<div class="checkbox">
-<!--			<label><input type="checkbox" name="flag[]" value="0"{#if strstr($detail_flag, "0")#} checked{#/if#}>{#$langData['siteConfig'][19][96]#}</label>{#* 急售 *#}-->
-<!--			<label><input type="checkbox" name="flag[]" value="1"{#if strstr($detail_flag, "1")#} checked{#/if#}>{#$langData['siteConfig'][19][97]#}</label>{#* 免税 *#}-->
-<!--			<label><input type="checkbox" name="flag[]" value="2"{#if strstr($detail_flag, "2")#} checked{#/if#}>{#$langData['siteConfig'][19][98]#}</label>{#* 地铁 *#}-->
-<!--			<label><input type="checkbox" name="flag[]" value="3"{#if strstr($detail_flag, "3")#} checked{#/if#}>{#$langData['siteConfig'][19][99]#}</label>{#* 校区房 *#}-->
-<!--			<label><input type="checkbox" name="flag[]" value="4"{#if strstr($detail_flag, "4")#} checked{#/if#}>{#$langData['siteConfig'][19][100]#}</label>{#* 满五年 *#}-->
 			{#house action="item" return="item" type=$proertypid#}
 			<label><input type="checkbox" name="flag[]" value="{#$item.id#}"{#if $detail_flag && in_array($item.typename, $detail_flag)#} checked{#/if#}>{#$item.typename#}</label>
 			{#/house#}

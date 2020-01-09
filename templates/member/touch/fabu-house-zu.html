@@ -307,10 +307,6 @@
 							</ul>
 							<dl class="feature_box checkbox">
 								<dt >房源特色</dt>
-<!--								<dd data-id="0"{#if strstr($detail_flag, "0")#} class="on"{#/if#}>近地铁</dd>-->
-<!--								<dd data-id="1"{#if strstr($detail_flag, "1")#} class="on"{#/if#}>拎包入住</dd>-->
-<!--								<dd data-id="2"{#if strstr($detail_flag, "2")#} class="on"{#/if#}>房主直租</dd>-->
-<!--								<dd data-id="3"{#if strstr($detail_flag, "3")#} class="on"{#/if#}>可做饭</dd>-->
 								{#house action="item" return="item" type=$proertypid#}
 								<dd data-id="{#$item.id#}" {#if $detail_flag && in_array($item.typename, $detail_flag)#}class="on"{#/if#}>{#$item.typename#}</dd>
 								{#/house#}
