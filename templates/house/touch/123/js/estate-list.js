@@ -615,18 +615,22 @@ $(function() {
 									html.push('<dd class="zu_subway">');
 									html.push('<select>');
 									for (var j=0;j<list[i].subway.length;j++){
-										html.push('<option value="">轻轨'+ list[i].subway[j].line+''+ list[i].subway[j].station+'地铁站</option>');
+										if(isFinite(Number(list[i].subway[i].distance))){
+											html.push('<option>'+list[i].subway[i].line+''+ list[i].subway[i].station+'</option>');
+										}else {
+											html.push('<option>'+list[i].subway[i].line+''+ list[i].subway[i].station+''+ list[i].subway[i].distance+'米</option>');
+										}
 									}
 									html.push('</select>');
 									html.push('</dd>');
 								  }
 								  // html.push('<em style="float: right">该小区'+list[i].bno+'套在租</em>');
-									html.push('</dd>')
+									html.push('</dd>');
 
-									html.push('</dl>')
-									html.push('</div>')
-									html.push('<div class="clear"></div>')
-									html.push('</a>')
+									html.push('</dl>');
+									html.push('</div>');
+									html.push('<div class="clear"></div>');
+									html.push('</a>');
 									html.push('</div>')
 								//}
 

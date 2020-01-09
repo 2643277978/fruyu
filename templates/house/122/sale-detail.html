@@ -167,7 +167,11 @@
 				<dl><dt>附近轻轨</dt><dd>
 					<select name="" id="">
 						{#foreach from=$detail_subway item=dt key=k#}
-						<option value={#$dt#}>轻轨{#$dt.line#}{#$dt.station#}站</option>
+						{#if $dt.distance>10000 #}
+						<option value={#$dt#}>{#$dt.line#}{#$dt.station#}</option>
+						{#else#}
+						<option value={#$dt#}>{#$dt.line#}{#$dt.station#}{#$dt.distance#}米</option>
+						{#/if#}
 						{#/foreach#}
 					</select>
 				</dd></dl>
