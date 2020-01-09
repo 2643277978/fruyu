@@ -74,7 +74,7 @@
                     {#else#}
                     <div class="pos-sub-item"></div>
                     {#/if#}
-                </div>
+			</dl>
                 <div class="sub-fi subwaybox"{#if $from == "subway" || $subway != 0#} style="display:block"{#/if#}>
                     <s><i></i></s>                    
                     <div class="pos-item">
@@ -91,7 +91,7 @@
                     </div>
 
                 </div>
-            </dl>
+		    </div>
 			<dl class="o-fi fn-clear">
 				<dt>售价</dt>                                                                                                
 				<dd class="fn-clear">
@@ -110,7 +110,7 @@
 							<input type="input" class="p2" id="priceTop" maxlength="5" value="" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');">
 							<input type="button" class="btn btn_price" value="确定">
 						</div>
-					</div
+					</div>
 				</dd>
 			</dl>
 			<dl class="o-fi fn-clear">
