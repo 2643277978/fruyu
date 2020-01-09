@@ -18,7 +18,7 @@
 	var criticalPoint = 1240, criticalClass = "w1200";
 	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
 
-	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+	var hideFileUrl = '{#$cfg_hideUrl#}', cookiePre = '{#$cfg_cookiePre#}';
 
 	var atpage = 1, totalCount = 0, pageSize = 60, comid = '{#$comid#}';
 	var detail = {
@@ -130,7 +130,7 @@
 							<input type="input" class="p2" id="areaTop" maxlength="5" value="" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');">㎡
 							<input type="button" class="btn btn_area" value="确定">
 						</div>
-					</div
+					</div>
 				</dd>
 			</dl>
 			<dl class="o-fi fn-clear" data-type="room">
