@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="004b61ea-2c34-49a1-b67c-a954c3bf9ba2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../static/js/admin/siteConfig/siteSubwayAdd.js" beforeDir="false" afterPath="$PROJECT_DIR$/../static/js/admin/siteConfig/siteSubwayAdd.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/122/community-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/community-detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/122/css/community_detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/css/community_detail.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/122/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/css/index.css" afterDir="false" />
@@ -126,7 +127,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/vuexm/fruyu" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="http.proxy" />
@@ -180,7 +181,8 @@
       <workItem from="1578278313222" duration="26595000" />
       <workItem from="1578359306785" duration="31211000" />
       <workItem from="1578447065015" duration="2248000" />
-      <workItem from="1578455915951" duration="18813000" />
+      <workItem from="1578455915951" duration="21974000" />
+      <workItem from="1578532063689" duration="2336000" />
     </task>
     <servers />
   </component>

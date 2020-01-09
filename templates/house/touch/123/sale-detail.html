@@ -370,7 +370,6 @@
             o[i] = data[i];
             name.push(t)
         }
-        console.log(arr[3]);
         function datasta(bdata,a){
             let aData=[];
             var obj = eval(a);
@@ -380,13 +379,14 @@
             bdata=aData;
             return bdata;
         }
-
         let rData;
+        //计算增幅
         var dd=datasta(rData,arr[3]);
         var cz=Number(dd[11])-Number(dd[10]);
         var bl=Number(cz/Number(dd[10]))*100;
         var zf=bl.toFixed(2)+"%";
         $("#zfl").html(zf);
+        //表
         $(document).ready(function(){
             //价格走势
             var ctx = document.getElementById('myChart').getContext('2d');
@@ -403,7 +403,6 @@
                                 backgroundColor:'skyBlue',
                                 borderWidth: 1,
                                 fill: false,
-                                scaleLabel : "<%=value/100000000%>元",
                             },
                             {
                                 label: tName,
