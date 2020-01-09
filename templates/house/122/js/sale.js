@@ -1,4 +1,5 @@
 $(function () {
+
     //获取url的参数（区域）
     var currUrl=window.location.href;
     currUrl = currUrl.substring(currUrl.indexOf("?"),currUrl.length);
@@ -6,62 +7,6 @@ $(function () {
     var addEare=currUrl%100000;//二级区域
     var add=parseInt(currUrl)-parseInt(addEare);
     add=add/100000;//一级区域 end
-
-    $("img").scrollLoading();
-
-
-    $('.lplist').delegate('.codebox', 'hover', function (event) {
-        var type = event.type;
-        var url = $(this).parent().find('a').attr('href');
-        if (type == "mouseenter") {
-            $(this).find('.qrcode').css("display", "block");
-            $(this).find('#qrcode').qrcode({
-                render: window.applicationCache ? "canvas" : "table",
-                width: 74,
-                height: 74,
-                text: huoniao.toUtf8(url)
-            });
-        } else {
-            $(this).find('.qrcode').css("display", "none");
-            $(this).find('#qrcode').html('');
-        }
-    });
-    $('.lplist').delegate('.btn_sc', 'click', function (event) {
-        var t = $(this),
-            type = t.hasClass("btn_ysc") ? "del" : "add",
-            id = t.closest('li').attr('data-id');
-        var userid = $.cookie(cookiePre + "login_user");
-        if (userid == null || userid == "") {
-            huoniao.login();
-            return false;
-        }
-        if (type == "add") {
-            t.addClass("btn_ysc").html("<i></i>已收藏");
-        } else {
-            t.removeClass("btn_ysc").html("<i></i>收藏");
-        }
-        $.post("/include/ajax.php?service=member&action=collect&module=house&temp=sale_detail&type=" + type + "&id=" +
-            id);
-    });
-
-    /**
-     * 筛选变量
-     */
-    //区域、公交/地铁
-    $(".t-fi-item li a").bind("click", function () {
-        var t = $(this).parent(),
-            index = t.index();
-        if (!t.hasClass("curr")) {
-            t.addClass("curr").siblings("li").removeClass("curr");
-            $(".t-fi .sub-fi").hide();
-            $(".t-fi .sub-fi:eq(" + index + ")").show();
-        } else {
-            t.removeClass("curr");
-            $(".t-fi .sub-fi:eq(" + index + ")").hide();
-        }
-        t.addClass('active').siblings().removeClass('active');
-        checkFilter();
-    });
 
     //url是否有值
     function checkCs() {
@@ -104,166 +49,223 @@ $(function () {
         checkFilter()
     }
 
+    $("img").scrollLoading();
+
+    $('.lplist').delegate('.codebox', 'hover', function (event) {
+        var type = event.type;
+        var url = $(this).parent().find('a').attr('href');
+        if (type == "mouseenter") {
+            $(this).find('.qrcode').css("display", "block");
+            $(this).find('#qrcode').qrcode({
+                render: window.applicationCache ? "canvas" : "table",
+                width: 74,
+                height: 74,
+                text: huoniao.toUtf8(url)
+            });
+        } else {
+            $(this).find('.qrcode').css("display", "none");
+            $(this).find('#qrcode').html('');
+        }
+    });
+    $('.lplist').delegate('.btn_sc', 'click', function (event) {
+        var t = $(this),
+            type = t.hasClass("btn_ysc") ? "del" : "add",
+            id = t.closest('li').attr('data-id');
+        var userid = $.cookie(cookiePre + "login_user");
+        if (userid == null || userid == "") {
+            huoniao.login();
+            return false;
+        }
+        if (type == "add") {
+            t.addClass("btn_ysc").html("<i></i>已收藏");
+        } else {
+            t.removeClass("btn_ysc").html("<i></i>收藏");
+        }
+        $.post("/include/ajax.php?service=member&action=collect&module=house&temp=sale_detail&type=" + type + "&id=" +
+            id);
+    });
+
+
+    /**
+     * 筛选变量
+     */
+    //区域、公交/地铁
+    $(".t-fi-item li a").bind("click", function () {
+        var t = $(this).parent(),
+            index = t.index();
+        if (!t.hasClass("curr")) {
+            t.addClass("curr").siblings("li").removeClass("curr");
+            $(".t-fi .sub-fi").hide();
+            $(".t-fi .sub-fi:eq(" + index + ")").show();
+        } else {
+            t.removeClass("curr");
+            $(".t-fi .sub-fi:eq(" + index + ")").hide();
+        }
+        t.addClass('active').siblings().removeClass('active');
+        checkFilter();
+    });
+
     // 判断条件
     function checkFilter(){
 
-      var html = [], curr, index, txt, id;
+        var html = [], curr, index, txt, id;
 
-      $('.filterlist dl').each(function(g){
-        var box = $(this);
-        var title = box.children('dt').text();
-        // 区域
-        if(g == 0){
-          if($('.t-fi-item .curr').index() == 0){
-            curr = $('.areabox .pos-item .curr');
-            index = curr.index();
-            if(index > 0){
-              txt = curr.text();
-              id = curr.attr("data-id");
-              html.push('<a href="javascript:;" title="'+title+'" class="selected-info" data-group="'+g+'" data-level="1" data-type="addrid" data-id="'+id+'"><span>'+txt+'</span><i class="idel"></i></a>');
+        $('.filterlist dl').each(function(g){
+            var box = $(this);
+            var title = box.children('dt').text();
+            // 区域
+            if(g == 0){
+                if($('.t-fi-item .curr').index() == 0){
+                    curr = $('.areabox .pos-item .curr');
+                    index = curr.index();
+                    if(index > 0){
+                        txt = curr.text();
+                        id = curr.attr("data-id");
+                        html.push('<a href="javascript:;" title="'+title+'" class="selected-info" data-group="'+g+'" data-level="1" data-type="addrid" data-id="'+id+'"><span>'+txt+'</span><i class="idel"></i></a>');
 
-              curr = $('.areabox .pos-sub-item .curr');
-              index = curr.index();
-                if(addEare){
-                    html.push('<a href="javascript:;" title="'+title+'" class="selected-info" data-group="'+g+'" data-level="2" data-type="addrid" data-id="'+addEare+'"><span></span><i class="idel"></i></a>');
+                        curr = $('.areabox .pos-sub-item .curr');
+                        index = curr.index();
+                            if(addEare){
+                                id=addEare;
+                                html.push('<a href="javascript:;" title="'+title+'" class="selected-info" data-group="'+g+'" data-level="2" data-type="addrid" data-id="'+addEare+'"><span></span><i class="idel"></i></a>');
+                            }
+                        if(index > 0){
+                            txt = curr.text();
+                            id = curr.attr("data-business");
+                            html.push('<a href="javascript:;" title="'+title+'" class="selected-info" data-group="'+g+'" data-level="2" data-type="addrid" data-id="'+id+'"><span>'+txt+'</span><i class="idel"></i></a>');
+                        }
+                    }
+                }else if($('.t-fi-item .curr').index() == 1){
+                    curr = $('.subwaybox .pos-item .curr');
+                    index = curr.index();
+                    if(index > 0){
+                        txt = curr.text();
+                        id = curr.attr("data-id");
+                        html.push('<a href="javascript:;" title="'+title+'" class="selected-info" data-group="'+g+'" data-level="1" data-type="subway" data-id="'+id+'"><span>'+txt+'</span><i class="idel"></i></a>');
+
+                        curr = $('.ditie-sub-point.show');
+                        index = curr.index();
+                        if(index > 0){
+                            txt = curr.text();
+                            id = curr.attr("data-station");
+                            html.push('<a href="javascript:;" title="'+title+'" class="selected-info" data-group="'+g+'" data-level="2" data-type="station" data-id="'+id+'"><span>'+txt+'</span><i class="idel"></i></a>');
+                        }
+                    }
                 }
-              if(index > 0){
-                txt = curr.text();
-                id = curr.attr("data-business");
-                html.push('<a href="javascript:;" title="'+title+'" class="selected-info" data-group="'+g+'" data-level="2" data-type="addrid" data-id="'+id+'"><span>'+txt+'</span><i class="idel"></i></a>');
-              }
-            }
-          }else if($('.t-fi-item .curr').index() == 1){
-            curr = $('.subwaybox .pos-item .curr');
-            index = curr.index();
-            if(index > 0){
-              txt = curr.text();
-              id = curr.attr("data-id");
-              html.push('<a href="javascript:;" title="'+title+'" class="selected-info" data-group="'+g+'" data-level="1" data-type="subway" data-id="'+id+'"><span>'+txt+'</span><i class="idel"></i></a>');
-
-              curr = $('.ditie-sub-point.show');
-              index = curr.index();
-              if(index > 0){
-                txt = curr.text();
-                id = curr.attr("data-station");
-                html.push('<a href="javascript:;" title="'+title+'" class="selected-info" data-group="'+g+'" data-level="2" data-type="station" data-id="'+id+'"><span>'+txt+'</span><i class="idel"></i></a>');
-              }
-            }
-          }
-        // 价格
-        }else if(g == 1){
-          curr = box.find('.curr');
-          index = curr.index();
-          id = curr.attr('data-id');
-          if(index > -1){
-            // 自定义价格
-            if(curr.hasClass('inp_price')){
-              var min = $(".inp_price .p1").val();
-              var max = $(".inp_price .p2").val();
-              if(min != '' || max != ''){
-                if(min && max && parseInt(min) > parseInt(max)) {
-                  box.find('dd a:eq(0)').addClass('curr');
-                  $(".inp_price").removeClass('active').children('input[type="input"]').val('');
-                }else{
-                  html.push('<a href="javascript:;" title="'+title+'" class="selected-info" data-group="'+g+'" data-type="price" data-id="'+min+','+max+'"><span>'+min+'-'+max+'</span><i class="idel"></i></a>');
+                // 价格
+            }else if(g == 1){
+                curr = box.find('.curr');
+                index = curr.index();
+                id = curr.attr('data-id');
+                if(index > -1){
+                    // 自定义价格
+                    if(curr.hasClass('inp_price')){
+                        var min = $(".inp_price .p1").val();
+                        var max = $(".inp_price .p2").val();
+                        if(min != '' || max != ''){
+                            if(min && max && parseInt(min) > parseInt(max)) {
+                                box.find('dd a:eq(0)').addClass('curr');
+                                $(".inp_price").removeClass('active').children('input[type="input"]').val('');
+                            }else{
+                                html.push('<a href="javascript:;" title="'+title+'" class="selected-info" data-group="'+g+'" data-type="price" data-id="'+min+','+max+'"><span>'+min+'-'+max+'</span><i class="idel"></i></a>');
+                            }
+                        }
+                    }else{
+                        if(index > 0){
+                            txt = curr.text();
+                            html.push('<a href="javascript:;" title="'+title+'" class="selected-info" data-group="'+g+'" data-type="price" data-id="'+id+'"><span>'+txt+'</span><i class="idel"></i></a>');
+                        }
+                    }
                 }
-              }
+                // 面积
+            }else if(g == 2){
+                curr = box.find('.curr');
+                index = curr.index();
+                id = curr.attr('data-id');
+                if(index > -1){
+                    // 自定义价格
+                    if(curr.hasClass('inp_area')){
+                        var min = $(".inp_area .p1").val();
+                        var max = $(".inp_area .p2").val();
+                        if(min != '' || max != ''){
+                            if(min && max && parseInt(min) > parseInt(max)) {
+                                box.find('dd a:eq(0)').addClass('curr');
+                                $(".inp_area").removeClass('active').children('input[type="input"]').val('');
+                            }else{
+                                html.push('<a href="javascript:;" title="'+title+'" class="selected-info" data-group="'+g+'" data-type="area" data-id="'+min+','+max+'"><span>'+min+'-'+max+'</span><i class="idel"></i></a>');
+                            }
+                        }
+                    }else{
+                        if(index > 0){
+                            txt = curr.text();
+                            html.push('<a href="javascript:;" title="'+title+'" class="selected-info" data-group="'+g+'" data-type="price" data-id="'+id+'"><span>'+txt+'</span><i class="idel"></i></a>');
+                        }
+                    }
+                }
+                // 通用
+            }else if(g == 3){
+                curr = box.find('.curr');
+                index = curr.index();
+                txt = curr.text();
+                id = curr.attr('data-id');
+                type = box.attr("data-type");
+                if(index > 0){
+                    html.push('<a href="javascript:;" title="'+title+'" class="selected-info" data-group="'+g+'" data-type="'+type+'" data-id="'+id+'"><span>'+txt+'</span><i class="idel"></i></a>');
+                }
+                // 更多条件
             }else{
-              if(index > 0){
-                txt = curr.text();
-                html.push('<a href="javascript:;" title="'+title+'" class="selected-info" data-group="'+g+'" data-type="price" data-id="'+id+'"><span>'+txt+'</span><i class="idel"></i></a>');
-              }
-            }
-          }
-      	// 面积
-        }else if(g == 2){
-          curr = box.find('.curr');
-          index = curr.index();
-          id = curr.attr('data-id');
-          if(index > -1){
-            // 自定义价格
-            if(curr.hasClass('inp_area')){
-              var min = $(".inp_area .p1").val();
-              var max = $(".inp_area .p2").val();
-              if(min != '' || max != ''){
-                if(min && max && parseInt(min) > parseInt(max)) {
-                  box.find('dd a:eq(0)').addClass('curr');
-                  $(".inp_area").removeClass('active').children('input[type="input"]').val('');
-                }else{
-                  html.push('<a href="javascript:;" title="'+title+'" class="selected-info" data-group="'+g+'" data-type="area" data-id="'+min+','+max+'"><span>'+min+'-'+max+'</span><i class="idel"></i></a>');
+                box.find('.item').each(function(){
+                    var it = $(this);
+                    var type = it.attr("data-type");
+                    curr = it.find('.active');
+                    if(curr.length > 0){
+                        txt = curr.text();
+                        index = curr.index();
+                        if(index > 0){
+                            id = curr.attr("data-id");
+                            title = it.children('label').attr('title');
+                            html.push('<a href="javascript:;" title="'+title+'" class="selected-info" data-group="'+g+'" data-level="1" data-type="'+type+'" data-id="'+id+'"><span>'+txt+'</span><i class="idel"></i></a>');
+                        }
+                    }
+                })
+                var flags = [], str = [];
+                $('.checklist .checkbox.checked').each(function(){
+                    var it = $(this);
+                    txt = it.parent().text();
+                    id = it.attr("data-id");
+                    var type = "flag"+id;
+                    flags.push(id);
+                    str.push(txt);
+                })
+                if(flags.length){
+                    html.push('<a href="javascript:;" class="selected-info" data-group="'+g+'" data-level="2" data-type="flags" data-id="'+flags.join(',')+'" style="max-width:70px;text-overflow:ellipsis;overflow:hidden;"><span>'+str.join(' ')+'</span><i class="idel"></i></a>');
                 }
-              }
-            }else{
-              if(index > 0){
-                txt = curr.text();
-                html.push('<a href="javascript:;" title="'+title+'" class="selected-info" data-group="'+g+'" data-type="price" data-id="'+id+'"><span>'+txt+'</span><i class="idel"></i></a>');
-              }
             }
-          }
-        // 通用
-        }else if(g == 3){
-          curr = box.find('.curr');
-          index = curr.index();
-          txt = curr.text();
-          id = curr.attr('data-id');
-          type = box.attr("data-type");
-          if(index > 0){
-            html.push('<a href="javascript:;" title="'+title+'" class="selected-info" data-group="'+g+'" data-type="'+type+'" data-id="'+id+'"><span>'+txt+'</span><i class="idel"></i></a>');
-          }
-      	// 更多条件
-        }else{
-	        box.find('.item').each(function(){
-	            var it = $(this);
-	          	var type = it.attr("data-type");
-	            curr = it.find('.active');
-	            if(curr.length > 0){
-	              txt = curr.text();
-	              index = curr.index();
-	              if(index > 0){
-	                id = curr.attr("data-id");
-	                title = it.children('label').attr('title');
-	                html.push('<a href="javascript:;" title="'+title+'" class="selected-info" data-group="'+g+'" data-level="1" data-type="'+type+'" data-id="'+id+'"><span>'+txt+'</span><i class="idel"></i></a>');
-	              }
-	            }
-	        })
-	        var flags = [], str = [];
-	        $('.checklist .checkbox.checked').each(function(){
-	          	var it = $(this);
-	            txt = it.parent().text();
-	            id = it.attr("data-id");
-	            var type = "flag"+id;
-	            flags.push(id);
-	            str.push(txt);
-	        })
-	        if(flags.length){
-	        	html.push('<a href="javascript:;" class="selected-info" data-group="'+g+'" data-level="2" data-type="flags" data-id="'+flags.join(',')+'" style="max-width:70px;text-overflow:ellipsis;overflow:hidden;"><span>'+str.join(' ')+'</span><i class="idel"></i></a>');
-        	}
+        })
+
+        if(keywords){
+            html.push('<a href="javascript:;" title="关键词" class="selected-info" data-group="keywords" data-type="keywords" data-id="'+keywords+'"><span>'+keywords+'</span><i class="idel"></i></a>');
         }
-      })
-      
-      if(keywords){
-        html.push('<a href="javascript:;" title="关键词" class="selected-info" data-group="keywords" data-type="keywords" data-id="'+keywords+'"><span>'+keywords+'</span><i class="idel"></i></a>');
-      }
 
-      if(html.length){
-        $(".fi-state").show().children("dd").html(html.join(""));
-      }else{
-        $(".fi-state").hide().children("dd").html("");
-      }
-      atpage = 1;
-      getList();
+        if(html.length){
+            $(".fi-state").show().children("dd").html(html.join(""));
+        }else{
+            $(".fi-state").hide().children("dd").html("");
+        }
+        atpage = 1;
+        getList();
     }
 
     // 筛选区域的点击事件 切换位置筛选类型 curr 价格是否为自定义
     $('.filterlist').delegate('a', 'click', function(){
-      var t = $(this), par = t.closest('dl'), con = t.parent(), index = par.index();
-      if(con.hasClass('area') || con.hasClass('subway') || index == 4 || con.hasClass('pos-item')) return;	// 区域和更多条件区域单独处理
+        var t = $(this), par = t.closest('dl'), con = t.parent(), index = par.index();
+        if(con.hasClass('area') || con.hasClass('subway') || index == 4 || con.hasClass('pos-item')) return;	// 区域和更多条件区域单独处理
 
-      t.addClass('curr').siblings().removeClass('curr');
-      if(index == 1){
-        $('.inp_price').removeClass('curr');
-      }
-      checkFilter();
+        t.addClass('curr').siblings().removeClass('curr');
+        if(index == 1){
+            $('.inp_price').removeClass('curr');
+        }
+        checkFilter();
     })
 
     // 一级区域
@@ -298,8 +300,8 @@ $(function () {
                     }
                 }
             });
-         }
-       checkFilter();
+        }
+        checkFilter();
     })
     // 地铁
     $('.subwaybox .pos-item a').click(function () {
@@ -313,7 +315,7 @@ $(function () {
         if (i == 0) {
             item.hide();
         }else{
-            
+
             $.ajax({
                 url: "/include/ajax.php?service=siteConfig&action=subwayStation&type=" + id,
                 type: "GET",
@@ -375,11 +377,11 @@ $(function () {
                         }
                         $(".pos-sub-item .left-direction").html(leftlist.join(""));
                         $(".pos-sub-item .right-direction").html(midlist.join("") + rightlist.join(""));
-                      item.show();
+                        item.show();
                     }
                 }
             });
-            }
+        }
         checkFilter();
     });
     // 地铁二级
@@ -395,10 +397,10 @@ $(function () {
 
         checkFilter();
     });
-    
-  
-  	// 自定义价格
-  	$(".inp_price .btn").click(function () {
+
+
+    // 自定义价格
+    $(".inp_price .btn").click(function () {
         var pri_1 = $(".inp_price .p1").val();
         var pri_2 = $(".inp_price .p2").val();
         price_section = pri_1 + ',' + pri_2;
@@ -407,15 +409,15 @@ $(function () {
             $(".inp_price .p2").val('');
             alert('请输入价格');
         } else if (pri_1 && pri_2 && parseInt(pri_1) > parseInt(pri_2)) {
-          alert('价格上限应该大于下限');
+            alert('价格上限应该大于下限');
         } else {
             $(this).parents("dl").find('a').removeClass('curr');
             $('.inp_price').addClass('curr');
-          checkFilter();
+            checkFilter();
         }
     })
-  	// 自定义面积
-  	$(".inp_area .btn").click(function () {
+    // 自定义面积
+    $(".inp_area .btn").click(function () {
         var pri_1 = $(".inp_area .p1").val();
         var pri_2 = $(".inp_area .p2").val();
         price_section = pri_1 + ',' + pri_2;
@@ -424,11 +426,11 @@ $(function () {
             $(".inp_area .p2").val('');
             alert('请输入面积');
         } else if (pri_1 && pri_2 && parseInt(pri_1) > parseInt(pri_2)) {
-          alert('面积上限应该大于下限');
+            alert('面积上限应该大于下限');
         } else {
             $(this).parents("dl").find('a').removeClass('curr');
             $('.inp_area').addClass('curr');
-          checkFilter();
+            checkFilter();
         }
     })
 
@@ -441,15 +443,15 @@ $(function () {
 
     $('.more .item').delegate('li', 'click', function (event) {
         var t = $(this),par = t.closest('.item'),label = par.find('label'),itemtxt = par.find('span'),ptext = label.attr('title'),id = t.attr('data-id'),text = t.find('a').text();
-    	if (t.index() == 0) {
+        if (t.index() == 0) {
             itemtxt.removeClass('cur').html(ptext);
         } else {
-      		itemtxt.addClass('cur').html(text);
+            itemtxt.addClass('cur').html(text);
         }
         t.addClass('active').siblings().removeClass('active');
-	    t.closest("ul").hide();
-	        
-	    checkFilter();        
+        t.closest("ul").hide();
+
+        checkFilter();
 
     });
 
@@ -469,7 +471,7 @@ $(function () {
         }
         par.remove();
         if($(".selected-info").length == 0){
-          $(".fi-state").hide();
+            $(".fi-state").hide();
         }
         clearFilter(group, level, id);
         getList();
@@ -484,53 +486,53 @@ $(function () {
     });
 
     function clearFilter(obj, level, id){
-      var group = obj ? obj : 'all';
-      if(group == 'all' || group == 'keywords') keywords = '';
-      $('.filterlist dl').each(function(g){
-        if(group == 'all' || group == g){
-            var box = $(this);
-            if(group == 'all' || g != 0 || (g == 0 && level == 1)){
-              box.find('.curr').removeClass('curr');
-              box.find('.cur').removeClass('cur');
-              box.find('.active').removeClass('active');
+        var group = obj ? obj : 'all';
+        if(group == 'all' || group == 'keywords') keywords = '';
+        $('.filterlist dl').each(function(g){
+            if(group == 'all' || group == g){
+                var box = $(this);
+                if(group == 'all' || g != 0 || (g == 0 && level == 1)){
+                    box.find('.curr').removeClass('curr');
+                    box.find('.cur').removeClass('cur');
+                    box.find('.active').removeClass('active');
+                }
+                if(g == 0){
+
+                    // 清除二级
+                    if($('.t-fi-item .curr').index() == 0){
+                        $('.areabox .pos-sub-item a:eq(0)').addClass('curr').siblings().removeClass('curr');
+                    }else if($('.t-fi-item .curr').index() == 1){
+                        $('.ditie-sub-point').removeClass('show')
+                        $('.subwaybox .left-direction .ditie-sub-point:eq(0)').addClass('show');
+                    }
+
+                    if(level == 1 || level == undefined){
+                        $('.pos-sub-item').hide();
+                        $('.sub-fi').hide();
+                        $('.areabox .pos-item a').eq(0).addClass('curr');
+                        $('.subwaybox .pos-item a').eq(0).addClass('curr');
+                    }
+
+                }else if(g == 4){
+
+                    if(group == 'all' || level == undefined || level == 1){
+                        box.find('.item').each(function(){
+                            var it = $(this), txt = it.children('label').attr('title');
+                            it.find('span').text(txt);
+                        })
+                    }
+                    if(group == 'all' || level == undefined || level == 2){
+                        $(".checklist li s").removeClass('checked');
+                    }
+                }else{
+                    box.find('dd a:eq(0)').addClass('curr');
+                    if(g == 1){
+                        $('.inp_price input[type="input"]').val('');
+                    }else if(g == 2){
+                        $('.inp_area input[type="input"]').val('');
+                    }
+                }
             }
-            if(g == 0){
-
-              // 清除二级
-              if($('.t-fi-item .curr').index() == 0){
-                $('.areabox .pos-sub-item a:eq(0)').addClass('curr').siblings().removeClass('curr');
-              }else if($('.t-fi-item .curr').index() == 1){
-                $('.ditie-sub-point').removeClass('show')
-                $('.subwaybox .left-direction .ditie-sub-point:eq(0)').addClass('show');
-              }
-
-              if(level == 1 || level == undefined){
-                $('.pos-sub-item').hide();
-                $('.sub-fi').hide();
-                $('.areabox .pos-item a').eq(0).addClass('curr');
-                $('.subwaybox .pos-item a').eq(0).addClass('curr');
-              }
-
-            }else if(g == 4){
-
-            	if(group == 'all' || level == undefined || level == 1){
-					box.find('.item').each(function(){
-						var it = $(this), txt = it.children('label').attr('title');
-						it.find('span').text(txt);
-					})
-				}
-				if(group == 'all' || level == undefined || level == 2){
-					$(".checklist li s").removeClass('checked');
-				}
-            }else{
-              box.find('dd a:eq(0)').addClass('curr');
-              if(g == 1){
-                $('.inp_price input[type="input"]').val('');
-              }else if(g == 2){
-                $('.inp_area input[type="input"]').val('');
-              }
-            }
-          }
         })
     }
 
@@ -574,52 +576,52 @@ $(function () {
     function getList() {
 
         $(".lplist ul").html('<li class="empty">正在获取，请稍后</li>');
-    	$(".pagination").html('').hide();
+        $(".pagination").html('').hide();
 
-    	var data = [];
-    	data.push('page='+atpage);
-    	data.push('pageSize='+pageSize);
-    	$('.fi-state dd a').each(function(){
-    		var t = $(this), type = t.attr('data-type'), id = t.attr('data-id');
-    		data.push(type+'='+id);
-    	})
+        var data = [];
+        data.push('page='+atpage);
+        data.push('pageSize='+pageSize);
+        $('.fi-state dd a').each(function(){
+            var t = $(this), type = t.attr('data-type'), id = t.attr('data-id');
+            data.push(type+'='+id);
+        })
 
-    	var curr = $('.m-t li.curr'), index = curr.index();
-    	if(index == 1){
-    		data.push("type=2");
-    	}else if(index == 2){
-    		data.push("type=1");
-    	}else if(index == 3){
-    		data.push("qj=1");
-    	}else if(index == 4){
-    		data.push("video=1");
-    	}
+        var curr = $('.m-t li.curr'), index = curr.index();
+        if(index == 1){
+            data.push("type=2");
+        }else if(index == 2){
+            data.push("type=1");
+        }else if(index == 3){
+            data.push("qj=1");
+        }else if(index == 4){
+            data.push("video=1");
+        }
 
-    	var orderby = "";
-    	curr = $('.m-l a.curr'), index = curr.index();
-    	if(index == 1){
-    		orderby = 1;
-    	}else if(index == 2){
-    		if(curr.hasClass("up")){
-	    		orderby = 4;
-	    	}else{
-	    		orderby = 5;
-	    	}
-    	}else if(index == 3){
-    		if(curr.hasClass("up")){
-	    		orderby = 6;
-	    	}else{
-	    		orderby = 7;
-	    	}
-    	}else if(index == 4){
-    		if(curr.hasClass("up")){
-	    		orderby = 2;
-	    	}else{
-	    		orderby = 3;
-	    	}
-    	}
-    	data.push("orderby="+orderby);
-    	data.push("comid="+comid);
+        var orderby = "";
+        curr = $('.m-l a.curr'), index = curr.index();
+        if(index == 1){
+            orderby = 1;
+        }else if(index == 2){
+            if(curr.hasClass("up")){
+                orderby = 4;
+            }else{
+                orderby = 5;
+            }
+        }else if(index == 3){
+            if(curr.hasClass("up")){
+                orderby = 6;
+            }else{
+                orderby = 7;
+            }
+        }else if(index == 4){
+            if(curr.hasClass("up")){
+                orderby = 2;
+            }else{
+                orderby = 3;
+            }
+        }
+        data.push("orderby="+orderby);
+        data.push("comid="+comid);
 
         $.ajax({
             url: masterDomain + "/include/ajax.php?service=house&action=saleList",
@@ -694,37 +696,38 @@ $(function () {
                             html.push('<span>有电梯</span>');
                             html.push('<em>|</em>');
                         }
-
                         html.pop();
+
                         html.push('</div>');
                         html.push('<div class="sp_r fn-right">' + d.unitprice + ' 元/㎡</div>');
                         html.push('</div>');
                         html.push('<p class="lpinf">[' + d.addr[d.addr.length - 1] + ']  ' + d.address + '</p>');
-
-                        if(d.subway !="" ){
+                        if(d.subway!=""){
                             html.push('<p class="lpinf">');
                             html.push('<select>');
                             for (var i=0;i<d.subway.length;i++){
+
                                 if(isFinite(Number(d.subway[i].distance))){
                                     html.push('<option>'+d.subway[i].line+''+ d.subway[i].station+'</option>');
                                 }else {
                                     html.push('<option>'+d.subway[i].line+''+ d.subway[i].station+''+ d.subway[i].distance+'米</option>');
                                 }
+
                             }
                             html.push('</select>');
                             html.push('</p>');
                         }
                         html.push('<div class="lpinf hinf fn-clear">');
-                        /*html.push('<div class="hilef fn-left">');
 
-                        if (d.usertype == 1) {
-                            html.push('<span><i class="iname"></i> ' + d.nickname + '</span>');
-                            html.push('<span><i class="itel"></i> ' + d.userPhone + '</span>');
-                        } else {
-                            html.push('<span><i class="iname"></i> ' + d.username + '</span>');
-                            html.push('<span><i class="itel"></i> ' + d.contact + '</span>');
-                        }
-                        html.push('</div>');*/
+                        // html.push('<div class="hilef fn-left">');
+                        // if (d.usertype == 1) {
+                        //     html.push('<span><i class="iname"></i> ' + d.nickname + '</span>');
+                        //     html.push('<span><i class="itel"></i> ' + d.userPhone + '</span>');
+                        // } else {
+                        //     html.push('<span><i class="iname"></i> ' + d.username + '</span>');
+                        //     html.push('<span><i class="itel"></i> ' + d.contact + '</span>');
+                        // }
+                        // html.push('</div>');
                         html.push('<div class="hirig fn-right">');
                         if (d.collect) {
                             html.push('<a href="javascript:;" class="btn_sc btn_ysc"><i class="isc"></i> 已收藏</a>');
@@ -748,7 +751,7 @@ $(function () {
                     $(".lplist ul").html(html.join(""));
                     showPageInfo();
                 } else {
-                	$(".totalCount b").html(0);
+                    $(".totalCount b").html(0);
                     $(".lplist ul").html('<div class="empty">抱歉！ 未找到相关房源</div>');
                 }
             },

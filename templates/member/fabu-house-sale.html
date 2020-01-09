@@ -173,7 +173,7 @@
 	<dt>{#$langData['siteConfig'][19][95]#}：</dt>{#* 特色 *#}
 	<dd>
 		<div class="checkbox">
-			{#house action="item" return="item" type='{#$proertypid#}' #}
+			{#house action="item" return="item" type="{#$propertypid#}"  #}
 			<label><input type="checkbox" name="flag[]" value="{#$item.id#}"{#if $detail_flag && in_array($item.typename, $detail_flag)#} checked{#/if#}>{#$item.typename#}</label>
 			{#/house#}
 		</div>

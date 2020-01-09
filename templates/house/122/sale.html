@@ -185,7 +185,7 @@
 					</ul>
 				</div>
 				<ul class="checklist">
-					{#house action="item" return="item" type=$proertypid#}
+					{#house action="item" return="item" type="{#$propertypid#}"  #}
 					<li><s class="checkbox cjs{#if in_array('{#$item.id#}', $flagArr)#} checked{#/if#}" data-id="{#$item.id#}"><i></i></s>{#$item.typename#}</li>
 					{#/house#}
 				</ul>

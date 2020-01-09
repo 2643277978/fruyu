@@ -504,10 +504,10 @@ $(function() {
 									html.push('<dd class="zu_subway">');
 									html.push('<select>');
 									for (var j=0;j<list[i].subway.length;j++){
-										if(isFinite(Number(list[i].subway[i].distance))){
-											html.push('<option>'+list[i].subway[i].line+''+ list[i].subway[i].station+'</option>');
+										if(isFinite(Number(list[i].subway[j].distance))){
+											html.push('<option>'+list[i].subway[j].line+''+ list[i].subway[j].station+'</option>');
 										}else {
-											html.push('<option>'+list[i].subway[i].line+''+ list[i].subway[i].station+''+ list[i].subway[i].distance+'米</option>');
+											html.push('<option>'+list[i].subway[j].line+''+ list[i].subway[j].station+''+ list[i].subway[j].distance+'米</option>');
 										}
 
 									}
