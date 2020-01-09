@@ -326,7 +326,7 @@
 							</div>
 							<dl class="feature_box checkbox sale_feature">
 								<dt>房源特色</dt>
-								{#house action="item" return="item" type=$proertypid#}
+								{#house action="item" return="item" type='{#$proertypid#}' #}
 								<dd data-id="{#$item.id#}" {#if $detail_flag && in_array($item.typename, $detail_flag)#}class="on"{#/if#}>{#$item.typename#}</dd>
 								{#/house#}
 								<input type="hidden" id="housefeature" value="{#$detail_flag#}"/>
