@@ -80,6 +80,30 @@ $(function(){
 		});
 	}
 
+	//地图定位
+	var stationLocate = function(dom){
+		var citys = provinceid;
+		if(countyid)    citys = countyid;
+		if(cityid)  citys = cityid;
+		var lnglat = dom.data("lng") + "," + dom.data("lat");
+		$.dialog({
+			id: "markDitu",
+			title: "标注地图位置<small>（请点击/拖动图标到正确的位置，再点击底部确定按钮。）</small>",
+			content: 'url:/api/map/mark.php?mod=siteConfig&lnglat='+lnglat+"&city="+citys,
+			width: 800,
+			height: 500,
+			max: true,
+			ok: function(){
+				var doc = $(window.parent.frames["markDitu"].document),
+					lng = doc.find("#lng").val(),
+					lat = doc.find("#lat").val();
+				dom.attr('data-lng', lng);
+				dom.attr('data-lat', lat);
+			},
+			cancel: true
+		});
+	}
+
 	//提示
 	$('#menus i, #menus a').tooltip();
 	$('#menus i').bind("mousedown", function(){
@@ -92,14 +116,18 @@ $(function(){
 
 	//新增线路
 	$("#addItem").bind("click", function(){
-		var itemHtml = '<div class="menus-item clearfix"><h3><i data-toggle="tooltip"data-placement="right"data-original-title="拖动以排序"class="icon-move"></i><input type="text"name="m-title"placeholder="线路名"class="input-small"data-id="0"/></h3><div class="del-item"><a href="javascript:;"><i class="icon-trash"></i>删除此线路</a></div><ul class="clearfix"><li><i data-toggle="tooltip"data-placement="right"data-original-title="拖动以排序"class="icon-move"></i><input type="text"name="m-list"placeholder="站点"class="input-medium"data-id="0"/><a data-toggle="tooltip"data-placement="right"data-original-title="删除"href="javascript:;"class="icon-trash"></a></li><li><i data-toggle="tooltip"data-placement="right"data-original-title="拖动以排序"class="icon-move"></i><input type="text"name="m-list"placeholder="站点"class="input-medium"data-id="0"/><a data-toggle="tooltip"data-placement="right"data-original-title="删除"href="javascript:;"class="icon-trash"></a></li><li><i data-toggle="tooltip"data-placement="right"data-original-title="拖动以排序"class="icon-move"></i><input type="text"name="m-list"placeholder="站点"class="input-medium"data-id="0"/><a data-toggle="tooltip"data-placement="right"data-original-title="删除"href="javascript:;"class="icon-trash"></a></li><li><i data-toggle="tooltip"data-placement="right"data-original-title="拖动以排序"class="icon-move"></i><input type="text"name="m-list"placeholder="站点"class="input-medium"data-id="0"/><a data-toggle="tooltip"data-placement="right"data-original-title="删除"href="javascript:;"class="icon-trash"></a></li><li><i data-toggle="tooltip"data-placement="right"data-original-title="拖动以排序"class="icon-move"></i><input type="text"name="m-list"placeholder="站点"class="input-medium"data-id="0"/><a data-toggle="tooltip"data-placement="right"data-original-title="删除"href="javascript:;"class="icon-trash"></a></li><li><i data-toggle="tooltip"data-placement="right"data-original-title="拖动以排序"class="icon-move"></i><input type="text"name="m-list"placeholder="站点"class="input-medium"data-id="0"/><a data-toggle="tooltip"data-placement="right"data-original-title="删除"href="javascript:;"class="icon-trash"></a></li><li><i data-toggle="tooltip"data-placement="right"data-original-title="拖动以排序"class="icon-move"></i><input type="text"name="m-list"placeholder="站点"class="input-medium"data-id="0"/><a data-toggle="tooltip"data-placement="right"data-original-title="删除"href="javascript:;"class="icon-trash"></a></li><li><i data-toggle="tooltip"data-placement="right"data-original-title="拖动以排序"class="icon-move"></i><input type="text"name="m-list"placeholder="站点"class="input-medium"data-id="0"/><a data-toggle="tooltip"data-placement="right"data-original-title="删除"href="javascript:;"class="icon-trash"></a></li><li><i data-toggle="tooltip"data-placement="right"data-original-title="拖动以排序"class="icon-move"></i><input type="text"name="m-list"placeholder="站点"class="input-medium"data-id="0"/><a data-toggle="tooltip"data-placement="right"data-original-title="删除"href="javascript:;"class="icon-trash"></a></li><li><i data-toggle="tooltip"data-placement="right"data-original-title="拖动以排序"class="icon-move"></i><input type="text"name="m-list"placeholder="站点"class="input-medium"data-id="0"/><a data-toggle="tooltip"data-placement="right"data-original-title="删除"href="javascript:;"class="icon-trash"></a></li></ul><a href="javascript:;"class="addNewList"><i class="icon-plus"></i>新增站点</a></div>';
+		var itemHtml = '<div class="menus-item clearfix"><h3><i data-toggle="tooltip"data-placement="right"data-original-title="拖动以排序"class="icon-move"></i><input type="text"name="m-title"placeholder="线路名"class="input-small"data-id="0"/></h3><div class="del-item"><a href="javascript:;"><i class="icon-trash"></i>删除此线路</a></div><ul class="clearfix"><li><i data-toggle="tooltip"data-placement="right"data-original-title="拖动以排序"class="icon-move"></i><input type="text"name="m-list"placeholder="站点"class="input-medium"data-id="0"/><a class="stationmap" data-lat="" data-lng="" >_</a><a data-toggle="tooltip"data-placement="right"data-original-title="删除"href="javascript:;"class="icon-trash"></a></li><li><i data-toggle="tooltip"data-placement="right"data-original-title="拖动以排序"class="icon-move"></i><input type="text"name="m-list"placeholder="站点"class="input-medium"data-id="0"/><a class="stationmap" data-lat="" data-lng="" >_</a><a data-toggle="tooltip"data-placement="right"data-original-title="删除"href="javascript:;"class="icon-trash"></a></li><li><i data-toggle="tooltip"data-placement="right"data-original-title="拖动以排序"class="icon-move"></i><input type="text"name="m-list"placeholder="站点"class="input-medium"data-id="0"/><a class="stationmap" data-lat="" data-lng="" >_</a><a data-toggle="tooltip"data-placement="right"data-original-title="删除"href="javascript:;"class="icon-trash"></a></li><li><i data-toggle="tooltip"data-placement="right"data-original-title="拖动以排序"class="icon-move"></i><input type="text"name="m-list"placeholder="站点"class="input-medium"data-id="0"/><a class="stationmap" data-lat="" data-lng="" >_</a><a data-toggle="tooltip"data-placement="right"data-original-title="删除"href="javascript:;"class="icon-trash"></a></li><li><i data-toggle="tooltip"data-placement="right"data-original-title="拖动以排序"class="icon-move"></i><input type="text"name="m-list"placeholder="站点"class="input-medium"data-id="0"/><a class="stationmap" data-lat="" data-lng="" >_</a><a data-toggle="tooltip"data-placement="right"data-original-title="删除"href="javascript:;"class="icon-trash"></a></li><li><i data-toggle="tooltip"data-placement="right"data-original-title="拖动以排序"class="icon-move"></i><input type="text"name="m-list"placeholder="站点"class="input-medium"data-id="0"/><a class="stationmap" data-lat="" data-lng="" >_</a><a data-toggle="tooltip"data-placement="right"data-original-title="删除"href="javascript:;"class="icon-trash"></a></li><li><i data-toggle="tooltip"data-placement="right"data-original-title="拖动以排序"class="icon-move"></i><input type="text"name="m-list"placeholder="站点"class="input-medium"data-id="0"/><a class="stationmap" data-lat="" data-lng="" >_</a><a data-toggle="tooltip"data-placement="right"data-original-title="删除"href="javascript:;"class="icon-trash"></a></li><li><i data-toggle="tooltip"data-placement="right"data-original-title="拖动以排序"class="icon-move"></i><input type="text"name="m-list"placeholder="站点"class="input-medium"data-id="0"/><a class="stationmap" data-lat="" data-lng="" >_</a><a data-toggle="tooltip"data-placement="right"data-original-title="删除"href="javascript:;"class="icon-trash"></a></li><li><i data-toggle="tooltip"data-placement="right"data-original-title="拖动以排序"class="icon-move"></i><input type="text"name="m-list"placeholder="站点"class="input-medium"data-id="0"/><a class="stationmap" data-lat="" data-lng="" >_</a><a data-toggle="tooltip"data-placement="right"data-original-title="删除"href="javascript:;"class="icon-trash"></a></li><li><i data-toggle="tooltip"data-placement="right"data-original-title="拖动以排序"class="icon-move"></i><input type="text"name="m-list"placeholder="站点"class="input-medium"data-id="0"/><a class="stationmap" data-lat="" data-lng="" >_</a><a data-toggle="tooltip"data-placement="right"data-original-title="删除"href="javascript:;"class="icon-trash"></a></li></ul><a href="javascript:;"class="addNewList"><i class="icon-plus"></i>新增站点</a></div>';
 		$("#menus").append(itemHtml);
 
 		$('#menus i, #menus a').tooltip();
 		$('#menus i').bind("mousedown", function(){
 			$('#menus i').tooltip("hide");
 		});
-
+		
+		//地铁站点定位
+		$(".stationmap").click(function(){
+			stationLocate($(this));
+		});
 		$("#menus").dragsort("destroy");
 		$("#menus ul").dragsort("destroy");
 		$("#menus").dragsort({ dragSelector: "h3>i" });
@@ -108,12 +136,17 @@ $(function(){
 
 	//新增站点
 	$("#menus").delegate(".addNewList", "click", function(){
-		var listHtml = '<li><i data-toggle="tooltip" data-placement="right" data-original-title="拖动以排序" class="icon-move"></i><input type="text" name="m-list" placeholder="站点" class="input-medium" data-id="0" /><a data-toggle="tooltip" data-placement="right" data-original-title="删除" href="javascript:;" class="icon-trash"></a></li>';
+		var listHtml = '<li><i data-toggle="tooltip" data-placement="right" data-original-title="拖动以排序" class="icon-move"></i><input type="text" name="m-list" placeholder="站点" class="input-medium" data-id="0" /><a class="stationmap" data-lat="" data-lng="">_</a><a data-toggle="tooltip" data-placement="right" data-original-title="删除" href="javascript:;" class="icon-trash"></a></li>';
 		$(this).prev("ul").append(listHtml);
 
 		$('#menus i, #menus a').tooltip();
 		$('#menus i').bind("mousedown", function(){
 			$('#menus i').tooltip("hide");
+		});
+
+		//地铁站点定位
+		$(".stationmap").click(function(){
+			stationLocate($(this));
 		});
 	});
 
@@ -202,21 +235,22 @@ $(function(){
 
 		var menus = [];
 		$("#menus").find(".menus-item").each(function(index, element) {
-      var t = $(this), tit = t.find("h3 input[name=m-title]").val(), tid = t.find("h3 input[name=m-title]").data("id");
+			var t = $(this), tit = t.find("h3 input[name=m-title]").val(), tid = t.find("h3 input[name=m-title]").data("id");
 			if($.trim(tit) != ""){
 				var mValues = [];
 				t.find("ul li").each(function(index, element) {
-          var val = $(this).find("input[name=m-list]").val(), id = $(this).find("input[name=m-list]").data("id");
+					var val = $(this).find("input[name=m-list]").val(), id = $(this).find("input[name=m-list]").data("id");
+					var stationlng = $(this).find(".stationmap").attr('data-lng'), stationlat = $(this).find(".stationmap").attr("data-lat");
 					if($.trim(val) != ""){
-						mValues.push(val+"^"+id);
+						mValues.push(val+"^"+id + "^" + stationlng + "^" + stationlat);
 					}
-        });
+				});
 
 				if(mValues){
 					menus.push(tit+"^"+tid+"$$"+mValues.join("||"));
 				}
 			}
-    });
+		});
 		if(menus){
 			menus = menus.join("@@@");
 		}else{
@@ -273,28 +307,9 @@ $(function(){
 			};
 		});
 	});
+	
 	//地铁站点定位
 	$(".stationmap").click(function(){
-		var citys = provinceid;
-		if(countyid)    citys = countyid;
-		if(cityid)  citys = cityid;
-		var lnglat = $(this).data("lng") + "," + $(this).data("lat");
-		var dom = $(this);
-		$.dialog({
-			id: "markDitu",
-			title: "标注地图位置<small>（请点击/拖动图标到正确的位置，再点击底部确定按钮。）</small>",
-			content: 'url:/api/map/mark.php?mod=siteConfig&lnglat='+lnglat+"&city="+citys,
-			width: 800,
-			height: 500,
-			max: true,
-			ok: function(){
-				var doc = $(window.parent.frames["markDitu"].document),
-					lng = doc.find("#lng").val(),
-					lat = doc.find("#lat").val();
-				dom.attr('data-lng', lng);
-				dom.attr('data-lat', lat);
-			},
-			cancel: true
-		});
+		stationLocate($(this));
 	});
 });
