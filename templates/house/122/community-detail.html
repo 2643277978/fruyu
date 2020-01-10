@@ -257,11 +257,16 @@
 {#if $detail_config#}
 <div class="wrap" id="config">
 	<h2 class="c-tit">周边信息</h2>
-	<div class="c-info">{#$detail_config#}</div>
+	<div class="sheshi">
+		{#foreach from=$detail_config item=con key=k#}
+		<dl>{#$con#}</dl>
+		{#/foreach#}
+	</div>
 </div>
 {#/if#}
 <!-- 周边信息 e-->
 <!-- 价格走势 s-->
+{#if $detail_price_trend#}
 <div class="wrap" id="zoushi">
 	<h2 class="c-tit">{#$detail_title#}价格走势</h2>
 	<div class="c-info around" >
@@ -273,8 +278,10 @@
 		<canvas  id="sqChart"></canvas>
 	</div>
 </div>
+{#/if#}
 <!-- 价格走势 e-->
 <!-- 成交记录 s-->
+{#if $detail_tradeList #}
 <div class="wrap" id="success">
 	<h2 class="c-tit">{#$detail_title#}成交记录</h2>
 	<div class="record-house" >
@@ -314,6 +321,7 @@
 		</div>
 	</div>
 </div>
+{#/if#}
 <!-- 成交记录 e-->
 <!-- {#$detail_title#}二手房 s-->
 <div class="wrap salebox fn-clear">
