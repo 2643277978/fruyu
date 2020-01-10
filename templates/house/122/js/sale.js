@@ -681,17 +681,18 @@ $(function () {
                         //     html.push('<span>' + d.bno + '/' + d.floor + '层</span>');
                         //     html.push('<em>|</em>');
                         // }
-                        if(0<=d.bno<10 ){
-                            html.push('<span>低层</span>');
-                            html.push('<em>|</em>');
-                        }else if(10<=d.bno<15 || d.bno ==200){
-                            html.push('<span>中层</span>');
-                            html.push('<em>|</em>');
-                        }else if(d.bno>15 || d.bno ==201){
-                            html.push('<span>高层</span>');
-                            html.push('<em>|</em>');
+                        if(d.floor>0){
+                            if(d.bno>0||d.bno<10 ||d.bno==0){
+                                html.push('<span>低层</span>');
+                                html.push('<em>|</em>');
+                            }else if(d.bno>10|| d.bno<15 || d.bno ==200){
+                                html.push('<span>中层</span>');
+                                html.push('<em>|</em>');
+                            }else if(d.bno>15 || d.bno ==201){
+                                html.push('<span>高层</span>');
+                                html.push('<em>|</em>');
+                            }
                         }
-
                         if (d.elevator == 1) {
                             html.push('<span>有电梯</span>');
                             html.push('<em>|</em>');
@@ -702,7 +703,7 @@ $(function () {
                         html.push('<div class="sp_r fn-right">' + d.unitprice + ' 元/㎡</div>');
                         html.push('</div>');
                         html.push('<p class="lpinf">[' + d.addr[d.addr.length - 1] + ']  ' + d.address + '</p>');
-                        if(d.subway!=""){
+                        if(d.subway !=""){
                             html.push('<p class="lpinf">');
                             html.push('<select>');
                             for (var i=0;i<d.subway.length;i++){

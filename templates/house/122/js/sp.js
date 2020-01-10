@@ -181,8 +181,6 @@ $(function () {
                 id = box.find('.filprice .on').index() + 1;
                 html.push('<a href="javascript:;" title="'+title+'" class="selected-info fn-hide" data-group="'+g+'" data-type="pricetype" data-id="'+id+'"><span>'+id+'</span><i class="idel"></i></a>');
             }
-          
-
         }else {
           curr = box.find('.curr');
           index = curr.index();
@@ -535,10 +533,23 @@ $(function () {
                             html.push('<span>' + d.zhuangxiu + '</span>');
                             html.push('<em>|</em>');
                         }
-                        if (d.bno > 0 && d.floor > 0) {
-                            html.push('<span>' + d.bno + '/' + d.floor + '层</span>');
-                            html.push('<em>|</em>');
+                        if(d.floor>0){
+                            if(d.bno>0||d.bno<10 ||d.bno==0){
+                                html.push('<span>低层</span>');
+                                html.push('<em>|</em>');
+                            }else if(d.bno>10|| d.bno<15 || d.bno ==200){
+                                html.push('<span>中层</span>');
+                                html.push('<em>|</em>');
+                            }else if(d.bno>15 || d.bno ==201){
+                                html.push('<span>高层</span>');
+                                html.push('<em>|</em>');
+                            }
                         }
+
+                        // if (d.bno > 0 && d.floor > 0) {
+                        //     html.push('<span>' + d.bno + '/' + d.floor + '层</span>');
+                        //     html.push('<em>|</em>');
+                        // }
                         html.pop();
                         html.push('</div>');
                         if (d.type == 0) {
