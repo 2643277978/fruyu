@@ -565,12 +565,13 @@ $(function () {
                         if(d.subway!="" && d.subway){
                             html.push('<p class="lpinf">');
                             html.push('<select>');
-                            for (var i=0;i<d.subway.length;i++){
-                                if(isFinite(Number(d.subway[i].distance))){
-                                    html.push('<option>'+d.subway[i].line+''+ d.subway[i].station+''+ d.subway[i].distance+'米</option>');
+                            for (var j=0;j<d.subway.length;j++){
+                                if(isFinite(Number(d.subway[j].distance))){
+                                    html.push('<option>'+d.subway[j].line+''+ d.subway[j].station+''+ d.subway[j].distance+'米</option>');
                                 }else {
-                                    html.push('<option>'+d.subway[i].line+''+ d.subway[i].station+'</option>');
+                                    html.push('<option>'+d.subway[j].line+''+ d.subway[j].station+'</option>');
                                 }
+
                             }
                             html.push('</select>');
                             html.push('</p>');
