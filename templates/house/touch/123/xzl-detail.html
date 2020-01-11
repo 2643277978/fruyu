@@ -183,7 +183,7 @@
 			<div class="subway"><span>附&nbsp;近&nbsp;轻&nbsp;轨：</span><span>
 				<select name="" id="">
 					{#foreach from=$detail_subway item=sub#}
-					       {#if $sub.distance>10000 || $sub.distance=="infinite" #}
+					       {#if $sub.distance>3000 || $sub.distance=="infinite" #}
                             <option value={#$dt#}>{#$sub.line#}{#$sub.station#}</option>
                             {#else#}
                             <option value={#$dt#}>{#$sub.line#}{#$sub.station#}{#$sub.distance#}米</option>

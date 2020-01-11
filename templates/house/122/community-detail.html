@@ -259,7 +259,9 @@
 	<h2 class="c-tit">周边信息</h2>
 	<div class="sheshi">
 		{#foreach from=$detail_config item=con key=k#}
-		<dl>{#$con#}</dl>
+			{#foreach from=$con item=tt #}
+			<dl>{#$tt#}</dl>
+			{#/foreach#}
 		{#/foreach#}
 	</div>
 </div>

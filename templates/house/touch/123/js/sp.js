@@ -504,7 +504,7 @@ $(function() {
 									html.push('<dd class="zu_subway">');
 									html.push('<select>');
 									for (var j=0;j<list[i].subway.length;j++){
-										if(isFinite(Number(list[i].subway[j].distance))){
+										if(list[i].subway[j].distance>3000){
 											html.push('<option>'+list[i].subway[j].line+''+ list[i].subway[j].station+''+ list[i].subway[j].distance+'米</option>');
 										}else {
 											html.push('<option>'+list[i].subway[j].line+''+ list[i].subway[j].station+'</option>');

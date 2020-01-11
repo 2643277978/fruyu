@@ -642,12 +642,11 @@ $(function () {
                             html.push('<p class="lpinf">');
                             html.push('<select>');
                             for (var j=0;j<d.subway.length;j++){
-                                if(isFinite(Number(d.subway[j].distance))){
-                                    html.push('<option>'+d.subway[j].line+''+ d.subway[j].station+''+ d.subway[j].distance+'米</option>');
-                                }else {
+                                if(d.subway[j].distance>3000){
                                     html.push('<option>'+d.subway[j].line+''+ d.subway[j].station+'</option>');
+                                }else {
+                                    html.push('<option>'+d.subway[j].line+''+ d.subway[j].station+''+ d.subway[j].distance+'米</option>');
                                 }
-
                             }
                             html.push('</select>');
                             html.push('</p>');
