@@ -43,8 +43,6 @@ $(function () {
     }
     if(addEare){
         checkCs()
-    }else {
-        checkFilter()
     }
     $("img").scrollLoading();
 

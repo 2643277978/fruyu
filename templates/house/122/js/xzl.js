@@ -81,8 +81,6 @@ $(function(){
     }
     if(addEare){
         checkCs()
-    }else {
-        checkFilter()
     }
     // 判断条件
     function checkFilter(){

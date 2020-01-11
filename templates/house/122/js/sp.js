@@ -1,4 +1,8 @@
 $(function () {
+
+    var atpage = 1,
+        pageSize = 60;
+
     //获取url的参数（区域）
     var currUrl=window.location.href;
     currUrl = currUrl.substring(currUrl.indexOf("?"),currUrl.length);
@@ -42,11 +46,7 @@ $(function () {
     }
     if(addEare){
         checkCs()
-    }else {
-        checkFilter()
     }
-    var atpage = 1,
-        pageSize = 10;
 
     $("img").scrollLoading();
 
