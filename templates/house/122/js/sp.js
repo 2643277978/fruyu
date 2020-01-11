@@ -560,7 +560,11 @@ $(function () {
                             html.push('<div class="sp_r fn-right">转让费：' + d.transfer + ' 万</div>');
                         }
                         html.push('</div>');
-                        html.push('<p class="lpinf">[' + d.addr[d.addr.length - 1] + ']  ' + d.address + '</p>');
+                        if(d.address==""){
+                            html.push('<p class="lpinf"></p>');
+                        }else {
+                            html.push('<p class="lpinf">[' + d.addr[d.addr.length - 1] + ']  ' + d.address + '</p>');
+                        }
 
                         if(d.subway!="" && d.subway){
                             html.push('<p class="lpinf">');

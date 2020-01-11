@@ -635,7 +635,12 @@ $(function () {
 
                         html.push('<div class="sp_r fn-right">' + (huoniao.transTimes(d.pubdate, 2)) + '更新</div>');
                         html.push('</div>');
-                        html.push('<p class="lpinf">[' + d.addr[d.addr.length - 1] + ']  ' + d.address + '</p>');
+
+                        if(d.address==""){
+                            html.push('<p class="lpinf"></p>');
+                        }else {
+                            html.push('<p class="lpinf">[' + d.addr[d.addr.length - 1] + ']  ' + d.address + '</p>');
+                        }
                         if(d.subway!=""){
                             html.push('<p class="lpinf">');
                             html.push('<select>');
