@@ -645,7 +645,7 @@ $(function () {
                             html.push('<p class="lpinf">');
                             html.push('<select>');
                             for (var j=0;j<d.subway.length;j++){
-                                if(d.subway[j].distance>3000){
+                                if(d.subway[j].distance>3000 || d.subway[j].distance=="infinite"){
                                     html.push('<option>'+d.subway[j].line+''+ d.subway[j].station+'</option>');
                                 }else {
                                     html.push('<option>'+d.subway[j].line+''+ d.subway[j].station+''+ d.subway[j].distance+'米</option>');
