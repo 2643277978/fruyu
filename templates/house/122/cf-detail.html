@@ -282,6 +282,7 @@
 					<li class="curr"><a href="javascript:;">房源信息</a></li>
 					<li><a href="javascript:;">位置周边</a></li>
 					<!--<li><a href="javascript:;">全景看房</a></li>-->
+					{#if $detail_imglist#}<li><a href="javascript:;">房源图片</a></li>{#/if#}
 					<li><a href="javascript:;">视频看房</a></li>
 					<li><a href="javascript:;">附近房源</a></li>
 				</ul>
@@ -349,7 +350,25 @@
 		<!--{#/if#}-->
 	<!--</div>-->
 	<!-- 全景看房 e -->
-	
+	<!-- 图片  -->
+	{#if $detail_imglist#}
+	<div class="wrap photo">
+		<h2 class="sub-title"><span>楼盘图片</span></h2>
+		<div class="imgul">
+			<ul class="imgull">
+				{#foreach from=$detail_imglist item=img#}
+				<li><img class="fdimg min" src="{#$img.path#}"  /></li>
+				{#/foreach#}
+			</ul>
+		</div>
+		<div id="outerdiv" style="position:fixed;top:0;left:0;background:rgba(0,0,0,0.7);z-index:2;width:100%;height:100%;display:none;">
+			<div id="innerdiv" style="position:absolute;">
+				<img id="bigimg" style="border:5px solid #fff;" src="" />
+			</div>
+		</div>
+	</div>
+	{#/if#}
+	<!-- 图片 e -->
 	
 	<!-- 视频看房 s -->
 	<div class="wrap quanjing">

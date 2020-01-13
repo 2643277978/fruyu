@@ -301,11 +301,12 @@
 			<div class="wrap">
 				<ul>
 					<li class="curr"><a href="javascript:;">房源基础信息</a></li>
-					<li ><a href="javascript:;">房源信息</a></li>
+					{#if $detail_config || $detail_note#}<li ><a href="javascript:;">房源信息</a></li>{#/if#}
 					<li><a href="javascript:;">设施配套</a></li>
-					<!--<li><a href="javascript:;">周边配套</a></li>-->
+					<li><a href="javascript:;">周边配套</a></li>
 					<!--<li><a href="javascript:;">全景看房</a></li>-->
-					<li><a href="javascript:;">视频看房</a></li>
+					{#if $detail_imglist#}<li><a href="javascript:;">房源图片</a></li>{#/if#}
+					{#if $detail_video#}<li><a href="javascript:;">视频看房</a></li>{#/if#}
 					<li><a href="javascript:;">楼盘简介</a></li>
 					<li><a href="javascript:;">附近房源</a></li>
 				</ul>
@@ -339,9 +340,10 @@
 	</div>
 
 	<!-- 房源信息 s-->
+	{#if $detail_config || $detail_note#}
 	<div class="wrap">
 		<h2 class="sub-title"><span>房源信息</span></h2>
-		{#if $detail_config#}
+		{#if $detail_config #}
 		{#foreach from=$detail_config item=cj key=k#}
 		<span class="config">{#$cj#}</span>
 		{#/foreach#}
@@ -355,6 +357,7 @@
 <!--		<dl><dt>挂牌房源</dt><dd><a href="{#getUrlPath service='house' template='xzl' type={#$detail_type#} addrid={#$detail_areaid#} business={#$detail_addrid#}#}">本区域在售商铺{#$detail_total_sale#}套</a><a href="{#getUrlPath service='house' template='xzl' type={#$detail_type#} addrid={#$detail_areaid#} business={#$detail_addrid#}#}">本商圈在售商铺{#$detail_total_sale#}套</a></dd></dl>-->
 <!--		{#/if#}-->
 	</div>
+	{#/if#}
 	<!-- 房源信息 e-->
 
 	<!-- 设施配套 s-->
@@ -421,24 +424,35 @@
 		<!--{#/if#}-->
 	<!--</div>-->
 	<!-- 全景看房 e -->
-	
+	<!-- 图片  -->
+	{#if $detail_imglist#}
+	<div class="wrap photo">
+		<h2 class="sub-title"><span>房源图片</span></h2>
+		<div class="imgul">
+			<ul class="imgull">
+				{#foreach from=$detail_imglist item=img#}
+				<li><img class="fdimg min" src="{#$img.path#}"  /></li>
+				{#/foreach#}
+			</ul>
+		</div>
+		<div id="outerdiv" style="position:fixed;top:0;left:0;background:rgba(0,0,0,0.7);z-index:2;width:100%;height:100%;display:none;">
+			<div id="innerdiv" style="position:absolute;">
+				<img id="bigimg" style="border:5px solid #fff;" src="" />
+			</div>
+		</div>
+	</div>
+	{#/if#}
+	<!-- 图片 e -->
 	
 	<!-- 视频看房 s -->
+	{#if $detail_video#}
 	<div class="wrap quanjing">
 		<h2 class="sub-title"><span>视频看房</span></h2>
-		{#if $detail_video#}
 		<div class="qjbox">
 			<iframe src="/include/videoPreview.php?f={#$detail_video#}" frameborder="0"></iframe>
 		</div>
-		{#else#}
-<!--		<div class="empty">暂无视频</div>-->
-		<style>
-			.quanjing{
-				display: none;
-			}
-		</style>
-		{#/if#}
 	</div>
+	{#/if#}
 	<!-- 全景看房 e -->
 
 	<!-- 简介 s -->
