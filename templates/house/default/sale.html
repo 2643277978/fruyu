@@ -309,7 +309,7 @@
 			<ul class="fn-clear">
 				<li class="lshow"><a href="javascript:;"><s></s>共有<strong id="totalCount">0</strong>套二手房源</a></li>
 			</ul>
-			<h2>100%真实房源，假一赔百，不封顶！</h2>
+			<h2>真实房源，假一赔百，不封顶！</h2>
 		</div>
 
 		<ul id="list">
@@ -318,10 +318,10 @@
 			{#if $business != 0#}
 			{#$addr = $business#}
 			{#/if#}
-			{#house action="saleList" return="sale" addrid={#$addr#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} type={#$type#} orderby={#$orderby#} page={#$page#} pageSize="20"#}
+			{#house action="saleList" return="sale" addrid={#$addr#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flags#} keywords={#$keywords#} type={#$type#} orderby={#$orderby#} page={#$page#} pageSize="60"#}
 			<li class="fn-clear">
 				{#if $sale.isbid == 1#}<em class="jj">竞价</em>{#/if#}
-				<a href="{#$sale.url#}" target="_blank" class="pic"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url={#$sale.litpic#} type='small'#}" alt="{#$sale.title#}" />{#if $sale.usertype == 0#}<em>个人</em>{#elseif $sale.usertype == 1#}<i>中介</i>{#/if#}</a>
+				<a href="{#$sale.url#}" target="_blank" class="pic"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url={#$sale.litpic#} type='small'#}" alt="{#$sale.title#}" />{#if $sale.usertype == 0#}<em>个人</em>{#elseif $sale.usertype == 1#}<i></i>{#/if#}</a>
 				<div class="info">
 					<h2><a href="{#$sale.url#}" target="_blank" title="{#$sale.title#}">{#$sale.title#}</a></h2>
 					<div class="fn-clear">
@@ -332,11 +332,26 @@
 									{#$addr#}
 									{#/foreach#}</a>
 								<span>{#$sale.room#}</span><span>{#$sale.direction#}</span><span>{#$sale.zhuangxiu#}</span>
+								{#if $sale.subway#}
+								<span class="ditie">
+									<select name="" id="">
+										{#foreach from=$sale.subway item=sub#}
+										{#if $sub.distance>3000 ||$sub.distance=="infinite"  #}
+										<option value={#$sub#}>{#$sub.line#}{#$sub.station#}</option>
+										{#else#}
+										<option value={#$sub#}>{#$sub.line#}{#$sub.station#}{#$sub.distance#}米</option>
+										{#/if#}
+										{#/foreach#}
+									</select>
+								</span>
+								{#/if#}
 							</p>
 							<p class="o">
 								<a href="{#$sale.communityUrl#}" target="_blank" title="{#$sale.community#}">{#$sale.community#}</a>
-								<span>/</span>第{#$sale.bno#}层,共{#$sale.floor#}层<span>/</span>{#$sale.buildage#}年
+								<span>/</span>{#if $sale.bno==0|| $sale.bno<10 #}低层{#elseif $sale.bno==200 ||$sale.bno>10 && $sale.bno>15 #}中层{#elseif $sale.bno ==201 || $sale.bno>15 #}高层{#/if#},共{#$sale.floor#}层<span>/</span>{#$sale.buildage#}年
 							</p>
+
+
 							<div class="tags fn-clear">
 								{#foreach from=$sale.flags item=flag key=key#}
 								<span class="t{#$key#}">{#$flag#}</span>

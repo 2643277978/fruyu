@@ -18,7 +18,7 @@
 
 	var criticalPoint = 1240, criticalClass = "w1200";
 	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
-
+	var longitude = '{#$detail_longitude#}', latitude = '{#$detail_latitude#}', resblockName = '{#$detail_title#}';
 	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
 
 	var pageData = {
@@ -51,7 +51,7 @@
 {#$smallAlbum = ""#}
 {#house action="albumList" return="list" act="loupan" loupanid={#$detail_id#} pageSize="5"#}
 {#$bigAlbum = $bigAlbum|cat:"<li><a href='{#$list.url#}' target='_blank' title='{#$list.title#}'><i></i><img src='{#$cfg_staticPath#}images/blank.gif' _src='{#$list.imglist[0]['path']#}' /></a></li>"#}
-{#$smallAlbum = $smallAlbum|cat:"<li><s></s><img src='{#changeFileSize url={#$list.imglist[0]['path']#} type='small'#}' /></li>"#}
+{#$smallAlbum = $smallAlbum|cat:"<li><s></s><img src='{#changeFileSize url={#$list.imglist[0]['path']#}  type='small'#}' /></li>"#}
 {#/house#}
 <div class="wrap loupan-detail fn-clear">
 	<div class="lp-img">
@@ -245,23 +245,32 @@
 
 
 {#* 地图 s *#}
-<div class="wrap map">
-	<div class="tit"><h3>楼盘位置</h3></div>
-	<div class="map-con {#$site_map#} fn-clear">
-		<div class="map-detail">
-			<ul class="map-tab" id="map-tab">
-				<li id="map-tab-tra" title="交通" class="active">交通</li>
-				<li id="map-tab-biz" title="商业">商业</li>
-				<li id="map-tab-edu" title="教育">教育</li>
-				<li id="map-tab-hos" title="医院">医院</li>
-			</ul>
-			<div class="map-list">
-				<p id="map-type" class="gray"></p>
-				<p id="map-count"></p>
-				<ul class="map-ul" id="map-ul"><li class="load">加载中...</li></ul>
+
+<div class="wrap peripheryAround">
+	<div data-component="mapCard" class="around" id="around">
+		<h2 class="aroundTitle" id="around_map">楼盘位置</h2>
+		<div class="aroundContainer">
+			<div class="aroundMap" id="map"></div>
+			<div class="tabBox">
+				<ul class="aroundType">
+					<li class="LOGCLICK" data-log_evtid='10242'  data-bl="traffic" data-key="地铁站,公交站" data-index="subway,bus" data-length="10,10">交通</li>
+					<li class="LOGCLICK" data-log_evtid='10242'  data-bl="education" data-key="幼儿园,小学,中学,大学"
+						data-index="kindergarten,primary-school,middle-school,University"
+						data-length="10,10,10,10"
+					>教育</li>
+					<li class="LOGCLICK" data-log_evtid='10242'  data-bl="medical" data-key="医院,药店" data-index="hospital,pharmacy" data-length="10,10">医疗</li>
+					<li class="LOGCLICK" data-log_evtid='10242'  data-bl="shopping" data-key="商场,超市,市场" data-index="mall,supermarket,market" data-length="10,10,10">购物</li>
+					<li class="LOGCLICK" data-log_evtid='10242'  data-bl="life" data-key="银行,ATM,餐厅,咖啡馆" data-index="bank,atm,restaurant,coffee" data-length="10,10,10,10">生活</li>
+					<li class="LOGCLICK" data-log_evtid='10242'  data-bl="entertainment" data-key="公园,电影院,健身房,体育馆" data-index="park,cinema,gym,sport" data-length="10,10,10,10">娱乐</li>
+				</ul>
+				<div class="itemTagBox"></div>
+				<div class="aroundList" id="mapListContainer"></div>
+				<div class="loading">
+					<img src="{#$templets_skin#}images/loading.gif" class="loadingImg">
+					<span class="loadingText">努力加载中...</span>
+				</div>
 			</div>
 		</div>
-		<div class="map-box" id="map"></div>
 	</div>
 </div>
 {#* 地图 e *#}

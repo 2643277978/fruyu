@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="004b61ea-2c34-49a1-b67c-a954c3bf9ba2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../static/js/admin/siteConfig/siteSubwayAdd.js" beforeDir="false" afterPath="$PROJECT_DIR$/../static/js/admin/siteConfig/siteSubwayAdd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/cf-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/cf-detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/122/community-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/community-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/css/cf_detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/css/cf_detail.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/122/css/community_detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/css/community_detail.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/122/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/css/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/122/css/loupan_public.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/css/loupan_public.css" afterDir="false" />
@@ -20,6 +22,7 @@
       <change beforePath="$PROJECT_DIR$/house/122/css/zu_detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/css/zu_detail.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/122/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/122/js/cf.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/js/cf.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/js/cf_detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/js/cf_detail.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/122/js/community-detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/js/community-detail.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/122/js/community.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/js/community.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/122/js/loupan.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/js/loupan.js" afterDir="false" />
@@ -31,10 +34,13 @@
       <change beforePath="$PROJECT_DIR$/house/122/js/map_zu_baidu.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/js/map_zu_baidu.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/122/js/public.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/js/public.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/122/js/sale.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/js/sale.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/js/sale_detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/js/sale_detail.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/122/js/sp.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/js/sp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/js/sp_detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/js/sp_detail.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/122/js/xzl.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/js/xzl.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/122/js/xzl_detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/js/xzl_detail.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/122/js/zu.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/js/zu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/js/zu_detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/js/zu_detail.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/122/loupan-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/loupan-detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/122/loupan_top.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/loupan_top.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/122/map-cf.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/map-cf.html" afterDir="false" />
@@ -48,10 +54,54 @@
       <change beforePath="$PROJECT_DIR$/house/122/sale.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/sale.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/122/sp-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/sp-detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/122/sp.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/sp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/122/top.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/top.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/122/xzl-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/xzl-detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/122/xzl.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/xzl.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/122/zu-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/zu-detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/122/zu.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/zu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/cf-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/cf-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/community-album-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/community-album-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/community-album.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/community-album.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/community-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/community-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/community-hx-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/community-hx-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/community-hx.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/community-hx.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/community-sale.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/community-sale.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/community-zu.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/community-zu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/community_top.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/community_top.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/css/cf_detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/cf_detail.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/css/community_detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/community_detail.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/css/public.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/public.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/css/sale.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/sale.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/css/sale_detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/sale_detail.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/css/sp.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/sp.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/css/sp_detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/sp_detail.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/css/xzl.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/xzl.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/css/xzl_detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/xzl_detail.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/css/zu.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/zu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/css/zu_detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/zu_detail.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/js/cf_detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/js/cf_detail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/js/map.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/js/map.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/js/map_loupan_baidu.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/js/map_loupan_baidu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/js/map_sale_baidu.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/js/map_sale_baidu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/js/map_zu_baidu.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/js/map_zu_baidu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/js/sale_detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/js/sale_detail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/js/sp_detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/js/sp_detail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/js/xzl_detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/js/xzl_detail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/js/zu_detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/js/zu_detail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/loupan-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/loupan-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/map-sale.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/map-sale.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/map-zu.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/map-zu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/map.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/map.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/sale-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/sale-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/sale.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/sale.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/sp-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/sp-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/sp.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/sp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/xzl-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/xzl-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/xzl.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/xzl.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/zu-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/zu-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/zu.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/zu.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/touch/123/css/cf-detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/css/cf-detail.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/touch/123/css/estate-list.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/css/estate-list.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/touch/123/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/css/index.css" afterDir="false" />
@@ -94,6 +144,7 @@
       <change beforePath="$PROJECT_DIR$/member/js/fabu.js" beforeDir="false" afterPath="$PROJECT_DIR$/member/js/fabu.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/member/js/refreshTop.js" beforeDir="false" afterPath="$PROJECT_DIR$/member/js/refreshTop.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/member/refreshTop.html" beforeDir="false" afterPath="$PROJECT_DIR$/member/refreshTop.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/member/touch/css/manage-house.css" beforeDir="false" afterPath="$PROJECT_DIR$/member/touch/css/manage-house.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/member/touch/css/wxtj.css" beforeDir="false" afterPath="$PROJECT_DIR$/member/touch/css/wxtj.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/member/touch/fabu-house-sale.html" beforeDir="false" afterPath="$PROJECT_DIR$/member/touch/fabu-house-sale.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/member/touch/fabu-house-zu.html" beforeDir="false" afterPath="$PROJECT_DIR$/member/touch/fabu-house-zu.html" afterDir="false" />
@@ -114,6 +165,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -127,13 +179,15 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/house/touch/123/images" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="http.proxy" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\2019.11.13\dengyunlong_26dj_dev\templates\house\touch\123\images" />
+      <recent name="D:\2019.11.13\dengyunlong_26dj_dev\templates\house\default\images" />
       <recent name="D:\2019.11.13\dengyunlong_26dj_dev\templates\house\122" />
     </key>
   </component>
@@ -183,7 +237,14 @@
       <workItem from="1578447065015" duration="2248000" />
       <workItem from="1578455915951" duration="21974000" />
       <workItem from="1578532063689" duration="2336000" />
-      <workItem from="1578561539309" duration="1686000" />
+      <workItem from="1578561539309" duration="6516000" />
+      <workItem from="1578618870021" duration="811000" />
+      <workItem from="1578651644873" duration="2736000" />
+      <workItem from="1578706545597" duration="1438000" />
+      <workItem from="1578708292614" duration="7815000" />
+      <workItem from="1578721307682" duration="825000" />
+      <workItem from="1578878618574" duration="25897000" />
+      <workItem from="1578964981340" duration="21026000" />
     </task>
     <servers />
   </component>

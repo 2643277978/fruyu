@@ -7,6 +7,7 @@ a:hover {text-decoration: underline;}
 /* 筛选 */
 .filter {position: relative; z-index: 10; margin-bottom: 25px; border: 1px solid #eee; font-size: 14px;}
 
+
 /* 区域&公交/地铁 */
 .filter .t-fi {line-height: 40px; border-bottom: 1px solid #eee;}
 .filter .t-fi .smap {float: right; font-size: 14px; margin-right: 20px; line-height: 50px;}
@@ -31,6 +32,10 @@ a:hover {text-decoration: underline;}
 .filter .sub-fi .curr {color: #bc0a0a; font-weight: 700;}
 .filter .sub-fi a {margin-right: 20px; white-space: nowrap;}
 
+/*地铁*/
+.ditie{margin-left: 5px;height: 35px;display: inline-block}
+.ditie select{border: 1px solid #d3d4de;box-shadow: 2px 2px 3px #d3d4de;color: #797a82;font-size: 14px;}
+.ditie select option{color: #797a82; font-size: 14px;height: 35px;}
 
 /* 筛选条件 */
 .filter dl {border-bottom: 1px dotted #eee;}
@@ -87,7 +92,7 @@ a:hover {text-decoration: underline;}
 .l-item dt a i {position: absolute; right: 0; top: 0; font-size: 12px; color: #fff; background-color: #93b94c; padding: 1px 5px 2px; line-height: 15px; font-style: normal;}
 .l-item dd {position: relative; overflow: hidden;}
 .l-item dd h3 {font-size: 22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
-.l-item dd p {margin-top: 8px; height: 23px; line-height: 23px; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.l-item dd p {margin-top: 8px; height: 25px; line-height: 23px; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
 .l-item dd p.u {font-size: 12px;}
 .l-item .addr-icon {display: inline-block; width: 10px; height: 13px; margin: -3px 5px 0 0; background: url('../images/zuSprite.png') no-repeat; vertical-align: middle;}
 .l-item dd p i {padding: 0 10px; color: #dadada; font-style: normal;}

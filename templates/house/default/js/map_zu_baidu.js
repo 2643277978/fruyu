@@ -70,29 +70,29 @@ $(function(){
 			$("#"+g_conf.mapWrapper).on("click", ".bubble-1", function() {
 
 				var t = $(this),
-				newView = {
-					lng: parseFloat(t.attr("data-longitude")),
-					lat: parseFloat(t.attr("data-latitude")),
-					typ: g_conf.minZoom + 3
-				};
+					newView = {
+						lng: parseFloat(t.attr("data-longitude")),
+						lat: parseFloat(t.attr("data-latitude")),
+						typ: g_conf.minZoom + 3
+					};
 				newView.lng && newView.lat ? map.centerAndZoom(new BMap.Point(newView.lng, newView.lat), newView.typ) : map.setZoom(newView.typ);
 
 
-			//气泡点击  商圈
+				//气泡点击  商圈
 			}).on("click", ".bubble-2", function(){
 
 				var t = $(this),
-				newView = {
-					lng: parseFloat(t.attr("data-longitude")),
-					lat: parseFloat(t.attr("data-latitude")),
-					typ: g_conf.minZoom + 5
-				};
+					newView = {
+						lng: parseFloat(t.attr("data-longitude")),
+						lat: parseFloat(t.attr("data-latitude")),
+						typ: g_conf.minZoom + 5
+					};
 				newView.lng && newView.lat ? map.centerAndZoom(new BMap.Point(newView.lng, newView.lat), newView.typ) : map.setZoom(newView.typ);
 
 				init.getSaleData("community");
 
 
-			//气泡点击 小区
+				//气泡点击 小区
 			}).on("click", ".bubble-3", function(e) {
 
 				var t = $(this), id = t.attr("data-id");
@@ -136,13 +136,10 @@ $(function(){
 					}
 				}
 			});
-
-
 			init.updateLoupanListDiv();
 			$(window).resize(function(){
 				init.updateLoupanListDiv();
 			});
-
 		}
 
 
@@ -195,14 +192,13 @@ $(function(){
 							}
 
 						}
-
 						g_conf.districtData = districtData;
 						init.updateOverlays(type);
 
 					}
 				});
 
-			//type为bizcircle(商圈)时，请求商圈信息
+				//type为bizcircle(商圈)时，请求商圈信息
 			}else if(type == "bizcircle"){
 
 				if(g_conf.bizcircle.length == 0){
@@ -212,10 +208,8 @@ $(function(){
 						"dataType": "JSONP",
 						"async": false,
 						"success": function(data){
-
 							var bizcircleData = [];
 							if(data && data.state == 100){
-
 								var list = data.info;
 								for(var i = 0; i < list.length; i++){
 									bizcircleData[i] = [];
@@ -240,9 +234,8 @@ $(function(){
 					init.createBubble(data, bubbleTemplate[2], 2);
 				}
 
-			//type为community(小区)时间，请求小区信息，根据地图当前可视范围进行筛选
+				//type为community(小区)时间，请求小区信息，根据地图当前可视范围进行筛选
 			}else if(type == "community"){
-
 				$.ajax({
 					"url": g_conf.urlPath[3],
 					"data": data,
@@ -298,12 +291,10 @@ $(function(){
 			}else{
 
 				//商圈集合
-				if(zoom - g_conf.minZoom <= 4){
-
+				if(zoom - g_conf.minZoom <= 3){
 					init.getSaleData("bizcircle");
-
-				//小区集合
-				}else if(zoom - g_conf.minZoom > 4){
+					//小区集合
+				}else if(zoom - g_conf.minZoom > 3){
 
 					init.getSaleData("community");
 
@@ -317,8 +308,8 @@ $(function(){
 		//获取地图可视区域范围
 		,getBounds: function(){
 			var e = map.getBounds(),
-			t = e.getSouthWest(),
-			a = e.getNorthEast();
+				t = e.getSouthWest(),
+				a = e.getNorthEast();
 			return {
 				min_longitude: t.lng,
 				max_longitude: a.lng,
@@ -332,18 +323,18 @@ $(function(){
 		,getVisarea: function(data){
 			data = data || [];
 			var areaData = [],
-					visBounds = init.getBounds(),
-					n = {
-						min_longitude: parseFloat(visBounds.min_longitude),
-						max_longitude: parseFloat(visBounds.max_longitude),
-						min_latitude: parseFloat(visBounds.min_latitude),
-						max_latitude: parseFloat(visBounds.max_latitude)
-					};
+				visBounds = init.getBounds(),
+				n = {
+					min_longitude: parseFloat(visBounds.min_longitude),
+					max_longitude: parseFloat(visBounds.max_longitude),
+					min_latitude: parseFloat(visBounds.min_latitude),
+					max_latitude: parseFloat(visBounds.max_latitude)
+				};
 
 			$.each(data, function(e, a) {
 				var i = a.length ? a[0] : a,
-				l = parseFloat(i.longitude),
-				r = parseFloat(i.latitude);
+					l = parseFloat(i.longitude),
+					r = parseFloat(i.latitude);
 				l <= n.max_longitude && l >= n.min_longitude && r <= n.max_latitude && r >= n.min_latitude && areaData.push(a)
 			});
 
@@ -509,7 +500,7 @@ $(function(){
 
 						list.mCustomScrollbar("update");
 
-					//没有数据
+						//没有数据
 					}else{
 						$(".lcount strong").html(0);
 						$(".sale-list").html('<p class="empty">很抱歉，没有找到合适的房源，请重新查找</p>');

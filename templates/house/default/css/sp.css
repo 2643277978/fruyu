@@ -30,6 +30,10 @@ a:hover {text-decoration: underline;}
 .filter .sub-fi i {border-width: 0 7px 7px; top: 1px; left: 0; border-bottom-color: #f9f9f9;}
 .filter .sub-fi .curr {color: #bc0a0a; font-weight: 700;}
 .filter .sub-fi a {margin-right: 20px; white-space: nowrap;}
+/*地铁*/
+.ditie{margin-left: 5px;height: 35px;display: inline-block}
+.ditie select{border: 1px solid #d3d4de;box-shadow: 2px 2px 3px #d3d4de;color: #797a82;font-size: 14px;}
+.ditie select option{color: #797a82; font-size: 14px;height: 35px;}
 
 /* 筛选条件 */
 .filter dl {border-bottom: 1px dotted #eee;}

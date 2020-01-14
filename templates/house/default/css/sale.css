@@ -82,6 +82,9 @@ a:hover {text-decoration: underline;}
 .lhead ul li a i {position: absolute; right: -28px; top: -5px; width: 24px; height: 11px; background-position: -56px 0;}
 .lhead h2 {float: right; font-weight: 700; color: #000;}
 .lhead h2 strong {font-size: 16px; padding: 0 5px; color: #e4393c;}
+/*地铁*/
+.ditie select{border: 1px solid #d3d4de;box-shadow: 2px 2px 3px #d3d4de;color: #797a82;font-size: 14px;height: 30px;}
+.ditie select option{color: #797a82; font-size: 14px;height: 35px;}
 
 #list .empty {text-align: center; line-height: 200px; font-size: 16px; font-weight: 700;}
 #list li {padding: 26px; position: relative; border-bottom: 1px dotted #e1e1e1;}

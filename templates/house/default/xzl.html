@@ -148,7 +148,7 @@
 	{#if $business != 0#}
 	{#$addr = $business#}
 	{#/if#}
-	{#house action="xzlList" return="xzl" type={#$type#} addrid={#$addr#} area={#$area#} price={#$price#} protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} orderby={#$orderby#} page={#$page#} pageSize="20"#}
+	{#house action="xzlList" return="xzl" type={#$type#} addrid={#$addr#} area={#$area#} price={#$price#} protype={#$protype#} usertype={#$usertype#} keywords={#$keywords#} orderby={#$orderby#} page={#$page#} pageSize="60"#}
 	<div class="l-item fn-clear">
 		{#if $xzl.isbid == 1#}<em class="jj">竞价</em>{#/if#}
 		<div class="more">
@@ -161,10 +161,24 @@
 			{#/if#}
 		</div>
 		<dl class="fn-clear">
-			<dt><a href="{#$xzl.url#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url={#$xzl.litpic#} type='small'#}" alt="{#$xzl.title#}" title="{#$xzl.title#}" />{#if $xzl.usertype == 0#}<em>个人</em>{#else#}<i>中介</i>{#/if#}</a></dt>
+			<dt><a href="{#$xzl.url#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url={#$xzl.litpic#} type='small'#}" alt="{#$xzl.title#}" title="{#$xzl.title#}" />{#if $xzl.usertype == 0#}<em>个人</em>{#else#}<i></i>{#/if#}</a></dt>
 			<dd>
 				<h3><a href="{#$xzl.url#}" target="_blank" title="{#$xzl.title#}">{#$xzl.title#}</a></h3>
-				<p><span class="addr-icon"></span><a href="{#getUrlPath service="house" template="xzl" type={#$type#} addrid=0 business={#$xzl.addrid#}#}">{#foreach from=$xzl.addr item=addr#}{#$addr#}-{#/foreach#}</a>{#$xzl.address#}{#if $xzl.nearby != ""#}&nbsp;&nbsp;[靠近：{#$xzl.nearby#}]{#/if#}</p>
+				<p><span class="addr-icon"></span><a href="{#getUrlPath service="house" template="xzl" type={#$type#} addrid=0 business={#$xzl.addrid#}#}">{#foreach from=$xzl.addr item=addr#}{#$addr#}-{#/foreach#}</a>{#$xzl.address#}{#if $xzl.nearby != ""#}&nbsp;&nbsp;[靠近：{#$xzl.nearby#}]{#/if#}
+					{#if $xzl.subway#}
+					<span class="ditie">
+									<select name="" id="">
+										{#foreach from=$xzl.subway item=sub#}
+										{#if $sub.distance>3000 ||$sub.distance=="infinite"  #}
+										<option value={#$sub#}>{#$sub.line#}{#$sub.station#}</option>
+										{#else#}
+										<option value={#$sub#}>{#$sub.line#}{#$sub.station#}{#$sub.distance#}米</option>
+										{#/if#}
+										{#/foreach#}
+									</select>
+					</span>
+					{#/if#}
+				</p>
 				<p>{#$xzl.loupan#}<i>|</i>{#$xzl.zhuangxiu#}<i>|</i>{#$xzl.protype#}<i>|</i>{#$xzl.area#}平米</p>
 				<p class="u">{#if $xzl.usertype == 0#}<a>{#$xzl.username#}</a>{#else#}<a href="{#getUrlPath service='house' template='broker-detail' id={#$xzl.userid#} tpl='xzl'#}" target="_blank">{#$xzl.nickname#}</a>{#/if#}<span class="upd"></span>{#$xzl.timeUpdate#}更新{#foreach from=$xzl.config item=config key=k#}<span class="tag t{#$k#}">{#$config#}</span>{#/foreach#}</p>
 			</dd>

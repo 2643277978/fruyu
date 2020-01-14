@@ -988,6 +988,7 @@ function getList(is){
                     }
                   }
                   html.push('<a href="'+urlString+id+'" class="edit">'+langData['siteConfig'][6][6]+'</a>');
+                    // html.push('<a href="javascript:;" >分享</a>');
                   if(!refreshSmart && !isbid){
                     html.push('<a href="javascript:;" class="del">'+langData['siteConfig'][6][8]+'</a>');
                   }

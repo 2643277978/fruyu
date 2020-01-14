@@ -8,12 +8,12 @@
 <meta name="description" content="{#$siteCityInfo['name']#}{#$detail_title#},全新二手房房源信息，{#$detail_address#}。找最新{#$detail_title#}实景图、房型图、二手房、租房房源信息、交通配套信息就来{#$cfg_shortname#}" />
 <link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
 <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
-
 <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v=1" media="all" />
 <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/community_detail.css?v=1" media="all" />
 <script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+<script src="https://how2j.cn/study/js/chartjs/2.8.0/chart.min.js"></script>
 <script type="text/javascript">
-	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}';
+	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
 
 	var criticalPoint = 1240, criticalClass = "w1200";
 	$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
@@ -21,7 +21,7 @@
 	var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
 
 	{#$pageUrl = "{#getUrlPath service='house' template='community-detail' id="{#$detail_id#}"#}"#}
-
+	var longitude = '{#$detail_longitude#}', latitude = '{#$detail_latitude#}', resblockName = '{#$detail_title#}';
 	var pageData = {
 		id: {#$detail_id#},
 		panName: '{#$detail_title#}',
@@ -30,12 +30,12 @@
 		lng: '{#$detail_longitude#}',
 		url: '{#$pageUrl#}'
 	};
-
 	var site_map = "{#$site_map#}";
+	var Price="{#$detail_price_trend#}";
 </script>
 </head>
 
-<body>
+<body class="w1200">
 {#include file="../../siteConfig/top1.html"#}
 
 <div class="wrap ad">{#myad id="75"#}</div>
@@ -47,37 +47,125 @@
 {#$crumbTitle = "小区基本信息"#}
 {#include file="community_top.html"#}
 
-<div class="wrap fn-clear">
-	<div class="sidebar">
-		<dl>
-			<dt><h3>周边小区</h3></dt>
-			{#house action="communityList" nid={#$detail_id#} addrid={#$detail_addrid#} pageSize="10"#}
-			<dd>
-				<span class="title"><a href="{#$row.url#}" target="_blank" title="{#$row.title#}">{#$row.title#}</a></span>
-				<span class="info">{#$row.addr[$row.addr|count-2]#}</span>
-				<span class="price">{#if $row.price != 0#}{#$row.price#}{#echoCurrency type='short'#}/㎡{#else#}待定{#/if#}</span>
-			</dd>
-			{#/house#}
-			{#if $pageInfo.totalCount == 0#}
-			<div class="empty">暂无相关信息</div>
+<div class="wrap community-detail fn-clear">
+	<p class="comtit"><span class="ftime">发布时间：{#$detail_pubdate|date_format:'%Y-%m-%d'#}</span> <span>浏览量：{#$detail_click#}</span></p>
+
+	<div class="com_slide">
+		<ul class="album">
+			{#if $detail_video#}
+			<li>
+				<a href="javascript:;">
+					<video controls="controls" src="{#$detail_video#}"></video>
+				</a>
+			</li>
 			{#/if#}
-		</dl>
-		<dl>
-			<dt><h3>{#$siteCityInfo['name']#}热门小区</h3></dt>
-			{#house action="communityList" nid={#$detail_id#} pageSize="10"#}
-			<dd>
-				<span class="title"><a href="{#$row.url#}" target="_blank" title="{#$row.title#}">{#$row.title#}</a></span>
-				<span class="info">{#$row.addr[$row.addr|count-2]#}</span>
-				<span class="price">{#if $row.price != 0#}{#$row.price#}{#echoCurrency type='short'#}/㎡{#else#}待定{#/if#}</span>
-			</dd>
-			{#/house#}
-			{#if $pageInfo.totalCount == 0#}
-			<div class="empty">暂无相关信息</div>
+			{#if $detail_qj_file#}
+			<li>
+				<a href="javascript:;">
+					{#* h5 *#}
+					{#if $detail_qj_type == 0#}
+					<iframe src="{#$cfg_basehost#}/include/360panorama.php?f={#$detail_qj_file#}"></iframe>
+
+					{#* iframe *#}
+					{#elseif $detail_qj_type == 1#}
+					<iframe src="{#$detail_qj_file#}"></iframe>
+
+					{#/if#}
+				</a>
+			</li>
 			{#/if#}
-		</dl>
+			{#house action="albumList" act="community" loupanid={#$detail_id#} pageSize="10"#}
+			{#foreach from=$row.imglist item=img key=k#}
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" _src="{#changeFileSize url="{#$img.path#}"#}"></a></li>
+			{#/foreach#}
+			{#/house#}
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" _src="{#$templets_skin#}upfile/album_big.png"></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" _src="{#$templets_skin#}upfile/album_big.png"></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" _src="{#$templets_skin#}upfile/album_big.png"></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" _src="{#$templets_skin#}upfile/album_big.png"></a></li>
+			<li><a href="javascript:;"><img src="{#$cfg_staticPath#}images/blank.gif" _src="{#$templets_skin#}upfile/album_big.png"></a></li>
+		</ul>
+		<div class="pageState"></div>
+		<div class="thumb">
+			<div class="plist">
+				<ul>
+					{#if $detail_video#}
+					<li><a href="javascript:;"><i></i><img src="{#$detail_litpic|replace:"large":"small"#}"/></a><s class="splay"></s></li>
+					{#/if#}
+					{#if $detail_qj_file#}
+					<li><a href="javascript:;"><i></i><img src="{#$detail_litpic|replace:"large":"small"#}"/></a><s class="svr"></s></li>
+					{#/if#}
+					{#house action="albumList" act="community" loupanid={#$detail_id#} pageSize="100"#}
+					{#foreach from=$row.imglist item=img key=k#}
+					<li><a href="javascript:;"><i></i><img src="{#changeFileSize url="{#$img.path#}" type="small"#}" title="{#$img.info#}"/></a></li>
+					{#/foreach#}
+					{#/house#}
+				</ul>
+			</div>
+			<a href="javascript:;" class="sprev"><i></i></a>
+			<a href="javascript:;" class="snext"><i></i></a>
+		</div>
 	</div>
+	<div class="com_info">
+		<div class="cprice fn-clear">
+			<div class="fn-left">
+				<span class="sp_pri">{#if $detail_price != 0#}<b>{#$detail_price#}</b>{#echoCurrency type='short'#}/㎡{#else#}待定{#/if#}</span> <span class="d_pri">参考均价</span>
+			</div>
+			<div class="fn-right"><a href="{#getUrlPath service='house' template='calculator' do='sy'#}" class="c_jsq" target="_blank"><i></i>房贷计算器</a></div>
+		</div>
+		<div class="info_txt">
+			<div class="txt_top fn-clear">
+				<dl><dt>所在区域</dt><dd>{#$detail_addr[$detail_addr|count-3]#} {#$detail_addr[$detail_addr|count-2]#}</dd></dl>
+				<dl><dt>出售房源</dt><dd>{#$detail_total_sale#}套</dd></dl>
+				<dl><dt>建筑年代</dt><dd>{#$detail_buildtype|date_format:"%Y"#}年建成</dd></dl>
+				<dl><dt>建筑类型</dt><dd>{#$detail_buildtype#}</dd></dl>
+				<dl><dt>出租房源</dt><dd>{#$detail_total_zu#}套</dd></dl>
+			</div>
+			<div class="txt_other">
+				<dl><dt>物业类型</dt><dd>{#$detail_protype#}</dd></dl>
+				<dl><dt>物业公司</dt><dd>{#if $detail_property#}{#$detail_property#}{#else#}不详{#/if#}</dd></dl>
+				<dl><dt>物业费用</dt><dd>{#if $detail_proprice#}{#$detail_proprice#}{#else#}不详{#/if#}</dd></dl>
+				<dl><dt>开  发  商</dt><dd>{#if $detail_kfs#}{#$detail_kfs#}{#else#}不详{#/if#}</dd></dl>
+				<dl class="comAdd"><dt>小区地址</dt><dd><span>{#$detail_address#}</span> <a href="#around" id="amap">地图</a></dd></dl>
+			</div>
+		</div>
+		<div class="com_gw">
+			<h4>小区顾问 <span class="line"></span></h4>
+			<div class="jjr">
+			</div>
+			<div class="gwlistbox">
+				<div class="listmore"><a href="javascript:;"></a></div>
+
+				<div class="morelist init">
+
+					<a href="javascript:;" class="bt_close"> <img src="{#$templets_skin#}images/close1.png" alt=""></a>
+					<ul></ul>
+					<div class="more">没有更多了</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="wrap community-nav">
+	<ul>
+		<li{#if $communityNav == 1#} class="curr"{#/if#}><a href="{#$pageUrl#}">小区首页</a></li>
+		<li><a href="{#$pageUrl#}#zoushi">价格走势</a></li>
+		<li><a href="{#$pageUrl#}#success">成交记录</a></li>
+		<li{#if $communityNav == 2#} class="curr"{#/if#}><a href="{#getUrlPath service='house' template='community-hx' id={#$detail_id#}#}">户型</a></li>
+		<li{#if $communityNav == 3#} class="curr"{#/if#}><a href="{#getUrlPath service='house' template='community-album' id={#$detail_id#}#}">小区相册</a></li>
+		<li{#if $communityNav == 4#} class="curr"{#/if#}><a href="{#getUrlPath service='house' template='community-sale' id={#$detail_id#}#}">出售房源({#$detail_total_sale#})</a></li>
+		<li{#if $communityNav == 5#} class="curr"{#/if#}><a href="{#getUrlPath service='house' template='community-zu' id={#$detail_id#}#}">出租房源({#$detail_total_zu#})</a></li>
+		<li><a href="{#$pageUrl#}#map">周边配套</a></li>
+	</ul>
+</div>
+
+<div class="mask"></div>
+<div class="wrap fn-clear" id="jianjie">
 	<div class="container">
-		<h2 class="c-tit" id="basic"><s><i></i></s>基本信息</h2>
+		<h2 class="c-tit">小区简介</h2>
+		<div class="c-info">{#$detail_note#}</div>
+		<h2 class="c-tit">基本信息</h2>
 		<div class="c-info">
 			<table class="detail">
 				<tr>
@@ -118,44 +206,215 @@
 				</tr>
 			</table>
 		</div>
-		<h2 class="c-tit" id="peitao"><s><i></i></s>周边配套</h2>
-		<div class="c-info">
-			{#foreach from=$detail_config item=config#}
-			<dl class="fn-clear">
-				<dt>{#$config[0]#}：</dt>
-				<dd>{#$config[1]#}</dd>
-			</dl>
-			{#/foreach#}
-		</div>
-		<h2 class="c-tit" id="about"><s><i></i></s>小区简介</h2>
-		<div class="c-info">{#$detail_note#}</div>
 	</div>
 </div>
+<!-- 配套设施 s-->
+<div class="wrap fn-clear" id="sheshi">
+	<h2 class="c-tit">配套设施</h2>
+	<div class="sheshi">
+		<dl><dt>供水:</dt><dd>{#$detail_aroundConfig.water#}</dd></dl>
+		<dl><dt>供暖:</dt><dd>{#$detail_aroundConfig.heat#}</dd></dl>
+		<dl><dt>供电:</dt><dd>{#$detail_aroundConfig.power#}</dd></dl>
+		<dl><dt>燃气:</dt><dd>{#$detail_aroundConfig.gas#}</dd></dl>
+		<dl><dt>通讯设备:</dt><dd>{#$detail_aroundConfig.newsletter#}</dd></dl>
+		<dl><dt>电梯服务:</dt><dd>{#$detail_aroundConfig.elevator#}</dd></dl>
+		<dl><dt>安全管理:</dt><dd>{#$detail_aroundConfig.safe#}</dd></dl>
+		<dl><dt>卫生服务:</dt><dd>{#$detail_aroundConfig.clean#}</dd></dl>
+		<dl><dt>停车位:</dt><dd>{#$detail_aroundConfig.parknum#}个车位</dd></dl>
+		<dl><dt>小区入口:</dt><dd>{#$detail_aroundConfig.entrance#}</dd></dl>
+	</div>
+</div>
+<!-- 配套设施 e-->
+<!-- 周边信息 s-->
+{#if $detail_config#}
+<div class="wrap fn-clear" id="config">
+	<h2 class="c-tit">周边信息</h2>
+	<div class="c-info">
+		{#foreach from=$detail_config item=con key=k#}
+			{#foreach from=$con item=tt #}
+			<dl>{#$tt#}</dl>
+			{#/foreach#}
+		{#/foreach#}
+	</div>
+</div>
+{#/if#}
+<!-- 周边信息 e-->
+<!-- 价格走势 s-->
+<div class="wrap fn-clear" id="zoushi">
+	<h2 class="c-tit">{#$detail_title#}价格走势</h2>
+	{#if $detail_price_trend#}
+	<div class="c-info around" >
+		<p>出售：</p>
+		<canvas id="myChart"></canvas>
+		<p style="margin-top: 50px;">出租：</p>
+		<canvas id="saleChart"></canvas>
+		<p style="margin-top: 50px;">商圈出租：</p>
+		<canvas  id="sqChart"></canvas>
+	</div>
+	{#else#}
+	<div class="empty">暂无数据</div>
+	{#/if#}
+</div>
 
-{#* 地图 s *#}
-<div class="wrap map">
-	<h2 class="c-tit" id="basic"><s><i></i></s>小区位置</h2>
-	<div class="map-con {#$site_map#} fn-clear">
-		<div class="map-detail">
-			<ul class="map-tab" id="map-tab">
-				<li id="map-tab-tra" title="交通" class="active">交通</li>
-				<li id="map-tab-biz" title="商业">商业</li>
-				<li id="map-tab-edu" title="教育">教育</li>
-				<li id="map-tab-hos" title="医院">医院</li>
-			</ul>
-			<div class="map-list">
-				<p id="map-type" class="gray"></p>
-				<p id="map-count"></p>
-				<ul class="map-ul" id="map-ul"><li class="load">加载中...</li></ul>
+<!-- 价格走势 e-->
+<!-- 成交记录 s-->
+<div class="wrap" id="success">
+	<h2 class="c-tit">{#$detail_title#}成交记录</h2>
+	<div class="record-house" >
+		<table class="record_box">
+			<thead>
+			<tr>
+				<th>成交价</th>
+				<th>成交单价</th>
+				<th>成交时间</th>
+				<th>地区</th>
+				<th>类型</th>
+				<th>数据来源</th>
+			</tr>
+			</thead>
+			{#if $detail_tradeList#}
+			<tbody class="record_body">
+			{#foreach from=$detail_tradeList item=cj key=k#}
+			<tr>
+				<td>{#$cj.tradeprice#}</td>
+				<td>{#$cj.unitprice#}</td>
+				<td>{#$cj.tradetime#}</td>
+				<td>{#$cj.area#}</td>
+				<td>{#$cj.type#}</td>
+				<td>{#$cj.source#}</td>
+			</tr>
+			{#/foreach#}
+			</tbody>
+			{#else#}
+			<tbody class="record_body">
+				<tr><td style="width: 1200px;display: inline-block">暂无数据</td></tr>
+			</tbody>
+			{#/if#}
+		</table>
+		<div class="record-more">
+			<a class="web-sensors"
+			   sensors-element_type="跳转按钮"
+			   sensors-element_name="more_clinch_button"
+			   sensors-element_class_name="文字按钮"
+			   sensors-element_content="查看更多"
+			   sensors-element_target_page="community_detail_clinch"
+			   target="_blank"
+			   href="">查看更多</a>
+		</div>
+	</div>
+</div>
+<!-- 成交记录 e-->
+<!-- {#$detail_title#}二手房 s-->
+<div class="wrap salebox fn-clear">
+	<h2 class="c-tit">{#$detail_title#}二手房 <a href="{#getUrlPath service='house' template='community-sale' id={#$detail_id#}#}" class="more">全部出售房源 ></a></h2>
+	<div class="c-info midbox">
+		<ul class="fn-clear">
+			{#house action="saleList" return="sale" community={#$detail_id#} page={#$page#} pageSize="8"#}
+			<li>
+				<a href="{#$sale.url#}" target="_blank" title="{#$sale.title#}">
+					<div class="imgbox">
+						<img src="{#changeFileSize url={#$sale.litpic#} type='small'#}" alt="{#$sale.title#}">
+					</div>
+					<div class="txtbox">
+						<h4>{#$sale.title#}</h4>
+						<p class="pprice fn-clear"><span><b>{#$sale.price#}</b> {#echoCurrency type='short'#}</span></p>
+						<p class="parea"><span>{#$sale.room#}</span><em>|</em><span>{#$sale.area#}㎡</span></p>
+					</div>
+				</a>
+			</li>
+			{#/house#}
+		</ul>
+	</div>
+</div>
+<!-- {#$detail_title#}二手房 e-->
+
+<!-- {#$detail_title#}出租房 s-->
+<div class="wrap salebox fn-clear">
+	<h2 class="c-tit">{#$detail_title#}出租房 <a href="{#getUrlPath service='house' template='community-zu' id={#$detail_id#}#}" class="more">全部出租房源 ></a></h2>
+	<div class="c-info midbox">
+		<ul class="fn-clear">
+			{#house action="zuList" return="zu" community={#$detail_id#} pageSize="8"#}
+			<li>
+				<a href="{#$zu.url#}">
+					<div class="imgbox">
+						<img src="{#changeFileSize url={#$zu.litpic#} type='small'#}" alt="{#$zu.title#}">
+					</div>
+					<div class="txtbox">
+						<h4>{#$zu.title#}</h4>
+						<p class="pprice fn-clear"><span><b>{#$zu.price#}</b> {#echoCurrency type='short'#}/月</span></p>
+						<p class="parea"><span>{#$zu.room#}</span><em>|</em><span>{#$zu.area#}㎡</span></p>
+					</div>
+				</a>
+			</li>
+			{#/house#}
+		</ul>
+	</div>
+</div>
+<!-- {#$detail_title#}出租房 e-->
+
+<!-- 周边配套 s-->
+<div class="wrap" id="peitao">
+	<h2 class="c-tit">周边配套</h2>
+	<div class="c-info around" id="around">
+
+		<div class="aroundContainer">
+			<div class="aroundMap" id="map"></div>
+			<div class="tabBox">
+				<ul class="aroundType">
+					<li class="LOGCLICK" data-log_evtid='10242'  data-bl="traffic" data-key="地铁站,公交站" data-index="subway,bus" data-length="10,10">交通</li>
+					<li class="LOGCLICK" data-log_evtid='10242'  data-bl="education" data-key="幼儿园,小学,中学,大学"
+						data-index="kindergarten,primary-school,middle-school,University"
+						data-length="10,10,10,10"
+					>教育</li>
+					<li class="LOGCLICK" data-log_evtid='10242'  data-bl="medical" data-key="医院,药店" data-index="hospital,pharmacy" data-length="10,10">医疗</li>
+					<li class="LOGCLICK" data-log_evtid='10242'  data-bl="shopping" data-key="商场,超市,市场" data-index="mall,supermarket,market" data-length="10,10,10">购物</li>
+					<li class="LOGCLICK" data-log_evtid='10242'  data-bl="life" data-key="银行,ATM,餐厅,咖啡馆" data-index="bank,atm,restaurant,coffee" data-length="10,10,10,10">生活</li>
+					<li class="LOGCLICK" data-log_evtid='10242'  data-bl="entertainment" data-key="公园,电影院,健身房,体育馆" data-index="park,cinema,gym,sport" data-length="10,10,10,10">娱乐</li>
+				</ul>
+				<div class="itemTagBox"></div>
+				<div class="aroundList" id="mapListContainer"></div>
+				<div class="loading">
+					<img src="{#$templets_skin#}images/loading.gif" class="loadingImg">
+					<span class="loadingText">努力加载中...</span>
+				</div>
 			</div>
 		</div>
-		<div class="map-box" id="map"></div>
 	</div>
 </div>
-{#* 地图 e *#}
+<!-- 周边配套 e -->
+
+<!-- 周边小区房源 s-->
+<div class="wrap salebox fn-clear">
+	<h2 class="c-tit" id="sale">热门小区房源</h2>
+	<div class="c-info midbox">
+		<ul class="fn-clear">
+			{#house action="saleList" return="row" orderby=click pageSize="4"#}
+			<li>
+				<a href="{#$row.url#}" title="{#$row.title#}">
+					<div class="imgbox">
+						<img src="{#$row.litpic|replace:"large":"small"#}" alt="{#$row.title#}">
+					</div>
+					<div class="txtbox">
+						<h4>{#$row.title#}</h4>
+						<p class="pprice fn-clear"><span>{#if $row.price > 0#}<b>{#$row.price#}</b> 万{#else#}<b>面议</b>{#/if#}</span></p>
+						<p class="parea"><span>{#$row.room#}</span><em>|</em><span>{#$row.area#}㎡</span></p>
+					</div>
+				</a>
+			</li>
+			{#/house#}
+		</ul>
+	</div>
+</div>
+<!-- 周边小区房源 e-->
+
 
 {#include file="footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.qrcode.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dialog-4.2.0.js"></script>
 <script type="text/javascript" src="{#$site_map_apiFile#}"></script>
 <script type="text/javascript" src="{#$templets_skin#}js/map.js"></script>
+<script src="{#$templets_skin#}js/community_details.js"></script>
+<script src="{#$templets_skin#}js/community_public.js"></script>
 </body>
 </html>

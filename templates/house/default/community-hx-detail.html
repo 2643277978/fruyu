@@ -36,6 +36,16 @@
 {#$communityNav = 2#}
 {#$crumbTitle = "小区户型图"#}
 {#include file="community_top.html"#}
+<div class="wrap community-nav sale-nav">
+	<ul>
+		<li{#if $communityNav == 1#} class="curr"{#/if#}><a href="{#$pageUrl#}">小区首页</a></li>
+		<li{#if $communityNav == 2#} class="curr"{#/if#}><a href="{#getUrlPath service='house' template='community-hx' id={#$detail_id#}#}">户型</a></li>
+		<li{#if $communityNav == 3#} class="curr"{#/if#}><a href="{#getUrlPath service='house' template='community-album' id={#$detail_id#}#}">小区相册</a></li>
+		<li{#if $communityNav == 4#} class="curr"{#/if#}><a href="{#getUrlPath service='house' template='community-sale' id={#$detail_id#}#}">出售房源({#$detail_total_sale#})</a></li>
+		<li{#if $communityNav == 5#} class="curr"{#/if#}><a href="{#getUrlPath service='house' template='community-zu' id={#$detail_id#}#}">出租房源({#$detail_total_zu#})</a></li>
+		<li><a href="{#$pageUrl#}#map" id="peitao">周边配套</a></li>
+	</ul>
+</div>
 
 {#$hxGroup = ""#}
 {#$hxCount = 0#}
@@ -117,5 +127,7 @@ var staticPath = (u=window.staticPath||window.cfg_staticPath)?u:((window.masterD
 var shareApiUrl = staticPath.indexOf('https://')>-1?staticPath+'api/baidu_share/js/share.js':'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5);
 window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":["tsina","tqq","qzone","weixin","sqq","renren"],"bdSize":"16"},"share":{"bdSize":0}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src=shareApiUrl];
 </script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.qrcode.min.js"></script>
+<script src="{#$templets_skin#}js/community_public.js"></script>
 </body>
 </html>

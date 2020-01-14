@@ -68,7 +68,7 @@ html{background: #f8f8f8;padding-bottom: constant(safe-area-inset-bottom);paddin
 .tcInfo .tabMain{padding:.2rem;}
 /*滑动导航*/
 .tabMain{position: relative;overflow: hidden; height: 3.2rem;}
-.tabMain ul{height: 2.8rem; overflow: hidden;}
+.tabMain ul{height: 2.8rem; }
 .tabMain li,.convenience li{width: 20%;float: left;text-align: center;}
 .tabMain li a,.convenience li a{display: block;}
 .tabMain li span.icon-circle,.convenience li span.icon-circle{display: block;width: 1.5rem;margin: 0 auto;padding-top: .1rem; padding-bottom: .12rem;}

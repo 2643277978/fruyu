@@ -162,7 +162,7 @@
 	{#if $business != 0#}
 	{#$addr = $business#}
 	{#/if#}
-	{#house action="zuList" return="zu" addrid={#$addr#} subway={#$subway#} station={#$station#} price={#$price#} room={#$room#} zhuangxiu={#$zhuangxiu#} rentype={#$rentype#} type={#$type#} keywords={#$keywords#} orderby={#$orderby#} page={#$page#} pageSize="20"#}
+	{#house action="zuList" return="zu" addrid={#$addr#} subway={#$subway#} station={#$station#} price={#$price#} room={#$room#} zhuangxiu={#$zhuangxiu#} rentype={#$rentype#} type={#$type#} keywords={#$keywords#} orderby={#$orderby#} page={#$page#} pageSize="60"#}
 	<div class="l-item fn-clear">
 		{#if $zu.isbid == 1#}<em class="jj">竞价</em>{#/if#}
 		<div class="more">
@@ -170,12 +170,28 @@
 			<p>{#$zu.room#}</p>
 		</div>
 		<dl class="fn-clear">
-			<dt><a href="{#$zu.url#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url={#$zu.litpic#} type='small'#}" alt="{#$zu.title#}" title="{#$zu.title#}" />{#if $zu.usertype == 0#}<em>个人</em>{#elseif $zu.usertype == 1#}<i>中介</i>{#/if#}</a></dt>
+			<dt><a href="{#$zu.url#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url={#$zu.litpic#} type='small'#}" alt="{#$zu.title#}" title="{#$zu.title#}" />{#if $zu.usertype == 0#}<em>个人</em>{#elseif $zu.usertype == 1#}<i></i>{#/if#}</a></dt>
 			<dd>
 				<h3><a href="{#$zu.url#}" target="_blank" title="{#$zu.title#}">{#$zu.title#}</a></h3>
-				<p><a href="{#getUrlPath service='house' template='zu' addrid=0 business={#$zu.addrid#}#}">{#foreach from=$zu.addr item=addr#}{#$addr#}-{#/foreach#}</a><a href="{#$zu.communityUrl#}" target="_blank">{#$zu.community#}</a><span class="addr-icon"></span>{#$zu.address#}</p>
-				<p>{#$zu.rentype#}<i>|</i>{#$zu.area#}㎡(建筑面积)<i>|</i>{#$zu.zhuangxiu#}<i>|</i>{#$zu.bno#}/{#$zu.floor#}层<i>|</i>朝{#$zu.direction#}</p>
-				<p class="u">{#if $zu.usertype == 1#}<a href="{#getUrlPath service='house' template='broker-detail' id={#$zu.userid#} tpl='zu'#}" target="_blank">{#$zu.nickname#}</a>{#else#}<a>{#$zu.username#}</a>{#/if#}<span class="upd"></span>{#$zu.timeUpdate#}更新</p>
+				<p><a href="{#getUrlPath service='house' template='zu' addrid=0 business={#$zu.addrid#}#}">{#foreach from=$zu.addr item=addr#}{#$addr#}-{#/foreach#}</a><a href="{#$zu.communityUrl#}" target="_blank">{#$zu.community#}</a><span class="addr-icon"></span>{#$zu.address#}
+				</p>
+				<p>{#$zu.rentype#}<i>|</i>{#$zu.area#}㎡(建筑面积)<i>|</i>{#$zu.zhuangxiu#}<i>|</i>{#if $zu.bno==0|| $zu.bno<10 #}低层{#elseif $zu.bno==200 ||$zu.bno>10 && $zu.bno>15 #}中层{#elseif $zu.bno ==201 || $zu.bno>15 #}高层{#/if#}/{#$zu.floor#}层<i>|</i>朝{#$zu.direction#}
+				</p>
+				<p class="u">{#if $zu.usertype == 1#}<a href="{#getUrlPath service='house' template='broker-detail' id={#$zu.userid#} tpl='zu'#}" target="_blank">{#$zu.nickname#}</a>{#else#}<a>{#$zu.username#}</a>{#/if#}<span class="upd"></span>{#$zu.timeUpdate#}更新
+					{#if $zu.subway#}
+					<span class="ditie">
+									<select name="" id="">
+										{#foreach from=$zu.subway item=sub#}
+										{#if $sub.distance>3000 ||$sub.distance=="infinite"  #}
+										<option value={#$sub#}>{#$sub.line#}{#$sub.station#}</option>
+										{#else#}
+										<option value={#$sub#}>{#$sub.line#}{#$sub.station#}{#$sub.distance#}米</option>
+										{#/if#}
+										{#/foreach#}
+									</select>
+					</span>
+					{#/if#}
+				</p>
 			</dd>
 		</dl>
 	</div>

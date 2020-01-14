@@ -1,522 +1,290 @@
-var Bmap,
-	list_temp = function(config){
-		return '<li id="'+config.id+'"><i class="map-icon icon '+config.icon+'"></i><p class="text"> '+config.title+' <span class="gray"> （'+config.detail+'） </span></p><span class="distance gray"> '+config.distance+' 米</span></li>';
-	},
-	icon_temp = function(config){
-		return '<div id="'+config.id+'" class="mark-icon-box"><i class="map-icon mark-icon '+config.icon+'"></i></div>';
-	},
-	detail_temp = function(config){
-		return '<div id="'+config.id+'" class="mark-tip" style="display:none"><i class="mark-tip-sign"></i><div class="title"><span>'+config.title+'</span><b>'+config.distance+'米</b></div>'+config.detail+'<i class="map-icon icon"></i></div>';
-	},
-	pan_temp = function(config){
-		return '<div class="life-mark"><div class="text yahei">'+config.panName+'</div><i class="map-icon icon"></i></div>';
-	};
-
-var d = {
-	bus: {icon: "bus"},
-	subway: {icon: "met"},
-	bank: {icon: "bank"},
-	market: {icon: "buy"},
-	restaurant: {icon: "bin"},
-	hospital: {icon: "hos"},
-	school: {icon: "sch"}
-};
-var e = {
-	tra: ["subway", "bus"],
-	biz: ["market", "bank", "restaurant"],
-	hos: ["hospital"],
-	edu: ["school"]
-};
-var harr = {
-	tra: {
-		soj: "{from:loupan_index_traffic}",
-		type: "2公里内的交通设施",
-		subway: "{%num%}条公交/地铁",
-		bus: "{%num%}个公交站"
-	},
-	biz: {
-		soj: "{from:loupan_index_commeric}",
-		type: "2公里内的商业设施",
-		market: "购物{%num%}处",
-		bank: "银行{%num%}处",
-		restaurant: "餐饮{%num%}处"
-	},
-	edu: {
-		soj: "{from:loupan_index_education}",
-		type: "2公里内的教育设施",
-		school: "学校{%num%}处"
-	},
-	hos: {
-		soj: "{from:loupan_index_hospital}",
-		type: "2公里内的医院设施",
-		hospital: "医院{%num%}处"
-	}
-};
-function overlay(l, n) {
-	var k = {tab: "tra", type: "subway",	shift: {x: 14, y: 36}, marker: "", done: function() {}};
-	var m = $.extend({}, k, n);
-	this._point = l;
-	this.tab = m.tab;
-	this.type = m.type;
-	this.shift = m.shift;
-	this.marker = m.marker;
-	this.done = m.done
-}
-if(site_map == "baidu"){
-	overlay.prototype = new BMap.Overlay();
-}
-overlay.prototype.initialize = function(k) {
-	this.map = k;
-	this.marker = $(this.marker);
-	k.getPanes().markerPane.appendChild(this.marker[0]);
-	return this.marker[0]
-};
-overlay.prototype.draw = function() {
-	var k = this.map.pointToOverlayPixel(this._point);
-	this.marker.css({
-		left: k.x - this.shift.x + "px",
-		top: k.y - this.shift.y + "px"
-	});
-	this.done()
-};
-function b(q, m, p, n) {
-	var l = {
-		distance: 2000,
-		keywords: [
-			{key: "公交/地铁", property: "subway"},
-			{key: "公交",	property: "bus"},
-			{key: "购物",	property: "market"},
-			{key: "银行",	property: "bank"},
-			{key: "餐饮",	property: "restaurant"},
-			{key: "学校", property: "school"},
-			{key: "医院",	property: "hospital"}
-		],
-		success: q.success
-	};
-	var o = $.extend({}, l, p);
-	function k(r, y, x) {
-		var u = {},	w = [],	v = [];
-		for (var s = 0; s < x.keywords.length; s++) {
-			w[s] = x.keywords[s].key;
-			v[s] = x.keywords[s].property
-		}
-		var z = {
-			onSearchComplete: function(D) {
-				if (t.getStatus() == BMAP_STATUS_SUCCESS) {
-					for (var B = 0; B < D.length; B++) {
-						var A = D[B].keyword;
-						var E = [];
-						for (var C = 0; C < D[B].getCurrentNumPois(); C++) {
-							E.push({
-								title: D[B].getPoi(C).title,
-								address: D[B].getPoi(C).address,
-								distance: q.getDistance(D[B].getPoi(C).point, y).toFixed(0),
-								point: D[B].getPoi(C).point,
-								type: v[B]
-							})
-						}
-						u[v[B]] = E
-					}
-				} else {
-					u = {
-						bank: [],
-						bus: [],
-						subway: [],
-						market: [],
-						restaurant: [],
-						school: [],
-						hospital: []
-					}
-				}
-				n.nearbyData = u;
-				x.success(u)
-			},
-			pageCapacity: 25
-		};
-		var t = new BMap.LocalSearch(q, z);
-		t.searchNearby(w, m, o.distance)
-	}
-	return k(q, m, o)
-}
+$(function(){
 
 
+	$.template=function(){var rsplit=function(e,t){for(var n,r=t.exec(e),i=new Array;null!=r;)n=r.index,t.lastIndex,0!=n&&(e.substring(0,n),i.push(e.substring(0,n)),e=e.slice(n)),i.push(r[0]),e=e.slice(r[0].length),r=t.exec(e);return""==!e&&i.push(e),i},chop=function(e){return e.substr(0,e.length-1)},extend=function(e,t){for(var n in t)t.hasOwnProperty(n)&&(e[n]=t[n])},EJS=function(e){if(e="string"==typeof e?{view:e}:e,this.set_options(e),e.precompiled)return this.template={},this.template.process=e.precompiled,void EJS.update(this.name,this);if(e.element){if("string"==typeof e.element){var t=e.element;if(e.element=document.getElementById(e.element),null==e.element)throw t+"does not exist!"}e.element.value?this.text=e.element.value:this.text=e.element.innerHTML,this.name=e.element.id,this.type="["}else if(e.url){e.url=EJS.endExt(e.url,this.extMatch),this.name=this.name?this.name:e.url;var n=e.url,r=EJS.get(this.name,this.cache);if(r)return r;if(r==EJS.INVALID_PATH)return null;try{this.text=EJS.request(n+(this.cache?"":"?"+Math.random()))}catch(e){}if(null==this.text)throw{type:"EJS",message:"There is no template at "+n}}var r=new EJS.Compiler(this.text,this.type);r.compile(e,this.name),EJS.update(this.name,this),this.template=r};return EJS.prototype={render:function(e,t){e=e||{},this._extra_helpers=t;var n=new EJS.Helpers(e,t||{});return this.template.process.call(e,e,n)},update:function(element,options){if("string"==typeof element&&(element=document.getElementById(element)),null==options)return _template=this,function(e){EJS.prototype.update.call(_template,element,e)};"string"==typeof options?(params={},params.url=options,_template=this,params.onComplete=function(request){var object=eval(request.responseText);EJS.prototype.update.call(_template,element,object)},EJS.ajax_request(params)):element.innerHTML=this.render(options)},out:function(){return this.template.out},set_options:function(e){this.type=e.type||EJS.type,this.cache=null!=e.cache?e.cache:EJS.cache,this.text=e.text||null,this.name=e.name||null,this.ext=e.ext||EJS.ext,this.extMatch=new RegExp(this.ext.replace(/\./,"."))}},EJS.endExt=function(e,t){return e?(t.lastIndex=0,e+(t.test(e)?"":this.ext)):null},EJS.Scanner=function(e,t,n){extend(this,{left_delimiter:t+"%",right_delimiter:"%"+n,double_left:t+"%%",double_right:"%%"+n,left_equal:t+"%=",left_comment:t+"%#"}),this.SplitRegexp="["==t?/(\[%%)|(%%\])|(\[%=)|(\[%#)|(\[%)|(%\]\n)|(%\])|(\n)/:new RegExp("("+this.double_left+")|(%%"+this.double_right+")|("+this.left_equal+")|("+this.left_comment+")|("+this.left_delimiter+")|("+this.right_delimiter+"\n)|("+this.right_delimiter+")|(\n)"),this.source=e,this.stag=null,this.lines=0},EJS.Scanner.to_text=function(e){return null==e||void 0===e?"":e instanceof Date?e.toDateString():e.toString?e.toString():""},EJS.Scanner.prototype={scan:function(e){if(scanline=this.scanline,regex=this.SplitRegexp,""==!this.source)for(var t=rsplit(this.source,/\n/),n=0;n<t.length;n++){var r=t[n];this.scanline(r,regex,e)}},scanline:function(e,t,n){this.lines++;for(var r=rsplit(e,t),i=0;i<r.length;i++){var o=r[i];if(null!=o)try{n(o,this)}catch(e){throw{type:"EJS.Scanner",line:this.lines}}}}},EJS.Buffer=function(e,t){this.line=new Array,this.script="",this.pre_cmd=e,this.post_cmd=t;for(var n=0;n<this.pre_cmd.length;n++)this.push(e[n])},EJS.Buffer.prototype={push:function(e){this.line.push(e)},cr:function(){this.script=this.script+this.line.join("; "),this.line=new Array,this.script=this.script+"\n"},close:function(){if(this.line.length>0){for(var e=0;e<this.post_cmd.length;e++)this.push(pre_cmd[e]);this.script=this.script+this.line.join("; "),line=null}}},EJS.Compiler=function(e,t){this.pre_cmd=["var ___ViewO = [];"],this.post_cmd=new Array,this.source=" ",null!=e&&("string"==typeof e?(e=e.replace(/\r\n/g,"\n"),e=e.replace(/\r/g,"\n"),this.source=e):e.innerHTML&&(this.source=e.innerHTML),"string"!=typeof this.source&&(this.source="")),t=t||"<";var n=">";switch(t){case"[":n="]";break;case"<":break;default:throw t+" is not a supported deliminator"}this.scanner=new EJS.Scanner(this.source,t,n),this.out=""},EJS.Compiler.prototype={compile:function(options,name){options=options||{},this.out="";var put_cmd="___ViewO.push(",insert_cmd=put_cmd,buff=new EJS.Buffer(this.pre_cmd,this.post_cmd),content="",clean=function(e){return e=e.replace(/\\/g,"\\\\"),e=e.replace(/\n/g,"\\n"),e=e.replace(/"/g,'\\"')};this.scanner.scan(function(e,t){if(null==t.stag)switch(e){case"\n":content+="\n",buff.push(put_cmd+'"'+clean(content)+'");'),buff.cr(),content="";break;case t.left_delimiter:case t.left_equal:case t.left_comment:t.stag=e,content.length>0&&buff.push(put_cmd+'"'+clean(content)+'")'),content="";break;case t.double_left:content+=t.left_delimiter;break;default:content+=e}else switch(e){case t.right_delimiter:switch(t.stag){case t.left_delimiter:"\n"==content[content.length-1]?(content=chop(content),buff.push(content),buff.cr()):buff.push(content);break;case t.left_equal:buff.push(insert_cmd+"(EJS.Scanner.to_text("+content+")))")}t.stag=null,content="";break;case t.double_right:content+=t.right_delimiter;break;default:content+=e}}),content.length>0&&buff.push(put_cmd+'"'+clean(content)+'")'),buff.close(),this.out=buff.script+";";var to_be_evaled="/*"+name+"*/this.process = function(_CONTEXT,_VIEW) { try { with(_VIEW) { with (_CONTEXT) {"+this.out+" return ___ViewO.join('');}}}catch(e){e.lineNumber=null;throw e;}};";try{eval(to_be_evaled)}catch(e){if("undefined"==typeof JSLINT)throw e;JSLINT(this.out);for(var i=0;i<JSLINT.errors.length;i++){var error=JSLINT.errors[i];if("Unnecessary semicolon."!=error.reason){error.line++;var e=new Error;throw e.lineNumber=error.line,e.message=error.reason,options.view&&(e.fileName=options.view),e}}}}},EJS.config=function(e){EJS.cache=null!=e.cache?e.cache:EJS.cache,EJS.type=null!=e.type?e.type:EJS.type,EJS.ext=null!=e.ext?e.ext:EJS.ext;var t=EJS.templates_directory||{};EJS.templates_directory=t,EJS.get=function(e,n){return 0==n?null:t[e]?t[e]:null},EJS.update=function(e,n){null!=e&&(t[e]=n)},EJS.INVALID_PATH=-1},EJS.config({cache:!0,type:"<",ext:".ejs"}),EJS.Helpers=function(e,t){this._data=e,this._extras=t,extend(this,t)},EJS.Helpers.prototype={view:function(e,t,n){return n||(n=this._extras),t||(t=this._data),new EJS(e).render(t,n)},to_text:function(e,t){return null==e||void 0===e?t||"":e instanceof Date?e.toDateString():e.toString?e.toString().replace(/\n/g,"<br />").replace(/''/g,"'"):""}},EJS.newRequest=function(){for(var e=[function(){return new ActiveXObject("Msxml2.XMLHTTP")},function(){return new XMLHttpRequest},function(){return new ActiveXObject("Microsoft.XMLHTTP")}],t=0;t<e.length;t++)try{var n=e[t]();if(null!=n)return n}catch(e){continue}},EJS.request=function(e){var t=new EJS.newRequest;t.open("GET",e,!1);try{t.send(null)}catch(e){return null}return 404==t.status||2==t.status||0==t.status&&""==t.responseText?null:t.responseText},EJS.ajax_request=function(e){e.method=e.method?e.method:"GET";var t=new EJS.newRequest;t.onreadystatechange=function(){4==t.readyState&&(t.status,e.onComplete(t))},t.open(e.method,e.url),t.send(null)},function(e){return new EJS({text:e,type:"<"})}}();
 
-function Bmap(n) {
-	var k = {
-		panName: "北京天安门",
-		lng: 116.403963,
-		lat: 39.915112,
-		mapId: "map",
-		initList: {
-			type: "tra",
-			include: ["subway", "bus"]
+
+	var t, n, a = {}, i = $(".aroundType li"), o = $("#mapListContainer"), r = i.first().data("key"), s = i.first().data("index"), l = i.first().data("length"), c = "", d = "", u = "", f = "", g = !1, h = [];
+	markerTpl = $.template("<i class='item <%=itemIcon%>' data-label='<%=itemIndex%>' title='<%=title%>'></i>"),
+		searchItemTpl = $.template("<div  class='itemContent'> <span class='icon-<%=keyword%>'></span><span class='itemText itemTitle'><%=title%></span><span class='icon-distance'></span><span class='itemText itemdistance'><%=distance%></span></div><div class='itemInfo'><%=address%></div>"),
+		resblockOverlayTpl = $.template("<div class='name'><%=name%><i class='arrow'></i></div>"),
+		listTpl = $.template($("#mapListTpl").html()),
+		load = function(e) {
+			var t = document.createElement("script");
+			t.src = "https://api.map.baidu.com/api?v=2.0&ak=" + e + "&callback=mapInitialize",
+				document.body.appendChild(t)
 		}
-	};
-	var m = $.extend({}, k, n);
-	var l = this;
-	l.op = m;
-	l.point = new BMap.Point(pageData.lng, pageData.lat);
-	l.map = new BMap.Map("map");
-	l.map.centerAndZoom(l.point, 14);
-	l.map.disableScrollWheelZoom();
-	l.map.addControl(new BMap.NavigationControl());
-	l.success = function() {
-		l.drawPan();
-		l.drawList(l.nearbyData, l.op.initList);
-		l.drawDetail();
-		l.drawPoint();
-		l.addHover();
-		l.addControl();
-	};
-	b(l.map, l.point, {success: l.success},	l);
-};
-Bmap.prototype.drawPan = function() {
-	var m = pan_temp({panName: pageData.panName});
-	var n = {
-		shift: {x: 0,	y: 38},
-		marker: m,
-		done: function() {
-			var o = this;
-			var p = o.marker.outerWidth();
-			o.marker.css("marginLeft", Math.floor(0 - p / 2) + "px")
-		}
-	};
-	var k = new overlay(this.point, n);
-	var l = new BMap.Circle(this.point, 2000, {
-		strokeColor: "#62ab00",
-		strokeWeight: 1,
-		strokeOpacity: 0.4
-	});
-	this.map.addOverlay(k);
-	this.map.addOverlay(l);
-};
-Bmap.prototype.drawPoint = function() {
-	for (var l = 0; l < this.listData.length; l++) {
-		var m = this.listData[l].point;
-		var o = "icon-" + l;
-		var n = {
-			tab: this.tab,
-			type: this.listData[l].type,
-			shift: {x: 14, y: 36},
-			marker: icon_temp({icon: d[this.listData[l].type].icon,	id: o}),
-			done: function() {}
-		};
-		var k = new overlay(m, n);
-		this.map.addOverlay(k)
-	}
-};
-Bmap.prototype.drawList = function(l, m) {
-	var n = [];
-	var q = "";
-	var r = $("#map-ul");
-	var p = $("#map-count");
-	var u = $("#map-type");
-	var t = [];
-	this.tab = m.type;
-	for (var k = 0; k < m.include.length; k++) {
-		n = n.concat(l[m.include[k]]);
-		var o = l[m.include[k]].length;
-		var s = harr[m.type][m.include[k]];
-		if (o > 0) {
-			t.push(s.replace("{%num%}", o));
-		}
-	}
-	this.listData = n.sort(function(w, x) {
-		return w.distance - x.distance
-	});
-	if (n.length == 0) {
-		u.html(harr[m.type].type);
-		p.html("暂无数据")
-	} else {
-		if (n.length > 0) {
-			u.html(harr[m.type].type);
-			p.html(t.join("、"))
-		}
-	}
-	for (var k = 0; k < n.length; k++) {
-		var v = {
-			id: "list-" + k,
-			icon: d[n[k].type].icon,
-			title: n[k].title,
-			detail: n[k].address,
-			distance: n[k].distance
-		};
-		q += list_temp(v);
-	}
-	r.html(q)
-};
-Bmap.prototype.drawDetail = function() {
-	for (var l = 0; l < this.listData.length; l++) {
-		var m = this.listData[l].point;
-		var n = {
-			tab: this.tab,
-			type: this.listData[l].type,
-			shift: {
-				x: -120,
-				y: 49
-			},
-			marker: detail_temp({
-				id: "detail-" + l,
-				title: this.listData[l].title,
-				distance: this.listData[l].distance,
-				detail: '<div class="content">' + this.listData[l].address + "</div>"
+		,
+		mapInit = function() {
+			t = new BMap.Map("map",{
+				enableMapClick: !1
 			}),
-			done: function() {
-				var o = this;
-				var p = o.marker.outerWidth();
-				var q = o.marker.outerHeight();
-				o.marker.css({
-					marginLeft: 0 - p / 2 - 18,
-					marginTop: 0 - q
+				n = new BMap.Point(longitude,latitude),
+			!0 && t.addControl(new BMap.NavigationControl({
+				type: BMAP_NAVIGATION_CONTROL_LARGE,
+				offset: new BMap.Size(19,78)
+			})),
+				t.centerAndZoom(n, 15),
+				setResblockOverlays(),
+				i.first().trigger("click"),
+				tongji()
+		}
+		,
+		renderTagBox = function() {
+			var e = r.split(",")
+				, t = s.split(",")
+				, n = l.split(",")
+				, a = "";
+			$.each(e, function(e, i) {
+				a += '<div class="tagStyle LOGCLICK" data-bl="' + t[e] + '" data-log_evtid="10242" data-index="' + t[e] + '" data-length="' + n[e] + '">' + i + "</div>"
+			}),
+				$(".itemTagBox").html(a),
+				liClick()
+		}
+		,
+		liClick = function() {
+			i.on("click", function() {
+				$(this).hasClass("selectTag") || (r = $(this).data("key"),
+					s = $(this).data("index"),
+					l = $(this).data("length"),
+					$(this).parent().find(".selectTag").removeClass("selectTag"),
+					$(this).addClass("selectTag"),
+					renderTagBox(),
+					$(".tagStyle").first().trigger("click"))
+			}),
+				$(".tagStyle").on("click", function() {
+					d = $(this).text(),
+						c = $(this).data("index"),
+						u = $(this).data("length"),
+						t.clearOverlays(),
+						setResblockOverlays(),
+						t.reset(),
+						$("#mapListContainer").html(""),
+						$(".loading").show(),
+					$(this).hasClass("select") || ($(this).parent().find(".select").removeClass("select"),
+						$(this).addClass("select"),
+						a[c] ? render() : searchDeal(d),
+						o.scrollTop(0))
+				}),
+				o.delegate("li", "mouseover", function() {
+					var e = $(this)
+						, t = e.data("index");
+					e.hasClass("itemBlue"),
+						cancelBlue("hover"),
+						setBlue(t, "hover")
+				}),
+				o.delegate("li", "mouseout", function() {
+					cancelBlue("hover")
+				}),
+				o.delegate("li", "click", function() {
+					var e = $(this).data("index")
+						, n = $(this).data("address").split(",")
+						, i = new BMap.Point(n[0],n[1])
+						, o = t.getBounds()
+						, r = $(this).index()
+						, s = a[c][r];
+					f = e,
+						cancelBlue("click"),
+						renderMarkerDetail(e, s),
+						setBlue(e, "click"),
+					1 != o.containsPoint(i) && (t.setViewport([i]),
+						t.setZoom(16))
 				})
-			}
-		};
-		var k = new overlay(m, n);
-		this.map.addOverlay(k);
-	}
-};
-Bmap.prototype.addHover = function() {
-	var k = this;
-	$("#map").off("mouseover mouseout", ".mark-icon-box");
-	$("#map-ul").off("mouseover mouseout", "li");
-	$("#map").on("mouseover mouseout", ".mark-icon-box", function(n) {
-		var l = $("#" + $(this).attr("id").replace(/icon/, "detail"));
-		var m = $("#" + $(this).attr("id").replace(/icon/, "list"));
-		if (n.type == "mouseover") {
-			l.show();
-			m.addClass("active");
-			m.find(".text").css("color", "#ff6500");
-		} else {
-			l.hide();
-			m.removeClass("active");
-			m.find(".text").css("color", "#333");
 		}
-	});
-	$("#map-ul").on("mouseover mouseout", "li", function(n) {
-		var m = $("#" + $(this).attr("id").replace(/list/, "detail"));
-		var l = $("#" + $(this).attr("id").replace(/list/, "icon"));
-		if (n.type == "mouseover") {
-			$(this).find(".text").css("color", "#ff6500");
-			$(this).addClass("active");
-			l.addClass("life-map-active");
-			m.show();
-		} else {
-			$(this).find(".text").css("color", "#333");
-			$(this).removeClass("active");
-			l.removeClass("life-map-active");
-			m.hide();
+		,
+		searchDeal = function(e) {
+			var i = e;
+			bdLocalSearch = new BMap.LocalSearch(t),
+				bdLocalSearch.searchNearby(i, n, 2e3),
+				bdLocalSearch.setSearchCompleteCallback(function(e) {
+					var t = [];
+					if (bdLocalSearch.getStatus() == BMAP_STATUS_SUCCESS)
+						for (var n = 0; n < e.getCurrentNumPois(); n++)
+							t.push(e.getPoi(n));
+					a[c] = t.filter(function(e) {
+						return "null" != e.address
+					}),
+						calcDistance()
+				})
 		}
-	});
-};
-Bmap.prototype.addControl = function() {
-	var k = this;
-	$("#map-tab").on("click", "li", function(m) {
-		if (!$(this).hasClass("active")) {
-			var l = $(this).attr("id").replace(/map-tab-/, "");
-			var n = $("#map-tab li.active");
-			n.removeClass("active");
-			$(this).addClass("active");
-			k.map.clearOverlays();
-			k.drawPan();
-			k.drawList(k.nearbyData, {
-				type: l,
-				include: e[l]
+		,
+		calcDistance = function() {
+			var e = a[c]
+				, t = new BMap.MercatorProjection
+				, i = t.lngLatToPoint(n);
+			$.each(e, function(e, n) {
+				var a = t.lngLatToPoint(n.point)
+					, o = Math.round(Math.sqrt(Math.pow(i.x - a.x, 2) + Math.pow(i.y - a.y, 2)));
+				n.distance = o + "米"
+			}),
+				sortList(),
+				rangeDeal()
+		}
+		,
+		sortList = function() {
+			$.each(a, function(e, t) {
+				t.sort(function(e, t) {
+					return parseFloat(e.distance) - parseFloat(t.distance)
+				})
+			})
+		}
+		,
+		rangeDeal = function() {
+			var e = a[c]
+				, t = e.filter(function(e) {
+				return parseFloat(e.distance) < 2e3 && "null" != e.address
+			})
+				, n = u >= t.length ? t.length : u - t.length;
+			t.splice(n),
+				a[c] = t,
+				render()
+		}
+		,
+		tongji = function() {
+			var e = 0;
+			$(window).bind("scroll", function() {
+				var t = $("body").scrollTop();
+				t > 5265 && 0 == e && t < 5855 ? e = 1 : (t > 5855 || t < 5265) && (e = 0)
+			}),
+				t.addEventListener("zoomend", function() {
+					this.getZoom()
+				}),
+				t.addEventListener("click", function(e) {
+					g || $(".showMarkerDetail").remove(),
+						g = !1
+				})
+		}
+		,
+		setResblockOverlays = function() {
+			var a = resblockOverlayTpl.render({
+				name: resblockName
+			})
+				, i = new BMap.Label(a,{
+				position: n,
+				offset: new BMap.Size(-30,-24)
 			});
-			k.drawDetail();
-			k.drawPoint();
-			k.addHover();
+			i.setStyle({
+				border: 0,
+				backgroundColor: "transparent"
+			}),
+				t.addOverlay(i)
 		}
-	});
-}
-
-
-//百度地图
-if(site_map == "baidu"){
-	new Bmap(pageData);
-
-//google 地图
-}else if(site_map == "google"){
-
-	//加载地图事件
-	function initialize() {
-		var map = new google.maps.Map(document.getElementById('map'), {
-			zoom: 14,
-			center: new google.maps.LatLng(parseFloat(pageData.lat), parseFloat(pageData.lng)),
-			zoomControl: true,
-			mapTypeControl: false,
-			streetViewControl: false,
-			zoomControlOptions: {
-				style: google.maps.ZoomControlStyle.SMALL
+		,
+		render = function() {
+			var e = a[c]
+				, n = "";
+			if (t.clearOverlays(),
+				setResblockOverlays(),
+			e.length > 0) {
+				var i = "";
+				$.each(e, function(e, t) {
+					var n = searchItemTpl.render({
+						keyword: c,
+						title: t.title,
+						distance: t.distance,
+						address: t.address
+					});
+					i += "<li data-index=" + c + e + " data-address=" + t.point.lng + "," + t.point.lat + " title=" + t.title + "><div class='contentBox'>" + n + "</div></li>",
+						addItemOverlays("icon-" + c, c + e, t),
+						h.push(t.point)
+				}),
+					n += "<ul class='itemBox'>" + i + "</ul>"
 			}
-		});
-
-		var infowindow = new google.maps.InfoWindow({
-        content: '<div style="font-weight: 700; font-size: 16px;">' + pageData.panName + '</div>' + '<p style="line-height: 3em;">详细地址：' + pageData.address + '</p>'
-      });
-
-		var marker = new google.maps.Marker({
-			position: {lat: parseFloat(pageData.lat), lng: parseFloat(pageData.lng)},
-			map: map,
-			title: pageData.panName
-		});
-		marker.addListener('click', function() {
-			infowindow.open(map, marker);
-		});
-	}
-
-	google.maps.event.addDomListener(window, 'load', initialize);
-
-}else if (site_map == "amap") {
-
-	var mapObj,toolBar,MGeocoder,mar;
-
-	//初始化地图对象，加载地图
-	mapObj = new AMap.Map("map",{
-      //二维地图显示视口
-      view: new AMap.View2D({
-          center: new AMap.LngLat(pageData.lng,pageData.lat),//地图中心点
-          zoom: 13 //地图显示的缩放级别
-      })
-  });
-
-	//在地图中添加ToolBar插件
-	mapObj.plugin(["AMap.ToolBar"],function(){
-			toolBar = new AMap.ToolBar({position: 'RB'});
-			toolBar.show();
-			toolBar.showDirection();
-			toolBar.hideRuler();
-			mapObj.addControl(toolBar);
-	});
-
-	//添加地图类型切换插件
-    mapObj.plugin(["AMap.MapType"],function(){
-        //地图类型切换
-        var mapType= new AMap.MapType({
-            defaultType:0//默认显示地图
-        });
-        mapObj.addControl(mapType);
-    });
-
-	//配置marker图标
-	var markerOption = {
-		map: mapObj,
-			offset:new AMap.Pixel(-32,-64), //标记显示位置偏移量
-
-		icon:new AMap.Icon({  //复杂图标
-						size:new AMap.Size(64,64),  //图标大小
-						image:"/static/images/mark_ditu.png" //图标地址
+			n = "" != n ? n : "<div class='nullSupport'>很抱歉，该配套下无相关内容，请查看其它配套</div>",
+				$("#mapListContainer").html(n),
+				$(".aroundList .name").eq(0).css("border-top", "none"),
+				$(".loading").hide()
+		}
+		,
+		addItemOverlays = function(e, n, a) {
+			var i = markerTpl.render({
+				itemIcon: e,
+				itemIndex: n,
+				title: a.title
+			})
+				, o = new BMap.Label(i,{
+				position: a.point,
+				offset: new BMap.Size(-17,-40)
+			});
+			o.setStyle({
+				border: 0,
+				backgroundColor: "transparent"
+			}),
+				t.addOverlay(o),
+				$(".BMapLabel").eq(0).css("z-index", 2),
+				labelClick(o, n, a)
+		}
+		,
+		renderMarkerDetail = function(e, n) {
+			var a = searchItemTpl.render({
+				keyword: c,
+				title: n.title,
+				distance: n.distance,
+				address: n.address
+			})
+				, i = $(".aroundMap").offset().top
+				, o = $(".blueLabel").offset().top
+				, r = '<div class="makerDetailStyle" data-detail="' + e + '">' + a + '<span class="detailArrow"></span></div>';
+			$(".labelUp").append(r);
+			var s = $(".makerDetailStyle").height()
+				, l = i + s + 80
+				, d = -parseInt(s) - parseInt($(".blueLabel").height()) - 20;
+			l > o && t.panBy(0, l - o),
+				$(".makerDetailStyle").css("top", d)
+		}
+		,
+		labelClick = function(e, t, n) {
+			e.addEventListener("click", function(e) {
+				var a = e || window.event;
+				f = t,
+					cancelBlue("click"),
+					renderMarkerDetail(t, n),
+					setBlue(t, "click"),
+					scrollTop(t),
+					g = !0,
+					a.stopPropagation ? a.stopPropagation() : a.cancelBubble = !0
+			}),
+				e.addEventListener("mouseover", function(e) {
+					cancelBlue("hover"),
+						setBlue(t, "hover")
+				}),
+				e.addEventListener("mouseout", function(e) {
+					cancelBlue("hover")
 				})
-	};
-
-	//自定义地图配置
-	//如果经、纬度都为0则设置城市名为中心点
-	if(pageData.lng == 0 && pageData.lat == 0){
-
-		//根据地址解析
-		if(city != ""){
-			var address = city;
-			if(addr != "") address = addr;
-
-			//加载地理编码插件
-		    mapObj.plugin(["AMap.Geocoder"], function() {       
-		        MGeocoder = new AMap.Geocoder({
-		            city: city
-		        });
-		        //返回地理编码结果
-		        AMap.event.addListener(MGeocoder, "complete", geocoder_CallBack);
-		        //地理编码
-		        MGeocoder.getLocation(address);
-		    });
-
-		//如果城市为空，地图默认显示用户当前城市范围
-		}else{
-			mapObj = new AMap.Map("map");
-
 		}
-
-	}else{
-		addmarker(pageData.lng, pageData.lat);
-	}
-
-    
-	function addmarker(lngX, latY) {
-		mar ? mar.setMap(null) : "";  //清除地图上已有的marker
-			markerOption.position = new AMap.LngLat(lngX, latY); //设置marker的坐标位置
-			mar = new AMap.Marker(markerOption);   //向地图添加marker
-			new AMap.LngLat(lngX, latY);
-			//mapObj.setZoom(14);
-	}
-
-}else if (site_map == "qq") {
-
-	var mapOptions = {
-		zoom: 14,
-		center: new qq.maps.LatLng(pageData.lat, pageData.lng),
-		zoomControl: true,
-		zoomControlOptions: {
-			style: qq.maps.ZoomControlStyle.SMALL,
-			position: qq.maps.ControlPosition.RIGHT_BOTTOM
-		},
-		panControlOptions: {
-			position: qq.maps.ControlPosition.RIGHT_BOTTOM
-		}
-	};
-
-	var map = new qq.maps.Map(document.getElementById("map"), mapOptions);
-	var anchor = new qq.maps.Point(32, 64);
-	var size = new qq.maps.Size(64, 64);
-	var origin = new qq.maps.Point(0, 0);
-	var myIcon = new qq.maps.MarkerImage('/static/images/mark_ditu.png', size, origin, anchor);
-
-	var marker = new qq.maps.Marker({
-		icon: myIcon,
-		position: mapOptions.center,
-		animation: qq.maps.MarkerAnimation.DROP,
-		map: map
-	});
-
-	function initialize() {
-
-		//如果经、纬度都为0则设置城市名为中心点
-		if(pageData.lng == 0 && pageData.lat == 0){
-
-			//根据地址解析
-			if(city != ""){
-				var address = city;
-				if(addr != "") address = address + addr;
-				var geocoder = new qq.maps.Geocoder({
-					complete : function(result){
-						var location = result.detail.location;
-						map.setCenter(location);
-						mapOptions.center = new qq.maps.LatLng(location.lat, location.lng);
-						setMark();
-					}
-				});
-				geocoder.getLocation(address);
-
-			//如果城市为空，则定位当前城市
-			}else{
-				var citylocation = new qq.maps.CityService({
-					complete : function(result){
-						var location = result.detail.latLng;
-						map.setCenter(location);
-						mapOptions.center = new qq.maps.LatLng(location.lat, location.lng);
-						setMark();
-					}
-				});
-				citylocation.searchLocalCity();
+		,
+		scrollTop = function(e) {
+			for (var t = 0, n = o.find("li"), a = 0; a < n.length; a++) {
+				if (n.eq(a).data("index") == e)
+					return o.scrollTop(t),
+						!1;
+				t += n.eq(a).height() + 20
 			}
-
-		}else{
-			// setMark();
 		}
-
-	}
-
-	initialize();
-
-
-}
-
-//地图结果面板滚动条事件
-$('#map-ul').scrollUnique();
+		,
+		cancelBlue = function(e) {
+			"click" == e ? ($(".contentBox").removeClass("contentActive"),
+				$(".itemText").removeClass("itemActive"),
+				$(".itemInfo").removeClass("itemActive"),
+				$(".makerDetailStyle").remove()) : o.find("li").css("backgroundColor", "#fff"),
+				$(".BMapLabel").removeClass("labelUp"),
+				$(".BMapLabel .item").removeClass("blueLabel"),
+			f && setBlue(f, "click")
+		}
+		,
+		setBlue = function(e, t) {
+			var n = $('[data-index="' + e + '"]')
+				, a = $('[data-label="' + e + '"]')
+				, i = $('[data-detail="' + e + '"]');
+			"click" == t ? (n.find(".contentBox").addClass("contentActive"),
+				n.find(".itemText").addClass("itemActive"),
+				n.find(".itemInfo").addClass("itemActive"),
+				i.removeClass("hideMarkerDetail").addClass("showMarkerDetail")) : n.css("backgroundColor", "#f6f6f6"),
+				a.parent().addClass("labelUp"),
+				a.addClass("blueLabel")
+		}
+		,
+		load('RlrCSDRWdEdwBmGizieNRp4z'),
+		window.mapInitialize = mapInit,
+		renderTagBox()
+});

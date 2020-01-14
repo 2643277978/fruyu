@@ -174,12 +174,26 @@
 			{#if $sp.type == 2#}<p>转让费：{#$sp.transfer#}万</p>{#/if#}
 		</div>
 		<dl class="fn-clear">
-			<dt><a href="{#$sp.url#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url={#$sp.litpic#} type='small'#}" alt="{#$sp.title#}" title="{#$sp.title#}" />{#if $sp.usertype == 0#}<em>个人</em>{#else#}<i>中介</i>{#/if#}</a></dt>
+			<dt><a href="{#$sp.url#}" target="_blank"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url={#$sp.litpic#} type='small'#}" alt="{#$sp.title#}" title="{#$sp.title#}" />{#if $sp.usertype == 0#}<em>个人</em>{#else#}<i></i>{#/if#}</a></dt>
 			<dd>
 				<h3><a href="{#$sp.url#}" target="_blank" title="{#$sp.title#}">{#$sp.title#}</a></h3>
 				<p><span class="addr-icon"></span><a href="{#getUrlPath service="house" template="sp" type={#$type#} addrid=0 business={#$sp.addrid#}#}">{#foreach from=$sp.addr item=addr#}{#$addr#}-{#/foreach#}</a>{#$sp.address#}{#if $sp.nearby != ""#}&nbsp;&nbsp;[靠近：{#$sp.nearby#}]{#/if#}</p>
-				<p>{#$sp.protype#}<i>|</i>{#$sp.zhuangxiu#}<i>|</i>第{#$sp.bno#}层 / 共{#$sp.floor#}层<i>|</i>{#$sp.area#}平米</p>
-				<p class="u">{#if $sp.usertype == 0#}<a>{#$sp.username#}</a>{#else#}<a href="{#getUrlPath service='house' template='broker-detail' id={#$sp.userid#} tpl='sp'#}" target="_blank">{#$sp.nickname#}</a>{#/if#}<span class="upd"></span>{#$sp.timeUpdate#}更新</p>
+				<p>{#$sp.protype#}<i>|</i>{#$sp.zhuangxiu#}<i>|</i>{#if $sp.bno==0|| $sp.bno<10 #}低层{#elseif $sp.bno==200 ||$sp.bno>10 && $sp.bno>15 #}中层{#elseif $sp.bno ==201 || $sp.bno>15 #}高层{#/if#} / 共{#$sp.floor#}层<i>|</i>{#$sp.area#}平米</p>
+				<p class="u">{#if $sp.usertype == 0#}<a>{#$sp.username#}</a>{#else#}<a href="{#getUrlPath service='house' template='broker-detail' id={#$sp.userid#} tpl='sp'#}" target="_blank">{#$sp.nickname#}</a>{#/if#}<span class="upd"></span>{#$sp.timeUpdate#}更新
+					{#if $sp.subway#}
+					<span class="ditie">
+									<select name="" id="">
+										{#foreach from=$sp.subway item=sub#}
+										{#if $sub.distance>3000 ||$sub.distance=="infinite"  #}
+										<option value={#$sub#}>{#$sub.line#}{#$sub.station#}</option>
+										{#else#}
+										<option value={#$sub#}>{#$sub.line#}{#$sub.station#}{#$sub.distance#}米</option>
+										{#/if#}
+										{#/foreach#}
+									</select>
+					</span>
+					{#/if#}
+				</p>
 			</dd>
 		</dl>
 	</div>

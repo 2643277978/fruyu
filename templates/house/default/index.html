@@ -33,7 +33,7 @@
 <div class="banner">
 	<div class="search">
 		<div class="s-con">
-			<div class="s-tit">{#$siteCityInfo['name']#}真实在售二手房 <strong id="saleTotal">--</strong> 套，过去7天最新发布二手房 <strong id="saleWeekTotal">--</strong> 套</div>
+<!--			<div class="s-tit">{#$siteCityInfo['name']#}真实在售二手房 <strong id="saleTotal">&#45;&#45;</strong> 套，过去7天最新发布二手房 <strong id="saleWeekTotal">&#45;&#45;</strong> 套</div>-->
 			<ul class="s-nav fn-clear">
 				<li class="on" data-type="loupan"><a href="{#getUrlPath service='house' template='loupan'#}" target="_blank">买新房</a></li>
 				<li data-type="community"><a href="{#getUrlPath service='house' template='community'#}" target="_blank">找小区</a></li>
@@ -99,34 +99,35 @@
 <!-- 新房 e -->
 
 <!-- 楼盘团购 s -->
-<div class="wrap" id="groupbuy">
-	<div class="wh">
-		<h4>Group Buy</h4>
-		<div class="line"></div>
-	</div>
-	<div class="wt">
-		<h3><a href="{#getUrlPath service='house' template='loupan' addrid=0 business=0 subway=0 station=0 price='' typeid='' salestate='' times='' zhuangxiu='' buildtype='' tuandate='' filter="tuan"#}" target="_blank">楼盘团购</a></h3>
-		<ul class="xtab fn-clear">
-			<li class="on"><a href="javascript:;" data-tuandate="all" data-filter="tuan">全部</a></li>
-			<li><a href="javascript:;" data-tuandate="tmonth" data-filter="tuan">本月开团</a></li>
-			<li><a href="javascript:;" data-tuandate="lmonth" data-filter="tuan">上月开团</a></li>
-			<li><a href="javascript:;" data-tuandate="nmonth" data-filter="tuan">下月开团</a></li>
-			{#house action="addr" return='addr' pageSize="9"#}
-			<li class="l"><a href="{#getUrlPath service='house' template='loupan' addrid={#$addr.id#} business=0 subway=0 station=0 price='' typeid='' salestate='' times='' zhuangxiu='' buildtype='' tuandate='' filter="tuan"#}" target="_blank">{#$addr.typename#}</a></li>
-			{#/house#}
-		</ul>
-		<div class="btns fn-clear">
-			<a href="{#getUrlPath service='house' template='loupan' addrid=0 business=0 subway=0 station=0 price='' typeid='' salestate='' times='' zhuangxiu='' buildtype='' tuandate='' filter="hot,tuan"#}" target="_blank" class="red" title="热销团购楼盘">热销</a>
-			<a href="{#getUrlPath service='house' template='loupan' addrid=0 business=0 subway=0 station=0 price='' typeid='' salestate='' times='' zhuangxiu='' buildtype='' tuandate='' filter="rec,tuan"#}" target="_blank" class="blue" title="推荐团购楼盘">推荐</a>
-		</div>
-		<div class="links fn-clear" style="margin-right: 30px;">
-			<a href="javascript:;" class="change"><i></i>换一组楼盘</a>
-		</div>
-	</div>
-	<div class="wc groupbuy">
-		<div class="loading">加载中，请稍候...</div>
-	</div>
-</div>
+<!--<div class="wrap" id="groupbuy">-->
+<!--	<div class="wh">-->
+<!--		<h4>Group Buy</h4>-->
+<!--		<div class="line"></div>-->
+<!--	</div>-->
+<!--	<div class="wt">-->
+<!--		<h3><a href="{#getUrlPath service='house' template='loupan' addrid=0 business=0 subway=0 station=0 price='' typeid='' salestate='' times='' zhuangxiu='' buildtype='' tuandate='' filter="tuan"#}" target="_blank">楼盘团购</a></h3>-->
+<!--		<ul class="xtab fn-clear">-->
+<!--			<li class="on"><a href="javascript:;" data-tuandate="all" data-filter="tuan">全部</a></li>-->
+<!--			<li><a href="javascript:;" data-tuandate="tmonth" data-filter="tuan">本月开团</a></li>-->
+<!--			<li><a href="javascript:;" data-tuandate="lmonth" data-filter="tuan">上月开团</a></li>-->
+<!--			<li><a href="javascript:;" data-tuandate="nmonth" data-filter="tuan">下月开团</a></li>-->
+<!--			{#house action="addr" return='addr' pageSize="9"#}-->
+<!--			<li class="l"><a href="{#getUrlPath service='house' template='loupan' addrid={#$addr.id#} business=0 subway=0 station=0 price='' typeid='' salestate='' times='' zhuangxiu='' buildtype='' tuandate='' filter="tuan"#}" target="_blank">{#$addr.typename#}</a></li>-->
+<!--			{#/house#}-->
+<!--		</ul>-->
+<!--		<div class="btns fn-clear">-->
+<!--			<a href="{#getUrlPath service='house' template='loupan' addrid=0 business=0 subway=0 station=0 price='' typeid='' salestate='' times='' zhuangxiu='' buildtype='' tuandate='' filter="hot,tuan"#}" target="_blank" class="red" title="热销团购楼盘">热销</a>-->
+<!--			<a href="{#getUrlPath service='house' template='loupan' addrid=0 business=0 subway=0 station=0 price='' typeid='' salestate='' times='' zhuangxiu='' buildtype='' tuandate='' filter="rec,tuan"#}" target="_blank" class="blue" title="推荐团购楼盘">推荐</a>-->
+<!--		</div>-->
+<!--		<div class="links fn-clear" style="margin-right: 30px;">-->
+<!--			<a href="javascript:;" class="change"><i></i>换一组楼盘</a>-->
+<!--		</div>-->
+<!--	</div>-->
+<!--	<div class="wc groupbuy">-->
+<!--		<div class="loading">加载中，请稍候...</div>-->
+<!--	</div>-->
+<!--</div>-->
+
 <!-- 楼盘团购 e -->
 
 <!-- 二手房 s -->
@@ -369,7 +370,7 @@
 		<h3><a href="{#getUrlPath service='house' template='zu'#}">出租房源</a></h3>
 		<ul class="xtab fn-clear">
 			<li class="on"><a href="javascript:;" data-type="0">全部房源</a></li>
-			<li><a href="javascript:;" data-type="1">100%个人房源</a></li>
+			<li><a href="javascript:;" data-type="1">个人房源</a></li>
 			<li><a href="javascript:;" data-type="2">经纪人房源</a></li>
 			<li><a href="javascript:;" data-rentype="1">整租</a></li>
 			<li><a href="javascript:;" data-rentype="2">合租</a></li>
@@ -549,103 +550,103 @@
 *#}
 
 <!-- 商业地产 s -->
-<div class="wrap" id="commerical">
-	<div class="wh">
-		<h4>Commerical Real Estate</h4>
-		<div class="line"></div>
-	</div>
-	<div class="wt">
-		<h3><a href="{#getUrlPath service='house' template='xzl'#}" target="_blank">商业地产</a></h3>
-		<ul class="xtab fn-clear">
-			<li class="on"><a href="javascript:;" data-atype="xzl" data-type="1">买写字楼</a></li>
-			<li><a href="javascript:;" data-atype="sp" data-type="1">买商铺</a></li>
-			<li><a href="javascript:;" data-atype="cf" data-type="2">买厂房/仓库</a></li>
-			<li><a href="javascript:;" data-atype="xzl" data-type="0">租写字楼</a></li>
-			<li><a href="javascript:;" data-atype="sp" data-type="0">租商铺</a></li>
-			<li><a href="javascript:;" data-atype="cf" data-type="0">租厂房/仓库</a></li>
-			<li><a href="javascript:;" data-atype="sp" data-type="2">商铺转让</a></li>
-			<li><a href="javascript:;" data-atype="cf" data-type="1">厂房/仓库转让</a></li>
-		</ul>
-		<div class="links fn-clear fn-hide">
-			<a href="{#getUrlPath service='house' template='map'#}" target="_blank" class="map"><i></i>地图找房</a>
-		</div>
-		<div class="links fn-clear">
-			<a href="javascript:;" class="change"><i></i>换一组商业地产</a>
-		</div>
-	</div>
-	<div class="filter" data-id="commerical">
-		<dl class="fn-clear">
-			<dt>区域</dt>
-			<dd>
-				{#house action="addr" return='addr'#}
-				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid={#$addr.id#}#}" target="_blank">{#$addr.typename#}</a>
-				{#/house#}
-			</dd>
-		</dl>
-		<dl class="fn-clear">
-			<dt>价格</dt>
-			<dd>
-				<a href="{#getUrlPath service='house' template='xzl' type='1'#}" target="_blank">全部</a>
-				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price=',100'#}" target="_blank">100万以下</a>
-				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price='100,200'#}" target="_blank">100-200万</a>
-				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price='200,300'#}" target="_blank">200-300万</a>
-				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price='300,500'#}" target="_blank">300-500万</a>
-				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price='500,800'#}" target="_blank">500-800万</a>
-				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price='800,1200'#}" target="_blank">800-1200万</a>
-				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price='1200,2000'#}" target="_blank">1200-2000万</a>
-				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price='2000,'#}" target="_blank">2000万以上</a>
-			</dd>
-		</dl>
-		<dl class="fn-clear fn-hide">
-			<dt>类型</dt>
-			<dd>
-				{#house action="item" return='item' type='8'#}
-				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price='' protype={#$item.id#}#}" target="_blank">{#$item.typename#}</a>
-				{#/house#}
-			</dd>
-		</dl>
-		<a href="javascript:;" class="close">&times;</a>
-		<a href="javascript:;" class="more">更多&nbsp;︾</a>
-	</div>
-	<div class="wc commerical">
-		<div class="loading">加载中，请稍候...</div>
-	</div>
-</div>
+<!--<div class="wrap" id="commerical">-->
+<!--	<div class="wh">-->
+<!--		<h4>Commerical Real Estate</h4>-->
+<!--		<div class="line"></div>-->
+<!--	</div>-->
+<!--	<div class="wt">-->
+<!--		<h3><a href="{#getUrlPath service='house' template='xzl'#}" target="_blank">商业地产</a></h3>-->
+<!--		<ul class="xtab fn-clear">-->
+<!--			<li class="on"><a href="javascript:;" data-atype="xzl" data-type="1">买写字楼</a></li>-->
+<!--			<li><a href="javascript:;" data-atype="sp" data-type="1">买商铺</a></li>-->
+<!--			<li><a href="javascript:;" data-atype="cf" data-type="2">买厂房/仓库</a></li>-->
+<!--			<li><a href="javascript:;" data-atype="xzl" data-type="0">租写字楼</a></li>-->
+<!--			<li><a href="javascript:;" data-atype="sp" data-type="0">租商铺</a></li>-->
+<!--			<li><a href="javascript:;" data-atype="cf" data-type="0">租厂房/仓库</a></li>-->
+<!--			<li><a href="javascript:;" data-atype="sp" data-type="2">商铺转让</a></li>-->
+<!--			<li><a href="javascript:;" data-atype="cf" data-type="1">厂房/仓库转让</a></li>-->
+<!--		</ul>-->
+<!--		<div class="links fn-clear fn-hide">-->
+<!--			<a href="{#getUrlPath service='house' template='map'#}" target="_blank" class="map"><i></i>地图找房</a>-->
+<!--		</div>-->
+<!--		<div class="links fn-clear">-->
+<!--			<a href="javascript:;" class="change"><i></i>换一组商业地产</a>-->
+<!--		</div>-->
+<!--	</div>-->
+<!--	<div class="filter" data-id="commerical">-->
+<!--		<dl class="fn-clear">-->
+<!--			<dt>区域</dt>-->
+<!--			<dd>-->
+<!--				{#house action="addr" return='addr'#}-->
+<!--				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid={#$addr.id#}#}" target="_blank">{#$addr.typename#}</a>-->
+<!--				{#/house#}-->
+<!--			</dd>-->
+<!--		</dl>-->
+<!--		<dl class="fn-clear">-->
+<!--			<dt>价格</dt>-->
+<!--			<dd>-->
+<!--				<a href="{#getUrlPath service='house' template='xzl' type='1'#}" target="_blank">全部</a>-->
+<!--				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price=',100'#}" target="_blank">100万以下</a>-->
+<!--				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price='100,200'#}" target="_blank">100-200万</a>-->
+<!--				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price='200,300'#}" target="_blank">200-300万</a>-->
+<!--				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price='300,500'#}" target="_blank">300-500万</a>-->
+<!--				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price='500,800'#}" target="_blank">500-800万</a>-->
+<!--				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price='800,1200'#}" target="_blank">800-1200万</a>-->
+<!--				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price='1200,2000'#}" target="_blank">1200-2000万</a>-->
+<!--				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price='2000,'#}" target="_blank">2000万以上</a>-->
+<!--			</dd>-->
+<!--		</dl>-->
+<!--		<dl class="fn-clear fn-hide">-->
+<!--			<dt>类型</dt>-->
+<!--			<dd>-->
+<!--				{#house action="item" return='item' type='8'#}-->
+<!--				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price='' protype={#$item.id#}#}" target="_blank">{#$item.typename#}</a>-->
+<!--				{#/house#}-->
+<!--			</dd>-->
+<!--		</dl>-->
+<!--		<a href="javascript:;" class="close">&times;</a>-->
+<!--		<a href="javascript:;" class="more">更多&nbsp;︾</a>-->
+<!--	</div>-->
+<!--	<div class="wc commerical">-->
+<!--		<div class="loading">加载中，请稍候...</div>-->
+<!--	</div>-->
+<!--</div>-->
 <!-- 商业地产 e -->
 
 <div class="wrap ad">{#myad id="79"#}</div>
 
 <!-- 装修效果图 s -->
-<div class="wrap mt20" id="zhuangxiu">
-	<div class="wt">
-		<h3><a href="{#getUrlPath service='renovation' template='albums'#}" target="_blank">装修效果图</a></h3>
-		<ul class="xtab fn-clear" style="width:200px;">
-			<li class="l"><a href="{#getUrlPath service='renovation' template='company'#}" target="_blank">找装修公司</a></li>
-			<li class="l"><a href="{#getUrlPath service='renovation' template='designer'#}" target="_blank">找设计师</a></li>
-		</ul>
-		<div class="btns fn-clear">
-			<a href="{#getUrlPath service='renovation' template='entrust'#}" target="_blank" class="org">免费量房</a>
-			<a href="{#getUrlPath service='renovation' template='albums'#}" target="_blank" class="blue">更多效果图</a>
-		</div>
-		<div class="links fn-clear" style="margin-right: 100px;">
-			<a href="javascript:;" class="change"><i></i>换一组效果图</a>
-		</div>
-	</div>
-	<div class="wc zx fn-clear">
-		<div class="l">
-			<div id="zx-slide">{#myad id="152" type="slide"#}</div>
-			<div id="zx-slidebtn" class="slidebtn"></div>
-			<a href="javascript:;" class="prev" id="zx_prev"></a>
-			<a href="javascript:;" class="next" id="zx_next"></a>
-		</div>
-		<div class="r">{#myad id="153"#}</div>
-	</div>
-	<div class="zxfl">
-		<ul class="fn-clear">
-			{#myad id="154"#}
-		</ul>
-	</div>
-</div>
+<!--<div class="wrap mt20" id="zhuangxiu">-->
+<!--	<div class="wt">-->
+<!--		<h3><a href="{#getUrlPath service='renovation' template='albums'#}" target="_blank">装修效果图</a></h3>-->
+<!--		<ul class="xtab fn-clear" style="width:200px;">-->
+<!--			<li class="l"><a href="{#getUrlPath service='renovation' template='company'#}" target="_blank">找装修公司</a></li>-->
+<!--			<li class="l"><a href="{#getUrlPath service='renovation' template='designer'#}" target="_blank">找设计师</a></li>-->
+<!--		</ul>-->
+<!--		<div class="btns fn-clear">-->
+<!--			<a href="{#getUrlPath service='renovation' template='entrust'#}" target="_blank" class="org">免费量房</a>-->
+<!--			<a href="{#getUrlPath service='renovation' template='albums'#}" target="_blank" class="blue">更多效果图</a>-->
+<!--		</div>-->
+<!--		<div class="links fn-clear" style="margin-right: 100px;">-->
+<!--			<a href="javascript:;" class="change"><i></i>换一组效果图</a>-->
+<!--		</div>-->
+<!--	</div>-->
+<!--	<div class="wc zx fn-clear">-->
+<!--		<div class="l">-->
+<!--			<div id="zx-slide">{#myad id="152" type="slide"#}</div>-->
+<!--			<div id="zx-slidebtn" class="slidebtn"></div>-->
+<!--			<a href="javascript:;" class="prev" id="zx_prev"></a>-->
+<!--			<a href="javascript:;" class="next" id="zx_next"></a>-->
+<!--		</div>-->
+<!--		<div class="r">{#myad id="153"#}</div>-->
+<!--	</div>-->
+<!--	<div class="zxfl">-->
+<!--		<ul class="fn-clear">-->
+<!--			{#myad id="154"#}-->
+<!--		</ul>-->
+<!--	</div>-->
+<!--</div>-->
 <!-- 装修效果图 e -->
 
 <div class="wrap ad">{#myad id="80"#}</div>
