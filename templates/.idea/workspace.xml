@@ -70,6 +70,7 @@
       <change beforePath="$PROJECT_DIR$/house/default/community_top.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/community_top.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/css/cf_detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/cf_detail.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/css/community_detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/community_detail.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/css/faq.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/faq.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/css/public.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/public.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/css/sale.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/sale.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/css/sale_detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/sale_detail.css" afterDir="false" />
@@ -79,8 +80,10 @@
       <change beforePath="$PROJECT_DIR$/house/default/css/xzl_detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/xzl_detail.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/css/zu.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/zu.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/css/zu_detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/zu_detail.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/faq.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/faq.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/js/cf_detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/js/cf_detail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/js/faq.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/js/faq.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/js/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/js/map.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/js/map.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/js/map_loupan_baidu.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/js/map_loupan_baidu.js" afterDir="false" />
@@ -98,6 +101,7 @@
       <change beforePath="$PROJECT_DIR$/house/default/sale.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/sale.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/sp-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/sp-detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/sp.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/sp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/top.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/top.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/xzl-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/xzl-detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/xzl.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/xzl.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/zu-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/zu-detail.html" afterDir="false" />
@@ -166,6 +170,7 @@
       <list>
         <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -179,15 +184,16 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/house/touch/123/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/house/default/images" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="http.proxy" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\2019.11.13\dengyunlong_26dj_dev\templates\house\touch\123\images" />
       <recent name="D:\2019.11.13\dengyunlong_26dj_dev\templates\house\default\images" />
+      <recent name="D:\2019.11.13\dengyunlong_26dj_dev\templates\house\touch\123\images" />
       <recent name="D:\2019.11.13\dengyunlong_26dj_dev\templates\house\122" />
     </key>
   </component>
@@ -244,7 +250,9 @@
       <workItem from="1578708292614" duration="7815000" />
       <workItem from="1578721307682" duration="825000" />
       <workItem from="1578878618574" duration="25897000" />
-      <workItem from="1578964981340" duration="21026000" />
+      <workItem from="1578964981340" duration="24716000" />
+      <workItem from="1578997095156" duration="2119000" />
+      <workItem from="1579050911335" duration="12592000" />
     </task>
     <servers />
   </component>

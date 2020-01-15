@@ -1,14 +1,13 @@
 *{margin: 0;padding: 0}
 i{font-style: normal;}
 .dn{display: none;}
-a:hover {color: #d21938 !important;}
 
 .ad{margin-top: 10px;}
 .w1000 .wrap{width: 1000px;}
 .top a:hover{color: #333!important;}
 .nav a:hover{color: #fff!important;}
 
-/*内容*/
+/*å†…å®¹*/
 .main{width: 1200px;margin: 20px auto;}
 .w1000 .main{width: 1000px;}
 .main .main-l{width: 180px;padding-right: 18px;border-right: 1px solid #ededed;}
@@ -23,7 +22,7 @@ a:hover {color: #d21938 !important;}
 .main-r{float: left;margin-left: 28px;}
 .w1000 .main-r{width: 773px;}
 .main-top h3{font-size: 28px;height: 45px;color: #333;}
-.main-box .txt-box{width: 951px;padding: 10px;border: 1px solid #ccc;height: 78px;font-size: 16px;overflow: hidden;}
+.main-box .txt-box{width: 951px;border: 1px solid #ccc;height: 78px;font-size: 16px;overflow: hidden;}
 .w1000 .main-box .txt-box{width: 750px;}
 .main-box .txt-box textarea{width: 951px;height: 78px;margin: 0;border: 0;}
 .main-box .txt-info{width: 898px;margin-top: 15px;}
@@ -50,7 +49,7 @@ a:hover {color: #d21938 !important;}
 
 .pagination {padding: 10px 0 30px; text-align: center; line-height: 28px; font-size: 14px; color: #333; margin-top: 30px;}
 .pagination li {display: inline-block; margin-right: 5px; border: 1px solid #fff;*display: inline;
-zoom: 1; }
+    zoom: 1; }
 .pagination li.page_disabled {display: none;}
 .pagination li a, .pagination li span {display: block; padding: 0 10px;}
 .pagination li a:hover ,.pagination li.page_current span {background: #E95249; color: #fff!important; border-color: #333;}
@@ -58,7 +57,7 @@ zoom: 1; }
 .pagination .page_info {display: none;}
 
 
-/* 详细页 */
+/* è¯¦ç»†é¡µ */
 .faq-detail {position: relative; overflow: hidden; float: none; padding-left: 28px;}
 .faq-q, .faq-a {border-bottom: 1px dashed #ccc; padding: 8px 0 15px;}
 .faq-q dt, .faq-a dt {position: relative; padding-left: 35px; line-height: 26px; font-size: 16px; margin-bottom: 5px;}

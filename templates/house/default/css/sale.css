@@ -32,7 +32,7 @@ a:hover {text-decoration: underline;}
 .filter dt {float: left; width: 70px; padding: 3px 5px 0 0; font-size: 16px; text-align: right;}
 .filter dd {position: relative; overflow: hidden; padding-right: 30px;}
 .filter dd a {float: left; padding: 5px 10px; margin: 0 5px 0 0; white-space: nowrap;}
-.filter dd a.curr {color: #39ac6a; font-weight: 700;}
+.filter dd a.curr {color: #bc0a0a; font-weight: 700;}
 .filter dd .sub-item {padding: 5px 0; margin: 5px 0; border-top: 1px solid #e0e0e0; border-bottom: 1px solid #e0e0e0;}
 
 /* 更多筛选 */
@@ -41,8 +41,8 @@ a:hover {text-decoration: underline;}
 .filter dl.more dd {overflow: visible; font-size: 12px;}
 .filter dl.more .item {float: left; position: relative; z-index: 5; height: 23px; line-height: 23px; border: 1px solid #ddd; margin: 11px 0 10px 10px;}
 .filter dl.more .item label {display: block; position: relative; padding: 0 40px 0 10px; cursor: pointer;}
-.filter dl.more .item.on {border-color: #39ac6a;}
-.filter dl.more .item.on label {color: #39ac6a; font-weight: 700;}
+.filter dl.more .item.on {border-color: #bc0a0a;}
+.filter dl.more .item.on label {color: #bc0a0a; font-weight: 700;}
 .filter dl.more .item label s {position: absolute; right: 8px; top: 9px; width: 10px; height: 5px; background-position: -41px 0;}
 .filter dl.more .item ul {display: none; position: absolute; top: 23px; left: -1px; right: -1px; border: 1px solid #ddd; background-color: #fff; -webkit-animation:topFadeIn .3s ease-out; -moz-animation:topFadeIn .3s ease-out; animation:topFadeIn .3s ease-out;}
 .filter dl.more .item ul a {display: block; float: none; height: 25px; line-height: 25px; margin: 0; padding: 0 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
@@ -60,7 +60,7 @@ a:hover {text-decoration: underline;}
 .sortby .sort {position: relative; z-index: 1; float: left; margin-left: -1px; border-left: 1px solid transparent; border-right: 1px solid transparent;}
 .sortby .sort.on {border-color: #e0e0e0;}
 .sortby .sort>a {display: block; padding: 0 15px; line-height: 47px;}
-.sortby .sort.on>a {color: #39ac6a; font-weight: 700;}
+.sortby .sort.on>a {color: #bc0a0a; font-weight: 700;}
 .sortby .sort>a s {display: inline-block; width: 10px; height: 5px; vertical-align: 1px; margin-left: 8px; background-position: -41px 0;}
 .sortby .sort>a:hover {background-color: #f5f5f5;}
 .sortby .sort.on>a:hover {background-color: #fff;}

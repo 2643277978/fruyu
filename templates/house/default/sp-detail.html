@@ -299,8 +299,8 @@
 	{#if $detail_config || $detail_note#}
 	<div class="wrap">
 		<h2 class="sub-title"><span>房源信息</span></h2>
-		{#if $detail_config #}
-		{#foreach from=$detail_config item=cj key=k#}
+		{#if $detail_flag #}
+		{#foreach from=$detail_flag item=cj key=k#}
 		<span class="config">{#$cj#}</span>
 		{#/foreach#}
 		{#/if#}
@@ -321,7 +321,7 @@
 		<h2 class="wrap sub-title"><span>设施配套</span></h2>
 		<div class="wrap content">
 			<ul class="fn-clear">
-				{#foreach from=$detail_config_py item=cfg#}
+				{#foreach from=$detail_config item=cfg#}
 				<li><i class="ift"><img src="{#$cfg_staticPath#}images/house/{#$cfg.py#}.png" alt=""></i><span>{#$cfg.name#}</span></li>
 				{#/foreach#}
 			</ul>
@@ -474,6 +474,62 @@
 	<!-- 附近房源 e-->
 
 </div>
+<div class="modal-yy">
+	<s class="close"></s>
+	<div class="lp_title">预约看房</div>
+	<div class="dc">
+		<div class="con-tit">您要预约看的房是</div>
+		<div class="yyInfo">
+			<h2>{#$detail_title#}</h2>
+			{#if $detail_type == 0#}
+			<span class="price">{#if $detail_price > 0#}<b>{#$detail_price|string_format:"%0.0f"#}</b>元/月{#else#}<b>价格面议</b>{#/if#}</span>
+			{#elseif $detail_type == 1#}
+			<span class="price">{#if $detail_price > 0#}<b>{#$detail_price|string_format:"%0.0f"#}</b>万{#else#}<b>价格面议</b>{#/if#}</span>
+			{#else#}
+			<span class="price">{#if $detail_price > 0#}<b>{#$detail_price|string_format:"%0.0f"#}</b>元/月{#else#}<b>价格面议</b>{#/if#}</span>
+			{#/if#}
+		</div>
+		<div class="con-tit">您想在什么时间看房？</div>
+		<div class="ytime">
+			<dl class="fn-clear">
+				<dt>时间：</dt>
+				<dd class="curr"><s class="checkbox"><i></i></s>双休日</dd>
+				<dd><s class="checkbox"><i></i></s>工作日</dd>
+				<dd><s class="checkbox"><i></i></s>工作日/双休日均可</dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>时段：</dt>
+				<dd class="curr"><s class="checkbox"><i></i></s>上午</dd>
+				<dd><s class="checkbox"><i></i></s>下午</dd>
+				<dd><s class="checkbox"><i></i></s>晚上</dd>
+				<dd><s class="checkbox"><i></i></s>随时</dd>
+			</dl>
+		</div>
+		<div class="con-tit">您对本次预约有什么特别说明吗？</div>
+		<div class="remarks">
+			<textarea name="remarks" id="marks" cols="30" rows="10" placeholder="例如：希望尽快短信联系我"></textarea>
+		</div>
+		<div class="con-tit">请留下您的联系方式</div>
+		<input type="hidden" name="areaCode" id="areaCode" value="86">
+		<ul class="contact-way">
+			<li><input type="text" id="name" placeholder="怎么称呼您" title="怎么称呼您" value="{#$userinfo.realname#}">
+				<div class="sexbox fn-clear">
+					<label><input type="radio" name="sex" data-type="male" value="1"{#if !$userinfo || $userinfo.sex == 1#} checked{#/if#}> 先生</label>
+					<label><input type="radio" name="sex" data-type="female" value="2"{#if !$userinfo || $userinfo.sex == 0#} checked{#/if#}> 女士</label>
+				</div>
+			</li>
+			{#if $userinfo.phoneCheck#}
+			<li><input type="text" id="telphone" placeholder="您的手机号" maxlength="11" title="请输入您的手机号码" value="{#$userinfo.phone#}" readonly></li>
+			<li class="fn-hide"><input type="text" id="vercode" placeholder="短信验证码" maxlength="6" title="请输入验证码"></li>
+			{#else#}
+			<li><input type="text" id="telphone" placeholder="您的手机号" maxlength="11" title="请输入您的手机号码" value="{#$userinfo.phone#}"><a href="javascript:;" class="getCodes">发送验证码</a></li>
+			<li><input type="text" id="vercode" placeholder="短信验证码" maxlength="6" title="请输入验证码"></li>
+			{#/if#}
+			<li class="tj"><button id="tj">提交预约申请</button></li>
+		</ul>
+	</div>
+</div>
+<div class="popup_bg"></div>
 
 
 {#include file="footer.html"#}

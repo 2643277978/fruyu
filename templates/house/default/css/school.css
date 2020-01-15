@@ -1,0 +1,43 @@
+.filter dl.more .item label s,
+.filter .icheck.on s,
+.sortby .sort a s,
+.lhead ul li a s,
+.lhead ul li a i {background-image: url('../images/saleSprite.png'); background-repeat: no-repeat;}
+
+.ml30 {margin-left: 30px;}
+a:hover {text-decoration: underline;}
+
+.main {background-color: #fafafa;}
+
+/* 筛选 */
+.filter {position: relative; z-index: 10; margin-bottom: 25px; border: 1px solid #efefef; font-size: 14px; background-color: #fff; box-shadow: 0 1px 5px rgba(0,0,0,0.1);}
+
+/* 区域&公交/地铁 */
+.filter .t-fi {margin-bottom: 20px; line-height: 46px; border-bottom: 2px solid #be0a0a;}
+.filter .t-fi .inf {float: right; font-size: 14px; margin-right: 20px; line-height: 46px;}
+.filter .t-fi label {float: left; width: 70px; padding: 5px 0; text-align: right;}
+.filter .t-fi-item {float: left;}
+.filter .t-fi-item li {float: left; margin-right: 5px;}
+.filter .t-fi-item li a {position: relative; display: block; padding: 0 25px; font-size: 16px;}
+.filter .t-fi-item li.curr a {color: #fff; background-color: #be0a0a;}
+
+.keywords {float: left; margin: 1px 0 0 15px;}
+.keywords label {float: left; margin-right: 5px; line-height: 34px;}
+.keywords a {float: left; padding: 0 5px 0 8px; margin-top: 11px; border: 1px dashed #f33; line-height: 20px; color: #f33;}
+.keywords a:hover {text-decoration: none;}
+.keywords a s {text-decoration: none; margin-left: 3px;}
+
+/* 筛选条件 */
+.filter dl {padding: 1px 0;}
+.filter dt {float: left; width: 70px; padding: 3px 5px 0 0; font-size: 16px; text-align: right;}
+.filter dd {position: relative; overflow: hidden; padding-right: 30px;}
+.filter dd a {float: left; padding: 5px 10px; margin: 0 5px 0 0; white-space: nowrap;}
+.filter dd a.curr {color:#bc0a0a; font-weight: 700;}
+.filter dd .sub-item {padding: 5px 0; margin: 5px 0; border-top: 1px solid #e0e0e0; border-bottom: 1px solid #e0e0e0;}
+
+
+/* 多选 */
+.filter .item-check {float: left;margin-top: 5px;}
+.filter .icheck {position: relative; margin-right: 20px; padding: 14px 0 0 23px;}
+.filter .icheck s {position: absolute; left: 0; top: 15px; width: 14px; height: 14px; border: 1px solid #bbb; background-color: #fff;}
+.filter .icheck.on s {border-color: #808080; background-position: -39px -6px;}

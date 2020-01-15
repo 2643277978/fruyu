@@ -1,12 +1,13 @@
 $(function(){
 
-	$("#tj").submit(function(event){
+	$("#f_submit").submit(function(event){
 		event.preventDefault();
 		var body = $("#body").val(), people = $("#people").val(), phone = $("#phone").val();
 		var data = [];
 		data.push("body="+encodeURIComponent(body));
 		data.push("people="+encodeURIComponent(people));
 		data.push("phone="+encodeURIComponent(phone));
+		data.push("typeid="+typeid);
 
 		$.ajax({
 			url: "/include/ajax.php?service=house&action=fabuFaq&"+data.join("&"),

@@ -56,213 +56,213 @@ $(function() {
 
 
     // 预约看房
-    // $(".btnYy").bind("click", function(){
-    //     var userid = $.cookie(cookiePre + 'login_user');
-    //     // if(userid == undefined || userid == 0 || userid == ''){
-    //     //   huoniao.login();
-    //     //   return false;
-    //     // }
-    //     $(".modal-yy").addClass("popup").fadeIn();
-    //     $(".popup_bg").show();
-    //     return false;
-    // });
-    // // 关闭
-    // $("body").delegate(".close", "click", function(){
-    //     $(this).parent().hide();
-    //     $(".popup_bg").hide();
-    // });
-    //
-    // //验证提示弹出层
-    // function showMsg(msg){
-    //     $('.modal-yy .dc').append('<p class="ptip">'+msg+'</p>')
-    //     setTimeout(function(){
-    //         $('.ptip').remove();
-    //     },2000);
-    // }
-    //
-    // $('.ytime dl').delegate('dd', 'click', function(event) {
-    //     var t = $(this),val = t.attr("data-val");
-    //     if(!t.hasClass('curr')){
-    //         t.addClass('curr').siblings('dd').removeClass('curr');
-    //     }
-    // });
-    //
-    // $("body").delegate("#tj", "click", function(){
-    //     var t = $(this), obj = t.closest(".modal-yy");
-    //
-    //     console.log(1)
-    //
-    //     if(t.hasClass("disabled")) return false;
-    //
-    //     var name = obj.find("#name");
-    //     var phone = obj.find("#telphone");
-    //     var vercode = obj.find("#vercode");
-    //     var marks = obj.find("#marks");
-    //
-    //     if(name.val() == "" || name.val() == name.attr("placeholder")){
-    //         errMsg = "请输入您的姓名";
-    //         showMsg(errMsg);
-    //         return false;
-    //     }
-    //     else if(!userinfo.phoneCheck){
-    //         if(phone.val() == "" || phone.val() == phone.attr("placeholder")){
-    //             errMsg = "请输入您的手机号码";
-    //             showMsg(errMsg);
-    //             return false;
-    //         }else if(!/(13|14|15|17|18)[0-9]{9}/.test($.trim(phone.val()))){
-    //             errMsg = "手机号码格式错误，请重新输入！";
-    //             showMsg(errMsg);
-    //             return false;
-    //         }else if(vercode.val() == "" || vercode.val() == vercode.attr("placeholder")){
-    //             errMsg = "请输入短信验证码";
-    //             showMsg(errMsg);
-    //             return false;
-    //         }
-    //     }
-    //
-    //     var data = [];
-    //     var title = $('.crumtit .name').text();
-    //     $('.intro_box p').each(function(){
-    //         var s = $(this).text();
-    //         if($.trim(s) != ''){
-    //             title += ' · ' + s;
-    //         }
-    //     })
-    //     data.push('type=sp');
-    //     data.push('aid='+pageData.id);
-    //     data.push('title='+title);
-    //     data.push('day='+$('.ytime dl:eq(0) dd.curr').index() - 1);
-    //     data.push('time='+$('.ytime dl:eq(1) dd.curr').index() - 1);
-    //     data.push('note='+$('#marks').val());
-    //     data.push('username='+$('#name').val());
-    //     data.push('mobile='+$('#telphone').val());
-    //     data.push('areaCode='+$('#areaCode').val());
-    //     data.push('vercode='+$('#vercode').val());
-    //     data.push('sex='+$('[name="sex"]:checked').val());
-    //
-    //     t.addClass("disabled").html("提交中...");
-    //
-    //     $.ajax({
-    //         url: masterDomain + '/include/ajax.php?service=house&action=bookHouse',
-    //         type: 'get',
-    //         data: data.join('&'),
-    //         dataType: 'jsonp',
-    //         success: function(data){
-    //             if(data && data.state == 100){
-    //                 showMsg(data.info);
-    //                 setTimeout(function(){
-    //                     $('.modal-yy .close').click();
-    //                     t.removeClass('disabled').html('提交预约申请');
-    //                 }, 2000)
-    //             }else{
-    //                 showMsg(data.info);
-    //                 t.removeClass('disabled').html('提交预约申请');
-    //             }
-    //         },
-    //         error: function(){
-    //             showMsg('网络错误，请重试！');
-    //             t.removeClass('disabled').html('提交预约申请');
-    //         }
-    //     })
-    //
-    // });
-    //
-    // var sendSmsData = [];
-    //
-    // if(geetest){
-    //     //极验验证
-    //     var handlerPopupFpwd = function (captchaObjFpwd){
-    //         captchaObjFpwd.onSuccess(function (){
-    //             var validate = captchaObjFpwd.getValidate();
-    //             sendSmsData.push('geetest_challenge='+validate.geetest_challenge);
-    //             sendSmsData.push('geetest_validate='+validate.geetest_validate);
-    //             sendSmsData.push('geetest_seccode='+validate.geetest_seccode);
-    //             $("#vercode").focus();
-    //             sendSmsFunc();
-    //         });
-    //
-    //         $('.getCodes').bind("click", function (){
-    //             if($(this).hasClass('disabled')) return false;
-    //             var tel = $("#telphone").val();
-    //             if(tel == ''){
-    //                 errMsg = "请输入手机号码";
-    //                 showMsg(errMsg);
-    //                 $("#telphone").focus();
-    //                 return false;
-    //             }
-    //             //弹出验证码
-    //             captchaObjFpwd.verify();
-    //         })
-    //     };
-    //
-    //     $.ajax({
-    //         url: masterDomain+"/include/ajax.php?service=siteConfig&action=geetest&terminal=mobile&t=" + (new Date()).getTime(), // 加随机数防止缓存
-    //         type: "get",
-    //         dataType: "json",
-    //         success: function(data) {
-    //             initGeetest({
-    //                 gt: data.gt,
-    //                 challenge: data.challenge,
-    //                 offline: !data.success,
-    //                 new_captcha: true,
-    //                 product: "bind",
-    //                 width: '312px'
-    //             }, handlerPopupFpwd);
-    //         }
-    //     });
-    // }else{
-    //     $(".getCodes").bind("click", function (){
-    //         if($(this).hasClass('disabled')) return false;
-    //         var tel = $("#telphone").val();
-    //         if(tel == ''){
-    //             errMsg = "请输入手机号码";
-    //             showMsg(errMsg);
-    //             $("#telphone").focus();
-    //             return false;
-    //         }
-    //         $("#vercode").focus();
-    //         sendSmsFunc();
-    //     })
-    // }
-    //
-    // //发送验证码
-    // function sendSmsFunc(){
-    //     var tel = $("#telphone").val();
-    //     var areaCode = $("#areaCode").val().replace('+', '');
-    //     var sendSmsUrl = "/include/ajax.php?service=siteConfig&action=getPhoneVerify";
-    //
-    //     sendSmsData.push('type=verify');
-    //     sendSmsData.push('areaCode=' + areaCode);
-    //     sendSmsData.push('phone=' + tel);
-    //
-    //     $('.senderror').text('');
-    //     $.ajax({
-    //         url: sendSmsUrl,
-    //         data: sendSmsData.join('&'),
-    //         type: 'POST',
-    //         dataType: 'json',
-    //         success: function (res) {
-    //             if (res.state == 101) {
-    //                 $('.senderror').text(res.info);
-    //             }else{
-    //                 countDown($('.getCodes'), 60);
-    //             }
-    //         }
-    //     })
-    // }
-    //
-    //
-    // //倒计时
-    // function countDown(obj,time){
-    //     obj.html(time+'秒后重发').addClass('disabled');
-    //     mtimer = setInterval(function(){
-    //         obj.html((--time)+'秒后重发').addClass('disabled');
-    //         if(time <= 0) {
-    //             clearInterval(mtimer);
-    //             obj.html('重新发送').removeClass('disabled');
-    //         }
-    //     }, 1000);
-    // }
+    $(".btnYy").bind("click", function(){
+        var userid = $.cookie(cookiePre + 'login_user');
+        // if(userid == undefined || userid == 0 || userid == ''){
+        //   huoniao.login();
+        //   return false;
+        // }
+        $(".modal-yy").addClass("popup").fadeIn();
+        $(".popup_bg").show();
+        return false;
+    });
+    // 关闭
+    $("body").delegate(".close", "click", function(){
+        $(this).parent().hide();
+        $(".popup_bg").hide();
+    });
+
+    //验证提示弹出层
+    function showMsg(msg){
+        $('.modal-yy .dc').append('<p class="ptip">'+msg+'</p>')
+        setTimeout(function(){
+            $('.ptip').remove();
+        },2000);
+    }
+
+    $('.ytime dl').delegate('dd', 'click', function(event) {
+        var t = $(this),val = t.attr("data-val");
+        if(!t.hasClass('curr')){
+            t.addClass('curr').siblings('dd').removeClass('curr');
+        }
+    });
+
+    $("body").delegate("#tj", "click", function(){
+        var t = $(this), obj = t.closest(".modal-yy");
+
+        console.log(1)
+
+        if(t.hasClass("disabled")) return false;
+
+        var name = obj.find("#name");
+        var phone = obj.find("#telphone");
+        var vercode = obj.find("#vercode");
+        var marks = obj.find("#marks");
+
+        if(name.val() == "" || name.val() == name.attr("placeholder")){
+            errMsg = "请输入您的姓名";
+            showMsg(errMsg);
+            return false;
+        }
+        else if(!userinfo.phoneCheck){
+            if(phone.val() == "" || phone.val() == phone.attr("placeholder")){
+                errMsg = "请输入您的手机号码";
+                showMsg(errMsg);
+                return false;
+            }else if(!/(13|14|15|17|18)[0-9]{9}/.test($.trim(phone.val()))){
+                errMsg = "手机号码格式错误，请重新输入！";
+                showMsg(errMsg);
+                return false;
+            }else if(vercode.val() == "" || vercode.val() == vercode.attr("placeholder")){
+                errMsg = "请输入短信验证码";
+                showMsg(errMsg);
+                return false;
+            }
+        }
+
+        var data = [];
+        var title = $('.crumtit .name').text();
+        $('.intro_box p').each(function(){
+            var s = $(this).text();
+            if($.trim(s) != ''){
+                title += ' · ' + s;
+            }
+        })
+        data.push('type=sp');
+        data.push('aid='+pageData.id);
+        data.push('title='+title);
+        data.push('day='+$('.ytime dl:eq(0) dd.curr').index() - 1);
+        data.push('time='+$('.ytime dl:eq(1) dd.curr').index() - 1);
+        data.push('note='+$('#marks').val());
+        data.push('username='+$('#name').val());
+        data.push('mobile='+$('#telphone').val());
+        data.push('areaCode='+$('#areaCode').val());
+        data.push('vercode='+$('#vercode').val());
+        data.push('sex='+$('[name="sex"]:checked').val());
+
+        t.addClass("disabled").html("提交中...");
+
+        $.ajax({
+            url: masterDomain + '/include/ajax.php?service=house&action=bookHouse',
+            type: 'get',
+            data: data.join('&'),
+            dataType: 'jsonp',
+            success: function(data){
+                if(data && data.state == 100){
+                    showMsg(data.info);
+                    setTimeout(function(){
+                        $('.modal-yy .close').click();
+                        t.removeClass('disabled').html('提交预约申请');
+                    }, 2000)
+                }else{
+                    showMsg(data.info);
+                    t.removeClass('disabled').html('提交预约申请');
+                }
+            },
+            error: function(){
+                showMsg('网络错误，请重试！');
+                t.removeClass('disabled').html('提交预约申请');
+            }
+        })
+
+    });
+
+    var sendSmsData = [];
+
+    if(geetest){
+        //极验验证
+        var handlerPopupFpwd = function (captchaObjFpwd){
+            captchaObjFpwd.onSuccess(function (){
+                var validate = captchaObjFpwd.getValidate();
+                sendSmsData.push('geetest_challenge='+validate.geetest_challenge);
+                sendSmsData.push('geetest_validate='+validate.geetest_validate);
+                sendSmsData.push('geetest_seccode='+validate.geetest_seccode);
+                $("#vercode").focus();
+                sendSmsFunc();
+            });
+
+            $('.getCodes').bind("click", function (){
+                if($(this).hasClass('disabled')) return false;
+                var tel = $("#telphone").val();
+                if(tel == ''){
+                    errMsg = "请输入手机号码";
+                    showMsg(errMsg);
+                    $("#telphone").focus();
+                    return false;
+                }
+                //弹出验证码
+                captchaObjFpwd.verify();
+            })
+        };
+
+        $.ajax({
+            url: masterDomain+"/include/ajax.php?service=siteConfig&action=geetest&terminal=mobile&t=" + (new Date()).getTime(), // 加随机数防止缓存
+            type: "get",
+            dataType: "json",
+            success: function(data) {
+                initGeetest({
+                    gt: data.gt,
+                    challenge: data.challenge,
+                    offline: !data.success,
+                    new_captcha: true,
+                    product: "bind",
+                    width: '312px'
+                }, handlerPopupFpwd);
+            }
+        });
+    }else{
+        $(".getCodes").bind("click", function (){
+            if($(this).hasClass('disabled')) return false;
+            var tel = $("#telphone").val();
+            if(tel == ''){
+                errMsg = "请输入手机号码";
+                showMsg(errMsg);
+                $("#telphone").focus();
+                return false;
+            }
+            $("#vercode").focus();
+            sendSmsFunc();
+        })
+    }
+
+    //发送验证码
+    function sendSmsFunc(){
+        var tel = $("#telphone").val();
+        var areaCode = $("#areaCode").val().replace('+', '');
+        var sendSmsUrl = "/include/ajax.php?service=siteConfig&action=getPhoneVerify";
+
+        sendSmsData.push('type=verify');
+        sendSmsData.push('areaCode=' + areaCode);
+        sendSmsData.push('phone=' + tel);
+
+        $('.senderror').text('');
+        $.ajax({
+            url: sendSmsUrl,
+            data: sendSmsData.join('&'),
+            type: 'POST',
+            dataType: 'json',
+            success: function (res) {
+                if (res.state == 101) {
+                    $('.senderror').text(res.info);
+                }else{
+                    countDown($('.getCodes'), 60);
+                }
+            }
+        })
+    }
+
+
+    //倒计时
+    function countDown(obj,time){
+        obj.html(time+'秒后重发').addClass('disabled');
+        mtimer = setInterval(function(){
+            obj.html((--time)+'秒后重发').addClass('disabled');
+            if(time <= 0) {
+                clearInterval(mtimer);
+                obj.html('重新发送').removeClass('disabled');
+            }
+        }, 1000);
+    }
 
 
     //大图切换

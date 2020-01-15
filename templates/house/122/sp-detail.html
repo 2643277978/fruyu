@@ -343,8 +343,8 @@
 	{#if $detail_config || $detail_note#}
 	<div class="wrap">
 		<h2 class="sub-title"><span>房源信息</span></h2>
-		{#if $detail_config #}
-		{#foreach from=$detail_config item=cj key=k#}
+		{#if $detail_flag #}
+		{#foreach from=$detail_flag item=cj key=k#}
 		<span class="config">{#$cj#}</span>
 		{#/foreach#}
 		{#/if#}
@@ -365,7 +365,7 @@
 		<h2 class="wrap sub-title"><span>设施配套</span></h2>
 		<div class="wrap content">
 			<ul class="fn-clear">
-				{#foreach from=$detail_config_py item=cfg#}
+				{#foreach from=$detail_config item=cfg#}
 				<li><i class="ift"><img src="{#$cfg_staticPath#}images/house/{#$cfg.py#}.png" alt=""></i><span>{#$cfg.name#}</span></li>
 				{#/foreach#}
 			</ul>
