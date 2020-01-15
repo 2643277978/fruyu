@@ -113,7 +113,7 @@ $(function(){
 			return false;
 		};	
 
-		//t.attr("disabled", true);
+		t.attr("disabled", true);
 
 		//异步提交
 		huoniao.operaJson("schoolAdd.php", $("#editform").serialize() + "&submit="+encodeURI("提交"), function(data){
@@ -124,11 +124,11 @@ $(function(){
 					location.reload();
 				}else{
 					huoniao.parentTip("success", "修改成功！<a href='"+data.url+"' target='_blank'>"+data.url+"</a>");
-					//t.attr("disabled", false);
+					t.attr("disabled", false);
 				}
 			}else{
 				$.dialog.alert(data.info);
-				//t.attr("disabled", false);
+				t.attr("disabled", false);
 			};
 		});
 	});

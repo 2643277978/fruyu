@@ -251,6 +251,74 @@ $(function(){
 	//竣工时间
 	$("#opendate").datetimepicker({format: 'yyyy-mm-dd', autoclose: true, minView: 2, language: 'ch'});
 
+	$(".addBtn").bind("click",function(){
+		var html = $(".schoolCopy").html();
+		$(this).parent().prev().before(html);
+		$(".delSchool").unbind('click');
+		$(".delSchool").bind("click",function(){
+			$(this).parent().prev().remove();
+			$(this).parent().remove();
+			return false;
+		});
+		//模糊匹配校区
+		$("input.school").bind("input", function(){
+			matchSchool($(this));
+		});
+
+		$(".popup_key").delegate("li", "click", function(){
+			delegateSchool($(this));
+		});
+
+	});
+	
+	//模糊匹配校区
+	$("input.school").bind("input", function(){
+		matchSchool($(this));
+    });
+	
+	$(".popup_key").delegate("li", "click", function(){
+		delegateSchool($(this));
+	});
+
+	function matchSchool(t){
+		var val = t.val();
+		if(val != ""){
+			t.addClass("input-loading");
+			huoniao.operaJson("../inc/json.php?action=checkSchool", "key="+val, function(data){
+				t.removeClass("input-loading");
+				if(!data) {
+					t.next().next().html("").hide();
+					return false;
+				}
+				var list = [];
+				for(var i = 0; i < data.length; i++){
+					list.push('<li data-id="'+data[i].id+'">'+data[i].title+'</li>');
+				}
+				if(list.length > 0){
+					var pos = t.position();
+					t.next().next()
+						.css({"left": 100 + "px", "top": pos.top + 36, "width": t.width() + 12})
+						.html('<ul>'+list.join("")+'</ul>')
+						.show();
+				}else{
+					t.next().next().html("").hide();
+				}
+			});
+
+		}else{
+			t.next().next().html("").hide();
+		}
+	}	
+
+	function delegateSchool(obj){
+		var title = obj.text(), id = obj.attr("data-id");
+		var prevObj = obj.parent().parent().prev().prev();
+		prevObj.val(title);
+		prevObj.attr("data-sid",id);
+		obj.parent().parent().html("").hide();
+		return false;
+	}
+
 	//经纪人模糊匹配
 	$("#user").bind("input", function(){
 		$("#userid").val("0");
@@ -438,7 +506,7 @@ $(function(){
 		}
 		$("#litpic").val(pics.join(","));
 
-		t.attr("disabled", true);
+		//t.attr("disabled", true);
 
 		//异步提交
 		huoniao.operaJson("communityAdd.php", $("#editform").serialize() + "&config="+configArr+"&token="+$("#token").val() + "&submit="+encodeURI("提交"), function(data){
@@ -449,11 +517,11 @@ $(function(){
 					location.reload();
 				}else{
 					huoniao.parentTip("success", "小区修改成功！<a href='"+data.url+"' target='_blank'>"+data.url+"</a>");
-					t.attr("disabled", false);
+					//t.attr("disabled", false);
 				}
 			}else{
 				$.dialog.alert(data.info);
-				t.attr("disabled", false);
+				//t.attr("disabled", false);
 			};
 		});
 	});
