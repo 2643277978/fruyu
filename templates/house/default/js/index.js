@@ -366,7 +366,7 @@ $(function(){
 								//将推荐的团购数据设置为幻灯显示方式
 								if(list[i].rec == 1){
 									html.push('<div class="slideshow-item">');
-									html.push('<a href="'+list[i].url+'" target="_blank" class="pic"><img src="'+cfg_staticPath+'images/blank.gif" data-url="'+huoniao.changeFileSize(list[i].litpic, "middle")+'"></a>');
+									html.push('<a href="'+list[i].url+'" target="_blank" class="pic"><img src="'+cfg_staticPath+'images/blank.gif" data-url="'+huoniao.changeFileSize(list[i].litpic, "small")+'"></a>');
 									html.push('<div class="info">');
 
 									var price = list[i].price;
@@ -417,7 +417,7 @@ $(function(){
 							if(id == "product"){
 								html.push('<li>');
 								html.push('<a href="'+list[i].url+'" target="_blank">');
-								html.push('<img src="'+cfg_staticPath+'images/blank.gif" data-url="'+huoniao.changeFileSize(list[i].litpic, "middle")+'" alt="'+list[i].title+'">');
+								html.push('<img src="'+cfg_staticPath+'images/blank.gif" data-url="'+huoniao.changeFileSize(list[i].litpic, "small")+'" alt="'+list[i].title+'">');
 								html.push('<div class="info">');
 								html.push('<div class="txt">'+list[i].title+'<br>'+echoCurrency('symbol')+list[i].price+'</div>');
 								html.push('<div class="bg"></div>');
@@ -476,7 +476,7 @@ $(function(){
 								}
 
 								//设置图片尺寸
-								var type = "middle";
+								var type = "small";
 								if(id == "groupbuy"){
 									// type = "small";
 								}
@@ -677,5 +677,64 @@ $(function(){
 	arartta2({
 		bnt:'zhuangxiu .change',
 		obj:'zhuangxiu'
+	});
+
+	//banner轮播
+	//焦点图
+	$(".slideBox1").cycle({pager: '#slidebtn',pause: true});
+	$('.slidebtn a').html('');
+
+	//文字向上滚动
+	$(".txtMarquee-top").slide({mainCell:".bd ul",autoPlay:true,effect:"topMarquee",vis:3,interTime:50});
+
+	// 房产资讯内容切换
+	var slidebox2 = [],slidebox3 = [];
+	$('.fcNews').delegate('.ftab_nav li', 'click', function(event) {
+		var t = $(this),i = t.index();
+		if(!t.hasClass('active')){
+			t.addClass('active').siblings('li').removeClass('active');
+			$('.ftab_con').eq(i).addClass('fcshow').siblings().removeClass('fcshow');
+		}
+		if(!slidebox2[i]){
+			console.log(!slidebox2[i])
+			slidebox2[i] = $('.slideBox2:eq('+i+')').slide({titCell:".hd ul",mainCell:".bd",effect:"leftLoop",autoPlay:true,autoPage:"<li></li>",prevCell:".prev",nextCell:".next"});
+		}
+		if(!slidebox3[i]){
+			slidebox3[i] = $('.slideBox3:eq('+i+')').slide({titCell:".hd ul",mainCell:".bd",effect:"leftLoop",autoPlay:true,autoPage:"<li></li>",prevCell:".prev",nextCell:".next"});
+		}
+	});
+	$('.slideBox2').each(function(index){
+		var t = $(this), ul = t.find('.bd ul');
+		var swiperNav = [], mainNavLi = ul.find('li');
+		for (var i = 0; i < mainNavLi.length; i++) {
+			swiperNav.push(ul.find('li:eq('+i+')').html());
+		}
+		var liArr = [];
+		for(var i = 0; i < swiperNav.length; i++){
+			liArr.push(swiperNav.slice(i, i+1).join(""));
+		}
+
+		ul.html('<li>'+liArr.join('</li><li>')+'</li>');
+		if(index == 0){
+			slidebox2[index] = t.slide({titCell:".hd ul",mainCell:".bd",effect:"leftLoop",autoPlay:true,autoPage:"<li></li>",prevCell:".prev",nextCell:".next"});
+		}
+
+	});
+
+	$('.slideBox3').each(function(index){
+		var t = $(this), ul = t.find('.bd ul');
+		var swiperNav = [], mainNavLi = ul.find('li');
+		for (var i = 0; i < mainNavLi.length; i++) {
+			swiperNav.push(ul.find('li:eq('+i+')').html());
+		}
+		var liArr = [];
+		for(var i = 0; i < swiperNav.length; i++){
+			liArr.push(swiperNav.slice(i, i + 1).join(""));
+		}
+		ul.html('<li>'+liArr.join('</li><li>')+'</li>');
+
+		if(index == 0){
+			slidebox3[index] = t.slide({titCell:".hd ul",mainCell:".bd",effect:"leftLoop",autoPlay:true,autoPage:"<li></li>",prevCell:".prev",nextCell:".next"});
+		}
 	});
 });

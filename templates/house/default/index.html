@@ -25,7 +25,7 @@
 <body>
 {#include file="../../siteConfig/top1.html"#}
 
-<div class="wrap ad">{#myad id="75"#}</div>
+<div class="wrap ad">{#myad title="房产_模板一_电脑端_广告一"#}</div>
 
 {#$pageCurr = 'index'#}
 {#include file="top.html"#}
@@ -66,7 +66,11 @@
 		<a href="{#getUrlPath service='house' template='map' action='loupan'#}" target="_blank" class="s-map"><i></i>地图找房</a>
 		<a href="{#getUrlPath service='house' template='loupan' param='from=subway'#}" target="_blank" class="s-subway"><i></i>公交/地铁</a>
 	</div>
-	<div class="bgimg">{#myad id="76"#}</div>
+	<div class="slideBox slideBox1 bgimg">
+		{#myad title="房产_模板一_电脑端_广告二" type="slide"#}
+	</div>
+<!--	<div class="bgimg">{#myad title="房产_模板一_电脑端_广告二"#}</div>-->
+<!--	<div class="bgimg">{#myad id="76"#}</div>-->
 </div>
 
 <!-- 新房 s -->
