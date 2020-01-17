@@ -164,13 +164,25 @@ a:hover {text-decoration: underline;}
 .contentBox .itemInfo,.makerDetailStyle .itemInfo {color:#9399a5;font-size:14px;padding:8px 19px 0 30px;text-align:justify;overflow:hidden;word-break:break-all;word-wrap:break-word;white-space:normal}
 .contentBox .itemTitle,.makerDetailStyle .itemTitle {width:40%}
 
-/*楼盘图片*/
+/*房源图片*/
 .photo{height: auto;}
 .photo .imgul{width: 1200px;max-height: 1200px; }
-.photo .imgul ul{width: 1200px;max-height: 1200px;height: 900px;}
+.photo .imgul ul{width: 1200px;}
 .photo .imgul ul>li{width: 260px;height: 260px;float: left;margin-left: 15px;margin-top: 15px;}
 .photo .imgul ul>li>.min{width: 260px;height: 260px;}
 .photo .imgul ul>li>.max{width: 100%;height: 100%;}
+
+/*清除浮动*/
+.clearfix:after,.clearfix:before{
+    content: "";
+    display: table;
+}
+.clearfix:after{
+    clear: both;
+}
+.clearfix {
+    *zoom: 1;
+}
 
 .empty {display: block; text-align: center; line-height: 200px; font-size: 16px; font-weight: 700;}
 /*全景看房&&视频看房*/

@@ -210,78 +210,17 @@ html{background: #f8f8f8;padding-bottom: constant(safe-area-inset-bottom);paddin
 }
 
 /*底部*/
-.footer{height: 1rem;padding:.1rem 0;background:#fff;box-shadow: 0 0 .32rem rgba(192,192,192,.28);position: fixed;bottom: 0;left:0;right:0;z-index: 1000;}
-.footer ul{height: 1rem;background: #fff;z-index: 9}
-.footer ul li{width: 20%;float: left;text-align: center;position: relative;}
-.footer ul li a{display: block;height: 1rem;}
-.footer ul li p{font-size: 0.22rem;color: #333333;}
-.footer ul li span {position:relative; display:inline-block; vertical-align: middle;}
-.footer ul li img{width: .6rem;height: .6rem; display: block; margin: 0 auto;}
-.footer .fabuBg{width: 1.3rem;height: .7rem;background: #fff;box-shadow: 0 0 0.32rem rgba(192,192,192,.28);border-radius: 1.2rem 1.2rem 0 0; position: absolute;left: 50%;top: -.6rem;z-index: -1;margin-left: -.65rem;}
-.footer .fabu{position: relative;}
-.footer .fabu img{    width: 1.3rem;height: 1.3rem;position: absolute;left: 50%;top: -.65rem;margin-left: -.65rem;}
-.footer .fabu p{margin-top: .6rem;}
-.footer em {    display: block;position: absolute;bottom: 61%;left: 56%;min-width: .28rem;max-width: .6rem;padding: .03rem .03rem;background: #ff2938;border-radius: .155rem;color: #fff;font-size: .2rem;}
+.fixFooter{position: fixed; bottom: 0; left: 0; right: 0; height: .9rem; background: #fff; border-top: 1px solid #e4e4e3; font-size: .24rem; -webkit-animation: FadeIn .15s ease-out; -moz-animation: FadeIn .15s ease-out; animation: FadeIn .15s ease-out;}
+.fixFooter ul{display: -webkit-box;}
+.fixFooter ul li{-webkit-box-flex: 1; text-align: center;}
+.fixFooter ul li a{display: block;}
+.fixFooter ul li i{display: block; width: .5rem; height: .5rem; margin: .05rem auto 0;}
+.fixFooter ul li.ficon1 i{background: url(../images/aficon1.png) center center no-repeat; background-size: .4rem auto;}
+.fixFooter ul li.ficon2 i{background: url(../images/aficon2.png) center center no-repeat; background-size: .4rem auto;}
+.fixFooter ul li.ficon3 i{background: url(../images/aficon3.png) center center no-repeat; background-size: .4rem auto;}
+.fixFooter ul li.ficon4 i{background: url(../images/aficon4.png) center center no-repeat; background-size: .4rem auto;}
+.fixFooter ul li.ficon5 i{background: url(../images/aficon5.png) center center no-repeat; background-size: .4rem auto;}
 
 /* iPhoneX适配 */
 .footer{padding-bottom: constant(safe-area-inset-bottom);padding-bottom: env(safe-area-inset-bottom);}
 
-
-/*客服弹出层*/
-.phone_frame{
-    width: 5rem;
-    height: 4rem;
-    z-index: 10008;
-    position: fixed;
-    background: #fff url(../images/q_bg.png) 0 0 no-repeat;
-    background-size: 100%;
-    top: 50%;
-    margin-top: -2rem;
-    left: 50%;
-    margin-left: -2.5rem;
-    border-radius: .1rem;
-    overflow: hidden;
-    display: none;
-    text-align: center;
-}
-.phone_frame .phone_icon{
-	position: absolute;
-    width: 1.12rem;
-    height: 1.12rem;
-    top: .5rem;
-    left: 50%;
-    margin-left: -.56rem;
-    border-radius: 50%;
-    box-shadow: 0px 2px 7px #fdf7c2;
-    background: #fff url(../images/phone_p.png) center center no-repeat;
-    background-size: auto .6rem;
-}
-.phone_frame a{
-	background: #f1370b;
-    color: #fff;
-    font-size: .32rem;
-    height: .6rem;
-    display: inline-block;
-    line-height: .6rem;
-    width: 2rem;
-    text-align: center;
-    border-radius: .06rem;
-    margin-top: .4rem;
-}
-.phone_frame p{
-	text-align: center;
-    padding-top: 2rem;
-    font-size: .34rem;
-}
-.phone_frame .phone_cuo{
-    background: #fff url(../images/cuo_red.png) center center no-repeat;
-    background-size: auto .26rem;
-    display: inline-block;
-    width: .5rem;
-    height: .5rem;
-    position: absolute;
-    border-radius: 50%;
-    top: .3rem;
-    right: .2rem;
-    box-shadow: 0px 2px 5px #fdf7c2;
-}

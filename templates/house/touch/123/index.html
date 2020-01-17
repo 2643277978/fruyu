@@ -144,9 +144,9 @@
                     </a>
                   </li>
                   <li>
-                    <a href="{#getUrlPath service=house template=demand#}?typeid=0">
+                      <a href="{#getUrlPath service="house" template="calculator" do="sy"#}">
                        <span class="icon-circle"><img src="{#$templets_skin#}images/t7.png"></span>
-                     <span class="icon-txt">求租</span>
+                     <span class="icon-txt">房贷计算器</span>
                     </a>
                   </li>
                   <li>
@@ -213,10 +213,10 @@
             <p>地图找房</p>
           </a>
         </div>
-        <div class="maBox kefu">
-          <a href="javascript:;">
-            <img src="{#$templets_skin#}images/gongju_05.png">
-            <p>客服电话</p>
+        <div class="maBox">
+          <a href="{#getUrlPath service="house" template="school"#}">
+            <img src="{#$templets_skin#}images/school.png">
+            <p>找学校</p>
           </a>
         </div>
     </div>
@@ -293,15 +293,13 @@
 </div>
 
 <!-- 底部 s-->
-<div class="footer">
-  <ul class="fn-clear">
-    <li><a href="{#$cfg_basehost#}"><img src="{#$templets_skin#}images/fIndex1.png" alt=""><p>首页</p></a></li>
-    <li><a href="{#getUrlPath service='member' type='user' template='househome'#}"><img src="{#$templets_skin#}images/fShop.png" alt=""><p>管理房源</p></a></li>
-    <li class="fabu"><a href="{#getUrlPath service='member' type='user' template='house'#}#fabu"><img src="{#$templets_skin#}images/fFabu.png" alt=""><p>发布房源</p></a></li>
-    <li><a href="{#getUrlPath service='member' type='user' template='message'#}"><span><img src="{#$templets_skin#}images/fInfo.png" alt=""><em id="message"></em></span><p>消息</p></a></li>
-    <li><a href="{#$member_userDomain#}"><img src="{#$templets_skin#}images/fMy.png" alt=""><p>我的</p></a></li>
-  </ul>
-  <div class="fabuBg"></div>
+<div class="fixFooter">
+    <ul>
+        <li class="ficon1 active"><a href="{#$cfg_basehost#}"><i></i>首页</a></li>
+        <li class="ficon2"><a href="{#getUrlPath service='member' type='user' template='house'#}#fabu"><i></i>发布</a></li>
+        <li class="ficon3"><a href="{#getUrlPath service='member' type='user' template='house'#}"><i></i>管理</a></li>
+        <li class="ficon4"><a href="{#$member_userDomain#}"><i></i>我的</a></li>
+    </ul>
 </div>
 <!-- 底部 e-->
 
@@ -321,6 +319,5 @@
 <script src="{#$cfg_staticPath#}js/ui/swiper.min.js" type="text/javascript"></script>
 {#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
 <script src="{#$templets_skin#}js/index.js?v={#$cfg_staticVersion#}"></script>
-
 </body>
 </html>

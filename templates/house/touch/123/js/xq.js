@@ -501,7 +501,8 @@ $(function() {
 								html.push('<dd class="item-type-1 xq-item-type-1">');
 
 								if (list[i].price) {
-		                            var price = '<span class="price r">' + list[i].price + (list[i].ptype == 1 ? '元/㎡' : '万元/套') + '</span>';
+		                            var price = '<span class="price r">' + list[i].price +'元/㎡</span>';
+		                            // var price = '<span class="price r">' + list[i].price + (list[i].ptype == 1 ? '元/㎡' : '万元/套') + '</span>';
 		                        } else {
 		                            var price = '<span class="price r">待定</span>';
 		                        }

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>{#$detail_title#}-{#$siteCityInfo['name']#}学校{#$pageType#}网-{#$house_title#}</title>
+    <meta name="keywords" content="{#$siteCityInfo['name']#}学校{#$pageType#}" />
+    <meta name="description" content="{#$cfg_shortname#}学校频道为您提供{#$siteCityInfo['name']#}学校{#$pageType#},{#$siteCityInfo['name']#}学校{#$pageType#}，{#$siteCityInfo['name']#}土地{#$pageType#}信息，在这里有大量的{#$siteCityInfo['name']#}学校{#$pageType#}、转让信息供您查询。查找{#$siteCityInfo['name']#}学校、{#$siteCityInfo['name']#}学校信息，请到{#$cfg_shortname#}学校频道。" />
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/school-detail.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" href="{#$templets_skin#}css/swiper.min.css">
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript">
+        var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+        var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+        var pageData = {
+            title: '{#$detail_community#}',
+            address: '{#$detail_address#}',
+            lat: '{#$detail_latitude#}',
+            lng: '{#$detail_longitude#}',
+            mapType: '{#$site_map#}',
+            cityName: '{#$siteCityInfo['name']#}',
+            mapKey: '{#$site_map_key#}',
+        };
+        var JubaoConfig = {
+            "module" : 'house',
+            "action" : 'school',
+            "id" : '{#$detail_id#}',
+            "link":'{#getUrlPath service='house'  template='school-detail' id={#$detail_id#}#}',
+            "desc":'{#$detail_address#}',
+            "imgUrl": '{#$detail_litpic#}',
+            'title': '{#$detail_title#}',
+        };
+        var page_type = 'school';
+    </script>
+</head>
+<body>
+{#include file="../../../siteConfig/touch_top.html" pageTitle="学校"#}
+<div class="container zf">
+    <!-- 视频图片轮播 s-->
+    <div class="topSwiper">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                {#if $detail_video#}
+                <div class="swiper-slide video-box">
+                    <img src="{#$detail_litpic#}" width="100%" height="100%">
+                    <div class="imgplay">
+                        <img src="{#$templets_skin#}images/viplay.png" onerror="javascript:this.src='/static/images/404.jpg';" alt="">
+                    </div>
+                </div>
+                {#/if#}
+                {#foreach from=$detail_imglist item=img#}
+                <div class="swiper-slide">
+                    <img src="{#$img.path#}" onerror="javascript:this.src='/static/images/404.jpg';" width="100%" height="100%">
+                </div>
+                {#/foreach#}
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="markBox">
+                {#if $detail_video#}<a href="javascript:;" class="pmark video">视频</a>{#/if#}
+                {#if $detail_imglist#}<a href="javascript:;" class="pmark picture">图片</a>{#/if#}
+            </div>
+        </div>
+    </div>
+    <!-- 视频图片轮播 e-->
+    <!-- 视频图片弹出层 s-->
+    <div class="videoModal">
+        <div class="swiper-container">
+            <i class="vClose"></i>
+            <div class="swiper-wrapper">
+                {#if $detail_video#}
+                <div class="swiper-slide">
+                    <video width="100%" height="100%" controls preload="meta" x5-video-player-type="h5" x5-playsinline playsinline webkit-playsinline  x5-video-player-fullscreen="true" id="video" src="{#$detail_video#}"  poster="{#$detail_litpic#}"></video>
+                </div>
+                {#/if#}
+                {#foreach from=$detail_imglist item=img#}
+                <div class="swiper-slide"><img src="{#$img.path#}" onerror="javascript:this.src='/static/images/404.jpg';" / ></div>
+                {#/foreach#}
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+    <!-- 视频图片弹出层 e-->
+    <div class="basic">
+        <div class="zf_title">
+            <div class="title">{#$detail_title#}</div>
+            <div class="price"><span>小区均价：</span>{#$detail_minprice#}-{#$detail_maxprice#}<span>元/㎡</span></div>
+            <div class="txt"><span>{#$detail_date|date_format:"%Y.%m.%d"#}</span><span>{#$detail_click#}浏览</span><span class="jubao HN_Jubao">举报</span>
+                <span class="im_ipone"></span>
+            </div>
+            <a href="javascript:;" target="_blank" class="zf_address appMapBtn">{#foreach from=$detail_addr item=addr#}{#$addr#}{#/foreach#}{#$detail_address#}</a>
+        </div>
+        <div class="information usertype{#$detail_usertype#} fn-clear">
+        </div>
+    </div>
+    <!--学校信息 -->
+    <div class="housing">
+        <p class="classify_title">学校介绍</p>
+        {#if $detail_intro#}
+        <div class="housing_txt">{#$detail_intro#}</div>
+        {#else#}
+        <div class="empty">暂无介绍</div>
+        {#/if#}
+    </div>
+    <!--学校特色 -->
+    <div class="housing">
+        <p class="classify_title">学校特色</p>
+        <div class="housing_txt">
+            {#foreach from=$detail_flag item=flag#}
+        <span>{#$flag#}</span>
+            {#/foreach#}
+        </div>
+    </div>
+    <!-- 位置周边 -->
+    <div class="zhoubian">
+        <div class="classify_title">位置周边</div>
+        <div class="periphery">
+            <ul class="nav-wrapper"></ul>
+            <div class="map-container">
+                <div class="map-wrapper" id="map-wrapper" data-lng="{#$detail_longitude#}" data-lat="{#$detail_latitude#}"></div>
+            </div>
+        </div>
+        <a href="javascript:;" class="btn-all appMapBtn" target="_blank">查看全部配套 > </a>
+    </div>
+
+    <!-- 周边小区 -->
+    <div class="periphery">
+        <div class="periphery_title">周边小区 <span><a href="{#getUrlPath service='house' template='community'#}">查看全部小区></a></span></div>
+        <ul class="fn-clear">
+            {#house action=communityList school=$detail_id  pageSize=4#}
+            <li class="fn-clear">
+                <a href="{#$row.url#}" title="{#$row.title#}">
+                    <div class="rleft">
+                        <img src="{#$row.litpic|replace:"large":"small"#}" onerror="javascript:this.src='/static/images/404.jpg';" alt="{#$row.title#}">
+                    </div>
+                    <div class="rright">
+                        <div class="rtitle fn-clear">
+                            {#if $detial_isbid#}<i></i>{#/if#}<p>{#$row.title#}</p>{#if $row.qj#}<em class="quanjing">全景</em>{#/if#}
+                        </div>
+                        <div class="comment fn-clear"><span><a href="{#getUrlPath service='house' template='community-sale' id={#$community.id#}#}">{#$row.saleCount#}套在售</a></span><em>|</em><span><a href="{#getUrlPath service='house' template='community-zu' id={#$community.id#}#}">{#$row.zuCount#}套在租</a></span><p>{#if $row.price > 0#}{#$row.price#}元/㎡{#else#}面议{#/if#}</p>
+                        </div>
+
+                            {#foreach from=$row.schoolList item=sch key=k#}
+                            {#if $sch.distance=="infinite"#}
+                             <p class="addr">离学校：未知</p>
+                            {#elseif $sch.id==$detail_id#}
+                           <p class="addr">离学校：{#$sch.distance/1000#}km</p>
+                            {#/if#}
+                            {#/foreach#}
+                    </div>
+                </a>
+            </li>
+            {#/house#}
+        </ul>
+    </div>
+    <!-- 周边二手房 -->
+    <div class="periphery">
+        <div class="periphery_title">周边二手房<span><a href="{#getUrlPath service='house' template='sale'#}">查看全部二手房></a></span></div>
+        <ul class="fn-clear">
+            {#house action=saleList school=$detail_id pageSize=4#}
+            <li class="fn-clear">
+                <a href="{#$row.url#}" title="{#$row.title#}">
+                    <div class="rleft">
+                        <img src="{#$row.litpic|replace:"large":"small"#}" onerror="javascript:this.src='/static/images/404.jpg';" alt="{#$row.title#}">
+                    </div>
+                    <div class="rright">
+                        <div class="rtitle fn-clear">
+                            {#if $detial_isbid#}<i></i>{#/if#}<p>{#$row.title#}</p>{#if $row.qj#}<em class="quanjing">全景</em>{#/if#}
+                        </div>
+                        <div class="comment fn-clear"><span>{#$row.room#}</span><span class="area">{#$row.area#}平米</span><em class="salePrice">{#if $row.price > 0#}{#$row.price#}元/㎡{#else#}面议{#/if#}</em>
+                        </div>
+                        <p class="addr">{#$row.community#}<span class="addr_right">均价&nbsp;{#$row.unitprice#}/平</span>
+                        </p>
+                    </div>
+                </a>
+            </li>
+            {#/house#}
+        </ul>
+        <!-- 周边租房 -->
+        <div class="periphery">
+            <div class="periphery_title">周边租房<span><a href="{#getUrlPath service='house' template='zu'#}">查看全部租房></a></span></div>
+            <ul class="fn-clear">
+                {#house action=zuList school=$detail_id pageSize=4#}
+                <li class="fn-clear">
+                    <a href="{#$row.url#}" title="{#$row.title#}">
+                        <div class="rleft">
+                            <img src="{#$row.litpic|replace:"large":"small"#}" onerror="javascript:this.src='/static/images/404.jpg';" alt="{#$row.title#}">
+                        </div>
+                        <div class="rright">
+                            <div class="rtitle fn-clear">
+                                {#if $detial_isbid#}<i></i>{#/if#}<p>{#$row.title#}</p>{#if $row.qj#}<em class="quanjing">全景</em>{#/if#}
+                            </div>
+                            <div class="comment fn-clear"><span>{#$row.room#}</span><span class="area">{#$row.area#}平米</span><em class="salePrice">{#if $row.price > 0#}{#$row.price#}元/㎡{#else#}面议{#/if#}</em>
+                            </div>
+                            <p class="addr">{#$row.community#}<span class="addr_right">均价&nbsp;{#$row.unitprice#}/平</span>
+                            </p>
+                        </div>
+                    </a>
+                </li>
+                {#/house#}
+            </ul>
+    </div>
+
+</div>
+<script src="{#$templets_skin#}js/swiper.min.js"></script>
+<script src="{#$cfg_staticPath#}js/publicOpenMap.js?v={#$cfg_staticVersion#}"></script>
+{#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
+<script src="{#$templets_skin#}js/cw-detail.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

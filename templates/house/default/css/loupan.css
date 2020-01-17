@@ -140,16 +140,16 @@ a:hover {text-decoration: underline;}
 .list .item .plan li.loading {height: 110px; line-height: 110px; text-align: center;}
 .list .item .plan li.loading:hover {background-color: #fff;}
 .list .item .plan li.loading img {display: inline-block; margin-right: 5px;}
-.list .item .plan li .p-icon {float: left; position: relative; width: 12px; height: 12px; margin: 12px 8px 0 0; background-position: -23px -32px; cursor: pointer;}
+.list .item .plan li .p-icon {float: left; position: relative; width: 12px; height: 12px; margin: 12px 5px 0 0; background-position: -23px -32px; cursor: pointer;}
 .list .item .plan li .p-icon:hover {background-position: -36px -32px;}
 .list .item .plan li .p-icon img {display: none; position: absolute; left: 12px; top: 0; width: 400px; height: 300px;}
 .list .item .plan li .p-icon:hover {z-index: 10;}
 .list .item .plan li .p-icon:hover img {display: block; cursor: default;}
 .list .item .plan li a {position: relative; overflow: hidden; display: block;}
-.list .item .plan li a span {float: left;}
-.list .item .plan li a .p-tit {width: 40%;}
+/*.list .item .plan li a span {float: left;}*/
+/*.list .item .plan li a .p-tit {min-width: 40%;max-width: 45%}*/
 .list .item .plan li a .p-area {width: 10%;}
-.list .item .plan li a .p-face {width: 20%;}
+.list .item .plan li a .p-face {width: 20%;margin-left: 20px;}
 .list .item .plan li a .p-price {float: right; width: 30%; text-align: right;}
 .list .item .plan li a .p-price strong {color: #e43; font-family: Georgia; font-size: 16px; font-weight: 500; vertical-align: 1px; margin-right: 3px;}
 .list .item .plan li.lm {border: 0; text-align: right;}

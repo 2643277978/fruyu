@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>{#$siteCityInfo['name']#}{#$cf_seotitle#}学校{#$pageType#}|{#$siteCityInfo['name']#}学校{#$pageType#}信息-{#$house_title#}</title>
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/estate-list.css?v={#$cfg_staticVersion#}">
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
+    <script>
+        var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', cfg_staticPath = '{#$cfg_staticPath#}', staticPath = '{#$cfg_staticPath#}',templets_skin = '{#$templets_skin#}';
+        var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+        var addrUrl     = '{#getUrlPath service="house" template="list" typeid="{#$list_id#}" addrid="%addr%" business="%circle%" subway="0" param="{#$skeyword#}"#}';
+        var subwayUrl   = '{#getUrlPath service="house" template="list" typeid="{#$list_id#}" addrid="0" business="0" subway="%subway%" station="%station%" param="{#$skeyword#}"#}';
+        var action = 'schoolList', detailListId = 'school-list';
+        var type = '{#$type#}';
+        var JubaoConfig = {
+            "module" : 'house',
+            "action" : 'school',
+            "id" : '',
+            "desc": '{#$house_description#}',
+            "title": '{#$siteCityInfo['name']|cat:'学区房'#}',
+            "imgUrl": '{#$house_logoUrl#}',
+            "link": '{#getUrlPath service='house' template='school'#}',
+        };
+    </script>
+</head>
+<body>
+<div class="container cf">
+    <div id="scroller">
+        {#include file="../../../siteConfig/touch_top.html" pageTitle="学校"#}
+        <form class="search-box" action="" method="get">
+            <div class="search l">
+                <i></i>
+                <input type="text" id="search_keyword" placeholder="请输入要搜索的关键字">
+            </div>
+            <div class="search-btn l">
+                <input type="button" data-role="btn" name="search" id="search_button" value="搜索">
+            </div>
+            <div class="clear"></div>
+        </form>
+    </div>
+    <div class="house-list esf-list" id="cf-list">
+    </div>
+    <div class="mask"></div>
+</div>
+<script>
+    var atpage = '{#$page#}',
+        totalCount = {#if $pageInfo.totalCount == 0#}0{#else#}{#$pageInfo.totalCount#}{#/if#},
+        totalPage = {#if $pageInfo.totalPage == 0#}0{#else#}{#$pageInfo.totalPage#}{#/if#},
+            pageSize = 20;
+</script>
+<script src="{#$templets_skin#}js/iscroll.js"></script>
+<script src="{#$cfg_staticPath#}js/detail2list.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/school.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

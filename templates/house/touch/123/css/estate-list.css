@@ -120,6 +120,11 @@ vertical-align: middle;
     color:#a0a0a0!important;
     float: right;
 }
+.house-item .item-area .price.sch{font-size: 12px;}
+.house-item .item-area {overflow: auto;text-overflow: clip}
+.house-item dd.item-flag{width: 100%;margin-top: 5px;}
+.house-item dd.item-flag span:first-child{margin-left: 0px;}
+.house-item dd.item-flag span{border: 1px solid pink;margin-left: 8px;text-align: center;font-size: 12px;}
 .house-item dd.xq-item-area em span{
 	    color: #f35712;
 }

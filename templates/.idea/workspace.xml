@@ -67,10 +67,12 @@
       <change beforePath="$PROJECT_DIR$/house/default/community-hx.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/community-hx.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/community-sale.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/community-sale.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/community-zu.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/community-zu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/community.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/community.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/community_top.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/community_top.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/css/cf_detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/cf_detail.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/css/community_detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/community_detail.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/css/faq.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/faq.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/css/loupan.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/loupan.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/css/public.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/public.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/css/sale.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/sale.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/css/sale_detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/sale_detail.css" afterDir="false" />
@@ -81,6 +83,7 @@
       <change beforePath="$PROJECT_DIR$/house/default/css/zu.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/zu.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/css/zu_detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/zu_detail.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/faq.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/faq.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/footer.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/js/cf_detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/js/cf_detail.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/js/faq.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/js/faq.js" afterDir="false" />
@@ -123,6 +126,7 @@
       <change beforePath="$PROJECT_DIR$/house/touch/123/js/map-zu-baidu.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/js/map-zu-baidu.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/touch/123/js/sale.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/js/sale.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/touch/123/js/sp.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/js/sp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/touch/123/js/xq.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/js/xq.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/touch/123/js/xzl.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/js/xzl.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/touch/123/loupan-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/loupan-detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/touch/123/map-sale.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/map-sale.html" afterDir="false" />
@@ -169,8 +173,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -184,14 +188,18 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/house/default/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/house/default" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="http.proxy" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\2019.11.13\dengyunlong_26dj_dev\templates\house\default" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\2019.11.13\dengyunlong_26dj_dev\templates\house\default" />
       <recent name="D:\2019.11.13\dengyunlong_26dj_dev\templates\house\default\images" />
       <recent name="D:\2019.11.13\dengyunlong_26dj_dev\templates\house\touch\123\images" />
       <recent name="D:\2019.11.13\dengyunlong_26dj_dev\templates\house\122" />
@@ -252,7 +260,9 @@
       <workItem from="1578878618574" duration="25897000" />
       <workItem from="1578964981340" duration="24716000" />
       <workItem from="1578997095156" duration="2119000" />
-      <workItem from="1579050911335" duration="12592000" />
+      <workItem from="1579050911335" duration="27165000" />
+      <workItem from="1579136862435" duration="27061000" />
+      <workItem from="1579223781553" duration="26317000" />
     </task>
     <servers />
   </component>
