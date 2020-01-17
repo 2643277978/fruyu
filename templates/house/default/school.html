@@ -43,51 +43,50 @@
             </div>
         </div>
         <div class="filter">
-            <div class="t-fi fn-clear">
-                <span class="inf"><a href="{#getUrlPath service='house' template='map-sale'#}" target="_blank">地图找房>></a></span>
-                <ul class="t-fi-item fn-clear">
-                    <li{#if $from == "" && $subway == 0#} class="curr"{#/if#}><a href="{#getUrlPath service='house' template='school'#}">按学校查询</a></li>
-                    <li{#if $from == "subway" || $subway != 0#} class="curr"{#/if#}><a href="{#getUrlPath service='house' template='sale' param='from=subway'#}">公交/地铁房</a></li>
-                </ul>
-                {#if $keywords != ""#}
-                <div class="keywords fn-clear">
-                    <label>关键字：</label>
-                    <a title="删除关键字" href="{#getUrlPath service='house' template='school' addrid={#$addrid#} business={#$business#} flags={#$flags#}  keywords="" param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"><s>&times;</s></a>
-                </div>
-                {#/if#}
-            </div>
-            {#if $from == "" && $subway == 0#}
-            <dl class="fn-clear">
-                <dt>区域：</dt>
-                <dd>
-                    <a href="{#getUrlPath service='house' template='school' addrid=0 business=0  flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $addrid == 0#} class="curr"{#/if#}>不限</a>
-                    {#house action="addr" return='addr'#}
-                    <a href="{#getUrlPath service='house' template='school' addrid={#$addr.id#} business=0 flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $addrid == $addr.id#} class="curr"{#/if#}>{#$addr.typename#}</a>
-                    {#/house#}
-                    <div class="fn-clear"></div>
-                    {#if $addrid != 0#}
-                    <div class="sub-item fn-clear">
-                        <a href="{#getUrlPath service='house' template='school' addrid={#$addrid#} business=0  flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $business == 0#} class="curr"{#/if#}>不限</a>
-                        {#house action="addr" return='addr' type={#$addrid#}#}
-                        <a href="{#getUrlPath service='house' template='school' addrid={#$addrid#} business={#$addr.id#} flags={#$flags#}  keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $business == $addr.id#} class="curr"{#/if#}>{#$addr.typename#}</a>
-                        {#/house#}
-                    </div>
-                    {#/if#}
+<!--            <div class="t-fi fn-clear">-->
+<!--                <span class="inf"><a href="{#getUrlPath service='house' template='map-sale'#}" target="_blank">地图找房>></a></span>-->
+<!--                <ul class="t-fi-item fn-clear">-->
+<!--                    <li{#if $from == "" && $subway == 0#} class="curr"{#/if#}><a href="{#getUrlPath service='house' template='school'#}">按学校查询</a></li>-->
+<!--                    <li{#if $from == "subway" || $subway != 0#} class="curr"{#/if#}><a href="{#getUrlPath service='house' template='sale' param='from=subway'#}">公交/地铁房</a></li>-->
+<!--                </ul>-->
+            {#if $keywords != ""#}
+            <dl class="fn-clear keywords">
+                <dt>搜索：</dt>
+                <dd class="fn-clear">
+                    <a href="{#getUrlPath service='house' template='school' addrid={#$addrid#} business={#$business#} flags={#$flags#} keywords="" #}">{#$keywords#} <s>&times;</s></a>
                 </dd>
             </dl>
+            {#/if#}
+<!--            </div>-->
+            <dl class="fn-clear">
+                <dt>区域：</dt>
+                <dd class="fn-clear">
+                    <a href="{#getUrlPath service='house' template='school'  addrid=0 business=0  flags={#$flags#} keywords={#$keywords#} #}"{#if $addrid == 0#} class="curr"{#/if#}>不限</a>
+                    {#house action="addr" return='addr'#}
+                    <a href="{#getUrlPath service='house' template='school'  addrid={#$addr.id#} business=0  flags={#$flags#} keywords={#$keywords#} #}"{#if $addrid == $addr.id#} class="curr"{#/if#}>{#$addr.typename#}</a>
+                    {#/house#}
+                </dd>
+            </dl>
+            {#if $addrid != 0#}
+            <div class="sub-fi area">
+                <a href="{#getUrlPath service='house' template='school' addrid={#$addrid#} business=0  flags={#$flags#} keywords={#$keywords#} #}"{#if $business == 0#} class="curr"{#/if#}>不限</a>
+                {#house action="addr" return='addr' type={#$addrid#}#}
+                <a href="{#getUrlPath service='house' template='school'  addrid={#$addrid#} business={#$addr.id#} flags={#$flags#}  keywords={#$keywords#} #}"{#if $business == $addr.id#} class="curr"{#/if#}>{#$addr.typename#}</a>
+                {#/house#}
+            </div>
             {#/if#}
             <dl class="fn-clear">
                 <dt>特色：</dt>
                 <div class="item-check fn-clear">
                     {#house action="item" return="item" type="{#$propertypid#}"  #}
-                    <a href="{#getUrlPath service='house' template='school' addrid={#$addrid#} business={#$business#} flags={#$flag{#$item.id#}#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}" class="icheck{#if in_array('{#$item.id#}', $flagArr)#} on{#/if#}"><s></s>{#$item.typename#}</a>
+                    <a href="{#getUrlPath service='house' template='school' addrid={#$addrid#}  business={#$business#}  flags={#$item.id#}  keywords={#$keywords#} #}"  class="icheck{#if $flags == $item.id #}on{#/if#}" ><s></s>{#$item.typename#}</a>
                     {#/house#}
                 </div>
             </dl>
         </div>
         <div class="wrap orderby fn-clear">
             <ul class="l-tab">
-                <li{#if $type == '0' || $type == ''#} class="curr"{#/if#}><a href="{#getUrlPath service='house' template='school' addrid=0 business=0   flags={#$flags#} keywords={#$keywords#}  param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">全部学校</a></li>
+                <li class="curr"><a href="{#getUrlPath service='house' template='school' addrid=0  business=0  flags={#$flags#}  keywords={#$keywords#}  #}">全部学校</a></li>
             </ul>
         </div>
     </div>
@@ -140,7 +139,7 @@
             {#/if#}
         </ul>
 
-        {#getPageList service='house' template='school' addrid={#$addrid#} business={#$business#}   flags={#$flags#} keywords={#$keywords#}  param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}
+        {#getPageList service='house' template='school' addrid={#$addrid#} business={#$business#}  flags={#$flags#}  keywords={#$keywords#}  #}
 
     </div>
 </div>

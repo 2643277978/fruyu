@@ -13,31 +13,31 @@ $(function(){
 	});
 
 	//异步获取二手房统计数据
-	$.ajax({
-		url: "/include/ajax.php?service=house&action=saleList&pageSize=-1&pageInfo=1",
-		type: "POST",
-		dataType: "jsonp",
-		success: function (data) {
-			var count = 0;
-			if(data && data.totalCount){
-				count = data.totalCount;
-			}
-			$("#saleTotal").html(count);
-		}
-	});
-
-	$.ajax({
-		url: "/include/ajax.php?service=house&action=saleList&times=week-1&pageSize=-1&pageInfo=1",
-		type: "POST",
-		dataType: "jsonp",
-		success: function (data) {
-			var count = 0;
-			if(data && data.totalCount){
-				count = data.totalCount;
-			}
-			$("#saleWeekTotal").html(count);
-		}
-	});
+	// $.ajax({
+	// 	url: "/include/ajax.php?service=house&action=saleList&pageSize=-1&pageInfo=1",
+	// 	type: "POST",
+	// 	dataType: "jsonp",
+	// 	success: function (data) {
+	// 		var count = 0;
+	// 		if(data && data.totalCount){
+	// 			count = data.totalCount;
+	// 		}
+	// 		$("#saleTotal").html(count);
+	// 	}
+	// });
+	//
+	// $.ajax({
+	// 	url: "/include/ajax.php?service=house&action=saleList&times=week-1&pageSize=-1&pageInfo=1",
+	// 	type: "POST",
+	// 	dataType: "jsonp",
+	// 	success: function (data) {
+	// 		var count = 0;
+	// 		if(data && data.totalCount){
+	// 			count = data.totalCount;
+	// 		}
+	// 		$("#saleWeekTotal").html(count);
+	// 	}
+	// });
 
 
 	//搜索分类切换

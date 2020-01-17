@@ -179,87 +179,10 @@
 						</ul>
 					</div>
 
-					{#$flag0 = "0"#}
-					{#$flag1 = "1"#}
-					{#$flag2 = "2"#}
-					{#$flag3 = "3"#}
-					{#$flag4 = "4"#}
-					{#$flag5 = "5"#}
-
-					{#if in_array("0", $flagArr)#}
-					{#$flag0 = ""#}
-					{#/if#}
-
-					{#if in_array("1", $flagArr)#}
-					{#$flag1 = ""#}
-					{#/if#}
-
-					{#if in_array("2", $flagArr)#}
-					{#$flag2 = ""#}
-					{#/if#}
-
-					{#if in_array("3", $flagArr)#}
-					{#$flag3 = ""#}
-					{#/if#}
-
-					{#if in_array("4", $flagArr)#}
-					{#$flag4 = ""#}
-					{#/if#}
-
-					{#if in_array("5", $flagArr)#}
-					{#$flag5 = ""#}
-					{#/if#}
-
-					{#if $flags != ""#}
-					{#foreach from=$flagArr item=flag#}
-						{#if $flag != "0"#}
-							{#if $flag0 == ""#}
-								{#$flag0 = $flag0|cat:$flag#}
-							{#else#}
-								{#$flag0 = $flag0|cat:","|cat:$flag#}
-							{#/if#}
-						{#/if#}
-						{#if $flag != "1"#}
-							{#if $flag1 == ""#}
-								{#$flag1 = $flag1|cat:$flag#}
-							{#else#}
-								{#$flag1 = $flag1|cat:","|cat:$flag#}
-							{#/if#}
-						{#/if#}
-						{#if $flag != "2"#}
-							{#if $flag2 == ""#}
-								{#$flag2 = $flag2|cat:$flag#}
-							{#else#}
-								{#$flag2 = $flag2|cat:","|cat:$flag#}
-							{#/if#}
-						{#/if#}
-						{#if $flag != "3"#}
-							{#if $flag3 == ""#}
-								{#$flag3 = $flag3|cat:$flag#}
-							{#else#}
-								{#$flag3 = $flag3|cat:","|cat:$flag#}
-							{#/if#}
-						{#/if#}
-						{#if $flag != "4"#}
-							{#if $flag4 == ""#}
-								{#$flag4 = $flag4|cat:$flag#}
-							{#else#}
-								{#$flag4 = $flag4|cat:","|cat:$flag#}
-							{#/if#}
-						{#/if#}
-						{#if $flag != "5"#}
-							{#if $flag5 == ""#}
-								{#$flag5 = $flag5|cat:$flag#}
-							{#else#}
-								{#$flag5 = $flag5|cat:","|cat:$flag#}
-							{#/if#}
-						{#/if#}
-					{#/foreach#}
-					{#/if#}
 
 					<div class="item-check fn-clear">
 						{#house action="item" return="item" type="{#$propertypid#}"  #}
-						<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$flag{#$item.id#}#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}" class="icheck{#if in_array('{#$item.id#}', $flagArr)#} on{#/if#}"><s></s>{#$item.typename#}</a>
+						<a href="{#getUrlPath service='house' template='sale' addrid={#$addrid#} business={#$business#} subway={#$subway#} station={#$station#} price={#$price#} area={#$area#} room={#$room#} direction={#$direction#} buildage={#$buildage#} floor={#$floor#} zhuangxiu={#$zhuangxiu#} flags={#$item.id#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"  class="icheck{#if $flags == $item.id #} on{#/if#}" ><s></s>{#$item.typename#}</a>
 						{#/house#}
 					</div>
 				</dd>
