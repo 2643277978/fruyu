@@ -31,7 +31,6 @@
 		url: '{#$pageUrl#}'
 	};
 	var site_map = "{#$site_map#}";
-	var Price="{#$detail_price_trend#}";
 </script>
 </head>
 
@@ -409,6 +408,9 @@
 
 
 {#include file="footer.html"#}
+<script>
+	let data=JSON.parse('{#$detail_price_trend#}');
+</script>
 <script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.qrcode.min.js"></script>
 <script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
 <script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dialog-4.2.0.js"></script>

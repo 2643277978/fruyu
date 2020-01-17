@@ -109,8 +109,8 @@ $(function(){
             height: 300
         });
     });
-    if(Price){
-    let data=JSON.parse('{#$detail_price_trend#}');
+    //价格走势
+
     let chushou=data.出售;
     let sale=data.出租;
     let sq=data.商圈出租;
@@ -230,5 +230,4 @@ $(function(){
         tubiao(ctx1,name1[0].i,datasta(rData,arr1[0]),name1[1].i,datasta(rData,arr1[1]),name1[2].i,datasta(rData,arr1[2]),name1[3].i,datasta(rData,arr1[3]));
         tubiao(ctx2,name2[0].i,datasta(rData,arr2[0]),name2[1].i,datasta(rData,arr2[1]),name2[2].i,datasta(rData,arr2[2]),name2[3].i,datasta(rData,arr2[3]));
     });
-    }
 })

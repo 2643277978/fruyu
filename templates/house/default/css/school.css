@@ -41,3 +41,60 @@ a:hover {text-decoration: underline;}
 .filter .icheck {position: relative; margin-right: 20px; padding: 14px 0 0 23px;}
 .filter .icheck s {position: absolute; left: 0; top: 15px; width: 14px; height: 14px; border: 1px solid #bbb; background-color: #fff;}
 .filter .icheck.on s {border-color: #808080; background-position: -39px -6px;}
+
+
+/* 排序 */
+.orderby {height: 45px; line-height: 45px;}
+.orderby .l-tab {float: left; height: 44px; font-size: 18px; line-height: 44px;}
+.orderby .l-tab li {float: left; border: 1px solid #eee; border-bottom: 0; margin-left: -1px; background-color: #f9f9f9;}
+.orderby .l-tab a {color: #000; padding: 0 60px; display: block;}
+.orderby .l-tab a:hover {text-decoration: none;}
+.orderby .l-tab li.curr {background-color: #fff; border-top: 2px solid #c0140a;}
+
+.list {margin: 0 auto 50px; border: 1px solid #efefef; background-color: #fff; box-shadow: 0 1px 5px rgba(0,0,0,0.1);}
+.lhead {height: 50px; padding: 0 25px 0 0; border-bottom: 1px solid #e0e0e0; line-height: 50px;}
+.lhead ul {float: left;}
+.lhead ul li {float: left; margin-left: 25px; font-size: 14px;}
+.lhead ul li a {position: relative; padding-left: 25px; color: #000;}
+.lhead ul li a s {position: absolute; left: 0; top: 2px; width: 18px; height: 15px;}
+.lhead ul li.on a {color: #009de8;}
+.lhead ul li.on a s {background-position: 0 -18px;}
+.lhead ul li.hshow a s {background-position: -20px 0;}
+.lhead ul li.hshow.on a s {background-position: -20px -18px;}
+.lhead ul li a i {position: absolute; right: -28px; top: -5px; width: 24px; height: 11px; background-position: -56px 0;}
+.lhead h2 {float: right; font-weight: 700; color: #000;}
+.lhead h2 strong {font-size: 16px; padding: 0 5px; color: #e4393c;}
+/*列表*/
+#list .empty {text-align: center; line-height: 200px; font-size: 16px; font-weight: 700;}
+#list li {padding: 26px; position: relative; border-bottom: 1px dotted #e1e1e1;}
+#list li:hover {background-color: #fafafa;}
+#list li .jj {position: absolute; top: 0; right: 0; height: 18px; padding: 0 5px; line-height: 17px; background-color: #ccc; color: #fff; font-size: 12px; font-style: normal; background-color: #000;}
+#list li .pic {position: relative;float: left; width: 173px; height: 130px; overflow: hidden; background: url('/static/images/ui/loading.gif') no-repeat center; text-align: center; -ms-interpolation-mode: bicubic; transition-property: opacity; transition-duration: .15s; transition-timing-function: linear; transition-delay: 0;}
+#list li .pic em {position: absolute; right: 0; top: 0; font-size: 12px; color: #fff; background-color: #c0140a; padding: 1px 5px 2px; line-height: 15px;}
+#list li .pic i {position: absolute; right: 0; top: 0; font-size: 12px; color: #fff; background-color: #93b94c; padding: 1px 5px 2px; line-height: 15px; font-style: normal;}
+#list li .pic img {display: inline; z-index: 0; vertical-align: middle; max-width: 100%; max-height: 100%;}
+#list li a:hover.pic {opacity: .8; filter: alpha(opacity=80);}
+#list li .info {position: relative; overflow: hidden; padding-left: 20px;}
+#list li .info h2 {overflow: hidden; text-overflow: ellipsis; font-size: 20px; white-space: nowrap; height: 32px; line-height: 20px;}
+#list li .info h2 a {color: #4db500;}
+#list li .info .col1 {float: left; width: 460px;}
+.w1200 #list li .info .col1 {width: 600px;}
+#list li .info .col1 .w {height: 35px; line-height: 35px; font-size: 14px; font-weight: 700; color: #666;}
+#list li .info .col1 .w a {float: left; color: #666; margin-right: 25px;}
+#list li .info .col1 .w span {float: left; margin-right: 25px;}
+#list li .info .col1 .o {height: 28px; line-height: 28px; font-size: 14px; color: #888;}
+#list li .info .col1 .o a {color: #888;}
+#list li .info .col1 .o span img {display: inline-block;width: 17px;height: 17px;}
+#list li .info .col1 .tags {padding-top: 10px;}
+#list li .info .col1 .tags span {float: left; height: 23px; border: 1px solid #fff; padding: 0 5px; line-height: 23px; font-size: 12px; margin-right: 5px;}
+#list li .info .col1 .tags .t0, #list li .info .col1 .tags .t3 {background-color: #f2f9fe; border-color: #82a1bb; color: #6c879e;}
+#list li .info .col1 .tags .t1, #list li .info .col1 .tags .t4 {background-color: #f2fff8; border-color: #86c7a2; color: #57846a;}
+#list li .info .col1 .tags .t2, #list li .info .col1 .tags .t5 {background-color: #fff; border-color: #4db500; color: #588c31;}
+#list li .info .col2 {float: left; text-align: right;}
+#list li .info .col2 .num {margin-top: 15px;color: #e4393c}
+#list li .info .col2 .num strong {font-size: 16px;}
+#list li .info .col2 p, #list li .info .col3 p {font-size: 12px; color: #999; font-family: Arial;}
+#list li .info .col2 p {margin-top: 6px;}
+#list li .info .col3 {float: right; width: 150px; text-align: center;}
+#list li .info .col3 .price {color: #4db500; margin-top: 3px;}
+#list li .info .col3 .price strong {font-size: 20px; margin-right: 3px; font-family: tahoma; letter-spacing: -1px;}

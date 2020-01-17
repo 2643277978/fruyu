@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <title>{#if $sale_seotitle != ""#}{#$siteCityInfo['name']#}{#$sale_seotitle#}二手房{#else#}{#$siteCityInfo['name']#}二手房房产网，{#$siteCityInfo['name']#}二手房交易信息，{#$siteCityInfo['name']#}二手房出售{#/if#}-{#$house_title#}</title>
+    <meta name="keywords" content="{#$siteCityInfo['name']#}二手房,{#$siteCityInfo['name']#}房产网,{#$siteCityInfo['name']#}二手房交易信息,{#$siteCityInfo['name']#}二手房出售,{#$house_title#}" />
+    <meta name="description" content="{#$cfg_shortname#}{#$siteCityInfo['name']#}二手房房产网，涵盖{#$siteCityInfo['name']#}各区域房源信息。{#$cfg_shortname#}帮您定位，选择，收藏，搜索各类出售房源，带来最佳二手房买卖体验。" />
+    <link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/school.css?v={#$cfg_staticVersion#}" media="all" />
+    <script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript">
+        var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}';
+
+        var criticalPoint = 1240, criticalClass = "w1200";
+        $("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+
+        var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+    </script>
+</head>
+<body>
+{#include file="../../siteConfig/top1.html"#}
+
+<div class="wrap ad">{#myad id="75"#}</div>
+
+{#$pageCurr = 'sale'#}
+{#include file="top.html"#}
+
+<div class="main">
+    <div class="wrap">
+        <div class="crumb">
+            <div class="location">
+                <a href="{#$house_channelDomain#}">首页</a> > <a href="{#getUrlPath service='house' template='sale'#}">二手房</a> > <span>教育房</span>
+            </div>
+            <div class="SearchBox">
+                <form action="{#getUrlPath service='house' template='school'#}" method="get">
+                    <input type="search" placeholder="请输入小区名称、地址" name="keywords" class="inp"/>
+                    <input type="submit" value="搜索" class="submit">
+                </form>
+            </div>
+        </div>
+        <div class="filter">
+            <div class="t-fi fn-clear">
+                <span class="inf"><a href="{#getUrlPath service='house' template='map-sale'#}" target="_blank">地图找房>></a></span>
+                <ul class="t-fi-item fn-clear">
+                    <li{#if $from == "" && $subway == 0#} class="curr"{#/if#}><a href="{#getUrlPath service='house' template='school'#}">按学校查询</a></li>
+                    <li{#if $from == "subway" || $subway != 0#} class="curr"{#/if#}><a href="{#getUrlPath service='house' template='sale' param='from=subway'#}">公交/地铁房</a></li>
+                </ul>
+                {#if $keywords != ""#}
+                <div class="keywords fn-clear">
+                    <label>关键字：</label>
+                    <a title="删除关键字" href="{#getUrlPath service='house' template='school' addrid={#$addrid#} business={#$business#} flags={#$flags#}  keywords="" param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"><s>&times;</s></a>
+                </div>
+                {#/if#}
+            </div>
+            {#if $from == "" && $subway == 0#}
+            <dl class="fn-clear">
+                <dt>区域：</dt>
+                <dd>
+                    <a href="{#getUrlPath service='house' template='school' addrid=0 business=0  flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $addrid == 0#} class="curr"{#/if#}>不限</a>
+                    {#house action="addr" return='addr'#}
+                    <a href="{#getUrlPath service='house' template='school' addrid={#$addr.id#} business=0 flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $addrid == $addr.id#} class="curr"{#/if#}>{#$addr.typename#}</a>
+                    {#/house#}
+                    <div class="fn-clear"></div>
+                    {#if $addrid != 0#}
+                    <div class="sub-item fn-clear">
+                        <a href="{#getUrlPath service='house' template='school' addrid={#$addrid#} business=0  flags={#$flags#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $business == 0#} class="curr"{#/if#}>不限</a>
+                        {#house action="addr" return='addr' type={#$addrid#}#}
+                        <a href="{#getUrlPath service='house' template='school' addrid={#$addrid#} business={#$addr.id#} flags={#$flags#}  keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}"{#if $business == $addr.id#} class="curr"{#/if#}>{#$addr.typename#}</a>
+                        {#/house#}
+                    </div>
+                    {#/if#}
+                </dd>
+            </dl>
+            {#/if#}
+            <dl class="fn-clear">
+                <dt>特色：</dt>
+                <div class="item-check fn-clear">
+                    {#house action="item" return="item" type="{#$propertypid#}"  #}
+                    <a href="{#getUrlPath service='house' template='school' addrid={#$addrid#} business={#$business#} flags={#$flag{#$item.id#}#} keywords={#$keywords#} param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}" class="icheck{#if in_array('{#$item.id#}', $flagArr)#} on{#/if#}"><s></s>{#$item.typename#}</a>
+                    {#/house#}
+                </div>
+            </dl>
+        </div>
+        <div class="wrap orderby fn-clear">
+            <ul class="l-tab">
+                <li{#if $type == '0' || $type == ''#} class="curr"{#/if#}><a href="{#getUrlPath service='house' template='school' addrid=0 business=0   flags={#$flags#} keywords={#$keywords#}  param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}">全部学校</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="wrap list">
+        <div class="lhead">
+            <ul class="fn-clear">
+                <li class="lshow"><a href="javascript:;"><s></s>共有<strong id="totalCount">0</strong>个学校</a></li>
+            </ul>
+            <h2>真实房源，假一赔百，不封顶！</h2>
+        </div>
+
+        <ul id="list">
+
+            {#$addr = $addrid#}
+            {#if $business != 0#}
+            {#$addr = $business#}
+            {#/if#}
+            {#house action="schoolList" return="school" addrid={#$addr#}  flags={#$flags#} keywords={#$keywords#}  page={#$page#} pageSize="60"#}
+            <li class="fn-clear">
+                <a href="{#$school.url#}" target="_blank" class="pic"><img src="{#$cfg_staticPath#}images/blank.gif" data-url="{#changeFileSize url={#$school.litpic#} type='small'#}" alt="{#$school.title#}" /></a>
+                <div class="info">
+                    <h2><a href="{#$school.url#}" target="_blank" title="{#$school.title#}">{#$school.title#}</a></h2>
+                    <div class="fn-clear">
+                        <div class="col1">
+                            <p class="w">
+                                <span>{#$school.commCount#}个小区</span>
+                            </p>
+                            <p class="o">
+                                <span><img  src="{#$templets_skin#}images/school_map.png" alt="">{#$school.address#}</span>
+                            </p>
+                            <div class="tags fn-clear">
+                                {#foreach from=$school.flags item=flag key=key#}
+                                <span class="t{#$key#}">{#$flag#}</span>
+                                {#/foreach#}
+                            </div>
+                        </div>
+                        <div class="col2">
+                            <div class="num"><strong>{#$school.minprice#}元/㎡-{#$school.maxprice#}元/㎡</strong></div>
+                        </div>
+                        <div class="col3">
+                            <div class="price"><strong>{#$school.houseCount#}套</strong></div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            {#/house#}
+
+            {#if $pageInfo.totalCount == 0#}
+            <li class="empty">抱歉！ 未找到相关房源！</li>
+            {#/if#}
+        </ul>
+
+        {#getPageList service='house' template='school' addrid={#$addrid#} business={#$business#}   flags={#$flags#} keywords={#$keywords#}  param="{#if $orderby != ""#}orderby={#$orderby#}{#/if#}"#}
+
+    </div>
+</div>
+{#include file="footer.html"#}
+<script>var totalCount = {#$pageInfo.totalCount|string_format:"%d"#};</script>
+<script type="text/javascript" src="{#$templets_skin#}js/sale.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

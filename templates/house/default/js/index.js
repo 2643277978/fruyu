@@ -280,26 +280,26 @@ $(function(){
 	function getData(id){
 		var obj = $("#"+id), action = id, service = 'house',
 				on  = obj.find(".xtab .on a"),
-				filter = on.get(0).attributes,
+					filter=on.get(0).attributes,
 				data = [], fil = [], num = 10, pageSize = 50;
-
-		for(i = 0; i < filter.length; i++){
-			var name = filter[i].name, value = filter[i].value;
-			if(name.indexOf("data-") > -1){
-				key = name.replace("data-", "");
-				data.push(key+"="+value);
-				fil.push(key+value);
-			}
-		}
+		        for(i = 0; i < filter.length; i++){
+					var name = filter[i].name, value = filter[i].value;
+					if(name.indexOf("data-") > -1){
+						key = name.replace("data-", "");
+						data.push(key+"="+value);
+						fil.push(key+value);
+					}
+				}
 
 		//楼盘团购
-		if(id == "groupbuy"){
-			num = 13;
-			pageSize = 45;
-			action = "loupanList";
-
-		//租房
-		}else if(id == "zuList"){
+		// if(id == "groupbuy"){
+		// 	num = 13;
+		// 	pageSize = 45;
+		// 	action = "loupanList";
+		//
+		// //租房
+		// }else
+			if(id == "zuList"){
 			//写字楼
 			if(on.attr("data-atype") == "xzl"){
 				action = "xzlList";
@@ -329,12 +329,13 @@ $(function(){
 			}
 
 		//建材产品
-		}else if(id == "product"){
-			service = 'build';
-			num = 12;
-			pageSize = 36;
-			action = "blist";
 		}
+		// else if(id == "product"){
+		// 	service = 'build';
+		// 	num = 12;
+		// 	pageSize = 36;
+		// 	action = "blist";
+		// }
 
 		data.push("pageSize="+pageSize);
 		obj.find(".w-item").hide();
@@ -596,7 +597,8 @@ $(function(){
 		}
 	});
 
-	var ajaxList = ["loupanList", "groupbuy", "saleList", "zuList", "commerical"];
+	var ajaxList = ["loupanList", "saleList", "zuList", "commerical"];
+	// var ajaxList = ["loupanList", "groupbuy", "saleList", "zuList", "commerical"];
 	$.each(ajaxList, function(){
 		getData(this);
 	});

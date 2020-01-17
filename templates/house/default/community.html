@@ -165,7 +165,20 @@
 					{#$addr#}
 					{#/foreach#}</a> {#$row.address#}</p>
 				<p><label>二手房源：</label><a href="{#getUrlPath service='house' template='community-sale' id={#$row.id#}#}" target="_blank" title="二手房源{#$row.saleCount#}套">{#$row.saleCount#}套</a><label class="ml30">租房房源：</label><a href="{#getUrlPath service='house' template='community-zu' id={#$row.id#}#}" target="_blank" title="租房房源{#$row.zuCount#}套">{#$row.zuCount#}套</a></p>
-				<p><label>竣工时间：</label>{#$row.opendate|date_format:"%Y"#}年</p>
+				<p><label>竣工时间：</label>{#$row.opendate|date_format:"%Y"#}年
+					{#if $row.schoolList#}
+					<label>附近学校：</label>
+					<select name="" id="">
+						{#foreach from=$row.schoolList item=sch key=k#}
+						{#if $sch.distance=="infinite" #}
+						<option value="">{#$sch.title#}</option>
+						{#else#}
+						<option value="">距{#$sch.title#}{#$sch.distance/1000#}km</option>
+						{#/if#}
+						{#/foreach#}
+					</select>
+					{#/if#}
+				</p>
 			</div>
 		</div>
 	</div>

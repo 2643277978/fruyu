@@ -550,68 +550,68 @@
 *#}
 
 <!-- 商业地产 s -->
-<!--<div class="wrap" id="commerical">-->
-<!--	<div class="wh">-->
-<!--		<h4>Commerical Real Estate</h4>-->
-<!--		<div class="line"></div>-->
-<!--	</div>-->
-<!--	<div class="wt">-->
-<!--		<h3><a href="{#getUrlPath service='house' template='xzl'#}" target="_blank">商业地产</a></h3>-->
-<!--		<ul class="xtab fn-clear">-->
-<!--			<li class="on"><a href="javascript:;" data-atype="xzl" data-type="1">买写字楼</a></li>-->
-<!--			<li><a href="javascript:;" data-atype="sp" data-type="1">买商铺</a></li>-->
-<!--			<li><a href="javascript:;" data-atype="cf" data-type="2">买厂房/仓库</a></li>-->
-<!--			<li><a href="javascript:;" data-atype="xzl" data-type="0">租写字楼</a></li>-->
-<!--			<li><a href="javascript:;" data-atype="sp" data-type="0">租商铺</a></li>-->
-<!--			<li><a href="javascript:;" data-atype="cf" data-type="0">租厂房/仓库</a></li>-->
-<!--			<li><a href="javascript:;" data-atype="sp" data-type="2">商铺转让</a></li>-->
-<!--			<li><a href="javascript:;" data-atype="cf" data-type="1">厂房/仓库转让</a></li>-->
-<!--		</ul>-->
-<!--		<div class="links fn-clear fn-hide">-->
-<!--			<a href="{#getUrlPath service='house' template='map'#}" target="_blank" class="map"><i></i>地图找房</a>-->
-<!--		</div>-->
-<!--		<div class="links fn-clear">-->
-<!--			<a href="javascript:;" class="change"><i></i>换一组商业地产</a>-->
-<!--		</div>-->
-<!--	</div>-->
-<!--	<div class="filter" data-id="commerical">-->
-<!--		<dl class="fn-clear">-->
-<!--			<dt>区域</dt>-->
-<!--			<dd>-->
-<!--				{#house action="addr" return='addr'#}-->
-<!--				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid={#$addr.id#}#}" target="_blank">{#$addr.typename#}</a>-->
-<!--				{#/house#}-->
-<!--			</dd>-->
-<!--		</dl>-->
-<!--		<dl class="fn-clear">-->
-<!--			<dt>价格</dt>-->
-<!--			<dd>-->
-<!--				<a href="{#getUrlPath service='house' template='xzl' type='1'#}" target="_blank">全部</a>-->
-<!--				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price=',100'#}" target="_blank">100万以下</a>-->
-<!--				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price='100,200'#}" target="_blank">100-200万</a>-->
-<!--				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price='200,300'#}" target="_blank">200-300万</a>-->
-<!--				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price='300,500'#}" target="_blank">300-500万</a>-->
-<!--				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price='500,800'#}" target="_blank">500-800万</a>-->
-<!--				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price='800,1200'#}" target="_blank">800-1200万</a>-->
-<!--				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price='1200,2000'#}" target="_blank">1200-2000万</a>-->
-<!--				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price='2000,'#}" target="_blank">2000万以上</a>-->
-<!--			</dd>-->
-<!--		</dl>-->
-<!--		<dl class="fn-clear fn-hide">-->
-<!--			<dt>类型</dt>-->
-<!--			<dd>-->
-<!--				{#house action="item" return='item' type='8'#}-->
-<!--				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price='' protype={#$item.id#}#}" target="_blank">{#$item.typename#}</a>-->
-<!--				{#/house#}-->
-<!--			</dd>-->
-<!--		</dl>-->
-<!--		<a href="javascript:;" class="close">&times;</a>-->
-<!--		<a href="javascript:;" class="more">更多&nbsp;︾</a>-->
-<!--	</div>-->
-<!--	<div class="wc commerical">-->
-<!--		<div class="loading">加载中，请稍候...</div>-->
-<!--	</div>-->
-<!--</div>-->
+<div class="wrap" id="commerical">
+	<div class="wh">
+		<h4>Commerical Real Estate</h4>
+		<div class="line"></div>
+	</div>
+	<div class="wt">
+		<h3><a href="{#getUrlPath service='house' template='xzl'#}" target="_blank">商业地产</a></h3>
+		<ul class="xtab fn-clear">
+			<li class="on"><a href="javascript:;" data-atype="xzl" data-type="1">买写字楼</a></li>
+			<li><a href="javascript:;" data-atype="sp" data-type="1">买商铺</a></li>
+			<li><a href="javascript:;" data-atype="cf" data-type="2">买厂房/仓库</a></li>
+			<li><a href="javascript:;" data-atype="xzl" data-type="0">租写字楼</a></li>
+			<li><a href="javascript:;" data-atype="sp" data-type="0">租商铺</a></li>
+			<li><a href="javascript:;" data-atype="cf" data-type="0">租厂房/仓库</a></li>
+			<li><a href="javascript:;" data-atype="sp" data-type="2">商铺转让</a></li>
+			<li><a href="javascript:;" data-atype="cf" data-type="1">厂房/仓库转让</a></li>
+		</ul>
+		<div class="links fn-clear fn-hide">
+			<a href="{#getUrlPath service='house' template='map'#}" target="_blank" class="map"><i></i>地图找房</a>
+		</div>
+		<div class="links fn-clear">
+			<a href="javascript:;" class="change"><i></i>换一组商业地产</a>
+		</div>
+	</div>
+	<div class="filter" data-id="commerical">
+		<dl class="fn-clear">
+			<dt>区域</dt>
+			<dd>
+				{#house action="addr" return='addr'#}
+				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid={#$addr.id#}#}" target="_blank">{#$addr.typename#}</a>
+				{#/house#}
+			</dd>
+		</dl>
+		<dl class="fn-clear">
+			<dt>价格</dt>
+			<dd>
+				<a href="{#getUrlPath service='house' template='xzl' type='1'#}" target="_blank">全部</a>
+				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price=',100'#}" target="_blank">100万以下</a>
+				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price='100,200'#}" target="_blank">100-200万</a>
+				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price='200,300'#}" target="_blank">200-300万</a>
+				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price='300,500'#}" target="_blank">300-500万</a>
+				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price='500,800'#}" target="_blank">500-800万</a>
+				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price='800,1200'#}" target="_blank">800-1200万</a>
+				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price='1200,2000'#}" target="_blank">1200-2000万</a>
+				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price='2000,'#}" target="_blank">2000万以上</a>
+			</dd>
+		</dl>
+		<dl class="fn-clear fn-hide">
+			<dt>类型</dt>
+			<dd>
+				{#house action="item" return='item' type='8'#}
+				<a href="{#getUrlPath service='house' template='xzl' type='1' addrid=0 business=0 area='' price='' protype={#$item.id#}#}" target="_blank">{#$item.typename#}</a>
+				{#/house#}
+			</dd>
+		</dl>
+		<a href="javascript:;" class="close">&times;</a>
+		<a href="javascript:;" class="more">更多&nbsp;︾</a>
+	</div>
+	<div class="wc commerical">
+		<div class="loading">加载中，请稍候...</div>
+	</div>
+</div>
 <!-- 商业地产 e -->
 
 <div class="wrap ad">{#myad id="79"#}</div>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
+	<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+	<title>{#$detail_title#}-{#$detail_addr[0]#}{#$detail_addr[1]#}{#$detail_community#}二手房-{#$house_title#}</title>
+	<meta name="keywords" content="{#$siteCityInfo['name']#}二手房出售,{#$detail_community#}二手房,{#numberDaxie number=$detail_room#}室{#numberDaxie number=$detail_hall#}厅{#numberDaxie number=$detail_guard#}卫二手房" />
+	<meta name="description" content="{#$siteCityInfo['name']#}二手房-{#$cfg_shortname#}提供{#$siteCityInfo['name']#}{#$detail_community#}二手房出售信息，{#$siteCityInfo['name']#}{#$detail_addr[0]#}{#$detail_addr[1]#}{#$detail_address#}，{#$detail_community#}二手房出售，{#numberDaxie number=$detail_room#}室{#numberDaxie number=$detail_hall#}厅{#numberDaxie number=$detail_guard#}卫。找更多{#$siteCityInfo['name']#}{#$detail_community#}二手房信息就到{#$siteCityInfo['name']#}二手房-{#$cfg_shortname#}。" />
+	<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/base.css?v={#$cfg_staticVersion#}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/common.css?v={#$cfg_staticVersion#}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/public.css?v={#$cfg_staticVersion#}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/school-detail.css?v={#$cfg_staticVersion#}" media="all" />
+	<script type="text/javascript" src="{#$cfg_staticPath#}js/core/jquery-1.8.3.min.js"></script>
+	<script src="https://how2j.cn/study/js/chartjs/2.8.0/chart.min.js"></script>
+	<script type="text/javascript">
+		var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', staticPath = '{#$cfg_staticPath#}';
+
+		var criticalPoint = 1240, criticalClass = "w1200";
+		$("html").addClass($(window).width() > criticalPoint ? criticalClass : "");
+		var longitude = '{#$detail_longitude#}', latitude = '{#$detail_latitude#}', resblockName = '{#$detail_title#}';
+		var hideFileUrl = {#$cfg_hideUrl#}, cookiePre = '{#$cfg_cookiePre#}';
+		var pageData = {id: {#$detail_id#}, address: '{#$detail_address#}', lat: '{#$detail_latitude#}', lng: '{#$detail_longitude#}'};
+		{#$pageUrl = "{#getUrlPath service='house' template='school-detail' id="{#$detail_id#}"#}"#}
+		var site_map = "{#$site_map#}";
+		var userinfo = {
+			phoneCheck : {#$userinfo.phoneCheck|default:0#}
+		}
+		var geetest = {#$cfg_geetest#};
+	</script>
+</head>
+
+<body>
+{#include file="../../siteConfig/top1.html"#}
+
+<div class="wrap ad">{#myad id="75"#}</div>
+
+{#$pageCurr = 'school'#}
+{#include file="top.html"#}
+
+<div class="crumbbox">
+	<div class="wrap crumb fn-clear">
+		<a href="{#$house_channelDomain#}">首页</a> > <a href="{#getUrlPath service='house' template='sale'#}">二手房</a> > <a href="{#getUrlPath service='house' template='sale' addrid={#$detail_areaid#}#}">{#$detail_addr[$detail_addr|count-2]#}</a> > <a href="{#getUrlPath service='house' template='sale' addrid={#$detail_areaid#} business={#$detail_addrid#}#}">{#$detail_addr[$detail_addr|count-1]#}</a>> <span>{#$detail_title#}</span>
+	</div>
+	<div class="wrap crumtit">
+		<h1 class="name">{#$detail_title#}</h1>
+		<p>真房源！更多房源信息请联系经纪人</p>
+		<div class="mobile_kf fn-clear">
+			<div class="mk_lef fn-left">
+				<div id="qrcode"></div>
+			</div>
+			<div class="mk_rig fn-right">
+				<span>手</span>
+				<span>机</span>
+				<span>看</span>
+				<span>房</span>
+			</div>
+		</div>
+		<!-- 收藏、分享、相册 s-->
+		<div class="btnbx">
+			<a href="javascript:;" class="btnYy"><i class="iyy"></i>预约看房</a>
+			{#if $detail_collect#}<a href="javascript:;" class="btnSc btnYsc"> <i class="isc"></i> 已收藏</a>
+			{#else#}<a href="javascript:;" class="btnSc"> <i class="isc"></i> 收藏</a>{#/if#}
+			<a href="javascript:;" class="btnShare bdsharebuttonbox bds_more" data-cmd="more"> <i class="ishare"></i> 分享</a>
+			<a href="javascript:;" class="btnJb"><i class="ijb"></i> 举报</a>
+		</div>
+		<!-- 收藏、分享、相册 e-->
+	</div>
+
+</div>
+
+<div class="wrap sale-detail fn-clear">
+	<p class="comtit"><span class="ftime">更新时间：{#$detail_date|date_format:"%Y-%m-%d"#}</span> <span>浏览量：{#$detail_click#}</span></p>
+	<!-- 图片-->
+	{#if $detail_imglist || $detail_video || $detail_qj_file#}
+	<div class="sale_slide">
+		<ul class="album">
+			{#if $detail_video#}
+			<li>
+				<a href="javascript:;">
+					<video controls="controls" src="{#$detail_video#}"></video>
+				</a>
+			</li>
+			{#/if#}
+			{#if $detail_qj_file#}
+			<li>
+				<a href="javascript:;">
+					{#* h5 *#}
+					{#if $detail_qj_type == 0#}
+					<iframe src="{#$cfg_basehost#}/include/360panorama.php?f={#$detail_qj_file#}"></iframe>
+					{#* iframe *#}
+					{#elseif $detail_qj_type == 1#}
+					<iframe src="{#$detail_qj_file#}"></iframe>
+
+					{#/if#}
+				</a>
+			</li>
+			{#/if#}
+			{#foreach from=$detail_imglist item=img#}
+			<li><a href="javascript:;"><i></i><img src="{#$cfg_staticPath#}images/blank.gif" _src="{#$img.path#}" /></a></li>
+			{#/foreach#}
+		</ul>
+		<div class="pageState"></div>
+		<div class="thumb">
+			<div class="plist">
+				<ul >
+					{#if $detail_video#}
+					<li><a href="javascript:;"><i></i><img src="{#$detail_litpic|replace:"large":"small"#}"/></a><s class="splay"></s></li>
+					{#/if#}
+					{#if $detail_qj_file#}
+					<li><a href="javascript:;"><i></i><img src="{#$detail_litpic|replace:"large":"small"#}"/></a><s class="svr"></s></li>
+					{#/if#}
+					{#foreach from=$detail_imglist item=img#}
+					<li><a href="javascript:;"><i></i><img src="{#changeFileSize url={#$img.path#} type='small'#}"/></a></li>
+					{#/foreach#}
+				</ul>
+			</div>
+			<a href="javascript:;" class="sprev"><i></i></a>
+			<a href="javascript:;" class="snext"><i></i></a>
+		</div>
+	</div>
+	{#else#}
+	<div class="sale_slide">
+		<ul class="album"><li><a href="javascript:;"><i></i><img src="{#$detail_litpic|default:"/static/images/blank.gif"#}" alt=""></a></li></ul>
+		<div class="pageState"></div>
+		<div class="thumb">
+			<div class="plist">
+				<ul><li><a href="javascript:;"><i></i><img src="{#$detail_litpic|replace:"large":"small"|default:"/static/images/blank.gif"#}" alt="{#$detail_title#}"></a></li></ul>
+			</div>
+			<a href="javascript:;" class="sprev"><i></i></a>
+			<a href="javascript:;" class="snext"><i></i></a>
+		</div>
+	</div>
+	{#/if#}
+	<!--右边部分-->
+	<div class="param">
+		<div class="info_txt">
+			<div class="txt_other">
+				<dl><dt>小区均价：</dt><dd class="price">{#$detail_minprice#}-{#$detail_maxprice#}<span>元/㎡</span></dd></dl>
+				<dl class="comAdd"><dt>学校地址：</dt><dd><span>{#foreach from=$detail_addr item=addr#}
+			{#$addr#}
+			{#/foreach#}
+			{#$detail_address#}</span> <a href="#map" id="amap">地图</a></dd></dl>
+				<dl><dt>周边小区：</dt><dd>{#$detail_commCount#}个小区</dd></dl>
+<!--				<dl><dt>学校特色：</dt><dd>{#$detail_flag#}</dd></dl>-->
+				<dl><dt>学校电话：</dt><dd>{#$detail_tel#}</dd></dl>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+
+	<div class="sub-nav">
+		<div class="fixnav">
+			<div class="wrap">
+				<ul>
+					<li class="curr"><a href="javascript:;">学校信息</a></li>
+					<li><a href="{#$pageUrl#}#com">周边小区</a></li>
+					<li><a href="{#$pageUrl#}#maap">周边配套</a></li>
+					<li><a href="{#$pageUrl#}#sale">在售房源</a></li>
+					<li><a href="{#$pageUrl#}#zu">在租房源</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="wrap">
+		<h2 class="sub-title"><span>学校介绍</span></h2>
+		<div class="content">
+			{#$detail_intro#}
+		</div>
+	</div>
+
+	<div class="wrap">
+		<h2 class="sub-title"><span>学校特色</span></h2>
+		{#if $detail_flag #}
+		<div class="content">
+			{#foreach from=$detail_flag item=flag key=k#}
+			<dl>{#$flag#}</dl>
+			{#/foreach#}
+		</div>
+		{#else#}
+		<div class="empty">暂无特色</div>
+		{#/if#}
+	</div>
+
+	<!-- 周边小区 s-->
+	<div class="wrap commbox salebox fn-clear" id="com">
+		<h2 class="c-tit">附近小区 <a href="{#getUrlPath service='house' template='community'#}" class="more">全部小区 ></a></h2>
+		<div class="c-info midbox">
+			<ul class="fn-clear">
+				{#house action="communityList" return="community" school={#$detail_id#}  page={#$page#} pageSize="12"#}
+				<li>
+					<a href="{#$community.url#}" target="_blank" title="{#$community.title#}">
+						<div class="imgbox">
+							<img src="{#changeFileSize url={#$community.litpic#} type='small'#}" alt="{#$community.title#}">
+						</div>
+						<div class="txtbox">
+							<h4>{#$community.title#}</h4>
+							<p class="pprice fn-clear"><span>小区均价:<b>{#$community.price#}</b> {#echoCurrency type='short'#}/㎡</span></p>
+							<p class="parea"><span><a href="{#getUrlPath service='house' template='community-sale' id={#$community.id#}#}">{#$community.saleCount#}套在售</a></span><em>|</em><span><a
+									href="{#getUrlPath service='house' template='community-zu' id={#$community.id#}#}">{#$community.zuCount#}套在租</a></span><em>|</em>
+								{#foreach from=$community.schoolList item=sch key=k#}
+								{#$if $sch.distance=="infinite"#}
+								<span>离学校：未知</span>
+								{#else#}
+								{#if $sch.id==$detail_id#}
+								<span>离学校：{#$sch.distance/1000#}km</span>
+								{#/if#}
+								{#/if#}
+								{#/foreach#}
+							</p>
+						</div>
+					</a>
+				</li>
+				{#/house#}
+			</ul>
+		</div>
+	</div>
+	<!-- 周边小区 e-->
+
+	<!-- 周边配套 s-->
+	<div class="wrap " id="maap">
+		<h2 class="sub-title"><span>周边配套</span></h2>
+		<div class="content">
+			<div class="aroundContainer">
+				<div class="aroundMap" id="map"></div>
+				<div class="tabBox">
+					<ul class="aroundType">
+						<li class="LOGCLICK" data-log_evtid='10242'  data-bl="traffic" data-key="地铁站,公交站" data-index="subway,bus" data-length="10,10">交通</li>
+						<li class="LOGCLICK" data-log_evtid='10242'  data-bl="education" data-key="幼儿园,小学,中学,大学"
+							data-index="kindergarten,primary-school,middle-school,University"
+							data-length="10,10,10,10">教育</li>
+						<li class="LOGCLICK" data-log_evtid='10242'  data-bl="medical" data-key="医院,药店" data-index="hospital,pharmacy" data-length="10,10">医疗</li>
+						<li class="LOGCLICK" data-log_evtid='10242'  data-bl="shopping" data-key="商场,超市,市场" data-index="mall,supermarket,market" data-length="10,10,10">购物</li>
+						<li class="LOGCLICK" data-log_evtid='10242'  data-bl="life" data-key="银行,ATM,餐厅,咖啡馆" data-index="bank,atm,restaurant,coffee" data-length="10,10,10,10">生活</li>
+						<li class="LOGCLICK" data-log_evtid='10242'  data-bl="entertainment" data-key="公园,电影院,健身房,体育馆" data-index="park,cinema,gym,sport" data-length="10,10,10,10">娱乐</li>
+					</ul>
+					<div class="itemTagBox"></div>
+					<div class="aroundList" id="mapListContainer"></div>
+					<div class="loading">
+						<img src="{#$templets_skin#}images/loading.gif" class="loadingImg">
+						<span class="loadingText">努力加载中...</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 周边配套 e -->
+
+	<!-- 周边二手房 s-->
+	<div class="wrap salebox fn-clear" id="sale">
+		<h2 class="c-tit">在售房源 <a href="{#getUrlPath service='house' template='sale'#}" class="more">全部二手房 ></a></h2>
+		<div class="c-info midbox">
+			<ul class="fn-clear">
+				{#house action="saleList" return="sale" school={#$detail_id#}  page={#$page#} pageSize="12"#}
+				<li>
+					<a href="{#$sale.url#}" target="_blank" title="{#$sale.title#}">
+						<div class="imgbox">
+							<img src="{#changeFileSize url={#$sale.litpic#} type='small'#}" alt="{#$sale.title#}">
+						</div>
+						<div class="txtbox">
+							<h4>{#$sale.title#}</h4>
+							<p class="pprice fn-clear"><span><b>{#$sale.price#}</b> {#echoCurrency type='short'#}</span></p>
+							<p class="parea"><span>{#$sale.room#}</span><em>|</em><span>{#$sale.area#}㎡</span></p>
+						</div>
+					</a>
+				</li>
+				{#/house#}
+			</ul>
+		</div>
+	</div>
+	<!-- 周边二手房e-->
+
+	<!-- 周边租房s-->
+	<div class="wrap salebox fn-clear" id="zu">
+		<h2 class="c-tit">租房 <a href="{#getUrlPath service='house' template='zu'#}" class="more">全部租房 ></a></h2>
+		<div class="c-info midbox">
+			<ul class="fn-clear">
+				{#house action="zuList" return="zu" school={#$detail_id#}  page={#$page#} pageSize="12"#}
+				<li>
+					<a href="{#$zu.url#}" target="_blank" title="{#$zu.title#}">
+						<div class="imgbox">
+							<img src="{#changeFileSize url={#$zu.litpic#} type='small'#}" alt="{#$zu.title#}">
+						</div>
+						<div class="txtbox">
+							<h4>{#$zu.title#}</h4>
+							<p class="pprice fn-clear"><span><b>{#$zu.price#}</b> {#echoCurrency type='short'#}/月</span></p>
+							<p class="parea"><span>{#$zu.room#}</span><em>|</em><span>{#$zu.area#}㎡</span></p>
+						</div>
+					</a>
+				</li>
+				{#/house#}
+			</ul>
+		</div>
+	</div>
+	<!-- 周边租房e-->
+</div>
+
+<div class="modal-yy">
+	<s class="close"></s>
+	<div class="lp_title">预约看房</div>
+	<div class="dc">
+		<div class="con-tit">您要预约看的房是</div>
+		<div class="yyInfo">
+			<h2>{#$detail_title#}</h2> <span class="price"></span>
+		</div>
+		<div class="con-tit">您想在什么时间看房？</div>
+		<div class="ytime">
+			<dl class="fn-clear">
+				<dt>时间：</dt>
+				<dd class="curr"><s class="checkbox"><i></i></s>双休日</dd>
+				<dd><s class="checkbox"><i></i></s>工作日</dd>
+				<dd><s class="checkbox"><i></i></s>工作日/双休日均可</dd>
+			</dl>
+			<dl class="fn-clear">
+				<dt>时段：</dt>
+				<dd class="curr"><s class="checkbox"><i></i></s>上午</dd>
+				<dd><s class="checkbox"><i></i></s>下午</dd>
+				<dd><s class="checkbox"><i></i></s>晚上</dd>
+				<dd><s class="checkbox"><i></i></s>随时</dd>
+			</dl>
+		</div>
+		<div class="con-tit">您对本次预约有什么特别说明吗？</div>
+		<div class="remarks">
+			<textarea name="remarks" id="marks" cols="30" rows="10" placeholder="例如：希望尽快短信联系我"></textarea>
+		</div>
+		<div class="con-tit">请留下您的联系方式</div>
+		<input type="hidden" name="areaCode" id="areaCode" value="86">
+		<ul class="contact-way">
+			<li><input type="text" id="name" placeholder="怎么称呼您" title="怎么称呼您" value="{#$userinfo.realname#}">
+				<div class="sexbox fn-clear">
+					<label><input type="radio" name="sex" data-type="male" value="1"{#if !$userinfo || $userinfo.sex == 1#} checked{#/if#}> 先生</label>
+					<label><input type="radio" name="sex" data-type="female" value="2"{#if !$userinfo || $userinfo.sex == 0#} checked{#/if#}> 女士</label>
+				</div>
+			</li>
+			{#if $userinfo.phoneCheck#}
+			<li><input type="text" id="telphone" placeholder="您的手机号" maxlength="11" title="请输入您的手机号码" value="{#$userinfo.phone#}" readonly></li>
+			<li class="fn-hide"><input type="text" id="vercode" placeholder="短信验证码" maxlength="6" title="请输入验证码"></li>
+			{#else#}
+			<li><input type="text" id="telphone" placeholder="您的手机号" maxlength="11" title="请输入您的手机号码" value="{#$userinfo.phone#}"><a href="javascript:;" class="getCodes">发送验证码</a></li>
+			<li><input type="text" id="vercode" placeholder="短信验证码" maxlength="6" title="请输入验证码"></li>
+			{#/if#}
+			<li class="tj"><button id="tj">提交预约申请</button></li>
+		</ul>
+	</div>
+</div>
+<div class="popup_bg"></div>
+
+
+{#include file="footer.html"#}
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.qrcode.min.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.slides.1.1.1.js"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dialog-4.2.0.js"></script>
+{#if $cfg_geetest#}<script type="text/javascript" src="{#$cfg_secureAccess#}static.geetest.com/static/tools/gt.js"></script>{#/if#}
+<script type="text/javascript" src="{#$templets_skin#}js/sale_detail.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$site_map_apiFile#}"></script>
+<script type="text/javascript" src="{#$templets_skin#}js/map.js?v={#$cfg_staticVersion#}"></script>
+</body>
+</html>

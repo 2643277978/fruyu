@@ -19,15 +19,18 @@ body {font-family: 'microsoft yahei';}
 .header .service li.renter a i {background-position: 0 -134px;}
 
 /* 导航条 */
-.nav {position: relative; z-index: 20; height: 57px; line-height: 57px; background: url('../images/bgx.png') repeat-x; border-bottom: 1px solid #c3c3c3;}
-.nav .navbg {position: absolute; left: 0; top: 0; z-index: 1; width: 100%; height: 57px; background: url('../images/bgnav.png') no-repeat center top;}
+.nav {position: relative; z-index: 20; height: 57px; line-height: 57px; background: -moz-linear-gradient( 0deg, rgb(255,10,36) 0%, rgb(254,50,74) 100%);background: -webkit-linear-gradient( 0deg, rgb(255,10,36) 0%, rgb(254,50,74) 100%);background: -ms-linear-gradient( 0deg, rgb(241,55,11) 0%, rgb(254,85,50) 100%);filter: progid:DXImageTransform.Microsoft.gradient(GradientType = 1, startColorstr = #f1370b, endColorstr = #fe5532); -webkit-box-shadow: 0px 5px 3px 0px rgba(158, 158, 158, 0.45); -moz-box-shadow: 0px 5px 3px 0px rgba(158, 158, 158, 0.45); box-shadow: 0px 5px 3px 0px rgba(158, 158, 158, 0.45); border-bottom: 1px solid #c3c3c3;}
+/*.nav {position: relative; z-index: 20; height: 57px; line-height: 57px; background: url('../images/bgx.png') repeat-x; border-bottom: 1px solid #c3c3c3;}*/
+.nav .navbg {position: absolute; left: 0; top: 0; z-index: 1; width: 100%; height: 57px;}
+/*.nav .navbg {position: absolute; left: 0; top: 0; z-index: 1; width: 100%; height: 57px; background: url('../images/bgnav.png') no-repeat center top;}*/
 .nav .wrap {position: relative; z-index: 2;}
-.nav li {position: relative; float: left; line-height: 57px; font-size: 16px; margin-right: 20px;}
+.nav li {position: relative; float: left; line-height: 57px; font-size: 16px; margin-right: 30px;}
 .w1200 .nav li {font-size: 18px;}
 .nav li a {padding: 0 13px; display: block; color: #fff;}
 .w1200 .nav li a {padding: 0 18px;}
 .nav li a:hover {color: #fff;}
-.nav li.current a, .nav li.on a {background: #ad1010;}
+/*.nav li.current a, .nav li.on a {background: #ad1010;}*/
+.nav li.current a, .nav li.on a {background-color: rgba(74, 67, 69,0.17);}
 .nav li dl {display:none; position: absolute; left: 0; top: 57px; width: 110px; padding: 5px 0; background: rgba(0,0,0,.6)!important; background: #666; -webkit-animation:topFadeIn .3s ease-out; -moz-animation:topFadeIn .3s ease-out; animation:topFadeIn .3s ease-out;}
 .nav li.current dl {display: block;}
 .nav li dd {display: block; line-height: 30px;}

@@ -457,9 +457,6 @@
 	</div>
 	<!-- 附近房源 e-->
 </div>
-
-{#include file="footer.html"#}
-
 <div class="modal-yy">
 	<s class="close"></s>
 	<div class="lp_title">预约看房</div>
@@ -510,10 +507,14 @@
 </div>
 <div class="popup_bg"></div>
 
+{#include file="footer.html"#}
+
+
 <script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.qrcode.min.js"></script>
 <script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.SuperSlide.2.1.1.js"></script>
 <script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.slides.1.1.1.js"></script>
 <script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dialog-4.2.0.js"></script>
+{#if $cfg_geetest#}<script type="text/javascript" src="{#$cfg_secureAccess#}static.geetest.com/static/tools/gt.js"></script>{#/if#}
 <script type="text/javascript" src="{#$templets_skin#}js/zu_detail.js?v={#$cfg_staticVersion#}"></script>
 <script type="text/javascript" src="{#$site_map_apiFile#}"></script>
 <script type="text/javascript" src="{#$templets_skin#}js/map.js?v={#$cfg_staticVersion#}"></script>
