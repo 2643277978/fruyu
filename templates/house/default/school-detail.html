@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset={#$cfg_soft_lang#}">
 	<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
-	<title>{#$detail_title#}-{#$detail_addr[0]#}{#$detail_addr[1]#}{#$detail_community#}二手房-{#$house_title#}</title>
+	<title>{#$detail_title#}-{#$detail_addr[0]#}{#$detail_addr[1]#}{#$detail_community#}学校-{#$house_title#}</title>
 	<meta name="keywords" content="{#$siteCityInfo['name']#}二手房出售,{#$detail_community#}二手房,{#numberDaxie number=$detail_room#}室{#numberDaxie number=$detail_hall#}厅{#numberDaxie number=$detail_guard#}卫二手房" />
 	<meta name="description" content="{#$siteCityInfo['name']#}二手房-{#$cfg_shortname#}提供{#$siteCityInfo['name']#}{#$detail_community#}二手房出售信息，{#$siteCityInfo['name']#}{#$detail_addr[0]#}{#$detail_addr[1]#}{#$detail_address#}，{#$detail_community#}二手房出售，{#numberDaxie number=$detail_room#}室{#numberDaxie number=$detail_hall#}厅{#numberDaxie number=$detail_guard#}卫。找更多{#$siteCityInfo['name']#}{#$detail_community#}二手房信息就到{#$siteCityInfo['name']#}二手房-{#$cfg_shortname#}。" />
 	<link rel="shortcut icon" href="{#$cfg_basehost#}/favicon.ico" type="image/x-icon" />
@@ -201,12 +201,10 @@
 							<p class="parea"><span><a href="{#getUrlPath service='house' template='community-sale' id={#$community.id#}#}">{#$community.saleCount#}套在售</a></span><em>|</em><span><a
 									href="{#getUrlPath service='house' template='community-zu' id={#$community.id#}#}">{#$community.zuCount#}套在租</a></span><em>|</em>
 								{#foreach from=$community.schoolList item=sch key=k#}
-								{#$if $sch.distance=="infinite"#}
+								{#if $sch.distance=="infinite"#}
 								<span>离学校：未知</span>
-								{#else#}
-								{#if $sch.id==$detail_id#}
+								{#elseif $sch.id==$detail_id#}
 								<span>离学校：{#$sch.distance/1000#}km</span>
-								{#/if#}
 								{#/if#}
 								{#/foreach#}
 							</p>
@@ -354,7 +352,7 @@
 <script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.slides.1.1.1.js"></script>
 <script type="text/javascript" src="{#$cfg_staticPath#}js/ui/jquery.dialog-4.2.0.js"></script>
 {#if $cfg_geetest#}<script type="text/javascript" src="{#$cfg_secureAccess#}static.geetest.com/static/tools/gt.js"></script>{#/if#}
-<script type="text/javascript" src="{#$templets_skin#}js/sale_detail.js?v={#$cfg_staticVersion#}"></script>
+<script src="{#$templets_skin#}js/school-details.js?v={#$cfg_staticVersion#}"></script>
 <script type="text/javascript" src="{#$site_map_apiFile#}"></script>
 <script type="text/javascript" src="{#$templets_skin#}js/map.js?v={#$cfg_staticVersion#}"></script>
 </body>

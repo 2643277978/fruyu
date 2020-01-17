@@ -78,7 +78,7 @@
 .salebox  ul li .txtbox .pprice span{float: left;margin-right: 10px;color: #797a82}
 .salebox  ul li .txtbox .pprice b{font-size: 20px;color: #f1370b}
 .salebox  ul li .txtbox .parea{font-size: 14px;color:#797a82;}
-.salebox  ul li .txtbox .parea em{font-size: 12px;color:#d3d4de;margin:0 10px;}
+.salebox  ul li .txtbox .parea em{font-size: 12px;color:#d3d4de;margin:0 5px;}
 
 /* 二手房&&出租房 */
 .sale-nav{margin:30px auto;}
