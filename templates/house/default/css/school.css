@@ -44,13 +44,14 @@ a:hover {text-decoration: underline;}
 /* 筛选条件 */
 .filter dl {border-bottom: 1px dotted #eee;}
 .filter dl.more {border: none;}
-.filter dt {width: 70px; padding: 15px 0; text-align: right;}
+.filter dt {width: 70px; padding: 15px 0; text-align: right;float: left}
 .filter dd {position: relative; overflow: hidden; padding: 5px 0 10px;}
 .filter dd a {float: left; padding: 5px 10px; margin: 5px 5px 0 0; white-space: nowrap;}
 .filter dd a.curr {color: #bc0a0a; font-weight: 700;}
 
 /* 多选 */
-.filter .item-check {float: left;margin-top: 15px;}
+/*.filter .item-check {float: left;margin-top: 15px;}*/
+.filter .item-check {position: relative; overflow: hidden; padding: 15px 0 10px;}
 .filter .icheck {position: relative; margin-right: 20px; padding: 14px 0 0 23px;}
 .filter .icheck s {position: absolute; left: 0; top: 15px; width: 14px; height: 14px; border: 1px solid #bbb; background-color: #fff;}
 .filter .icheck.on s {border-color: #808080; background-position: -39px -6px;}
