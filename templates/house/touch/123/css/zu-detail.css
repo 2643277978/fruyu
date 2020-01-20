@@ -316,6 +316,11 @@ padding: .4rem .24rem;
     padding: .3rem .24rem;
         background: #f4f4f4;
 }
+.periphery .periphery_title .cmore{
+    float: right;
+    font-weight: normal;
+    font-size: 14px;
+}
 .periphery ul{
 	padding:0 .24rem;
 }

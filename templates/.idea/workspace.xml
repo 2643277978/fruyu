@@ -110,6 +110,7 @@
       <change beforePath="$PROJECT_DIR$/house/default/zu-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/zu-detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/zu.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/zu.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/touch/123/css/cf-detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/css/cf-detail.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/touch/123/css/common.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/css/common.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/touch/123/css/estate-list.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/css/estate-list.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/touch/123/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/css/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/touch/123/css/map-loupan.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/css/map-loupan.css" afterDir="false" />
@@ -162,6 +163,7 @@
       <change beforePath="$PROJECT_DIR$/member/touch/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/member/touch/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/member/touch/pocket.html" beforeDir="false" afterPath="$PROJECT_DIR$/member/touch/pocket.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/member/touch/refreshTop.html" beforeDir="false" afterPath="$PROJECT_DIR$/member/touch/refreshTop.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/siteConfig/touch_top.html" beforeDir="false" afterPath="$PROJECT_DIR$/siteConfig/touch_top.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -188,7 +190,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/house/default" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -262,7 +264,11 @@
       <workItem from="1578997095156" duration="2119000" />
       <workItem from="1579050911335" duration="27165000" />
       <workItem from="1579136862435" duration="27061000" />
-      <workItem from="1579223781553" duration="26317000" />
+      <workItem from="1579223781553" duration="28361000" />
+      <workItem from="1579259014262" duration="58000" />
+      <workItem from="1579260032497" duration="2646000" />
+      <workItem from="1579262992110" duration="2000" />
+      <workItem from="1579482161505" duration="15260000" />
     </task>
     <servers />
   </component>

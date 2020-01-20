@@ -433,6 +433,77 @@
     {#/if#}
 	<!-- 全景看房 e -->
 
+	<!-- 本小区在租房 s-->
+	<div class="wrap salebox fn-clear">
+		<h2 class="sub-title"><span>{#$detail_community#}小区在租房源</span><span class="cmore"><a href="{#getUrlPath service='house' template='community-detail' id={#$detail_communityid#}#}">查看更多></a></span></h2>
+		<div class="c-info midbox">
+			<ul class="fn-clear">
+				{#foreach from=$detail_statistics.community.list item=cList#}
+				<li>
+					<a href="{#$cList.url#}" title="{#$cList.title#}">
+						<div class="imgbox">
+							<img src="{#$cList.litpic|replace:"large":"small"#}" alt="{#$cList.title#}">
+						</div>
+						<div class="txtbox">
+							<h4>{#$cList.title#}</h4>
+							<p class="pprice fn-clear"><span><b>{#$cList.price#}</b> 元/月</span></p>
+							<p class="parea"><span>{#$cList.room#}</span><em>|</em><span>{#$cList.area#}㎡</span></p>
+						</div>
+					</a>
+				</li>
+				{#/foreach#}
+			</ul>
+		</div>
+	</div>
+	<!-- 本小区在租 e-->
+	<!-- 本区域在租房 s-->
+	<div class="wrap salebox fn-clear">
+		<h2 class="sub-title"><span>{#$detail_addr[$detail_addr|count-2]#}在租房源</span><span class="cmore"><a href="{#getUrlPath service='house' template='zu' addrid={#$detail_areaid#}#}">查看更多></a></span></h2>
+		<div class="c-info midbox">
+			<ul class="fn-clear">
+				{#foreach from=$detail_statistics.area.list item=cList#}
+				<li>
+					<a href="{#$cList.url#}" title="{#$cList.title#}">
+						<div class="imgbox">
+							<img src="{#$cList.litpic|replace:"large":"small"#}" alt="{#$cList.title#}">
+						</div>
+						<div class="txtbox">
+							<h4>{#$cList.title#}</h4>
+							<p class="pprice fn-clear"><span><b>{#$cList.price#}</b> 元/月</span></p>
+							<p class="parea"><span>{#$cList.room#}</span><em>|</em><span>{#$cList.area#}㎡</span></p>
+						</div>
+					</a>
+				</li>
+				{#/foreach#}
+			</ul>
+		</div>
+	</div>
+	<!-- 本区域在租房 e-->
+
+	<!-- 本商圈在租房 s-->
+	<div class="wrap salebox fn-clear">
+		<h2 class="sub-title"><span>{#$detail_addr[$detail_addr|count-1]#}在租房源</span><span class="cmore"><a href="{#getUrlPath service='house' template='zu' addrid={#$detail_areaid#} business={#$detail_addrid#}#}">查看更多</a></span></h2>
+		<div class="c-info midbox">
+			<ul class="fn-clear">
+				{#foreach from=$detail_statistics.tradeCenter.list item=cList #}
+				<li>
+					<a href="{#$cList.url#}" title="{#$cList.title#}">
+						<div class="imgbox">
+							<img src="{#$cList.litpic|replace:"large":"small"#}" alt="{#$cList.title#}">
+						</div>
+						<div class="txtbox">
+							<h4>{#$cList.title#}</h4>
+							<p class="pprice fn-clear"><span><b>{#$cList.price#}</b> 元/月</span></p>
+							<p class="parea"><span>{#$cList.room#}</span><em>|</em><span>{#$cList.area#}㎡</span></p>
+						</div>
+					</a>
+				</li>
+				{#/foreach#}
+			</ul>
+		</div>
+	</div>
+	<!-- 本商圈在租房 e-->
+
 	<!-- 附近房源 s-->
 	<div class="wrap salebox fn-clear">
 		<h2 class="sub-title"><span>附近房源</span></h2>

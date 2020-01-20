@@ -34,7 +34,7 @@
 <body>
 {#include file="../../siteConfig/top1.html"#}
 
-<div class="wrap ad">{#myad id="75"#}</div>
+<!--<div class="wrap ad">{#myad id="75"#}</div>-->
 
 {#$pageCurr = 'sale'#}
 {#include file="top.html"#}
@@ -350,16 +350,16 @@
 				{#/foreach#}
 				</tbody>
 			</table>
-			<div class="record-more">
-				<a class="web-sensors"
-				   sensors-element_type="跳转按钮"
-				   sensors-element_name="more_clinch_button"
-				   sensors-element_class_name="文字按钮"
-				   sensors-element_content="查看更多"
-				   sensors-element_target_page="community_detail_clinch"
-				   target="_blank"
-				   href="">查看更多</a>
-			</div>
+<!--			<div class="record-more">-->
+<!--				<a class="web-sensors"-->
+<!--				   sensors-element_type="跳转按钮"-->
+<!--				   sensors-element_name="more_clinch_button"-->
+<!--				   sensors-element_class_name="文字按钮"-->
+<!--				   sensors-element_content="查看更多"-->
+<!--				   sensors-element_target_page="community_detail_clinch"-->
+<!--				   target="_blank"-->
+<!--				   href="">查看更多</a>-->
+<!--			</div>-->
 		</div>
 	</div>
 	{#/if#}
@@ -446,6 +446,78 @@
 	</div>
 	{#/if#}
 	<!-- 视频看房 e -->
+		<!-- 本小区在售二手房 s-->
+		<div class="wrap salebox fn-clear">
+			<h2 class="sub-title"><span>{#$detail_community#}小区在售房源</span><span class="cmore"><a href="{#getUrlPath service='house' template='community-detail' id={#$detail_communityid#}#}">查看更多></a></span></h2>
+			<div class="c-info midbox">
+				<ul class="fn-clear">
+					{#foreach from=$detail_statistics.community.list item=cList#}
+					<li>
+						<a href="{#$cList.url#}" title="{#$cList.title#}">
+							<div class="imgbox">
+								<img src="{#$cList.litpic|replace:"large":"small"#}" alt="{#$cList.title#}">
+							</div>
+							<div class="txtbox">
+								<h4>{#$cList.title#}</h4>
+								<p class="pprice fn-clear"><span><b>{#$cList.price#}</b> 万元</span></p>
+								<p class="parea"><span>{#$cList.room#}</span><em>|</em><span>{#$cList.area#}㎡</span></p>
+							</div>
+						</a>
+					</li>
+					{#/foreach#}
+				</ul>
+			</div>
+		</div>
+		<!-- 本小区在售二手房 e-->
+
+		<!-- 本区域在售二手房 s-->
+		<div class="wrap salebox fn-clear">
+			<h2 class="sub-title"><span>{#$detail_addr[$detail_addr|count-2]#}在售房源</span><span class="cmore"><a href="{#getUrlPath service='house' template='sale' addrid={#$detail_areaid#}#}">查看更多></a></span></h2>
+			<div class="c-info midbox">
+				<ul class="fn-clear">
+					{#foreach from=$detail_statistics.area.list item=cList#}
+					<li>
+						<a href="{#$cList.url#}" title="{#$cList.title#}">
+							<div class="imgbox">
+								<img src="{#$cList.litpic|replace:"large":"small"#}" alt="{#$cList.title#}">
+							</div>
+							<div class="txtbox">
+								<h4>{#$cList.title#}</h4>
+								<p class="pprice fn-clear"><span><b>{#$cList.price#}</b> 万元</span></p>
+								<p class="parea"><span>{#$cList.room#}</span><em>|</em><span>{#$cList.area#}㎡</span></p>
+							</div>
+						</a>
+					</li>
+					{#/foreach#}
+				</ul>
+			</div>
+		</div>
+		<!-- 本区域在售二手房 e-->
+
+		<!-- 本商圈在售二手房 s-->
+		<div class="wrap salebox fn-clear">
+			<h2 class="sub-title"><span>{#$detail_addr[$detail_addr|count-1]#}在售房源</span><span class="cmore"><a href="{#getUrlPath service='house' template='sale' addrid={#$detail_areaid#} business={#$detail_addrid#}#}">查看更多</a></span></h2>
+			<div class="c-info midbox">
+				<ul class="fn-clear">
+					{#foreach from=$detail_statistics.tradeCenter.list item=cList #}
+					<li>
+						<a href="{#$cList.url#}" title="{#$cList.title#}">
+							<div class="imgbox">
+								<img src="{#$cList.litpic|replace:"large":"small"#}" alt="{#$cList.title#}">
+							</div>
+							<div class="txtbox">
+								<h4>{#$cList.title#}</h4>
+								<p class="pprice fn-clear"><span><b>{#$cList.price#}</b> 万元</span></p>
+								<p class="parea"><span>{#$cList.room#}</span><em>|</em><span>{#$cList.area#}㎡</span></p>
+							</div>
+						</a>
+					</li>
+					{#/foreach#}
+				</ul>
+			</div>
+		</div>
+		<!-- 本商圈在售二手房 e-->
+
 
 	<!-- 附近房源 s-->
 	<div class="wrap salebox fn-clear">

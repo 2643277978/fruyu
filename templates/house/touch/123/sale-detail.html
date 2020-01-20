@@ -244,6 +244,64 @@
             </div>
         </div>
         {#/if#}
+
+        <!-- 本小区在售二手房 -->
+        <div class="periphery">
+            <div class="periphery_title">本小区在售二手房<span class="cmore"><a href="{#getUrlPath service='house' template='community-detail' id={#$detail_communityid#}#}">查看更多></a></span></div>
+            <ul class="fn-clear">
+                {#foreach from=$detail_statistics.community.list item=cList#}
+                <li class="fn-clear">
+                    <a href="{#$cList.url#}">
+                        <div class="rleft"><img src="{#$cList.litpic|replace:"large":"small"#}" onerror="javascript:this.src='/static/images/404.jpg';" alt="{#$cList.title#}">{#if $cList.video#}<i></i>{#/if#}</div>
+                        <div class="rright">
+                            <div class="rtitle fn-clear">{#if $cList.isbid#}<i></i>{#/if#}<p>{#$cList.title#}</p></div>
+                            <div class="comment fn-clear"><span class="area">{#$cList.room#}</span><span class="area">{#$cList.area#}平米</span><em>{#$cList.price#}万元</em></div>
+                            <p class="addr"><span class="addr_ess">{#$cList.community#}</span></p>
+                        </div>
+                    </a>
+                </li>
+                {#/foreach#}
+            </ul>
+        </div>
+
+        <!-- 本区域在售二手房 -->
+        <div class="periphery">
+            <div class="periphery_title">{#$detail_addr[$detail_addr|count-2]#}区域在售二手房<span class="cmore"><a href="{#getUrlPath service='house' template='sale' addrid={#$detail_areaid#}#}">查看更多></a></span></div>
+            <ul class="fn-clear">
+                {#foreach from=$detail_statistics.area.list item=cList#}
+                <li class="fn-clear">
+                    <a href="{#$cList.url#}">
+                        <div class="rleft"><img src="{#$cList.litpic|replace:"large":"small"#}" onerror="javascript:this.src='/static/images/404.jpg';" alt="{#$cList.title#}">{#if $cList.video#}<i></i>{#/if#}</div>
+                        <div class="rright">
+                            <div class="rtitle fn-clear">{#if $cList.isbid#}<i></i>{#/if#}<p>{#$cList.title#}</p></div>
+                            <div class="comment fn-clear"><span>{#$cList.rentype#}</span><span class="area">{#$cList.room#}</span><span class="area">{#$cList.area#}平米</span><em>{#$cList.price#}万元</em></div>
+                            <p class="addr">{#$cList.distance#}<span class="addr_ess">{#$cList.community#}</span></p>
+                        </div>
+                    </a>
+                </li>
+                {#/foreach#}
+            </ul>
+        </div>
+
+        <!-- 本商圈在售二手房 -->
+        <div class="periphery">
+            <div class="periphery_title">{#$detail_addr[$detail_addr|count-1]#}商圈在售二手房<span class="cmore"><a href="{#getUrlPath service='house' template='sale' addrid={#$detail_areaid#} business={#$detail_addrid#}#}">查看更多></a></span></div>
+            <ul class="fn-clear">
+                {#foreach from=$detail_statistics.tradeCenter.list item=cList#}
+                <li class="fn-clear">
+                    <a href="{#$cList.url#}">
+                        <div class="rleft"><img src="{#$cList.litpic|replace:"large":"small"#}" onerror="javascript:this.src='/static/images/404.jpg';" alt="{#$cList.title#}">{#if $cList.video#}<i></i>{#/if#}</div>
+                        <div class="rright">
+                            <div class="rtitle fn-clear">{#if $cList.isbid#}<i></i>{#/if#}<p>{#$cList.title#}</p></div>
+                            <div class="comment fn-clear"><span>{#$cList.rentype#}</span><span class="area">{#$cList.room#}</span><span class="area">{#$cList.area#}平米</span><em>{#$cList.price#}万元</em></div>
+                            <p class="addr">{#$cList.distance#}<span class="addr_ess">{#$cList.community#}</span></p>
+                        </div>
+                    </a>
+                </li>
+                {#/foreach#}
+            </ul>
+        </div>
+
         <!-- 周边推荐 -->
         <div class="periphery">
             <div class="periphery_title">周边推荐</div>
