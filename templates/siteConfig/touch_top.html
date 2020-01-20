@@ -41,7 +41,7 @@
                     </a>
                 </li>
                 <li class="HN_PublicShare" style="display: block !important;">
-                    <a class="fx" id="button">
+                    <a class="fx" id="buttons">
                         <i><img src="{#$cfg_staticPath#}/images/top_fast5.png"/></i>
                         <p>分享</p>
                     </a>
@@ -300,41 +300,6 @@
 <script src="{#$templets_skin#}js/mui.zoom.js?v={#$cfg_staticVersion#}"></script>
 <script src="{#$templets_skin#}js/mui.previewimage.js?v={#$cfg_staticVersion#}"></script>
     <script>
-    window.onerror = function(err) {
-        log('window.onerror: ' + err)
-    };
-
-    function setupWebViewJavascriptBridge(callback) {
-        if (window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); }
-        if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
-        window.WVJBCallbacks = [callback];
-        var WVJBIframe = document.createElement('iframe');
-        WVJBIframe.style.display = 'none';
-        WVJBIframe.src = 'https://__bridge_loaded__';
-        document.documentElement.appendChild(WVJBIframe);
-        setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
-    }
-
-    setupWebViewJavascriptBridge(function(bridge) {
-        var uniqueId = 1
-        function log(message, data) {
-            var log = document.getElementById('log')
-            var el = document.createElement('div')
-            el.className = 'logLine';
-            el.innerHTML = uniqueId++ + '. ' + message + ':<br/>' + JSON.stringify(data)
-            if (log.children.length) { log.insertBefore(el, log.children[0]) }
-            else { log.appendChild(el) }
-        }
-
-        bridge.registerHandler('testJavascriptHandler', function(data, responseCallback) {
-            log('ObjC called testJavascriptHandler with', data);
-            var responseData = { 'Javascript Says':'Right back atcha!' };
-            log('JS responding with', responseData);
-            responseCallback(responseData)
-        })
-
-        document.body.appendChild(document.createElement('br'));
-
         //分享内容定义
         var desc = JubaoConfig.desc;
         var link = JubaoConfig.link;
@@ -366,8 +331,53 @@
             type="";
         }
         var serverid = "1";
+    window.onerror = function(err) {
+        log('window.onerror: ' + err)
+    };
 
-        var callbackButton = document.getElementById('buttons').appendChild(document.createElement('button'))
+    function setupWebViewJavascriptBridge(callback) {
+        if (window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); }
+        if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
+        window.WVJBCallbacks = [callback];
+        var WVJBIframe = document.createElement('iframe');
+        WVJBIframe.style.display = 'none';
+        WVJBIframe.src = 'https://__bridge_loaded__';
+        document.documentElement.appendChild(WVJBIframe);
+        setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
+    }
+
+    setupWebViewJavascriptBridge(function(bridge) {
+        var uniqueId = 1;
+        function log(message, data) {
+            var log = document.getElementById('log');
+            var el = document.createElement('div');
+            el.className = 'logLine';
+            el.innerHTML = uniqueId++ + '. ' + message + ':<br/>' + JSON.stringify(data)
+            if (log.children.length) { log.insertBefore(el, log.children[0]) }
+            else { log.appendChild(el) }
+        }
+
+        bridge.registerHandler('testJavascriptHandler', function(data, responseCallback) {
+            log('ObjC called testJavascriptHandler with', data);
+            var succ;
+            $.ajax({
+                url: "/include/ajax.php?service=member&action=wxShare&aid=" + aid + "&type=" + type +"&serverid=" +serverid+ "&description=" + desc + "&link=" + link ,
+                type: "get",
+                datatype: "jsonp",
+                success: function () {
+                    succ="分享成功"
+                }
+            });
+            var responseData = {'Javascript Says':succ };
+            // var responseData = {'Javascript Says':'Right back atcha!' };
+            log('JS responding with', responseData);
+            responseCallback(responseData)
+        });
+
+        document.body.appendChild(document.createElement('br'));
+
+
+        var callbackButton = document.getElementById('buttons').appendChild(document.createElement('button'));
         // callbackButton.innerHTML = 'Fire testObjcCallback';
         callbackButton.onclick = function(e) {
             var userid;
@@ -384,21 +394,7 @@
                                      {'title': title,
                                        "url":link,
                                      "summary":desc,
-                                     "platform":imgUrl},
-                                     $.ajax({
-                                         url: "/include/ajax.php?service=member&action=wxShare&aid=" + aid + "&type=" + type +"&serverid=" +serverid+ "&description=" + desc + "&link=" + link ,
-                                         type: "get",
-                                         datatype: "jsonp",
-                                         success: function () {
-                                             // alert("分享成功");
-                                             // s.send(msg, function() {
-                                             //     outLine("分享成功!");
-                                             // }, function(e) {
-                                             //     outLine("分享失败!");
-                                             // });
-                                             outLine("分享成功");
-                                         }
-                                     }),
+                                     "platform":"all"},
                                      function(response) {
                 log('JS got response', response)
             })
