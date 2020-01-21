@@ -376,19 +376,21 @@
             if(userid == null || userid == " "){
                 location.href="{#$cfg_basehost#}/login.html"
             }else{
-              e.preventDefault();
+              e.preventDefault();//添加了callbackurl 用于ios自己发请求给服务器
                // log('JS calling handler "testObjcCallback"')
                                  bridge.callHandler(
                                      'appShare',
                                      {'title': title,
                                        "url":link,
                                      "summary":desc,
-                                     "platform":"all"},
+                                     "platform":"all",
+                                     "callbackurl":"/include/ajax.php?service=member&action=wxShare&aid=" + aid + "&type=" + type +"&serverid=" +serverid+ "&description=" + desc + "&link=" + link },
                                      $.ajax({
                                          url: "/include/ajax.php?service=member&action=wxShare&aid=" + aid + "&type=" + type +"&serverid=" +serverid+ "&description=" + desc + "&link=" + link ,
                                          type: "get",
                                          datatype: "jsonp",
                                          success: function () {
+                                             log('share success');
                                              outLine("分享成功");
                                          }
                                      }),
