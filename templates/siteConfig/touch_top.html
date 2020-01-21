@@ -295,11 +295,7 @@
     }else{
         setInterval(getnum,5000)
     }
-</script>
-<script src="{#$templets_skin#}js/mui.min.js?v={#$cfg_staticVersion#}"></script>
-<script src="{#$templets_skin#}js/mui.zoom.js?v={#$cfg_staticVersion#}"></script>
-<script src="{#$templets_skin#}js/mui.previewimage.js?v={#$cfg_staticVersion#}"></script>
-    <script>
+
         //分享内容定义
         var desc = JubaoConfig.desc;
         var link = JubaoConfig.link;
@@ -352,32 +348,25 @@
             var log = document.getElementById('log');
             var el = document.createElement('div');
             el.className = 'logLine';
-            el.innerHTML = uniqueId++ + '. ' + message + ':<br/>' + JSON.stringify(data)
+            el.innerHTML = uniqueId++ + '. ' + message + ':<br/>' + JSON.stringify(data);
             if (log.children.length) { log.insertBefore(el, log.children[0]) }
             else { log.appendChild(el) }
         }
 
         bridge.registerHandler('testJavascriptHandler', function(data, responseCallback) {
             log('ObjC called testJavascriptHandler with', data);
-            var succ;
-            $.ajax({
-                url: "/include/ajax.php?service=member&action=wxShare&aid=" + aid + "&type=" + type +"&serverid=" +serverid+ "&description=" + desc + "&link=" + link ,
-                type: "get",
-                datatype: "jsonp",
-                success: function () {
-                    succ="分享成功"
-                }
-            });
-            var responseData = {'Javascript Says':succ };
-            // var responseData = {'Javascript Says':'Right back atcha!' };
-            log('JS responding with', responseData);
-            responseCallback(responseData)
+            // var succ;
+            // var responseData = {'Javascript Says':succ };
+            var responseData = {'Javascript Says':'Right back atcha!'};
+            // log('JS responding with', responseData);
+            responseCallback(responseData);
         });
 
         document.body.appendChild(document.createElement('br'));
 
 
-        var callbackButton = document.getElementById('buttons').appendChild(document.createElement('button'));
+        // var callbackButton = document.getElementById('buttons').appendChild(document.createElement('button'));
+        var callbackButton = document.getElementById('buttons');
         // callbackButton.innerHTML = 'Fire testObjcCallback';
         callbackButton.onclick = function(e) {
             var userid;
@@ -388,13 +377,21 @@
                 location.href="{#$cfg_basehost#}/login.html"
             }else{
               e.preventDefault();
-               log('JS calling handler "testObjcCallback"')
+               // log('JS calling handler "testObjcCallback"')
                                  bridge.callHandler(
                                      'appShare',
                                      {'title': title,
                                        "url":link,
                                      "summary":desc,
                                      "platform":"all"},
+                                     $.ajax({
+                                         url: "/include/ajax.php?service=member&action=wxShare&aid=" + aid + "&type=" + type +"&serverid=" +serverid+ "&description=" + desc + "&link=" + link ,
+                                         type: "get",
+                                         datatype: "jsonp",
+                                         success: function () {
+                                             outLine("分享成功");
+                                         }
+                                     }),
                                      function(response) {
                 log('JS got response', response)
             })

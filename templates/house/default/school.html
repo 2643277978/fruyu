@@ -61,9 +61,9 @@
             <dl class="fn-clear">
                 <dt>区域：</dt>
                 <dd class="fn-clear">
-                    <a href="{#getUrlPath service='house' template='school'  addrid=0 business=0  flags={#$flags#} keywords={#$keywords#} #}"{#if $addrid == 0#} class="curr"{#/if#}>不限</a>
+                    <a href="{#getUrlPath service='house' template='school' addrid=0 business=0  flags={#$flags#} keywords={#$keywords#} #}"{#if $addrid == 0#} class="curr"{#/if#}>不限</a>
                     {#house action="addr" return='addr'#}
-                    <a href="{#getUrlPath service='house' template='school'  addrid={#$addr.id#} business=0  flags={#$flags#} keywords={#$keywords#} #}"{#if $addrid == $addr.id#} class="curr"{#/if#}>{#$addr.typename#}</a>
+                    <a href="{#getUrlPath service='house' template='school' addrid={#$addr.id#} business=0  flags={#$flags#} keywords={#$keywords#} #}"{#if $addrid == $addr.id#} class="curr"{#/if#}>{#$addr.typename#}</a>
                     {#/house#}
                 </dd>
             </dl>
@@ -71,7 +71,7 @@
             <div class="sub-fi area">
                 <a href="{#getUrlPath service='house' template='school' addrid={#$addrid#} business=0  flags={#$flags#} keywords={#$keywords#} #}"{#if $business == 0#} class="curr"{#/if#}>不限</a>
                 {#house action="addr" return='addr' type={#$addrid#}#}
-                <a href="{#getUrlPath service='house' template='school'  addrid={#$addrid#} business={#$addr.id#} flags={#$flags#}  keywords={#$keywords#} #}"{#if $business == $addr.id#} class="curr"{#/if#}>{#$addr.typename#}</a>
+                <a href="{#getUrlPath service='house' template='school'  addrid={#$addrid#}  business={#$addr.id#} flags={#$flags#}  keywords={#$keywords#} #}"{#if $business == $addr.id#} class="curr"{#/if#}>{#$addr.typename#}</a>
                 {#/house#}
             </div>
             {#/if#}
