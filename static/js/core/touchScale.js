@@ -138,14 +138,14 @@ function setupWebViewJavascriptBridge(callback){
 
 	var device = navigator.userAgent;
 	// if (device.indexOf('huoniao_iOS') > -1 && device.indexOf('huoniao_Android') <= -1) {
-        if(window.WVJBCallbacks){return window.WVJBCallbacks.push(callback);}
-        window.WVJBCallbacks = [callback];
-        var WVJBIframe = document.createElement("iframe");
-        WVJBIframe.style.display = "none";
-        WVJBIframe.src = "wvjbscheme://__BRIDGE_LOADED__";
+    //     if(window.WVJBCallbacks){return window.WVJBCallbacks.push(callback);}
+    //     window.WVJBCallbacks = [callback];
+        // var WVJBIframe = document.createElement("iframe");
+        // WVJBIframe.style.display = "none";
+        // WVJBIframe.src = "wvjbscheme://__BRIDGE_LOADED__";
 
-		document.documentElement.appendChild(WVJBIframe);
-		setTimeout(function(){document.documentElement.removeChild(WVJBIframe) }, 0);
+		// document.documentElement.appendChild(WVJBIframe);
+		// setTimeout(function(){document.documentElement.removeChild(WVJBIframe) }, 0);
 	// }
 }
 
