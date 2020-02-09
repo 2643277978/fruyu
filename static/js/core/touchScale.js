@@ -210,6 +210,30 @@ window.onload = function(){
             typeof pageBack == "function" && pageBack(data);
         });
 
+        //调用安卓原生分享
+        var callbackButton = document.getElementById('buttons');
+        callbackButton.onclick = function(e) {
+            var userid;
+            if(cookiePre){
+                userid = $.cookie(cookiePre+"login_user");
+            }
+            if(userid == null || userid == " "){
+                alert('请您先登录后再进行分享操作！');
+            }else{
+                e.preventDefault();
+                //添加了callbackurl 用于android自己发请求给服务器
+                bridge.callHandler('appShare',
+                    {
+                        "title": title,
+                        "url":link,
+                        "summary":desc,
+                        "platform":"all",
+                        "callbackurl":"/include/ajax.php?service=member&action=wxShare&aid=" + aid + "&type=" + type +"&serverid=" +serverid+ "&description=" + desc + "&link=" + link },
+                    function(response) {
+                    })
+            }
+        }
+
 	});
 
 	//退出
