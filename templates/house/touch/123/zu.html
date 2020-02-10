@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="{#$cfg_staticPath#}css/core/touchBase.css?v={#$cfg_staticVersion#}" />
 <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/common.css?v={#$cfg_staticVersion#}">
 <link rel="stylesheet" type="text/css" href="{#$templets_skin#}css/estate-list.css?v={#$cfg_staticVersion#}">
-<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
+<!--<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>-->
 <script type="text/javascript" src="{#$cfg_staticPath#}js/core/zepto.min.js?v={#$cfg_staticVersion#}"></script>
 <script>
 	var masterDomain = '{#$cfg_basehost#}', channelDomain = '{#$house_channelDomain#}', cfg_staticPath = '{#$cfg_staticPath#}', staticPath = '{#$cfg_staticPath#}',templets_skin = '{#$templets_skin#}';
@@ -171,6 +171,7 @@
 <script src="{#$cfg_staticPath#}js/detail2list.js?v={#$cfg_staticVersion#}"></script>
 {#include file="{#$HUONIAOROOT#}/templates/siteConfig/public_location.html"#}
 <script src="{#$templets_skin#}js/estate-list.js?v={#$cfg_staticVersion#}"></script>
+<script type="text/javascript" src="{#$cfg_staticPath#}js/core/touchScale.js?v={#$cfg_staticVersion#}"></script>
 <script>
 	var community = {#if !empty($community)#} {#$community#} {#else#} 0 {#/if#};
 </script>
