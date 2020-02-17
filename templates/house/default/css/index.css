@@ -64,7 +64,7 @@
 .wt .btns a.blue {background: #16a0e8;}
 .wt .btns a.green {background: #92c153;}
 .wt .btns a.org {background: #f36f20;}
-.wt .links {float: right; margin-top: 5px; font-size: 14px;}
+.wt .links {float: right; margin-top: -25px; font-size: 14px;}
 .wt .links a {float: left; position: relative; height: 32px; padding-left: 35px; margin-left: 20px; color: #000; line-height: 32px;}
 .wt .links a:hover {color: #cd0000;}
 .wt .links a i {position: absolute; width: 34px; height: 32px; left: 0; top: 0; background: url('../images/sprite.png') no-repeat; _background: url('../images/sprite_.png') no-repeat;}
