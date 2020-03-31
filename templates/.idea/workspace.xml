@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="004b61ea-2c34-49a1-b67c-a954c3bf9ba2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../static/images/house/touchHomePage/f_cf.png" beforeDir="false" afterPath="$PROJECT_DIR$/../static/images/house/touchHomePage/f_cf.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/images/house/touchHomePage/f_lp.png" beforeDir="false" afterPath="$PROJECT_DIR$/../static/images/house/touchHomePage/f_lp.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/images/house/touchHomePage/f_qj.png" beforeDir="false" afterPath="$PROJECT_DIR$/../static/images/house/touchHomePage/f_qj.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/images/house/touchHomePage/f_sale.png" beforeDir="false" afterPath="$PROJECT_DIR$/../static/images/house/touchHomePage/f_sale.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/images/house/touchHomePage/f_sp.png" beforeDir="false" afterPath="$PROJECT_DIR$/../static/images/house/touchHomePage/f_sp.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/images/house/touchHomePage/f_xzl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../static/images/house/touchHomePage/f_xzl.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/images/house/touchHomePage/f_zu.png" beforeDir="false" afterPath="$PROJECT_DIR$/../static/images/house/touchHomePage/f_zu.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../static/js/admin/siteConfig/siteSubwayAdd.js" beforeDir="false" afterPath="$PROJECT_DIR$/../static/js/admin/siteConfig/siteSubwayAdd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static/js/core/touchScale.js" beforeDir="false" afterPath="$PROJECT_DIR$/../static/js/core/touchScale.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/122/cf-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/cf-detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/122/community-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/community-detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/122/css/cf_detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/122/css/cf_detail.css" afterDir="false" />
@@ -72,6 +80,7 @@
       <change beforePath="$PROJECT_DIR$/house/default/css/cf_detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/cf_detail.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/css/community_detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/community_detail.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/css/faq.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/faq.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/default/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/css/loupan.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/loupan.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/css/public.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/public.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/css/sale.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/css/sale.css" afterDir="false" />
@@ -109,6 +118,8 @@
       <change beforePath="$PROJECT_DIR$/house/default/xzl.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/xzl.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/zu-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/zu-detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/default/zu.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/default/zu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/touch/123/cf-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/cf-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/touch/123/cf.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/cf.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/touch/123/css/cf-detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/css/cf-detail.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/touch/123/css/common.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/css/common.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/touch/123/css/estate-list.css" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/css/estate-list.css" afterDir="false" />
@@ -130,11 +141,13 @@
       <change beforePath="$PROJECT_DIR$/house/touch/123/js/xq.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/js/xq.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/touch/123/js/xzl.js" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/js/xzl.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/touch/123/loupan-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/loupan-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/touch/123/loupan.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/loupan.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/touch/123/map-sale.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/map-sale.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/touch/123/map-zu.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/map-zu.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/touch/123/sale-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/sale-detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/touch/123/sale.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/sale.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/touch/123/sp-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/sp-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/house/touch/123/sp.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/sp.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/touch/123/xzl-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/xzl-detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/touch/123/xzl.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/xzl.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/house/touch/123/zu-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/house/touch/123/zu-detail.html" afterDir="false" />
@@ -163,6 +176,7 @@
       <change beforePath="$PROJECT_DIR$/member/touch/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/member/touch/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/member/touch/pocket.html" beforeDir="false" afterPath="$PROJECT_DIR$/member/touch/pocket.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/member/touch/refreshTop.html" beforeDir="false" afterPath="$PROJECT_DIR$/member/touch/refreshTop.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/siteConfig/mobile.html" beforeDir="false" afterPath="$PROJECT_DIR$/siteConfig/mobile.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/siteConfig/touch_top.html" beforeDir="false" afterPath="$PROJECT_DIR$/siteConfig/touch_top.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -197,14 +211,14 @@
     <property name="settings.editor.selected.configurable" value="http.proxy" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\2019.11.13\dengyunlong_26dj_dev\templates\house\default" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\2019.11.13\dengyunlong_26dj_dev\templates\house\default" />
       <recent name="D:\2019.11.13\dengyunlong_26dj_dev\templates\house\default\images" />
       <recent name="D:\2019.11.13\dengyunlong_26dj_dev\templates\house\touch\123\images" />
       <recent name="D:\2019.11.13\dengyunlong_26dj_dev\templates\house\122" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\2019.11.13\dengyunlong_26dj_dev\templates\house\default" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -269,7 +283,14 @@
       <workItem from="1579260032497" duration="2646000" />
       <workItem from="1579262992110" duration="2000" />
       <workItem from="1579482161505" duration="27968000" />
-      <workItem from="1579569388793" duration="2631000" />
+      <workItem from="1579569388793" duration="3216000" />
+      <workItem from="1579610991339" duration="2968000" />
+      <workItem from="1580803356344" duration="135000" />
+      <workItem from="1580870122351" duration="1013000" />
+      <workItem from="1581231339074" duration="158000" />
+      <workItem from="1581309161598" duration="1543000" />
+      <workItem from="1585642587813" duration="1289000" />
+      <workItem from="1585643969502" duration="51000" />
     </task>
     <servers />
   </component>
